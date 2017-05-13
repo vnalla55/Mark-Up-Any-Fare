@@ -1,0 +1,25 @@
+<FareInfo>
+     <Fare
+          fareAmount=3300
+          originalFareAmount=3300
+          noDec=0
+          fareTariff=33
+          currency="SGD"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="SQ"
+          fareClass="BOW8"
+          market1LocCode="DXB"
+          market2LocCode="SIN"
+          footnote1="7B"
+          footnote2=""
+          owrt="3"
+          ruleNumber="SG14"
+          routingNumber="0000"
+          globalDirection="EH"
+          directionality="TO"
+          linkNumber=1
+          sequenceNumber=2
+     />
+</FareInfo>

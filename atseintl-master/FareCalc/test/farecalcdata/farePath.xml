@@ -1,0 +1,6 @@
+<FarePath>
+     <Itin file="/vobs/atseintl/FareCalc/test/farecalcdata/itin0.xml"/>
+     <PaxType file="/vobs/atseintl/FareCalc/test/farecalcdata/paxType1.xml"/>
+     <Misc
+     />
+</FarePath>

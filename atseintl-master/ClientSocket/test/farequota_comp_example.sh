@@ -1,0 +1,1 @@
+perl -s  comparator.pl -instrdb=pinhpp75.sabre.com:3306 -h1=picli406:56000 -h2=piilc006:53701 -day=15 -reqtag=FAREDISPLAYREQUEST -restag=FareDisplayResponse -limit=200 -servicename=FAREDSP1 -prefix="fquota"

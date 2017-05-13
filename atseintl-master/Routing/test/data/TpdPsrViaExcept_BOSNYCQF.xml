@@ -1,0 +1,17 @@
+<TpdPsrViaExcept>
+   <Attributes
+      viaCarrier="QF"
+   />
+   <LocKey1>
+      <Attributes
+	 loc="BOS" 
+	 locType='C' 
+      />
+   </LocKey1>
+   <LocKey2>
+      <Attributes
+	 loc="NYC" 
+	 locType='C' 
+      />
+   </LocKey2>
+</TpdPsrViaExcept>

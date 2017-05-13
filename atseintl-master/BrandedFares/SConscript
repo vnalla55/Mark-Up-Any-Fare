@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+s = env.msscout()
+s.env.add_include_paths('$CURL_CPPPATH_')
+s.mslibrary('BrandedFares', 'BRANDED_FARES_SOURCES')
+s.werror = True
+s.build()

@@ -1,0 +1,14 @@
+<PricingUnit> 
+   <FareUsage file="/vobs/atseintl/Rules/test/data/MinimumStayFareUsage.xml"/>
+   <AirSeg file="/vobs/atseintl/Rules/test/data/AirSegMSP_MIA.xml"/>
+   <AirSeg file="/vobs/atseintl/Rules/test/data/AirSegMIA_MSP.xml"/>
+  
+        <Misc puType = "ROUNDTRIP"	
+	puFareType= "SP"   
+        totalNUCAmount = "100"
+	geoTravelType = "Domestic"
+	isSideTripPU = "f"
+	hasSideTrip = "f"
+        />
+</PricingUnit>
+

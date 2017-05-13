@@ -1,0 +1,34 @@
+<FareClassAppInfo>
+     <EffectiveDate year=2008 month=8 day=19 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Location
+          location1Type="A"
+          location1="1"
+          location2Type="A"
+          location2="2"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="DL"
+          ruleTariff=732
+          ruleNumber="5855"
+          footnote1=""
+          footnote2=""
+          fareClass="UHXTO9"
+          MCN=12875392
+          textTBLItemNo=0
+          owrt="2"
+          routingAppl=" "
+          routingNumber=""
+          fareType="PCF"
+          seasonType="H"
+          dowType="X"
+          pricingCatType="S"
+          displayCatType="S"
+          seqNo=1000000
+          unavailTag=" "
+     />
+     <FareClassAppSegInfo file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_FareClassAppSegInfo0.xml"/>
+     <FareClassAppSegInfo file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_FareClassAppSegInfo1.xml"/>
+     <FareClassAppSegInfo file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_FareClassAppSegInfo2.xml"/>
+</FareClassAppInfo>

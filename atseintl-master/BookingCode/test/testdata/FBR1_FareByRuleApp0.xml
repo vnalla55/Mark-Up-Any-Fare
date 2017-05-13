@@ -1,0 +1,35 @@
+<FareByRuleApp>
+     <ExpireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2008 month=3 day=18 hour=0 minute=0 second=0/>
+     <DiscountDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <CreateDate year=2008 month=3 day=17 hour=17 minute=4 second=27/>
+     <Attributes
+          carrier="JJ"
+          primePaxType="ADT"
+          vendor="ATP"
+          recId=3
+          ruleNo="PSA1"
+          ruleTariff=878
+          paxMinAge=0
+          paxMaxAge=0
+          paxOccFirst=0
+          paxOccLast=0
+          segCnt=2
+          jointCarrierItemNo=0
+          negPaxStatusInd=" "
+          paxInd=" "
+          loc1zoneItemNo="0000000"
+          loc2zoneItemNo="0000000"
+          directionality=" "
+          paxId=" "
+          globalDir="ZZ"
+          tsi=0
+          accountCode="PSA50"
+          tktDesignator=""
+          inhibit="N"
+          sameCarrier=" "
+          carrierFltTblItemNo=0
+     />
+     <secondaryPaxTypes value="CNN"/>
+     <secondaryPaxTypes value="INF"/>
+</FareByRuleApp>

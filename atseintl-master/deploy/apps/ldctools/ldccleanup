@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# ensure we are running within the same directory
+# from which we are running
+cd $(dirname $(which ${0}))
+
+. ./env.vars
+
+cd ${APPDIR}
+
+./istop.sh
+
+cd cfg.${SYSTYPE}
+mv dbaccess.ini.original dbaccess.ini
+mv log4cxx.xml.original log4cxx.xml
+cd ..
+rm -r ../ldc
+rm comp*.txt
+rm dump*.txt
+rm hammer.*
+rm reqtimes*.txt
+rm config.vars.user
+rm tseserver.cfg.node
+if [ -e tseserver.cfg.node.original ] ; then mv tseserver.cfg.node.original tseserver.cfg.node ; fi
+./prestart.sh
+
+

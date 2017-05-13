@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# ensure we are running within the same directory
+# from which we are located
+
+script=$(which ${0})
+script_dir=$(dirname ${script})
+
+cd ${script_dir}
+if [ $? -ne 0 ] ; then exit 1 ; fi
+
+. ./env.vars
+if [ $? -ne 0 ] ; then exit 1 ; fi
+
+cd ${APPDIR}
+if [ $? -ne 0 ] ; then exit 1 ; fi
+
+cp ${script_dir}/config.vars.user .
+if [ $? -ne 0 ] ; then exit 1 ; fi
+

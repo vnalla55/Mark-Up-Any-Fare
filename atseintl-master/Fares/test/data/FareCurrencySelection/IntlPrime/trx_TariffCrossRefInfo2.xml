@@ -1,0 +1,41 @@
+<TariffCrossRefInfo>
+     <EffectiveDate year=2004 month=8 day=23 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <DiscontinueDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Misc
+          tariffCategory=0
+          zoneNo=""
+          vendor="SITA"
+          carrier="YY"
+          crossRefType="INTERNATIONAL"
+          globalDirection="PA"
+     />
+     <FareTariff
+          number=4
+          code="004SITA"
+     />
+     <RuleTariff
+          number=4
+          code="004SITA"
+     />
+     <GoverningTariff
+          number=60
+          code="004SITA"
+     />
+     <RoutingTariff1
+          number=4
+          code="004SITA"
+     />
+     <RoutingTariff2
+          number=-1
+          code=""
+     />
+     <AddonTariff1
+          number=-1
+          code=""
+     />
+     <AddonTariff2
+          number=-1
+          code=""
+     />
+</TariffCrossRefInfo>

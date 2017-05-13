@@ -1,0 +1,18 @@
+<FareMarket>
+     <AirSeg file="FDSeasonalApplicationData/AirSegJFKDFW.xml"/>
+     <Misc
+          globalDirection="XX"
+          geoTravelType="UnknownGeoTravelType"
+          fltTrkIndicator="f"
+          direction="UNKNOWN"
+          failCode="NO_ERROR"
+          travelBoundary="TravelWithinUSCA"
+     />
+     <CarrierPreference file="FDSeasonalApplicationData/CarrierPreference0.xml"/>
+     <PaxTypeBucket file="FDSeasonalApplicationData/PaxTypeBucket0.xml"/>
+     <PaxTypeFare file="FDSeasonalApplicationData/PaxTypeFare0.xml"/>
+     <PaxTypeFare file="FDSeasonalApplicationData/PaxTypeFare1.xml"/>
+     <PaxTypeFare file="FDSeasonalApplicationData/PaxTypeFare2.xml"/>
+     <PaxTypeFare file="FDSeasonalApplicationData/PaxTypeFare3.xml"/>
+     <PrimarySector file="FDSeasonalApplicationData/AirSegDFWJFK.xml"/>
+</FareMarket>

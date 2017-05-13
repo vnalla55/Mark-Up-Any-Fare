@@ -1,0 +1,65 @@
+<AirSeg>
+     <FlightInfo
+          carrier="SU"
+          marketingFlightNumber=251
+          operatingFlightNumber=251
+     />
+     <Misc
+          considerOnlyCabin=""
+     />
+<EarliestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<LatestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<DepartureDate year=2011 month=4 day=11 hour=12 minute=40 second=0/>
+<ArrivalDate year=2011 month=4 day=11 hour=14 minute=35 second=0/>
+<BookingDate year=2010 month=12 day=28 hour=0 minute=1 second=0/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_J-5.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_C-5.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_D-5.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_I-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_O-5.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_Z-5.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_Y-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_S-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_B-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_M-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_H-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_K-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_X-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_V-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_T-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_Q-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_W-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_L-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_U-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_G-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_N-8.xml"/>
+     <ClassOfService file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_COS_E-8.xml"/>
+     <SegmentInfo
+          pnrSegment=1
+          segmentOrder=1
+          stopOver="f"
+          forcedStopOver=" "
+          forcedConx="T"
+          geoTravelType="International"
+          origAirport="SVO"
+          boardMultiCity="MOW"
+          destAirport="CDG"
+          offMultiCity="PAR"
+     />
+     <FlightInfo
+          equipmentType="321"
+     />
+     <Origin file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_Loc_SVO.xml"/>
+     <Destination file="/vobs/atseintl/FreeBagService/test/testdata/AirSeg_SVOCDG_Loc_CDG.xml"/>
+     <Misc
+          bookedCabin="8"
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode=""
+          bookingCode="Y"
+          furthestPoint="f"
+          forcedFareBrk=" "
+          forcedNoFareBrk=" "
+          forcedSideTrip=" "
+     />
+</AirSeg>

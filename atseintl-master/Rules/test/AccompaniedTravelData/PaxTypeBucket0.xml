@@ -1,0 +1,11 @@
+<PaxTypeBucket>
+     <RequestedPaxType file="AccompaniedTravelData/PaxTypeChild.xml"/>
+     <PaxTypeFare file="AccompaniedTravelData/PaxTypeFare0.xml"/>
+     <PaxTypeFare file="AccompaniedTravelData/PaxTypeFare1.xml"/>
+     <PaxTypeFare file="AccompaniedTravelData/PaxTypeFare2.xml"/>
+     <PaxTypeFare file="AccompaniedTravelData/PaxTypeFare3.xml"/>
+     <Misc
+          inboundCurrency="USD"
+          outboundCurrency="USD"
+     />
+</PaxTypeBucket>

@@ -1,0 +1,10 @@
+<PaxType>
+     <PaxTypeInfo file="/vobs/atseintl/BookingCode/test/testdata/FBR1_PaxTypeInfo1.xml"/>
+     <Misc
+          paxType="NEG"
+          number=1
+          age=0
+          inputOrder=0
+          vendorCode="ATP"
+     />
+</PaxType>

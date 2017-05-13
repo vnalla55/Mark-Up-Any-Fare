@@ -1,0 +1,12 @@
+<PricingTrx>
+     <Attributes
+          status=""
+     />
+     <Itin file="/vobs/atseintl/FareCalc/test/farecalcdata/itin0.xml"/>
+     <TravelSeg file="/vobs/atseintl/test/sampledata/DFW_LAX_AirSegment.xml"/>
+     <FareMarket file="/vobs/atseintl/test/sampledata/DFW_LAX_LON_FareMarket.xml"/>
+     <PricingOptions file="/vobs/atseintl/FareCalc/test/farecalcdata/pricingOptions.xml"/>
+     <PricingRequest file="/vobs/atseintl/FareCalc/test/farecalcdata/pricingRequest.xml"/>
+     <PaxType file="/vobs/atseintl/FareCalc/test/farecalcdata/paxType1.xml"/>
+     <FareCalcConfig file="/vobs/atseintl/FareCalc/test/farecalcdata/fareCalcConfig.xml"/>
+</PricingTrx>

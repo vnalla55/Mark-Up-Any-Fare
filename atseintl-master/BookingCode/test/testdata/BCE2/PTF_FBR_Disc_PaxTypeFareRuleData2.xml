@@ -1,0 +1,9 @@
+<PaxTypeFareRuleData>
+     <CategoryRuleInfo file="testdata/BCE2/PTF_FBR_Disc_CategoryRuleInfo2.xml"/>
+     <CategoryRuleItemInfoSet file="testdata/BCE2/PTF_FBR_Disc_CategoryRuleItemInfoSet2.xml"/>
+     <CategoryRuleItemInfo file="testdata/BCE2/PTF_FBR_Disc_CategoryRuleItemInfo0.xml"/>
+     <RuleItemInfo file="testdata/BCE2/PTF_FBR_Disc_RuleItemInfo0.xml"/>
+     <Attributes
+          isLocationSwapped="f"
+     />
+</PaxTypeFareRuleData>

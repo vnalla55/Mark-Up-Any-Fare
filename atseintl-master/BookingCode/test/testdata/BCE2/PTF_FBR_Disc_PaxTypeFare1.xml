@@ -1,0 +1,23 @@
+<PaxTypeFare>
+     <Status value="Published"/>
+     <ActualPaxType file="testdata/BCE2/PTF_FBR_Disc_PaxType2.xml"/>
+     <FareClassAppInfo file="testdata/BCE2/PTF_FBR_Disc_FareClassAppInfo1.xml"/>
+     <FareClassAppSegInfo file="testdata/BCE2/PTF_FBR_Disc_FareClassAppSegInfo2.xml"/>
+     <FareTypeMatrix
+          cabin="9"
+          fareTypeDesignator=0
+          fareTypeApplication="N"
+     />
+     <FareMarket file="testdata/BCE2/PTF_FBR_Disc_FMarket_KULBKI-MH.xml"/>
+     <Fare file="testdata/BCE2/PTF_FBR_Disc_Fare1.xml"/>
+     <PaxTypeFareRuleData
+          categoryNumber=15
+          isFareRule="t">
+          <PaxTypeFareRuleData file="testdata/BCE2/PTF_FBR_Disc_PaxTypeFareRuleData3.xml"/>
+     </PaxTypeFareRuleData>
+     <PaxTypeFareRuleData
+          categoryNumber=23
+          isFareRule="t">
+          <PaxTypeFareRuleData file="testdata/BCE2/PTF_FBR_Disc_PaxTypeFareRuleData4.xml"/>
+     </PaxTypeFareRuleData>
+</PaxTypeFare>

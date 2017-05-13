@@ -1,0 +1,19 @@
+<PaxTypeFare>
+     <Status value="Published"/>
+     <SegmentStatus bookingCode="">
+          <BookingCodeSegStatus value="FAIL_CONV2_T999"/>
+     </SegmentStatus>
+     <SegmentStatus bookingCode="">
+          <BookingCodeSegStatus value="PASS"/>
+     </SegmentStatus>
+     <ActualPaxType file="testdata/PC1/PaxType.xml"/>
+     <FareClassAppInfo file="testdata/PC1/FareClassAppInfo_th.xml"/>
+     <FareClassAppSegInfo file="testdata/PC1/FareClassAppSegInfo_th.xml"/>
+     <FareTypeMatrix
+          cabin="5"
+          fareTypeDesignator=25
+          fareTypeApplication="N"
+     />
+     <FareMarket file="testdata/PC1/FMarket_SINCDG-SQ.xml"/>
+     <Fare file="testdata/PC1/Fare_th.xml"/>
+</PaxTypeFare>

@@ -1,0 +1,5 @@
+<PaxTypeFare>
+     <FareClassAppSegInfo file="FareSelectorData/FareClassAppSegInfo5.xml"/>
+     <Fare file="FareSelectorData/Fare5.xml"/>
+     <FareMarket file="FareSelectorData/fareMarket1.xml"/>
+</PaxTypeFare>

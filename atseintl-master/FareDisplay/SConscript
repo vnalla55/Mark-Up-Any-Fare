@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+s = env.msscout()
+s.env.add_isystem_paths('$XERCESC_CPPPATH_')
+s.env.add_include_paths('$CURL_CPPPATH_')
+s.werror = True
+s.mslibrary('FareDisplay', 'FARE_DISPLAY_SOURCES')
+s.mslibrary('FareSelectorSvc', 'FARE_SELECTOR_SVC_SOURCES')
+s.build()
+

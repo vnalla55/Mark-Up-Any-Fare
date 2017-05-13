@@ -1,0 +1,14 @@
+<TpdPsrViaGeoLoc>
+   <Attributes
+      setNo=1
+      orderNo=1
+      relationalInd=' '
+      stopoverNotAllowed=' '
+   />
+   <LocKey>
+      <Attributes
+	 loc="CHI" 
+	 locType='C' 
+      />
+   </LocKey>
+</TpdPsrViaGeoLoc>

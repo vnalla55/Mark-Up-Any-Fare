@@ -1,0 +1,24 @@
+<PaxTypeFare>
+     <Status value="Discounted"/>
+     <SegmentStatus bookingCode="">
+          <BookingCodeSegStatus value="PASS"/>
+     </SegmentStatus>
+     <SegmentStatus bookingCode="">
+          <BookingCodeSegStatus value="PASS"/>
+     </SegmentStatus>
+     <ActualPaxType file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_PaxType0.xml"/>
+     <FareClassAppInfo file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_FareClassAppInfo0.xml"/>
+     <FareClassAppSegInfo file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_FareClassAppSegInfo3.xml"/>
+     <FareTypeMatrix
+          cabin="8"
+          fareTypeDesignator=90
+          fareTypeApplication="S"
+     />
+    
+     <Fare file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_Fare14.xml"/>
+          <PaxTypeFareRuleData
+          categoryNumber=19
+          isFareRule="t">
+          <PaxTypeFareRuleData file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_PaxTypeFareRuleData13.xml"/>
+     </PaxTypeFareRuleData>
+     </PaxTypeFare>

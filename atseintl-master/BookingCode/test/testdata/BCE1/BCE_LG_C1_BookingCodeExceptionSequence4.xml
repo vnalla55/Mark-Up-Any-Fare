@@ -1,0 +1,12 @@
+<BookingCodeExceptionSequence>
+     <Attributes
+          itemNo=662602
+          primeInd=" "
+          tableType=" "
+          seqNo=1002000
+          constructSpecified=" "
+          ifTag=" "
+          segCnt=1
+     />
+     <BookingCodeExceptionSegment file="testdata/BCE1/BCE_LG_C1_BookingCodeExceptionSegment4.xml"/>
+</BookingCodeExceptionSequence>

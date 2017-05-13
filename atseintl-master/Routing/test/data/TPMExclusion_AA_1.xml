@@ -1,0 +1,35 @@
+<TPMExclusion>
+     <KeyFields
+          carrier="AA"
+          versionDate="464269060799999000"
+          seqNo=1
+     />
+     <validData
+          userApplType=" "
+          userAppl=""
+          notApplToYY="N"
+          onlineSrvOnly="N"
+          directionality="BETWEEN"
+          loc1type="*"
+          loc1="14"
+          loc2type="*"
+          loc2="21"
+          globalDir="AT"
+          sec1Appl="D"
+          sec1Loc1Type="*"
+          sec1Loc1="14"
+          sec1Loc2Type="Z"
+          sec1Loc2="01900"
+          sec2Appl="D"
+          sec2Loc1Type="Z"
+          sec2Loc1="01900"
+          sec2Loc2Type="*"
+          sec2Loc2="21"
+          viaPointRest="T"
+          consecMustBeOnGovCxr="N"
+          surfacePermitted="N"
+     />
+     <CreateDate year=2009 month=8 day=8 hour=13 minute=56 second=7/>
+     <ExpireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2009 month=8 day=18 hour=0 minute=0 second=0/>
+</TPMExclusion>

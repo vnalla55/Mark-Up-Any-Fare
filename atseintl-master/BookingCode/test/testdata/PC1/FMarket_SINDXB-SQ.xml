@@ -1,0 +1,22 @@
+<FareMarket>
+     <AirSeg file="testdata/PC1/AirSeg_SINDXB.xml"/>
+     <Misc
+          globalDirection="EH"
+          geoTravelType="International"
+          fltTrkIndicator="f"
+          direction="OUTBOUND"
+          failCode="NO_ERROR"
+          travelBoundary="TravelWithinTwoIATA"
+     />
+     <CarrierPreference file="testdata/PC1/CxrPref_SQ.xml"/>
+     <PaxTypeBucket file="testdata/PC1/PaxTypeBucket.xml"/>
+     <PaxTypeFare file="testdata/PC1/PaxTypeFare1.xml"/>
+     <PaxTypeFare file="testdata/PC1/PaxTypeFare2.xml"/>
+     <PaxTypeFare file="testdata/PC1/PaxTypeFare4.xml"/>
+     <PaxTypeFare file="testdata/PC1/PaxTypeFare5.xml"/>
+     <PaxTypeFare file="testdata/PC1/PaxTypeFare7.xml"/>
+     <PaxTypeFare file="testdata/PC1/PaxTypeFare8.xml"/>
+     <PrimarySector file="testdata/PC1/AirSeg_SINDXB.xml"/>
+     <OutBoundAseanCurrency value="AUD"/>
+     <OutBoundAseanCurrency value="NZD"/>
+</FareMarket>

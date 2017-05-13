@@ -1,0 +1,18 @@
+<Agent>
+     <agentLocation file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_Loc0.xml"/>
+     <Attributes
+          agentCity="HDQ"
+          tvlAgencyPCC=""
+          mainTvlAgencyPCC="HDQ"
+          tvlAgencyIATA=""
+          homeAgencyIATA=""
+          agentFunctions="HAL"
+          agentDuty="8"
+          airlineDept="HDQ"
+          cxrCode="1S"
+          currencyCodeAgent="USD"
+          coHostID=0
+          agentCommissionType=""
+          agentCommissionAmount=0
+     />
+</Agent>

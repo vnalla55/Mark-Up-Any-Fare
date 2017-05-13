@@ -1,0 +1,32 @@
+<MileageRouteItem>
+     <MileageData
+          isSurface="t"
+          isConstructed="f"
+          tpmGlobalDirection="WH"
+          mpmGlobalDirection="AT"
+          tpm=1092
+          tpd=0
+          mpm=0
+          tpmSurfaceSectorExempt="f"
+          southAtlanticExclusion="f"
+          mpmDeductionApplies="f"
+          psrApplies="f"
+          psrMayApply="f"
+          segmentCarrier="YY"
+          isStopover="f"
+          isDirectFromRouteBegin="t"
+          isDirectToRouteEnd="t"
+          isFirstOccurrenceFromRouteBegin="t"
+          isLastOccurrenceToRouteEnd="t"
+          failedDirService="f"
+          forcedConx="F"
+          psrStopNotAllowed="f"
+          pnrSegment=0
+          forcedStopOver="F"
+     />
+     <City1 file="/vobs/atseintl/test/testdata/data/LocMIA.xml"/>
+     <City2 file="/vobs/atseintl/test/testdata/data/LocJFK.xml"/>
+     <multiTransportOrigin file="/vobs/atseintl/test/testdata/data/LocMIA.xml"/>
+     <multiTransportDestination file="/vobs/atseintl/test/testdata/data/LocNYC.xml"/>
+     <TravelDate year=2009 month=11 day=12 hour=23 minute=15 second=0/>
+</MileageRouteItem>

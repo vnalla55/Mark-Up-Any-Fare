@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# ensure we are running within the same directory
+# where we are located 
+cd $(dirname $(which ${0}))
+. ./env.vars
+
+script=$(which ${0})
+script_dir=$(dirname ${script})
+
+cd ${script_dir}
+if [ $? -ne 0 ] ; then exit 1 ; fi
+
+. ./env.vars
+if [ $? -ne 0 ] ; then exit 1 ; fi
+
+cd ${APPDIR}
+if [ $? -ne 0 ] ; then exit 1 ; fi
+
+if [ -e tseserver.cfg.node ] ; then
+  cp tseserver.cfg.node tseserver.cfg.node.original
+  if [ $? -ne 0 ] ; then exit 1 ; fi
+  cat ${script_dir}/tseserver.cfg.node >> tseserver.cfg.node
+  if [ $? -ne 0 ] ; then exit 1 ; fi
+else
+  cp ${script_dir}/tseserver.cfg.node .
+  if [ $? -ne 0 ] ; then exit 1 ; fi
+fi
+

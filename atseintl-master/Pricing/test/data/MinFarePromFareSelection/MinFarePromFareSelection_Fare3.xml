@@ -1,0 +1,11 @@
+<Fare>
+     <FareInfo file="/vobs/atseintl/Pricing/test/data/MinFarePromFareSelection/MinFarePromFareSelection_FareInfo4.xml"/>
+     <ConstructedFareBucket file="/vobs/atseintl/Pricing/test/data/MinFarePromFareSelection/MinFarePromFareSelection_ConstructedFareBucket0.xml"/>
+     <TariffCrossRefInfo file="/vobs/atseintl/Pricing/test/data/MinFarePromFareSelection/MinFarePromFareSelection_TariffCrossRefInfo3.xml"/>
+     <Misc
+          nucFareAmount=1845.26
+          differSeqNumber=0
+          calculationInd=" "
+     />
+     <FareStatus fareStatus="International"/>
+</Fare>

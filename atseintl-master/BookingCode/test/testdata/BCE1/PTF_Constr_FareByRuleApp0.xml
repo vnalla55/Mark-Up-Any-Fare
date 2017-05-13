@@ -1,0 +1,36 @@
+<FareByRuleApp>
+     <ExpireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2008 month=10 day=2 hour=0 minute=0 second=0/>
+     <DiscountDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <CreateDate year=2008 month=10 day=1 hour=1 minute=6 second=24/>
+     <Attributes
+          carrier="EY"
+          primePaxType="ITX"
+          vendor="ATP"
+          recId=1
+          ruleNo="LUIT"
+          ruleTariff=903
+          paxMinAge=0
+          paxMaxAge=0
+          paxOccFirst=0
+          paxOccLast=0
+          segCnt=3
+          jointCarrierItemNo=0
+          negPaxStatusInd=" "
+          paxInd=" "
+          loc1zoneItemNo="0000000"
+          loc2zoneItemNo="0000000"
+          directionality=" "
+          paxId=" "
+          globalDir="ZZ"
+          tsi=0
+          accountCode=""
+          tktDesignator=""
+          inhibit="N"
+          sameCarrier=" "
+          carrierFltTblItemNo=0
+     />
+     <secondaryPaxTypes value="INN"/>
+     <secondaryPaxTypes value="ITS"/>
+     <secondaryPaxTypes value="ITF"/>
+</FareByRuleApp>

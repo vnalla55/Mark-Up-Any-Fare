@@ -1,0 +1,9 @@
+<PaxTypeBucket>
+     <RequestedPaxType file="testdata/BCE2/PTF_FBR_Disc_PaxType0.xml"/>
+     <ActualPaxType file="testdata/BCE2/PTF_FBR_Disc_PaxType1.xml"/>
+     <PaxTypeFare file="testdata/BCE2/PTF_FBR_Disc_PaxTypeFare0.xml"/>
+     <Misc
+          inboundCurrency="USD"
+          outboundCurrency="MYR"
+     />
+</PaxTypeBucket>

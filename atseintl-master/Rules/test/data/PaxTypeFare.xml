@@ -1,0 +1,38 @@
+<PaxTypeFare>
+
+    <!-- The status can be Discounted, FareByRule, or Negotiated. If more than one -->
+    <!-- is provided, they will be logically or'ed together -->
+    <!-- The ruleStatus is not supported, as there is no accessor for this attribute -->
+    <!--    Valid values would be CatNotSupported, Cat01 (13,19,20,21,22,25,35), -->
+    <!--    AllCat, DefinedInFare, MaxCat -->
+    <!-- The same is true of ruleProcessStatus. -->
+
+    <Status value="FareByRule"/>
+
+    <!-- <RuleStatus value="Cat01/> -->
+    <!-- <RuleStatus value="Cat22/> -->
+    <!-- <RuleProcessStatus value="DefinedInFare"/> -->
+
+
+    <SegmentStatus bookingCode="CC">
+       <BookingCodeSegStatus value="PASS"/>
+       <BookingCodeSegStatus value="REBOOKED"/>
+       <puRevalidate999Seq value=0/>
+       <puRevalidate999Seq value=2/>
+    </SegmentStatus>
+
+
+    <Misc vendor="ATP"
+          surchargeAmt=0
+          transferAmt=0
+          stopOverAmt=0
+          hipAmt=0
+          hipBoardPoint="DFW"
+          hipOffPoint="LON"
+          bhcAmount=0/>
+
+    <Fare file="/vobs/atseintl/Rules/test/data/Fare.xml"/>
+
+    
+</PaxTypeFare>
+

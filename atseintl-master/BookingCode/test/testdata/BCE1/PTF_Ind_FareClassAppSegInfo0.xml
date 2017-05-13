@@ -1,0 +1,26 @@
+<FareClassAppSegInfo>
+     <Ticket
+          ticketCode=""
+          ticketCodeModifier=""
+          ticketDesignator=""
+          ticketDesignatorModifier=""
+          bookingCode="C"
+          bookingCode2=""
+          bookingCode3=""
+          bookingCode4=""
+          bookingCode5=""
+          bookingCode6=""
+          bookingCode7=""
+          bookingCode8=""
+     />
+     <Misc
+          seqNo=3200000
+          bookingCodeTblItemNo=0
+          overrideDateTblNo=0
+          minAge=0
+          maxAge=0
+          paxType=""
+          directionality="DIR_IND_NOT_DEFINED"
+          carrierApplTblItemNo=0
+     />
+</FareClassAppSegInfo>

@@ -1,0 +1,18 @@
+<FareMarket>
+     <AirSeg file="FareSelectorData/AirSegJFKDFW.xml"/>
+     <Misc
+          globalDirection="XX"
+          geoTravelType="UnknownGeoTravelType"
+          fltTrkIndicator="f"
+          direction="UNKNOWN"
+          failCode="NO_ERROR"
+          travelBoundary="TravelWithinUSCA"
+     />
+     <CarrierPreference file="FareSelectorData/CarrierPreference0.xml"/>
+     <PaxTypeBucket file="FareSelectorData/PaxTypeBucket0.xml"/>
+     <PaxTypeFare file="FareSelectorData/paxTypeFare0.xml"/>
+     <PaxTypeFare file="FareSelectorData/PaxTypeFare1.xml"/>
+     <PaxTypeFare file="FareSelectorData/PaxTypeFare2.xml"/>
+     <PaxTypeFare file="FareSelectorData/PaxTypeFare3.xml"/>
+     <PrimarySector file="FareSelectorData/AirSegDFWJFK.xml"/>
+</FareMarket>

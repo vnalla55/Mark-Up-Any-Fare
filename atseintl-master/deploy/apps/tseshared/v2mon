@@ -1,0 +1,646 @@
+#!/bin/bash
+#!/bin/bash -x
+# Version 1.7 - Coleman Ammerman (coleman.ammerman@sabre.com)
+
+MON_FD_THRESHOLD=1500
+typeset -i next_fd_check
+typeset -i next_configtool
+typeset -i next_explorer
+typeset -i next_crontab
+typeset -i next_ldc
+
+#---------------------------------------------------------------------------
+function csf_vars
+{
+  local mydirname=$(basename ${PWD})
+  local myappname=${mydirname%%.*}
+
+  if [ "${myappname}" = "common" ] ; then
+    export ATSE_COMMON=$(pwd -P)
+  else
+    . ./set.atse.common.sh
+  fi
+
+  if [ -e ./config.vars ] ; then
+    . ./config.vars
+  else
+    . ${ATSE_COMMON}/config.vars
+  fi
+}
+
+#---------------------------------------------------------------------------
+function show_vars
+{
+  echo "ATSE_COMMON=${ATSE_COMMON}"
+  set | grep -E ^ADMIN_.*=
+  set | grep -E ^COMMON_.*=
+}
+
+#---------------------------------------------------------------------------
+function do_info_alert
+{
+# echo "DEBUG: $0 $1 $2"
+  local ALERT_TITLE=$1
+  local ALERT_FILE=$2
+
+ # logger -t CVGALERT "V2MON:${COMMON_APPDIR}.${COMMON_BASELINE}:${ALERT_TITLE}"
+  case "${COMMON_SYSTYPE}" in
+    ProdHybrid) ADMIN_V2_EMAIL_LIST="AtsecovInfoOnly@sabre.com" ;;
+    CertHybrid) ADMIN_V2_EMAIL_LIST="AtsecovInfoOnly@sabre.com" ;;
+    stage     ) ADMIN_V2_EMAIL_LIST="ATSEv2SystemOwners@sabre.com" ;;
+    TestHybrid) ADMIN_V2_EMAIL_LIST="ATSEv2SystemOwners@sabre.com PSD_DevSvc@sabre.com" ;;
+    PlabHybrid) ADMIN_V2_EMAIL_LIST="ATSEv2SystemOwners@sabre.com pLabPSD@sabre.com" ;;
+    DevHybrid ) ADMIN_V2_EMAIL_LIST="" ;;
+    *         ) ADMIN_V2_EMAIL_LIST="" ;;
+  esac
+  if [ -n "${ADMIN_V2_EMAIL_LIST}" ]; then
+    if [ -s ${ALERT_FILE} ]; then
+      mail -s "ALERT: ${ALERT_TITLE} on ${COMMON_NODE} (${COMMON_SYSTYPE})" ${ADMIN_V2_EMAIL_LIST} <<-EOF
+$(cat ${ALERT_FILE})
+
+Source: V2MON:${COMMON_NODE}:${COMMON_APPDIR}.${COMMON_BASELINE}
+Date: $(date)
+EOF
+    else
+      mail -s "ALERT: ${ALERT_TITLE} on ${COMMON_NODE} (${COMMON_SYSTYPE})" ${ADMIN_V2_EMAIL_LIST} <<-EOF
+Source: V2MON:${COMMON_NODE}:${COMMON_APPDIR}.${COMMON_BASELINE}
+Date: $(date)
+EOF
+    fi
+  fi
+  return 0
+}
+
+#---------------------------------------------------------------------------
+function do_alert
+{
+# echo "DEBUG: $0 $1 $2"
+  local ALERT_TITLE=$1
+  local ALERT_FILE=$2
+
+  logger -t CVGALERT "V2MON:${COMMON_APPDIR}.${COMMON_BASELINE}:${service}:${ALERT_TITLE}"
+  case "${COMMON_SYSTYPE}" in
+    ProdHybrid) ADMIN_V2_EMAIL_LIST="atsecov@sabre.com" ;;
+    CertHybrid) ADMIN_V2_EMAIL_LIST="atsecov@sabre.com" ;;
+    stage     ) ADMIN_V2_EMAIL_LIST="ATSEv2SystemOwners@sabre.com" ;;
+    TestHybrid) ADMIN_V2_EMAIL_LIST="ATSEv2SystemOwners@sabre.com PSD_DevSvc@sabre.com" ;;
+    PlabHybrid) ADMIN_V2_EMAIL_LIST="pLabPSD@sabre.com" ;;
+    DevHybrid ) ADMIN_V2_EMAIL_LIST="" ;;
+    *         ) ADMIN_V2_EMAIL_LIST="" ;;
+  esac
+  if [ -n "${ADMIN_V2_EMAIL_LIST}" ]; then
+    if [ -s ${ALERT_FILE} ]; then
+      mail -s "ALERT: ${ALERT_TITLE} on ${COMMON_NODE} (${COMMON_SYSTYPE})" ${ADMIN_V2_EMAIL_LIST} <<-EOF
+$(cat ${ALERT_FILE})
+
+Source: V2MON:${COMMON_NODE}:${COMMON_APPDIR}.${COMMON_BASELINE}:${service}
+Date: $(date)
+EOF
+    else
+      mail -s "ALERT: ${ALERT_TITLE} on ${COMMON_NODE} (${COMMON_SYSTYPE})" ${ADMIN_V2_EMAIL_LIST} <<-EOF
+Source: V2MON:${COMMON_NODE}:${COMMON_APPDIR}.${COMMON_BASELINE}:${service}
+Date: $(date)
+EOF
+    fi
+  fi
+  return 0
+}
+
+#---------------------------------------------------------------------------
+function do_fd_check
+{
+  local APP_INSTANCE=$1
+  local APP_PID=$2
+# echo "Checking ${APP_INSTANCE} ${APP_PID}"
+# echo "Checking file-descriptor counts"
+  local file=".${SCRIPT}.fd.${APP_INSTANCE}"
+  if ls -l /proc/${APP_PID}/fd > $file
+    then
+      declare fds=$( wc -l $file | awk '{ print $1 }' )
+      echo "INFO: fd ${APP_INSTANCE} ${APP_PID} ${fds}"
+
+      if [[ fds -gt ${MON_FD_THRESHOLD} ]]; then
+
+        # preserve the aberrant behavior as it grows
+        local save=".${SCRIPT}.fd.alert.${fds}"
+        if [ ! -e $save ]; then
+          cp $file $save
+        fi
+
+        local alert=".${SCRIPT}.alert"
+        echo "/proc/${APP_PID}/fd" > ${alert}
+        cat ${file} \
+        | sed 's/[0-9][0-9]*/###/g' | sed 's/  */ /g' | sort | uniq -c | sort -nr | head >> ${alert}
+        echo "" >> ${alert}
+        echo "lsof -p ${APP_PID}" >> ${alert}
+        /usr/sbin/lsof -p ${APP_PID} \
+        | sed 's/[0-9][0-9]*/###/g' | sed 's/  */ /g' | sort | uniq -c | sort -nr | head >> ${alert}
+        do_alert "${COMMON_APPNAME}.${service} fd exceeded threshold" ${alert}
+      fi
+  fi
+}
+
+#---------------------------------------------------------------------------
+function do_configtool
+{
+  local APP_INSTANCE=$1
+  local APP_PID=$2
+  if (( ${APP_INSTANCE} == 1 )); then
+    if [ ! -e configtool/Collector/src/atsepricingv2/atsepricingv2Collection.sh ]; then
+      if [ -x /opt/atseintl/configtool/Collector/src/atsepricingv2/atsepricingv2Collection.sh ]; then
+        CONFIGTOOL=/opt/atseintl/configtool
+        ln -snf ${CONFIGTOOL} configtool
+      else
+        CONFIGTOOL=$( ls -1 configtool.*.tar.gz | tail -1 )
+        if [ -n "${CONFIGTOOL}" ]; then
+          CONFIGTOOL=${CONFIGTOOL/.tar.gz}
+          tar -xzvf ${CONFIGTOOL}.tar.gz ${CONFIGTOOL}/deployPackage.sh
+          ./${CONFIGTOOL}/deployPackage.sh ${PWD}/${CONFIGTOOL}.tar.gz ${PWD} atsepricingv2
+          ln -snf ${CONFIGTOOL} configtool
+        fi
+      fi
+    fi
+    if [ -x configtool/Collector/src/atsepricingv2/atsepricingv2Collection.sh ]; then
+      case "${COMMON_SYSTYPE}" in
+        (ProdHybrid) sENV="Prod" ;;
+        (CertHybrid) sENV="Cert" ;;
+        (TestHybrid) sENV="Int" ;;
+        (stage) sENV="Staging" ;;
+        (*) sENV="Dev"
+      esac
+      sVAULT="N"
+      export JAVA_HOME=/opt/atseintl/adm/thirdparty/jdk1.8.0_45
+      export JAVA_BIN=${JAVA_HOME}/bin
+      ./configtool/Collector/src/atsepricingv2/atsepricingv2Collection.sh ${sENV} ${sVAULT}
+    fi
+  fi
+}
+
+#---------------------------------------------------------------------------
+function do_explorer
+{
+  # deprecated
+  return 0
+
+  INI_FILE=$( grep -h INI_FILE tseserver.acms.cfg tseserver.cfg.user 2>/dev/null | grep -v ^# | sed 's/.*=//' | awk '{print $1}' | tail -1 )
+  if [ "${INI_FILE}" = "dbaccess-exp.ini" ]; then
+    if [ -s dbconn.ini ]; then
+     echo "INFO: explorer logic should reconnect now."
+     touch dbconn.ini
+    else
+     echo "WARN: No dbconn.ini found..."
+    fi
+  fi
+}
+
+#---------------------------------------------------------------------------
+function do_crontab
+{
+  local APP_INSTANCE=$1
+  local APP_PID=$2
+
+  # ACTION: create crontab history
+  if crontab -l 2>/dev/null > ~/.crontab.curr ; then
+    if [ -e ~/.crontab ]; then
+      if cmp -s ~/.crontab.curr ~/.crontab ; then
+        rm ~/.crontab.curr
+      else
+        echo "INFO: crontab change detected"
+        mkdir -p ~/.cronhist
+        chmod 755 ~/.cronhist
+        mv ~/.crontab.curr ~/.crontab
+        cp ~/.crontab ~/.cronhist/crontab.$( date '+%Y-%m-%d-%H%M%S' )
+      fi
+    else
+      echo "INFO: crontab archived for the first time"
+      mv ~/.crontab.curr ~/.crontab
+      mkdir -p ~/.cronhist
+      chmod 755 ~/.cronhist
+      cp ~/.crontab ~/.cronhist/crontab.$( date '+%Y-%m-%d-%H%M%S' )
+    fi
+  else
+    do_alert "Unable to review crontab for ${USER}"
+  fi
+  find ~/.cronhist -mtime 90 -type f -name 'crontab.*' -exec rm {} \;
+
+  # ACTION: shoppingesv check for binderdatacopy
+  if [ "${COMMON_APPNAME}" = "shoppingesv" ]; then
+    # ACTION: must exist in crontab
+    if ! sed 's/#.*//' ~/.crontab | grep -s binderdatacopy ; then
+      do_alert "${COMMON_APPNAME} crontab required binderdatacopy script missing" ~/.crontab
+    else
+      # ACTION: binder data must be recent
+      BINDER_CURRENT_GEN=$( ls -1 /opt/atseintl/esv/data/binder/my.current.gen.*.txt | head -1 )
+      if [ -e "${BINDER_CURRENT_GEN}" ]; then
+        BINDER_LASTUPDATED=$( perl -e 'printf "%d\n",(time()-((stat(shift))[9]))/1;' "${BINDER_CURRENT_GEN}" )
+        if [ -n "${BINDER_LASTUPDATED}" ]; then
+          if (( ${BINDER_LASTUPDATED} < 259200 )); then
+            echo "INFO: ${COMMON_APPNAME} binder data files are $BINDER_LASTUPDATED} seconds old."
+          else
+            do_alert "${COMMON_APPNAME} required binder data files are very old"
+          fi
+        else
+          do_alert "${COMMON_APPNAME} required binder data files problem"
+        fi
+      else
+        do_alert "${COMMON_APPNAME} required binder data files missing"
+      fi
+    fi
+  fi
+}
+
+#---------------------------------------------------------------------------
+
+function do_tseserver_log
+{
+  echo "DEBUG: do_tseserver_log $1 $2 $3"
+
+  local ALERT_FILE=$1
+  local ALERT_START=$(( $2 +1 ))
+  local ALERT_STOP=$3
+  if [ ${ALERT_STOP} -eq -1 ]; then
+    ALERT_STOP=$( wc -l ${ALERT_FILE} | awk '{ print $1 }')
+  fi
+
+  local TMP_FILE=.${SCRIPT}_tmp
+
+  PATTERN='St9bad_alloc|ORA-12609'
+  awk "(NR==${ALERT_START}),(NR==${ALERT_STOP}){print}" ${ALERT_FILE} | egrep "${PATTERN}" > ${TMP_FILE}
+
+  if [ -s ${TMP_FILE} ]; then
+    do_alert "${COMMON_APPNAME} critical error discovered, escalate" ${TMP_FILE}
+  fi
+# CONDITION: The ${APP} application is unable to allocate ample memory to process a transaction.
+# STABILITY RISK: Application is in danger of recycling at anytime.
+# CORRECTIVE ACTION: Recycle the ${APP} application at the next available opportunity.
+
+  if [ "${COMMON_APPNAME}" = "historical" ]; then
+    # { LongQuery
+    YMD=$( date "+%F" )
+    YMD_FILE=.keep/${YMD}
+    mkdir -p .keep
+    awk "(NR==${ALERT_START}),(NR==${ALERT_STOP}){print}" ${ALERT_FILE} | egrep "ORACLEAdapter.LongQuery|Start Trx|End Trx" >> ${YMD_FILE}
+    # }
+  fi
+
+  # ACTION: Register in pools if failed
+  PATTERN="ERROR Adapter.ServerSocketAdapter - Unable to register port "
+  awk "(NR==${ALERT_START}),(NR==${ALERT_STOP}){print}" ${ALERT_FILE} | egrep "${PATTERN}" > ${TMP_FILE}
+  if [ -s ${TMP_FILE} ]; then
+    ./poolUpdate add ${service}
+  fi
+
+  # ACTION: CONSUMED TOO MUCH MEMORY - TOO LOW AVAILABLE MEMORY
+  PATTERN="CONSUMED TOO MUCH MEMORY - TOO LOW AVAILABLE MEMORY"
+  awk "(NR==${ALERT_START}),(NR==${ALERT_STOP}){print}" ${ALERT_FILE} | grep "${PATTERN}" > ${TMP_FILE}
+  if [ -s ${TMP_FILE} ]; then
+    ERRS=$( sed 's/.*TRX://' ${TMP_FILE} | sort | uniq | wc -l )
+    PATTERN="INFO  Manager.TseManagerUtil - Start Trx"
+    TRXS=$( awk "(NR==${ALERT_START}),(NR==${ALERT_STOP}){print}" ${ALERT_FILE} | grep "${PATTERN}" | wc -l )
+    echo "INFO: ${ERRS} low memory out of ${TRXS} transactions"
+    if (( ( ERRS * 20 ) > TRXS )); then
+      tail -100 ${TMP_FILE} > ${TMP_FILE}.100
+      do_info_alert "${COMMON_APPNAME} too many low memory errors" ${TMP_FILE}.100
+      rm ${TMP_FILE}.100
+    fi
+  fi
+
+  if [ -f ${TMP_FILE} ]; then
+    rm ${TMP_FILE}
+  fi
+  return 0
+}
+
+#---------------------------------------------------------------------------
+LOG_PREV_INODE=0
+LOG_PREV_LINES=0
+
+function do_log
+{
+  local APP_INSTANCE=$1
+  local APP_PID=$2
+
+  LOG_FILE="${tseserver_log}"
+  LOG_FILE_OLD="${LOG_FILE}.1"
+  if [ -r "${LOG_FILE}" ]; then
+    LOG_FILE_LINES=$( wc -l ${LOG_FILE} | awk '{ print $1 }')
+    LOG_FILE_INODE=$( ls -i ${LOG_FILE} | awk '{ print $1 }')
+    echo "DEBUG: file=${LOG_FILE} inode=${LOG_FILE_INODE} lines=${LOG_FILE_LINES}"
+    if [ ${LOG_PREV_INODE} -ne 0 ]; then
+      if [ 0${LOG_FILE_INODE} -ne 0${LOG_PREV_INODE} ]; then
+        LOG_FILE_OLD_INODE=$( ls -i ${LOG_FILE_OLD} | awk '{ print $1 }')
+        if [ 0${LOG_FILE_OLD_INODE} -ne 0${LOG_PREV_INODE} ]; then
+          do_tseserver_log ${LOG_FILE_OLD} ${LOG_PREV_LINES} -1
+        else
+          echo "ERROR: Old file does not match inode."
+        fi
+        LOG_PREV_LINES=0
+      fi
+      do_tseserver_log ${LOG_FILE} ${LOG_PREV_LINES} ${LOG_FILE_LINES}
+    fi
+    LOG_PREV_INODE=${LOG_FILE_INODE}
+    LOG_PREV_LINES=${LOG_FILE_LINES}
+  fi
+}
+
+#---------------------------------------------------------------------------
+STARTUP_ACTION=""
+LDC_DIR=""
+LDC_CKSUM_CURR=""
+
+function do_ldc
+{
+  local APP_INSTANCE=$1
+  local APP_PID=$2
+
+  if [ -z "${STARTUP_ACTION}" ]; then
+    STARTUP_ACTION=$( cfgshell_lookup DISK_CACHE_OPTIONS STARTUP_ACTION disable )
+  fi
+  if [ -z "${LDC_DIR}" ]; then
+    LDC_DIR=$( cfgshell_lookup DISK_CACHE_OPTIONS DIRECTORY ldc )
+  fi
+  if [ "${STARTUP_ACTION}" = "load" ]; then
+
+    # ACTION: Keep LDC fresh
+    if [ "${COMMON_APPNAME}" = "historical" ]; then
+
+      # ACTION: keep LDC files refreshed
+      for i in 1 2 ; do
+        LDC_CKSUM_NEXT=$( ls -1 ${LDC_DIR}/*.db | awk -v CURR="${LDC_CKSUM_CURR}" '{if(FIRST==""){FIRST=$0} if(FOUND==1){FOUND=0;NEXT=$0} if($1==CURR){FOUND=1} } END{if(NEXT==""){print FIRST}else{print NEXT}}' )
+        LDC_CKSUM_CURR="${LDC_CKSUM_NEXT}"
+        echo "DEBUG: cksum ${LDC_CKSUM_CURR}"
+        cksum "${LDC_CKSUM_CURR}" > /dev/null
+      done
+    fi
+
+    # ACTION: LDC updating
+    LDC_LASTUPDATE_FILE="${LDC_DIR}/.lastupdate"
+    if [ -e "${LDC_LASTUPDATE_FILE}" ]; then
+      LDC_LASTUPDATED=$( perl -e 'printf "%d\n",(time()-((stat(shift))[9]))/1;' "${LDC_LASTUPDATE_FILE}" )
+      # has file been updated in the last 15 minutes
+      if (( ${LDC_LASTUPDATED} > 900 )); then
+        do_alert "${COMMON_APPNAME} LDC not updating ${LDC_LASTUPDATE_FILE}, ${LDC_LASTUPDATED} seconds old"
+      fi
+      # does file appear to be updated more than a day in the future
+      if (( ${LDC_LASTUPDATED} < -86400 )); then
+        do_alert "${COMMON_APPNAME} LDC not updating ${LDC_LASTUPDATE_FILE}, ${LDC_LASTUPDATED} seconds old"
+      fi
+    fi
+
+  fi
+}
+
+#---------------------------------------------------------------------------
+function do_bigip
+{
+  local APP_INSTANCE=$1
+  local APP_PID=$2
+# echo "INFO: Looking for tseserver.${COMMON_APPNAME}.${APP_INSTANCE}.bigip_disable.trigger"
+  if [ -f tseserver.${COMMON_APPNAME}.${APP_INSTANCE}.bigip_disable.trigger ]; then
+    rm tseserver.${COMMON_APPNAME}.${APP_INSTANCE}.bigip_disable.trigger
+    echo "INFO: Invoking poolUpdate disable"
+    ./poolUpdate disable ${service}
+    echo "INFO: poolUpdate completed"
+    touch tseserver.${COMMON_APPNAME}.${APP_INSTANCE}.bigip_disable.complete
+  fi
+}
+
+#---------------------------------------------------------------------------
+function do_app_minute
+{
+  local APP_INSTANCE=$1
+  local APP_PID=$2
+
+  # ACTION: FD check every 10 minutes after the five minutes
+  if [ -z "${next_fd_check}" ]; then
+    next_fd_check=5
+    echo "INFO: Next fd_check in ${next_fd_check} minutes."
+  else
+    (( next_fd_check-- ))
+  fi
+  if (( ${next_fd_check} < 1 )); then
+    do_fd_check ${APP_INSTANCE} ${APP_PID}
+    next_fd_check=10
+    echo "INFO: Next fd_check in ${next_fd_check} minutes."
+  fi
+
+# As per muresh, disable configtool. -coleman
+# # ACTION: Run ConfigTool daily
+# if [ -z "${next_configtool}" ]; then
+#   next_configtool=$(( $RANDOM % 1440))
+#   echo "INFO: Next configtool in ${next_configtool} minutes."
+# else
+#   (( next_configtool-- ))
+# fi
+# if (( ${next_configtool} < 1 )); then
+#   do_configtool ${APP_INSTANCE} ${APP_PID}
+#   next_configtool=1440
+#   echo "INFO: Next configtool in ${next_configtool} minutes."
+# fi
+
+  # ACTION: Explorer runs only once 2..10 minutes after startup
+  if [ -z "${next_explorer}" ]; then
+    next_explorer=$(( 2 + $RANDOM % 8 ))
+    echo "INFO: Next explorer in ${next_explorer} minutes."
+  else
+    (( next_explorer-- ))
+  fi
+  if (( ${next_explorer} < 1 )); then
+    do_explorer ${APP_INSTANCE} ${APP_PID}
+    next_explorer=99999
+    echo "INFO: Next explorer in ${next_explorer} minutes."
+  fi
+
+  # ACTION: process crontab every hour
+  if [ -z "${next_crontab}" ]; then
+    next_crontab=2
+    echo "INFO: Next crontab in ${next_crontab} minutes."
+  else
+    (( next_crontab-- ))
+  fi
+  if (( ${next_crontab} < 1 )); then
+    do_crontab ${APP_INSTANCE} ${APP_PID}
+    next_crontab=60
+    echo "INFO: Next crontab in ${next_crontab} minutes."
+  fi
+
+  # ACTION: process logs every minute
+  do_log ${APP_INSTANCE} ${APP_PID}
+
+  # ACTION: ldc checks
+  if [ -z "${next_ldc}" ]; then
+    next_ldc=30
+    echo "INFO: Next ldc in ${next_ldc} minutes."
+  else
+    (( next_ldc-- ))
+  fi
+  if (( ${next_ldc} < 1 )); then
+    do_ldc ${APP_INSTANCE} ${APP_PID}
+    next_ldc=3
+    echo "INFO: Next ldc in ${next_ldc} minutes."
+  fi
+}
+
+#---------------------------------------------------------------------------
+function do_app_second
+{
+  local APP_INSTANCE=$1
+  local APP_PID=$2
+
+  # ACTION: shutdown bigip helper
+  do_bigip ${APP_INSTANCE} ${APP_PID}
+}
+
+#---------------------------------------------------------------------------
+function do_minute
+{
+  date "+%Y/%m/%d %H:%M:%S"
+
+  declare -i APP_INSTANCEs=0
+  local LOCAL_PROCESS_NAME
+  eval LOCAL_PROCESS_NAME=\$ADMIN_${service}_PROCESS_NAME
+  for APP_PID in `ps -u ${COMMON_ADMIN_USER} -f | grep "[^]]${LOCAL_PROCESS_NAME}." | awk '{ print $2 }'` ; do
+    APP_INSTANCEs+=1
+    do_app_minute ${APP_INSTANCEs} ${APP_PID}
+  done
+  return 0
+}
+
+#---------------------------------------------------------------------------
+function do_second
+{
+  date "+%Y/%m/%d %H:%M:%S"
+
+  declare -i APP_INSTANCEs=0
+  local LOCAL_PROCESS_NAME
+  eval LOCAL_PROCESS_NAME=\$ADMIN_${service}_PROCESS_NAME
+  for APP_PID in `ps -u ${COMMON_ADMIN_USER} -f | grep "[^]]${LOCAL_PROCESS_NAME}." | awk '{ print $2 }'` ; do
+    APP_INSTANCEs+=1
+    do_app_second ${APP_INSTANCEs} ${APP_PID}
+  done
+  return 0
+}
+
+#---------------------------------------------------------------------------
+function do_run
+{
+# show_vars
+
+  . ./cfgshell_functions.sh
+  . ./config_functions.sh
+  . ${ATSE_COMMON}/admin.sh
+
+  local count=1
+  local pfx="${service}.${count}"
+  local appmonParams
+  appmonParams="./.${COMMON_APPNAME}.${COMMON_BASELINE}.${pfx}.runctl"
+  if [ -s "${appmonParams}" ]; then
+    . ./${appmonParams}
+    # load tseserver.cfg parameters (needed for the remainder of this block)
+    cfgshell_flatten_from_tseserver_args "${APPMON_COMMAND}"
+  fi
+  log4cxx_xml=$( cfgshell_lookup TSE_SERVER LOG_CFG log4cxx.xml )
+  tseserver_log=$( grep -v '^#' ${log4cxx_xml} | grep "value=\"tseserver" | sed 's/.*value=\"tseserver/tseserver/' | cut -f1 -d\" )
+
+  while (( 1 )); do
+    do_minute
+    declare -i i=0
+    while (( i < 60 )); do
+      do_second
+      sleep 1
+      (( i++ ))
+    done
+  done
+}
+
+#---------------------------------------------------------------------------
+function do_start
+{
+  PS_PID=$( ps -u ${COMMON_ADMIN_USER} -f | grep "[^]]${SCRIPT} run" | awk '{ print $2 }' )
+  if [ -z "${PS_PID}" ]; then
+    if [ "${SVC_ENABLE}" == "Y" ]; then
+      nohup ./${SCRIPT} run ${service} >> ${SCRIPT}.log 2>&1 &
+      PS_PID=$!
+      echo "${SCRIPT} started (${PS_PID})."
+    else
+      echo "ERROR: service (${service}) is disabled"
+      exit 1
+    fi
+  else
+    echo "${SCRIPT} is already running (${PS_PID})."
+  fi
+}
+
+#---------------------------------------------------------------------------
+function do_status
+{
+  PS_PID=$( ps -u ${COMMON_ADMIN_USER} -f | grep "[^]]${SCRIPT} run" | awk '{ print $2 }' )
+  if [ -z "${PS_PID}" ]; then
+    echo "${SCRIPT} is not running."
+  else
+    echo "${SCRIPT} is running (${PS_PID})."
+  fi
+}
+
+#---------------------------------------------------------------------------
+function do_stop
+{
+  PS_PID=$( ps -u ${COMMON_ADMIN_USER} -f | grep "[^]]${SCRIPT} run" | awk '{ print $2 }' )
+  if [ -z "${PS_PID}" ]; then
+    echo "${SCRIPT} is not running."
+  else
+    echo "${SCRIPT} is running (${PS_PID})."
+    echo "Killing..."
+    kill -9 ${PS_PID}
+    sleep 1
+    do_status
+  fi
+}
+
+#---------------------------------------------------------------------------
+function do_help
+{
+  echo "Usage: ${SCRIPT} status|start|stop|bounce|help [SERVICE]"
+  return 1
+}
+
+cd $(dirname $(which ${0}))
+SCRIPT=$(basename $0)
+csf_vars
+
+CMD=$1
+service=$2
+if [ -z "${service}" ]; then
+  service=$( echo "${ADMIN_SERVICES}" | awk '{ print $1 }' )
+else
+  # validate service
+  valid=N
+  for s in ${ADMIN_SERVICES} ; do
+    if [ "${s}" == "${service}" ]; then
+      valid=Y
+      continue
+    fi
+  done
+  if [ "${valid}" == N ]; then
+    echo "ERROR: unknown service"
+    exit 1
+  fi
+fi
+# validate service enabled (not disabled)
+eval SVC_ENABLE=\$ADMIN_${service}_ENABLE
+SVC_ENABLE=$(echo "${SVC_ENABLE}" | tr "[:lower:]" "[:upper:]")
+case "${SVC_ENABLE}" in
+  "Y"|"YES"|"1"|"TRUE"|"T") SVC_ENABLE="Y" ;;
+  *                       ) SVC_ENABLE="N" ;;
+esac
+eval ADMIN_${service}_ENABLE=${SVC_ENABLE}
+
+case "${CMD}" in
+  (run)    do_run    ;;
+  (start)  do_start  ;;
+  (stop)   do_stop   ;;
+  (bounce) do_stop ; do_start ;;
+  (status) do_status ;;
+  (*)      do_help   ;;
+esac
+exit 0

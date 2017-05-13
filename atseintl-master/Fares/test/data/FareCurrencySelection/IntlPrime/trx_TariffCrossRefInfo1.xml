@@ -1,0 +1,41 @@
+<TariffCrossRefInfo>
+     <EffectiveDate year=2004 month=2 day=24 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <DiscontinueDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Misc
+          tariffCategory=1
+          zoneNo=""
+          vendor="ATP"
+          carrier="BA"
+          crossRefType="INTERNATIONAL"
+          globalDirection="EH"
+     />
+     <FareTariff
+          number=677
+          code="EUASBA"
+     />
+     <RuleTariff
+          number=677
+          code="EUASBAR"
+     />
+     <GoverningTariff
+          number=-1
+          code=""
+     />
+     <RoutingTariff1
+          number=4
+          code="EURG"
+     />
+     <RoutingTariff2
+          number=-1
+          code=""
+     />
+     <AddonTariff1
+          number=677
+          code="PRBASBA"
+     />
+     <AddonTariff2
+          number=577
+          code="ARBASBA"
+     />
+</TariffCrossRefInfo>

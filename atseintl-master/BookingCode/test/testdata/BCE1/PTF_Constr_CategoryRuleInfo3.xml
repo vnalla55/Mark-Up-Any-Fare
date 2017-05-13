@@ -1,0 +1,13 @@
+<CategoryRuleInfo>
+     <Attributes
+          vendorCode="ATP"
+          tariffNumber=22
+          carrierCode="EY"
+          ruleNumber="LUGD"
+          categoryNumber=23
+          sequenceNumber=9000000
+     />
+     <CategoryRuleItemInfoSet file="testdata/BCE1/PTF_Constr_CategoryRuleItemInfoSet4.xml"/>
+     <Location1 file="testdata/BCE1/PTF_Constr_LocKey_0.xml"/>
+     <Location2 file="testdata/BCE1/PTF_Constr_LocKey_0.xml"/>
+</CategoryRuleInfo>

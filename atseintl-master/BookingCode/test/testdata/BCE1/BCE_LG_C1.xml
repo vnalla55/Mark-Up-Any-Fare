@@ -1,0 +1,9 @@
+<BookingCodeExceptionList>
+     <BookingCodeExceptionSequence file="testdata/BCE1/BCE_LG_C1_BookingCodeExceptionSequence1.xml"/>
+     <BookingCodeExceptionSequence file="testdata/BCE1/BCE_LG_C1_BookingCodeExceptionSequence2.xml"/>
+     <BookingCodeExceptionSequence file="testdata/BCE1/BCE_LG_C1_BookingCodeExceptionSequence3.xml"/>
+     <BookingCodeExceptionSequence file="testdata/BCE1/BCE_LG_C1_BookingCodeExceptionSequence4.xml"/>
+     <BookingCodeExceptionSequence file="testdata/BCE1/BCE_LG_C1_BookingCodeExceptionSequence5.xml"/>
+     <BookingCodeExceptionSequence file="testdata/BCE1/BCE_LG_C1_BookingCodeExceptionSequence6.xml"/>
+     <BookingCodeExceptionSequence file="testdata/BCE1/BCE_LG_C1_BookingCodeExceptionSequence7.xml"/>
+</BookingCodeExceptionList>

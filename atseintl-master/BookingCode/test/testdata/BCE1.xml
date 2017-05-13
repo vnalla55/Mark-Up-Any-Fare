@@ -1,0 +1,4 @@
+<BookingCodeExceptionList>
+     <BookingCodeExceptionSequence file="/vobs/atseintl/BookingCode/test/testdata/BCE1_BookingCodeExceptionSequence0.xml"/>
+     <BookingCodeExceptionSequence file="/vobs/atseintl/BookingCode/test/testdata/BCE1_BookingCodeExceptionSequence1.xml"/>
+</BookingCodeExceptionList>

@@ -1,0 +1,25 @@
+<FareInfo>
+     <Fare
+          fareAmount=899
+          originalFareAmount=899
+          noDec=0
+          fareTariff=302
+          currency="MYR"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="MH"
+          fareClass="CBZ"
+          market1LocCode="BKI"
+          market2LocCode="KUL"
+          footnote1="9A"
+          footnote2=""
+          owrt="1"
+          ruleNumber="MYES"
+          routingNumber="4000"
+          globalDirection="EH"
+          directionality="TO"
+          linkNumber=2
+          sequenceNumber=2
+     />
+</FareInfo>

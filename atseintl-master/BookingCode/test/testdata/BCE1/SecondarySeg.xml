@@ -1,0 +1,34 @@
+<AirSeg>
+     <SegmentInfo
+          pnrSegment=0
+          segmentOrder=0
+          stopOver="f"
+          forcedStopOver=""
+          forcedConx=""
+          geoTravelType="International"
+          origAirport="LON"
+          boardMultiCity="LON"
+          destAirport="MAD"
+          offMultiCity="MAD"
+     />
+     <FlightInfo
+          carrier="LG"
+          marketingFlightNumber=0
+          operatingFlightNumber=0
+          equipmentType=""
+     />
+     <Origin file="testdata/BCE1/SecondarySeg_Loc_LON.xml"/>
+     <Destination file="testdata/BCE1/SecondarySeg_Loc_MAD.xml"/>
+     <Misc
+          bookedCabin=" "
+          validatedBookingCode=""
+          resStatus=""
+          fareBasisCode=""
+          bookingCode=""
+          furthestPoint="f"
+          considerOnlyCabin=""
+          forcedFareBrk=""
+          forcedNoFareBrk=""
+          forcedSideTrip=""
+     />
+</AirSeg>

@@ -1,0 +1,19 @@
+<Loc>
+  <Area loc="MAD"
+        subarea="21"
+        area="2"
+        transtype="P"
+        nation="ES" />
+  <Position latdegrees=40  latminutes=28 latseconds=20
+            lngdegrees=-3 lngminutes=-33 lngseconds=-48/>
+  <ExpirationDate year=9999 month=12 day=31/>
+  <EffectiveDate  year=2004 month=5 day=14/>
+  <Indicators cityInd="Y"
+              bufferZoneInd="N"
+              ruralarpind="N"
+              multitransind="Y"
+              faresind="N"/>
+  <Misc dstgrp="ES01"
+        description="Madrid"/>
+</Loc>
+

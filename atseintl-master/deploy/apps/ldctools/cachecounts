@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# ensure we are running within the same directory
+# where we are located 
+cd $(dirname $(which ${0}))
+. ./env.vars
+
+grep "keys in" $1 | awk '{print $1,"=",$4}' | grep -v '[0]' | sed 's/[][]//'g |
+while read line ; do
+  say ${line}
+done
+

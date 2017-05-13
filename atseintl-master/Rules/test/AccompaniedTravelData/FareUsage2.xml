@@ -1,0 +1,19 @@
+<FareUsage>
+   <PaxTypeFare file="AccompaniedTravelData/PaxTypeFare0.xml" />
+   <AirSeg file="AccompaniedTravelData/AirSegDFWJFK.xml" />
+   <AirSeg file="AccompaniedTravelData/AirSegJFKSFO.xml" />
+   <AirSeg file="AccompaniedTravelData/AirSegSFODFW.xml" />
+   <Status value = "Outbound" />
+   <Status value = "AppendNR" />
+   
+   <Misc 
+      SurchargeAmt = 100
+      TransferAmt = 140
+      StopOverAmpt = 130
+      AbsorptionAdjustment = 120
+      MinimumFarePlusUp = 150
+      AdjustedStopOvers = 160
+      HasSideTrip = "t" />
+
+</FareUsage>
+

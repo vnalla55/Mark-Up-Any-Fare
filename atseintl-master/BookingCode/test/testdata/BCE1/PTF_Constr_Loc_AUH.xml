@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="AUH"
+          subarea="22"
+          area="2"
+          transtype="P"
+          nation="AE"
+          state=" "
+     />
+     <Position
+          latdegrees=24
+          latminutes=27
+          latseconds=3
+          lngdegrees=54
+          lngminutes=23
+          lngseconds=33
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="AE01"
+          description="ABU DHABI INTL"
+     />
+</Loc>

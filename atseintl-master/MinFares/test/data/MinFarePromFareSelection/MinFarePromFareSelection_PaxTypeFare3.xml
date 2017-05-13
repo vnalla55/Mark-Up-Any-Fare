@@ -1,0 +1,22 @@
+<PaxTypeFare>
+     <Status value=""/>
+     <ActualPaxType file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/paxType.xml"/>
+     <FareClassAppInfo file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/MinFarePromFareSelection_FareClassAppInfo3.xml"/>
+     <FareClassAppSegInfo file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/MinFarePromFareSelection_FareClassAppSegInfo3.xml"/>
+     <FareTypeMatrix
+          cabin="3"
+          fareTypeDesignator=-1
+          fareTypeApplication=" "
+     />
+     <Misc
+          surchargeAmt=0
+          transferAmt=0
+          stopOverAmt=0
+          hipAmount=0
+          hipBoardPoint=""
+          hipOffPoint=""
+          bhcAmount=0
+     />
+     <FareMarket file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/fareMarket.xml"/>
+     <Fare file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/MinFarePromFareSelection_Fare3.xml"/>
+</PaxTypeFare>

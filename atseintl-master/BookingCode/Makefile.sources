@@ -1,0 +1,13 @@
+BOOKING_CODE_SOURCES := \
+    FareBookingCodeValidator.cpp \
+    DomesticMixedClass.cpp \
+    RebookedCOSChecker.cpp \
+    BookingCodeExceptionValidator.cpp \
+    MixedClassController.cpp \
+    DifferentialValidator.cpp \
+    FareDisplayBookingCodeException.cpp \
+    FareDisplayBookingCodeRB.cpp \
+    FareDisplayBookingCode.cpp \
+    RBData.cpp \
+    BookingCodeExceptionIndex.cpp \
+    Cat31FareBookingCodeValidator.cpp

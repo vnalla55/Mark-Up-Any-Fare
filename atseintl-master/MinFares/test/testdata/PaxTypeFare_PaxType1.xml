@@ -1,0 +1,11 @@
+<PaxType>
+     <PaxTypeInfo file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_PaxTypeInfo1.xml"/>
+     <Misc
+          paxType="JCB"
+          number=2
+          age=0
+          inputOrder=0
+          vendorCode="ATP"
+     />
+     <ActualPaxType file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_PaxType1.xml"/>
+</PaxType>

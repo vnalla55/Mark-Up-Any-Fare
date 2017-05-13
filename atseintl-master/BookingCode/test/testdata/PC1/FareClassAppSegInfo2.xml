@@ -1,0 +1,18 @@
+<FareClassAppSegInfo>
+     <Ticket
+          ticketCode=""
+          ticketCodeModifier=""
+          ticketDesignator=""
+          ticketDesignatorModifier=""
+          bookingCode="B"
+     />
+     <Misc
+          seqNo=100000
+          bookingCodeTblItemNo=0
+          overrideDateTblNo=0
+          minAge=0
+          maxAge=0
+          paxType=""
+          directionality="DIR_IND_NOT_DEFINED"
+     />
+</FareClassAppSegInfo>

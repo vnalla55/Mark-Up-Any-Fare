@@ -1,0 +1,58 @@
+<PricingRequest>
+     <ticketingAgent file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_Agent0.xml"/>
+     <ticketingDate year=2004 month=11 day=2 hour=16 minute=23 second=0/>
+     <ticketDateOverride year=1970 month=1 day=1 hour=0 minute=0 second=0/>
+     <requestedDepartureDate year=1970 month=1 day=1 hour=0 minute=0 second=0/>
+     <Attributes
+          corporateID=""
+          accountCode=""
+          diagnosticNumber=200
+          validatingCarrier="AA"
+          ticketPointOverride=""
+          salePointOverride=""
+          equivAmountOverride=0
+          rateAmountOverride=0
+          secondRateAmountOverride=0
+          lowFareNoAvailability=""
+          lowFareRequested=""
+          exemptSpecificTaxes=""
+          exemptAllTaxes=""
+          priceNullDate=""
+          multiHostElectsPFC=""
+          ticketByMail=""
+          ticketEntry=""
+          formOfPaymentCash="T"
+          formOfPaymentCheck=""
+          formOfPaymentCard=""
+          formOfPaymentGTR=""
+          contractNumber=""
+          lengthATBFareCalc=0
+          numberTaxBoxes=3
+          agencyTax=0
+          agencyTaxIsPercent=""
+          refundPenalty=""
+          priceNoAvailability=""
+          ignoreTimeStamp=""
+          exemptPFC=""
+          bulkFareEntry=""
+          bulkPenaltyPercentage=0
+          electronicTicket="T"
+          considerMultiAirport=""
+          boardPoint=""
+          altBoardPoint=""
+          mileageRadiusBoard=0
+          offPoint=""
+          altOffPoint=""
+          mileageRadiusOff=0
+          requestedUpperTime=0
+          requestedLowerTime=0
+          discountAmount=0
+          discountPercentage=0
+          governingCarrier=""
+          fareClassCode=""
+          globalDirection="ZZ"
+          fromCurrency=""
+          toCurrency=""
+          amountToBeConverted=0
+     />
+</PricingRequest>

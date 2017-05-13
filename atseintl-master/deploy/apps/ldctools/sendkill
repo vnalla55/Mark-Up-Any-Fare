@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# ensure we are running within the same directory
+# from which we are running
+cd $(dirname $(which ${0}))
+
+. ./env.vars
+
+cd ${APPDIR}
+
+PID=$(./appstat.sh | awk '{print $7}')
+
+say "Sending SIGKILL to process ${PID}"
+kill -9 ${PID}
+
+say "Waiting for MIA"
+waitmia > /dev/null 2>&1
+
+say "Waiting for restart"
+waitrunning > /dev/null 2>&1
+
+NEWPID=$(./appstat.sh | awk '{print $7}')
+say "New process id: ${NEWPID}"
+
+getstarttime
+

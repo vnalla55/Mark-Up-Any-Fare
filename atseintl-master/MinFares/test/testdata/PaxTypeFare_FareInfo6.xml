@@ -1,0 +1,25 @@
+<FareInfo>
+     <Fare
+          fareAmount=5012.5
+          originalFareAmount=10025
+          noDec=2
+          fareTariff=101
+          currency="USD"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="YY"
+          fareClass="CIFRT"
+          market1LocCode="CVG"
+          market2LocCode="ROM"
+          footnote1="1B"
+          footnote2=""
+          owrt="2"
+          ruleNumber="44AA"
+          routingNumber="0000"
+          globalDirection="AT"
+          directionality="FROM"
+          linkNumber=0
+          sequenceNumber=0
+     />
+</FareInfo>

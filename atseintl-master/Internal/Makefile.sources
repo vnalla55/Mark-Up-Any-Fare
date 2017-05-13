@@ -1,0 +1,3 @@
+INTERNAL_SERVICE_SOURCES := \
+    InternalService.cpp \
+    InternalServiceController.cpp

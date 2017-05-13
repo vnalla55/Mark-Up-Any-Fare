@@ -1,0 +1,27 @@
+<FareInfo>
+     <Fare
+          fareAmount=483
+          originalFareAmount=483
+          noDec=2
+          fareTariff=21
+          currency="GBP"
+     />
+     <Misc
+          vendor="SITA"
+          carrier="YY"
+          fareClass="CIF"
+          market1LocCode="LON"
+          market2LocCode="MAD"
+          footnote1="O8"
+          footnote2=""
+          owrt="3"
+          ruleNumber="A001"
+          routingNumber="0000"
+          globalDirection="EH"
+          directionality="FROM"
+          linkNumber=59
+          sequenceNumber=1
+     />
+</FareInfo>
+
+

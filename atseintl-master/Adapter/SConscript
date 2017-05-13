@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+s = env.msscout()
+s.werror = (env['REDHAT_VERSION_'] >= 6)
+s.env.add_include_paths('$XERCESC_CPPPATH_')
+
+s.mslibrary('ServerSocketAdapter', 'SERVER_SOCKET_ADAPTER_SOURCES')
+s.mslibrary('DiskCacheAdapter', 'DISKCACHE_ADAPTER_SOURCES')
+s.mslibrary('CacheNotifyAdapter', 'CACHE_ADAPTER_SOURCES')
+s.build()

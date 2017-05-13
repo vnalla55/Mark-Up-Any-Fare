@@ -1,0 +1,55 @@
+<AirSeg>
+     <DepartureDate year=2004 month=11 day=15 hour=10 minute=20 second=0/>
+     <ArrivalDate year=2004 month=11 day=16 hour=0 minute=40 second=0/>
+     <BookingDate year=2004 month=11 day=2 hour=16 minute=23 second=0/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService0.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService1.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService2.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService3.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService4.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService5.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService6.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService7.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService8.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService9.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService10.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService11.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService12.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService13.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService14.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService15.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService16.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService17.xml"/>
+     <ClassOfService file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_ClassOfService18.xml"/>
+     <SegmentInfo
+          pnrSegment=1
+          segmentOrder=1
+          stopOver="f"
+          forcedStopOver="F"
+          forcedConx="F"
+          geoTravelType="International"
+          origAirport="LHR"
+          boardMultiCity="LON"
+          destAirport="BOM"
+          offMultiCity="BOM"
+     />
+     <FlightInfo
+          carrier="BA"
+          marketingFlightNumber=139
+          operatingFlightNumber=139
+          equipmentType="744"
+     />
+     <Origin file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_Loc0.xml"/>
+     <Destination file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_Loc1.xml"/>
+     <Misc
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode=""
+          bookingCode="Y"
+          furthestPoint="t"
+          considerOnlyCabin=""
+          forcedFareBrk="F"
+          forcedNoFareBrk="F"
+          forcedSideTrip="F"
+     />
+</AirSeg>

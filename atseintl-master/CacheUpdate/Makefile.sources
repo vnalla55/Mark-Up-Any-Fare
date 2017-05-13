@@ -1,0 +1,2 @@
+CACHE_UPDATE_SOURCES := \
+    CacheUpdateService.cpp

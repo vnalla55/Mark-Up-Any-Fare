@@ -1,0 +1,30 @@
+<MileageRoute>
+     <MileageData
+          mpm=0
+          mpmDeductionApplies="f"
+          southAtlanticExclusion="f"
+          mileageRouteTPM=0
+          globalDirection="AT"
+          pakistanProvision="f"
+          tpd=0
+          ems=0
+          mileageEqualizationApplies="f"
+          governingCarrier="AA"
+          stopoverCount=0
+          hipExempt="f"
+          psrApplies="f"
+          psrMayApply="f"
+          psrSetNumber=0
+          geoLocMatched="f"
+          isSouthAtlanticException="f"
+          processEnhancedTPMExclusion="t"
+          isYYFare="f"
+          crs="SABR"
+          multiHost="AA"
+     />
+     <TicketingDate year=2009 month=8 day=21 hour=5 minute=10 second=0/>
+     <TravelDate year=2009 month=11 day=12 hour=23 minute=15 second=0/>
+     <MileageRouteItems file="data/Mileage_GRULHR_MileageRouteItem3.xml"/>
+     <MileageRouteItems file="data/Mileage_GRULHR_MileageRouteItem4.xml"/>
+     <MileageRouteItems file="data/Mileage_GRULHR_MileageRouteItem5.xml"/>
+</MileageRoute>

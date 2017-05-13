@@ -1,0 +1,10 @@
+<Itin>
+     <Attributes
+          geoTravelType="International"
+          ticketingCarrier="BA"
+          intlSalesIndicator=4
+     />
+     <TravelSeg file="/vobs/atseintl/test/sampledata/DFW_LAX_AirSegment.xml"/>
+     <FareMarket file="/vobs/atseintl/test/sampledata/DFW_LAX_LON_FareMarket.xml"/>
+     <FarePath file="/vobs/atseintl/FareCalc/test/farecalcdata/farePath.xml"/>
+</Itin>

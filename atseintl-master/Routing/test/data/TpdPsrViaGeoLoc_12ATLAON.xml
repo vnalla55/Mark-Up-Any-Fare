@@ -1,0 +1,14 @@
+<TpdPsrViaGeoLoc>
+   <Attributes
+      setNo=1
+      orderNo=2
+      relationalInd='-'
+      stopoverNotAllowed='Y'
+   />
+   <LocKey>
+      <Attributes
+	 loc="ATL" 
+	 locType='C' 
+      />
+   </LocKey>
+</TpdPsrViaGeoLoc>

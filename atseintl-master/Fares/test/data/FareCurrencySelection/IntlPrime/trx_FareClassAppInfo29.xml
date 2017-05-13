@@ -1,0 +1,32 @@
+<FareClassAppInfo>
+     <EffectiveDate year=2003 month=11 day=27 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Location
+          location1Type="Z"
+          location1="00210"
+          location2Type="A"
+          location2="3"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="BA"
+          ruleTariff=4
+          ruleNumber="2522"
+          footnote1=""
+          footnote2=""
+          fareClass="RJNCGB"
+          MCN=4739619
+          textTBLItemNo=0
+          owrt="2"
+          routingAppl=" "
+          routingNumber=""
+          fareType="XPX"
+          seasonType=" "
+          dowType=" "
+          pricingCatType="S"
+          displayCatType="E"
+          seqNo=1000000
+          unavailTag=""
+     />
+     <FareClassAppSegInfo file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_FareClassAppSegInfo29.xml"/>
+</FareClassAppInfo>

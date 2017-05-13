@@ -1,0 +1,11 @@
+<Fare>
+     <FareInfo file="AccompaniedTravelData/FareInfo2.xml"/>
+     <ConstructedFareBucket file="AccompaniedTravelData/ConstructedFareBucket0.xml"/>
+     <TariffCrossRefInfo file="AccompaniedTravelData/TariffCrossRefInfo1.xml"/>
+     <Misc
+          nucFareAmount=104.5
+          differSeqNumber=0
+          calculationInd=" "
+     />
+     <FareStatus fareStatus="International"/>
+</Fare>

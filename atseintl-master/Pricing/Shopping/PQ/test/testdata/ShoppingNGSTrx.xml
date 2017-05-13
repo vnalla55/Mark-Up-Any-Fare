@@ -1,0 +1,5 @@
+<ShoppingTrx>
+    <PricingOptions file="/vobs/atseintl/test/testdata/data/pricingOptions.xml"/>
+    <ShoppingAttributes />
+    <PricingRequest file="/vobs/atseintl/test/testdata/data/pricingRequest.xml"/>
+</ShoppingTrx>

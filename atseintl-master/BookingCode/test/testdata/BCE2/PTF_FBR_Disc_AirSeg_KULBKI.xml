@@ -1,0 +1,43 @@
+<AirSeg>
+     <FlightInfo
+          carrier="MH"
+          marketingFlightNumber=0
+          operatingFlightNumber=0
+     />
+     <Misc
+          considerOnlyCabin=""
+     />
+<EarliestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<LatestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<DepartureDate year=2009 month=6 day=10 hour=0 minute=0 second=0/>
+<ArrivalDate year=2009 month=6 day=10 hour=0 minute=0 second=0/>
+<BookingDate year=2009 month=5 day=11 hour=23 minute=22 second=0/>
+     <SegmentInfo
+          pnrSegment=0
+          segmentOrder=0
+          stopOver="f"
+          forcedStopOver=""
+          forcedConx=""
+          geoTravelType="ForeignDomestic"
+          origAirport="KUL"
+          boardMultiCity="KUL"
+          destAirport="BKI"
+          offMultiCity="BKI"
+     />
+     <FlightInfo
+          equipmentType=""
+     />
+     <Origin file="testdata/BCE2/PTF_FBR_Disc_Loc_KUL.xml"/>
+     <Destination file="testdata/BCE2/PTF_FBR_Disc_Loc_BKI.xml"/>
+     <Misc
+          bookedCabin=" "
+          validatedBookingCode=""
+          resStatus=""
+          fareBasisCode=""
+          bookingCode=""
+          furthestPoint="f"
+          forcedFareBrk=""
+          forcedNoFareBrk=""
+          forcedSideTrip=""
+     />
+</AirSeg>

@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# ensure we are running within the same directory
+# from which we are running
+cd $(dirname $(which ${0}))
+. ./env.vars
+
+waitforzero
+
+declare -i num=${1}
+declare    tbl=${2}
+
+declare    all="all" 
+declare    tbl_param=""
+
+if [ -n "${tbl}" ] ; then
+  tbl_param="-cache ${tbl}"
+  all=""
+fi
+
+declare DESTDIR=${APPDIR}
+declare CKEYFILE=${DESTDIR}/compkeys${num}.txt
+declare CVALFILE=${DESTDIR}/compvals${num}.txt
+declare DKEYFILE=${DESTDIR}/dumpkeys${num}.txt
+
+echo ""
+
+echo "Comparing keys..."
+cachetest.sh ${tbl_param} -app ${APP} -host ${HOST} -port ${PORT} -cmd compkeys ${all} > ${CKEYFILE} 
+
+tail -2 ${CKEYFILE} 
+
+echo "Comparing values..."
+cachetest.sh ${tbl_param} -app ${APP} -host ${HOST} -port ${PORT} -cmd compvals ${all} > ${CVALFILE}
+
+tail -2 ${CVALFILE} 
+
+echo "Dumping keys..."
+dumpkeys.sh ${tbl_param} -app ${APP} -host ${HOST} -port ${PORT} > ${DKEYFILE} 
+
+echo "Done!"

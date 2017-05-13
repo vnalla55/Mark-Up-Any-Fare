@@ -1,0 +1,12 @@
+<PaxTypeInfo>
+   <Attributes
+     paxType=""
+     vendor=""
+     description=""
+     childInd=""
+     adultInd="X"
+     infantInd=""
+     psgGroupType=""
+     numberSeatsReq=0
+   />
+</PaxTypeInfo>

@@ -1,0 +1,7 @@
+ATAE_SOURCES := \
+    AtaeRequest.cpp \
+    AtaeResponseHandler.cpp \
+    ContentServices.cpp \
+    PricingDssRequest.cpp \
+    PricingDssResponseHandler.cpp \
+    PricingDssFlightProcessor.cpp

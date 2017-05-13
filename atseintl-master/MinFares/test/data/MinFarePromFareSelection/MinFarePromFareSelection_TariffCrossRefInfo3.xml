@@ -1,0 +1,41 @@
+<TariffCrossRefInfo>
+     <EffectiveDate year=2004 month=8 day=18 hour=17 minute=27 second=47/>
+     <ExpirationDate year=2004 month=8 day=18 hour=17 minute=27 second=47/>
+     <DiscontinueDate year=2004 month=8 day=18 hour=17 minute=33 second=15/>
+     <Misc
+          tariffCategory=0
+          zoneNo=""
+          vendor="SABR"
+          carrier=""
+          crossRefType="INTERNATIONAL"
+          globalDirection="AF"
+     />
+     <FareTariff
+          number=1113587728
+          code="TAFPBA"
+     />
+     <RuleTariff
+          number=1103492880
+          code=""
+     />
+     <GoverningTariff
+          number=-1073759856
+          code=""
+     />
+     <AddonTariff1
+          number=1100982032
+          code=""
+     />
+     <AddonTariff2
+          number=1101922322
+          code=""
+     />
+     <RoutingTariff1
+          number=1103808486
+          code=""
+     />
+     <RoutingTariff2
+          number=1103283395
+          code=""
+     />
+</TariffCrossRefInfo>

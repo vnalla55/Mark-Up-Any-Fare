@@ -1,0 +1,13 @@
+<CategoryRuleInfo>
+     <Attributes
+          vendorCode="ATP"
+          tariffNumber=364
+          carrierCode="MH"
+          ruleNumber="T003"
+          categoryNumber=15
+          sequenceNumber=20000
+     />
+     <CategoryRuleItemInfoSet file="testdata/BCE2/PTF_FBR_Disc_CategoryRuleItemInfoSet4.xml"/>
+     <Location1 file="testdata/BCE2/PTF_FBR_Disc_LocKey_0.xml"/>
+     <Location2 file="testdata/BCE2/PTF_FBR_Disc_LocKey_0.xml"/>
+</CategoryRuleInfo>

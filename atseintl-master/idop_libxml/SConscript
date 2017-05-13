@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+import os
+Import('env')
+
+s = env.msscout()
+s.werror = False
+s.env.add_include_paths('include', '../idop_libcpp/include', '../idop_libdb/include')
+s.env.add_isystem_paths('$XERCESC_CPPPATH_', os.path.join('$XERCESC_CPPPATH_', 'xercesc'))
+s.env.add_defines('ATSE_HYBRID')
+s.mslibrary('idopxml', 'IDOP_XML_SOURCES')
+s.build()

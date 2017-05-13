@@ -1,0 +1,19 @@
+<RoutingRestriction>
+     <LocCodes
+          market1=""
+          market2=""
+          viaMarket=""
+     />
+     <Misc
+          restrictionSequenceNumber=1
+          restrictionNumber="16"
+          viaCarrier=""
+     />
+     <Indicators
+          marketApplicable=" "
+          negViaApplicable=" "
+          viaType=" "
+          nonStopDirect=" "
+          airSurface=" "
+     />
+</RoutingRestriction>

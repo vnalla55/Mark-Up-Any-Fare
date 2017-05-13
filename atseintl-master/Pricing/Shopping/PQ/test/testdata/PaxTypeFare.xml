@@ -1,0 +1,12 @@
+<PaxTypeFare>
+     <Misc
+          surchargeAmt=0
+          transferAmt=0
+          stopOverAmt=0
+          hipAmount=0
+          hipBoardPoint=""
+          hipOffPoint=""
+          bhcAmount=0
+     />
+     <Fare file="testdata/Fare.xml"/>
+</PaxTypeFare>

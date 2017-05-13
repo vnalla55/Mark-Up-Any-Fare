@@ -1,0 +1,14 @@
+BRANDED_FARES_SOURCES := \
+    BrandInfo.cpp \
+    BrandedFareDiagnostics.cpp \
+    BrandedFaresSelector.cpp \
+    BrandingRequestResponseHandler.cpp \
+    BrandingSchemaNames.cpp \
+    BrandingService.cpp \
+    BrandProgram.cpp \
+    CbasBrandedFaresSelector.cpp \
+    S8BrandedFaresSelector.cpp \
+    S8BrandingResponseParser.cpp \
+    S8BrandService.cpp \
+    PbbS8BrandedFaresSelector.cpp \
+    BrandedFaresUtil.cpp

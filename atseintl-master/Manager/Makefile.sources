@@ -1,0 +1,13 @@
+CACHE_NOTIFY_MANAGER_SOURCES := \
+    CacheNotifyManager.cpp \
+    CacheNotifyThread.cpp
+
+DISKCACHE_NOTIFY_MANAGER_SOURCES := \
+    DiskCacheManager.cpp \
+    DiskCacheThread.cpp
+
+SERVER_SOCKET_MANAGER_SOURCES := \
+    ServerSocketManager.cpp \
+    ServerSocketThread.cpp \
+    SocketRequestImpl.cpp \
+    TseManagerUtil.cpp

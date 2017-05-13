@@ -1,0 +1,25 @@
+<FareInfo>
+     <EffectiveDate year=2004 month=9 day=8 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Fare
+          fareAmount=16257
+          originalFareAmount=16257
+          noDec=0
+          fareTariff=677
+          currency="INR"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="BA"
+          fareClass="LUQSC"
+          market1LocCode="BOM"
+          market2LocCode="LON"
+          footnote1="R"
+          footnote2=""
+          owrt="1"
+          ruleNumber="9040"
+          routingNumber="1000"
+          globalDirection="EH"
+          directionality="FROM"
+     />
+</FareInfo>

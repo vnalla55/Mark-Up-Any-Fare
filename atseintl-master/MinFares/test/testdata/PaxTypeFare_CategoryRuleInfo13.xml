@@ -1,0 +1,12 @@
+<CategoryRuleInfo>
+     <Attributes
+          vendorCode="ATP"
+          tariffNumber=732
+          carrierCode="DL"
+          ruleNumber="5855"
+          categoryNumber=19
+          sequenceNumber=9000000
+     />
+     <Location1 file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_LocKey_0.xml"/>
+     <Location2 file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_LocKey_0.xml"/>
+</CategoryRuleInfo>

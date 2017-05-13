@@ -1,0 +1,32 @@
+<FareClassAppInfo>
+     <EffectiveDate year=2008 month=10 day=4 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Location
+          location1Type="N"
+          location1="LU"
+          location2Type="Z"
+          location2="00220"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="EY"
+          ruleTariff=903
+          ruleNumber="LUIT"
+          footnote1=""
+          footnote2=""
+          fareClass="AOWLU"
+          MCN=13104820
+          textTBLItemNo=0
+          owrt="3"
+          routingAppl=" "
+          routingNumber=""
+          fareType="PIT"
+          seasonType=" "
+          dowType=" "
+          pricingCatType="S"
+          displayCatType="L"
+          seqNo=1000000
+          unavailTag=" "
+     />
+     <FareClassAppSegInfo file="testdata/BCE1/PTF_Constr_FareClassAppSegInfo0.xml"/>
+</FareClassAppInfo>

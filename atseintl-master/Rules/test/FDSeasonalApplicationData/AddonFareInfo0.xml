@@ -1,0 +1,24 @@
+<AddonFareInfo>
+     <EffectiveDate year=2004 month=8 day=18 hour=17 minute=33 second=15/>
+     <DiscountDate year=2004 month=8 day=18 hour=17 minute=33 second=15/>
+     <ExpireDate year=2004 month=8 day=18 hour=17 minute=33 second=15/>
+     <Flight 
+          directionality="0"
+          owrt=" "
+          gatewayMarket=""
+          interiorMarket=""
+          carrier=""
+          fareClass=""
+          routing=""
+          arbZone=""
+          addonTariff=0
+          currency=""
+          fareAmt=7.4347e+247
+          noDec=1684291956
+          vendor="SABR"
+     />
+     <Footnotes 
+          footNote1=""
+          footNote2=""
+     />
+</AddonFareInfo>
