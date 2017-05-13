@@ -1,4 +1,0 @@
-DECODE_SERVICE_SOURCES := \
-    DecodeGenerator.cpp \
-    DecodeService.cpp \
-    FrequentFlyerStatusGenerator.cpp

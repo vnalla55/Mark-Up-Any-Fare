@@ -1,5 +1,0 @@
-DSS_SOURCES := \
-    DSSRequest.cpp \
-    DSSResponseContentHandler.cpp \
-    FlightCountMgr.cpp \
-    PreferredDateCalculator.cpp

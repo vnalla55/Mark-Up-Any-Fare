@@ -1,2 +1,0 @@
-BILLING_SOURCES := \
-    BillingService.cpp

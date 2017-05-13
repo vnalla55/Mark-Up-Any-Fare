@@ -1,9 +1,0 @@
-<Fare>
-     <FareInfo file="testdata/FareInfo.xml"/>
-     <Misc
-          nucFareAmount=500
-          differSeqNumber=0
-          calculationInd=" "
-     />
-     <FareStatus fareStatus="International"/>
-</Fare>

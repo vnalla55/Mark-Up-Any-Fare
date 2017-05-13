@@ -1,7 +1,0 @@
-CURRENCY_SERVICE_SOURCES := \
-    CurrencyService.cpp \
-    FCCommand.cpp \
-    FCConvert.cpp \
-    FCDisplay.cpp \
-    FCHelp.cpp \
-    LocalCurrencyDisplay.cpp

@@ -1,9 +1,0 @@
-<PaxTypeBucket>
-     <RequestedPaxType file="/vobs/atseintl/BookingCode/test/testdata/FBR1_PaxType1.xml"/>
-     <ActualPaxType file="/vobs/atseintl/BookingCode/test/testdata/FBR1_PaxType2.xml"/>
-     <PaxTypeFare file="/vobs/atseintl/BookingCode/test/testdata/FBR1.xml"/>
-     <Misc
-          inboundCurrency="USD"
-          outboundCurrency="EUR"
-     />
-</PaxTypeBucket>

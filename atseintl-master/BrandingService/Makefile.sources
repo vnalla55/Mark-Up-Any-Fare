@@ -1,5 +1,0 @@
-BRANDING_SERVICE_SOURCES := \
-    BrandingRequestFormatter.cpp \
-    BrandingServiceCaller.cpp \
-    BrandResponseHandler.cpp \
-    BrandResponseItem.cpp

@@ -1,9 +1,0 @@
-<Itin>
-     <Attributes
-          geoTravelType="International"
-          ticketingCarrier="BA"
-          intlSalesIndicator=4
-     />
-     <TravelSeg file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_AirSeg0.xml"/>
-     <FareMarket file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_FareMarket0.xml"/>
-</Itin>

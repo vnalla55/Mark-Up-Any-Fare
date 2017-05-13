@@ -1,7 +1,0 @@
-<PaxTypeFareRuleData>
-     <CategoryRuleInfo file="testdata/BCE1/PTF_Constr_CategoryRuleInfo3.xml"/>
-     <CategoryRuleItemInfoSet file="testdata/BCE1/PTF_Constr_CategoryRuleItemInfoSet4.xml"/>
-     <Attributes
-          isLocationSwapped="f"
-     />
-</PaxTypeFareRuleData>

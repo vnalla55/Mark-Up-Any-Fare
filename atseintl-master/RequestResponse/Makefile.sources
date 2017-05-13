@@ -1,3 +1,0 @@
-REQUEST_RESPONSE_SOURCES := \
-    RequestResponseService.cpp \
-    XformHelper.cpp

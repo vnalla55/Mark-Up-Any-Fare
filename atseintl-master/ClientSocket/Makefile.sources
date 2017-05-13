@@ -1,3 +1,0 @@
-CLIENT_SOCKET_SOURCES := \
-    ClientSocket.cpp \
-    EOSocket.cpp

@@ -1,5 +1,0 @@
-RTG_SOURCES := \
-    GenerateRuleRequestFormatter.cpp \
-    RuleResponseContentHandler.cpp \
-    RBRequestFormatter.cpp \
-    RTGController.cpp

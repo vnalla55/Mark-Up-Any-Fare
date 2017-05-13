@@ -1,5 +1,0 @@
-Import('env')
-s = env.msscout()
-s.werror = True
-s.mslibrary('Decode', 'DECODE_SERVICE_SOURCES')
-s.build()

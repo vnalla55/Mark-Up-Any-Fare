@@ -1,9 +1,0 @@
-<PaxTypeBucket>
-     <RequestedPaxType file="testdata/PC1/PaxType.xml"/>
-     <ActualPaxType file="testdata/PC1/PaxType.xml"/>
-     <PaxTypeFare file="testdata/PC1/PaxTypeFare_th.xml"/>
-     <Misc
-          inboundCurrency="GBP"
-          outboundCurrency="SGD"
-     />
-</PaxTypeBucket>

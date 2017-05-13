@@ -1,9 +1,0 @@
-<PaxTypeBucket>
-     <RequestedPaxType file="testdata/BCE1/PTF_Constr_PaxType1.xml"/>
-     <ActualPaxType file="testdata/BCE1/PTF_Constr_PaxType0.xml"/>
-     <PaxTypeFare file="testdata/BCE1/PTF_Constr_PaxTypeFare0.xml"/>
-     <Misc
-          inboundCurrency="USD"
-          outboundCurrency="EUR"
-     />
-</PaxTypeBucket>

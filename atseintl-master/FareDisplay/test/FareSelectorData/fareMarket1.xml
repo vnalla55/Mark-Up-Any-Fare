@@ -1,7 +1,0 @@
-<FareMarket>
-     <AirSeg file="FareSelectorData/AirSegJFKDFW.xml"/>
-     <PaxTypeFare file="FareSelectorData/PaxTypeFare4.xml"/>
-     <PaxTypeFare file="FareSelectorData/PaxTypeFare5.xml"/>
-     <PaxTypeFare file="FareSelectorData/PaxTypeFare6.xml"/>
-     <PaxTypeFare file="FareSelectorData/PaxTypeFare7.xml"/>
-</FareMarket>
