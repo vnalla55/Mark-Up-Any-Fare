@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="AM"
+          isonumericCode=51
+          subArea="21"
+          area="2"
+          isoalphaCode="ARM"
+          primeCur="AMD"
+          alternateCur=""
+          conversionCur="EUR"
+          description="ARMENIA"
+     />
+     <CreateDate year=2008 month=2 day=6 hour=9 minute=42 second=27/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2008 month=2 day=6 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

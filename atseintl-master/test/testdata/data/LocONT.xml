@@ -1,0 +1,20 @@
+<Loc>
+  <Area loc="ONT"
+        subarea="11"
+        area="1"
+        transtype="C"
+        nation="CA"
+        state="BC" />
+  <Position latdegrees=33   latminutes=56  latseconds=33
+            lngdegrees=-118 lngminutes=-24 lngseconds=-29/>
+  <ExpirationDate year=2004 month=6 day=23/>
+  <EffectiveDate  year=2004 month=6 day=23/>
+  <Indicators cityInd="t"
+              bufferZoneInd="f"
+              ruralarpind="f"
+              multitransind="f"
+              faresind="f"/>
+  <Misc dstgrp="1234"
+        description="Ontario, Ottawa - Canada"/>
+</Loc>
+

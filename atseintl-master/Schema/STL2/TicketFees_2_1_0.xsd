@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="http://stl.sabre.com/AirPricing/v2" version="2.1.0"
+    xmlns:msg="http://services.sabre.com/STL_MessageCommon/v02_01"
+    xmlns:ota2="http://opentravel.org/common/v02"
+    xmlns:ota2msg="http://opentravel.org/common/message/v02"
+    xmlns:otm="http://www.OpenTravel.org/ns/OTA2/AppInfo_v01_00"
+    xmlns:stl2="http://services.sabre.com/STL/v02"
+    xmlns:stlp="http://services.sabre.com/STL_Payload/v02_01"
+    xmlns:tktfee-0200="http://stl.sabre.com/AirPricing/v2" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    
+    <xsd:annotation>
+        <xsd:appinfo>
+            <otm:Library>
+                <otm:ProjectName>OB Ticket Fee.otp</otm:ProjectName>
+                <otm:LibraryName>TicketFees</otm:LibraryName>
+                <otm:LibraryVersion>2.0.0</otm:LibraryVersion>
+                <otm:SourceFile>/TicketFees_2_0_0.otm</otm:SourceFile>
+                <otm:CompilerVersion>3.1.rc3</otm:CompilerVersion>
+                <otm:CompileDate>2014-02-24T09:01:49.634-06:00</otm:CompileDate>
+            </otm:Library>
+        </xsd:appinfo>
+    </xsd:annotation>
+    
+    <xsd:import namespace="http://opentravel.org/common/message/v02" schemaLocation="built-ins/OTA2_Message_v2.0.0.xsd"/>
+    <xsd:import namespace="http://services.sabre.com/STL_Payload/v02_01" schemaLocation="built-ins/STL2_Payload_v02_01.xsd"/>
+    <xsd:import
+        namespace="http://services.sabre.com/STL_MessageCommon/v02_01" schemaLocation="built-ins/STL2_MsgCommon_v02_01.xsd"/>
+    <xsd:import namespace="http://opentravel.org/common/v02" schemaLocation="built-ins/OTA2_BuiltIns_v2.0.0.xsd"/>
+    <xsd:import namespace="http://services.sabre.com/STL/v02" schemaLocation="built-ins/STL2_BuiltIn_Model.xsd"/>
+    <xsd:import
+        namespace="http://www.OpenTravel.org/ns/OTA2/AppInfo_v01_00" schemaLocation="built-ins/OTA2_AppInfo_v1.0.0.xsd"/>
+    
+    <xsd:simpleType name="FareBasisCode">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">FareBasisCode</otm:OTA2Entity>
+                <otm:Example context="tktfee">F123</otm:Example>
+                <otm:Example context="pricing">GOODFARE</otm:Example>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="stl2:String_Tiny">
+            <xsd:minLength value="1"/>
+            <xsd:pattern value="[A-Z0-9]+(/[A-Z0-9]+)?"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="BankIdentityNumber">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">BankIdentityNumber</otm:OTA2Entity>
+                <otm:Example context="1">445566</otm:Example>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]{6}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="ActionCode">
+        <xsd:annotation>
+            <xsd:documentation source="Implementer">Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">ActionCode</otm:OTA2Entity>
+                <otm:Equivalent context="ca1">ActionCodeType</otm:Equivalent>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="5"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="AgentFunction">
+        <xsd:annotation>
+            <xsd:documentation source="Implementer">Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">AgentFunction</otm:OTA2Entity>
+                <otm:Equivalent context="ca1">AgentFunctionType</otm:Equivalent>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="3"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="LnIATA">
+        <xsd:annotation>
+            <xsd:documentation source="Implementer">Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">LnIATA</otm:OTA2Entity>
+                <otm:Equivalent context="ca1">LnIATAType</otm:Equivalent>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9A-F]{6,8}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="PartitionID">
+        <xsd:annotation>
+            <xsd:documentation source="Implementer">Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">PartitionID</otm:OTA2Entity>
+                <otm:Equivalent context="ca1">PartitionIDType</otm:Equivalent>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9A-Z]{2,4}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="TransactionID">
+        <xsd:annotation>
+            <xsd:documentation source="Implementer">Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">TransactionID</otm:OTA2Entity>
+                <otm:Equivalent context="ca1">TransactionIDType</otm:Equivalent>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="ServiceName">
+        <xsd:annotation>
+            <xsd:documentation source="Implementer">Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">ServiceName</otm:OTA2Entity>
+                <otm:Equivalent context="ca1">ServiceNameType</otm:Equivalent>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9a-zA-Z,]{1,8}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="SourceOfRequest">
+        <xsd:annotation>
+            <xsd:documentation source="Implementer">Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">SourceOfRequest</otm:OTA2Entity>
+                <otm:Equivalent context="ca1">SourceOfRequestType</otm:Equivalent>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Z0-9]{1,4}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="Agent">
+        <xsd:annotation>
+            <xsd:documentation source="Description">3 char for Airline PCC or 4 char for Subscriber PCC</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">Agent</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="stl2:Code_PseudoCity"/>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="TimeOfDay">
+        <xsd:annotation>
+            <xsd:documentation source="Description">Minutes past midnight 0- 1440</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">TimeOfDay</otm:OTA2Entity>
+                <otm:Example context="pricing">600</otm:Example>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:nonNegativeInteger"/>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="EnumMessageType">
+        <xsd:annotation>
+            <xsd:documentation source="Description">message type code</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="EnumerationClosed">EnumMessageType</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="General"/>
+            <xsd:enumeration value="Error"/>
+            <xsd:enumeration value="Diagnostic"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:complexType name="CarrierAndFare">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="ValueWithAttributes">CarrierAndFare</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ota2:Empty">
+                <xsd:attribute name="governingCarrier"
+                    type="stl2:Code_Airline" use="required"/>
+                <xsd:attribute name="fareBasisCode"
+                    type="tktfee-0200:FareBasisCode" use="required"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="FareBreakAssociation">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="ValueWithAttributes">FareBreakAssociation</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ota2:Empty">
+                <xsd:attribute name="travelSegmentOrderNumber"
+                    type="xsd:integer" use="optional"/>
+                <xsd:attribute name="sideTripOrderNum"
+                    type="xsd:positiveInteger" use="optional"/>
+                <xsd:attribute name="ticketDesignator"
+                    type="tktfee-0200:String_AllowEmpty" use="optional"/>
+                <xsd:attribute name="sideTripStartInd"
+                    type="xsd:boolean" use="optional"/>
+                <xsd:attribute name="sideTripEndInd" type="xsd:boolean" use="optional"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="BillingInformation">
+        <xsd:annotation>
+            <xsd:documentation source="Description">BILType   Billing Information
+
+          A20    Pseudo City Code
+          A22    AAA City
+          A70    Action Code
+          AA0    Agent Sine In
+          AD0    User Set Address
+          AE0    Partition ID
+          C00    Parent transaction ID (for sender: my transaction id, for receiver: my parent transaction id)
+          C01    Client transaction ID (The highest level client transaction id)
+          C20    Parent service name (for sender: my name, for receiver: my parent name)
+          C21    Business function (The highest level client service name)
+          S0R    Source of Request
+          Q02    User Branch
+          Q03    User Station
+
+       *  L00    (Deprecated - use C01) Client transaction ID</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="ValueWithAttributes">BillingInformation</otm:OTA2Entity>
+                <otm:Equivalent context="ca1">BILType</otm:Equivalent>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ota2:Empty">
+                <xsd:attribute name="pseudoCityCode"
+                    type="stl2:Code_PseudoCity" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">BIL/A20</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://chameleon.anonymous/ns}PseudoCityCodeType</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">A20</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="agentCity"
+                    type="stl2:Code_PseudoCity" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">BIL/A22</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://chameleon.anonymous/ns}PseudoCityCodeType</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">A22</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="actionCode"
+                    type="tktfee-0200:ActionCode" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">A70</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://chameleon.anonymous/ns}ActionCodeType</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">A70</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="agentSineIn"
+                    type="tktfee-0200:AgentFunction" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">AA0</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://chameleon.anonymous/ns}AgentFunctionType</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">AA0</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="userSetAddress"
+                    type="tktfee-0200:LnIATA" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">AD0</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://chameleon.anonymous/ns}LnIATAType</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">AD0</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="partitionID"
+                    type="tktfee-0200:PartitionID" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">AE0</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://chameleon.anonymous/ns}PartitionIDType</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">AE0</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="parentTransactionID"
+                    type="tktfee-0200:TransactionID" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">C00</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://chameleon.anonymous/ns}TransactionIDType</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">C00</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="clientTransactionID"
+                    type="tktfee-0200:TransactionID" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">C01</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://chameleon.anonymous/ns}TransactionIDType</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">C01</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="parentServiceName"
+                    type="tktfee-0200:ServiceName" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">C20</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://chameleon.anonymous/ns}ServiceNameType</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">C20</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="businessFunction"
+                    type="tktfee-0200:ServiceName" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">C21 highest level client service name</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://chameleon.anonymous/ns}ServiceNameType</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">C21</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="sourceOfRequest"
+                    type="tktfee-0200:SourceOfRequest" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">S0R</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://chameleon.anonymous/ns}SourceOfRequestType</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">S0R</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="userBranch" type="xsd:string" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">Q02</xsd:documentation>
+                        <xsd:documentation source="Implementer">Changed type from {http://www.w3.org/2001/XMLSchema}short.</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">Q02</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="userStation" type="xsd:string" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">Q03</xsd:documentation>
+                        <xsd:documentation source="Implementer">Changed type from {http://www.w3.org/2001/XMLSchema}short.</xsd:documentation>
+                        <xsd:documentation source="Implementer">Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</xsd:documentation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="ca1">Q03</otm:Equivalent>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="RequestOptions">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="ValueWithAttributes">RequestOptions</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ota2:Empty">
+                <xsd:attribute name="requestDate" type="xsd:date" use="required"/>
+                <xsd:attribute name="requestTimeOfDay"
+                    type="tktfee-0200:TimeOfDay" use="required"/>
+                <xsd:attribute name="validatingCarrier"
+                    type="stl2:Code_Airline" use="required"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="Flight">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="ValueWithAttributes">Flight</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ota2:Empty">
+                <xsd:attribute name="airline" type="stl2:Code_Airline" use="optional">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="STL2"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="departureDate" type="xsd:date" use="optional">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <otm:Equivalent context="STL2"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="departureTime"
+                    type="tktfee-0200:TimeOfDay" use="optional"/>
+                <xsd:attribute name="originAirport"
+                    type="stl2:Code_Airport" use="required"/>
+                <xsd:attribute name="destinationAirport"
+                    type="stl2:Code_Airport" use="required"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="Message">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="ValueWithAttributes">Message</otm:OTA2Entity>
+                <otm:Example context="pricing">diagnostic or error message here</otm:Example>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="stl2:String_Medium">
+                <xsd:attribute name="type"
+                    type="tktfee-0200:EnumMessageType" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation source="Description">Enum ERROR, GENERAL</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="code" type="xsd:positiveInteger" use="required"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+    <xsd:element name="FareBreakInformation" type="tktfee-0200:FareBreakInformation"/>
+    
+    <xsd:complexType name="FareBreakInformation">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">FareBreakInformation</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="10" minOccurs="0"
+                name="DifferentialHighClass" type="tktfee-0200:CarrierAndFare"/>
+            <xsd:element maxOccurs="24" minOccurs="1"
+                name="FareBreakAssociation" type="tktfee-0200:FareBreakAssociation"/>
+            <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint_Summary"/>
+        </xsd:sequence>
+        <xsd:attribute name="compOrderNum" type="xsd:positiveInteger" use="required">
+            <xsd:annotation>
+                <xsd:appinfo>
+                    <otm:Example context="tktfee">1</otm:Example>
+                </xsd:appinfo>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="governingCarrier" type="stl2:Code_Airline" use="required">
+            <xsd:annotation>
+                <xsd:appinfo>
+                    <otm:Example context="tktfee">AA</otm:Example>
+                </xsd:appinfo>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="fareBasisCode"
+            type="tktfee-0200:FareBasisCode" use="required">
+            <xsd:annotation>
+                <xsd:appinfo>
+                    <otm:Example context="tktfee">FAREK</otm:Example>
+                </xsd:appinfo>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:element name="Diagnostic" type="tktfee-0200:Diagnostic"/>
+    
+    <xsd:complexType name="Diagnostic">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">Diagnostic</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="2" minOccurs="0" ref="tktfee-0200:ForceRouting"/>
+            <xsd:element minOccurs="0" ref="tktfee-0200:RequestedDiagnostic"/>
+            <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint_Summary"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="ForceRouting" type="tktfee-0200:ForceRouting"/>
+    
+    <xsd:complexType name="ForceRouting">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">ForceRouting</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="value1" type="ota2:String_Tiny" use="required">
+            <xsd:annotation>
+                <xsd:documentation source="Description">value1:value2</xsd:documentation>
+                <xsd:appinfo>
+                    <otm:Example context="tktfee">1.2.3.4</otm:Example>
+                </xsd:appinfo>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="value2" type="ota2:String_Tiny" use="required">
+            <xsd:annotation>
+                <xsd:documentation source="Description">value1:value2</xsd:documentation>
+                <xsd:appinfo>
+                    <otm:Example context="tktfee">23456</otm:Example>
+                </xsd:appinfo>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:element name="PricedSolution" type="tktfee-0200:PricedSolution"/>
+    
+    <xsd:complexType name="PricedSolution">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">PricedSolution</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="99" minOccurs="1" ref="tktfee-0200:PassengerPaymentInfo"/>
+            <xsd:element maxOccurs="4" minOccurs="0" name="AccountCode" type="stl2:String_Tiny"/>
+            <xsd:element maxOccurs="4" minOccurs="0" name="CorpID" type="stl2:String_Tiny"/>
+            <xsd:element maxOccurs="24" minOccurs="1" ref="tktfee-0200:FareBreakInformation"/>
+            <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint_Summary"/>
+        </xsd:sequence>
+        <xsd:attribute name="objectID" type="xsd:integer" use="optional"/>
+        <xsd:attribute name="ticketingLocationOverride"
+            type="stl2:Code_City" use="optional"/>
+        <xsd:attribute name="passengerType"
+            type="ota2:Code_ATPCO_PassengerType" use="optional"/>
+        <xsd:attribute name="paymentCurrency"
+            type="ota2:Code_ISO_Currency" use="optional"/>
+        <xsd:attribute name="totalPriceAmount" type="ota2:Money" use="optional"/>
+    </xsd:complexType>
+    
+    <xsd:element name="TicketingFee" type="tktfee-0200:TicketingFee"/>
+    
+    <xsd:complexType name="TicketingFee">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">TicketingFee</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint_Summary"/>
+        </xsd:sequence>
+        <xsd:attribute name="typeCode" type="xsd:positiveInteger" use="required"/>
+        <xsd:attribute name="feeAmount" type="xsd:float" use="required"/>
+        <xsd:attribute name="binNumber"
+            type="tktfee-0200:BankIdentityNumber" use="required"/>
+        <xsd:attribute name="iataIndicators"
+            type="stl2:String_AlphaNumeric" use="required"/>
+        <xsd:attribute name="serviceFeePercentage"
+            type="ota2:Percentage" use="required"/>
+        <xsd:attribute name="maxAmount" type="ota2:Money" use="required">
+            <xsd:annotation>
+                <xsd:documentation source="Description">max amount if calculated by percentage</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="noChargeInd" type="xsd:boolean" use="optional"/>
+        <xsd:attribute name="showNoOBFeeInd" type="xsd:boolean" use="optional"/>
+    </xsd:complexType>
+    
+    <xsd:element name="TravelSegment" type="tktfee-0200:TravelSegment"/>
+    
+    <xsd:complexType name="TravelSegment">
+        <xsd:annotation>
+            <xsd:documentation source="Description">Flight, Fare Break Association, Ticket designator</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">TravelSegment</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="Flight" type="tktfee-0200:Flight"/>
+            <xsd:element minOccurs="0" ref="tktfee-0200:Arunk"/>
+            <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint_Summary"/>
+        </xsd:sequence>
+        <xsd:attribute name="segmentOrderNumber"
+            type="xsd:positiveInteger" use="required"/>
+        <xsd:attribute name="segmentType" type="stl2:String_One" use="required">
+            <xsd:annotation>
+                <xsd:documentation source="Description">A:air, O:open, K:arunk</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="stopOverInd" type="xsd:boolean" use="optional"/>
+    </xsd:complexType>
+    
+    <xsd:element name="RequestedDiagnostic" type="tktfee-0200:RequestedDiagnostic"/>
+    
+    <xsd:complexType name="RequestedDiagnostic">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">RequestedDiagnostic</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="9" minOccurs="0" name="Option" type="stl2:String_Tiny"/>
+        </xsd:sequence>
+        <xsd:attribute name="number" type="xsd:positiveInteger" use="required"/>
+    </xsd:complexType>
+    
+    <xsd:element name="PassengerOBFees" type="tktfee-0200:PassengerOBFees"/>
+    
+    <xsd:complexType name="PassengerOBFees">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">PassengerOBFees</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="1" ref="tktfee-0200:PassengerIdentity"/>
+            <xsd:element maxOccurs="50" minOccurs="0" ref="tktfee-0200:TicketingFee"/>
+        </xsd:sequence>
+        <xsd:attribute name="paymentCurrency"
+            type="ota2:Code_ISO_Currency" use="required"/>
+        <xsd:attribute name="totalPriceAmount" type="ota2:Money" use="optional"/>
+        <xsd:attribute name="totalAmountWithOBFee" type="ota2:Money" use="optional"/>
+        <xsd:attribute name="passengerTypeCode"
+            type="ota2:Code_ATPCO_PassengerType" use="required"/>
+        <xsd:attribute name="feeApplyInd" type="xsd:boolean" use="optional"/>
+    </xsd:complexType>
+    
+    <xsd:element name="Arunk" type="tktfee-0200:Arunk"/>
+    
+    <xsd:complexType name="Arunk">
+        <xsd:annotation>
+            <xsd:documentation source="Description">Surface Segment</xsd:documentation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">Arunk</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint_Summary"/>
+        </xsd:sequence>
+        <xsd:attribute name="originCity" type="stl2:Code_City" use="optional"/>
+        <xsd:attribute name="destinationCity" type="stl2:Code_City" use="optional"/>
+    </xsd:complexType>
+    
+    <xsd:element name="FormOfPayment" type="tktfee-0200:FormOfPayment"/>
+    
+    <xsd:complexType name="FormOfPayment">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">FormOfPayment</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint_Summary"/>
+        </xsd:sequence>
+        <xsd:attribute name="type" type="tktfee-0200:EnumFormOfPayment" use="required">
+            <xsd:annotation>
+                <xsd:documentation source="Description">BankIdentificationNumber, etc.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="identity" type="stl2:String_Tiny" use="optional">
+            <xsd:annotation>
+                <xsd:documentation source="Description">For BankIdentifyNumber this will be 6 digits</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="chargeAmount" type="ota2:Money" use="required"/>
+    </xsd:complexType>
+    
+    <xsd:element name="PassengerIdentity" type="tktfee-0200:PassengerIdentity"/>
+    
+    <xsd:complexType name="PassengerIdentity">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">PassengerIdentity</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint_Summary"/>
+        </xsd:sequence>
+        <xsd:attribute name="objectID" type="xsd:integer" use="optional"/>
+        <xsd:attribute name="pnrNameNumber" type="xsd:positiveInteger" use="optional"/>
+        <xsd:attribute name="surNameNumber" type="xsd:positiveInteger" use="optional"/>
+        <xsd:attribute name="firstNameNumber" type="xsd:positiveInteger" use="optional"/>
+    </xsd:complexType>
+    
+    <xsd:element name="PassengerPaymentInfo" type="tktfee-0200:PassengerPaymentInfo"/>
+    
+    <xsd:complexType name="PassengerPaymentInfo">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">PassengerPaymentInfo</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="2" minOccurs="1" ref="tktfee-0200:FormOfPayment"/>
+            <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint_Summary"/>
+        </xsd:sequence>
+        <xsd:attribute name="passengerRefObjectID" type="xsd:integer" use="required"/>
+    </xsd:complexType>
+    
+    <xsd:element name="XMLDiagnostic" type="tktfee-0200:XMLDiagnostic"/>
+    
+    <xsd:complexType name="XMLDiagnostic">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="CoreObject">XMLDiagnostic</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="Any" type="stl2:String_Long"/>
+            <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint_Summary"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:simpleType name="EnumFormOfPayment">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="EnumerationClosed">EnumFormOfPayment</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="card"/>
+            <xsd:enumeration value="cash"/>
+            <xsd:enumeration value="check"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="String_AllowEmpty">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Simple">String_AllowEmpty</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="64"/>
+            <xsd:pattern value="[A-Z0-9]{0,64}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:element name="OBTicketingFeeRQ"
+        substitutionGroup="stlp:STL_Request_Payload" type="tktfee-0200:OBTicketingFee_RQ"/>
+    
+    <xsd:complexType name="OBTicketingFee_RQ">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Operation">OBTicketingFees_OBTicketingFee</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="stlp:STL_Request_Payload">
+                <xsd:sequence>
+                    <xsd:element minOccurs="1" name="Agent" type="tktfee-0200:Agent"/>
+                    <xsd:element minOccurs="0" ref="tktfee-0200:Diagnostic"/>
+                    <xsd:element minOccurs="1" name="BillingInfomation" type="tktfee-0200:BillingInformation"/>
+                    <xsd:element minOccurs="1" name="RequestOptions" type="tktfee-0200:RequestOptions">
+                        <xsd:annotation>
+                            <xsd:documentation source="Description">processing options</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element maxOccurs="24" minOccurs="1" ref="tktfee-0200:TravelSegment"/>
+                    <xsd:element maxOccurs="99" minOccurs="1" ref="tktfee-0200:PricedSolution"/>
+                    <xsd:element maxOccurs="9" minOccurs="1" ref="tktfee-0200:PassengerIdentity"/>
+                    <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:element name="OBTicketingFeeRS"
+        substitutionGroup="stlp:STL_Response_Payload" type="tktfee-0200:OBTicketingFee_RS"/>
+    
+    <xsd:complexType name="OBTicketingFee_RS">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <otm:OTA2Entity type="Operation">OBTicketingFees_OBTicketingFee</otm:OTA2Entity>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="stlp:STL_Response_Payload">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0"
+                        name="Message" type="tktfee-0200:Message"/>
+                    <xsd:element maxOccurs="99" minOccurs="0" ref="tktfee-0200:PassengerOBFees"/>
+                    <xsd:element minOccurs="0" ref="tktfee-0200:XMLDiagnostic">
+                        <xsd:annotation>
+                            <xsd:documentation source="Description">For diagnostic 196, 197, XML request/response</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" ref="ota2msg:ExtensionPoint"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+</xsd:schema>

@@ -1,0 +1,10 @@
+name: RuleItemInfo
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: vendor:                 VendorCode  vendor()
+  scalar: itemNo:                 uint32_t    itemNo()
+  scalar: textTblItemNo:          uint32_t    textTblItemNo()
+  scalar: overrideDateTblItemNo:  uint32_t    overrideDateTblItemNo()
+endsection

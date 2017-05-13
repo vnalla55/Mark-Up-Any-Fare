@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+//============================================================================
+//  Copyright Sabre 2010
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+//============================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:include schemaLocation="CommonTypes.xsd"/>
+	<xs:element name="CurrencyConversionResponse">
+		<xs:annotation>
+			<xs:documentation>
+                Currency Conversion Response
+                MSG - Display Messages
+           </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MSG" type="MSGType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="MSGType">
+		<xs:annotation>
+			<xs:documentation>
+                MSGType - Message Information
+					N06 - Message Type
+					Q0K - Message Fail Code
+					S18 - Message Text
+            </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="N06" type="AlphaNumCharType" use="required"/>
+		<xs:attribute name="Q0K" type="xs:short" use="optional"/>
+		<xs:attribute name="S18" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,11 @@
+name: DateTime
+namespace: tse
+package: Common
+constructor: year(), month(), day(), hours(), minutes(), seconds()
+
+scalar: year:   int year()
+scalar: month:  int month()
+scalar: day:    int day()
+scalar: hour:   int hours()
+scalar: minute: int minutes()
+scalar: second: int seconds()

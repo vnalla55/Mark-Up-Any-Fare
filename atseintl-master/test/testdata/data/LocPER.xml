@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="PER"
+          subarea="34"
+          area="3"
+          transtype="P"
+          nation="AU"
+          state="AUWT"
+     />
+     <Position
+          latdegrees=31
+          latminutes=55
+          latseconds=54
+          lngdegrees=115
+          lngminutes=58
+          lngseconds=6
+          lathemisphere="S"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="AU04"
+          description="PERTH"
+     />
+</Loc>

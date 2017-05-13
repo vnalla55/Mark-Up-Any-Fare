@@ -1,0 +1,22 @@
+#! /bin/csh
+
+# List vob objects checked out to me
+
+foreach VOB ( crmdev ehtl projdoc )
+	cd /vobs/$VOB
+
+	echo 
+	echo Checking for checked out objects in $VOB ...
+	echo 		This process may take some time
+	echo 
+
+	if ( "$1" == "" ) then
+		cleartool lscheckout -all -me
+	else
+		cleartool lscheckout -all -user $1
+	endif
+end
+
+echo 
+echo Checking done
+

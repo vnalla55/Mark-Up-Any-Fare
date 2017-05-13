@@ -1,0 +1,26 @@
+name: ZoneInfo
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalarWithCompare: vendor:    VendorCode  vendor()
+  scalarWithCompare: zone:      Zone        zone()
+  scalarWithCompare: zoneType:  Indicator   zoneType()
+endsection
+
+# TODO
+
+section: ZoneSeg
+  scalar: setNo:                int32_t ::setNo
+  scalar: locType:              int zoneSeg.locType()
+  scalar: loc:                  int zoneSeg.loc()
+  scalar: inclExclInd:          int zoneSeg.inclExclInd()
+  scalar: directionalQualifier: int zoneSeg.directionalQualifier()
+endsection
+
+NameString: "ZoneInfo_"
+NameField:  vendor()
+NameString: "_"
+NameField:  zone()
+NameString: "_"
+NameField:  zoneType()

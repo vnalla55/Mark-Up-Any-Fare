@@ -1,0 +1,33 @@
+<TaxCodeReg>
+   <ExpireDate       year=2004 month=6 day=23 hour=13 minute=0 second=0/>
+   <EffectiveDate    year=2004 month=6 day=23 hour=15 minute=0 second=0/>
+   <DiscountDate     year=2004 month=6 day=22 hour=14 minute=30 second=0/>
+   <FirstTvlDate     year=2004 month=6 day=22 hour=12 minute=30 second=0/>
+   <LastTvlDate      year=2004 month=6 day=22 hour=11 minute=30 second=0/>
+   <LockDate         year=2004 month=6 day=22 hour=10 minute=30 second=0/>
+
+   <Loc1 type="N" loccode="US" exclInd="Y" appl="N"/>
+   <Loc2 type="N" loccode="US" exclInd="Y" appl="N"/>
+
+   <Amounts tax=10.25
+            min=10.0
+            max=11.0
+            plusup=1.5
+            lowRange=1.0
+            highRange=22.0
+            rangeIncrement=2.0 />
+
+   <Misc 
+         sequenceNumber=1
+         taxCode="XV"
+         specialProcessNo=41
+         createDate=0
+         versionDate=0
+	 posExclInd="N"
+         posLocType="NATION"
+         posLoc="" 
+         poiExclInd="N"
+         poiLocType="NATION"
+         poiLoc="" />
+</TaxCodeReg>
+

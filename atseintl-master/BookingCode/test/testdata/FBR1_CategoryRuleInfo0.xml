@@ -1,0 +1,12 @@
+<CategoryRuleInfo>
+     <Attributes
+          vendorCode="ATP"
+          tariffNumber=878
+          carrierCode="JJ"
+          ruleNumber="PSA1"
+          categoryNumber=16
+          sequenceNumber=1000000
+     />
+     <Location1 file="/vobs/atseintl/BookingCode/test/testdata/FBR1_LocKey0.xml"/>
+     <Location2 file="/vobs/atseintl/BookingCode/test/testdata/FBR1_LocKey1.xml"/>
+</CategoryRuleInfo>

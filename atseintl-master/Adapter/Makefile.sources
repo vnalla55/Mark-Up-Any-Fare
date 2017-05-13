@@ -1,0 +1,11 @@
+CACHE_ADAPTER_SOURCES := \
+    CacheNotifyAdapter.cpp \
+    CacheNotifyControl.cpp
+
+DISKCACHE_ADAPTER_SOURCES := \
+    DiskCacheAdapter.cpp
+
+SERVER_SOCKET_ADAPTER_SOURCES := \
+    BigIP.cpp \
+    BigIPClient.cpp \
+    ServerSocketAdapter.cpp

@@ -1,0 +1,44 @@
+name: TPMExclusion
+namespace: tse
+package: DBAccess
+
+section: KeyFields
+  scalarWithCompare: carrier: CarrierCode carrier()
+  scalarWithCompare: seqNo:   uint32_t    seqNo()
+endsection
+
+section: validData
+  scalar: userApplType:         Indicator       userApplType()
+  scalar: userAppl:             UserApplCode    userAppl()
+  scalar: notApplToYY:          Indicator       notApplToYY()
+  scalar: onlineSrvOnly:        Indicator       onlineSrvOnly()
+  scalar: directionality:       Directionality  directionality()
+  scalar: loc1type:             LocType         loc1type()
+  scalar: loc1:                 LocCode         loc1()
+  scalar: loc2type:             LocType         loc2type()
+  scalar: loc2:                 LocCode         loc2()
+  scalar: globalDir:            GlobalDirection globalDir()
+  scalar: sec1Appl:             Indicator       sec1Appl()
+  scalar: sec1Loc1Type:         LocType         sec1Loc1Type()
+  scalar: sec1Loc1:             LocCode         sec1Loc1()
+  scalar: sec1Loc2Type:         LocType         sec1Loc2Type()
+  scalar: sec1Loc2:             LocCode         sec1Loc2()
+  scalar: sec2Appl:             Indicator       sec2Appl()
+  scalar: sec2Loc1Type:         LocType         sec2Loc1Type()
+  scalar: sec2Loc1:             LocCode         sec2Loc1()
+  scalar: sec2Loc2Type:         LocType         sec2Loc2Type()
+  scalar: sec2Loc2:             LocCode         sec2Loc2()
+  scalar: viaPointRest:         Indicator       viaPointRest()
+  scalar: consecMustBeOnGovCxr: Indicator       consecMustBeOnGovCxr()
+  scalar: surfacePermitted:     Indicator       surfacePermitted()
+endsection
+
+factoryAggregate: CreateDate:     DateTime createDate()
+factoryAggregate: ExpireDate:     DateTime expireDate()
+factoryAggregate: EffectiveDate:  DateTime effDate()
+factoryAggregate: DiscDate:       DateTime discDate()
+
+NameString: "TPMExclusion_"
+NameField:  carrier()
+NameString: "_"
+NameField:  seqNo()

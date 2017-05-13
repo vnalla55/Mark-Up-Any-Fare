@@ -1,0 +1,33 @@
+name: MileageRoute
+namespace: tse
+package: Routing
+
+section: MileageData
+  scalarWithCompare: mpm:                         uint16_t        mileageRouteMPM()
+  scalarWithCompare: southAtlanticExclusion:      bool            southAtlanticExclusion()
+  scalarWithCompare: mileageRouteTPM:             uint16_t        mileageRouteTPM()
+  scalarWithCompare: globalDirection:             GlobalDirection globalDirection()
+  scalarWithCompare: tpd:                         uint16_t        tpd()
+  scalarWithCompare: ems:                         uint16_t        ems()
+  scalarWithCompare: mileageEqualizationApplies:  bool            mileageEqualizationApplies()
+  scalarWithCompare: governingCarrier:            CarrierCode     governingCarrier()
+  scalarWithCompare: stopoverCount:               uint16_t        stopoverCount()
+  scalarWithCompare: hipExempt:                   bool            hipExempt()
+  scalarWithCompare: psrApplies:                  bool            psrApplies()
+  scalarWithCompare: psrMayApply:                 bool            psrMayApply()
+  scalarWithCompare: psrSetNumber:                uint16_t        psrSetNumber()
+  scalarWithCompare: geoLocMatched:               bool            geoLocMatched()
+  scalarWithCompare: isSouthAtlanticException:    bool            southAtlanticExceptionApplies()
+  scalarWithCompare: isYYFare:                    bool            isYYFare()
+  scalarWithCompare: crs:                         UserApplCode    crs()
+  scalarWithCompare: multiHost:                   UserApplCode    multiHost()
+endsection
+
+factoryAggregate: TicketingDate:  DateTime ticketingDT()
+factoryAggregate: TravelDate:     DateTime travelDT()
+
+#pointerAggregate: DataHandle         DataHandle        dataHandle()
+#pointerAggregate: TpdPsr             TpdPsr            applicablePSR()
+#pointerAggregate: GDPrompt           GDPrompt          gdPrompt()
+
+factoryAggregate: MileageRouteItems: std::vector<MileageRouteItem> mileageRouteItems()

@@ -1,0 +1,3 @@
+echo Doing clearmake -u clean all
+clearmake -u clean all
+

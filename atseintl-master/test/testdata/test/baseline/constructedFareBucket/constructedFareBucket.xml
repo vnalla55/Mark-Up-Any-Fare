@@ -1,0 +1,11 @@
+<ConstructedFareBucket>
+     <SpecifiedFare file="constructedFareBucket/constructedFareBucket_FareInfo0.xml"/>
+     <OrigAddon file="constructedFareBucket/constructedFareBucket_AddonFareInfo0.xml"/>
+     <DestAddon file="constructedFareBucket/constructedFareBucket_AddonFareInfo0.xml"/>
+     <Misc
+          gateway1="LAX"
+          gateway2="LON"
+          isDoubleEnded="f"
+          oneWayAmount=250.55
+     />
+</ConstructedFareBucket>

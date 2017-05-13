@@ -1,0 +1,29 @@
+name: ConstructedFareBucket
+namespace: tse
+
+factoryAggregate: SpecifiedFare:  Fare          specifiedFare()
+factoryAggregate: OrigAddon:      AddonFareInfo origAddon()
+factoryAggregate: DestAddon:      AddonFareInfo destAddon()
+
+section: Misc
+  scalar: gateway1:       Indicator gateway1()
+  scalar: gateway2:       Indicator gateway2()
+  scalar: isDoubleEnded:  LocCode   isDoubleEnded()
+  scalar: oneWayAmount:   LocCode   oneWayAmount()
+endsection
+
+initLines
+  item->specifiedFare() = 0;
+endInitLines
+
+postInitLines
+  if (item->specifiedFare() == 0)
+  {
+    std::cout << "Warning! ConstructedFareBucket::specifiedFare is null!" << std::endl;
+  }
+  else
+  {
+    item->market1() = item->specifiedFare()->_market1;
+    item->market2() = item->specifiedFare()->_market2;
+  }
+endPostInitLines

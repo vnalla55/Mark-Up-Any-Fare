@@ -1,0 +1,72 @@
+<TaxCodeReg>
+   <ExpireDate       year=2004 month=6 day=23 hour=13 minute=0 second=0/>
+   <EffectiveDate    year=2004 month=6 day=23 hour=15 minute=0 second=0/>
+   <DiscountDate     year=2004 month=6 day=22 hour=14 minute=30 second=0/>
+   <FirstTvlDate     year=2004 month=6 day=22 hour=12 minute=30 second=0/>
+   <LastTvlDate      year=2004 month=6 day=22 hour=11 minute=30 second=0/>
+   <LockDate         year=2004 month=6 day=22 hour=10 minute=30 second=0/>
+
+   <Loc1 type="N" loccode="US" exclInd="Y" appl="N"/>
+   <Loc2 type="N" loccode="US" exclInd="Y" appl="N"/>
+
+   <RestrictionFareClass value = "A" />
+   <RestrictionFareClass value = "P" />
+   <RestrictionFareClass value = "R" />
+   <RestrictionFareClass value = "Z" />
+   <RestrictionFareClass value = "*" />
+   <RestrictionFareClass value = "R" />
+   <RestrictionFareClass value = "A" />
+   <RestrictionFareClass value = "R" />
+   <RestrictionFareClass value = "P" />
+   <RestrictionFareClass value = "A" />
+   <RestrictionFareClass value = "R" />
+   <RestrictionFareClass value = "Z" />
+   <RestrictionFareClass value = "P" />
+   <RestrictionFareClass value = "P" />
+   <RestrictionFareClass value = "R" />
+   <RestrictionFareClass value = "R" />
+   <RestrictionFareClass value = "A" />
+   <RestrictionFareClass value = "P" />
+   
+   <RestrictionValidationCxr value = "9W" />
+   <RestrictionValidationCxr value = "AC" />
+   <RestrictionValidationCxr value = "AC" />
+   <RestrictionValidationCxr value = "AC" />
+   <RestrictionValidationCxr value = "AF" />
+   <RestrictionValidationCxr value = "AF" />
+   <RestrictionValidationCxr value = "CX" />
+   <RestrictionValidationCxr value = "CX" />
+   <RestrictionValidationCxr value = "CY" />
+   <RestrictionValidationCxr value = "EI" />
+   <RestrictionValidationCxr value = "JP" />
+   <RestrictionValidationCxr value = "ZU" />
+   <RestrictionValidationCxr value = "ZU" />
+   
+   <Amounts tax=10.25
+            min=10.0
+            max=11.0
+            plusup=1.5
+            lowRange=1.0
+            highRange=22.0
+            rangeIncrement=2.0 />
+
+   <Misc 
+         exempequipExclInd="N"
+	 sequenceNumber=1
+         taxCode="XV"
+         specialProcessNo=41
+         createDate=0
+         versionDate=0
+
+	 discPercent=0
+	 freeTktexempt="N"
+	 idTvlexempt="Y"
+
+	 posExclInd="N"
+         posLocType="NATION"
+         posLoc="DE" 
+         poiExclInd="N"
+         poiLocType="NATION"
+         poiLoc="GB" />
+</TaxCodeReg>
+

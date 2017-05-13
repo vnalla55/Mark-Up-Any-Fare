@@ -1,0 +1,14 @@
+<PricingUnit> 
+   <FareUsage file="testdata/FareUsage0.xml" />
+   <AirSeg file="testdata/AirSegDFWJFK.xml" />
+   <AirSeg file="testdata/AirSegJFKDFW.xml" />
+  
+        <Misc puType = "ROUNDTRIP"	
+	puFareType= "SP"   
+        totalNUCAmount = "100"
+	geoTravelType = "Domestic"
+	isSideTripPU = "f"
+	hasSideTrip = "f"
+        />
+</PricingUnit>
+

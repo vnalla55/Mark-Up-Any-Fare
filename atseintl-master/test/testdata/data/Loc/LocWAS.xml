@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="WAS"
+          city=""
+          subarea="11"
+          area="1"
+          transtype=" "
+          nation="US"
+          state="USDC"
+     />
+     <Position
+          latdegrees=38
+          latminutes=53
+          latseconds=48
+          lngdegrees=77
+          lngminutes=37
+          lngseconds=20
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2009 month=11 day=18 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="US01"
+          description="WASHINGTON"
+     />
+</Loc>

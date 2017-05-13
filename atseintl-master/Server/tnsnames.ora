@@ -1,0 +1,258 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+
+;; Developement Oracle cluster servicenames
+
+FUNCD_FQ =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhld11-scan)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCD_FQ)
+      (SERVER = SHARED)
+    )
+  )
+
+FUNCD_HIS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhld11-vip)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCD_HIS)
+      (SERVER = SHARED)
+    )
+  )
+
+FUNCD_PRC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhld11-vip)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCD_PRC)
+      (SERVER = SHARED)
+    )
+  )
+
+FUNCD_SHP =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhld11-scan)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCD_SHP)
+      (SERVER = SHARED)
+    )
+  )
+
+;; Integration Oracle cluster servicenames
+
+FUNCI1_FQ =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli01-vip)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli02-vip)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCI1_FQ)
+      (SERVER = SHARED)
+    )
+  )
+FUNCI2_FQ =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = sachli03-vip)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = sachli04-vip)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCI2_FQ)
+      (SERVER = SHARED)
+    )
+  )
+
+FUNCI1_HIS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCI1_HIS)
+      (SERVER = SHARED)
+    )
+  )
+FUNCI2_HIS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = sachli03-vip)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = sachli04-vip)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCI2_HIS)
+      (SERVER = SHARED)
+    )
+  )
+
+FUNCIA_HIS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_HIS)(SERVER = SHARED))
+  )
+
+FUNCI1_PRC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCI1_PRC)
+      (SERVER = SHARED)
+    )
+  )
+FUNCI2_PRC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = sachli03-vip)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = sachli04-vip)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCI2_PRC)
+      (SERVER = SHARED)
+    )
+  )
+FUNCIA_PRC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli01-vip)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli02-vip)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCIA_PRC)
+      (SERVER = SHARED)
+    )
+  )
+
+FUNCI1_SHP =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli01-vip)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli02-vip)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCI1_SHP)
+      (SERVER = SHARED)
+    )
+  )
+FUNCI2_SHP =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = sachli03-vip)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = sachli04-vip)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = FUNCI2_SHP)
+      (SERVER = SHARED)
+    )
+  )
+
+;; Certification Oracle Cluster Service names
+
+FUNCC1_FQ =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc03-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc04-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=
+           (SERVICE_NAME=FUNCC1_FQ)
+           (SERVER=shared))
+    )
+FUNCC2_FQ =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc01-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc02-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=
+           (SERVICE_NAME=FUNCC2_FQ)
+           (SERVER=shared))
+    )
+FUNCC1_HIS =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc03-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc04-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=
+           (SERVICE_NAME=FUNCC1_HIS)
+           (SERVER=shared))
+    )
+FUNCC2_HIS =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc01-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc02-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=
+           (SERVICE_NAME=FUNCC2_HIS)
+           (SERVER=shared))
+    )
+FUNCC1_PRC =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc03-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc04-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=
+           (SERVICE_NAME=FUNCC1_PRC)
+           (SERVER=shared))
+    )
+FUNCC2_PRC =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc01-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc02-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=
+           (SERVICE_NAME=FUNCC2_PRC)
+           (SERVER=shared))
+    )
+FUNCC1_SHP =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc03-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc04-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=
+           (SERVICE_NAME=FUNCC1_SHP)
+           (SERVER=shared))
+    )
+FUNCC2_SHP =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc01-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc02-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=
+           (SERVICE_NAME=FUNCC2_SHP)
+           (SERVER=shared))
+    )
+
+FUNC_AU_HIS =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc-cdc03.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc-cdc03.sabre.com) (PORT=1521))
+      (CONNECT_DATA=
+           (SERVICE_NAME=FUNCC9)
+           (SERVER=shared))
+    )

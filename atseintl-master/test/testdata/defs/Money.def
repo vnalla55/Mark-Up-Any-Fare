@@ -1,0 +1,9 @@
+name: Money
+namespace: tse
+package: Common
+constructor: NUC
+
+section: Attributes
+  scalarWithCompare: value: MoneyAmount   value()
+  scalarWithCompare: code:  CurrencyCode  setCode
+endsection

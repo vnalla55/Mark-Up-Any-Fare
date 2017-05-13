@@ -1,0 +1,43 @@
+<AirSeg>
+     <DepartureDate year=2009 month=3 day=1 hour=8 minute=0 second=0/>
+     <ArrivalDate year=2009 month=3 day=1 hour=12 minute=25 second=0/>
+     <BookingDate year=2009 month=2 day=16 hour=11 minute=17 second=0/>
+     <ClassOfService file="testdata/PC1/COS_A-1.xml"/>
+     <ClassOfService file="testdata/PC1/COS_B-2.xml"/>
+     <ClassOfService file="testdata/PC1/COS_J-4.xml"/>
+     <ClassOfService file="testdata/PC1/COS_K-5.xml"/>
+     <ClassOfService file="testdata/PC1/COS_Z-7.xml"/>
+     <ClassOfService file="testdata/PC1/COS_Y-8.xml"/>
+     <SegmentInfo
+          pnrSegment=2
+          segmentOrder=2
+          stopOver="t"
+          forcedStopOver="F"
+          forcedConx="F"
+          geoTravelType="International"
+          origAirport="DXB"
+          boardMultiCity="DXB"
+          destAirport="CDG"
+          offMultiCity="PAR"
+     />
+     <FlightInfo
+          carrier="EK"
+          marketingFlightNumber=73
+          operatingFlightNumber=73
+          equipmentType="77W"
+     />
+     <Origin file="testdata/PC1/Loc_DXB.xml"/>
+     <Destination file="testdata/PC1/Loc_CDG.xml"/>
+     <Misc
+          bookedCabin="5"
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode=""
+          bookingCode="C"
+          furthestPoint="f"
+          considerOnlyCabin=""
+          forcedFareBrk="F"
+          forcedNoFareBrk="F"
+          forcedSideTrip="F"
+     />
+</AirSeg>

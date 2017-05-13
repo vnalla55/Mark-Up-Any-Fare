@@ -1,0 +1,35 @@
+<ZoneInfo>
+     <Attributes
+          vendor="SABR"
+          zone="0001900"
+          zoneType="M"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="C"
+          loc="MIA"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="C"
+          loc="NYC"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="C"
+          loc="DFW"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="C"
+          loc="CHI"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+</ZoneInfo>

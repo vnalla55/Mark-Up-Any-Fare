@@ -1,0 +1,1 @@
+../scons/scripts/set_paths.sh

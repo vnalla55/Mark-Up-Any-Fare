@@ -1,0 +1,11 @@
+<CombinabilityRuleInfo>
+
+   <dbAttributes vendorCode="ATP"
+                 carrier="AA"
+                 tariffNumber=6
+                 ruleNumber="0601">
+        <Date year=2004 month=6 day=25 hour=12 minute=0 second=0/>
+   </dbAttributes>
+
+</CombinabilityRuleInfo>
+

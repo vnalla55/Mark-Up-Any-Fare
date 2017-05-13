@@ -1,0 +1,19 @@
+<Currency>
+     <expireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <effDate year=2007 month=12 day=24 hour=0 minute=0 second=0/>
+     <discDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <createDate year=2007 month=12 day=24 hour=13 minute=51 second=48/>
+     <Attributes
+          cur="ARS"
+          domRoundingFactor=-1
+          roundingFactorNoDec=0
+          noDec=2
+          curNo=32
+          curName="PESO"
+          nucRoundingProcessNo=""
+          controllingEntityDesc="ARGENTINA"
+          taxOverrideRoundingUnitNoDec=1
+          taxOverrideRoundingUnit=0.1
+          taxOverrideRoundingRule=2
+     />
+</Currency>

@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+import os
+import pytools
+
+Import('env')
+env.script_reading_msg()
+
+CURRENT_PATH = 'testroot/bld'
+
+startdir = os.path.join(env.absroot, CURRENT_PATH)
+scripts_to_run = []
+for directory, subdirs, files in os.walk(startdir):
+    if directory != startdir:
+        script = os.path.join(directory, 'SConscript')
+        if os.path.exists(script):
+            relative_script = pytools.subtract_paths(script, startdir)
+            # if you call SConscript() with absolute paths, variant dir won't work
+            scripts_to_run.append(relative_script)
+
+for sc in sorted(scripts_to_run):
+    SConscript(sc, exports='env')
+

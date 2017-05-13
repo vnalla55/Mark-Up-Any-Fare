@@ -1,0 +1,18 @@
+name: SvcFeesSecurityInfo
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: vendor:           VendorCode      vendor()
+  scalar: itemNo:           int             itemNo()
+  scalar: seqNo:            int             seqNo()
+  scalar: travelAgencyInd:  Indicator       travelAgencyInd()
+  scalar: carrierGdsCode:   CarrierCode     carrierGdsCode()
+  scalar: dutyFunctionCode: AgencyDutyCode  dutyFunctionCode()
+  scalar: viewBookTktInd:   Indicator       viewBookTktInd()
+endsection
+
+factoryAggregate: Loc:            LocKey    loc()
+factoryAggregate: Code:           LocKey    code()
+factoryAggregate: CreateDate:     DateTime  createDate()
+factoryAggregate: ExpirationDate: DateTime  expireDate()

@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="ALT"
+          city=""
+          subarea="14"
+          area="1"
+          transtype="P"
+          nation="BR"
+          state=""
+     />
+     <Position
+          latdegrees=1
+          latminutes=56
+          latseconds=20
+          lngdegrees=54
+          lngminutes=44
+          lngseconds=50
+          lathemisphere="S"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2008 month=6 day=23 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="BR1A"
+          description="ALENQUER"
+     />
+</Loc>

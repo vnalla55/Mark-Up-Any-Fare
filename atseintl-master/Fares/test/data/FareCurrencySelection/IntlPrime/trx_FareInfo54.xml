@@ -1,0 +1,25 @@
+<FareInfo>
+     <EffectiveDate year=2004 month=4 day=6 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Fare
+          fareAmount=32445
+          originalFareAmount=32445
+          noDec=0
+          fareTariff=4
+          currency="INR"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="BA"
+          fareClass="HRCASOW"
+          market1LocCode="BOM"
+          market2LocCode="LON"
+          footnote1="6U"
+          footnote2=""
+          owrt="3"
+          ruleNumber="3341"
+          routingNumber="0000"
+          globalDirection="EH"
+          directionality="FROM"
+     />
+</FareInfo>

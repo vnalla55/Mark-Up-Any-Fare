@@ -1,0 +1,14 @@
+<PricingUnit>
+     <AirSeg file="pricingUnit/pricingUnit_AirSeg0.xml"/>
+     <FareUsage file="pricingUnit/pricingUnit_FareUsage0.xml"/>
+     <Misc
+          puType="OPENJAW"
+          puSubType="ORIG_OPENJAW"
+          puFareType="SP"
+          geoTravelType="International"
+          isSideTripPU="t"
+          hasSideTrip="t"
+          sameNationOJ="t"
+          totalNUCAmount=100
+     />
+</PricingUnit>

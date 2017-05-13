@@ -1,0 +1,9 @@
+<PaxTypeFareRuleData>
+     <CategoryRuleInfo file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_CategoryRuleInfo13.xml"/>
+     <CategoryRuleItemInfo file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_CategoryRuleItemInfo10.xml"/>
+     <RuleItemInfo file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_RuleItemInfo10.xml"/>
+     <PaxTypeFare file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_PaxTypeFare0.xml"/>
+     <Attributes
+          isLocationSwapped="f"
+     />
+</PaxTypeFareRuleData>

@@ -1,0 +1,20 @@
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+TINYXML_SOURCES = [
+    'tinystr.cpp',
+    'tinyxml.cpp',
+    'tinyxmlerror.cpp',
+    'tinyxmlparser.cpp'
+]
+
+ENV = dict(
+    CPPDEFINES = ['TIXML_USE_STL']
+)
+
+s = env.scout(ENV)
+s.library('TinyXML', TINYXML_SOURCES)
+s.werror = False
+s.build()

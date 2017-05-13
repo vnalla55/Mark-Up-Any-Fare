@@ -1,0 +1,46 @@
+
+echo "====================================================================="
+echo "Help for ct_X commands"
+echo "====================================================================="
+
+echo " "
+echo "============ Check in / out vob objects"
+echo "ct_co <vob objects>         Checkout vob objects"
+echo "ct_ci <vob objects>         Checkin vob objects"
+echo "ct_xco <vob objects>        Cancel checkout of vob objects"
+
+echo " "
+echo "============ List differences / versions"
+echo "ct_diff <vob objects>       Show differences current / prev version"
+echo "ct_ls <vob elements>        List version info for vob elements"
+echo "ct_chk                      List vob objects checked out to me"
+
+echo " "
+echo "============ Create / move / rename / remove vob objects"
+echo "ct_dir <dir names>          Make vob directories"
+echo "ct_el <view private files>  Convert view private files to vob elements"
+echo "ct_mv <vob elements> <dest element or dir>"
+echo "                            Move vob elements"
+echo "ct_rm <vob elements>        Remove vob elements"
+
+echo " "
+echo "============ Copy / link" 
+echo "ct_cp <derived obejcts> <dest object or dir>"
+echo "                            Copy derived objects"
+echo "ct_ln <vob elements> <dest element or dir>"
+echo "                            Create symbolic links"
+echo "ct_add                      Add a link to a vob element in another view"
+echo "    (use ct_fullname to get full source name first)"
+
+echo " "
+echo "ct_clean                    Report vob objects checked out too long"
+echo "                            Old derived objects"
+echo "                            Old view private files"
+echo "   
+
+echo "============ Make clean" 
+echo "ct_make_clean               Will compile everything in the makefile."
+echo "                            Will not wink-in files. Does clearmake -u clean all"
+echo " "
+
+

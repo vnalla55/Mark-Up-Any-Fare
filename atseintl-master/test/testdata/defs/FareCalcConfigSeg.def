@@ -1,0 +1,8 @@
+name: FareCalcConfigSeg
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: marketLoc:  LocCode marketLoc()
+  scalar: displayLoc: LocCode displayLoc()
+endsection

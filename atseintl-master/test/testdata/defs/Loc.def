@@ -1,0 +1,44 @@
+name: Loc
+namespace: tse
+package: DBAccess
+
+section: Area
+  scalarWithCompare:  loc:        LocCode         loc()
+  scalar:             city:       LocCode         city()
+  scalarWithCompare:  subarea:    IATASubAreaCode subarea()
+  scalarWithCompare:  area:       IATAAreaCode    area()
+  scalarWithCompare:  transtype:  Indicator       transtype()
+  scalarWithCompare:  nation:     NationCode      nation()
+  scalarWithCompare:  state:      StateCode       state()
+endsection
+
+section: Position
+  scalar: latdegrees: LatLong latdeg()
+  scalar: latminutes: LatLong latmin()
+  scalar: latseconds: LatLong latsec()
+  scalar: lngdegrees: LatLong lngdeg()
+  scalar: lngminutes: LatLong lngmin()
+  scalar: lngseconds: LatLong lngsec()
+
+  scalar: lathemisphere: LatLong lathem()
+  scalar: lnghemisphere: LatLong lnghem()
+endsection
+
+factoryAggregate: ExpirationDate: DateTime expireDate()
+factoryAggregate: EffectiveDate:  DateTime effDate()
+
+section: Indicators
+  scalar: cityInd:        bool cityInd()
+  scalar: bufferZoneInd:  bool bufferZoneInd()
+  scalar: ruralarpind:    bool ruralarpind()
+  scalar: multitransind:  bool multitransind()
+  scalar: faresind:       bool faresind()
+endsection
+
+section: Misc
+  scalar: dstgrp:       DSTGrpCode      dstgrp()
+  scalar: description:  LocDescription  description()
+endsection
+
+NameString: "Loc_"
+NameField:  loc()

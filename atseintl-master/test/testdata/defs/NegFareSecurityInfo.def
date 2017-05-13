@@ -1,0 +1,30 @@
+name: NegFareSecurityInfo
+namespace: tse
+parent: RuleItemInfo
+package: DBAccess
+
+factoryAggregate: ExpireDate: DateTime  expireDate()
+factoryAggregate: CreateDate: DateTime  createDate()
+factoryAggregate: loc1:       LocKey    loc1()
+factoryAggregate: loc2:       LocKey    loc2()
+
+section: Attributes
+  scalar: seqNo:                int             seqNo()
+  scalar: applInd:              Indicator       applInd()
+  scalar: tvlAgencyInd:         Indicator       tvlAgencyInd()
+  scalar: carrierCrs:           CarrierCode     carrierCrs()
+  scalar: dutyFunctionCode:     AgencyDutyCode  dutyFunctionCode()
+  scalar: localeType:           Indicator       localeType()
+  scalar: agencyPCC:            PseudoCityCode  agencyPCC()
+  scalar: iataTvlAgencyNo:      AgencyCode      iataTvlAgencyNo()
+  scalar: departmentId:         int             departmentId()
+  scalar: crsCarrierDepartment: std::string     crsCarrierDepartment()
+  scalar: lineIATANo:           AgencyIATA      lineIATANo()
+  scalar: erspno:               int             erspno()
+  scalar: updateInd:            Indicator       updateInd()
+  scalar: redistributeInd:      Indicator       redistributeInd()
+  scalar: sellInd:              Indicator       sellInd()
+  scalar: ticketInd:            Indicator       ticketInd()
+  scalar: changesOnlyInd:       Indicator       changesOnlyInd()
+  scalar: secondarySellerId:    int             secondarySellerId()
+endsection

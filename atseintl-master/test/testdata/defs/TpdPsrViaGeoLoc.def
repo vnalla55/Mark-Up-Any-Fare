@@ -1,0 +1,12 @@
+name: TpdPsrViaGeoLoc
+namespace: tse
+package: DBAccess
+
+factoryAggregate: LocKey: LocKey loc()
+
+section:Attributes
+  scalar: setNo:              int       setNo()
+  scalar: orderNo:            int       orderNo()
+  scalar: relationalInd:      Indicator relationalInd()
+  scalar: stopoverNotAllowed: Indicator stopoverNotAllowed()
+endsection

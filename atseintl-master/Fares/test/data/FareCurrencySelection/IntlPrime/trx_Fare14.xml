@@ -1,0 +1,13 @@
+<Fare>
+     <FareInfo file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_FareInfo14.xml"/>
+     <TariffCrossRefInfo file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_TariffCrossRefInfo0.xml"/>
+     <Misc
+          nucFareAmount=653.19
+          differSeqNumber=0
+          calculationInd=" "
+          hipExemptInd=" "
+     />
+     <FareStatus fareStatus="International"/>
+     <FareStatus fareStatus="PublishedFare"/>
+     <FareStatus fareStatus="ReversedDirection"/>
+</Fare>

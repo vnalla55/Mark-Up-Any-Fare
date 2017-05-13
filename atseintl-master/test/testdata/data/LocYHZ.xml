@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="YHZ"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="CA"
+          state="CANS"
+     />
+     <Position
+          latdegrees=44
+          latminutes=52
+          latseconds=9
+          lngdegrees=63
+          lngminutes=30
+          lngseconds=5
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2002 month=2 day=5 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="t"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="CA02"
+          description="HALIFAX NS"
+     />
+</Loc>

@@ -1,0 +1,68 @@
+#!/usr/bin/env python
+
+Import('env')
+
+InternalLibs = [
+    'Allocator'
+]
+
+ExternalLibs = [
+    'db-5.0',
+    'jemalloc',
+    'tbbmalloc',
+    'z'
+]
+
+def builder(env, dircontext, appName, appSources):
+    pmaker = env.factory.progmaker(appName)
+    pmaker.add_sources(dircontext.mksources.filelist(appSources))
+
+    if env.direct_object_link:
+        # We link with objects directly (not creating libraries).
+        objcache = env.stash['DIRECTLY_LINKED_OBJECTS']
+        for libname in InternalLibs:
+            pmaker.add_objects(objcache[libname])
+
+    pmaker.make()
+
+def build_listBDB(env, dircontext):
+    builder(env, dircontext, 'listBDB', 'LISTBDB_SOURCES')
+
+def build_cacheCompare(env, dircontext):
+    builder(env, dircontext, 'cacheCompare', 'CACHECOMPARE_SOURCES')
+
+def build_listCacheEvents(env, dircontext):
+    builder(env, dircontext, 'listCacheEvents', 'LISTCACHEEVENTS_SOURCES')
+
+def build_bdbCompare(env, dircontext):
+    builder(env, dircontext, 'bdbCompare', 'BDBCOMPARE_SOURCES')
+
+def build_readTest(env, dircontext):
+    builder(env, dircontext, 'readTest', 'READTEST_SOURCES')
+
+def build_threadTest(env, dircontext):
+    builder(env, dircontext, 'threadTest', 'THREADTEST_SOURCES')
+
+s = env.msscout()
+
+s.env.add_defines(('BUILD_LABEL_STRING', '"\\"' + '$BUILD_LABEL' + '\\""'), '_USERAWPOINTERS')
+s.env.add_libpaths('$STD_LIBPATH_', '$EXTERNAL_LIBPATHS_')
+s.env.add_libs(*ExternalLibs)
+s.env.add_linkflags('-g', '-Wall', '-pthread', '-export-dynamic')
+s.env.add_rpaths('$RPATH_')
+s.env.setlinktype('static')
+
+if not env.direct_object_link:
+    s.env.add_libs(*InternalLibs)
+    s.env.add_libpaths('$LIB_INSTALL_DIR_')
+
+s.add_task(build_listBDB)
+s.add_task(build_cacheCompare)
+s.add_task(build_listCacheEvents)
+s.add_task(build_bdbCompare)
+s.add_task(build_readTest)
+s.add_task(build_threadTest)
+
+s.werror = False
+s.build()
+

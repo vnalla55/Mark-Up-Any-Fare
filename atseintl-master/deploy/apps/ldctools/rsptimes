@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# ensure we are running within the same directory
+# from which we are running
+cd $(dirname $(which ${0}))
+
+. ./env.vars
+
+echo ""
+
+echo "[$HOST] Getting response times..."
+grep seconds ${APPDIR}/hammer.log | awk '{print $5}' > ${APPDIR}/reqtimes.txt
+
+echo "[$HOST] Getting first 500 response times..."
+head -500 ${APPDIR}/reqtimes.txt > ${APPDIR}/reqtimes.first500.txt
+
+echo "[$HOST] Getting last 500 response times..."
+tail -500 ${APPDIR}/reqtimes.txt > ${APPDIR}/reqtimes.last500.txt
+
+echo -n "[$HOST] ALL       : "
+avgresp.sh ${APPDIR}/reqtimes.txt
+echo ""
+
+echo -n "[$HOST] FIRST 500 : "
+avgresp.sh ${APPDIR}/reqtimes.first500.txt
+echo ""
+
+echo -n "[$HOST] LAST 500  : "
+avgresp.sh ${APPDIR}/reqtimes.last500.txt
+echo ""
+
+echo ""
+

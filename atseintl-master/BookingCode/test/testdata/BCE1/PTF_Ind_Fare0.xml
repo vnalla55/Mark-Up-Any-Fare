@@ -1,0 +1,21 @@
+<Fare>
+     <FareInfo file="testdata/BCE1/PTF_Ind_FareInfo0.xml"/>
+     <TariffCrossRefInfo file="testdata/BCE1/PTF_Ind_TariffCrossRefInfo0.xml"/>
+     <Misc
+          nucFareAmount=483
+     />
+     <FareStatus fareStatus="International"/>
+     <FareStatus fareStatus="PublishedFare"/>
+     <FareStatus fareStatus="IndustryFare"/>
+     <RuleProcessStatus ruleProcessStatus="Cat02"/>
+     <RuleProcessStatus ruleProcessStatus="Cat03"/>
+     <RuleProcessStatus ruleProcessStatus="Cat05"/>
+     <RuleProcessStatus ruleProcessStatus="Cat06"/>
+     <RuleProcessStatus ruleProcessStatus="Cat07"/>
+     <RuleProcessStatus ruleProcessStatus="Cat11"/>
+     <RuleProcessStatus ruleProcessStatus="Cat12"/>
+     <RuleProcessStatus ruleProcessStatus="Cat14"/>
+     <RuleProcessStatus ruleProcessStatus="Cat15"/>
+     <RuleProcessStatus ruleProcessStatus="Cat16"/>
+</Fare>
+

@@ -1,0 +1,9 @@
+IDOP_XML_SOURCES := \
+    src/IDOPSaxParseHandler2.cpp \
+    src/IDOPSaxParseHandler.cpp \
+    src/IDOPSaxParseJumpList.cpp \
+    src/IDOPXMLConstruct.cpp \
+    src/IDOPXMLInitiator.cpp \
+    src/IDOPXMLListener.cpp \
+    src/IDOPXMLMessageAttributes.cpp \
+    src/IDOPXMLSocketMessage.cpp

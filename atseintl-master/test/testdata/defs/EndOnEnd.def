@@ -1,0 +1,37 @@
+name: EndOnEnd
+namespace: tse
+package: DBAccess
+
+section: Misc
+  scalar: segCnt:             int       segCnt()
+  scalar: eoeRestInd:         Indicator eoeRestInd()
+  scalar: eoeNormalInd:       Indicator eoeNormalInd()
+  scalar: eoespecialInd:      Indicator eoespecialInd()
+  scalar: eoespecialApplInd:  Indicator eoespecialApplInd()
+  scalar: uscatransborderInd: Indicator uscatransborderInd()
+  scalar: domInd:             Indicator domInd()
+  scalar: intlInd:            Indicator intlInd()
+  scalar: sameCarrierInd:     Indicator sameCarrierInd()
+  scalar: fareTypeLocAppl:    Indicator fareTypeLocAppl()
+  scalar: constLocAppl:       Indicator constLocAppl()
+  scalar: tktInd:             Indicator tktInd()
+  scalar: abacombInd:         Indicator abacombInd()
+  scalar: allsegsInd:         Indicator allsegsInd()
+  scalar: unavailTag:         Indicator unavailTag()
+endsection
+
+section: Loc1
+  scalar: fareTypeLoc1Type:   LocType   fareTypeLoc1Type()
+  scalar: fareTypeLoc1:       LocCode   fareTypeLoc1()
+  scalar: constLoc1Type:      LocType   constLoc1Type()
+  scalar: constLoc1:          LocCode   constLoc1()
+endsection
+
+section: Loc2
+  scalar: fareTypeLoc2Type:   LocType   fareTypeLoc2Type()
+  scalar: fareTypeLoc2:       LocCode   fareTypeLoc2()
+  scalar: constLoc2Type:      LocType   constLoc2Type()
+  scalar: constLoc2:          LocCode   constLoc2()
+endsection
+
+factoryAggregate: EndOnEndSegment: std::vector<EndOnEndSegment*> segs() OwnsPointer

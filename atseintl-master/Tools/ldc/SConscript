@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+
+Import('env')
+
+InternalLibs = [
+    'Allocator',
+    'idopcpp',
+    'idopxml'
+]
+
+ExternalLibs = [
+    'curses',
+    'jemalloc',
+    'tbbmalloc',
+    'log4cxx',
+    'readline',
+    'xerces-c'
+]
+
+def build_cachetest(env, dircontext):
+    pmaker = env.factory.progmaker('cachetest')
+    pmaker.add_sources(dircontext.mksources.filelist('CACHETEST_SOURCES'))
+
+    if env.direct_object_link:
+        # We link with objects directly (not creating libraries).
+        objcache = env.stash['DIRECTLY_LINKED_OBJECTS']
+        for libname in InternalLibs:
+            pmaker.add_objects(objcache[libname])
+
+    pmaker.make()
+
+s = env.msscout()
+
+s.env.add_include_paths('$IDOPCPP_CPPPATH', '$IDOPXML_CPPPATH')
+s.env.add_isystem_paths('$XERCESC_CPPPATH_')
+s.env.add_libpaths('$STD_LIBPATH_', '$EXTERNAL_LIBPATHS_')
+s.env.add_libs(*ExternalLibs)
+s.env.add_linkflags('-g', '-Wall', '-pthread', '-export-dynamic')
+s.env.add_rpaths('$RPATH_')
+s.env.setlinktype('static')
+
+if not env.direct_object_link:
+    s.env.add_libs(*InternalLibs)
+    s.env.add_libpaths('$LIB_INSTALL_DIR_')
+
+s.add_task(build_cachetest)
+
+s.werror = False
+s.build()
+

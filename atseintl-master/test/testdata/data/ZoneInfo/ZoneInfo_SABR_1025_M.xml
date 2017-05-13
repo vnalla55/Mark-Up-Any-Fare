@@ -1,0 +1,21 @@
+<ZoneInfo>
+     <Attributes
+          vendor="SABR"
+          zone="0001025"
+          zoneType="M"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="*"
+          loc="21"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="N"
+          loc="RU"
+          inclExclInd="E"
+          directionalQualifier="N"
+     />
+</ZoneInfo>

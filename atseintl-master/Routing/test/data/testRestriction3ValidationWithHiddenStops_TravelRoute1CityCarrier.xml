@@ -1,0 +1,10 @@
+<CityCarrier>
+     <BoardCity file="./data/testRestriction3ValidationWithHiddenStops_TravelRoute1CityCarrier_BoardCity.xml"/>
+     <OffCity file="./data/testRestriction3ValidationWithHiddenStops_TravelRoute1CityCarrier_OffCity.xml"/>
+     <Info
+          boardNation="TT"
+          offNation="US"
+          carrier="CO"
+          stopover="f"
+     />
+</CityCarrier>

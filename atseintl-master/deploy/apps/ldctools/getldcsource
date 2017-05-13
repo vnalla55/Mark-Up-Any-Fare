@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# ensure we are running within the same directory
+# from which we are running
+cd $(dirname $(which ${0}))
+
+. ./env.vars
+
+cd ${APPDIR}
+
+grep -i ${1} ldc.log | grep " Loaded " | tail -1 | grep -o -E 'SOURCE=.*\.' | awk '{print $1}'

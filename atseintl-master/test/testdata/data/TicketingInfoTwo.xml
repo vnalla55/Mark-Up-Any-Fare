@@ -1,0 +1,43 @@
+<TicketingFeesInfo>
+     <CreateDate year=2009 month=1 day=1 hour=0 minute=0 second=0/>
+     <ExpireDate year=2009 month=12 day=1 hour=0 minute=0 second=0/>
+     <EffectiveDate year=2009 month=1 day=1 hour=0 minute=0 second=0/>
+     <DiscDate year=2999 month=1 day=1 hour=0 minute=0 second=0/>
+<!--    <loc1 file="FEES_LocKey_0.xml"/>
+     <loc2 file="FEES_LocKey_0.xml"/>
+     <locWhlWithin file="FEES_LocKey_0.xml"/>
+     <locVia file="FEES_LocKey_0.xml"/>
+-->     <Attributes
+          publicPrivateInd=" "
+          journeyInd=" "
+          fareInd=" "
+          refundReissue="N"
+          commission="N"
+          interline="N"
+          noCharge="X"
+          taxInclude=" "
+          vendor="ATP"
+          carrier="AF"
+          primaryFareCarrier=""
+          serviceTypeCode="OB"
+          serviceSubTypeCode="FCA"
+          paxType="ADT"
+          fareBasis=""
+          cur="USD"
+          maxFeeCur=""
+          fopBinNumber="456**"
+          seqNo=100200
+          svcFeesAccCodeTblItemNo=0
+          svcFeesTktDsgnTblItemNo=0
+          svcFeesSecurityTblItemNo=0
+          noDec=2
+          feePercentNoDec=0
+          maxFeeNoDec=0
+          feePercent=0
+          loc1ZoneItemNo=""
+          loc2ZoneItemNo=""
+          locZoneViaItemNo=""
+          feeAmount=20.00
+          maxFeeAmount=0
+     />
+</TicketingFeesInfo>

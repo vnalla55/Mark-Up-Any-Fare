@@ -1,0 +1,13 @@
+<PaxTypeInfo>
+   <Attributes
+      paxType="ADT"
+      vendor="ATP"
+      description="PaxTypeInfo from factory."
+      childInd=" "
+      adultInd=" "
+      infantInd=" "
+      psgGroupType="ASTRING"
+      numberSeatsReq=1
+   />
+</PaxTypeInfo>
+

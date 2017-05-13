@@ -1,0 +1,67 @@
+<PaxTypeBucket>
+      <RequestedPaxType>
+          <Misc  paxType="ADULT" number=1 age=39 inputOrder=1 vendorCode="AA"/>
+          <ActualPaxType>
+              <PaxTypeInfo paxType="ADT" vendor="ATP" childInd=" " adultInd=" " infantInd=" "
+                           description="PaxTypeInfo from factory." psgGroupType="ASTRING" numberSeatsReq=1/>
+              <Misc  paxType="ADULT" number=1 age=39 inputOrder=1 vendorCode="AA"/>
+          </ActualPaxType>
+          <PaxTypeInfo paxType="ADT" vendor="ATP" childInd=" " adultInd=" " infantInd=" "
+                       description="PaxTypeInfo from factory." psgGroupType="ASTRING" numberSeatsReq=1/>
+      </RequestedPaxType>
+   
+      <ActualPaxType>
+          <Misc  paxType="ADULT" number=1 age=39 inputOrder=1 vendorCode="AA"/>
+          <ActualPaxType>
+              <PaxTypeInfo paxType="ADT" vendor="ATP" childInd=" " adultInd=" " infantInd=" "
+                           description="PaxTypeInfo from factory." psgGroupType="ASTRING" numberSeatsReq=1/>
+              <Misc  paxType="ADULT" number=1 age=39 inputOrder=1 vendorCode="AA"/>
+          </ActualPaxType>
+          <PaxTypeInfo paxType="ADT" vendor="ATP" childInd=" " adultInd=" " infantInd=" "
+                       description="PaxTypeInfo from factory." psgGroupType="ASTRING" numberSeatsReq=1/>
+      </ActualPaxType>
+   
+   
+      <PaxTypeFare>
+          <Status value="FareByRule"/>
+          <SegmentStatus bookingCode="CC">
+             <BookingCodeSegStatus value="PASS"/>
+             <BookingCodeSegStatus value="REBOOKED"/>
+             <puRevalidate999Seq value=0/>
+             <puRevalidate999Seq value=2/>
+          </SegmentStatus>
+          <ActualPaxType>
+              <PaxTypeInfo paxType="ADT" vendor="ATP" childInd=" " adultInd=" " infantInd=" "
+                           description="PaxTypeInfo from factory." psgGroupType="ASTRING" numberSeatsReq=1/>
+              <Misc  paxType="ADULT" number=1 age=39 inputOrder=1 vendorCode="AA"/>
+              <ActualPaxType>
+                  <PaxTypeInfo paxType="ADT" vendor="ATP" childInd=" " adultInd=" " infantInd=" "
+                               description="PaxTypeInfo from factory." psgGroupType="ASTRING" numberSeatsReq=1/>
+                  <Misc  paxType="ADULT" number=1 age=39 inputOrder=1 vendorCode="AA"/>
+              </ActualPaxType>
+          </ActualPaxType>
+      
+          <FareClassAppInfo>
+              <EffectiveDate  year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+              <ExpirationDate year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+              <Location location1Type="CITY" location1="DFW" location2Type="CITY" location2="LAX" />
+              <Misc vendor="ATP" carrier="AA"    ruleTariff=0 ruleNumber="0" footnote1="LM"
+                    footnote2="NO" fareClass = "Y" MCN=0 textTBLItemNo=0 owrt=" "
+                    routingAppl=" " routingNumber="XXXX" fareType = "EU" seasonType = " " dowType = " "
+                    pricingCatType="N" displayCatType=" " seqNo=1 unavailTag=" " />
+          </FareClassAppInfo>
+      
+          <FareClassAppSegInfo>
+              <Misc seqNo=1 bookingCodeTblItemNo=0 overrideDateTblNo=0 minAge=0 maxAge=199
+                    paxType="ADT" directionality="ORIGINATING_LOC1" />
+              <Ticket  ticketCode = "1234567890" ticketCodeModifier = "ABC"
+                       ticketDesignator = "1234567890" ticketDesignatorModifier = "ABC" />
+          </FareClassAppSegInfo>
+          <FareTypeMatrix cabin="" fareTypeDesignator="" fareTypeApplication=""/>
+          <Misc surchargeAmt=0 transferAmt=0 stopOverAmt=0 hipAmt=0
+                hipBoardPoint="DFW" hipOffPoint="LON" bhcAmount=0/>
+      </PaxTypeFare>
+      <Misc inboundCurrency="USD" outboundCurrency="USD"/>
+
+</PaxTypeBucket>
+

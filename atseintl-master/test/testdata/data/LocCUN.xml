@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="CUN"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="MX"
+          state=" "
+     />
+     <Position
+          latdegrees=21
+          latminutes=2
+          latseconds=12
+          lngdegrees=86
+          lngminutes=53
+          lngseconds=0
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="MX01"
+          description="CANCUN"
+     />
+</Loc>

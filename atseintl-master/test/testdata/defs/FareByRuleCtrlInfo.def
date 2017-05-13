@@ -1,0 +1,21 @@
+name: FareByRuleCtrlInfo
+namespace: tse
+parent: CategoryRuleInfo
+package: DBAccess
+
+factoryAggregate: ExpireDate:     DateTime expireDate()
+factoryAggregate: EffectiveDate:  DateTime effDate()
+factoryAggregate: DiscountDate:   DateTime discDate()
+factoryAggregate: CreateDate:     DateTime createDate()
+
+section: Attributes
+  scalar: jointCarrierTblItemNo:  int           jointCarrierTblItemNo()
+  scalar: segCnt:                 int           segCnt()
+  scalar: generalRuleTariff:      TariffNumber  generalRuleTariff()
+  scalar: loc1zoneTblItemNo:      LocCode       loc1zoneTblItemNo()
+  scalar: loc2zoneTblItemNo:      LocCode       loc2zoneTblItemNo()
+  scalar: applInd:                Indicator     applInd()
+  scalar: generalRuleAppl:        Indicator     generalRuleAppl()
+  scalar: generalRule:            RuleNumber    generalRule()
+  scalar: inhibit:                Indicator     inhibit()
+endsection

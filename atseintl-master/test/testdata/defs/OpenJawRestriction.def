@@ -1,0 +1,16 @@
+name: OpenJawRestriction
+namespace: tse
+package: DBAccess
+
+section: Misc
+  scalar: category:     int       category()
+  scalar: orderNo:      int       orderNo()
+  scalar: set1ApplInd:  Indicator set1ApplInd()
+  scalar: set2ApplInd:  Indicator set2ApplInd()
+endsection
+
+factoryAggregate: Set1Loc1: LocKey set1Loc1()
+factoryAggregate: Set1Loc2: LocKey set1Loc2()
+
+factoryAggregate: Set2Loc1: LocKey set2Loc1()
+factoryAggregate: Set2Loc2: LocKey set2Loc2()

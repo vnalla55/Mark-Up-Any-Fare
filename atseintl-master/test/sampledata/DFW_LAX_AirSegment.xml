@@ -1,0 +1,16 @@
+<AirSeg>
+      <DepartureDate year=2004 month=6 day=23 hour=13 minute=0 second=0/>
+      <ArrivalDate   year=2004 month=6 day=23 hour=15 minute=0 second=0/>
+      <BookingDate   year=2004 month=6 day=22 hour=14 minute=30 second=0/>
+      <ClassOfService bookingCode="J" numSeats=60 cabin="ECONOMY_CLASS"/>
+      <SegmentInfo pnrSegment=1 segmentOrder=1 stopOver="f" forcedStopOver="" forcedConx=""
+            geoTravelType="International" />
+      <FlightInfo carrier="AA" flightNumber=3189 marketingFlightNumber=0 operatingFlightNumber=0 equipmentType="767" />
+
+      <Origin file="/vobs/atseintl/test/sampledata/DFW_Loc.xml"/>
+      <Destination file="/vobs/atseintl/test/sampledata/LAX_Loc.xml"/>
+
+      <Misc validatedBookingCode="" resStatus="" fareBasisCode="" bookingCode="Y" furthestPoint="f"
+            considerOnlyCabin="ABC" forcedFareBrk="" forcedNoFareBrk="" forcedSideTrip="" />
+</AirSeg>
+

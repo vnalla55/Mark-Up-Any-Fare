@@ -1,0 +1,14 @@
+name: TariffRuleRest
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: orderNo:        int             orderNo()
+  scalar: ruleTariff:     TariffNumber    ruleTariff()
+  scalar: primeRuleInd:   Indicator       primeRuleInd()
+  scalar: defaultRuleInd: Indicator       defaultRuleInd()
+  scalar: trfRuleApplInd: Indicator       trfRuleApplInd()
+  scalar: sametrfRuleInd: Indicator       sametrfRuleInd()
+  scalar: rule:           RuleNumber      rule()
+  scalar: globalDir:      GlobalDirection globalDirection()
+endsection

@@ -1,0 +1,56 @@
+name: TaxItem
+namespace: tse
+package: Taxes/LegacyTaxes
+
+#factoryAggregate: TaxCodeReg TaxCodeReg* taxCodeReg()
+
+section: Currency
+  scalar: paymentCurrency:      CurrencyCode  setPaymentCurrency
+  scalar: paymentCurrencyNoDec: uint16_t      setPaymentCurrencyNoDec
+endsection
+
+section: Tax
+  scalar: amount:             MoneyAmount     taxAmount()
+  scalar: taxableFare:        MoneyAmount     taxableFare()
+  scalar: taxablePartialFare: MoneyAmount     setTaxablePartialFare
+  scalar: milesLocal:         uint32_t        setTaxMilesLocal
+  scalar: milesThru:          uint32_t        setTaxMilesThru
+  scalar: localBoard:         LocCode         setTaxLocalBoard
+  scalar: localOff:           LocCode         setTaxLocalOff
+  scalar: thruBoard:          LocCode         setTaxThruBoard
+  scalar: thruOff:            LocCode         setTaxThruOff
+  scalar: description:        TaxDescription  taxDescription()
+  scalar: taxOnTaxInfo:       TaxOnTaxInfo    setTaxOnTaxInfo
+  scalar: seqNo:              int             seqNo()
+  scalar: specialProcessNo:   long            specialProcessNo()
+  scalar: showseparateInd:    Indicator       showseparateInd()
+  scalar: multioccconvrndInd: Indicator       multioccconvrndInd()
+  scalar: taxType:            TaxTypeCode     taxType()
+  scalar: taxCode:            TaxCode         taxCode()
+  scalar: min:                MoneyAmount     minTax()
+  scalar: max:                MoneyAmount     maxTax()
+  scalar: tax:                MoneyAmount     taxAmt()
+  scalar: taxCurrency:        CurrencyCode    taxCur()
+  scalar: taxCurNodec:        CurrencyNoDec   taxCurNodec()
+
+  # No accessor
+  #scalar: taxRecProcessed:    char            taxRecProcessed()
+  #scalar: gstTax:             bool            gstTax()
+endsection
+
+section: ReissueTax
+  scalar: amount:   MoneyAmount   reissueTaxAmount()
+  scalar: currency: CurrencyCode  reissueTaxCurrency()
+endsection
+
+section: Misc
+  scalar: failCode:             char        setFailCode
+  scalar: partialTax:           char        setPartialTax
+  scalar: mixedTax:             char        mixedTax()
+  scalar: travelSegStartIndex:  char        setTravelSegStartIndex
+  scalar: travelSegEndIndex:    char        setTravelSegEndIndex
+  # No accessor
+  #scalar: interline:            char        interline()
+  scalar: legId:                uint16_t    setLegId
+  scalar: carrierCode:          CarrierCode setCarrierCode
+endsection

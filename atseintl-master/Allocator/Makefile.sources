@@ -1,0 +1,6 @@
+ALLOCATOR_SOURCES := \
+    TrxAllocator.c \
+    ptmalloc.c
+
+NULL_ALLOCATOR_SOURCES := \
+    NullAllocator.c

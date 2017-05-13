@@ -1,0 +1,43 @@
+name: FareByRuleApp
+namespace: tse
+package: DBAccess
+
+factoryAggregate: ExpireDate:       DateTime  expireDate()
+factoryAggregate: EffectiveDate:    DateTime  effDate()
+factoryAggregate: DiscountDate:     DateTime  discDate()
+factoryAggregate: CreateDate:       DateTime  createDate()
+factoryAggregate: paxLoc:           LocKey    paxLoc()
+factoryAggregate: fareLoc1:         LocKey    fareLoc1()
+factoryAggregate: fareLoc2:         LocKey    fareLoc2()
+factoryAggregate: whollyWithinLoc:  LocKey    whollyWithinLoc()
+factoryAggregate: tvlLoc1:          LocKey    tvlLoc1()
+
+section: Attributes
+  scalar: carrier:              CarrierCode     carrier()
+  scalar: primePaxType:         PaxTypeCode     primePaxType()
+  scalar: vendor:               VendorCode      vendor()
+  scalar: recId:                int             recId()
+  scalar: ruleNo:               RuleNumber      ruleNo()
+  scalar: ruleTariff:           TariffNumber    ruleTariff()
+  scalar: paxMinAge:            int             paxMinAge()
+  scalar: paxMaxAge:            int             paxMaxAge()
+  scalar: paxOccFirst:          int             paxOccFirst()
+  scalar: paxOccLast:           int             paxOccLast()
+  scalar: segCnt:               int             segCnt()
+  scalar: jointCarrierItemNo:   int             jointCarrierItemNo()
+  scalar: negPaxStatusInd:      Indicator       negPaxStatusInd()
+  scalar: paxInd:               Indicator       paxInd()
+  scalar: loc1zoneItemNo:       Zone            loc1zoneItemNo()
+  scalar: loc2zoneItemNo:       Zone            loc2zoneItemNo()
+  scalar: directionality:       Indicator       directionality()
+  scalar: paxId:                Indicator       paxId()
+  scalar: globalDir:            GlobalDirection globalDir()
+  scalar: tsi:                  TSICode         tsi()
+  scalar: accountCode:          AccountCode     accountCode()
+  scalar: tktDesignator:        TktDesignator   tktDesignator()
+  scalar: inhibit:              Indicator       inhibit()
+  scalar: sameCarrier:          Indicator       sameCarrier()
+  scalar: carrierFltTblItemNo:  int             carrierFltTblItemNo()
+endsection
+
+scalarAggregate: secondaryPaxTypes: std::vector<PaxTypeCode> secondaryPaxTypes()

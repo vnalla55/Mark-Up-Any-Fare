@@ -1,0 +1,8 @@
+name: ShoppingTrx
+parent: PricingTrx
+namespace: tse
+package: DataModel
+
+section: ShoppingAttributes
+  scalar: altDates: bool altDates()
+endsection

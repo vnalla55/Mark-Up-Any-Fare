@@ -1,0 +1,1919 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:include schemaLocation="CommonTypes.xsd"/>
+  <xs:include schemaLocation="CommonElements.xsd"/>
+  <xs:element name="ShoppingRequest">
+    <xs:annotation>
+      <xs:documentation>
+        Shopping   International Shopping
+
+        N06  Request Type   "I" = IS (shopping pass 1)
+                            "M" = MIP (shopping pass 2)
+                            "S" = Single Pass Shopping
+                            "P" = pricing request
+                            "B" = BFF best fare finder
+                            "F" = FF flight finder
+                            "E" = ESV/VIS
+                            "R" = REX Shopping
+                            "N" = MIP branding request
+                            "C" = Settlement types request
+        D70  Time  Out
+        TID  Intellisell Transaction ID
+        STK  Server Identify token (ISELL use it to shopping server identify)
+        N25  Process Type Indicator for Primary Request Type
+        N0W  Request subtype "R" = exchange
+        BSL  Display baseline information in response
+        TST  Test Request (do not override timeout from config)
+        NTO  Force no timeout
+
+        ASO  No ASO legs (IS only)
+        AS1  ASO bitmap threshold
+        AS2  ASO connection point limit
+        AS3  ASO max validations
+
+        FRT  Forward Routing
+        AGI  Agency Information
+        BIL  Billing Information
+        PXI  Passenger info
+        APX  Accompany Passenger Information
+
+        PRO  Shopping Qualify Options
+
+        BRN  Branded Fare Data
+        BRS  Brand Info
+
+        AAF  Flight List
+        AVL  SOLO and THRU avaliablity
+        LEG  Flight Segment List
+
+        ODD  Origination and Destination Date (ESV only)
+
+        DUR  Duration of number of stay days for alternate date (IS altDates)
+        PDT  Primary date for alternate date request (IS altDates)
+
+        ITN  Itineraries
+
+        BFF  FF and BFF request info (BFF/FF)
+
+        EXC  Exchange Itinerary Information (EXC)
+        FCL  Forced Connection List (EXC -IS part)
+
+        OND  O and D for all thru fare Market (MIP/EXC)
+        DIV  Diversity parameters (IS - SOL)
+        RFG  Requested OC Fee Group(MIP)
+        FFY  Frequent Flyer Status Information (MIP)
+
+        DIA  Diagnostic Request
+        CMD  Host command from PSS
+
+        FFG  Flex Fare Group
+
+        DynamicConfig Override dynamic config value
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FRT" type="FRTType" minOccurs="0"/>
+        <xs:element name="AGI" type="AGIType"/>
+        <xs:element name="BIL" type="BILType"/>
+        <xs:element name="DUR" type="DURType" minOccurs="0"/>
+        <xs:element name="PXI" type="PXIType" minOccurs="0" maxOccurs="4"/>
+        <xs:element name="APX" type="PXIType" minOccurs="0"/>
+        <xs:element name="SPV" type="SPVType" minOccurs="0"/>
+        <xs:element name="PRO" type="PROType" minOccurs="0"/>
+        <xs:element name="BRI" type="BRIType" minOccurs="0"/>
+        <xs:element name="BRS" type="BRSType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="BRN" type="BRNType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="ODD" type="ODDType" minOccurs="0"/>
+        <xs:element name="PDT" type="PDTType" minOccurs="0"/>
+        <xs:element name="BFF" type="BFFType" minOccurs="0"/>
+        <xs:element name="EXC" type="EXCType" minOccurs="0"/>
+        <xs:element name="AAF" type="AAFType" maxOccurs="unbounded"/>
+        <xs:element name="AVL" type="AVLType" maxOccurs="unbounded"/>
+        <xs:element name="LEG" type="LEGType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="ITN" type="ITNType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="OND" type="ONDType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="FCL" type="FCLType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="RFG" type="RFGType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="DIA" type="DIAType" minOccurs="0"/>
+        <xs:element name="CMD" type="xs:string" minOccurs="0"/>
+        <xs:element name="FFY" type="FFYType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="DIV" type="DIVType" minOccurs="0"/>
+        <xs:element name="FFG" type="FFGType" minOccurs="0" maxOccurs="10"/>
+        <xs:element name="DynamicConfig" type="DynamicConfigType" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="N06" type="ReqTypeType" use="optional" default="I"/>
+      <xs:attribute name="D70" type="TimeInSecondsType" use="optional"/>
+      <xs:attribute name="TID" type="xs:long" use="optional"/>
+      <xs:attribute name="STK" type="xs:string" use="optional"/>
+      <xs:attribute name="N25" use="optional">
+        <xs:simpleType>
+          <xs:restriction base="AlphaNumCharType">
+            <xs:enumeration value="A"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="N0W" type="ReqTypeType" use="optional"/>
+      <xs:attribute name="BSL" type="BoolTFType" use="optional" default="F"/>
+      <xs:attribute name="TST" type="BoolTFType" use="optional" default="F"/>
+      <xs:attribute name="NTO" type="BoolTFType" use="optional" default="F"/>
+      <xs:attribute name="AS0" type="BoolTFType" use="optional" default="F"/>
+      <xs:attribute name="AS1" type="xs:positiveInteger" use="optional"/>
+      <xs:attribute name="AS2" type="xs:positiveInteger" use="optional"/>
+      <xs:attribute name="AS3" type="xs:int" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- element reference declarations -->
+  <xs:complexType name="FRTType">
+    <xs:annotation>
+      <xs:documentation>
+
+        FRTType  Forward Routing
+
+        S91    IP Address
+        S92    Port Number
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="S91" type="IPAddressType" use="required"/>
+    <xs:attribute name="S92" type="PortNumberType" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="AGIType">
+    <xs:annotation>
+      <xs:documentation>
+
+        AGIType
+
+        A10  City Code
+        A20  Pesudo City Code
+        A21  Main Travel Agency Pesudo City Code
+        A40  Country of Point of Sale
+        A80  Agent dept code
+        A90  Agent function
+        AB0  Travel agency IATA ARC Number
+        AB1  Home agency IATA ARC Number
+        AB2  Airline IATA number
+        AE0  Vendor CRS code (ex 1B)
+        AE1  Office Designator
+        AE2  Office/Station Code
+        AE3  Default Ticketing Carrier
+        AE4  Airline Channel Code
+        B00  Airline Carrier Code
+        C40  Currency code for the agent
+        C6C  Agent Commission Amount
+        N0G  Agent duty
+        N0L  Agent Commission Type
+        Q01  CoHost Identifier
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="A10" type="CityCodeType" use="required"/>
+    <xs:attribute name="A20" type="PseudoCityCodeType" use="optional"/>
+    <xs:attribute name="A21" type="PseudoCityCodeType" use="optional"/>
+    <xs:attribute name="A40" type="CountryCodeType" use="optional"/>
+    <xs:attribute name="A80" type="AgentDepartmentCodeType" use="optional"/>
+    <xs:attribute name="A90" type="AgentFunctionType" use="optional"/>
+    <xs:attribute name="AB0" type="ARCNumberType" use="optional"/>
+    <xs:attribute name="AB1" type="ARCNumberType" use="optional"/>
+    <xs:attribute name="AB2" type="xs:long" use="optional"/>
+    <xs:attribute name="AE0" type="xs:string" use="optional"/>
+    <xs:attribute name="AE1" type="OfficeDesignatorType" use="optional"/>
+    <xs:attribute name="AE2" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[0-9A-Z]{4,14}"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="AE3" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="AE4" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[A-Z]{3}"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="B00" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C6C" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="N0G" type="AnyCharType" use="optional"/>
+    <xs:attribute name="N0L" type="AnyCharType" use="optional"/>
+    <xs:attribute name="Q01" type="xs:short" use="optional" default="0"/>
+  </xs:complexType>
+  <xs:complexType name="DIAType" mixed="true">
+    <xs:annotation>
+      <xs:documentation>
+
+        DIAType Shopping diagnostic arguments
+
+        Q0A   Diagnostic code
+        PAS   Process all services
+        ARG   ARGType
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ARG" type="ARGType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Q0A" type="xs:short"/>
+    <xs:attribute name="PAS" type="BoolTFType" use="optional" default="F"/>
+  </xs:complexType>
+  <xs:complexType name="ARGType">
+    <xs:annotation>
+      <xs:documentation>
+
+        ARGType Diagnostic DiagramPramMap
+
+        NAM  name
+        VAL  value
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="NAM" type="xs:string" use="optional"/>
+    <xs:attribute name="VAL" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="MTYType">
+    <xs:annotation>
+      <xs:documentation>
+
+        MTYType Tax override
+
+        TXS Tax
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TXS" type="TXSType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TXSType">
+    <xs:annotation>
+      <xs:documentation>
+
+        TXSType   Specify Taxes
+
+        C6B  Tax Amount
+        BH0  Tax Code
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="C6B" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="BH0" type="TaxCodeType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="XPNType">
+    <xs:annotation>
+      <xs:documentation>
+
+        XPNType Price without penalties
+
+        P47  Price witout penalty fare (WPNI'XP or JR'I-??Y??)
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="P47" type="BoolTFType" use="optional" default="F"/>
+  </xs:complexType>
+  <xs:complexType name="ONDType">
+    <xs:annotation>
+      <xs:documentation>
+
+        ONDType   O and D for all thru fare Market
+
+        A01 Boarding City
+        A02 Arrival City
+        D01 Flight Departure Date
+        D02 Return Date
+        D41 Calendar shopping shift days before
+        D42 Calendar shopping shift days after
+        Q14 leg/OND identifier
+        C57 minimum amount (required for budget shopping)
+        C58 maximum amount (required for budget shopping)
+        P44 currency code(required for budget shopping)
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="A01" type="AirportCodeType" use="required"/>
+    <xs:attribute name="A02" type="AirportCodeType" use="required"/>
+    <xs:attribute name="D01" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D02" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D41" type="xs:unsignedInt" use="optional"/>
+    <xs:attribute name="D42" type="xs:unsignedInt" use="optional"/>
+    <xs:attribute name="Q14" type="xs:short" use="optional"/>
+    <xs:attribute name="C57" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C58" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="P44" type="MonetaryAmountType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="PUPType">
+    <xs:annotation>
+      <xs:documentation>
+        PUPType  Plus Up Information for Minimum Fares (EXC)
+
+        C6L  Plus Up Amount
+        A11  Plus Up Origin City
+        A12  Plus Up Destination City
+        A13  Plus Up Fare Origin City
+        A14  Plus Up Fare Destination City
+        A18  Plus Up Via City
+        A19  Plus Up Via City 2
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="C6L" type="MonetaryAmountType" use="required"/>
+    <xs:attribute name="A11" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A12" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A13" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A14" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A18" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A19" type="CityCodeType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="MILType">
+    <xs:annotation>
+      <xs:documentation>
+
+        MIL Mileage Display (EXC)
+
+        AP2 Mileage Display Type (!)
+        AP3 Mileage Display City
+        Q48 Mileage Surcharge Percentage
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="AP2" type="xs:string" use="required"/>
+    <xs:attribute name="AP3" type="CityCodeType" use="optional"/>
+    <xs:attribute name="Q48" type="xs:short" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="AAFType">
+    <xs:annotation>
+      <xs:documentation>
+
+        AAFType Air Availability Flight Information
+
+        Q1K  Flight ID
+        B00  Airline Carrier Code
+        B01  Flight Operation Airline Carrier Code
+        Q0B  Air Flight Number
+        S05  Flight Equipment Type
+        P0Z  E-ticket
+        PCR  BBR Flight
+        BB0  Reservation status
+        BB2  Real Reservation status example "QF", "RQ"
+        BB3  Marriage status S/Marriage start E/Marriage End P/segment between S and E
+        D00  Booking date from WPNI.C
+        D30  Booking time from WPNI.C
+        HSP  Hidden Stopover City
+        BRD  Board Point Info
+        OFF  Off Point Info
+
+        <!--EXC-->
+
+        N03  Exchange arunk segment
+        P72  Forced connection
+        P73  Forced stop over
+        PCI  Segment Flown
+        SSH  Segment Shopped
+        S07  Side Trip Start
+        S08  Side Trip End
+        Q6E  Side Trip Number
+        MIL  Mileage Information
+        C6I  Discount amount
+        Q17  Discount percentage
+        C48  Discount amount currency code
+        Q12  Discount amount group number
+        DMA  Dynamic Mark up Amount
+        DMP  Dynamic Mark up Percentage
+
+        <!-- EXC + Context Shopping -->
+        B50  Fare basis code
+        C50  Fare Amount
+        PUP  Plus Up Information
+        Q6D  Fare Component Number
+        S37  Vendor
+        B09  Fare Source Vendor
+        S89  Tariff
+        S90  Rule Number
+
+        <!-- Context Shopping -->
+        SB2  Brand Code
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BRD" type="BRDType"/>
+      <xs:element name="OFF" type="OFFType"/>
+      <xs:element name="HSP" type="HSPType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="MIL" type="MILType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="PUP" type="PUPType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Q1K" type="xs:short" use="required"/>
+    <xs:attribute name="B00" type="AirlineCodeType" use="required"/>
+    <xs:attribute name="B01" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="BB0" type="xs:string" use="optional"/>
+    <xs:attribute name="BB2" type="xs:string" use="optional"/>
+    <xs:attribute name="BB3" type="AnyCharType" use="optional"/>
+    <xs:attribute name="D00" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D30" type="TimeHHMMType" use="optional"/>
+    <xs:attribute name="Q0B" type="xs:short" use="required"/>
+    <xs:attribute name="S05" type="xs:string" use="required"/>
+    <xs:attribute name="P0Z" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PCR" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P72" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P73" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="B50" type="FareBasisCodeType" use="optional"/>
+    <xs:attribute name="PCI" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="SSH" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="C50" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="Q6D" type="xs:short" use="optional"/>
+    <xs:attribute name="C6I" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="Q17" type="xs:short" use="optional"/>
+    <xs:attribute name="C48" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="Q12" type="xs:short" use="optional"/>
+    <xs:attribute name="DMA" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="DMP" type="xs:float" use="optional"/>
+    <xs:attribute name="S37" type="VendorCodeType" use="optional"/>
+    <xs:attribute name="B09" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="S89" type="xs:string" use="optional"/>
+    <xs:attribute name="S90" type="xs:string" use="optional"/>
+    <xs:attribute name="Q6E" type="xs:short" use="optional"/>
+    <xs:attribute name="S07" type="BoolTFType" use="optional"/>
+    <xs:attribute name="S08" type="BoolTFType" use="optional"/>
+    <xs:attribute name="SB2" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="BKCType">
+    <xs:annotation>
+      <xs:documentation>
+
+        BKCType Booking Class Availability Type
+
+        B30 Booking Class Code
+        Q17 Number of Availability Booking Seats
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="B30" type="BookingCodeType" use="required"/>
+    <xs:attribute name="Q17" type="xs:short" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="HSPType">
+    <xs:annotation>
+      <xs:documentation>
+
+        HSPType  Hidden Stopover City
+
+        A03 Hidden Stopover City
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="A03" type="AirportCodeType" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="BRDType">
+    <xs:annotation>
+      <xs:documentation>
+
+        BRDType Board point information
+
+        A01 Boarding Airport
+        D01 Flight Departure Date
+        D31 Flight Departure Time
+        Q0R Relative number from today date
+
+   </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="A01" type="AirportCodeType" use="required"/>
+    <xs:attribute name="D01" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D31" type="TimeHHMMType" use="optional"/>
+    <xs:attribute name="Q0R" type="xs:short" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="OFFType">
+    <xs:annotation>
+      <xs:documentation>
+
+        OFFType Off point information
+
+        A02  Arrival Airport
+        D02  Flight Arrival Date
+        D32  Flight Arrival Time
+        Q0R  Relative number from today date
+
+   </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="A02" type="AirportCodeType" use="required"/>
+    <xs:attribute name="D02" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D32" type="TimeHHMMType" use="optional"/>
+    <xs:attribute name="Q0R" type="xs:short" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="AVLType">
+    <xs:annotation>
+      <xs:documentation>
+
+        AVLType : SOLO and THRU avalibility information
+
+        Q16  AVL ID (ESV)
+        A01  Board Point City(!)
+        A02  Off Point City(!)
+        FBK  List of Flight ID and Booking Code
+
+   </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FBK" type="FBKType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Q16" type="xs:short" use="required"/>
+    <xs:attribute name="A01" type="AirportCodeType" use="required"/>
+    <xs:attribute name="A02" type="AirportCodeType" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="FBKType">
+    <xs:annotation>
+      <xs:documentation>
+
+        FBKType List of Flight ID and Booking Code
+
+        Q1K  Flight ID
+        Q17  string of pair of booking code and number of seat ex. "F4|A4|Y4|Q7|...."
+        BKC  Booking Code and Avalibility
+
+   </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BKC" type="BKCType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Q1K" type="xs:short" use="required"/>
+    <xs:attribute name="Q17" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="ITNType">
+    <xs:annotation>
+      <xs:documentation>
+
+       ITNType   Itinerary from MIP request
+
+        Q5Q Family Number
+        PCA 2nd DCA call per Itinerary
+        SID List of SOP ID for complete 1 itinerary
+        C65 Total Tax
+        NUM Itin number (to speed up ISELL processing)
+        TFO Thru fare only (MIP-hint from IS)
+        BRI Brand Filter Information
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SID" type="SIDType" maxOccurs="unbounded"/>
+      <xs:element name="BRI" type="BRIType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Q5Q" type="xs:short" use="optional"/>
+    <xs:attribute name="PCA" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="C65" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="NUM" type="xs:short" use="optional"/>
+    <xs:attribute name="TFO" type="BoolTFType" use="optional" default="F"/>
+  </xs:complexType>
+  <xs:complexType name="BKKType">
+    <xs:annotation>
+      <xs:documentation>
+
+        BKKType    Booking Code, Carrier  and cabin number
+
+        B30 Booking code
+        B00 Carrier Code
+        Q13 Cabin Number (for MIP Request)
+        B31 Cabin Code (P, F, J, C, S, Y)
+    A01 Boarding City
+        A02 Arrival City
+    
+   </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="B30" type="BookingCodeType" use="optional"/>
+    <xs:attribute name="B00" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="Q13" type="xs:short" use="optional"/>
+    <xs:attribute name="B31" type="AnyCharType" use="optional"/>
+  <xs:attribute name="A01" type="AirportCodeType" use="optional"/>
+  <xs:attribute name="A02" type="AirportCodeType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="SIDType">
+    <xs:annotation>
+      <xs:documentation>
+
+        SIDType    List of SOP ID
+
+        Q14 LEG ID
+        Q15 SOP ID
+        BKK Booking Code and cabin number from IS
+
+   </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BKK" type="BKKType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Q14" type="xs:short" use="required"/>
+    <xs:attribute name="Q15" type="xs:short" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="BRIType">
+    <xs:annotation>
+      <xs:documentation>
+
+        BRI    List of Brands to be filtered
+        SB2    Brand Code
+        PRG    Brand Program
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PRG" type="PRGType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="SB2" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="PRGType">
+    <xs:annotation>
+      <xs:documentation>
+        PRG - Brand Program Information
+
+        SC0   Program Id
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="SC0" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="PXIType">
+    <xs:annotation>
+      <xs:documentation>
+
+        PXIType   Passenger information
+
+        FGG Fare Group Grouping
+        B70 Passenger type
+        Q0U Passenger type count
+        Q0T Passenger age
+        A30 Passenger state code
+        Q79 Total number of passengers
+        MPO Maximum Penalty Operation, provide application relation between penalty conditions
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FGG" type="FGGType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="PEN" type="PENType" minOccurs="0" maxOccurs="4"/>
+    </xs:sequence>
+    <xs:attribute name="B70" type="PassengerCodeType" use="required"/>
+    <xs:attribute name="Q0U" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="Q0T" type="xs:short" use="optional"/>
+    <xs:attribute name="A30" type="StateCodeType" use="optional"/>
+    <xs:attribute name="Q79" type="xs:short" use="optional"/>
+    <xs:attribute name="MPO" use="optional" default="A">
+      <xs:simpleType>
+          <xs:restriction base="xs:string">
+              <xs:enumeration value="I">
+                  <xs:annotation>
+                     <xs:documentation>Info - no conditions are checked, but penalty information is returned</xs:documentation>
+                  </xs:annotation>
+              </xs:enumeration>
+              <xs:enumeration value="O">
+                  <xs:annotation>
+                      <xs:documentation>Or - Exchange condition is true or refund condition is true</xs:documentation>
+                  </xs:annotation>
+              </xs:enumeration>
+              <xs:enumeration value="A">
+                  <xs:annotation>
+                      <xs:documentation>And - both exchange and refund conditions have to be true</xs:documentation>
+                  </xs:annotation>
+              </xs:enumeration>
+          </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="PENType">
+        <xs:annotation>
+            <xs:documentation>
+            ABD         Indicate whether After or Before Departure Penalty is requested (if missing it assumed both After and Before)
+            MPT         Change type
+            MPI         Change Condition
+            MPA         Maximum Penalty Amount
+            MPC         Maximum Penalty Currency
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="ABD" use="optional">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="A">
+                        <xs:annotation>
+                            <xs:documentation>After Departure</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="B">
+                        <xs:annotation>
+                            <xs:documentation>Before Departure</xs:documentation>
+                        </xs:annotation>
+                </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="MPT" use="optional">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="C">
+                        <xs:annotation>
+                            <xs:documentation>Exchange</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="R">
+                        <xs:annotation>
+                            <xs:documentation>Refund</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="MPI" use="optional">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="A">
+                        <xs:annotation>
+                            <xs:documentation>Any applayable</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="N">
+                        <xs:annotation>
+                            <xs:documentation>Nonapplayable</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="MPA" type="MonetaryAmountType" use="optional"/>
+        <xs:attribute name="MPC" type="CurrencyCodeType" use="optional"/>
+    </xs:complexType>
+  <xs:complexType name="FGGType">
+    <xs:annotation>
+      <xs:documentation>
+
+        FGGType Fare Group Grouping Type
+
+        FGI Fare Group Information Type
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FGI" type="FGIType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FGIType">
+    <xs:annotation>
+      <xs:documentation>
+
+        FGIType Fare Group Information Type
+
+        B70 Passenger Type
+        A01 Pesudo City Code
+        P33 PCC Positive or Negative Indicator
+        AC0 Corporate Identifier
+        Q18 Fare Group Number
+        Q0C Priority of Fare (ex : WEB or PUB when tie)
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="B70" type="PassengerCodeType" use="required"/>
+    <xs:attribute name="A01" type="PseudoCityCodeType" use="optional"/>
+    <xs:attribute name="P33" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="AC0" type="CorporateIDType" use="optional"/>
+    <xs:attribute name="Q18" type="xs:short" use="required"/>
+    <xs:attribute name="Q0C" type="xs:short" use="optional" default="0"/>
+  </xs:complexType>
+  <xs:complexType name="PCLType">
+    <xs:annotation>
+      <xs:documentation>
+
+        PCLType Restricted/Preferred Carrier List (EXC)
+
+        B00 Airline Carrier Code
+        EXL Excluded/Preferred
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="B00" type="AirlineCodeType" use="required"/>
+    <xs:attribute name="EXL" type="BoolTFType" use="optional" default="F"/>
+  </xs:complexType>
+  <xs:complexType name="BRNType">
+    <xs:annotation>
+      <xs:documentation>
+
+        BRNType Branded Fare Data
+
+        B30 Booking Code
+        B31 Secondary Booking Code
+        N22 Fare Selection indicator
+            BLANK or does not exist = select all fares
+            "C" Corporate Fare Only
+            "P" Public Fare Only
+        N24 Fare Family/Fare Basis Code - example '-IX'
+        PXY Exclude the booking Code / Fare Basis Code or Fare Family
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="B30" type="BookingCodeType" use="optional"/>
+    <xs:attribute name="B31" type="BookingCodeType" use="optional"/>
+    <xs:attribute name="N22" type="AnyCharType" use="optional"/>
+    <xs:attribute name="N24" type="xs:string" use="optional"/>
+    <xs:attribute name="PXY" type="BoolTFType" use="optional" default="F"/>
+  </xs:complexType>
+  <xs:complexType name="BRSType">
+    <xs:annotation>
+      <xs:documentation>
+
+        BRSType Brand Info
+
+        SB2 Brand Id
+        SC0 Program Id
+        BRN Branded Fare Data
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BRN" type="BRNType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="SB2" type="xs:string" use="required"/>
+    <xs:attribute name="SC0" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="LEGType">
+    <xs:annotation>
+      <xs:documentation>
+
+        LEGType Flight Segment List
+
+        BKK Booking and Carrier Code
+        SOP Segment Options
+        PCL Restricted/Preferred Carrier List (EXC)
+        Q14 LEG ID
+        Q13 Prefer cabin Type: (1 = first, 2=business, 3=economy)
+        B31 Cabin Code (P, F, J, C, S, Y)
+
+        <!-- Context Shopping -->
+        FIX Fixed Leg
+
+   </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BKK" type="BKKType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="SOP" type="SOPType" maxOccurs="unbounded"/>
+      <xs:element name="PCL" type="PCLType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Q14" type="xs:short" use="required"/>
+    <xs:attribute name="Q13" type="xs:short" use="optional"/>
+    <xs:attribute name="B31" type="AnyCharType" use="optional"/>
+    <xs:attribute name="FIX" type="BoolTFType" use="optional" default="F"/>
+  </xs:complexType>
+  <xs:complexType name="SOPType">
+    <xs:annotation>
+      <xs:documentation>
+
+        SOPType    Input Schedule Options
+
+        Q15 SOP ID
+        PBX Combine to same carrier only
+        FID List of Flight ID
+        AID List of AVL ID
+        UGL Long Connection Time indicator
+        PCU Custom Routing and Carrier indicator
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FID" type="FIDType" maxOccurs="unbounded"/>
+      <xs:element name="AID" type="AIDType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Q15" type="xs:short" use="required"/>
+    <xs:attribute name="PBX" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="UGL" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PCU" type="BoolTFType" use="optional" default="F"/>
+  </xs:complexType>
+  <xs:complexType name="AIDType">
+    <xs:annotation>
+      <xs:documentation>
+
+        AIDType    List of AVL ID
+
+        Q16 AVL  ID
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Q16" type="xs:short" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="SPVType">
+    <xs:annotation>
+      <xs:documentation>
+        SPV Type Settlement Plan Validation Options
+        
+        SMV Indicator to skip Settlement Plan validation
+            T --  Do settlement plan validation
+            F --  Skip settlement plan validation
+        IEV Indicator to skip IET validation
+            T --  Do IET validation
+            F --  Skip IET validation
+        CRC Carrier Code
+        CTC Country Code
+      </xs:documentation>
+    </xs:annotation>
+      <xs:attribute name="SMV" type="BoolTFType" use="optional" default="T"/>
+      <xs:attribute name="IEV" type="BoolTFType" use="optional" default="T"/>
+      <xs:attribute name="CRC" type="xs:string" use="optional"/>
+      <xs:attribute name="CTC" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="PROType">
+    <xs:annotation>
+      <xs:documentation>
+
+        PRO Type Shopping Qualify Options
+
+        BH0  Exempt Tax (WPNI'TE-US/AY etc. or JR....BET-ITL/TE-US)
+        MTY  Tax override (WPNI'TX10.00US/2.50AY)
+        XPN  Price without penalty exceed a certain % (WPNI'XP or WPNI'XP50)
+
+        ------ Common attributes
+
+        Q0S  Number of Solutions
+        MET  Record top level metrics only
+        PXO  Display Metrics (T= display F= do not display)
+        P1F  Alternate date requested
+        P1G  Sold Out condition check required
+        PCG  Calendar Shopping Request
+        PBD  Budget Shopping (T= Budget Shopping)
+        Q6W  Enable award shopping logic
+        P1V  Disregard availability ('A) (Pricing: Price no availability)
+        Q4U  puShortCKTTimeOut
+        P2F  Alternate date MIP cutoff factor (0 means no cutoff)
+        AC0  Corporate ID  (in Pricing the same)
+        AC1  Corporate ID in multi CorpID
+        AC2  Corporate ID in multi CorpID
+        AC3  Corporate ID in multi CorpID
+        AC4  Corporate ID in multi CorpID
+        ACX  Addtional Corporate IDs (in addition to AC1, AC2, AC3 and AC4)
+             in multi CorpID in the format of "CorpID5|CorpID6|..."
+        P23  Price without Cat 5 ADV purchase fares (JR-???Y? or WPNI'XA)
+        P49  Price  without Min Max Stay fare (WPNI'XS or JR'I-?Y???) (Pricing: No min/max stay restriction)
+        P0J  Agency is Eticket capable (Pricing:  Eticketable fare)
+        P0L  e-tkt default = off, no override in input
+        P0F  Web fare if available (WEB-Y) (Pricing: Web based fare)
+        P1Y  Public fares only (PL)    (Pricing: Public fares)
+        P1Z  Private fares only (PV)   (Pricing: Private fares)
+        P20  Price with exclusive passenger only (XO)   (Pricing: Private fares XO fares)
+        P21  IATA fares only (C-YY)  (Pricing: IATA fares)
+        P1W  Online fares (online solutions only)
+        P53  exempt all taxes (/TE) (in Pricing the same)
+        P54  exempt all taxes and fees (/TN) (Pricing: Exempt all taxes)
+        PA0  Enable Calendar Shopping for Interline
+        PBG  JPS (journey indicator) (/JPS-ON or /JPS-OFF)
+        PRM  T - Only fares with a matched Business Rule containing the specified Retailer Rule Qualifier will be returned
+        RCQ  Comma separated list of the 6-20 alphanumeric Retailer Rule Qualifier codes. Max = 4.
+        SEZ  Indicator OB Fees applied
+        SE2  Indicator Returning R-Type OB Fees
+        SE3  Indicator T-Type OB Fees applied
+        QFL  Number of fares for CAT12 estimation
+        SEV  Process Validate Interline Ticketing Agreement Data (T - process; F - do not process)
+        C48  Currency Override Code (MUSD)
+        P69  M override (in Pricing the same)
+        C47  Dual Currency (D*USD) (Pricing: Alternate currency code)
+        VTI  Interline Ticketing Agreement Indicator (T - All solutions returned should have interline ticketing agreement)
+        AF0  Point of sale override  (Pricing: Ticketing point override)
+        AG0  Point of ticketing override (Pricing: Sale point override)
+        S11  Account code
+        SM1  Account code in multi AccCode
+        SM2  Account code in multi AccCode
+        SM3  Account code in multi AccCode
+        SM4  Account code in multi AccCode
+        SMX  Addtional Account Codes (in addition to SM1, SM2, SM3 and SM4)
+             in multi AccCode in the format of "AccCode5|AccCode6|..."
+        P43  Thru Fares
+        B05  Validating carrier code (in Pricing the same)
+        PYA  Origin based RT pricing
+        D07  Ticketing date (Pricing: Ticketing date override)
+        D54  Ticketing time override (Pricing: Ticketing time override)
+        PDG  Bypass Advance Purchase Option  - It was PCG in Pricing
+        PAF  Need Fare Line
+        PBM  callToAvailability
+        CS0  Caching Service - ASv2/DSSv2 for QA only in test environment
+        PXC  Force Corporate Fares indicator
+        PXE  Inhibit split PNR option
+        PXS  Expand Jump Cabin Logic
+        AE0  PCC host carrier
+        SLC  Enable MIP separate ticketing (Carnival Sum Of Locals - MIP and IS)
+        B11  Override governing carrier
+        BFR  S8 Branded Fare Request
+        CAB  Catch all bucket for IBF
+        BPL  Returning cheapest solution with brand parity per leg in IBF
+        PBO  Override brand parity requirement in Context Shopping on currenlty shopped leg
+        SM0  Settlement method override
+        VCX  GSA validating carrier request
+        DVL  GSA alternate validating carrier request
+        XFF  Exclude Fare Focus rules
+        S15  Employee profile record keywords separated by comma
+        BFA  Number of brand options per itinerary
+        BFS  Return single brand option
+        PDO  Show original selling fare level amounts and total adjusted amount in Fare Calc line
+        PDR  Show true original base fare level prior to hidden fee application (RET qualifier)
+        XRS  Force ignore adjustment selling level rules.
+        B12  Non-Preferred Validating carrier code
+        B13  Preferred Validating carrier code
+        BI0  Price By Cabin Request Code
+
+        ------IS specific elements
+
+        PSL  IS Sum Of Local
+        PTF  IS exclude local fare markets on SOL path
+        P41  Interline solutions only
+        PAE  Diversity Off
+        Q1S  Number of accurate solutions if we did not use 100 options logic. Otherwise, the number of families for 100 options.
+        Q19  Interline weight factor
+        QAD  Number of alt. date solutions per date pair
+        N1T  Group Method for Mip request for alt date request (default 2)
+             1 = group by carrier only
+             2 = group by date only
+             3 = group by carrier+date
+        Q6F  Long Connection time logic, max percent of long connection options
+        QD1  Number of additional itineraries requested build based on OW fares (Carnival Sum Of Locals)
+        QD2  Max number of allowed use of the same feres combination in solutions build based on OW fares (Carnival Sum Of Local)
+        SPT  Shortcut Pricing Threshold, when exists it would mean "enable Shortcut Pricing", the value would be number of normal IS itineraries to be returned
+        QCU  Number of additional itineraries with Customized Routing and/or Carrier
+        SRL  Schedule Repeat Limit for IBF (0 = Disable)
+        UAF  Use all flights - diversity parameter to IBF. When set, IS should always use every SOP from the request at least once
+        IMT  Ignore minimum connect time - diversity parameter to IBF. When set, IS will allow any connect time above zero
+        TEP  Temporary Execution Flag for IATA New Fare Selection Shopping activation and testing
+        AFD  All Flights Data indicator
+
+        ------ESV specific elements
+
+        P80  Flag to turn on/off Must Price part of Diversity Logic
+        Q0E  Number of ESV low fare solutions requested
+        Q60  Number of must price online solutions
+        Q61  Number of must price interline solutions
+        Q62  Number of must price nonstop online solutions
+        Q63  Number of must price nonstop interline solutions
+        Q64  Number of must price single-stop online solutions
+        Q65  Penalty for each stop
+        Q66  Penalty for every hour of travel duration
+        Q67  Penalty for every hour of departure time deviation
+        Q68  Max allowed overage per carrier
+        Q69  Flight option reuse limit
+        Q6A  Upper bound factor for not nonstops
+        Q6Q  Number of must price nonstop/1-stop online solutions
+        Q6R  Number of must price nonstop/1-stop interline solutions
+        Q6S  Upper bound factor for nonstops
+        Q6U  Upper bound factor for LFS
+        Q5T  Maximum allowed LFS overage per carrier
+        Q5U  Target minimum number of LFS online solutions per carrier
+        Q5V  Target minimum number of total LFS online solutions
+        Q5X  Flight option LFS reuse limit for Non AVS carriers
+        Q5W  Flight option LFS reuse limit for AVS carriers
+        S5A  AVS penalty carriers
+
+        ------VIS specific elements
+
+        --Value-based Itinerary Selection (VIS)
+
+        PVI  Enable VIS (activate VIS instead of ESV)
+        Q80  Target no. of outbounds (Round Trip)
+        Q81  Target no. of inbounds per outbound (Round Trip)
+        QC3  Target no. of outbounds (One way)
+
+        --VIS Outbound selection (One-way)
+
+        QA7  Priority of selection by carrier
+        QA8  Priority of selection by time-of-day
+        QA9  Priority of selection by elapsed time
+        QB0  Priority of selection by utility value
+        QB1  Priority of non-stop selection
+        QB2  Selection by carrier - no. of carriers
+        QB3  Selection by carrier - no. of options per carrier
+        SG3  Selection by time-of-day - bin start/end times
+        QB4  Selection by time-of-day - no. of options per bin
+        QB5  Selection by elapsed time - no. of options
+        QB6  Selection by utility value - no. of options
+        QB7  Non-stop selection - fare multiplier
+        QB8  Non-stop selection - no. of options
+
+        --VIS Outbound selection (Round Trip)
+
+        Q82  Priority of selection by carrier
+        Q83  Priority of selection by time-of-day
+        Q84  Priority of selection by elapsed time
+        Q85  Priority of selection by utility value
+        Q86  Priority of non-stop selection
+        Q87  Selection by carrier - no. of carriers
+        Q88  Selection by carrier - no. of options per carrier
+        SG1  Selection by time-of-day - bin start/end times
+        Q89  Selection by time-of-day - no. of options per bin
+        Q90  Selection by elapsed time - no. of options
+        Q91  Selection by utility value - no. of options
+        Q92  Non-stop selection - fare multiplier
+        Q93  Non-stop selection - no. of options
+
+        --VIS Inbound selection (Round Trip)
+
+        Q94  Priority of selection by lowest fare
+        Q95  Priority of selection by time-of-day
+        Q96  Priority of selection by elapsed time
+        Q97  Priority of selection by utility value
+        Q98  Priority of non-stop selection
+        Q99  Priority of simple interline selection
+        QA0  Selection by lowest fare - no. of options
+        SG2  Selection by time-of-day - bin start/end times
+        QA1  Selection by time-of-day - no. of options per bin
+        QA2  Selection by elapsed time - no. of options
+        QA3  Selection by utility value - no. of options
+        QA4  Non-stop selection - fare multiplier
+        QA5  Non-stop selection - no. of options
+        QA6  Simple interline selection - no. of options
+
+        --VIS Low fare search
+
+        QB9  No. of itineraries
+        QC0  No. of additional outbounds (Round Trip)
+        QC1  No. of additional inbounds per outbound (Round Trip)
+        QC2  No. of additional outbounds (One-way)
+
+        ------MIP specific elements
+
+        MWI  MIP Without Previous IS Processing
+        FLM  Fare-led MIP
+        PXD  Branded Fare Requested (M)
+        PHR  One way procesing path (M)
+        Q6C  Snap request
+        P2D  Outbound departure date requested
+        D96  Earliest departure time
+        PA1  Split taxes by leg
+        PA2  Split taxes by fare component
+        PA3  Force fare breaks at leg points
+        D12  Inbound departure date requested
+        SEY  Indicator OC Fees applied
+        SEU  OC Fees Summary indicator
+        DFL  Disable Family Logic
+        PZF  Enable Zero Fare Cabin Logic
+        FLP  Family Logic Parameters in the format of "N1|N2|N3|N4" where
+
+               N1 = Availability score percentage difference for splitting families.
+               N2 = Number of splits based on availability score difference.
+               N3 = Number of splits based on booked availability.
+               N4 = Number of splits based on mother's booked availability
+
+             Note: If FLP is missing, or if all number of splits are 0, 
+                   then enhanced family logic will be disabled.
+        FBS  Process free baggage
+        URC  Use reduced constructions
+        DRT  Drop partial results on timeout (for test/regression purpose only)
+
+        DDC  Dynamic price Deviation amount Currency code
+        DDA  Dynamic Discount Amount
+        DDP  Dynamic Discount Percentage
+        DMA  Dynamic Mark up Amount
+        DMP  Dynamic Mark up Percentage
+
+        ------Exchange Shopping specific elements
+
+        D95  Previous Exchange Date
+        C5A  Base Fare Amount
+        D92  Original Ticket Issue Date
+        D94  Exchanged Ticket Issue Date
+        Q16  Number of tax boxes
+        Q6B  ROE Override
+        C6P  Base Fare Currency
+        C6Y  Fare Calc Currency
+        T92  Original Ticket Issue Time
+        T94  Exchanged Ticket Issue Time
+        T95  Previous Exchange Time
+        CBS  IBF : Change brand for soldout. Populated with one of three possible values:
+             T - change brand for 'no availability' and 'not offered' scenarios
+             X - change brand (as an addition to the previous one) when no fares filed for brand
+             F - disabled
+
+        NRA  Non-refundable Base Fare Amount (C6P is a currency)
+        PY6  Net selling indicator with cat35 it/bt
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BH0" type="TaxCodeType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="MTY" type="MTYType" minOccurs="0"/>
+      <xs:element name="XPN" type="XPNType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="Q0S" type="xs:short" use="required"/>
+    <xs:attribute name="MET" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PXO" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P1F" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P1G" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PCG" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PBD" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="Q6W" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P1V" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="Q4U" type="xs:short" use="optional"/>
+    <xs:attribute name="P2F" type="xs:short" use="optional" default="0"/>
+    <xs:attribute name="AC0" type="CorporateIDType" use="optional"/>
+    <xs:attribute name="AC1" type="CorporateIDType" use="optional"/>
+    <xs:attribute name="AC2" type="CorporateIDType" use="optional"/>
+    <xs:attribute name="AC3" type="CorporateIDType" use="optional"/>
+    <xs:attribute name="AC4" type="CorporateIDType" use="optional"/>
+    <xs:attribute name="ACX" type="CorporateIDType" use="optional"/>
+    <xs:attribute name="P23" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P49" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P0J" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P0L" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P0F" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P1Y" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P1Z" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P20" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P21" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P1W" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P53" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P54" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PA0" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PBG" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PRM" type="BoolTFType" use="optional"/>
+    <xs:attribute name="RCQ" type="xs:string" use="optional"/>
+    <xs:attribute name="SEZ" type="BoolTFType" use="optional"/>
+    <xs:attribute name="SE2" type="BoolTFType" use="optional"/>
+    <xs:attribute name="SE3" type="BoolTFType" use="optional"/>
+    <xs:attribute name="QFL" type="xs:short" use="optional" default="0"/>
+    <xs:attribute name="SEV" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="C48" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="P69" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="C47" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="VTI" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="AF0" type="CityCodeType" use="optional"/>
+    <xs:attribute name="AG0" type="CityCodeType" use="optional"/>
+    <xs:attribute name="S11" type="xs:string" use="optional"/>
+    <xs:attribute name="SM1" type="xs:string" use="optional"/>
+    <xs:attribute name="SM2" type="xs:string" use="optional"/>
+    <xs:attribute name="SM3" type="xs:string" use="optional"/>
+    <xs:attribute name="SM4" type="xs:string" use="optional"/>
+    <xs:attribute name="SMX" type="xs:string" use="optional"/>
+    <xs:attribute name="P43" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="B05" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="PYA" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="D07" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D54" type="TimeMinutesSinceMidnightType" use="optional"/>
+    <xs:attribute name="PDG" type="AnyCharType" use="optional"/>
+    <xs:attribute name="PAF" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PBM" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="CS0" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PXC" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PXE" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PXS" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="AE0" type="PartitionIDType" use="optional"/>
+    <xs:attribute name="SLC" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="B11" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="PSL" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PTF" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P41" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PAE" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="Q1S" type="xs:short" use="optional"/>
+    <xs:attribute name="Q19" type="xs:short" use="optional"/>
+    <xs:attribute name="QAD" type="xs:short" use="optional"/>
+    <xs:attribute name="N1T" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="QD1" type="xs:short" use="optional"/>
+    <xs:attribute name="QD2" type="xs:short" use="optional"/>
+    <xs:attribute name="SPT" type="xs:short" use="optional" default="0"/>
+    <xs:attribute name="P80" type="xs:string" use="optional"/>
+    <xs:attribute name="Q0E" type="xs:short" use="optional"/>
+    <xs:attribute name="Q60" type="xs:short" use="optional"/>
+    <xs:attribute name="Q61" type="xs:short" use="optional"/>
+    <xs:attribute name="Q62" type="xs:short" use="optional"/>
+    <xs:attribute name="Q63" type="xs:short" use="optional"/>
+    <xs:attribute name="Q64" type="xs:short" use="optional"/>
+    <xs:attribute name="Q65" type="xs:short" use="optional"/>
+    <xs:attribute name="Q66" type="xs:short" use="optional"/>
+    <xs:attribute name="Q67" type="xs:short" use="optional"/>
+    <xs:attribute name="Q68" type="xs:float" use="optional"/>
+    <xs:attribute name="Q69" type="xs:short" use="optional"/>
+    <xs:attribute name="Q6A" type="xs:float" use="optional"/>
+    <xs:attribute name="Q6F" type="xs:short" use="optional"/>
+    <xs:attribute name="Q6Q" type="xs:short" use="optional"/>
+    <xs:attribute name="Q6R" type="xs:short" use="optional"/>
+    <xs:attribute name="Q6S" type="xs:float" use="optional"/>
+    <xs:attribute name="Q6U" type="xs:float" use="optional"/>
+    <xs:attribute name="Q5T" type="xs:short" use="optional"/>
+    <xs:attribute name="Q5U" type="xs:short" use="optional"/>
+    <xs:attribute name="Q5V" type="xs:short" use="optional"/>
+    <xs:attribute name="Q5X" type="xs:float" use="optional"/>
+    <xs:attribute name="Q5W" type="xs:float" use="optional"/>
+    <xs:attribute name="S5A" type="xs:string" use="optional"/>
+    <xs:attribute name="PVI" type="BoolTFType" use="optional" default="T"/>
+    <xs:attribute name="Q80" type="xs:short" use="optional" default="35"/>
+    <xs:attribute name="Q81" type="xs:short" use="optional" default="20"/>
+    <xs:attribute name="QC3" type="xs:short" use="optional" default="50"/>
+    <xs:attribute name="QA7" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="QA8" type="xs:short" use="optional" default="4"/>
+    <xs:attribute name="QA9" type="xs:short" use="optional" default="5"/>
+    <xs:attribute name="QB0" type="xs:short" use="optional" default="3"/>
+    <xs:attribute name="QB1" type="xs:short" use="optional" default="2"/>
+    <xs:attribute name="QB2" type="xs:short" use="optional" default="5"/>
+    <xs:attribute name="QB3" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="SG3" type="xs:string" use="optional" default="0500,1200,1700,2100"/>
+    <xs:attribute name="QB4" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="QB5" type="xs:short" use="optional" default="0"/>
+    <xs:attribute name="QB6" type="xs:short" use="optional" default="30"/>
+    <xs:attribute name="QB7" type="xs:float" use="optional" default="10.00"/>
+    <xs:attribute name="QB8" type="xs:short" use="optional" default="200"/>
+    <xs:attribute name="Q82" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="Q83" type="xs:short" use="optional" default="4"/>
+    <xs:attribute name="Q84" type="xs:short" use="optional" default="5"/>
+    <xs:attribute name="Q85" type="xs:short" use="optional" default="3"/>
+    <xs:attribute name="Q86" type="xs:short" use="optional" default="2"/>
+    <xs:attribute name="Q87" type="xs:short" use="optional" default="5"/>
+    <xs:attribute name="Q88" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="SG1" type="xs:string" use="optional" default="0500,1200,1700,2100"/>
+    <xs:attribute name="Q89" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="Q90" type="xs:short" use="optional" default="0"/>
+    <xs:attribute name="Q91" type="xs:short" use="optional" default="20"/>
+    <xs:attribute name="Q92" type="xs:double" use="optional" default="10.00"/>
+    <xs:attribute name="Q93" type="xs:short" use="optional" default="200"/>
+    <xs:attribute name="Q94" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="Q95" type="xs:short" use="optional" default="4"/>
+    <xs:attribute name="Q96" type="xs:short" use="optional" default="6"/>
+    <xs:attribute name="Q97" type="xs:short" use="optional" default="3"/>
+    <xs:attribute name="Q98" type="xs:short" use="optional" default="2"/>
+    <xs:attribute name="Q99" type="xs:short" use="optional" default="5"/>
+    <xs:attribute name="QA0" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="SG2" type="xs:string" use="optional" default="0500,1200,1700,2100"/>
+    <xs:attribute name="QA1" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="QA2" type="xs:short" use="optional" default="0"/>
+    <xs:attribute name="QA3" type="xs:short" use="optional" default="10"/>
+    <xs:attribute name="QA4" type="xs:double" use="optional" default="10.00"/>
+    <xs:attribute name="QA5" type="xs:short" use="optional" default="200"/>
+    <xs:attribute name="QA6" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="QB9" type="xs:short" use="optional" default="50"/>
+    <xs:attribute name="QC0" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="QC1" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="QC2" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="QCU" type="xs:short" use="optional" default="0"/>
+    <xs:attribute name="MWI" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="FLM" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PXD" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PHR" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PEF" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="Q6C" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P2D" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D96" type="TimeHHMMType" use="optional"/>
+    <xs:attribute name="PA1" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PA2" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PA3" type="BoolTFType" use="optional" default="T"/>
+    <xs:attribute name="D12" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="SEY" type="BoolTFType" use="optional"/>
+    <xs:attribute name="SEU" type="BoolTFType" use="optional"/>
+    <xs:attribute name="DFL" type="BoolTFType" use="optional"/>
+    <xs:attribute name="FLP" type="xs:string" use="optional"/>
+    <xs:attribute name="FBS" type="BoolTFType" use="optional"/>
+    <xs:attribute name="URC" type="BoolTFType" use="optional"/>
+    <xs:attribute name="DRT" type="BoolTFType" use="optional"/>
+    <xs:attribute name="DDC" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="DDA" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="DDP" type="xs:float" use="optional"/>
+    <xs:attribute name="DMA" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="DMP" type="xs:float" use="optional"/>
+    <xs:attribute name="D95" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="C5A" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="D92" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D94" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="Q16" type="xs:short" use="optional"/>
+    <xs:attribute name="Q6B" type="xs:double" use="optional"/>
+    <xs:attribute name="C6P" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C6Y" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="T92" type="TimeMinutesSinceMidnightType" use="optional"/>
+    <xs:attribute name="T94" type="TimeMinutesSinceMidnightType" use="optional"/>
+    <xs:attribute name="T95" type="TimeMinutesSinceMidnightType" use="optional"/>
+    <xs:attribute name="BFR" type="BoolTFType" use="optional"/>
+    <xs:attribute name="CAB" type="BoolTFType" use="optional"/>
+    <xs:attribute name="BPL" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PBO" type="BoolTFType" use="optional"/>
+    <xs:attribute name="SRL" type="xs:short" use="optional"/>
+    <xs:attribute name="CBS" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[TXF]"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="UAF" type="BoolTFType" use="optional"/>
+    <xs:attribute name="IMT" type="BoolTFType" use="optional"/>
+    <xs:attribute name="TEP" type="xs:integer" use="optional"/>
+    <xs:attribute name="PZF" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="SM0" type="ThreeCharacterFixedString" use="optional"/>
+    <xs:attribute name="VCX" type="BoolTFType" use="optional"/>
+    <xs:attribute name="DVL" type="BoolTFType" use="optional"/>
+    <xs:attribute name="NRA" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="XFF" type="BoolTFType" use="optional"/>
+    <xs:attribute name="S15" type="xs:string" use="optional"/>
+    <xs:attribute name="BFA" type="xs:short" use="optional"/>
+    <xs:attribute name="BFS" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PY6" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PDO" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PDR" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="XRS" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="B12" type="xs:string" use="optional"/>
+    <xs:attribute name="B13" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="DURType">
+    <xs:annotation>
+      <xs:documentation>
+
+        DURType   Duration of number of stay days for alternate date (IS)
+
+        MIN  Minimum stay days
+        MAX  Maximum stay days
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="MIN" type="xs:short" use="optional"/>
+    <xs:attribute name="MAX" type="xs:short" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="PDTType">
+    <xs:annotation>
+      <xs:documentation>
+
+        PDTType   Primary date for alternate date request (IS)
+
+        D01 Travel Date
+        D02 Return date
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="D01" type="DateYYYY-MM-DDType" use="required"/>
+    <xs:attribute name="D02" type="DateYYYY-MM-DDType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="ODDType">
+    <xs:annotation>
+      <xs:documentation>
+
+        ODD Origination and Destination Data (IS)
+
+        D07   Requested departure date
+        D37   Requested departure time
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="D07" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D37" type="TimeHHMMType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="DIVType">
+    <xs:annotation>
+      <xs:documentation>
+
+        DIVType Diversity Parameters (IS)
+
+        TOD Time of date ranges
+        FAC Maximal fare amount coeficient
+        PCP Options per carrier percentage
+        OPC Minimal number of options per carrier
+        NSO Non stop options percentage
+        NSV Non stop options count
+        IOP Inbound/outbound pairing
+        FLN Fare level number
+        FAS Fare amount separetor
+        TTS Time travel separetor
+        TTD TOD distribution
+        BKD Bucket distribution
+        PFC Preferred carriers
+        FRL Flight repeat limit
+        MDL Diversity model to use
+        DCL map to hold carrier's option number
+        OCO flag to tell if it is Online Carrier Only or not
+        NSD Non-Specified carriers Default option number 
+        HDM High density market - T - high density market, F - turn off high density logic, undefined - determine whether it is high density market
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CXP" type="CXPType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="TOD" type="xs:string" use="optional"/>
+    <xs:attribute name="FAC" type="xs:float" use="optional"/>
+    <xs:attribute name="PCP" type="xs:float" use="optional"/>
+    <xs:attribute name="OPC" type="xs:short" use="optional"/>
+    <xs:attribute name="NSO" type="xs:float" use="optional"/>
+    <xs:attribute name="IOP" type="xs:short" use="optional"/>
+    <xs:attribute name="FLN" type="xs:short" use="optional"/>
+    <xs:attribute name="FAS" type="xs:float" use="optional"/>
+    <xs:attribute name="TTS" type="xs:float" use="optional"/>
+    <xs:attribute name="TTD" type="xs:string" use="optional"/>
+    <xs:attribute name="BKD" type="xs:string" use="optional"/>
+    <xs:attribute name="PFC" type="xs:string" use="optional"/>
+    <xs:attribute name="FRL" type="xs:short" use="optional"/>
+    <xs:attribute name="MDL" type="xs:string" use="optional"/>
+    <xs:attribute name="DCL" type="xs:string" use="optional"/>
+    <xs:attribute name="OCO" type="xs:string" use="optional"/>
+    <xs:attribute name="NSD" type="xs:float" use="optional"/>
+    <xs:attribute name="HDM" type="BoolTFType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="CXPType">
+    <xs:annotation>
+      <xs:documentation>
+
+        CXPType Carrier specific diversity parameters (IS)
+
+        B00 Carrier
+        PCP Options per carrier percentage
+        OPC Minimal number of options per carrier
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="B00" type="AirlineCodeType" use="required"/>
+    <xs:attribute name="PCP" type="xs:float" use="optional"/>
+    <xs:attribute name="OPC" type="xs:short" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="FFYType">
+    <xs:annotation>
+      <xs:documentation>
+
+        FFYType Frequent Flyer Status Information (MIP)
+
+        Q7D Frequent Flyer Status
+        B00 Airline Carrier Code
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Q7D" type="xs:short" use="required"/>
+    <xs:attribute name="B00" type="AirlineCodeType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="RFGType">
+    <xs:annotation>
+      <xs:documentation>
+
+        RFGType Requested OC Fee Group (MIP)
+
+        S01 Group code
+        Q0A Number of items
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="S01" type="xs:string" use="required"/>
+    <xs:attribute name="Q0A" type="xs:short" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="EXCType">
+    <xs:annotation>
+      <xs:documentation>
+
+        EXCType Exchange Itinerary Information (REX)
+
+        AGI  Agent Information
+        PRO  Option Information
+        PXI  Passenger Information
+        APX  Accompany Passenger Information
+        AAF  Flight List
+        LEG  Flight Segment List
+        ITN  Itinerary request from MIP Request
+        FCI  Fare Component CAT31 Info
+        TAX  Tax Information
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AGI" type="AGIType" minOccurs="0"/>
+      <xs:element name="PRO" type="PROType" minOccurs="0"/>
+      <xs:element name="PXI" type="PXIType" minOccurs="0"/>
+      <xs:element name="APX" type="PXIType" minOccurs="0"/>
+      <xs:element name="AAF" type="AAFType" maxOccurs="unbounded"/>
+      <xs:element name="LEG" type="LEGType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ITN" type="ITNType"/>
+      <xs:element name="PUP" type="PUPType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="FCI" type="FCIType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="TAX" type="TAXType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FCIType">
+    <xs:annotation>
+      <xs:documentation>
+
+      FCIType  Fare Component element (REX)
+
+      Q6D Fare Component Number
+      VCT VCTR Information
+      R3I Merged Record3 Information
+
+     </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="VCT" type="VCTType"/>
+      <xs:element name="R3I" type="R3IType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Q6D" type="xs:short" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="R3IType">
+    <xs:annotation>
+      <xs:documentation>
+
+        R3IType Record3 Information (REX)
+
+        Q5Y Record3 Item Number
+        D41 Calendar shopping shift days before
+        D42 Calendar shopping shift days after
+        SEQ Tab988 Sequence Information
+
+     </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SEQ" type="SEQType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Q5Y" type="xs:integer" use="required"/>
+    <xs:attribute name="D41" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D42" type="DateYYYY-MM-DDType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="SEQType">
+    <xs:annotation>
+      <xs:documentation>
+
+        SEQType Tab988 Sequence Information (REX)
+
+        Q5Z Tab988 Sequence Number
+        D41 Calendar shopping shift days before
+        D42 Calendar shopping shift days after
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Q5Z" type="xs:integer" use="required"/>
+    <xs:attribute name="D41" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D42" type="DateYYYY-MM-DDType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="VCTType">
+    <xs:annotation>
+      <xs:documentation>
+
+        VCTType  VCTR Information (REX)
+
+        S37 Fare Vendor
+        B09 Fare Source Carrier
+        S89 Fare Tariff
+        S90 Fare Rule
+        RTD Retrival Tate
+
+     </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="S37" type="xs:string" use="required"/>
+    <xs:attribute name="B09" type="AirlineCodeType" use="required"/>
+    <xs:attribute name="S89" type="xs:string" use="required"/>
+    <xs:attribute name="S90" type="xs:string" use="required"/>
+    <xs:attribute name="RTD" type="DateYYYY-MM-DDType" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="FCLType">
+    <xs:annotation>
+      <xs:documentation>
+
+        FCLType Forced Connection List (REX)
+
+        AJ0 Preferred connection point
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="AJ0" type="CityCodeType" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="BFFType">
+    <xs:annotation>
+      <xs:documentation>
+
+        BFFType  Best Fare Finder and Flight Finder request (BFF)
+
+        A11  Board City
+        A12  Off City
+        D01  Outbound date
+        D02  Inbound date
+        B00  Carrier
+        N23  Request for Oneway or RoundTrip O,R
+        Q6T  Request Step of BFF
+        NAA  Request availability:
+            "P" - applicability only,
+            "V" - applicability and availability
+        DTL  Date List
+        RQF  Requested Fare
+        PSG  Requested Passenger type
+        DRG  BFF date range for step 1 and step 3
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PSG" type="PSGType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="DRG" type="DRGType" minOccurs="0"/>
+      <xs:element name="RQF" type="RQFType" maxOccurs="2"/>
+    </xs:sequence>
+    <xs:attribute name="A11" type="CityCodeType" use="required"/>
+    <xs:attribute name="A12" type="CityCodeType" use="required"/>
+    <xs:attribute name="D01" type="DateYYYY-MM-DDType" use="required"/>
+    <xs:attribute name="D02" type="DateYYYY-MM-DDType" use="required"/>
+    <xs:attribute name="B00" type="AirlineCodeType" use="required"/>
+    <xs:attribute name="N23" type="AnyCharType" use="optional"/>
+    <xs:attribute name="Q6T" type="xs:short" use="optional"/>
+    <xs:attribute name="NAA" type="AnyCharType" use="optional" default="P"/>
+  </xs:complexType>
+  <xs:complexType name="DTLType">
+    <xs:annotation>
+      <xs:documentation>
+
+        DTLType   Date List (BFF)
+
+        D17 Outbound Date
+        IBL Inbound Date list
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="IBL" type="IBLType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="D17" type="DateYYYY-MM-DDType" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="IBLType">
+    <xs:annotation>
+      <xs:documentation>
+
+        IBLType InboundDate List (BFF)
+
+        D18 Inbound Date
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="D18" type="DateYYYY-MM-DDType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="TAXType">
+   <xs:annotation>
+     <xs:documentation>
+     BC0     Requested tax code
+     </xs:documentation>
+   </xs:annotation>
+   <xs:attribute name="BC0" type="xs:string" use="required"/>
+ </xs:complexType>
+  <xs:complexType name="RQFType">
+    <xs:annotation>
+      <xs:documentation>
+
+        RQF  Requested Fare (BFF)
+
+        B50  Fare Basis code
+        C75  Fare Amount
+        C76  Fare Currency
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="B50" type="FareBasisCodeType" use="optional"/>
+    <xs:attribute name="C75" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C76" type="CurrencyCodeType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="PSGType">
+    <xs:annotation>
+      <xs:documentation>
+
+        PSG  Requested Passenger type (BFF)
+
+        B70  Passenger type
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="B70" type="PassengerCodeType" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="DRGType">
+    <xs:annotation>
+      <xs:documentation>
+
+        DRGType BFF step 1 and step 3 date range (BFF)
+
+        D01 Start date
+        Q4V Number of days forward
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="D01" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="Q4V" type="xs:short" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="FFGType">
+  <xs:annotation>
+    <xs:documentation>
+
+      FFGType Shopping Flex Fare Group Type
+
+      Q17 Flex Fare Group Id
+      PXC Flex Fare Phase III XC indicator
+      PTC Passenger Type
+      P20 Flex Fare Group XO indicator
+      B31 Requested Flex Fare Group Cabin
+      PXS Expand Jump Cabin Indicator for Flex Fare Group
+      PXU Disable Jump Cabin Indicator for Flex Fare Group
+      ACX Corporate Ids in format "CorpID1|CorpID2|..."
+      SMX Account Codes in format "AccCode1|AccCode2|..."
+      P1Y Public Fares only
+      P1Z Private Fares only
+      FFR Flex Fare Restrictions in format "Res1|Res2|..."
+          Possible restriction codes:
+          XA  Exclude fares with advance purchase
+          XP  Exclude fares with associated penalties
+          XS  Exclude Fares with min/max stay
+          XR  No Restrictions - includes XA, XP and XS. Cannot be used with them.
+      MPO Maximum Penalty Operation, provide application relation between penalty conditions
+      PEN Max Penalty Info
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Q17" type="xs:integer" use="required"/>
+    <xs:attribute name="PXC" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PTC" type="xs:string" use="optional"/>
+    <xs:attribute name="P20" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="B31" type="xs:string" use="optional"/>
+    <xs:attribute name="PXS" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PXU" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="ACX" type="xs:string" use="optional"/>
+    <xs:attribute name="SMX" type="xs:string" use="optional"/>
+    <xs:attribute name="P1Y" type="BoolTFType" use="optional"/>
+    <xs:attribute name="P1Z" type="BoolTFType" use="optional"/>
+    <xs:attribute name="FFR" type="xs:string" use="optional"/>
+    <xs:attribute name="MPO" use="optional" default="A">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="I">
+            <xs:annotation>
+              <xs:documentation>Info - no conditions are checked, but penalty information is returned</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="O">
+            <xs:annotation>
+              <xs:documentation>Or - Exchange condition is true or refund condition is true</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="A">
+            <xs:annotation>
+              <xs:documentation>And - both exchange and refund conditions have to be true</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:sequence>
+      <xs:element name="PEN" type="PENType" minOccurs="0" maxOccurs="4"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PENType">
+    <xs:annotation>
+      <xs:documentation>
+        ABD Indicate whether After or Before Departure Penalty is requested (if missing it assumed both After and Before)
+        MPT Change type
+        MPI Change Condition
+        MPA Maximum Penalty Amount
+        MPC Maximum Penalty Currency
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ABD" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="A">
+            <xs:annotation>
+              <xs:documentation>After Departure</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="B">
+            <xs:annotation>
+              <xs:documentation>Before Departure</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="MPT" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="C">
+            <xs:annotation>
+              <xs:documentation>Exchange</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="R">
+            <xs:annotation>
+              <xs:documentation>Refund</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="MPI" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="A">
+            <xs:annotation>
+              <xs:documentation>Any applayable</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="N">
+            <xs:annotation>
+              <xs:documentation>Nonapplayable</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="MPA" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="MPC" type="CurrencyCodeType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="DynamicConfigType">
+    <xs:annotation>
+      <xs:documentation>
+
+      DynamicConfigType Override dynamic config value
+
+      Name        Name of configuration value
+      Value       The overriden value
+      Substitute  Whether to substitute special characters in the name (default true)
+      Optional    Whether to ignore errors in this entry (default false)
+
+      For more details, see Xform/DynamicConfig.h
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Value" type="xs:string" use="required"/>
+    <xs:attribute name="Substitute" type="BoolTFType" use="optional"/>
+    <xs:attribute name="Optional" type="BoolTFType" use="optional"/>
+  </xs:complexType>
+</xs:schema>

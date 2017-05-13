@@ -1,0 +1,44 @@
+<AirSeg>
+     <FlightInfo
+          carrier="AA"
+          marketingFlightNumber=2114
+          operatingFlightNumber=2114
+     />
+     <Misc
+          considerOnlyCabin=""
+     />
+<EarliestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<LatestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<DepartureDate year=2009 month=10 day=2 hour=6 minute=55 second=0/>
+<ArrivalDate year=2009 month=10 day=2 hour=11 minute=15 second=0/>
+<BookingDate year=2009 month=9 day=18 hour=6 minute=44 second=0/>
+     <ClassOfService file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/ClassOfService_Y.xml"/>
+     <SegmentInfo
+          pnrSegment=2
+          segmentOrder=2
+          stopOver="f"
+          forcedStopOver="F"
+          forcedConx="F"
+          geoTravelType="International"
+          origAirport="MEX"
+          boardMultiCity="MEX"
+          destAirport="MIA"
+          offMultiCity="MIA"
+     />
+     <FlightInfo
+          equipmentType="738"
+     />
+     <Origin file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_DFW_MEX_MIA_0_Loc_MEX.xml"/>
+     <Destination file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_DFW_MEX_MIA_1_Loc_MIA.xml"/>
+     <Misc
+          bookedCabin="8"
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode=""
+          bookingCode="Y"
+          furthestPoint="t"
+          forcedFareBrk="F"
+          forcedNoFareBrk="F"
+          forcedSideTrip="F"
+     />
+</AirSeg>

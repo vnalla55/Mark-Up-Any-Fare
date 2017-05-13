@@ -1,0 +1,29 @@
+<AddonFareInfo>
+
+    <EffectiveDate year=2004 month=6 day=23 hour=12 minute=0 second=0 />
+    <DiscountDate  year=2004 month=6 day=23 hour=10 minute=0 second=0 />
+    <ExpireDate    year=2005 month=6 day=23 hour=10 minute=0 second=0 />
+
+    <!-- directionality can be "ORIGINATING_LOC1", "ORIGINATING_LOC2", or "DIR_IND_NOT_DEFINED" -->
+    <!-- owrt can be ALL_WAYS, ONE_WAY_MAY_BE_DOUBLED ROUND_TRIP_MAYNOT_BE_HALVED, ONE_WAY_MAYNOT_BE_DOUBLED -->
+    <!-- see FareClassAppSegInfo -->
+
+    <Flight gatewayMarket="gwmkt"
+            interiorMarket="intmkt"
+            carrier="AA"
+            fareClass="FIRST"
+            routing="foo"
+            directionality="1"
+            owrt=" "
+            arbZone=1
+            addonTariff=23
+            vendor="SABR"
+            currency="USD"
+            fareAmt=100.50
+            noDec=2 />
+
+    <Footnotes footNote1="footnote 1"
+               footNote2="footnote 2"/>
+    
+</AddonFareInfo>
+

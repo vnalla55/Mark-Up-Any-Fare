@@ -1,0 +1,28 @@
+<ZoneInfo>
+     <Attributes
+          vendor="SITA"
+          zone="0000310"
+          zoneType="R"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="N"
+          loc="JP"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="N"
+          loc="KP"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="N"
+          loc="KR"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+</ZoneInfo>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2005 rel. 5 U (http://www.xmlspy.com) by Mike Carroll (SABRE Holdings) -->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="CommonTypes.xsd"/>
+	<xs:include schemaLocation="CommonElements.xsd"/>
+	<xs:element name="TaxRequest">
+		<xs:annotation>
+			<xs:documentation>
+			ATSEI Tax Service Request
+			 ITN		Itinerary Information
+			 PXI		Passenger Information
+			 BIL		Billing Information
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ITN" type="ITNType" maxOccurs="100"/>
+				<xs:element name="PXI" type="PXIType" maxOccurs="4"/>
+				<xs:element name="BIL" type="BILType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- Element reference declarations -->
+	<xs:complexType name="ITNType">
+		<xs:annotation>
+			<xs:documentation>
+			FLI		Flight information
+			AG0	Sale point override
+			S12		Ticketing Carrier
+			B50		Fare basis code
+			C5A		Base fare amount
+			C46		Currency code
+			C50		Fare component base fare
+			Q1K		Sequence number
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="FLI" type="FLIType" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="AG0" type="CityCodeType" use="required"/>
+		<xs:attribute name="S12" type="AirlineCodeType" use="required"/>
+		<xs:attribute name="B50" type="FareBasisCodeType" use="required"/>
+		<xs:attribute name="C5A" type="MonetaryAmountType" use="required"/>
+		<xs:attribute name="C46" type="CurrencyCodeType" use="required"/>
+		<xs:attribute name="C50" type="MonetaryAmountType" use="required"/>
+		<xs:attribute name="Q1K" type="xs:short" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="PXIType">
+		<xs:annotation>
+			<xs:documentation>
+            B70		Passenger type
+            Q0T		Passenger age
+            Q0U		Passenger type count
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="B70" type="PassengerCodeType" use="required"/>
+		<xs:attribute name="Q0U" type="xs:short" use="optional" default="1"/>
+		<xs:attribute name="Q0T" type="xs:short" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="FLIType">
+		<xs:annotation>
+			<xs:documentation>
+			BCC		BCCType
+			CNP		Connection points
+			STP		Flight stops
+			Q0B		Flight Number
+			D01		Departure date
+			D31		Departure time
+			A01		Departure city
+			D02		Arrival date
+			D32		Arrival time
+			A02		Arrival city
+			B06		Marketing Carrier code
+			B01		Operating Carrier code
+			B40		Equipment type code
+			C5A		Base fare amount
+			C46		Currency code
+			C50		Fare component base fare
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="BCC" type="BCCType" maxOccurs="26"/>
+			<xs:element name="CNP" type="CNPType" maxOccurs="4"/>
+			<xs:element name="STP" type="STPType" maxOccurs="4"/>
+		</xs:sequence>
+		<xs:attribute name="Q0B" type="xs:short" use="required"/>
+		<xs:attribute name="D01" type="DateYYYY-MM-DDType" use="required"/>
+		<xs:attribute name="D31" type="TimeHHMMType" use="required"/>
+		<xs:attribute name="A01" type="AirportCodeType" use="required"/>
+		<xs:attribute name="D02" type="DateYYYY-MM-DDType" use="required"/>
+		<xs:attribute name="D32" type="TimeHHMMType" use="required"/>
+		<xs:attribute name="A02" type="AirportCodeType" use="required"/>
+		<xs:attribute name="B06" type="AirlineCodeType" use="required"/>
+		<xs:attribute name="B01" type="AirlineCodeType" use="required"/>
+		<xs:attribute name="B40" type="xs:string" use="required"/>
+		<xs:attribute name="C5A" type="MonetaryAmountType" use="required"/>
+		<xs:attribute name="C46" type="CurrencyCodeType" use="required"/>
+		<xs:attribute name="C50" type="MonetaryAmountType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="BCCType">
+		<xs:annotation>
+			<xs:documentation>
+			B30		Booking Code
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="B30" type="BookingCodeType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="CNPType">
+		<xs:annotation>
+			<xs:documentation>
+			AJ0		Connection point
+			</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="STPType">
+		<xs:annotation>
+			<xs:documentation>
+			A18		Stopover point
+			</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+</xs:schema>

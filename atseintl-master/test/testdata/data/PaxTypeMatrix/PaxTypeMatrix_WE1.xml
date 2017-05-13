@@ -1,0 +1,11 @@
+<Vector>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="WE1"
+               atpPaxType="WTS"
+               carrier="AA"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+</Vector>

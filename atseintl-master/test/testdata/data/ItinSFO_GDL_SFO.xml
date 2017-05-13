@@ -1,0 +1,10 @@
+<Itin>
+  <Attributes
+     geoTravelType="International" 
+     ticketingCarrier="WN" 
+  />
+  <TravelSeg file="/vobs/atseintl/test/testdata/data/AirSegSFO_LAX.xml"/>
+  <TravelSeg file="/vobs/atseintl/test/testdata/data/AirSegLAX_GDL.xml"/>
+  <TravelSeg file="/vobs/atseintl/test/testdata/data/AirSegGDL_LAX.xml"/>
+  <TravelSeg file="/vobs/atseintl/test/testdata/data/AirSegLAX_SFO.xml"/>
+</Itin>

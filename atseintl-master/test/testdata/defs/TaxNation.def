@@ -1,0 +1,8 @@
+name: TaxNation
+namespace: tse
+package: DBAccess
+
+section: Misc
+  scalar: nation:       NationCode    nation()
+  scalar: roundingUnit: CurrencyNoDec roundingUnit()
+endsection

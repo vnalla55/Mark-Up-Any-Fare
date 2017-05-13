@@ -1,0 +1,23 @@
+SERVICEFEES_SOURCES := \
+    AncillaryPostTktFeeCollector.cpp \
+    AncillaryPostTktValidator.cpp \
+    AncillaryPriceModifierProcessor.cpp \
+    AncillaryPricingFeeCollector.cpp \
+    AncillaryPricingValidator.cpp \
+    AncillarySecurityValidator.cpp \
+    AncillaryWpDisplayFeeCollector.cpp \
+    AncillaryWpDisplayValidator.cpp \
+    CarrierStrategy.cpp \
+    CombinationGenerator.cpp \
+    CommonSoftMatchValidator.cpp \
+    ExtendedSecurityValidator.cpp \
+    MerchActivationValidator.cpp \
+    OCFees.cpp \
+    OptionalFeeCollector.cpp \
+    OptionalFeeConcurValidator.cpp \
+    OptionalServicesValidator.cpp \
+    OptionalServicesGroupCodeFilter.cpp \
+    PseudoFarePathBuilder.cpp \
+    ServiceFeesGroup.cpp \
+    ServiceFeesService.cpp \
+    SliceAndDice.cpp

@@ -1,0 +1,33 @@
+<Vector>
+     <GeneralFareRuleInfo     >
+          <GenFareRuleData
+               segcount=1
+               jointCarrierTblItemNo=0
+               generalRuleTariff=0
+               fareClass=""
+               owrt=" "
+               routingAppl=" "
+               routing=""
+               footNote1=""
+               footNote2=""
+               fareType=""
+               seasonType=" "
+               dowType=" "
+               generalRule="0000"
+               generalRuleAppl="N"
+               inhibit="N"
+          />
+     >
+          <Attributes
+               vendorCode="ATP"
+               tariffNumber=1
+               carrierCode="BA"
+               ruleNumber="2002"
+               categoryNumber=21
+               sequenceNumber=100000
+          />
+          <CategoryRuleItemInfoSet file="/vobs/atseintl/Fares/test/data/DiscountedFareController/GenFareRule_ATP_BA_1_2002_21_CategoryRuleItemInfoSet0.xml"/>
+          <Location1 file="/vobs/atseintl/Fares/test/data/DiscountedFareController/GenFareRule_ATP_BA_1_2002_21_LocKey_0.xml"/>
+          <Location2 file="/vobs/atseintl/Fares/test/data/DiscountedFareController/GenFareRule_ATP_BA_1_2002_21_LocKey_0.xml"/>
+     </GeneralFareRuleInfo>
+</Vector>

@@ -1,0 +1,35 @@
+name: FarePath
+namespace: tse
+package: DataModel
+
+factoryAggregate: FareUsage:    std::vector<FareUsage*>   flownOWFares()
+factoryAggregate: PricingUnit:  std::vector<PricingUnit*> pricingUnit()
+
+factoryAggregate: Itin:             Itin*             itin()
+factoryAggregate: PaxType:          PaxType*          paxType()
+factoryAggregate: NetRemitFarePath: NetRemitFarePath* netRemitFarePath()
+factoryAggregate: FarePath:         FarePath*         originalFarePathAxess()
+#factoryAggregate: FarePath          FarePath*         axessFarePath()
+
+section: Misc
+  scalar: baseFareCurrency:                       CurrencyCode  baseFareCurrency()
+  scalar: calculationCurrency:                    CurrencyCode  calculationCurrency()
+  scalar: rexChangeFee:                           MoneyAmount   setRexChangeFee
+  scalar: plusUpAmount:                           MoneyAmount   plusUpAmount()
+  scalar: totalNUCAmount:                         MoneyAmount   getTotalNUCAmount()
+  scalar: unroundedTotalNUCAmount:                MoneyAmount   unroundedTotalNUCAmount()
+  scalar: commissionAmount:                       MoneyAmount   commissionAmount()
+  scalar: commissionPercent:                      Percent       commissionPercent()
+  scalar: processed:                              bool          processed()
+  scalar: intlSurfaceTvlLimit:                    bool          intlSurfaceTvlLimit()
+  scalar: plusUpFlag:                             bool          plusUpFlag()
+  scalar: selectedNetRemitFareCombo:              bool          selectedNetRemitFareCombo()
+  scalar: rebookClassesExists:                    bool          rebookClassesExists()
+  scalar: bookingCodeFailButSoftPassForKeepFare:  bool          bookingCodeFailButSoftPassForKeepFare()
+  scalar: tktRestricted:                          bool          tktRestricted()
+  scalar: tfrRestricted:                          bool          tfrRestricted()
+  scalar: flownOWFaresCollected:                  bool          flownOWFaresCollected()
+  scalar: ignoreReissueCharges:                   bool          ignoreReissueCharges()
+  scalar: fuelSurchargeIgnored:                   bool          fuelSurchargeIgnored()
+  scalar: intlSaleIndicator:                      Itin::ISICode intlSaleIndicator()
+endsection

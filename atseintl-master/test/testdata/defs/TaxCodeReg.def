@@ -1,0 +1,114 @@
+name: TaxCodeReg
+namespace: tse
+package: DBAccess
+
+factoryAggregate: ExpireDate:     DateTime expireDate()
+factoryAggregate: EffectiveDate:  DateTime effDate()
+factoryAggregate: DiscountDate:   DateTime discDate()
+factoryAggregate: FirstTvlDate:   DateTime firstTvlDate()
+factoryAggregate: LastTvlDate:    DateTime lastTvlDate()
+factoryAggregate: LockDate:       DateTime lockDate()
+factoryAggregate: CreateDate:     DateTime createDate()
+
+section: Loc1
+  scalar: type:     LocTypeCode loc1Type()
+  scalar: loccode:  LocCode     loc1()
+  scalar: exclInd:  Indicator   loc1ExclInd()
+  scalar: appl:     Indicator   loc1Appl()
+endsection
+
+section: Loc2
+  scalar: type:     LocTypeCode loc2Type()
+  scalar: loccode:  LocCode     loc2()
+  scalar: exclInd:  Indicator   loc2ExclInd()
+  scalar: appl:     Indicator   loc2Appl()
+endsection
+
+section: Amounts
+  scalar: tax:              MoneyAmount   taxAmt()
+  scalar: min:              MoneyAmount   minTax()
+  scalar: max:              MoneyAmount   maxTax()
+  scalar: plusup:           MoneyAmount   plusupAmt()
+  scalar: lowRange:         MoneyAmount   lowRange()
+  scalar: highRange:        MoneyAmount   highRange()
+  scalar: rangeIncrement:   MoneyAmount   rangeincrement()
+  scalar: taxCurrency:      CurrencyCode  taxCur()
+  scalar: numberOfDecimals: CurrencyNoDec taxCurNodec()
+endsection
+
+section: Misc
+  scalar: sequenceNumber:   int       seqNo()
+  scalar: taxCode:          TaxCode   taxCode()
+  scalar: specialProcessNo: long      specialProcessNo()
+  scalar: versionDate:      uint64_t  versionDate()
+
+  scalar: taxNodec:             CurrencyNoDec     taxNodec()
+  scalar: taxcdRoundUnitNodec:  CurrencyRoundUnit taxcdRoundUnitNodec()
+  scalar: fareRangeNodec:       CurrencyNoDec     fareRangeNodec()
+  scalar: discPercentNodec:     CurrencyNoDec     discPercentNodec()
+
+  scalar: discPercent:    Percent         discPercent()
+  scalar: taxcdRoundUnit: RoundingFactor  taxcdRoundUnit()
+
+  scalar: taxType:        TaxTypeCode   taxType()
+  scalar: nation:         NationCode    nation()
+  scalar: taxcdRoundRule: RoundingRule  taxcdRoundRule()
+
+  scalar: taxfullFareInd:     Indicator taxfullFareInd()
+  scalar: taxequivAmtInd:     Indicator taxequivAmtInd()
+  scalar: taxexcessbagInd:    Indicator taxexcessbagInd()
+  scalar: tvlDateasoriginInd: Indicator tvlDateasoriginInd()
+  scalar: displayonlyInd:     Indicator displayonlyInd()
+  scalar: feeInd:             Indicator feeInd()
+  scalar: interlinableTaxInd: Indicator interlinableTaxInd()
+  scalar: showseparateInd:    Indicator showseparateInd()
+  scalar: posExclInd:         Indicator posExclInd()
+
+  scalar: posLocType: LocType posLocType()
+  scalar: posLoc:     LocCode posLoc()
+
+  scalar: poiLocType: LocType poiLocType()
+  scalar: poiLoc:     LocCode poiLoc()
+
+  scalar: poiExclInd: Indicator poiExclInd()
+
+  scalar: sellCurExclInd:       Indicator     sellCurExclInd()
+  scalar: sellCur:              CurrencyCode  sellCur()
+  scalar: occurrence:           Indicator     occurrence()
+  scalar: freeTktexempt:        Indicator     freeTktexempt()
+  scalar: idTvlexempt:          Indicator     idTvlexempt()
+  scalar: rangeType:            TaxRangeType  rangeType()
+  scalar: rangeInd:             Indicator     rangeInd()
+  scalar: nextstopoverrestr:    Indicator     nextstopoverrestr()
+  scalar: spclTaxRounding:      Indicator     spclTaxRounding()
+  scalar: fareclassExclInd:     Indicator     fareclassExclInd()
+  scalar: tktdsgExclInd:        Indicator     tktdsgExclInd()
+  scalar: valcxrExclInd:        Indicator     valcxrExclInd()
+  scalar: exempequipExclInd:    Indicator     exempequipExclInd()
+  scalar: psgrExclInd:          Indicator     psgrExclInd()
+  scalar: exempcxrExclInd:      Indicator     exempcxrExclInd()
+  scalar: fareTypeExclInd:      Indicator     fareTypeExclInd()
+  scalar: multioccconvrndInd:   Indicator     multioccconvrndInd()
+  scalar: originLocType:        LocType       originLocType()
+  scalar: originLoc:            LocCode       originLoc()
+  scalar: originLocExclInd:     Indicator     originLocExclInd()
+  scalar: versioninheritedInd:  Indicator     versioninheritedInd()
+  scalar: versiondisplayInd:    Indicator     versiondisplayInd()
+  scalar: tripType:             Indicator     tripType()
+  scalar: travelType:           Indicator     travelType()
+  scalar: itineraryType:        Indicator     itineraryType()
+  scalar: formOfPayment:        Indicator     formOfPayment()
+  scalar: taxOnTaxExcl:         Indicator     taxOnTaxExcl()
+endsection
+
+scalarAggregate:  RestrictionValidationCxr: std::vector<CarrierCode>        restrictionValidationCxr()
+factoryAggregate: RestrictionPsg:           std::vector<TaxRestrictionPsg>  restrictionPsg()
+scalarAggregate:  RestrictionFareType:      std::vector<FareType>           restrictionFareType()
+scalarAggregate:  RestrictionFareClass:     std::vector<FareClassCode>      restrictionFareClass()
+scalarAggregate:  EquipmentCode:            std::vector<std::string>        equipmentCode()
+factoryAggregate: ExemptionCxr:             std::vector<TaxExemptionCarrier> exemptionCxr()
+scalarAggregate:  TaxOnTaxCode:             std::vector<std::string>        taxOnTaxCode()
+factoryAggregate: RestrictionTransit:       std::vector<TaxRestrictionTransit> restrictionTransit()
+
+#TaxCodeReg destructor will delete TaxCodeGenText
+factoryAggregate: TaxCodeGenTexts:             std::vector<TaxCodeGenText*>       taxCodeGenTexts() OwnsPointer

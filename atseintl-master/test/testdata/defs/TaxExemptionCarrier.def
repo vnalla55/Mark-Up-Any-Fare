@@ -1,0 +1,12 @@
+name: TaxExemptionCarrier
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: carrier:        CarrierCode   carrier()
+  scalar: airport1:       LocCode       airport1()
+  scalar: airport2:       LocCode       airport2()
+  scalar: direction:      Indicator     direction()
+  scalar: flightNumber1:  FlightNumber  flight1()
+  scalar: flightNumber2:  FlightNumber  flight2()
+endsection

@@ -1,0 +1,44 @@
+<AirSeg>
+     <FlightInfo
+          carrier="DL"
+          marketingFlightNumber=141
+          operatingFlightNumber=0
+     />
+     <Misc
+          considerOnlyCabin=""
+     />
+<EarliestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<LatestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<DepartureDate year=2009 month=8 day=20 hour=16 minute=25 second=0/>
+<ArrivalDate year=2009 month=8 day=20 hour=18 minute=56 second=0/>
+<BookingDate year=2009 month=7 day=19 hour=17 minute=45 second=0/>
+     <ClassOfService file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_COS_U-8.xml"/>
+     <SegmentInfo
+          pnrSegment=4
+          segmentOrder=4
+          stopOver="f"
+          forcedStopOver="F"
+          forcedConx="F"
+          geoTravelType="Domestic"
+          origAirport="JFK"
+          boardMultiCity="NYC"
+          destAirport="CVG"
+          offMultiCity="CVG"
+     />
+     <FlightInfo
+          equipmentType=""
+     />
+     <Origin file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_Loc_JFK.xml"/>
+     <Destination file="/vobs/atseintl/MinFares/test/testdata/PaxTypeFare_Loc_CVG.xml"/>
+     <Misc
+          bookedCabin="8"
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode="UHXTO9"
+          bookingCode="U"
+          furthestPoint="f"
+          forcedFareBrk="F"
+          forcedNoFareBrk="F"
+          forcedSideTrip="F"
+     />
+</AirSeg>

@@ -1,0 +1,560 @@
+<Vector>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="ADT"
+               carrier="YV"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="4M"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="AA"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="AF"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="AM"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="AR"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="AS"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="AV"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="AZ"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="B6"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="BA"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="BD"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="BR"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="CM"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="CO"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="CX"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="DL"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="EI"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="EK"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="F9"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="FI"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="FL"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="HA"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="IB"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="JJ"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="JL"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="JM"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="KE"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="KL"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="KX"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="LA"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="LH"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="LO"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="LP"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="LR"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="LX"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="LY"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="MP"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="MX"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="NK"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="NW"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="OK"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="OS"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="OW"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="QF"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="SK"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="SQ"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="SY"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="TA"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="TN"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="UA"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="UP"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="US"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="UX"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="VA"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="VS"
+               alternatePaxType=""
+               bulkInd="Y"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="VX"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="WP"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="WS"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="XL"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="YV"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="TV1"
+               atpPaxType="JCB"
+               carrier="YX"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+</Vector>

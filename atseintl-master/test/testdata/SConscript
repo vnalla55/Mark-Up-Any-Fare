@@ -1,0 +1,140 @@
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2014
+
+Import('env')
+import os
+
+DEF_FILES = [
+    'defs/AddonFareInfo.def',
+    'defs/Agent.def',
+    'defs/AirSeg.def',
+    'defs/ArunkSeg.def',
+    'defs/Billing.def',
+    'defs/BlackoutInfo.def',
+    'defs/CarrierCombination.def',
+    'defs/CarrierPreference.def',
+    'defs/CategoryRuleInfo.def',
+    'defs/CategoryRuleItemInfo.def',
+    'defs/CircleTripRuleItem.def',
+    'defs/City.def',
+    'defs/CityCarrier.def',
+    'defs/ClassOfService.def',
+    'defs/CollectedNegFareData.def',
+    'defs/DateTime.def',
+    'defs/DifferentialData.def',
+    'defs/EndOnEnd.def',
+    'defs/EndOnEndSegment.def',
+    'defs/Fare.def',
+    'defs/FareCalcConfig.def',
+    'defs/FareCalcConfigSeg.def',
+    'defs/FareClassAppInfo.def',
+    'defs/FareClassAppSegInfo.def',
+    'defs/FareClassRestRule.def',
+    'defs/FareDisplayOptions.def',
+    'defs/FareDisplayRequest.def',
+    'defs/FareInfo.def',
+    'defs/FareMarket.def',
+    'defs/FarePath.def',
+    'defs/FareUsage.def',
+    'defs/GlobalDirSeg.def',
+    'defs/NetRemitFarePath.def',
+    'defs/NUCInfo.def',
+    'defs/IndustryPricingAppl.def',
+    'defs/InterlineTicketCarrierStatus.def',
+    'defs/Itin.def',
+    'defs/OriginDestination.def',
+    'defs/Loc.def',
+    'defs/LocKey.def',
+    'defs/Money.def',
+    'defs/Nation.def',
+    'defs/OpenJawRestriction.def',
+    'defs/OpenJawRule.def',
+    'defs/PricingOptions.def',
+    'defs/PaxTypeBucket.def',
+    'defs/PaxTypeInfo.def',
+    'defs/PfcItem.def',
+    'defs/PricingTrx.def',
+    'defs/PricingUnit.def',
+    'defs/PricingRequest.def',
+    'defs/RoundTripRuleItem.def',
+    'defs/Routing.def',
+    'defs/RoutingMap.def',
+    'defs/RoutingRestriction.def',
+    'defs/RuleItemInfo.def',
+    'defs/ShoppingTrx.def',
+    'defs/TariffCrossRefInfo.def',
+    'defs/TariffMileageAddon.def',
+    'defs/TariffRuleRest.def',
+    'defs/TaxCodeReg.def',
+    'defs/TaxCodeGenText.def',
+    'defs/TaxExemptionCarrier.def',
+    'defs/TaxItem.def',
+    'defs/TaxNation.def',
+    'defs/TaxOverride.def',
+    'defs/TaxRecord.def',
+    'defs/TaxResponse.def',
+    'defs/TaxRestrictionPsg.def',
+    'defs/TaxRestrictionTransit.def',
+    'defs/TicketingFeesInfo.def',
+    'defs/TravelRoute.def',
+    'defs/TravelSeg.def',
+    'defs/TpdPsrViaGeoLoc.def',
+    'defs/TpdPsrViaCxrLoc.def',
+    'defs/TpdPsrViaExcept.def',
+    'defs/BookingCodeExceptionSegment.def',
+    'defs/BookingCodeExceptionSequence.def',
+    'defs/FareByRuleApp.def',
+    'defs/PaxTypeFareRuleData.def',
+    'defs/FareByRuleCtrlInfo.def',
+    'defs/FareByRuleItemInfo.def',
+    'defs/FBRPaxTypeFareRuleData.def',
+    'defs/NegFareSecurityInfo.def',
+    'defs/NegPaxTypeFareRuleData.def',
+    'defs/SvcFeesAccCodeInfo.def',
+    'defs/SvcFeesSecurityInfo.def',
+    'defs/SvcFeesTktDesignatorInfo.def',
+    'defs/DiscountInfo.def',
+    'defs/DiscountSegInfo.def',
+    'defs/TPMExclusion.def',
+    'defs/MileageRouteItem.def',
+    'defs/MileageRoute.def',
+    'defs/PaxTypeMatrix.def',
+    'defs/Currency.def',
+    'defs/GeneralFareRuleInfo.def',
+    'defs/TktDesignatorExemptInfo.def',
+    'defs/MinFareAppl.def'
+]
+
+NOT_GENERATED_FACTORY_FILES = [
+    'TestBookingCodeExceptionListFactory.cpp',
+    'TestCombinabilityRuleInfoFactory.cpp',
+    'TestFactoryManager.cpp',
+    'TestPaxTypeFactory.cpp',
+    'TestPaxTypeFareFactory.cpp',
+    'TestRuleCPPUnitHelper.cpp',
+    'TestXMLHelper.cpp',
+    'TestZoneInfoFactory.cpp'
+]
+
+
+def build_factorylib(env, dircontext):
+    factory_sources = []
+    for def_file in DEF_FILES:
+        header, source = env.raw.CppTestFactoryBuilder(def_file)
+        factory_sources.append(source)
+    env.log.debug('factory sources: %s' % map(str, factory_sources))
+
+    env.add_libpaths('$SHARED_LIB_INSTALL_DIR_')
+    env.add_libs('dl', 'DataModel', 'Common')
+    mkr = env.factory.libmaker('FactoryLib')
+    mkr.add_sources(factory_sources)
+    mkr.add_sources(NOT_GENERATED_FACTORY_FILES)
+    mkr.make()
+
+
+s = env.scout()
+s.env.add_defines(env['TSE_VOB_DIR_DEFINE_'], 'TIXML_USE_STL')
+s.env['INCLUDE_PATH_'] = [os.path.join('..', '..'), '$BDB_CPPPATH_']
+s.werror = False
+s.add_task(build_factorylib)
+s.build()

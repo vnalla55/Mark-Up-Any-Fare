@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="CommonTypes.xsd"/>
+    <xs:element name="ShoppingResponse">
+        <xs:annotation>
+            <xs:documentation>
+                ExchangeShoppingResponse
+
+                QOS     Number of solutions return
+                PR4     Shop only current itinerary
+                OAD     Origin / Destination element
+                FCL     Forced Connection List
+                FCI     Fare Coponent element
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="OAD" type="OADType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="FCL" type="FCLType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="FCI" type="FCIType" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="Q0S" type="xs:short" use="optional"/>
+            <xs:attribute name="PR4" type="BoolTFType" use="optional" default="F"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="OADType">
+        <xs:annotation>
+            <xs:documentation>
+                OADType         Origin/Destination element
+                A01     Boarding City
+                A02     Arrival City
+                D01     Flight Departure Date
+                PCI     Segment Flown
+                SOD     Sub Origin/Destination
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="SOD" type="SODType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="A01" type="AirportCodeType" use="required"/>
+        <xs:attribute name="A02" type="AirportCodeType" use="required"/>
+        <xs:attribute name="D01" type="DateYYYY-MM-DDType" use="required"/>
+        <xs:attribute name="PCI" type="BoolTFType" use="optional" default="F"/>
+    </xs:complexType>
+    <xs:complexType name="SODType">
+        <xs:annotation>
+            <xs:documentation>
+                SODType         Sub Origin/Destination
+
+                A01     Boarding City
+                A02     Arrival City
+                D01     Flight Departure Date
+                D41     Calendar shopping shift days before
+                D42     Calendar shopping shift days after
+                PR0     Change Allowed
+                PR2     Exact Carrier (CRL without governing carrier)
+                PR3     Preferred Carrier (CRL are preferred)
+
+                FLT     Flight List
+                FCL     Forced Connection List
+                CRL     Exact/Exclude carrier list
+                CR1     Governing carrier list
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FLT" type="FLTType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="FCL" type="FCLType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="CRL" type="CRLType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="CR1" type="CR1Type" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="A01" type="AirportCodeType" use="required"/>
+        <xs:attribute name="A02" type="AirportCodeType" use="required"/>
+        <xs:attribute name="D01" type="DateYYYY-MM-DDType" use="required"/>
+        <xs:attribute name="D41" type="xs:unsignedInt" use="optional"/>
+        <xs:attribute name="D42" type="xs:unsignedInt" use="optional"/>
+        <xs:attribute name="PR0" type="BoolTFType" use="optional" default="F"/>
+        <xs:attribute name="PR2" type="BoolTFType" use="optional" default="F"/>
+        <xs:attribute name="PR3" type="BoolTFType" use="optional" default="T"/>
+    </xs:complexType>
+    <xs:complexType name="FLTType">
+        <xs:annotation>
+            <xs:documentation>
+                FLTType         Flight List
+
+                Q1K     Flight Position
+                PR1     Booking Code Change Allowed
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Q1K" type="xs:short" use="required"/>
+        <xs:attribute name="PR1" type="BoolTFType" use="optional" default="F"/>
+    </xs:complexType>
+    <xs:complexType name="FCLType">
+        <xs:annotation>
+            <xs:documentation>
+                FCLType         Forced Connection List
+
+                AJ0     Preferred connection point
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="AJ0" type="CityCodeType" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="CRLType">
+        <xs:annotation>
+            <xs:documentation>
+                CRLType         Exact/Exclude carrier list
+
+                B00     Marketing carrier code
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="B00" type="AirlineCodeType" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="CR1Type">
+        <xs:annotation>
+            <xs:documentation>
+                CR1Type         Governing carrier list
+
+                B00     Marketing carrier code
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="B00" type="AirlineCodeType" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="FCIType">
+        <xs:annotation>
+            <xs:documentation>
+                FCIType         Fare Coponent element
+
+                NUM     Fare Component Number
+                VCT     VCTR Information
+                R3I     Merged Record3 Information
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="VCT" type="VCTType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="R3I" type="R3IType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="NUM" type="xs:short" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="R3IType">
+        <xs:annotation>
+            <xs:documentation>
+                R3IType         Record3 Information
+
+                RID     Record3 Item Number
+                D41     Calendar shopping shift days before
+                D42     Calendar shopping shift days after
+                SEQ     Tab988 Sequence Information
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="SEQ" type="SEQType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="RID" type="xs:integer" use="required"/>
+        <xs:attribute name="D41" type="xs:unsignedInt" use="optional"/>
+        <xs:attribute name="D42" type="xs:unsignedInt" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="SEQType">
+        <xs:annotation>
+            <xs:documentation>
+                SEQType         Tab988 Sequence Information
+
+                SID     Tab988 Sequence Number
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="SID" type="xs:integer" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="VCTType">
+        <xs:annotation>
+            <xs:documentation>
+                VCTType         VCTR Information
+
+                S37     Fare Vendor
+                B09     Fare Source Carrier
+                S89     Fare Tariff
+                S90     Fare Rule
+                RTD     Retrival Tate
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="S37" type="xs:string" use="required"/>
+        <xs:attribute name="B09" type="AirlineCodeType" use="required"/>
+        <xs:attribute name="S89" type="xs:string" use="required"/>
+        <xs:attribute name="S90" type="xs:string" use="required"/>
+        <xs:attribute name="RTD" type="DateYYYY-MM-DDType" use="required"/>
+    </xs:complexType>
+</xs:schema>

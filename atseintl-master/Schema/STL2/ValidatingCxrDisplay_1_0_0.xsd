@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Mohammed Azam (EDS/SABRE ACCT) -->
+<xsd:schema xmlns:msg="http://services.sabre.com/STL_MessageCommon/v02_01" xmlns:ota2="http://opentravel.org/common/v02" xmlns:ota2msg="http://opentravel.org/common/message/v02" xmlns:otm="http://www.OpenTravel.org/ns/OTA2/AppInfo_v01_00" xmlns:stl2="http://services.sabre.com/STL/v02" xmlns:stlp="http://services.sabre.com/STL_Payload/v02_01" xmlns:vc="http://stl.sabre.com/AirPricing/validating_cxr/v0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://stl.sabre.com/AirPricing/validating_cxr/v0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+	<xsd:annotation>
+		<xsd:appinfo>
+			<otm:Library>
+				<otm:ProjectName>ValidatingCxrDisplay.otp</otm:ProjectName>
+				<otm:LibraryName>ValidatingCxrDisplay</otm:LibraryName>
+				<otm:LibraryVersion>0.0.0</otm:LibraryVersion>
+				<otm:SourceFile>/ValidatingCxrDisplay_0_0_0.otm</otm:SourceFile>
+				<otm:CompilerVersion>3.1.rc2</otm:CompilerVersion>
+				<otm:CompileDate>2014-03-11T15:51:34.263-05:00</otm:CompileDate>
+			</otm:Library>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:import namespace="http://opentravel.org/common/message/v02" schemaLocation="built-ins/OTA2_Message_v2.0.0.xsd"/>
+	<xsd:import namespace="http://services.sabre.com/STL_Payload/v02_01" schemaLocation="built-ins/STL2_Payload_v02_01.xsd"/>
+	<xsd:import namespace="http://services.sabre.com/STL_MessageCommon/v02_01" schemaLocation="built-ins/STL2_MsgCommon_v02_01.xsd"/>
+	<xsd:import namespace="http://opentravel.org/common/v02" schemaLocation="built-ins/OTA2_BuiltIns_v2.0.0.xsd"/>
+	<xsd:import namespace="http://services.sabre.com/STL/v02" schemaLocation="built-ins/STL2_BuiltIn_Model.xsd"/>
+	<xsd:include schemaLocation="ValidatingCxrCommon_1_0_0.xsd"/>
+	<xsd:import namespace="http://www.OpenTravel.org/ns/OTA2/AppInfo_v01_00" schemaLocation="built-ins/OTA2_AppInfo_v1.0.0.xsd"/>
+	<xsd:element name="Country" type="vc:Country"/>
+	<xsd:complexType name="Country">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">Country</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:attribute name="code" type="vc:Code_V2_Country" use="optional">
+			<xsd:annotation>
+				<xsd:appinfo>
+					<otm:Example context="vc1">US</otm:Example>
+				</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:element name="PrimeHost" type="vc:PrimeHost"/>
+	<xsd:complexType name="PrimeHost">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">PrimeHost</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:attribute name="code" type="stl2:Code_Airline" use="optional">
+			<xsd:annotation>
+				<xsd:appinfo>
+					<otm:Example context="vc1">1S</otm:Example>
+				</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:element name="DisplayInterlineAgreement" type="vc:DisplayInterlineAgreement"/>
+	<xsd:complexType name="DisplayInterlineAgreement">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">DisplayInterlineAgreement</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:attribute name="country" type="vc:Code_V2_Country" use="required"/>
+		<xsd:attribute name="carrier" type="stl2:Code_Airline" use="required">
+			<xsd:annotation>
+				<xsd:appinfo>
+					<otm:Example context="vc1">AA</otm:Example>
+				</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="primeHost" type="stl2:Code_Airline" use="optional"/>
+	</xsd:complexType>
+	<xsd:simpleType name="NeutralValidatingCarrierList">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="Simple">NeutralValidatingCxrList</otm:OTA2Entity>
+				<otm:Example context="vc1">HR YO</otm:Example>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:element name="InterlineAgreementDisplay" type="vc:InterlineAgreementDisplay"/>
+	<xsd:complexType name="InterlineAgreementDisplay">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">InterlineAgreementDisplay</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="vc:InterlineAgreements" minOccurs="0" maxOccurs="3"/>
+		</xsd:sequence>
+		<xsd:attribute name="carrierName" type="stl2:Code_Airline" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="DisplayValidatingCxr" type="vc:DisplayValidatingCxr"/>
+	<xsd:complexType name="DisplayValidatingCxr">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">DisplayValidatingCxr</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:attribute name="country" type="vc:Code_V2_Country" use="required"/>
+		<xsd:attribute name="primeHost" type="stl2:Code_Airline" use="optional"/>
+		<xsd:attribute name="settlementPlan" type="ota2:String_Alpha3" use="optional"/>
+	</xsd:complexType>
+	<xsd:element name="Carrier" type="vc:Carrier"/>
+	<xsd:complexType name="Carrier">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">Carrier</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:attribute name="code" type="stl2:Code_Airline" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="ValidatingCxrs" type="vc:ValidatingCxrs"/>
+	<xsd:complexType name="ValidatingCxrs">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">ValidatingCxr</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="vc:Carrier" maxOccurs="1000"/>
+		</xsd:sequence>
+		<xsd:attribute name="ticketType" type="vc:TicketType" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="ValidatingCxrDisplay" type="vc:ValidatingCxrDisplay"/>
+	<xsd:complexType name="ValidatingCxrDisplay">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">ValidatingCxrDisplay</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="vc:ValidatingCxrs" minOccurs="0" maxOccurs="4"/>
+			<xsd:element ref="vc:GeneralSalesAgents" minOccurs="0" maxOccurs="1000"/>
+			<xsd:element ref="vc:NeutralValidatingCxrs" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="settlementPlanCode" type="ota2:String_Alpha3" use="required"/>
+		<xsd:attribute name="settlementPlanName" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="GeneralSalesAgents" type="vc:GeneralSalesAgents"/>
+	<xsd:complexType name="GeneralSalesAgents">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">GeneralSalesAgent</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="vc:Carrier" maxOccurs="1000"/>
+		</xsd:sequence>
+		<xsd:attribute name="carrierName" type="stl2:Code_Airline" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="NeutralValidatingCxrs" type="vc:NeutralValidatingCxrs"/>
+	<xsd:complexType name="NeutralValidatingCxrs">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">NeutralValidatingCxr</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="vc:Carrier" maxOccurs="100"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="InterlineAgreements" type="vc:InterlineAgreements"/>
+	<xsd:complexType name="InterlineAgreements">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">InterlineAgreement</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="vc:Carrier" maxOccurs="1000"/>
+		</xsd:sequence>
+		<xsd:attribute name="agreementType" type="vc:IATLevel" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="TicketingCxrDisplayRQ" type="vc:TicketingCxrDisplay_RQ" substitutionGroup="stlp:STL_Request_Payload"/>
+	<xsd:complexType name="TicketingCxrDisplay_RQ">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="Operation">ValidatingCxrIADisplay_ValidatingCxrDisplay</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="stlp:STL_Request_Payload">
+				<xsd:sequence>
+					<xsd:element ref="vc:POS"/>
+					<xsd:element ref="vc:Diagnostic" minOccurs="0"/>
+					<xsd:element ref="vc:BillingInformation" minOccurs="0"/>
+					<xsd:choice>
+						<xsd:element ref="vc:DisplayValidatingCxr"/>
+						<xsd:element ref="vc:DisplayInterlineAgreement"/>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="TicketingCxrDisplayRS" type="vc:TicketingCxrDisplay_RS" substitutionGroup="stlp:STL_Response_Payload"/>
+	<xsd:complexType name="TicketingCxrDisplay_RS">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="Operation">ValidatingCxrIADisplay_ValidatingCxrDisplay</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="stlp:STL_Response_Payload">
+				<xsd:sequence>
+					<xsd:element ref="vc:Country" minOccurs="0"/>
+					<xsd:element ref="vc:PrimeHost" minOccurs="0"/>
+					<xsd:choice>
+						<xsd:element ref="vc:ValidatingCxrDisplay" minOccurs="0" maxOccurs="20"/>
+						<xsd:element ref="vc:InterlineAgreementDisplay" minOccurs="0"/>
+					</xsd:choice>
+					<xsd:element name="Message" type="vc:Message" minOccurs="0" maxOccurs="1000"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

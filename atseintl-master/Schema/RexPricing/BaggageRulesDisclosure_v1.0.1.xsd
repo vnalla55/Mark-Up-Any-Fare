@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 (http://www.altova.com) by Konrad Koch (Sabre Inc) -->
+<!--
+==================================================================
+//
+//  File:         BaggageRulesDisclosure_v1.0.1.xsd
+//  Description:  Pricing Response Schema
+//
+//  Copyright Sabre 2013
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+================================================================== 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="PricingCommonTypes_v1.0.0.xsd"/>
+	<xs:include schemaLocation="PricingCommonElements_v1.0.0.xsd"/>
+	<xs:simpleType name="CommercialNameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ExtendedSubcodeType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="7"/>
+			<xs:maxLength value="8"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="BDIType">
+		<xs:annotation>
+			<xs:documentation>Baggage Rules Disclosure Item</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="ITR" type="ITRType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Number of pieces per item type. Applicable to Allowance rules.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="PFF" type="PFFType">
+					<xs:annotation>
+						<xs:documentation>Price and Fulfillment Info. Applicable to baggage charges.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:sequence>
+				<xs:element name="Q00" type="xs:short" maxOccurs="24">
+					<xs:annotation>
+						<xs:documentation>Segment Number(s)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="BPT" type="BaggageProvisionType" use="required">
+			<xs:annotation>
+				<xs:documentation>Provision Type (e.g. allowance, charges, embargo etc)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SFK" type="AirlineCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Carrier whose baggage provisions apply</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SHK" type="ExtendedSubcodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Subcode from S5 record</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BPC" type="xs:byte" use="optional">
+			<xs:annotation>
+				<xs:documentation>Number of Pieces</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="B20" type="xs:short" use="optional">
+			<xs:annotation>
+				<xs:documentation>Weight Limit</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N0D" type="WeightUnitType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Units of the Weight Limit</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OC1" type="xs:byte" use="optional">
+			<xs:annotation>
+				<xs:documentation>First Occurrence</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OC2" type="xs:byte" use="optional">
+			<xs:annotation>
+				<xs:documentation>Last Occurrence</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q7D" type="TierLevelType" use="optional">
+			<xs:annotation>
+				<xs:documentation>FQTV Carrier filed Tier Level (S7)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PFFType">
+		<xs:annotation>
+			<xs:documentation>Price and Fulfillment Information</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="N41" type="AnyCharType" use="required">
+			<xs:annotation>
+				<xs:documentation>Fee Application Indicator (S7)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="P01" type="BoolTFType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Fee Not Guaranteed Indicator ( calculated from S7)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N42" type="AnyCharType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Simultaneous Ticket Indicator (S7)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N43" type="AnyCharType" use="optional">
+			<xs:annotation>
+				<xs:documentation>No Charge/Not Avaiable Indicator (S7)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N44" type="AnyCharType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Form of Refund (S7)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N45" type="AnyCharType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Refund/Reissue</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="P03" type="BoolYNType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Commission</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="P04" type="BoolYNType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Interline</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="B70" type="PassengerCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Passenger Type Code (S7 and input)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C50" type="MonetaryAmountType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Total Price (SFE) - This is not supported now and is just placeholder for future use</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C51" type="MonetaryAmountType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Base Price (S7 - Table 170)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C5A" type="CurrencyCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Base Currency Code (S7 - Table 170)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C52" type="MonetaryAmountType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Equivalent Base Price </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C5B" type="CurrencyCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Equivalent Currency Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N21" type="AnyCharType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Tax Indicator (S7)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="OSCType">
+		<xs:annotation>
+			<xs:documentation>Subcode Definition</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="SHK" type="ExtendedSubcodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Extended subcode key SSSVTCCC. S - subcode, V - vendor(A=ATPCO,M=MMGR), T - service type, CCC - carrier code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SFF" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Commercial Name (S5)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SF0" type="ServiceGroupType" use="required">
+			<xs:annotation>
+				<xs:documentation>Ancillary Fee Group Code </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ASG" type="ServiceGroupType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Ancillary Service Subgroup Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ASD" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>Ancillary Subgroup Text Description</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DC1" type="ServiceDescriptionType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Description 1 Code </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D01" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>Description 1 Text</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DC2" type="ServiceDescriptionType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Description 2 Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D02" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>Description 2 Text</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="W01" type="xs:short" use="optional">
+			<xs:annotation>
+				<xs:documentation>Minimum weight</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="WU1" type="WeightUnitType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Minimum weight - units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="W02" type="xs:short" use="optional">
+			<xs:annotation>
+				<xs:documentation>Minimum weight in alternate units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="WU2" type="WeightUnitType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Minimum weight in alternate units - units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="W03" type="xs:short" use="optional">
+			<xs:annotation>
+				<xs:documentation>Maximum weight</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="WU3" type="WeightUnitType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Maximum weight - units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="W04" type="xs:short" use="optional">
+			<xs:annotation>
+				<xs:documentation>Maximum weight in alternate units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="WU4" type="WeightUnitType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Maximum weight in alternate units - units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S01" type="xs:short" use="optional">
+			<xs:annotation>
+				<xs:documentation>Minimum  size</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SU1" type="LengthUnitType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Minimum size - units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S02" type="xs:short" use="optional">
+			<xs:annotation>
+				<xs:documentation>Minimum size in alternate units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SU2" type="LengthUnitType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Minimum size in alternate units - units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S03" type="xs:short" use="optional">
+			<xs:annotation>
+				<xs:documentation>Maximum size</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SU3" type="LengthUnitType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Maximum size - units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S04" type="xs:short" use="optional">
+			<xs:annotation>
+				<xs:documentation>Maximum size in alternate units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SU4" type="LengthUnitType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Maximum size in alternate units - units</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N01" type="AnyCharType" use="optional">
+			<xs:annotation>
+				<xs:documentation>RFIC Code - Reason for Issuance (S5)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SHL" type="FourCharacterVariableStringType" use="optional">
+			<xs:annotation>
+				<xs:documentation>SSR Code (S5)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N02" type="EMDType" use="optional">
+			<xs:annotation>
+				<xs:documentation>EMD Type  (S5)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SFN" type="TwoCharacterVariableStringType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Booking Method (S5)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ITRType">
+		<xs:annotation>
+			<xs:documentation>Baggage Item Count Limit</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="BPC" type="xs:byte" use="required">
+			<xs:annotation>
+				<xs:documentation>Number of Pieces</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SHK" type="ExtendedSubcodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Subcode </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

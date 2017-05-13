@@ -1,0 +1,14 @@
+<TaxRecord
+   taxAmount=100.50
+   taxNodec=2;
+   taxCurrCode="USD"
+   taxID="ABC"
+   taxDescription="Tax applied."
+   taxNation="US"
+   taxType="f"
+   taxRollXTNotAllowedInd="t"
+   taxRolledXTInd="f"
+   multiOccConvRndInd="t"
+   taxItemIndex=4
+/>
+

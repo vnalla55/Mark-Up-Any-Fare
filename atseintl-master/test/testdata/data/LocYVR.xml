@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="YVR"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="CA"
+          state="CABC"
+     />
+     <Position
+          latdegrees=49
+          latminutes=11
+          latseconds=36
+          lngdegrees=123
+          lngminutes=11
+          lngseconds=54
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2002 month=2 day=6 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="t"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="CA06"
+          description="VANCOUVER  BC"
+     />
+</Loc>

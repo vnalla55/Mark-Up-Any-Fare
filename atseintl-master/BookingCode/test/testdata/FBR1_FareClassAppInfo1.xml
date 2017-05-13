@@ -1,0 +1,32 @@
+<FareClassAppInfo>
+     <EffectiveDate year=2005 month=8 day=12 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Location
+          location1Type="A"
+          location1="1"
+          location2Type="A"
+          location2="2"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="JJ"
+          ruleTariff=27
+          ruleNumber="FRAR"
+          footnote1=""
+          footnote2=""
+          fareClass="CFRAR"
+          MCN=6756212
+          textTBLItemNo=0
+          owrt="2"
+          routingAppl=" "
+          routingNumber=""
+          fareType="BR"
+          seasonType=" "
+          dowType=" "
+          pricingCatType="N"
+          displayCatType="N"
+          seqNo=100000
+          unavailTag=" "
+     />
+     <FareClassAppSegInfo file="/vobs/atseintl/BookingCode/test/testdata/FBR1_FareClassAppSegInfo2.xml"/>
+</FareClassAppInfo>

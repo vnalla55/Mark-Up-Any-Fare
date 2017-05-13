@@ -1,0 +1,37 @@
+<AirSeg>
+     <DepartureDate year=2004 month=6 day=23 hour=13 minute=0 second=0/>
+     <ArrivalDate year=2004 month=6 day=23 hour=15 minute=0 second=0/>
+     <BookingDate year=2004 month=6 day=22 hour=14 minute=30 second=0/>
+     <ClassOfService file="airSeg/airSeg_ClassOfService0.xml"/>
+     <SegmentInfo
+          pnrSegment=1
+          segmentOrder=1
+          stopOver="f"
+          forcedStopOver=""
+          forcedConx=""
+          geoTravelType="International"
+          origAirport=""
+          boardMultiCity=""
+          destAirport=""
+          offMultiCity=""
+     />
+     <FlightInfo
+          carrier="AA"
+          marketingFlightNumber=3189
+          operatingFlightNumber=0
+          equipmentType="767"
+     />
+     <Origin file="airSeg/airSeg_Loc0.xml"/>
+     <Destination file="airSeg/airSeg_Loc1.xml"/>
+     <Misc
+          validatedBookingCode=""
+          resStatus=""
+          fareBasisCode=""
+          bookingCode="Y"
+          furthestPoint="f"
+          considerOnlyCabin="ABC"
+          forcedFareBrk=""
+          forcedNoFareBrk=""
+          forcedSideTrip=""
+     />
+</AirSeg>

@@ -1,0 +1,19 @@
+name: RoundTripRuleItem
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: vendor:                 VendorCode  vendor()
+  scalar: itemNo:                 int         itemNo()
+  scalar: textTblItemNo:          int         textTblItemNo()
+  scalar: overrideDateTblItemNo:  int         overrideDateTblItemNo()
+endsection
+
+section: Indicators
+  scalar: sameCarrierInd: Indicator sameCarrierInd()
+  scalar: unavailTag:     Indicator unavailTag()
+  scalar: atwInd:         Indicator atwInd()
+  scalar: applInd:        Indicator applInd()
+endsection
+
+factoryAggregate: ExpirationDate: DateTime expireDate()

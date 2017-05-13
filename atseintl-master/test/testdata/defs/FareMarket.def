@@ -1,0 +1,59 @@
+name: FareMarket
+namespace: tse
+package: DataModel
+
+factoryAggregate: AirSeg: std::vector<TravelSeg*> travelSeg()
+
+section: Misc
+  scalar: globalDirection: GlobalDirection getGlobalDirection
+  scalar: geoTravelType: GeoTravelType geoTravelType()
+  scalar: fltTrkIndicator: Indicator fltTrkIndicator()
+  scalar: governingCarrier: CarrierCode governingCarrier()
+  scalar: hasAllMarriedSegs: bool hasAllMarriedSegs()
+  scalar: direction: FMDirection direction()
+  scalar: failCode: ErrorResponseException::ErrorResponseCode failCode()
+  scalar: travelBoundary: FMTravelBoundary travelBoundary()
+endsection
+
+factoryAggregate: CarrierPreference:  CarrierPreference*  governingCarrierPref()
+
+factoryAggregate: PaxTypeBucket:     std::vector<PaxTypeBucket> paxTypeCortege()
+factoryAggregate: PaxTypeFare:        std::vector<PaxTypeFare*>               allPaxTypeFare()
+
+factoryAggregate: PrimarySector:      TravelSeg*          primarySector()
+
+# can't do the sideTripTravelSeg yet, as it's a vector of vectors ....
+#vectorOfVectorOfPointersAggregate: SideTripTravelSeg TravelSeg  sideTripTravelSeg()
+
+scalarAggregate: InBoundAseanCurrency:  std::vector<CurrencyCode> inBoundAseanCurrencies()
+scalarAggregate: OutBoundAseanCurrency: std::vector<CurrencyCode> outBoundAseanCurrencies()
+
+extraInclude: DBAccess/Loc.h
+extraInclude: DataModel/AirSeg.h
+
+postInitLines
+  // Now set values from what we read in ....
+
+  // FIXME: origin & destination setting is wrong. Should search the travel segs
+  // for the first & last air segs, ignoring any other types of travel segs.
+
+  item->origin() = item->travelSeg()[0]->origin();
+  item->destination() = item->travelSeg()[item->travelSeg().size()-1]->destination();
+  item->boardMultiCity() = item->origin()->loc();
+  item->offMultiCity() = item->destination()->loc();
+
+  // from first segment, assuming all air ....
+  item->governingCarrier() = ((AirSeg*)item->travelSeg()[0])->carrier();
+
+  for (std::vector<TravelSeg*>::const_iterator iter = item->travelSeg().begin();
+       iter != item->travelSeg().end(); ++iter)
+  {
+    item->classOfServiceVec().push_back(&((*iter)->classOfService()));
+  }
+endPostInitLines
+
+NameString: "FMarket_"
+NameField:  origin()->loc()
+NameField:  destination()->loc()
+NameString: "-"
+NameField:  governingCarrier()

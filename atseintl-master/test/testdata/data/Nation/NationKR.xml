@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="KR"
+          isonumericCode=410
+          subArea="31"
+          area="3"
+          isoalphaCode="KOR"
+          primeCur="KRW"
+          alternateCur=""
+          conversionCur=""
+          description="KOREA REP OF/SOUTH"
+     />
+     <CreateDate year=2003 month=7 day=17 hour=12 minute=32 second=3/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2003 month=7 day=15 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

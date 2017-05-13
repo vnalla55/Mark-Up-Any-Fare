@@ -1,0 +1,24 @@
+<AddonFareInfo>
+     <EffectiveDate year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+     <DiscountDate year=2004 month=6 day=23 hour=10 minute=0 second=0/>
+     <ExpireDate year=2005 month=6 day=23 hour=10 minute=0 second=0/>
+     <Flight
+          directionality="1"
+          owrt=" "
+          gatewayMarket="gwmkt"
+          interiorMarket="intmkt"
+          carrier="AA"
+          fareClass="FIRST"
+          routing="foo"
+          arbZone=1
+          addonTariff=23
+          currency="USD"
+          fareAmt=100.5
+          noDec=2
+          vendor="SABR"
+     />
+     <Footnotes
+          footNote1="footnote 1"
+          footNote2="footnote 2"
+     />
+</AddonFareInfo>

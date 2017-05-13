@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="BRU"
+          city="BRU"
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="BE"
+          state=""
+     />
+     <Position
+          latdegrees=50
+          latminutes=54
+          latseconds=6
+          lngdegrees=4
+          lngminutes=29
+          lngseconds=6
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="BE01"
+          description="BRUSSELS"
+     />
+</Loc>

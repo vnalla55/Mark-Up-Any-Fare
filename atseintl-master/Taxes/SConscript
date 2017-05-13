@@ -1,0 +1,63 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+def build_legacy_objects(env, dircontext):
+
+    legacy_sources = env.multiglob(
+        'Common/*.cpp',
+        'Dispatcher/*.cpp',
+        'LegacyTaxes/*.cpp',
+        'LegacyFacades/*.cpp',
+        'PfcTaxesExemption/*.cpp',
+        'Pfc/*.cpp',
+        'TaxInfo/*.cpp',
+        excludes=['LegacyTaxes/UnitTestDataDumper.cpp'])
+
+    env['INCLUDE_PATH_'] += ['AtpcoTaxes', 'LegacyFacades', '.']
+
+    env.add_isystem_paths('$ORACLE_CPPPATH_')
+
+    dircontext.tmp['legacy'] = env.factory.objmaker().add_sources(legacy_sources).make()
+
+def build_atpco_objects(env, dircontext):
+
+    env.add_flags('-W', '-Wall', '-Wextra', '-Wconversion', '-Wwrite-strings', '-Wcast-qual', '-Wcast-align', '-pedantic')
+    env.add_isystem_paths('AtpcoTaxes/rapidxml')
+    env.add_defines('BOOST_ENABLE_ASSERT_HANDLER')
+
+    atpco_sources = env.multiglob(
+        'AtpcoTaxes/Common/*.cpp',
+        'AtpcoTaxes/Processor/*.cpp',
+        'AtpcoTaxes/Rules/*.cpp',
+        'AtpcoTaxes/DomainDataObjects/*.cpp',
+        'AtpcoTaxes/Interfaces/Services/*.cpp',
+        'AtpcoTaxes/Factories/*.cpp',
+        'AtpcoTaxes/ServiceInterfaces/*.cpp',
+        'AtpcoTaxes/Diagnostic/*.cpp',
+        'AtpcoTaxes/TaxDisplay/*.cpp',
+        'AtpcoTaxes/TaxDisplay/Common/*.cpp',
+        'AtpcoTaxes/TaxDisplay/Response/*.cpp',
+        'TestServer/Facades/*.cpp',
+        'TestServer/Xform/*.cpp')
+
+    env['INCLUDE_PATH_'] = ['.', 'AtpcoTaxes', 'TestServer/Facades']
+
+    dircontext.tmp['atpco'] = env.factory.objmaker().add_sources(atpco_sources).make()
+
+def build_taxes(env, dircontext):
+    lib = env.factory.libmaker('taxes')
+    lib.add_objects(dircontext.tmp['legacy'])
+    lib.add_objects(dircontext.tmp['atpco'])
+    lib.make()
+
+s = env.scout()
+s.werror = True
+s.add_task(build_legacy_objects, copyenv=True)
+s.add_task(build_atpco_objects, copyenv=True)
+s.add_task(build_taxes)
+s.build()
+

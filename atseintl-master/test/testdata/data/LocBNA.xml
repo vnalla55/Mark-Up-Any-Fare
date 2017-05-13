@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="BNA"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="US"
+          state="USTN"
+     />
+     <Position
+          latdegrees=36
+          latminutes=7
+          latseconds=36
+          lngdegrees=86
+          lngminutes=40
+          lngseconds=55
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="US02"
+          description="NASHVILLE"
+     />
+</Loc>

@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+import os
+import scommon
+
+Import('env')
+
+def build_mock_module(env):
+    mkr = env.factory.libmaker('MockModule').add_sources('test/MockModule.cpp')
+    libnode = mkr.make()
+    library_path = env.node(libnode).absdest
+    deftuple = ('MOCK_MODULE_PATH', scommon.strshell(library_path))
+    env.add_defines(deftuple)
+    return libnode
+
+def build_server_tests(env, dircontext):
+    mockmodule = build_mock_module(env)
+    record = env.factory.tsrecord(glob_pattern='test/*Test.cpp')
+    env.factory.testsuite(record).make()
+    scommon.bridge.depends(record.tests, mockmodule)
+    env.add_test_suite_record(record)
+
+s = env.scout()
+s.env.add_defines(
+        env['TSE_VOB_DIR_DEFINE_'],
+        ('TSE_BUILD_TYPE', scommon.strshell('debug')))
+s.replace_task('make_tests', build_server_tests)
+s.build()

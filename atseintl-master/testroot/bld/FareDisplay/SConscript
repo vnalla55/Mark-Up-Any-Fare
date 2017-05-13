@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+LIBFILES = ['test/CustomUserTest.cpp']
+
+s = env.scout()
+s.env.add_libpaths('.')
+s.env.add_isystem_paths('$CPPUNIT_CPPPATH_')
+s.library('FareDisplayTests', LIBFILES)
+s.tests(locallib=1, libs=['FareDisplayTests'], blacklist=LIBFILES)
+s.build()
+

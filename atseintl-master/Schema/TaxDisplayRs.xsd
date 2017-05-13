@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ==================================================================
+//
+//  Copyright Sabre 2016
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+//
+//================================================================= 
+Note that this schema fits only for TX (ATPCO Tax Display) requests; it's not for TXN reqs
+//================================================================= 
+-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TaxDisplayRS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="MSG" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="N06" type="ResponseType" use="required" />
+            <xs:attribute name="Q0K" type="xs:short" use="required"/>
+            <xs:attribute name="S18" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="ResponseType">
+    <xs:annotation>
+      <xs:documentation>
+      E - Error
+      X - Common type
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="E" />
+      <xs:enumeration value="X" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

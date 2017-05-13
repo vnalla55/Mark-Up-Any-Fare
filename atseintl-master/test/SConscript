@@ -1,0 +1,186 @@
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2014
+
+Import('env')
+
+# Do not install the libraries that you build
+env.installdir = None
+
+# We use shared linktype on default everywhere in the tests
+env.linktype = 'shared'
+
+LIBS = [
+'AddonConstruction',
+'AppConsole',
+'BookingCode',
+'BrandedFares',
+'BrandingService',
+'ClientSocket',
+'Common',
+'Util',
+'CurrencyService',
+'CustomXMLParser',
+'tseDiagnosticFareDisplay',
+'tseDiagnostic',
+'DataModel',
+'Decode',
+'DSS',
+'DSSServices',
+'FareCalc',
+'FaresCommon',
+'FaresCollector',
+'FaresValidator',
+'FreeBagService',
+'FareDisplay',
+'FileLoader',
+'Limitations',
+'MinFares',
+'RexFareSelector',
+'Routing',
+'RTG',
+'Rules',
+'ServiceFees',
+'Service',
+'taxes',
+'TicketingFee',
+'TicketingCxrService',
+'TicketingCxrDisplayService',
+'InternalService',
+'Xform',
+'XformCommon',
+'XformBillingXML',
+'XformCacheMessage',
+'XformClientShoppingXML',
+'XformClientXML',
+'XformTaxXML',
+'CacheNotifyAdapter',
+'DiskCacheAdapter',
+'ServerSocketAdapter',
+'CacheNotifyManager',
+'DiskCacheManager',
+'ServerSocketManager',
+'Billing',
+'CacheUpdate',
+'FareSelectorSvc',
+'ItinAnalyzerService',
+'Pricing',
+'RequestResponse',
+'TO',
+'Shopping',
+'DBAccessTaxes',
+'Xray',
+'ZThreads'
+]
+
+EXTERNAL_LIBS = [
+'boost_date_time',
+'boost_regex',
+'boost_thread',
+'boost_filesystem',
+'boost_system',
+'boost_chrono',
+'boost_program_options',
+'log4cxx',
+'xerces-c',
+'xalan-c',
+'snappy',
+'lz4',
+'memcached',
+'rt',
+'nnz11',
+'clntsh',
+'nnz',
+'occi',
+'ociei',
+'db-5.0',
+'curl',
+'cppunit',
+'gtest',
+'gmock',
+'bz2',
+'dl',
+'z',
+'pthread',
+'ssl',
+'crypto',
+]
+
+
+
+def build_allocator_dummy(env, dircontext):
+    mkr = env.factory.libmaker('AllocatorDummy')
+    mkr.add_sources('AllocatorDummy.c').make()
+
+
+def build_test_plugin(env, dircontext):
+    env.add_isystem_paths('$CPPUNIT_CPPPATH_')
+
+    om = env.factory.objmaker()
+    om.add_sources('plugin.cpp')
+    plugin_oo = om.make()
+    env.stash['TEST_PLUGIN'] = plugin_oo[0]
+
+
+def run_sub_sconscripts(env, dircontext):
+    # libFactoryLib
+    SConscript('testdata/SConscript', exports='env')
+
+    # libTinyXML
+    SConscript('testdata/tinyxml/SConscript', exports='env')
+
+    # DataHandleGenerator, localized_config.ini
+    returned = SConscript('DataHandleGenerator/SConscript', exports='env')
+
+    env.stash['datahandle_generator_app'] = returned['generator']
+    env.stash['localized_dhgenerator_config'] = returned['localized_config']
+
+    # libMockDBAccess (previously libDBAccess: same name as the regular library)
+    SConscript('DBAccessMock/SConscript', exports='env')
+
+    # libRunner
+    SConscript('Runner/SConscript', exports='env')
+
+
+def _build_some_utexe(env, appname, objects, extra_envdict_to_merge, extra_lib_dependencies):
+    env = env.clone()
+    env.merge(extra_envdict_to_merge)
+    libdependencies = LIBS + ['AllocatorDummy', 'FactoryLib', 'TinyXML', 'Runner'] + \
+            EXTERNAL_LIBS + env['ASAP_LIBLIST_'] + extra_lib_dependencies
+    env.add_libs(*libdependencies)
+    pm = env.factory.progmaker(appname)
+    pm.add_objects(objects)
+
+    return pm.make()[0]
+
+def build_utexes(env, dircontext):
+
+    env.add_isystem_paths('$CPPUNIT_CPPPATH_', '$GMOCK_CPPPATH_', '$GTEST_CPPPATH_')
+    env.add_libpaths(
+        '.',
+        'testdata',
+        'testdata/tinyxml',
+        'Runner',
+        '$SHARED_LIB_INSTALL_DIR_',
+        '$STD_LIBPATH_',
+        '$EXTERNAL_LIBPATHS_',
+        '$EXTERNAL_TEST_LIBPATHS_')
+    env.add_linkflags('-export-dynamic')
+
+    quick_oo = env.factory.objmaker().add_sources('quick.cpp').make()
+
+    env.stash['utexe'] = _build_some_utexe(env, 'utexe', quick_oo, dict(LIBPATH = ['DBAccessMock']), ['MockDBAccess'])
+    env.stash['utexe_db'] = _build_some_utexe(env, 'utexeDB', quick_oo, {},
+            ['DBAccess', 'DBAccess1', 'DBAccess2', 'DBAccess3', 'DBAccess4', 'DBAccess5'])
+
+
+
+s = env.scout()
+s.werror = False
+
+s.add_task(build_allocator_dummy)
+s.add_task(build_test_plugin, copyenv=True)
+s.add_task(run_sub_sconscripts)
+s.add_task(build_utexes, copyenv=True)
+s.build()
+
+

@@ -1,0 +1,31 @@
+<FareMarket>
+
+   <AirSeg file="/vobs/atseintl/test/testdata/data/AirSegDFW_LON.xml"/>
+   <PaxTypeBucket file="/vobs/atseintl/test/testdata/data/PaxTypeBucket.xml"/>
+   <PaxTypeFare file="/vobs/atseintl/test/testdata/data/PaxTypeFare.xml"/>
+
+   <!-- The vector of side trip travel segs (vector of vectors) can be built like this: -->
+  
+   <SideTripTravelSeg file="/vobs/atseintl/test/testdata/data/AirSegDFW_LON.xml" />
+   <SideTripTravelSeg file="/vobs/atseintl/test/testdata/data/AirSegDFW_LON.xml" />
+ 
+   <Misc globalDirection="AT"
+         geoTravelType="International"
+         fltTrkIndicator="f"
+         direction="OUTBOUND"
+         failCode="NO_ERROR" 
+         travelBoundary="TravelWithinOneIATA"/>
+
+   <!-- can have multiple in/out bound currencies -->
+
+   <InBoundAseanCurrency value="USD"/>   
+   <OutBoundAseanCurrency value="USD"/>   
+
+   <!-- can have multiple TravelBoundary sections -->
+   <!-- Possible values:  TravelWithinUSCA, TravelWithinSameCountryExceptUSCA, TravelWithinOneIATA
+                TravelWithinTwoIATA, TravelWithinAllIATA, TravelWithinSubIATA11, TravelWithinSubIATA21
+                TravelWithinSameSubIATAExcept21And11 -->
+
+
+</FareMarket>
+

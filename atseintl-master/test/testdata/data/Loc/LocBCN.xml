@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="BCN"
+          city=""
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="ES"
+          state=""
+     />
+     <Position
+          latdegrees=41
+          latminutes=17
+          latseconds=49
+          lngdegrees=2
+          lngminutes=4
+          lngseconds=42
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2009 month=8 day=23 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="ES01"
+          description="BARCELONA"
+     />
+</Loc>

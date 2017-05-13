@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="LAX"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="US"
+          state="USCA"
+     />
+     <Position
+          latdegrees=33
+          latminutes=56
+          latseconds=32
+          lngdegrees=118
+          lngminutes=24
+          lngseconds=26
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2005 month=2 day=11 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="US04"
+          description="LOS ANGELES"
+     />
+</Loc>

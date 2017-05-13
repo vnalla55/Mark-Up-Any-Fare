@@ -1,0 +1,15 @@
+#! /bin/csh
+
+# Create symbolic links for vob objects
+
+if ( "$2" == "" ) then
+	echo "Syntax: ct_ln <VOB elements> <dest dir>"
+	echo "        ct_ln <VOB element>  <dest element>"
+	exit 1
+endif
+
+@ last = $#argv
+@ nexttolast = $#argv - 1
+
+cleartool ln -s -nco -force $argv[-$nexttolast] $argv[$last]
+

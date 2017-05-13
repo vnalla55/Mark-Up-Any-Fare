@@ -1,0 +1,29 @@
+<GlobalDirSeg>
+     <Data
+          globalDir="EH"
+          directionality="W"
+          loc1Type="IATA_AREA"
+          loc1="3"
+          loc2Type="UNKNOWN_LOC"
+          loc2=""
+          allTvlOnCarrier=""
+          flightTrackingInd="T"
+          mustBeViaLocInd=" "
+          mustBeViaLocType="UNKNOWN_LOC"
+          mustBeViaLoc=""
+          viaInterLoc1Type="UNKNOWN_LOC"
+          viaInterLoc1=""
+          viaInterLoc2Type="UNKNOWN_LOC"
+          viaInterLoc2=""
+          mustNotBeViaLocInd=" "
+          mustNotBeViaLocType="ZONE"
+          mustNotBeViaLoc="1012"
+          notViaInterLoc1Type="UNKNOWN_LOC"
+          notViaInterLoc1=""
+          notViaInterLoc2Type="UNKNOWN_LOC"
+          notViaInterLoc2=""
+     />
+     <CreateDate year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+     <SaleEffectiveDate year=2004 month=3 day=4 hour=0 minute=0 second=0/>
+     <SaleDiscDate year=2004 month=11 day=10 hour=0 minute=0 second=0/>
+</GlobalDirSeg>

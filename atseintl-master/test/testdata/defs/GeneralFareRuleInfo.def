@@ -1,0 +1,22 @@
+name: GeneralFareRuleInfo
+namespace: tse
+parent: CategoryRuleInfo
+package: DBAccess
+
+section: GenFareRuleData
+  scalarWithCompare: segcount:              int           segcount()
+  scalarWithCompare: jointCarrierTblItemNo: int           jointCarrierTblItemNo()
+  scalarWithCompare: generalRuleTariff:     TariffNumber  generalRuleTariff()
+  scalarWithCompare: fareClass:             FareClassCode fareClass()
+  scalarWithCompare: owrt:                  Indicator     owrt()
+  scalarWithCompare: routingAppl:           Indicator     routingAppl()
+  scalarWithCompare: routing:               RoutingNumber routing()
+  scalarWithCompare: footNote1:             Footnote      footNote1()
+  scalarWithCompare: footNote2:             Footnote      footNote2()
+  scalarWithCompare: fareType:              std::string   fareType()
+  scalarWithCompare: seasonType:            Indicator     seasonType()
+  scalarWithCompare: dowType:               Indicator     dowType()
+  scalarWithCompare: generalRule:           RuleNumber    generalRule()
+  scalarWithCompare: generalRuleAppl:       Indicator     generalRuleAppl()
+  scalarWithCompare: inhibit:               Indicator     inhibit()
+endsection

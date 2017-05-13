@@ -1,0 +1,119 @@
+#! /bin/csh
+
+
+#========================================================
+#	To use:
+#
+# 1) Edit ct_clean.txt to add views to cehck and owner e-mails
+#
+# 2) Change these to change ages for checked-out, derived and view private objects
+#
+set CO_AGE=7
+set DO_AGE=30
+set VP_AGE=14
+#
+# 3) Set MAIL to 0 to disable sending e-mails to the view owners
+#
+set MAIL=0
+#
+#========================================================
+
+set SCRIPT_PATH=`dirname $0`
+cd $SCRIPT_PATH
+set SCRIPT_PATH=`pwd`
+
+set VIEWS=`cat $SCRIPT_PATH/ct_clean.txt | nawk '{ printf ("%s ", $1) }'`
+
+foreach VIEW ( $VIEWS )
+	echo "================================================================"
+	echo "*   Processing view $VIEW"
+	echo "================================================================"
+	echo " "
+
+	set MAIL_FILE = /tmp/ct_clean_$VIEW.txt
+
+	# Remove old mail file
+	if ( -f $MAIL_FILE ) then
+  	rm -f $MAIL_FILE
+	endif
+
+	set SECTIONS=0
+
+	echo "Subject: Old $VIEW View Objects" > $MAIL_FILE
+	echo " " >> $MAIL_FILE
+
+	echo "Please clean up (delete) the following files." >> $MAIL_FILE
+	echo " " >> $MAIL_FILE
+	echo "Old check-outs:" >> $MAIL_FILE
+	echo "---------------" >> $MAIL_FILE
+	echo "This list includes checked out files that have not been accessed in $CO_AGE days" >> $MAIL_FILE
+	echo "Please check these in or cancel the check-out" >> $MAIL_FILE
+	echo " " >> $MAIL_FILE
+
+	# Checked out files
+	echo "Checking for checked out files..."
+	ct lsp -tag $VIEW -co -age | nawk -f $SCRIPT_PATH/ct_clean.awk TYPE=CO AGE=$CO_AGE YEAR=`date +%Y` MONTH=`date +%m` DAY=`date +%d` >> $MAIL_FILE
+	if ( ! $status ) then
+		@ SECTIONS = $SECTIONS + 1
+	endif
+
+	echo " " >> $MAIL_FILE
+	echo "Old derived objects:" >> $MAIL_FILE
+	echo "---------------" >> $MAIL_FILE
+	echo "This list includes derived obejcts that have not been accessed in $DO_AGE days" >> $MAIL_FILE
+	echo "Please delete these if no longer needed (particularly object and listing files)" >> $MAIL_FILE
+	echo " " >> $MAIL_FILE
+
+	# Derived objects
+	echo "Checking for derived objects..."
+	ct lsp -tag $VIEW -do -age | nawk -f $SCRIPT_PATH/ct_clean.awk TYPE=DO AGE=$DO_AGE YEAR=`date +%Y` MONTH=`date +%m` DAY=`date +%d` >> $MAIL_FILE
+	if ( ! $status ) then
+		@ SECTIONS = $SECTIONS + 1
+	endif
+
+	echo " " >> $MAIL_FILE
+	echo "View private files:" >> $MAIL_FILE
+	echo "---------------" >> $MAIL_FILE
+	echo "This list includes derived obejcts that have not been accessed in $DO_AGE days" >> $MAIL_FILE
+	echo "Please delete these or make them into VOB objects" >> $MAIL_FILE
+	echo " " >> $MAIL_FILE
+
+	# View private files
+	echo "Checking for view private files..."
+	ct lsp -tag $VIEW -oth -age | nawk -f $SCRIPT_PATH/ct_clean.awk TYPE=VP AGE=$VP_AGE YEAR=`date +%Y` MONTH=`date +%m` DAY=`date +%d` >> $MAIL_FILE
+	if ( ! $status ) then
+		@ SECTIONS = $SECTIONS + 1
+	endif
+
+	echo " " >> $MAIL_FILE
+	echo " " >> $MAIL_FILE
+	echo "Thanks," >> $MAIL_FILE
+	echo "Karim Chaid" >> $MAIL_FILE
+	echo " " >> $MAIL_FILE
+	echo "-------------------------------------------------" >> $MAIL_FILE
+	echo "This is an automated message." >> $MAIL_FILE
+	echo "To be added to or removed from this mailing list" >> $MAIL_FILE
+	echo "please contact me." >> $MAIL_FILE
+
+	if ( "$SECTIONS" != "0" ) then
+		if ( "$MAIL" == "0" ) then
+			more $MAIL_FILE
+		else
+			set DEST=`grep $VIEW $SCRIPT_PATH/ct_clean.txt | nawk '{ print $2 }'`
+			if ( "$DEST" == "" ) then
+				set DEST = "karim.chaid@sabre.com"
+			endif
+
+			echo "================================================================"
+			echo "* Mailing notifications for view $VIEW to $DEST..."
+			echo "================================================================"
+			echo " "
+
+			cat $MAIL_FILE | rmail $DEST
+		endif
+	endif
+
+#	cp $MAIL_FILE ~/temp.tmp
+#	rm $MAIL_FILE
+end
+

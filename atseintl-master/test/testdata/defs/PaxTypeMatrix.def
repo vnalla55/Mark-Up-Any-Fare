@@ -1,0 +1,18 @@
+name: PaxTypeMatrix
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalarWithCompare: sabrePaxType:      PaxTypeCode sabrePaxType()
+  scalarWithCompare: atpPaxType:        PaxTypeCode atpPaxType()
+  scalarWithCompare: carrier:           CarrierCode carrier()
+  scalarWithCompare: alternatePaxType:  PaxTypeCode alternatePaxType()
+  scalarWithCompare: bulkInd:           Indicator   bulkInd()
+endsection
+
+NameString: "PaxTypeMatrix_"
+NameField:  sabrePaxType()
+NameString: "_"
+NameField:  atpPaxType()
+NameString: "_"
+NameField:  carrier()

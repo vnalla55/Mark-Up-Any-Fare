@@ -1,0 +1,35 @@
+name: PricingTrx
+namespace: tse
+package: DataModel
+typePackage: DBAccess Loc
+typePackage: DBAccess CarrierPreference
+
+# We don't use the parent: Trx because the constructor & destructor are protected
+# parent: Trx
+
+# We don't do DataHandle _dataHandle
+# We don't do maps (yet), so we skip std::map<int, double> _latencyData
+
+section: Attributes
+  scalar: status: std::string status()
+endsection
+
+factoryAggregate: Itin:               std::vector<Itin*>              itin()
+factoryAggregate: TravelSeg:          std::vector<TravelSeg*>         travelSeg()
+factoryAggregate: FareMarket:         std::vector<FareMarket*>        fareMarket()
+factoryAggregate: PaxType:            std::vector<PaxType*>           paxType()
+factoryAggregate: OriginDestination:  std::vector<PricingTrx::OriginDestination> originDest()
+
+# All attributes of the traveler are protected, so do we need it?
+####factoryAggregate: Traveler   std::vector<Traveler*>   traveler()
+#factoryAggregate: PricingUnit   std::vector<PricingUnit*>   pricingUnit()
+# ? factoryAggregate: TaxResponse   std::vector<TaxResponse*>   taxResponse()
+
+factoryAggregate: PricingOptions: PricingOptions* getOptions
+factoryAggregate: Billing:        Billing*        billing()
+factoryAggregate: FareCalcConfig: FareCalcConfig* fareCalcConfig()
+
+factoryAggregate: PricingRequest: PricingRequest* getRequest
+
+# We won't do the diagnostic
+#  Diagnostic& diagnostic() { return _diagnostic; }

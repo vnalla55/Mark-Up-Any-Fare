@@ -1,0 +1,25 @@
+<FareInfo>
+     <EffectiveDate year=2004 month=8 day=18 hour=17 minute=27 second=47/>
+     <ExpirationDate year=2004 month=8 day=18 hour=17 minute=27 second=47/>
+     <Fare
+          fareAmount=999
+          originalFareAmount=-1.98282
+          noDec=-1073759864
+          fareTariff=1073782465
+          currency="GBP"
+     />
+     <Misc
+          carrier="BA"
+          fareClass="NLWAA3N"
+          market1LocCode="LHR"
+          market2LocCode="JFK"
+          footnote1=""
+          footnote2=""
+          ruleNumber="7100"
+          routingNumber="XXXX"
+          vendor="ATP"
+          directionality="FROM"
+          owrt="ONE_WAY_MAYNOT_BE_DOUBLED"
+          globalDirection="AT"
+     />
+</FareInfo>

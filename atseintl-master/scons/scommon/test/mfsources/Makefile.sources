@@ -1,0 +1,25 @@
+XFORM_SOURCES := \
+    Xform.cpp
+
+XFORM_CLIENT_XML_SOURCES := \
+    MileageModelMap.cpp \
+    CurrencyModelMap.cpp\
+    PricingDisplayModelMap.cpp  \
+    PricingModelMap.cpp \
+    PricingDetailModelMap.cpp \
+    MileageContentHandler.cpp \
+    CurrencyContentHandler.cpp \
+    PricingDisplayContentHandler.cpp \
+
+XFORM_CLIENT_SHOPPING_XML_SOURCES := \
+    XMLRexShoppingResponse.cpp \
+    GenerateSIDForShortCutPricing.cpp \
+    XMLWriter.cpp \
+    BrandingResponseBuilder.cpp \
+    XMLBrandingResponse.cpp \
+    PreferredCabin.cpp
+
+XFORM_CACHE_MESSAGE_SOURCES := \
+    XformCacheMessageXML.cpp \
+    CacheMessageContentHandler.cpp \
+    CacheMessageXMLParser.cpp

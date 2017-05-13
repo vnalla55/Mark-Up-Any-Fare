@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="RES"
+          city=""
+          subarea="14"
+          area="1"
+          transtype="P"
+          nation="AR"
+          state=""
+     />
+     <Position
+          latdegrees=27
+          latminutes=27
+          latseconds=5
+          lngdegrees=59
+          lngminutes=3
+          lngseconds=3
+          lathemisphere="S"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="AR01"
+          description="RESISTENCIA"
+     />
+</Loc>

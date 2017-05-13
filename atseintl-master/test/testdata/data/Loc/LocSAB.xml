@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="SAB"
+          subarea="12"
+          area="1"
+          transtype="P"
+          nation="BQ"
+          state=" "
+     />
+     <Position
+          latdegrees=17
+          latminutes=38
+          latseconds=40
+          lngdegrees=63
+          lngminutes=13
+          lngseconds=20
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2004 month=6 day=11 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="BQ01"
+          description="SABA"
+     />
+</Loc>

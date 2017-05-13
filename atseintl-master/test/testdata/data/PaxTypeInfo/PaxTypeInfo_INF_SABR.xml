@@ -1,0 +1,12 @@
+<PaxTypeInfo>
+     <Attributes
+          paxType="INF"
+          vendor="ATP"
+          description="INFANT WITHOUT A SEAT PSGR"
+          childInd="Y"
+          adultInd="Y"
+          infantInd="Y"
+          psgGroupType="IN$"
+          numberSeatsReq=0
+     />
+</PaxTypeInfo>

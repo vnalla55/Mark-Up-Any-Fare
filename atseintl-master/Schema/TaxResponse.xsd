@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by siriwan chootongchai (EDS/SABRE ACCT) -->
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="CommonTypes.xsd"/>
+	<xs:element name="TaxResponse">
+		<xs:annotation>
+			<xs:documentation>
+			TaxResponse
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="TAX" type="TaxType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="TaxType">
+		<xs:annotation>
+			<xs:documentation>
+			 TaxType Tax Records
+			 BC0	Tax code
+			 S04	Tax description
+			 C6B	Tax amount
+    </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="BC0" type="xs:string" use="required"/>
+		<xs:attribute name="S04" type="xs:string" use="optional"/>
+		<xs:attribute name="CB6" type="MonetaryAmountType" use="required"/>
+	</xs:complexType>
+</xs:schema>

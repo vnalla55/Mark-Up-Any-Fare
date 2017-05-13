@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="AKL"
+          city=""
+          subarea="34"
+          area="3"
+          transtype="P"
+          nation="NZ"
+          state=""
+     />
+     <Position
+          latdegrees=37
+          latminutes=0
+          latseconds=36
+          lngdegrees=174
+          lngminutes=47
+          lngseconds=24
+          lathemisphere="S"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2005 month=1 day=6 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="NZ01"
+          description="AUCKLAND"
+     />
+</Loc>

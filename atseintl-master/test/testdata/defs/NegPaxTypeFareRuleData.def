@@ -1,0 +1,20 @@
+name: NegPaxTypeFareRuleData
+namespace: tse
+package: DataModel
+
+section: Attributes
+  scalar: netAmount:              MoneyAmount     netAmount()
+  scalar: nucNetAmount:           MoneyAmount     nucNetAmount()
+  scalar: cat35Level:             Indicator       cat35Level()
+  scalar: tktIndicator:           Indicator       tktIndicator()
+  scalar: calculatedNegCurrency:  CurrencyCode    calculatedNegCurrency()
+  scalar: creatorPCC:             PseudoCityCode  creatorPCC()
+  scalar: calcInd:                Indicator       calcInd()
+  scalar: percent:                Percent         percent()
+  scalar: noDecPercent:           int             noDecPercent()
+  scalar: noDecAmt:               int             noDecAmt()
+  scalar: axessCat35Fare:         bool            axessCat35Fare()
+endsection
+
+factoryAggregate: ruleAmt:      Money                 ruleAmt()
+factoryAggregate: securityRec:  NegFareSecurityInfo*  securityRec()

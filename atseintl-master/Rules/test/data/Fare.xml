@@ -1,0 +1,20 @@
+<Fare>
+
+   <FareInfo file="/vobs/atseintl/Rules/test/data/FareInfo.xml"/>
+
+   <Misc nucFareAmount=275.50
+         differSeqNumber=2
+         calculationInd="L" />
+
+   <FareStatus fareStatus="Domestic"/>
+   <FareStatus fareStatus="PublishedFare"/>
+
+   <RuleStatus ruleStatus="Cat03" />
+   <RuleStatus ruleStatus="Cat05" />
+   <RuleStatus ruleStatus="Cat15" />
+
+   <RuleProcessStatus ruleProcessStatus="Cat07" />
+   <RuleProcessStatus ruleProcessStatus="Cat14" />
+
+</Fare>
+

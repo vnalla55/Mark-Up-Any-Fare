@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="IAD"
+          city="WAS"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="US"
+          state="USDC"
+     />
+     <Position
+          latdegrees=38
+          latminutes=56
+          latseconds=30
+          lngdegrees=77
+          lngminutes=27
+          lngseconds=27
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=14 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="US01"
+          description="WASHINGTON DULLES"
+     />
+</Loc>

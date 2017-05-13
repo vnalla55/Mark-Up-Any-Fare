@@ -1,0 +1,39 @@
+<DifferentialData>
+     <Origin file="differentialData/differentialData_Loc0.xml"/>
+     <Destination file="differentialData/differentialData_Loc1.xml"/>
+     <AirSeg file="differentialData/differentialData_AirSeg0.xml"/>
+     <Amounts
+          base=100
+          fareClassHigh=150
+          fareClassLow=75.5
+          hipFareClassHigh=120.6
+          hipFareClassLow=80.5
+          surcharge=12
+          hipAmount=50
+     />
+     <FareClassCodes
+          fareClassHigh="AA"
+          fareClassLow="BB"
+          hipSectorHighFare="CC"
+          hipSectorLowFare="DD"
+     />
+     <Carrier value="BA"/>
+     <Trip
+          cabin="A"
+          hipHighOrigin="DFW"
+          hipHighDestination="LON"
+          hipLowOrigin="DFW"
+          hipLowDestination="LON"
+          hipCabinHigh="F"
+          hipCabinLow="C"
+          mileage="F"
+          maxPermittedMileage=1000
+          tripType="B"
+          bookingCode="XX"
+          stops="t"
+          sameCarrier="f"
+          tag="abcd"
+          status="NOT_PROCESSED_YET"
+          calculationIndicator=""
+     />
+</DifferentialData>

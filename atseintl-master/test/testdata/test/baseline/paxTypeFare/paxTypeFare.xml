@@ -1,0 +1,19 @@
+<PaxTypeFare>
+     <Status value="FareByRule"/>
+     <SegmentStatus bookingCode="CC">
+          <BookingCodeSegStatus value="PASS"/>
+          <BookingCodeSegStatus value="REBOOKED"/>
+     </SegmentStatus>
+          <puRevalidate999Seq value=0/>
+          <puRevalidate999Seq value=2/>
+     <ActualPaxType file="paxTypeFare/paxTypeFare_PaxType0.xml"/>
+     <FareClassAppInfo file="paxTypeFare/paxTypeFare_FareClassAppInfo0.xml"/>
+     <FareClassAppSegInfo file="paxTypeFare/paxTypeFare_FareClassAppSegInfo2.xml"/>
+     <FareTypeMatrix
+          cabin=""
+          fareTypeDesignator=0
+          fareTypeApplication=""
+     />
+     <FareMarket file="paxTypeFare/paxTypeFare_FareMarket0.xml"/>
+     <Fare file="paxTypeFare/paxTypeFare_Fare0.xml"/>
+</PaxTypeFare>

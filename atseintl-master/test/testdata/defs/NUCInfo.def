@@ -1,0 +1,13 @@
+name: NUCInfo
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: currency:             CurrencyCode _cur
+  scalar: carrier:              CarrierCode _carrier
+  scalar: nucFactor:            CurrencyFactor _nucFactor
+  scalar: roundingFactor:       CurrencyFactor _roundingFactor
+  scalar: nucFactorNodec:       CurrencyNoDec _nucFactorNodec
+  scalar: roundingFactorNodec:  CurrencyNoDec _roundingFactorNodec
+  scalar: roundingRule:         RoundingRule _roundingRule
+endsection

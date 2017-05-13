@@ -1,0 +1,19 @@
+<Currency>
+     <expireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <effDate year=2006 month=7 day=14 hour=0 minute=0 second=0/>
+     <discDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <createDate year=2006 month=7 day=14 hour=12 minute=16 second=15/>
+     <Attributes
+          cur="MGF"
+          domRoundingFactor=-1
+          roundingFactorNoDec=0
+          noDec=0
+          curNo=450
+          curName="FRANC"
+          nucRoundingProcessNo=""
+          controllingEntityDesc="MADAGASCAR"
+          taxOverrideRoundingUnitNoDec=0
+          taxOverrideRoundingUnit=-1
+          taxOverrideRoundingRule=3
+     />
+</Currency>

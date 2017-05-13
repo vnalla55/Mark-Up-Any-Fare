@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="GIG"
+          subarea="14"
+          area="1"
+          transtype="P"
+          nation="BR"
+          state=" "
+     />
+     <Position
+          latdegrees=22
+          latminutes=48
+          latseconds=28
+          lngdegrees=43
+          lngminutes=14
+          lngseconds=36
+          lathemisphere="S"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2004 month=6 day=11 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="BR01"
+          description="RIO JANEIRO GIG"
+     />
+</Loc>

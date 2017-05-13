@@ -1,0 +1,19 @@
+name: Itin
+namespace: tse
+package: DataModel
+
+section: Attributes
+  scalarWithCompare: geoTravelType:    GeoTravelType geoTravelType()
+  scalarWithCompare: ticketingCarrier: CarrierCode   ticketingCarrier()
+  #TODO scalarWithCompare: intlSalesIndicator: ISICode intlSalesIndicator()
+endsection
+scalarCompare: void intlSalesIndicator()
+
+factoryAggregateWithCompare: CarrierPreference: CarrierPreference* ticketingCarrierPref()
+
+factoryAggregateWithCompare: TravelSeg:  std::vector<TravelSeg*>   travelSeg()
+factoryAggregateWithCompare: FareMarket: std::vector<FareMarket*>  fareMarket()
+factoryAggregateWithCompare: FarePath:   std::vector<FarePath*>    farePath()
+
+# ?? vectorOfPointersAggregate:  TaxResponse  TaxResponse   taxResponse()
+#         SmallBitSet<uint8_t, TripCharacteristics> _tripCharacteristics

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# ensure we are running within the same directory
+# from which we are located
+
+script=$(which ${0})
+script_dir=$(dirname ${script})
+
+cd ${script_dir}
+if [ $? -ne 0 ] ; then exit 1 ; fi
+
+. ./env.vars
+if [ $? -ne 0 ] ; then exit 1 ; fi
+
+cd ${APPDIR}
+if [ $? -ne 0 ] ; then exit 1 ; fi
+
+cd cfg.${SYSTYPE}
+if [ $? -ne 0 ] ; then exit 1 ; fi
+
+if [ -e log4cxx.xml ] ; then
+  if [ ! -e log4cxx.xml.original ] ; then
+     mv log4cxx.xml log4cxx.xml.original
+     if [ $? -ne 0 ] ; then exit 1  ; fi
+  fi
+fi
+
+cp ${script_dir}/log4cxx.xml .
+if [ $? -ne 0 ] ; then exit 1 ; fi
+

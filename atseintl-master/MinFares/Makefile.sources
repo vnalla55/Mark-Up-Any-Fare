@@ -1,0 +1,21 @@
+MINFARES_SOURCES := \
+    MinimumFare.cpp \
+    MinFareLogic.cpp \
+    MinFareChecker.cpp \
+    COPMinimumFare.cpp \
+    EPQMinimumFare.cpp \
+    BHCMinimumFare.cpp \
+    DMCMinimumFare.cpp \
+    HIPMinimumFare.cpp \
+    COMMinimumFare.cpp \
+    CTMMinimumFare.cpp \
+    OJMMinimumFare.cpp \
+    RTMinimumFare.cpp \
+    HighRTChecker.cpp \
+    MatchRuleLevelExclTable.cpp \
+    MatchExceptionTable.cpp \
+    MatchDefaultLogicTable.cpp \
+    MinFareFareSelection.cpp \
+    MinFareNormalFareSelection.cpp \
+    MinFareSpecialFareSelection.cpp \
+    RoundTripFareSelection.cpp

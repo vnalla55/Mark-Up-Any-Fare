@@ -1,0 +1,17 @@
+<TpdPsrViaCxrLoc>
+   <Attributes
+      viaCarrier="AA"
+   />
+   <LocKey1>
+      <Attributes
+	 loc="DEN" 
+	 locType='C' 
+      />
+   </LocKey1>
+   <LocKey2>
+      <Attributes
+	 loc="SFO" 
+	 locType='C' 
+      />
+   </LocKey2>
+</TpdPsrViaCxrLoc>

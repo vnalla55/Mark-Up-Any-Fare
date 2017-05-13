@@ -1,0 +1,13 @@
+#! /bin/csh
+
+# Cancel check out of vob objects
+# 	can be implemented as an alias:
+#		alias ct_xco 			cleartool uncheckout -rm
+
+if ( "$1" == "" ) then
+	echo "Syntax: ct_xco <vob objects>"
+	exit 1
+endif
+
+cleartool uncheckout -rm $*
+

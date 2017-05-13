@@ -1,0 +1,44 @@
+<AirSeg>
+     <FlightInfo
+          carrier="MH"
+          marketingFlightNumber=601
+          operatingFlightNumber=601
+     />
+     <Misc
+          considerOnlyCabin=""
+     />
+<EarliestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<LatestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<DepartureDate year=2009 month=12 day=9 hour=8 minute=5 second=0/>
+<ArrivalDate year=2009 month=12 day=9 hour=9 minute=0 second=0/>
+<BookingDate year=2009 month=10 day=26 hour=6 minute=22 second=0/>
+     <ClassOfService file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/ClassOfService_Y.xml"/>
+     <SegmentInfo
+          pnrSegment=3
+          segmentOrder=3
+          stopOver="f"
+          forcedStopOver="F"
+          forcedConx="F"
+          geoTravelType="International"
+          origAirport="KUL"
+          boardMultiCity="KUL"
+          destAirport="SIN"
+          offMultiCity="SIN"
+     />
+     <FlightInfo
+          equipmentType="772"
+     />
+     <Origin file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_KUL_SYD_KUL_SIN_0_Loc_KUL.xml"/>
+     <Destination file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_KUL_SYD_KUL_SIN_2_Loc_SIN.xml"/>
+     <Misc
+          bookedCabin="8"
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode=""
+          bookingCode="Y"
+          furthestPoint="f"
+          forcedFareBrk="F"
+          forcedNoFareBrk="F"
+          forcedSideTrip="F"
+     />
+</AirSeg>

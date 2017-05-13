@@ -1,0 +1,35 @@
+name: CollectedNegFareData
+namespace: tse
+package: DataModel
+
+section: Attributes
+  scalar: indicatorCat35:             bool          indicatorCat35()
+  scalar: differentNetFare:           bool          differentNetFare()
+  scalar: differentCode:              bool          differentCode()
+  scalar: differentTktDesg:           bool          differentTktDesg()
+  scalar: differentComm:              bool          differentComm()
+  scalar: fareTypeCode:               Indicator     fareTypeCode()
+  scalar: indNetGross:                Indicator     indNetGross()
+  scalar: bspMethod:                  Indicator     bspMethod()
+  scalar: indTypeTour:                Indicator     indTypeTour()
+  scalar: totalSellingAmt:            MoneyAmount   totalSellingAmt()
+  scalar: netTotalAmt:                MoneyAmount   netTotalAmt()
+  scalar: netTotalAmtCharges:         MoneyAmount   netTotalAmtCharges()
+  scalar: totalMileageCharges:        MoneyAmount   totalMileageCharges()
+  scalar: otherSurchargeTotalAmt:     MoneyAmount   otherSurchargeTotalAmt()
+  scalar: cat12SurchargeTotalAmt:     MoneyAmount   cat12SurchargeTotalAmt()
+  scalar: totalSellingMileageCharges: MoneyAmount   totalSellingMileageCharges()
+  scalar: comAmount:                  MoneyAmount   comAmount()
+  scalar: tourCode:                   std::string   tourCode()
+  scalar: fareBox:                    std::string   fareBox()
+  scalar: bagNo:                      std::string   bagNo()
+  scalar: trailerMsg:                 std::string   trailerMsg()
+  scalar: commissionMsg:              std::string   commissionMsg()
+  scalar: valueCode:                  std::string   valueCode()
+  scalar: comPercent:                 Percent       comPercent()
+  scalar: noComPerDec:                int           noComPerDec()
+  scalar: noDec:                      int           noDec()
+  scalar: numberWarningMsg:           int           numberWarningMsg()
+  scalar: currency:                   CurrencyCode  currency()
+  scalar: tDesignator:                TktDesignator tDesignator()
+endsection

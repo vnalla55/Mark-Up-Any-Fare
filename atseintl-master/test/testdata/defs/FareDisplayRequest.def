@@ -1,0 +1,35 @@
+name: FareDisplayRequest
+namespace: tse
+parent: PricingRequest
+package: DataModel
+
+factoryAggregate: returnDate:           DateTime returnDate()
+factoryAggregate: dateRangeLower:       DateTime dateRangeLower()
+factoryAggregate: dateRangeUpper:       DateTime dateRangeUpper()
+factoryAggregate: preferredTravelDate:  DateTime preferredTravelDate()
+
+scalarAggregate: passengerTypes:        std::set<PaxTypeCode>     passengerTypes()
+scalarAggregate: displayPassengerTypes: std::vector<PaxTypeCode>  displayPassengerTypes()
+scalarAggregate: inputPassengerTypes:   std::vector<PaxTypeCode>  inputPassengerTypes()
+scalarAggregate: secondaryCity1:        std::vector<LocCode>      secondaryCity1()
+scalarAggregate: secondaryCity2:        std::vector<LocCode>      secondaryCity2()
+scalarAggregate: secondaryCarrier:      std::vector<CarrierCode>  secondaryCarrier()
+
+section: FDAttributes
+  scalar: displayCurrency:          CurrencyCode  displayCurrency()
+  scalar: alternateDisplayCurrency: CurrencyCode  alternateDisplayCurrency()
+  scalar: ticketDesignator:         TktDesignator ticketDesignator()
+  scalar: fareBasisCode:            FareClassCode fareBasisCode()
+  scalar: numberOfFareLevels:       uint32_t      numberOfFareLevels()
+  scalar: inclusionCode:            InclusionCode inclusionCode()
+  scalar: requestedInclusionCode:   InclusionCode requestedInclusionCode()
+  scalar: requestType:              FDRequestType requestType()
+  scalar: carrierNotEntered:        Indicator     carrierNotEntered()
+  scalar: addSubLineNumber:         int16_t       addSubLineNumber()
+  scalar: addSubPercentage:         int16_t       addSubPercentage()
+  scalar: calcFareAmount:           MoneyAmount   calcFareAmount()
+  scalar: outputType:               FDOutputType  outputType()
+  scalar: fareOrigin:               LocCode       fareOrigin()
+  scalar: fareDestination:          LocCode       fareDestination()
+  scalar: displayAccCode:           bool          displayAccCode()
+endsection

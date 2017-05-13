@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="DDD"
+          city=""
+          subarea="14"
+          area="1"
+          transtype=" "
+          nation="VE"
+          state=""
+     />
+     <Position
+          latdegrees=10
+          latminutes=36
+          latseconds=23
+          lngdegrees=66
+          lngminutes=59
+          lngseconds=21
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2007 month=1 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="VE01"
+          description="DDD VENEZUELA"
+     />
+</Loc>

@@ -1,0 +1,12 @@
+<PaxTypeInfo>
+     <Attributes
+          paxType="UNR"
+          vendor="SABR"
+          description="UNACCOMPANIED RESIDENCE CHILD"
+          childInd="Y"
+          adultInd="Y"
+          infantInd="N"
+          psgGroupType="CH$"
+          numberSeatsReq=1
+     />
+</PaxTypeInfo>

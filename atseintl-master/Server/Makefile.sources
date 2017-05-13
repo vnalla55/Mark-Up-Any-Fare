@@ -1,0 +1,6 @@
+TSESERVER_SOURCES := \
+    main.cpp \
+    AppConsoleController.cpp \
+    DynamicLibrary.cpp \
+    TseAppConsole.cpp \
+    TseServer.cpp

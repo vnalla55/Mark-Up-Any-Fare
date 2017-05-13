@@ -1,0 +1,61 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+
+DB_ACCESS_TEST_LIB_FILES = [
+    'test/GlobalTseTestUtils.cpp',
+    'test/SelfRegisteringTestDBResultSetFactory.cpp',
+    'test/QueryTester.cpp',
+    'test/TestRow.cpp',
+    'test/TestResultSet.cpp']
+
+USINGDB_FILES = [
+    'test/SerializationTestSITAConstructedFareInfo.cpp',
+    'test/DataHandleTest.cpp',
+    'test/AirlineCountrySettlementPlanDAOTest.cpp',
+    'test/AirlineInterlineAgreementDAOTest.cpp',
+    'test/PassengerAirlineDAOTest.cpp',
+    'test/MUCCompressedCacheTest.cpp',
+    'test/NeutralValidatingAirlineDAOTest.cpp',
+    'test/SerializationCompressionTest.cpp',
+    'test/BrandedFareDAOTest.cpp',
+    'test/SvcFeesFareIdDAOTest.cpp',
+    'test/SvcFeesFeatureDAOTest.cpp',
+    'test/MarkupControlWildcardDAOTest.cpp',
+    'test/TktDesignatorExemptDAOTest.cpp',
+    'test/CountrySettlementPlanDAOTest.cpp',
+    'test/CustomerDAOTest.cpp',
+    'test/GenSalesAgentDAOTest.cpp',
+    'test/EmdInterlineAgreementDAOTest.cpp',
+    'test/RemoteCacheTest.cpp'
+]
+
+EXCLUDE_OBJS = [
+    'test/FareDisplaySortDAOTest.cpp',
+    'test/MemHandleTest_get.cpp',
+    'test/QueryGetMinFareRuleTest.cpp',
+    'test/QueryGetServiceFeesCxrActivationTest.cpp',
+    'test/SerializationTest.cpp',
+    'test/SerializationTestServiceRec1.cpp'
+]
+
+
+def build_dbaccess_test_lib(env,  dircontext):
+    env.add_isystem_paths('$CPPUNIT_CPPPATH_', '$GMOCK_CPPPATH_', '$GTEST_CPPPATH_')
+    mkr = env.factory.libmaker('DBAccessTests').add_sources(DB_ACCESS_TEST_LIB_FILES)
+    mkr.make()
+
+
+s = env.scout()
+s.env.add_libpaths('.')
+s.env.add_include_paths('$ORACLE_CPPPATH_')
+s.werror = False
+s.add_task(build_dbaccess_test_lib, copyenv=True)
+s.tests(locallib=1, libs=['DBAccessTests'], blacklist = DB_ACCESS_TEST_LIB_FILES + EXCLUDE_OBJS + USINGDB_FILES)
+s.tests(locallib=1, libs=['DBAccessTests'], whitelist = USINGDB_FILES, executor='utexedb')
+s.build()
+

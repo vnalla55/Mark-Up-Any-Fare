@@ -1,0 +1,16 @@
+<PaxTypeFare>
+     <Status value="Published"/>
+     <SegmentStatus bookingCode="">
+          <BookingCodeSegStatus value="PASS"/>
+     </SegmentStatus>
+     <ActualPaxType file="testdata/PC1/PaxType.xml"/>
+     <FareClassAppInfo file="testdata/PC1/FareClassAppInfo8.xml"/>
+     <FareClassAppSegInfo file="testdata/PC1/FareClassAppSegInfo8.xml"/>
+     <FareTypeMatrix
+          cabin="8"
+          fareTypeDesignator=15
+          fareTypeApplication="N"
+     />
+     <FareMarket file="testdata/PC1/FMarket_SINDXB-SQ.xml"/>
+     <Fare file="testdata/PC1/Fare8.xml"/>
+</PaxTypeFare>

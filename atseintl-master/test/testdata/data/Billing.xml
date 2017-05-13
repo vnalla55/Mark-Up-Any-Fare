@@ -1,0 +1,16 @@
+<Billing>
+  <User
+    pseudoCityCode="W0H3"
+    station="925"
+    branch="3470"
+    setAddress="7784E6"/>
+  <Attributes
+    partitionID="AA"
+    serviceName="ATSEIMIP"
+    clientServiceName="SISXXCAS"
+    aaaCity="DFW"
+    aaaSine="VJI"
+    actionCode="WP"
+    transactionID="9223372036854775807"
+    clientTransactionID="1112402"/>
+</Billing>

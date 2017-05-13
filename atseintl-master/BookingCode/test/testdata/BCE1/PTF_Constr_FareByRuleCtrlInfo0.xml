@@ -1,0 +1,29 @@
+<FareByRuleCtrlInfo>
+     <ExpireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2008 month=10 day=4 hour=0 minute=0 second=0/>
+     <DiscountDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <CreateDate year=2008 month=10 day=3 hour=7 minute=19 second=39/>
+     <Attributes
+          jointCarrierTblItemNo=0
+          segCnt=14
+          generalRuleTariff=0
+          loc1zoneTblItemNo="0000000"
+          loc2zoneTblItemNo="0000000"
+          applInd=" "
+          generalRuleAppl=" "
+          generalRule=""
+          inhibit="N"
+     />
+>
+     <Attributes
+          vendorCode="ATP"
+          tariffNumber=903
+          carrierCode="EY"
+          ruleNumber="LUIT"
+          categoryNumber=25
+          sequenceNumber=1000000
+     />
+     <CategoryRuleItemInfoSet file="testdata/BCE1/PTF_Constr_CategoryRuleItemInfoSet7.xml"/>
+     <Location1 file="testdata/BCE1/PTF_Constr_LocKey_0.xml"/>
+     <Location2 file="testdata/BCE1/PTF_Constr_LocKey_0.xml"/>
+</FareByRuleCtrlInfo>

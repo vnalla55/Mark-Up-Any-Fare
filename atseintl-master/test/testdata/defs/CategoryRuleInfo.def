@@ -1,0 +1,18 @@
+name: CategoryRuleInfo
+namespace: tse
+package: DBAccess
+
+section:Attributes
+  scalarWithCompare: vendorCode:      VendorCode    vendorCode()
+  scalarWithCompare: tariffNumber:    TariffNumber  tariffNumber()
+  scalarWithCompare: carrierCode:     CarrierCode   carrierCode()
+  scalarWithCompare: ruleNumber:      RuleNumber    ruleNumber()
+  scalarWithCompare: categoryNumber:  uint16_t      categoryNumber()
+  scalarWithCompare: sequenceNumber:  uint32_t      sequenceNumber()
+endsection
+
+# We have a vector of pointers to CategoryRuleItemInfoSets
+# the format is vector...: section name,  variable type, accessor for the vector
+
+factoryAggregateWithCompare: Location1: LocKey loc1()
+factoryAggregateWithCompare: Location2: LocKey loc2()

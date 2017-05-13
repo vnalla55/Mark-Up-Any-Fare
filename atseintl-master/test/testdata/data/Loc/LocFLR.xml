@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="FLR"
+          city=""
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="IT"
+          state=""
+     />
+     <Position
+          latdegrees=43
+          latminutes=48
+          latseconds=37
+          lngdegrees=11
+          lngminutes=11
+          lngseconds=52
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2006 month=6 day=23 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="IT01"
+          description="FLORENCE"
+     />
+</Loc>

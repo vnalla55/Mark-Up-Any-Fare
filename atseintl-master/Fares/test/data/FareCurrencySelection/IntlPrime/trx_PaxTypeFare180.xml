@@ -1,0 +1,13 @@
+<PaxTypeFare>
+     <Status value="FareByRule"/>
+     <ActualPaxType file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_PaxType1.xml"/>
+     <FareClassAppInfo file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_FareClassAppInfo121.xml"/>
+     <FareClassAppSegInfo file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_FareClassAppSegInfo121.xml"/>
+     <FareTypeMatrix
+          cabin="2"
+          fareTypeDesignator=2
+          fareTypeApplication="N"
+     />
+     <FareMarket file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_FareMarket0.xml"/>
+     <Fare file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_Fare180.xml"/>
+</PaxTypeFare>

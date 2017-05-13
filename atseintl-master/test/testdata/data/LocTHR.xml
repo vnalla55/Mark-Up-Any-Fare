@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="THR"
+          subarea="22"
+          area="2"
+          transtype="P"
+          nation="IR"
+          state=" "
+     />
+     <Position
+          latdegrees=35
+          latminutes=41
+          latseconds=23
+          lngdegrees=51
+          lngminutes=18
+          lngseconds=57
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2004 month=7 day=22 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="IR01"
+          description="TEHRAN IRAN"
+     />
+</Loc>

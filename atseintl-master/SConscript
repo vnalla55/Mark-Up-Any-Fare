@@ -1,0 +1,23 @@
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+import configtasks
+
+Import('env')
+env.script_reading_msg()
+env.add_include_paths('$CURL_CPPPATH_')
+
+# For static build we omit the step of creating
+# libraries and use SCons object nodes directly
+# (see configtasks.py and env.stash['DIRECTLY_LINKED_OBJECTS'])
+# direct_object_link is disabled later: before building
+# the tests (in another SConscript).
+if env.linktype == 'static':
+    env.direct_object_link = True
+
+scriptdirs = configtasks.script_dirs(env)
+env.log.debug('Running SConscripts from %s' % scriptdirs)
+
+for d in scriptdirs:
+    SConscript('%s/SConscript' % d, exports='env')
+

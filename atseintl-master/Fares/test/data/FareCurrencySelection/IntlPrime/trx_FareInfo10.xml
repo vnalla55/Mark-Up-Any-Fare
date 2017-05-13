@@ -1,0 +1,25 @@
+<FareInfo>
+     <EffectiveDate year=2003 month=5 day=1 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Fare
+          fareAmount=3591
+          originalFareAmount=3591
+          noDec=2
+          fareTariff=4
+          currency="GBP"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="BA"
+          fareClass="F1"
+          market1LocCode="BOM"
+          market2LocCode="LON"
+          footnote1=""
+          footnote2=""
+          owrt="1"
+          ruleNumber="2651"
+          routingNumber="0000"
+          globalDirection="EH"
+          directionality="TO"
+     />
+</FareInfo>

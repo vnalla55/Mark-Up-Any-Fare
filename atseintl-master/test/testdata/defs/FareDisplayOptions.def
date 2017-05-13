@@ -1,0 +1,41 @@
+name: FareDisplayOptions
+namespace: tse
+parent: PricingOptions
+package: DataModel
+
+section: FDAttributes
+  scalar: oneWay:                         Indicator oneWay()
+  scalar: halfRoundTrip:                  Indicator halfRoundTrip()
+  scalar: roundTripFare:                  Indicator roundTripFare()
+  scalar: sortAscending:                  Indicator sortAscending()
+  scalar: sortDescending:                 Indicator sortDescending()
+  scalar: privateFares:                   Indicator privateFares()
+  scalar: publicFares:                    Indicator publicFares()
+  scalar: excludePenaltyFares:            Indicator excludePenaltyFares()
+  scalar: excludeAdvPurchaseFares:        Indicator excludeAdvPurchaseFares()
+  scalar: excludeRestrictedFares:         Indicator excludeRestrictedFares()
+  scalar: validateRules:                  Indicator validateRules()
+  scalar: reverseSort:                    Indicator reverseSort()
+  scalar: displayBaseTaxTotalAmounts:     Indicator displayBaseTaxTotalAmounts()
+  scalar: excludeMinMaxStayFares:         Indicator excludeMinMaxStayFares()
+  scalar: allCarriers:                    Indicator allCarriers()
+  scalar: adultFares:                     Indicator adultFares()
+  scalar: childFares:                     Indicator childFares()
+  scalar: infantFares:                    Indicator infantFares()
+  scalar: uniqueAccountCode:              Indicator uniqueAccountCode()
+  scalar: uniqueCorporateID:              Indicator uniqueCorporateID()
+  scalar: viewPrivateFares:               Indicator viewPrivateFares()
+  scalar: sellingCurrency:                Indicator sellingCurrency()
+  scalar: excludeDayTimeValidation:       Indicator excludeDayTimeValidation()
+  scalar: brandGroupingOptOut:            Indicator brandGroupingOptOut()
+  scalar: excludePercentagePenaltyFares:  int32_t   excludePercentagePenaltyFares()
+  scalar: templateOverride:               int32_t   templateOverride()
+  scalar: bsrReciprocal:                  bool      bsrReciprocal()
+  scalar: ruleMenuDisplay:                Indicator ruleMenuDisplay()
+  scalar: routingDisplay:                 Indicator routingDisplay()
+  scalar: headerDisplay:                  Indicator headerDisplay()
+  scalar: intlConstructionDisplay:        Indicator IntlConstructionDisplay()
+  scalar: fbDisplay:                      Indicator FBDisplay()
+  scalar: combScoreboardDisplay:          Indicator combScoreboardDisplay()
+  scalar: lineNumber:                     int32_t   lineNumber()
+endsection

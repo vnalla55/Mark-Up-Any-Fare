@@ -1,0 +1,595 @@
+##########
+# ADHOC
+#########
+
+FUNCI_ADHOC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI_ADHOC)(SERVER = SHARED))
+  )
+FUNCI1_ADHOC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_ADHOC)(SERVER = SHARED))
+  )
+
+FUNCIA_ADHOC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_ADHOC)(SERVER = SHARED))
+  )
+
+INSTRI1_ADHOC =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = dbshli-scc11.sabre.com)(PORT = 1521)) 
+    (CONNECT_DATA = (SERVER=dedicated) (SERVICE_NAME=INSTRI1_ADHOC))
+  )
+
+##########
+# AS
+#########
+
+FUNCI1_AS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_AS)(SERVER = SHARED))
+  )
+
+FUNCI_AS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI_AS)(SERVER = SHARED))
+  )
+
+##########
+# BRND
+#########
+
+FUNCI_BRND =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI_BRND)(SERVER = SHARED))
+  )
+
+##########
+# FQ
+#########
+
+FUNCI1_FQ =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_FQ)(SERVER = SHARED))
+  )
+
+FUNCI_FQ =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI_FQ)(SERVER = SHARED))
+  )
+
+
+##########
+# FUNCI1
+#########
+
+FUNCI1 =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1)(SERVER = SHARED))
+  )
+
+
+##########
+# HIS
+#########
+
+FUNCI1_HIS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_HIS)(SERVER = SHARED))
+  )
+
+##########
+# MAINT
+#########
+
+FUNCI1_MAINT =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_MAINT)(SERVER = SHARED))
+  )
+
+
+##########
+# MIPA
+#########
+
+FUNCI1_MIPA =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_MIPA)(SERVER = SHARED))
+  )
+
+FUNCI_MIPA =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI_MIPA)(SERVER = SHARED))
+  )
+
+
+##########
+# MIPC
+#########
+
+FUNCI1_MIPC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_MIPC)(SERVER = SHARED))
+  )
+
+FUNCI_MIPC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI_MIPC)(SERVER = SHARED))
+  )
+
+
+##########
+# MIPD
+#########
+
+FUNCI1_MIPD =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_MIPD)(SERVER = SHARED))
+  )
+
+FUNCI_MIPD =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI_MIPD)(SERVER = SHARED))
+  )
+
+
+##########
+# MIPE
+#########
+
+FUNCI1_MIPE =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_MIPE)(SERVER = SHARED))
+  )
+
+FUNCI_MIPE =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI_MIPE)(SERVER = SHARED))
+  )
+
+
+##########
+# PRC
+#########
+
+FUNCI1_PRC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_PRC)(SERVER = SHARED))
+  )
+
+
+##########
+# PRCV1
+#########
+
+FUNCI1_PRCV1 =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_PRCV1)(SERVER = SHARED))
+  )
+
+
+##########
+# RTG
+#########
+
+FUNCI1_RTG =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_RTG)(SERVER = SHARED))
+  )
+
+
+##########
+# SHP
+#########
+
+FUNCI1_SHP =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCI1_SHP)(SERVER = SHARED))
+  )
+
+
+##########
+# LBWRITER datacollector
+##########
+
+INT_LBT =
+  (DESCRIPTION =
+    (FAILOVER = ON) (LOAD_BALANCE= ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = sachli-scc400.sabre.com)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = sachli-cdc300.sabre.com)(PORT = 1521))
+    (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = SACI_LBT))
+  )
+
+
+##########
+# Instrumentation database; modified definition per PSDDS-1908
+##########
+
+INT_INSTR =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = dbshli-scc11.sabre.com)(PORT = 1521)) 
+    (CONNECT_DATA = (SERVER=dedicated) (SERVICE_NAME=INSTRI))
+  )
+
+#########
+# DAILY
+#########
+     
+FUNCIA_APT =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_APT)(SERVER = SHARED))
+  )
+
+FUNCIA_AS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_AS)(SERVER = SHARED))
+  )
+
+FUNCIA_BIP =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_BIP)(SERVER = SHARED))
+  )
+
+FUNCIA_DIS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_DIS)(SERVER = SHARED))
+  )
+
+FUNCIA_DSS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_DSS)(SERVER = SHARED))
+  )
+
+FUNCIA_ESSIPOC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_ESSIPOC)(SERVER = SHARED))
+  )
+
+FUNCIA_FQ =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_FQ)(SERVER = SHARED))
+  )
+
+FUNCIA =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA)(SERVER = SHARED))
+  )
+
+FUNCIA_GG =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_GG)(SERVER = SHARED))
+  )
+
+FUNCIA_HIS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_HIS)(SERVER = SHARED))
+  )
+
+FUNCIA_HPS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_HPS)(SERVER = SHARED))
+  )
+
+FUNCIA_ISA =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_ISA)(SERVER = SHARED))
+  )
+
+FUNCIA_ISC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_ISC)(SERVER = SHARED))
+  )
+
+FUNCIA_ISD =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_ISD)(SERVER = SHARED))
+  )
+
+FUNCIA_ISE =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_ISE)(SERVER = SHARED))
+  )
+
+FUNCIA_MAINT =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_MAINT)(SERVER = SHARED))
+  )
+
+FUNCIA_MIPA =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_MIPA)(SERVER = SHARED))
+  )
+
+FUNCIA_MIPC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_MIPC)(SERVER = SHARED))
+  )
+
+FUNCIA_MIPD =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_MIPD)(SERVER = SHARED))
+  )
+
+FUNCIA_MIPE =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_MIPE)(SERVER = SHARED))
+  )
+
+FUNCIA_PRC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_PRC)(SERVER = SHARED))
+  )
+
+FUNCIA_PRCV1 =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_PRCV1)(SERVER = SHARED))
+  )
+
+FUNCIA_RTG =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_RTG)(SERVER = SHARED))
+  )
+
+FUNCIA_SHP =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-cdc01)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhli-scc03)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCIA_SHP)(SERVER = SHARED))
+  )
+
+#########
+# INT_INSTR_SCC_READ definition added per PSDDS-3509
+#########
+
+INT_INSTR_SCC_READ =
+  (DESCRIPTION =
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = dbshli-scc11.sabre.com)(PORT = 1521))
+    (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = INSTRI1_DBR))
+  )
+
+;; Developement Oracle cluster servicenames
+
+FUNCD_FQ =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhld11-scan)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCD_FQ)(SERVER = SHARED))
+  )
+
+FUNCD_HIS =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhld11-vip)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCD_HIS)(SERVER = SHARED))
+  )
+
+FUNCD_PRC =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhld11-vip)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCD_PRC)(SERVER = SHARED))
+  )
+
+FUNCD_SHP =
+  (DESCRIPTION =
+    (LOAD_BALANCE = on)
+    (FAILOVER = on)
+    (ADDRESS = (PROTOCOL = TCP)(HOST = safhld11-scan)(PORT = 1521))
+    (CONNECT_DATA = (SERVICE_NAME = FUNCD_SHP)(SERVER = SHARED))
+  )
+
+  
+;; Certification Oracle Cluster Service names
+
+FUNCC1_FQ =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc03-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc04-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=(SERVICE_NAME=FUNCC1_FQ)(SERVER=shared))
+    )
+	
+FUNCC2_FQ =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc01-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc02-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA= (SERVICE_NAME=FUNCC2_FQ)(SERVER=shared))
+    )
+	
+FUNCC1_HIS =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc03-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc04-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=(SERVICE_NAME=FUNCC1_HIS)(SERVER=shared))
+    )
+	
+FUNCC2_HIS =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc01-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc02-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=(SERVICE_NAME=FUNCC2_HIS)(SERVER=shared))
+    )
+	
+FUNCC1_PRC =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc03-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc04-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=(SERVICE_NAME=FUNCC1_PRC)(SERVER=shared))
+    )
+	
+FUNCC2_PRC =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc01-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc02-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=(SERVICE_NAME=FUNCC2_PRC)(SERVER=shared))
+    )
+	
+FUNCC1_SHP =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc03-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc04-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=(SERVICE_NAME=FUNCC1_SHP)(SERVER=shared))
+    )
+	
+FUNCC2_SHP =
+    (DESCRIPTION    =
+      (LOAD_BALANCE   = ON)
+      (FAILOVER       = ON)
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc01-vip.sabre.com) (PORT=1521))
+      (ADDRESS= (PROTOCOL=TCP) (HOST=safhlc02-vip.sabre.com) (PORT=1521))
+      (CONNECT_DATA=(SERVICE_NAME=FUNCC2_SHP)(SERVER=shared))
+    )

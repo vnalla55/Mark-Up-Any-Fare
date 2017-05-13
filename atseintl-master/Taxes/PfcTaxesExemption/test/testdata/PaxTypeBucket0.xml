@@ -1,0 +1,8 @@
+<PaxTypeBucket>
+     <RequestedPaxType file="testdata/PaxTypeChild.xml"/>
+     <PaxTypeFare file="testdata/PaxTypeFare0.xml"/>
+         <Misc
+          inboundCurrency="USD"
+          outboundCurrency="USD"
+     />
+</PaxTypeBucket>

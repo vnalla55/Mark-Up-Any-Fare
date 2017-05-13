@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 3 U (http://www.xmlspy.com) by SABRE (SABRE) -->
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by Marcin Olszewski (sabre) -->
+<!-- ========================================
+  File:             DsseRequest.xsd
+  Description:  DSSE Request XML Schema
+  Created:       2005-03-03
+  Author:         Prakash Kadamba,  Pawel Wyrzycki, Michal Grzemowski, Pawel Bulkowski
+  Copyright Sabre 2004-2005
+  The copyright to the computer program(s) herein is the property of Sabre. The program(s) may be used and/or copied only with
+  the written permission of Sabre or in accordance with the terms and conditions stipulated in the agreement/contract under which the  program(s)
+  have been supplied.
+========================================-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:form="http://www.atse.sabre.com/Form" version="1.0">
+	<xs:include schemaLocation="DsseCommonTypes.xsd"/>
+	<xs:element name="DSS">
+		<xs:annotation>
+			<xs:documentation>DSSE Request Element (DSS)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="DsseRequestType">
+					<xs:attribute name="CHS" type="xs:boolean" use="optional" default="false"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="DsseRequestType">
+		<xs:sequence>
+			<xs:element name="BIL" type="BillingInfoType" form:label="Billing Information">
+				<xs:annotation>
+					<xs:documentation>DsseRqst consists of a billiing info and at least one RqstItem.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UID" type="UIDType" form:label="User ID Info">
+				<xs:annotation>
+					<xs:documentation>User ID Info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ODI" type="ODIType" form:label="Origin Dest. info">
+				<xs:annotation>
+					<xs:documentation>Origin Dest. info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DAT" type="DATType" form:label="Date info">
+				<xs:annotation>
+					<xs:documentation>Date info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TIM" type="TIMType" form:label="Time info">
+				<xs:annotation>
+					<xs:documentation>Time info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FLT" type="FLTType" form:label="Flight info">
+				<xs:annotation>
+					<xs:documentation>Flight info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ENT" type="ENTType" form:label="Entry type modifiers">
+				<xs:annotation>
+					<xs:documentation>Entry type modifiers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ACT" type="ACTType" form:label="Allowed/restricted airports/cities">
+				<xs:annotation>
+					<xs:documentation>Allowed/restricted airports/cities</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DVR" type="DVRType" minOccurs="0" form:label="Diversity info">
+				<xs:annotation>
+					<xs:documentation>Path diversity info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CNX" type="CNXType" form:label="Connection info">
+				<xs:annotation>
+					<xs:documentation>Connection info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SEG" type="SEGType" form:label="Segment info">
+				<xs:annotation>
+					<xs:documentation>Segment info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PTH" type="PTHType" minOccurs="0" maxOccurs="unbounded" form:label="Connect path">
+				<xs:annotation>
+					<xs:documentation>Connect path</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="STP" type="STPType" form:label="Stops info">
+				<xs:annotation>
+					<xs:documentation>Stops info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CST" type="CSTType" minOccurs="0" form:label="Carrier list to include/exclude">
+				<xs:annotation>
+					<xs:documentation>Carrier sets</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CXX" type="CXXType" minOccurs="0" form:label="Connect paths to include/exclude">
+				<xs:annotation>
+					<xs:documentation>Conenct Points</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CRR" type="CRRType" minOccurs="0" form:label="Carrier list to include/exclude">
+				<xs:annotation>
+					<xs:documentation>Carrier list to include/exclude</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DIA" type="DIAType" minOccurs="0" form:label="Diagnostics">
+				<xs:annotation>
+					<xs:documentation>Diagnostics</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DCK" type="DCKType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CPP" type="CPPType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="FCT" type="FCTType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>When present, only flight counts will be returned.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AGI" type="AGIType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="COR" type="CorporateIDType" use="required" form:label="Corp. Id">
+			<xs:annotation>
+				<xs:documentation>Corp. Id</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="VER" type="xs:string" use="required" form:label="Version">
+			<xs:annotation>
+				<xs:documentation>Version</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="VRB" type="xs:string" use="required" form:label="isVerbose">
+			<xs:annotation>
+				<xs:documentation>isVerbose</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ARI" type="xs:boolean" form:label="Is Arrival &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Is Arrival - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="XCC" type="xs:boolean" form:label="Excluded carriers &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Excluded carriers - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="XCP" type="xs:boolean" form:label="Excluded connect pts &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Excluded connect pts - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="XTR" type="xs:boolean" form:label="Excluded tarriff rest. &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Excluded tarriff rest. - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="IGS" type="xs:boolean" form:label="Ignore screen clutter &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Ignore screen clutter - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="IGP" type="xs:boolean" form:label="Ignore penalty pts &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Ignore penalty pts - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DNR" type="xs:boolean" form:label="Do not randomize &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Do not randomize - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DEP" type="xs:boolean" form:label="Get dept. flts &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Get dept. flts - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DUP" type="xs:boolean" form:label="Apply dup edits &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Apply dup edits - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="XCT" type="xs:boolean" form:label="Exclude charter svc &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Exclude charter svc - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="XSC" type="xs:boolean" form:label="Exclude sched svc &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Exclude sched svc - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ONL" type="xs:boolean" form:label="Online svc only &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Online svc only - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ETX" type="xs:boolean" form:label="E-Ticket only &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>E-Ticket only - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="GRP" type="GrouppingType" use="optional" form:label="Solution grouping">
+			<xs:annotation>
+				<xs:documentation>The way of grouping solutions</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CAE" type="xs:boolean" default="false">
+			<xs:annotation>
+				<xs:documentation>If true, call for availablity will be made.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AVM" type="xs:integer" default="0">
+			<xs:annotation>
+				<xs:documentation>Availability method to use when calling ATAE</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DIE" type="DisplayEngineType" use="optional" form:label="Display engine type">
+			<xs:annotation>
+				<xs:documentation>The type of the display engine EA, SIMPLE or CPP</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CXXType">
+		<xs:annotation>
+			<xs:documentation>Connect paths to include/exclude</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CYY" type="CYYType" minOccurs="0" maxOccurs="unbounded" form:label="Path">
+				<xs:annotation>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CYYType">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CPC" type="AirportCodeType" minOccurs="0" maxOccurs="unbounded" form:label="Path Element">
+				<xs:annotation>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CSTType">
+		<xs:annotation>
+			<xs:documentation>Carrier list to include/exclude</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SET" type="AirlineCodeType" minOccurs="0" maxOccurs="unbounded" form:label="Carrier">
+				<xs:annotation>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PTHType">
+		<xs:annotation>
+			<xs:documentation>Connect path</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="CNP" type="AirportCodeListType" use="required" form:label="List of airports">
+			<xs:annotation>
+				<xs:documentation>Space separated list of airports</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CPPType">
+		<xs:annotation>
+			<xs:documentation>CPPE connect points</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="SMN" type="xs:unsignedShort" use="optional" default="0" form:label="Limit travel options to no less than these num of segments &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>minimum number of segment in returned solutions</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SMX" type="xs:unsignedShort" use="optional" default="0" form:label="Limit travel options to no more than these num of segments &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>maximum number of segment in returned solutions, 0 no limit						</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SOL" type="xs:unsignedInt" use="optional" default="0" form:label="Number of  solutions to return for this connect point &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>number of solutions to return for this tag</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CNP" type="AirportCodeListType" use="required" form:label="List of airports">
+			<xs:annotation>
+				<xs:documentation>Space separated list of airports</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CR1" type="AirlineCodeListType" use="optional" form:label="List of carriers">
+			<xs:annotation>
+				<xs:documentation>Space separated list of carriers</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CR2" type="AirlineCodeListType" use="optional" form:label="List of carriers from connect point to destination">
+			<xs:annotation>
+				<xs:documentation>Space separated list of carriers</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="XCC" type="xs:boolean" use="optional" default="false" form:label="Excluded carriers &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Excluded carriers - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="XCP" type="xs:boolean" use="optional" default="false" form:label="Excluded connect pts &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Excluded connect pts - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CRRType">
+		<xs:annotation>
+			<xs:documentation>Carriers to use</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="CRL" type="AirlineCodeListType" use="required" form:label="Include cerriers">
+			<xs:annotation>
+				<xs:documentation>Space separated list of cerriers</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="DIAType">
+		<xs:annotation>
+			<xs:documentation>Diagnostics</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="NBR" type="xs:string" use="optional" form:label="a comma separated list of diagnostics to use">
+			<xs:annotation>
+				<xs:documentation>Schedules diagnostic level</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AED" type="xs:short" use="optional"  form:label="ATAE diagnostic number"/>
+	</xs:complexType>
+	<xs:complexType name="DCKType">
+		<xs:attribute name="CKI" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="BillingInfoType">
+		<xs:annotation>
+			<xs:documentation>BillingInfoType - Billing Info Element (BIL) Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="TXN" type="ClientTransactionIDType" use="required" form:label="Transaction ID">
+			<xs:annotation>
+				<xs:documentation>Transaction ID</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="UCD" type="PseudoCityCodeType" use="required" form:label="Pseudo city code">
+			<xs:annotation>
+				<xs:documentation>Pseudo city code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AAA" type="PseudoCityCodeType" use="required" form:label="AAA City">
+			<xs:annotation>
+				<xs:documentation>AAA City</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="UST" type="xs:short" use="required" form:label="User station">
+			<xs:annotation>
+				<xs:documentation>User station</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="UBR" type="xs:short" use="required" form:label="User branch">
+			<xs:annotation>
+				<xs:documentation>User branch</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ASI" type="AgentFunctionType" use="required" form:label="Agent sine In">
+			<xs:annotation>
+				<xs:documentation>Agent sine In</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AKD" type="ActionCodeType" use="required" form:label="Action code">
+			<xs:annotation>
+				<xs:documentation>Action code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="USA" type="LnIATAType" use="required" form:label="User set address">
+			<xs:annotation>
+				<xs:documentation>User set address</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PID" type="PartitionIDType" use="required" form:label="Partition ID">
+			<xs:annotation>
+				<xs:documentation>Partition ID</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CSV" type="ServiceNameType" use="required" form:label="Service name">
+			<xs:annotation>
+				<xs:documentation>Service name</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="UIDType">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:attribute name="UDD" type="xs:string" use="required" form:label="User ID &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>User ID - Required</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OWN" type="xs:string" use="required" form:label="Owner ID &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>Owner ID - Required</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CTY" type="AirportCodeType" use="required" form:label="User City &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>User City - Required</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="WEB" type="xs:boolean" form:label="Is Web User &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Is Web User - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ODIType">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:attribute name="BRD" type="AirportCodeType" use="required" form:label="Board Point &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>Board Point - Required</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OFF" type="AirportCodeType" use="required" form:label="Off Point &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>Off Point - Required</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BTP" type="xs:string" form:label="Board Type &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Board Type - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OTP" type="xs:string" form:label="Off Type &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Off Type - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ORD" type="xs:unsignedShort" use="optional" default="0" form:label="Origin radius">
+			<xs:annotation>
+				<xs:documentation>Origin radius</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DRD" type="xs:unsignedShort" use="optional" default="0" form:label="Destination radius">
+			<xs:annotation>
+				<xs:documentation>Destination radius</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OAC" type="AirportsListType" use="optional" form:label="Origin alternate airports/cities">
+			<xs:annotation>
+				<xs:documentation>Origin alternate airports/cities</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DAC" type="AirportsListType" use="optional" form:label="Destination alternate airports/cities">
+			<xs:annotation>
+				<xs:documentation>Destination alternate airports/cities</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ACTType">
+		<xs:annotation>
+			<xs:documentation>Allowed/restricted airports/cities</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="ALW" type="AirportsListType" use="optional" form:label="Allowed airports definition">
+			<xs:annotation>
+				<xs:documentation>Allowed airports definition</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RST" type="AirportsListType" use="optional" form:label="Restricted airports definition">
+			<xs:annotation>
+				<xs:documentation>Restricted airports definition</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="DATType">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:attribute name="TG1" type="xs:date" use="required" form:label="Target Date &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>Target Date - Required</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BK1" type="xs:unsignedShort" form:label="Days Back &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Days Back - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OUT" type="xs:unsignedShort" form:label="Days Out &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Days Out - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TIMType">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:attribute name="TGT" type="TimeMinutesSinceMidnightType" form:label="Target Time &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Target Time - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BK2" type="xs:unsignedShort" form:label="Time Back &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Time Back - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OUT" type="xs:unsignedShort" form:label="Time Out &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Time Out - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="FLTType">
+		<xs:annotation>
+			<xs:documentation>defines number of slutions or flight segments to return, both MIN and MAX or SOL attribute should be provided</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="MAX" type="xs:unsignedInt" use="optional" form:label="Maximum flights &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>Maximum flight segments -  Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MIN" type="xs:unsignedInt" use="optional" form:label="Minimum flights &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>Minimum flight segments - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SOL" type="xs:unsignedInt" use="optional">
+			<xs:annotation>
+				<xs:documentation>Solution count - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ENTType">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:attribute name="TYP" type="xs:string" form:label="Entry type mod. for Geo table key &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Entry type mod. for Geo table key - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DAT" type="xs:string" form:label="Data associated with entry type mod. &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Data associated with entry type mod. - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CNXType">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:attribute name="CMN" type="xs:unsignedShort" form:label="Min. connect time override &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Min. connect time override - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CMX" type="xs:unsignedShort" form:label="Max. connect time override &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Max. connect time override - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SEGType">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:attribute name="SMN" type="xs:unsignedShort" form:label="Limit travel options to no less than these num of segments &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Limit travel options to no less than these num of segments - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SMX" type="xs:unsignedShort" form:label="Limit travel options to no more than these num of segments &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Limit travel options to no more than these num of segments - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="DVRType">
+		<xs:annotation>
+			<xs:documentation>defines diversity settings to use when Enhanced Availability is not used</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="ON1" type="xs:unsignedByte" use="optional" form:label="Maximum flights &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>diversity threshold for 1-seg online connectionsl</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="IN1" type="xs:unsignedByte" use="optional" form:label="Minimum flights &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>diversity threshold for 1-seg interonline connectionsl</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ON2" type="xs:unsignedByte" use="optional" form:label="Maximum flights &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>diversity threshold for 2-seg online connectionsl</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="IN2" type="xs:unsignedByte" use="optional" form:label="Minimum flights &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>diversity threshold for 2-seg interonline connectionsl</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ON3" type="xs:unsignedByte" use="optional" form:label="Maximum flights &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>diversity threshold for 3-seg online connectionsl</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="IN3" type="xs:unsignedByte" use="optional" form:label="Minimum flights &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>diversity threshold for 3-seg interonline connectionsl</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ON4" type="xs:unsignedByte" use="optional" form:label="Maximum flights &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>diversity threshold for 4-seg online connectionsl</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="IN4" type="xs:unsignedByte" use="optional" form:label="Minimum flights &lt;required&gt;">
+			<xs:annotation>
+				<xs:documentation>diversity threshold for 4-seg interonline connectionsl</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="AGIType">
+		<xs:annotation>
+			<xs:documentation>Agent Info Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="A10" type="CityCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Agent City Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A20" type="PseudoCityCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Travel Agency Pesudo City Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A21" type="PseudoCityCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Main Travel Agency Pesudo City Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AB0" type="ARCNumberType" use="optional">
+			<xs:annotation>
+				<xs:documentation>ARC/IATA Travel Agency Registration Number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AB1" type="ARCNumberType" use="optional">
+			<xs:annotation>
+				<xs:documentation>ARC/IATA Home Travel Agency Registration Number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="B00" type="AirlineCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>CRS partition code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A80" type="AgentDepartmentCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Airline Dept Code - Today in Sabre this is a city code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N0G" type="AnyCharType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Agent duty code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A90" type="AgentFunctionType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Agent function code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C40" type="CurrencyCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Currency code for the agent</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q01" type="xs:short" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>CoHost Identifier</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="STPType">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:attribute name="TMN" type="xs:unsignedShort" form:label="Min Stops &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Min Stops - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TMX" type="xs:unsignedShort" form:label="Max stops &lt;optional&gt;">
+			<xs:annotation>
+				<xs:documentation>Max stops - Optional</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="AirportsListType">
+		<xs:list itemType="AirportCodeType"/>
+	</xs:simpleType>
+	<xs:simpleType name="AirlineCodeListType">
+		<xs:list itemType="AirlineCodeType"/>
+	</xs:simpleType>
+	<xs:simpleType name="AirportCodeListType">
+		<xs:list itemType="AirportCodeType"/>
+	</xs:simpleType>
+	<xs:simpleType name="GrouppingType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" form:label="default"/>
+			<xs:enumeration value="OD" form:label="O&amp;D groups"/>
+			<xs:enumeration value="EADIV" form:label="green screen groups"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DisplayEngineType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" form:label="default - EA display engine"/>
+			<xs:enumeration value="SIMPLE" form:label="simple display engine"/>
+			<xs:enumeration value="EA" form:label="EA display engine"/>
+			<xs:enumeration value="CPP" form:label="CPP display engine"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="FCTType">
+		<xs:attribute name="IIC" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>interline connection indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="IOC" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>online double connection indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

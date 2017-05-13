@@ -1,0 +1,14 @@
+name: InterlineTicketCarrierStatus
+namespace: tse
+package: DBAccess
+
+factoryAggregate: CreateDate:     DateTime createDate()
+factoryAggregate: ExpirationDate: DateTime expireDate()
+factoryAggregate: EffectiveDate:  DateTime effDate()
+factoryAggregate: DiscDate:       DateTime discDate()
+
+section: Attributes
+  scalarWithCompare:  carrier:  CarrierCode carrier()
+  scalarWithCompare:  crscode:  CarrierCode crsCode()
+  scalar:             status:   Indicator   status()
+endsection

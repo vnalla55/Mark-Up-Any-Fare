@@ -1,0 +1,33 @@
+<FareClassAppInfo>
+     <EffectiveDate year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+     <ExpirationDate year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+     <Location
+          location1Type="C"
+          location1="DFW"
+          location2Type="C"
+          location2="LAX"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="AA"
+          ruleTariff=0
+          ruleNumber="0"
+          footnote1="LM"
+          footnote2="NO"
+          fareClass="Y"
+          MCN=0
+          textTBLItemNo=0
+          owrt=" "
+          routingAppl=" "
+          routingNumber="XXXX"
+          fareType="EU"
+          seasonType=" "
+          dowType=" "
+          pricingCatType="N"
+          displayCatType=" "
+          seqNo=1
+          unavailTag=" "
+     />
+     <FareClassAppSegInfo file="fareClassAppInfo/fareClassAppInfo_FareClassAppSegInfo0.xml"/>
+     <FareClassAppSegInfo file="fareClassAppInfo/fareClassAppInfo_FareClassAppSegInfo1.xml"/>
+</FareClassAppInfo>

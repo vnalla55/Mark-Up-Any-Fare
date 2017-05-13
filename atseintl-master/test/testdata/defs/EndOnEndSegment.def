@@ -1,0 +1,21 @@
+name: EndOnEndSegment
+namespace: tse
+package: DBAccess
+
+section: Misc
+  scalar: orderNo:          int       orderNo()
+  scalar: tvltsi:           TSICode   tvltsi()
+  scalar: tvlAppl:          Indicator tvlAppl()
+  scalar: tvloverwaterInd:  Indicator tvloverwaterInd()
+  scalar: tvlNonstopInd:    Indicator tvlNonstopInd()
+  scalar: tvlFareType:      FareType  tvlFareType()
+  scalar: tvlFareInd:       Indicator tvlFareInd()
+  scalar: tvldir:           Indicator tvldir()
+endsection
+
+section: Locations
+  scalar: tvlLoc1Type:      LocType   tvlLoc1Type()
+  scalar: tvlLoc1:          LocCode   tvlLoc1()
+  scalar: tvlLoc2Type:      LocType   tvlLoc2Type()
+  scalar: tvlLoc2:          LocCode   tvlLoc2()
+endsection

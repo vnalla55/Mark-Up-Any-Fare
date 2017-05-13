@@ -1,0 +1,432 @@
+This document is to provide you a short description of the TestFactory framework
+and how to use/maintain it to fit your needs.  This is not a user guide, and
+it does not cover all aspects of the framework.
+
+The TestXXXFactories provided in this directory are here to help support you
+in writing test without having to rely on databases (which can change on you 
+without warning) and to save you time by not having to write huge amounts of 
+code to setup your test data.
+
+
+******************** How to use a Factory to create object *********************
+
+First, here is an example of using the factory to create a Loc object using
+some test xml files that are already defined in the test/testdata/data directory.
+BTW, feel free to use any of these files for setting up your own tests.
+
+First call the create method on the TestLocFactory, passing in the xml file
+you want to create the object from.
+
+Loc* sfo =  TestLocFactory::create("/vobs/atseintl/test/testdata/data/LocSFO.xml");
+
+Next, oh wait ... that's it.  You have now created a Loc object for San Francisco.
+The TestFactory will manage the memory, so you just use the object, and when you're 
+done let the factory handle the memory cleanup.  You have now created a Loc object, 
+and didn't have to make any connection to the DB.
+
+So that was pretty easy, one file, one class.  However, most of the time you will 
+need more complex objects.  So let's see what it takes to create a PricingTrx with 
+a PricingRequest, and PricingResponce object.
+
+PricingTrx* trx = TestPricingTrxFactory::create("/vobs/atseintl/test/testdata/data/pricingTrx.xml");
+
+That's it! ... you may be wondering ... where is the code for the Request and Response?
+Let's take a closer look at the PricingTrx.xml file.  You will notice two lines of specific
+interest...
+
+<PricingOptions file="/vobs/atseintl/test/testdata/data/pricingOptions.xml"/>
+<PricingRequest file="/vobs/atseintl/test/testdata/data/pricingRequest.xml"/>
+
+By defining the file attribute in each element, it allows us to use the appropriate
+TestFactories (TestPricingOptionsFactory and TestPricingRequestFactory)  to load a 
+seperate file for both the PricingOptions and the PricingRequest.  This gives us the 
+flexibility to reuse the basic building blocks of each graph of object and mix and 
+match to fit your needs.
+
+****************************** How to create xml *******************************
+
+There are few a options for creating the xml files needed to be used by the 
+TestXXXFactories.
+
+1.  Reuse existing xml files if they fit your needs.
+2.  Copy existing xml files and modify the values to fit your needs.
+3.  Create the files manually using the definition files (explained later) to lookup
+    element and attribute names.
+4.  If you have an existing record (either loaded from a DB or some other source),
+    you can use the TestFactory to save the data to an xml file.  The following line
+    will take and existing Loc object (sfo) and write it out to the file LocSFO.xml
+
+    TestLocFactory::write((std::string)"LocSFO", sfo);
+
+
+************************ How to add/update a new Factory ***********************
+
+Most TestXXXFactories are generated from a def(definition) file.  As fields are 
+added/removed from classes, the Factory classes will need to be updated.  The 
+first thing to be aware of is that the majority of the Factory classes are 
+generated.  Each generated class contains a corresponing def file under 
+test/testdata/defs directory.  The def (definition) file allows you to define 
+how the xml will be formatted, and the method that maps to each attribute.  If
+adding a new def file, be sure to add it to the Makefile.
+
+Most lines start with a not-case-sensitive command (like 'Name', 'name'). You can put
+a comment in any place starting it with '#' character; the comment lasts till
+the end of line.
+
+To begin you must give the Mapping class a name.  This will correspond to both
+the class name, and the root element in the xml file. You should also provide the
+namespace and package that is directory where the class is implemented.
+
+  name: Loc
+  namespace: tse
+  package: DBAccess
+
+Use typePackage keyword to set package for a type of attribute. By default
+class package is used.
+
+  typePackage: DBAccess Loc
+
+One issue you may run into is name scoping.  Some times a class is defined
+within another class.  To handle this situation, you may add a line that will
+insert the appropriate scoping for the class.  For example.
+
+  name: City
+  outerClass: TravelRoute
+  package: Routing
+
+The Factories also support basic inheritance.
+
+  parent: TravelSeg
+
+The generated factory will make the appropriate calls on the the parent's class Factory
+to ensure all fields are populated.  Care must be taken here to ensure the
+child(ren) class(es) do not share elements or overwrite the same attributes.
+
+Sometimes the class is a polymorphic base. Other classes store pointers to this class,
+but in reality they point to children objects. To make the factory handle this properly,
+you must enumerate all the children and you must provide factories for them.
+You can also mark the class as abstract. It won't be instantiable, but its children will.
+
+  name: TravelSeg Abstract
+  child: AirSeg
+  child: ArunkSeg
+
+By default, generated factory will construct object with default constructor.
+If you need to use a constructor with arguments (but with a fixed amount), you must
+define them.
+
+  constructor: "arg1", 123
+
+You can also put a name of accessor (see below) as constructor argument. This way,
+factory will scan the xml before constructing for all such attributes and sections.
+
+  constructor: arg()
+
+  scalar: attr: std::string arg()
+
+Now arg attribute will be loaded by factory and used as the first constructor argument.
+It won't be loaded after construction. Still, it doesn't affect writing phase,
+i.e. "attr" attribute will still be written using arg() accessor.
+
+Abstract class cannot have constructor arguments, because it lacks callable constructor.
+
+All of the above commands (except 'scalar') are part of definition header. They must reside
+at the beggining of definition file. First non-header command ends header. The following
+are the rest of the commands.
+
+I'd like to describe the difference between "scalars" and "factories". It's actually
+pretty simple: "scalars" are all objects that are not created using factories; they are
+stored in attributes of XML elements (see TextXMLHelper class for details of reading/writing).
+On the other hand, "factories" are described by other definition files. They use whole
+element for their contents.
+
+All values are stored in created object using accessors. There are 3 different kinds
+of accessors: simple, get* and set*.
+ - get* accessors are recognized by "getX" name. Get/Set pair is getX()/setX(arg).
+ - set* accessors are recognized by "setX" name. Get/Set pair is x()/setX(arg).
+ - simple accessors are all of the rest. There is no seperate getter/setter, but
+   their names are methods that return a reference or just plain fields.
+Note that get*/set* accessors dont't have any () in their names. On the other hand, simple
+accessors often do (to call a method).
+
+
+The "scalar" command defines a simple scalar.
+
+  scalar: attribute: int setAccessor
+
+Scalar will be looked up in current XML element. By default it means root element, but
+you can group scalars in child elements using sections.
+
+  section: SectionName
+    scalar: attr: int* getAccessor
+    scalar: other: string other()
+  endSection
+
+For more complex scalars, or for scalars with their own unique sections, use
+"scalarAggregate" command.
+
+  scalarAggregate: SectionName: int _complex
+
+Section name is given explicitly for any aggregates. The implicit attribute name is "value".
+Using aggregates you can use more complex types; "scalar" command can only be used for
+types that fit completely in XML attribute. Supported are vectors, lists and sets,
+with any combination of the above and pointers.
+
+  scalarAggregate: Collection: std::set<std::string> names()
+  scalarAggregate: Complex: std::list<std::vector<int*>>* complex()
+
+Similar to scalarAggregates, you can define factoryAggregates, the only difference being
+the nature of type.
+
+  factoryAggregate: Date: DateTime date()
+  factoryAggregate: Fare: Fare* fare()
+  factoryAggregate: FareMarket: std::vector<FareMarket*> getFares
+
+Every factory aggregate can also define pointer ownership (it's only sensible
+for factory pointers). Just put "OwnsPointer" at the end of command and Factory won't ever try
+to delete the object on it's own.
+
+  factoryAggregate: PaxType: PaxType* p() OwnsPointer
+
+The 3 above commands can also define input type. It's the type used for reading/writing
+value, which is different from the type of accessor.
+
+  scalar: unsignedAttribute: int intAccessor() Input = unsigned
+
+Input type is always the inner-most type. It cannot be a pointer or container.
+
+  scalarAggregate: Value: std::vector<double*> getDoubles Input=int
+
+Factories from factoryAggregates can have their own factoryAggregates, etc. With this
+recursive behaviour they can reach current xml file (Foo.xml -> Bar.xml -> Foo.xml).
+It won't be a problem, unless it happens before object construction. Refrain from doing
+anything like that in construction phase (using "constructor" command).
+
+
+Every factory has a compare() function, used to compare two objects for equivalence.
+It's used internally to not write two identical objects to seperate files.
+Basic test just compares pointers, returning true only when they are identical.
+You can also specify your own comparators. Just define which accessor should be used for the test.
+
+  scalarCompare: int id()
+  factoryCompare: std::vector<Fare*> fares()
+
+You can also append "withCompare" to scalar/scalarAggregate/factoryAggregate.
+
+  scalarWithCompare: id: int id()
+
+If you want to hook into initialization process, you can do so using initLines/postInitLines.
+
+  initLines
+    item->id() = 0;
+    item->size() = -1;
+  endInitLines
+
+  postInitLines
+    assert(item->id() != 0);
+    item->firstElement() = item->elements()[0];
+  endPostInitLines
+
+The code between initLines/endInitLines and post equivalents will be put verbatim into factory.
+"item" is a pointer to created object. initLines are executed between constructing and loading
+of values into accessors, and postInitLines are executed at the end.
+
+With similar syntax, you can define your own object checker. By default, only null pointers are
+ommited from writing. You can reject more objects by defining checkItemLines.
+
+  checkItemLines
+    if (item.name().empty())
+      return false;
+  endCheckItemLines
+
+Here "item" is a reference. Checking is called before any writing takes place.
+
+By default, written files are named after class names and unique number (based on monotonic
+counter, seperate for every factory). You can alter it by defining your own name function.
+
+  nameValue: "Foo_"
+  nameField: id()
+  nameValue: "_"
+  nameField: name(Foo::First)
+
+"nameValue" command adds a fixed value to the name. "nameField" on the other hand,
+prepends the expression with object. The above, when used to print the name of item
+to std::cout, is the equivalent of:
+
+  std::cout << "Foo_" << item.id() << "_" << item.name(Foo::First);
+
+The generator adds appropriate includes by default. But when you use other classes
+in explicitly written code (like initLines), you may lack some. Use extraInclude
+in this case.
+
+  extraInclude: DataModel/Fare.h
+
+When you want your factory to have additional static field, you can use specialField command.
+
+  specialPublicField: int foo = 7
+  specialField: bool state = false # it's private
+  specialPublicFieldOmitSetter: std::string name
+
+These fields can be accessed by custom code.
+
+Sometimes you have to describe class state that isn't easily mapped to accessors.
+In that case, special aggregates and sections may be really useful.
+
+  specialAggregate: ElementName attributeName: std::string name
+    read
+      if (name.empty())
+        item->setUnnamed();
+      else
+        item->setName(name);
+    endRead
+
+    write
+      $write(item.unnamed() ? "" : item.name());
+    endWrite
+  endSpecial
+
+When using special aggregates, you first decide what element name and what attribute does
+your value have in XML document. Then you define read and write codes specific to newly
+formed special aggregate.
+In read code, "item" is a pointer to created object. This code is executed for every XML element
+matching above requirements, so you can store a collection and read each element
+in a single read code.
+In write code, "item" is a const reference to object being written. It's executed only once,
+so you may use a loop (unrolled or not) to write all elements. The $write() pseudo-macro
+is used to write the whole element with attribute, valued by the one and only argument to it.
+Don't forget about ';' or something similar after $write().
+
+  specialAggregate: Collection value: int value
+    read
+      item->pushValue(value);
+    endRead
+
+    write
+      for (int i = 0, S = item->valuesCount(); i != S; ++i)
+        $write(item->getValue(i));
+    endWrite
+  endSpecial
+
+You may also use special aggregates to handle enums. It may be tedious to repeat the code
+to handle one enum many times over. In this case, use loops.
+
+  specialAggregate: Status status: std::string status
+    read
+      if (false);
+    endRead
+    readLoop
+      else if (status == "$1")
+        item->setStatus(Foo::Status_$1);
+    endReadLoop
+
+    write
+      if (false);
+    endWrite
+    writeLoop
+      else if (item->getStatus() == Foo::Status_$1)
+        $write("$1");
+    endWriteLoop
+
+    loop: State0, State1
+    loop: UnknownState
+  endSpecial
+
+First, define readLoop and writeLoop codes. Then, using loop command, select the names to loop over.
+Every "$1" is replaced with the argument to loop. Loop command can have more than one argument.
+
+  specialAggregate: Kind kind: std::string kind
+    read
+      if (false);
+    endRead
+    readLoop
+      else if (kind == "$1")
+        item->setKind(Foo::Kind_$2);
+    endReadLoop
+
+    writeLoop
+      if (item->is(Foo::Kind_$2))
+        $write("$1");
+    endWriteLoop
+
+    loop: Simple | Simple
+    loop: Complex | Cmplx
+    loop: Other | Unknown
+  endSpecial
+
+If you only require a single loop argument and they're all (or mostly) numbers, you can use
+loopNumbers command.
+
+  loop: 1,2,3,4,5,9,10
+  # The same as:
+  loopNumbers: 1:5, 9:10
+
+Special section is very similar to special aggregate, but differs in a few details. First,
+it allows you to define attributes (using scalar command) inside special section. Thus,
+it cannot be used sensibly for container-like sections. Second, the $write() command just sets
+the attribute named in specialSection command, the element is created beforehand.
+
+  specialSection: Misc paxType: std::string type
+    read
+      if (false);
+    endRead
+    readLoop
+      else if (type == "$1")
+        item->paxType() = $1;
+    endReadLoop
+    writeLoop
+      if (item.paxType() == $1)
+        $write("$1");
+    endWriteLoop
+
+    loop: ADULT
+    # ...
+    loop: JNF
+
+    scalar:             number:     uint16_t    number()
+    # ...
+  endSpecial
+
+******************************* Additional notes *******************************
+
+A few quick notes about the TestXXXFactory framework.
+
+There are several factories that are not generated.  For example:
+PaxType, PaxTypeFare, etc.  If you need changes made in these files
+they will need to be checked out and modified manually edited as needed.
+
+There is a perl script (Generator.pl and Gen/*) that is used to generate the .h and .cpp 
+files for each TestFactory.  If modifications are needed to the generated files 
+those changes will need to be made there.  Be aware, the Non generated factories
+should match the generate ones in functionallity.
+
+When you use any TestXXXFactory to create an object, the object is cached by
+the TestFactoryManager.  The plus side of this is that if multiple tests load
+the same file, the file is only read once and the object is cached.  The problem
+comes when you make changes to that object in one test, it will also change the
+object in the cache (since it is the same object).  To prevent this you have
+two options.  The first option it to make a call to the TestFactoryManager to 
+clear the cache.  This will delete the current item saved in cache and reload
+the original file on the next request.  Remember this will delete the current
+item even if you have a local reference to it.  This can be done with the following call:
+
+TestFactoryManager::instance()->destroyAll();
+
+The second option is to pass an optional parameter to the create method that
+will force the creation of a new object without deleting the existion one from
+cache.  The only change you will need to make is to pass in true as the second
+argument of the create command.  The Test Framework will still manage the
+memory and delete it upon completion or a call to clear the cache.  Here is
+the same example from above, but with the flag set to true so it will not reuse 
+the object in cache.
+
+Loc* sfo =  TestLocFactory::create("/vobs/atseintl/test/testdata/data/LocSFO.xml", true);
+
+
+********************************* Limitations *********************************
+
+There are several limitations to the current framework.
+
+1.  The factory does not support maps.
+2.  The factory does not support setting private data.
+3.  The factory does not support calling private constructors.
+

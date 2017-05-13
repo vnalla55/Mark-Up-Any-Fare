@@ -1,0 +1,35 @@
+<AirSeg>
+     <ClassOfService file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/ClassOfService_Y.xml"/>
+     <SegmentInfo
+          pnrSegment=2
+          segmentOrder=2
+          stopOver="t"
+          forcedStopOver="F"
+          forcedConx="F"
+          geoTravelType="International"
+          origAirport="CDG"
+          boardMultiCity="PAR"
+          destAirport="DFW"
+          offMultiCity="DFW"
+     />
+     <FlightInfo
+          carrier="AA"
+          marketingFlightNumber=49
+          operatingFlightNumber=49
+          equipmentType="763"
+     />
+     <Origin file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_FRA_CDG_DFW_ORD_0_Loc_CDG.xml"/>
+     <Destination file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_FRA_CDG_DFW_ORD_1_Loc_DFW.xml"/>
+     <Misc
+          bookedCabin="8"
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode=""
+          bookingCode="Y"
+          furthestPoint="t"
+          considerOnlyCabin=""
+          forcedFareBrk="F"
+          forcedNoFareBrk="F"
+          forcedSideTrip="F"
+     />
+</AirSeg>

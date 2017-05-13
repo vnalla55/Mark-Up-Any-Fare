@@ -1,0 +1,20 @@
+name: OpenJawRule
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: validityInd:      Indicator   validityInd()
+  scalar: inhibit:          Indicator   inhibit()
+  scalar: unavailtag:       Indicator   unavailtag()
+  scalar: ojApplInd:        Indicator   ojApplInd()
+  scalar: sameCarrierInd:   Indicator   sameCarrierInd()
+  scalar: halftransportInd: Indicator   halftransportInd()
+  scalar: owrt:             Indicator   owrt()
+  scalar: sojvalidityInd:   Indicator   sojvalidityInd()
+  scalar: highrtInd:        Indicator   highrtInd()
+  scalar: ojbackhaulInd:    Indicator   ojbackhaulInd()
+  scalar: stopoverCnt:      std::string stopoverCnt()
+  scalar: farecompInd:      Indicator   farecompInd()
+endsection
+
+factoryAggregate: ExpirationDate: DateTime expireDate()

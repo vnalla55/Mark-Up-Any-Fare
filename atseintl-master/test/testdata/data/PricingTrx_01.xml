@@ -1,0 +1,16 @@
+<PricingTrx>
+     <Attributes
+          status=""
+     />
+     <PricingOptions file="/vobs/atseintl/test/testdata/data/pricingOptions.xml"/>
+     <PricingRequest file="/vobs/atseintl/test/testdata/data/pricingRequest.xml"/>
+     <OriginDestination>
+       <Attributes boardMultiCity="DFW" offMultiCity="LAX" travelDate="2004-06-23 13:00:00" /> 
+     </OriginDestination>
+     <OriginDestination>
+       <Attributes boardMultiCity="LAX" offMultiCity="DFW" travelDate="2004-06-23 13:00:00" /> 
+     </OriginDestination>
+     <OriginDestination>
+       <Attributes boardMultiCity="LAX" offMultiCity="LAX" travelDate="2004-06-23 13:00:00" /> 
+     </OriginDestination>
+</PricingTrx>

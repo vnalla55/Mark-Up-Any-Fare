@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# ensure we are running within the same directory
+# from which we are running
+cd $(dirname $(which ${0}))
+
+. ./env.vars
+
+cd ${APPDIR}
+
+declare -i rc=0
+
+diff compkeys${1}.txt compkeys${2}.txt
+rc=$?
+
+if [ ${rc} -eq 0 ] ; then
+  diff compvals${1}.txt compvals${2}.txt
+  rc=$?
+fi
+
+if [ ${rc} -eq 0 ] ; then
+  diff dumpkeys${1}.txt dumpkeys${2}.txt
+  rc=$?
+fi
+
+if [ ${rc} -eq 0 ] ; then
+  echo "IDENTICAL"
+fi
+

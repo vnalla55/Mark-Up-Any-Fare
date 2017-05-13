@@ -1,0 +1,26 @@
+<TariffCrossRefInfo>
+
+    <EffectiveDate      year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+    <ExpirationDate     year=2005 month=6 day=23 hour=12 minute=0 second=0/>
+    <DiscontinueDate    year=2004 month=6 day=23 hour=11 minute=0 second=0/>
+
+    <FareTariff      number=1  code="A" />
+    <RuleTariff      number=2  code="B" />
+    <GoverningTariff number=3  code="C" />
+    <AddonTariff1    number=4  code="D" />
+    <AddonTariff2    number=5  code="E" />
+    <RoutingTariff1  number=6  code="F" />
+    <RoutingTariff2  number=7  code="G" />
+
+    <!-- crossRefType can be DOMESTIC or INTERNATION -->
+    <!-- Not sure what Zone really is, or how to map it -->
+
+    <Misc tariffCategory=1
+          zoneNo="0001"
+          vendor="SABR"
+          carrier="AA"
+          crossRefType="DOMESTIC"
+          globalDirection="PN" />
+
+</TariffCrossRefInfo>
+

@@ -1,0 +1,118 @@
+// ----------------------------------------------------------------------------
+// 
+//  Copyright Sabre 2004
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the  program(s)
+//          have been supplied.
+//
+// ----------------------------------------------------------------------------
+
+#include "Taxes/LegacyTaxes/ApplicationFee.h"
+#include "DataModel/AirSeg.h"
+
+using namespace tse;
+using namespace std;
+
+uint16_t ApplicationFee::segmentOrderBegin() const 
+{
+  return  _segs.front()->segmentOrder();
+}
+uint16_t ApplicationFee::segmentOrderEnd()   const 
+{
+  return  _segs.back()->segmentOrder(); 
+}
+
+void 
+ApplicationFee::init (std::vector<AirSeg*>::iterator front, 
+                      std::vector<AirSeg*>::iterator back) 
+{
+  copy (front, back, back_inserter(_segs)); 
+}
+
+
+
+  // false if item does not 'fit' into existing empty AppFee, or insert failed
+  // extra is alloc'ed and empty, used for a middle insert (e.g. insert 2-3 into 0-6) 
+  // next is the empty 'leftovers' (e.g. 4-6) where item < next; may be NULL
+bool 
+AllAppFees::add(ApplicationFee* item, ApplicationFee *extra, ApplicationFee **next)
+{
+//  ApplicationFee* temp;
+  iterator oldFee = begin();  
+  for (;oldFee != end(); oldFee++)
+  {
+    if ((*oldFee)->segmentOrderBegin() > item->segmentOrderBegin())
+      continue;
+    if ((*oldFee)->segmentOrderEnd()   < item->segmentOrderEnd())
+      continue;
+
+    // parts already assigned  TODO:this is a program error, throw exception?
+    if ( (*oldFee)->yqyrFees() )
+      return false;
+    
+    //exact overlap, dataHandle frees old AppFee
+    if (   (*oldFee)->segmentOrderBegin() == item->segmentOrderBegin()
+        && (*oldFee)->segmentOrderEnd()   == item->segmentOrderEnd()   )
+    {
+        (*oldFee) = item;
+	*next=0;
+	return true;
+    }
+    //find section of oldFee to remove
+    std::vector<AirSeg*>::iterator itemFront, itemBack;
+    // haven't cloned/copied Segs, so pointers should be the same
+    itemFront = find( (*oldFee)->begin(), (*oldFee)->end(), item->segs().front() ); 
+    itemBack  = find( (*oldFee)->begin(), (*oldFee)->end(), item->segs().back() ); 
+    itemBack++;
+    
+    // new is put before old
+    if (itemFront == (*oldFee)->begin())
+    {
+      (*oldFee)->segs().erase(itemFront, itemBack);
+      *next = *oldFee;
+      _bag.insert(oldFee, item);
+      return true;
+    }
+    //new is put after old
+    else if (itemBack == (*oldFee)->end())
+    {
+      (*oldFee)->segs().erase(itemFront, itemBack);
+      *next = 0;
+      _bag.insert(++oldFee, item);
+      return true;
+    }
+    // new is between old
+    // if old is 1-6 and item is 2-3, extra is empty 1-2 portion
+    else
+    {
+      // extra already assigned  TODO:this is a program error, throw exception?
+      if (extra->yqyrFees() != NULL)
+        return false;
+	      
+      extra->init((*oldFee)->begin(), itemFront); 
+      (*oldFee)->segs().erase((*oldFee)->begin(), itemBack); 
+      *next = *oldFee;
+      _bag.insert(oldFee, extra);
+      _bag.insert(oldFee, item);
+      return true;
+      
+    }//endif- before/after/middle
+  }//endfor - find existing portion	  
+  return false;
+}
+
+bool 
+AllAppFees::allAssigned()
+{
+  for (iterator appFee = begin();  appFee != end(); appFee++)
+  {
+    if ( (*appFee)->yqyrFees() == 0 )
+      return false;
+  }
+  return true;
+} 

@@ -1,0 +1,19 @@
+name: CarrierCombination
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: orderNo:              int           orderNo()
+  scalar: tvlSectSi:            TvlSectSiCode tvlSectSi()
+  scalar: carrierCombAppl:      Indicator     carrierCombAppl()
+  scalar: tvlSecOverwaterInd:   Indicator     tvlSecOverwaterInd()
+  scalar: tvlSecIntlInd:        Indicator     tvlSecIntlInd()
+  scalar: tvlSecInOutboundInd:  Indicator     tvlSecInOutboundInd()
+  scalar: tvlSecConstInd:       Indicator     tvlSecConstInd()
+  scalar: loc1Type:             Indicator     loc1Type()
+  scalar: loc1:                 LocCode       loc1()
+  scalar: loc2Type:             Indicator     loc2Type()
+  scalar: loc2:                 LocCode       loc2()
+endsection
+
+scalarAggregate: CarrierCode: std::vector<CarrierCode> carriers()

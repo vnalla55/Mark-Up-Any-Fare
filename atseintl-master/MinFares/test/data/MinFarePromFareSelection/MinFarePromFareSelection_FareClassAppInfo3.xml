@@ -1,0 +1,29 @@
+<FareClassAppInfo>
+     <EffectiveDate year=2004 month=8 day=18 hour=17 minute=27 second=47/>
+     <ExpirationDate year=2004 month=8 day=18 hour=17 minute=27 second=47/>
+     <Location
+          location1Type="NONE"
+          location2Type="NONE"
+     />
+     <Misc
+          vendor="SABR"
+          carrier=""
+          ruleTariff=5
+          ruleNumber=""
+          footnote1=""
+          footnote2=""
+          fareClass=""
+          MCN=11298284
+          textTBLItemNo=0
+          owrt=" "
+          routingAppl="Ã"
+          routingNumber=""
+          fareType="EU"
+          seasonType="P"
+          dowType="J"
+          pricingCatType="N"
+          displayCatType="B"
+          seqNo=-1073760220
+          unavailTag=""
+     />
+</FareClassAppInfo>

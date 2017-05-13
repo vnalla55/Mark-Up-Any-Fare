@@ -1,0 +1,16 @@
+<TravelRoute>
+     <TravelDate year=2010 month=8 day=15 hour=8 minute=35 second=0/>
+     <Attributes
+          origin="POS"
+          originNation="TT"
+          destination="SAN"
+          destinationNation="US"
+          governingCarrier="CO"
+          flightTrackingCarrier="f"
+          globalDirection="WH"
+          maxPermittedMileage=0
+          totalTicketedPointMileage=0
+          doNotApplyDRV="f"
+          terminalPoints="f"
+     />
+</TravelRoute>

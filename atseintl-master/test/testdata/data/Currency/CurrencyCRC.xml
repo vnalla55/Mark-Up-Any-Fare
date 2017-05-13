@@ -1,0 +1,19 @@
+<Currency>
+     <expireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <effDate year=2004 month=7 day=27 hour=0 minute=0 second=0/>
+     <discDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <createDate year=2004 month=7 day=27 hour=11 minute=23 second=30/>
+     <Attributes
+          cur="CRC"
+          domRoundingFactor=-1
+          roundingFactorNoDec=0
+          noDec=0
+          curNo=188
+          curName="COLON"
+          nucRoundingProcessNo=""
+          controllingEntityDesc="COSTA RICA"
+          taxOverrideRoundingUnitNoDec=0
+          taxOverrideRoundingUnit=-1
+          taxOverrideRoundingRule=3
+     />
+</Currency>

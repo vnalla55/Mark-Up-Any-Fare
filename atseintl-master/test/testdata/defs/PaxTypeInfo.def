@@ -1,0 +1,18 @@
+name: PaxTypeInfo
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: paxType:        PaxTypeCode       paxType()
+  scalar: vendor:         VendorCode        vendor()
+  scalar: description:    Description       description()
+  scalar: childInd:       Indicator         childInd()
+  scalar: adultInd:       Indicator         adultInd()
+  scalar: infantInd:      Indicator         infantInd()
+  scalar: psgGroupType:   PaxGroupTypeCode  psgGroupType()
+  scalar: numberSeatsReq: int               numberSeatsReq()
+endSection
+
+PostInitLines
+  item->initPsgType();
+EndPostInitLines

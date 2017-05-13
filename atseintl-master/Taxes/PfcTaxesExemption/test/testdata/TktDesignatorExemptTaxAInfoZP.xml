@@ -1,0 +1,10 @@
+<TktDesignatorExemptTaxAInfo>
+	    <CreateDate  year=2014 month=2 day=13 hour=12 minute=0 second=0/>
+	    <VersionDate  year=2099 month=12 day=31 hour=12 minute=0 second=0/>
+	 <Attributes
+		CARRIER="AA"
+		SEQNO="427750"
+		TAXCODE="ZP"
+		TAXNATION="US"
+	 />
+<TktDesignatorExemptTaxAInfo>

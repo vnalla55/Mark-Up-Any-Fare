@@ -1,0 +1,37 @@
+<AirSeg>
+     <DepartureDate year=2008 month=5 day=1 hour=17 minute=40 second=0/>
+     <ArrivalDate year=2008 month=5 day=1 hour=20 minute=30 second=0/>
+     <BookingDate year=2008 month=3 day=26 hour=7 minute=34 second=0/>
+     <ClassOfService file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/ClassOfService_Y.xml"/>
+     <SegmentInfo
+          pnrSegment=2
+          segmentOrder=2
+          stopOver="t"
+          forcedStopOver="F"
+          forcedConx="F"
+          geoTravelType="Transborder"
+          origAirport="DFW"
+          boardMultiCity="DFW"
+          destAirport="YYC"
+          offMultiCity="YYC"
+     />
+     <FlightInfo
+          carrier="AA"
+          marketingFlightNumber=641
+          operatingFlightNumber=641
+          equipmentType="S80"
+     />
+     <Origin file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_YYC_DFW_YYC_0_Loc1.xml"/>
+     <Destination file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_YYC_DFW_YYC_0_Loc0.xml"/>
+     <Misc
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode=""
+          bookingCode="Y"
+          furthestPoint="f"
+          considerOnlyCabin=""
+          forcedFareBrk="F"
+          forcedNoFareBrk="F"
+          forcedSideTrip="F"
+     />
+</AirSeg>

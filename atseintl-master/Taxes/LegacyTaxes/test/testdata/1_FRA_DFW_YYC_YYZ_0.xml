@@ -1,0 +1,37 @@
+<AirSeg>
+     <DepartureDate year=2008 month=5 day=1 hour=10 minute=55 second=0/>
+     <ArrivalDate year=2008 month=5 day=1 hour=14 minute=30 second=0/>
+     <BookingDate year=2008 month=3 day=26 hour=7 minute=34 second=0/>
+     <ClassOfService file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/ClassOfService_Y.xml"/>
+     <SegmentInfo
+          pnrSegment=1
+          segmentOrder=1
+          stopOver="f"
+          forcedStopOver=" "
+          forcedConx=" "
+          geoTravelType="International"
+          origAirport="FRA"
+          boardMultiCity="FRA"
+          destAirport="DFW"
+          offMultiCity="DFW"
+     />
+     <FlightInfo
+          carrier="AA"
+          marketingFlightNumber=71
+          operatingFlightNumber=71
+          equipmentType="777"
+     />
+     <Origin file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/1_FRA_DFW_YYC_YYZ_0_Loc2.xml"/>
+     <Destination file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_YYC_DFW_YYC_0_Loc1.xml"/>
+     <Misc
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode=""
+          bookingCode="Y"
+          furthestPoint="t"
+          considerOnlyCabin=""
+          forcedFareBrk=" "
+          forcedNoFareBrk=" "
+          forcedSideTrip=" "
+     />
+</AirSeg>

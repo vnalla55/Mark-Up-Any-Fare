@@ -1,0 +1,19 @@
+<FareUsage>
+     <PaxTypeFare file="fareUsage/fareUsage_PaxTypeFare0.xml"/>
+     <AirSeg file="fareUsage/fareUsage_AirSeg0.xml"/>
+     <AirSeg file="fareUsage/fareUsage_AirSeg0.xml"/>
+     <Status value=Inbound/>
+     <Misc
+          SurchargeAmt=100
+          TransferAmt=140
+          StopOverAmpt=130
+          AbsorptionAdjustment=120
+          AdjustedStopOvers=160
+          HasSideTrip="t"
+          PenaltyRestInd="I"
+          AppendageCode="ABCDE"
+          differSeqNumber=0
+          calculationInd=""
+          hipExemptInd=""
+     />
+</FareUsage>

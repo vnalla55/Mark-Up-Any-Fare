@@ -1,0 +1,16 @@
+<FareMarket>
+     <AirSeg file="testdata/BCE2/PTF_FBR_Disc_AirSeg_KULBKI.xml"/>
+     <Misc
+          globalDirection="ZZ"
+          geoTravelType="ForeignDomestic"
+          fltTrkIndicator="f"
+          governingCarrier="MH"
+          hasAllMarriedSegs="f"
+          direction="OUTBOUND"
+          failCode="NO_ERROR"
+          travelBoundary=""
+     />
+     <CarrierPreference file="testdata/BCE2/PTF_FBR_Disc_CxrPref_MH.xml"/>
+     <PaxTypeBucket file="testdata/BCE2/PTF_FBR_Disc_PaxTypeBucket0.xml"/>
+     <PaxTypeFare file="testdata/BCE2/PTF_FBR_Disc_PaxTypeFare0.xml"/>
+</FareMarket>

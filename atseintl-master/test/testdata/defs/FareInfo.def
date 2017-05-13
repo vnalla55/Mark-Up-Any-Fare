@@ -1,0 +1,29 @@
+name: FareInfo
+namespace: tse
+package: DBAccess
+
+
+section: Fare
+  scalar: fareAmount:         MoneyAmount   _fareAmount
+  scalar: originalFareAmount: MoneyAmount   _originalFareAmount
+  scalar: noDec:              CurrencyNoDec _noDec
+  scalar: fareTariff:         TariffNumber  _fareTariff
+  scalar: currency:           CurrencyCode  _currency
+endsection
+
+section: Misc
+  scalarWithCompare:  vendor:           VendorCode      _vendor
+  scalarWithCompare:  carrier:          CarrierCode     _carrier
+  scalarWithCompare:  fareClass:        FareClassCode   _fareClass
+  scalarWithCompare:  market1LocCode:   LocCode         _market1
+  scalarWithCompare:  market2LocCode:   LocCode         _market2
+  scalar:             footnote1:        Footnote        _footnote1
+  scalar:             footnote2:        Footnote        _footnote2
+  scalarWithCompare:  owrt:             Indicator       _owrt
+  scalarWithCompare:  ruleNumber:       RuleNumber      _ruleNumber
+  scalar:             routingNumber:    RoutingNumber   _routingNumber
+  scalarWithCompare:  globalDirection:  GlobalDirection _globalDirection
+  scalarWithCompare:  directionality:   Directionality  _directionality
+  scalar:             linkNumber:       LinkNumber      _linkNumber
+  scalar:             sequenceNumber:   SequenceNumber  _sequenceNumber
+endsection

@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+s = env.msscout()
+s.env.add_include_paths('$XERCESC_CPPPATH_')
+s.werror = (env['REDHAT_VERSION_'] >= 6)
+s.mslibrary('DSSServices', 'ATAE_SOURCES')
+s.build()
+

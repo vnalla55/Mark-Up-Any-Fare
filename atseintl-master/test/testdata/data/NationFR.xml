@@ -1,0 +1,16 @@
+<Nation>
+  <Misc nation="FR"
+        isonumericCode="250"
+        subArea="21"
+        area="2"
+        isoalphaCode="FRA"
+        primeCur="EUR"
+        alternativeCur=""
+        conversionCur=""
+        description="UNITED KINGDOM" />
+  <CreateDate year=2003 month=7 day=17/>
+  <EffectiveDate  year=2003 month=7 day=17/>
+  <ExpirationDate year=9999 month=6 day=23/>
+  <DiscDate year=9999 month=6 day=23/>
+</Nation>
+

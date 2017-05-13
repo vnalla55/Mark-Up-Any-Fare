@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="SAO"
+          subarea="14"
+          area="1"
+          transtype=" "
+          nation="BR"
+          state=" "
+     />
+     <Position
+          latdegrees=23
+          latminutes=19
+          latseconds=1
+          lngdegrees=46
+          lngminutes=53
+          lngseconds=30
+          lathemisphere="S"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="BR01"
+          description="SAO PAULO"
+     />
+</Loc>

@@ -1,0 +1,10 @@
+name: TpdPsrViaCxrLoc
+namespace: tse
+package: DBAccess
+
+factoryAggregate: LocKey1: LocKey loc1()
+factoryAggregate: LocKey2: LocKey loc2()
+
+section:Attributes
+  scalar: viaCarrier: CarrierCode viaCarrier()
+endsection

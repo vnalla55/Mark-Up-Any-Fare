@@ -1,0 +1,26 @@
+name: TaxCodeGenText
+namespace: tse
+package: DBAccess
+
+factoryAggregate: ExpireDate:     DateTime expireDate()
+factoryAggregate: EffectiveDate:  DateTime effDate()
+factoryAggregate: DiscountDate:   DateTime discDate()
+factoryAggregate: CreateDate:     DateTime createDate()
+
+section: Data
+  scalarWithCompare:  taxCode:            TaxCode     taxCode()
+  scalarWithCompare:  messageDisplayCat:  Indicator   messageDisplayCat()
+  scalarWithCompare:  messageOrderNo:     int         messageOrderNo()
+  scalar:             itemNo:             int         itemNo()
+  scalar:             keyWord1:           std::string keyWord1()
+  scalar:             keyWord2:           std::string keyWord2()
+endsection
+
+scalarAggregate: TextMessages: std::vector<std::string> txtMsgs()
+
+NameString: "TaxCodeGenText_"
+NameField:  taxCode()
+NameString: "_"
+NameField:  messageDisplayCat()
+NameString: "_"
+NameField:  messageOrderNo()

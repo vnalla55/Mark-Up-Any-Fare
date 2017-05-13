@@ -1,0 +1,20 @@
+<Loc>
+  <Area loc="MIA"
+        subarea="11"
+        area="1"
+        transtype="P"
+        nation="US"
+        state="FL" />
+  <Position latdegrees=25  latminutes=47 latseconds=33
+            lngdegrees=-80 lngminutes=-17 lngseconds=-10/>
+  <ExpirationDate year=2004 month=6 day=23/>
+  <EffectiveDate  year=2004 month=6 day=23/>
+  <Indicators cityInd="Y"
+              bufferZoneInd="Y"
+              ruralarpind="N"
+              multitransind="N"
+              faresind="Y"/>
+  <Misc dstgrp="US01"
+        description="MIAMI INTL"/>
+</Loc>
+

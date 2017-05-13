@@ -1,0 +1,10 @@
+<PaxType>
+     <PaxTypeInfo file="testdata/BCE1/PTF_Ind_PaxTypeInfo0.xml"/>
+     <Misc
+          paxType="ADULT"
+          number=1
+          age=0
+          inputOrder=0
+          vendorCode="ATP"
+     />
+</PaxType>

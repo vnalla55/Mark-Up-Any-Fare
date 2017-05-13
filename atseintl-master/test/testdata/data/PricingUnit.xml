@@ -1,0 +1,16 @@
+<PricingUnit> 
+   <AirSeg file="/vobs/atseintl/test/testdata/data/AirSegDFW_LON.xml"/>
+   <FareUsage file="/vobs/atseintl/test/testdata/data/FareUsage.xml"/>
+  
+   <Misc
+        puType = "OPENJAW"	
+	puSubType= "ORIG_OPENJAW"   
+	puFareType= "SP"   
+	sameNationOJ= "t"
+        totalPuNucAmount = "100"
+	geoTravelType = "International"
+	isSideTripPU = "t"
+	hasSideTrip = "t"
+   />
+</PricingUnit>
+

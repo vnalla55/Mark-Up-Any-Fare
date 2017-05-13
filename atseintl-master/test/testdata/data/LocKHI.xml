@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="KHI"
+          subarea="33"
+          area="3"
+          transtype="P"
+          nation="PK"
+          state=" "
+     />
+     <Position
+          latdegrees=24
+          latminutes=54
+          latseconds=20
+          lngdegrees=67
+          lngminutes=9
+          lngseconds=25
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2003 month=10 day=8 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="PK01"
+          description="KARACHI"
+     />
+</Loc>

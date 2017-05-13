@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="FO"
+          isonumericCode=234
+          subArea="21"
+          area="2"
+          isoalphaCode="FRO"
+          primeCur="DKK"
+          alternateCur=""
+          conversionCur=""
+          description="FAROE ISLANDS"
+     />
+     <CreateDate year=2003 month=7 day=17 hour=10 minute=34 second=50/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2003 month=7 day=15 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

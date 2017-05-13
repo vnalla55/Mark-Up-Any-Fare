@@ -1,0 +1,44 @@
+<AirSeg>
+     <FlightInfo
+          carrier="MH"
+          marketingFlightNumber=122
+          operatingFlightNumber=122
+     />
+     <Misc
+          considerOnlyCabin=""
+     />
+<EarliestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<LatestDepartureDT year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+<DepartureDate year=2009 month=12 day=5 hour=15 minute=40 second=0/>
+<ArrivalDate year=2009 month=12 day=5 hour=20 minute=50 second=0/>
+<BookingDate year=2009 month=10 day=26 hour=6 minute=22 second=0/>
+     <ClassOfService file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/ClassOfService_Y.xml"/>
+     <SegmentInfo
+          pnrSegment=2
+          segmentOrder=2
+          stopOver="t"
+          forcedStopOver="F"
+          forcedConx="F"
+          geoTravelType="International"
+          origAirport="SYD"
+          boardMultiCity="SYD"
+          destAirport="KUL"
+          offMultiCity="KUL"
+     />
+     <FlightInfo
+          equipmentType="744"
+     />
+     <Origin file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_KUL_SYD_KUL_SIN_0_Loc_SYD.xml"/>
+     <Destination file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_KUL_SYD_KUL_SIN_0_Loc_KUL.xml"/>
+     <Misc
+          bookedCabin="8"
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode=""
+          bookingCode="Y"
+          furthestPoint="f"
+          forcedFareBrk="F"
+          forcedNoFareBrk="F"
+          forcedSideTrip="F"
+     />
+</AirSeg>

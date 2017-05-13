@@ -1,0 +1,4 @@
+CACHETEST_SOURCES := \
+    main.cpp \
+    CacheTestApp.cpp \
+    CacheNotifyControl.cpp

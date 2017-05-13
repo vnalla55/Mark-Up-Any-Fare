@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<project name="performance tool" basedir="." default="redeploy">
+
+<property name="tomcat.home" value="/opt/tomcat"/>
+
+<path id="classpath">
+  <fileset dir="${tomcat.home}/common/lib">
+    <include name="*.jar"/>
+  </fileset>
+  <fileset dir="${tomcat.home}/server/lib">
+    <include name="*.jar"/>
+  </fileset>
+</path>
+
+
+<taskdef name="deploy"    classname="org.apache.catalina.ant.DeployTask"/>
+<taskdef name="install"   classname="org.apache.catalina.ant.InstallTask"/>
+<taskdef name="reload"    classname="org.apache.catalina.ant.ReloadTask"/>
+<taskdef name="remove"    classname="org.apache.catalina.ant.RemoveTask"/>
+<taskdef name="resources" classname="org.apache.catalina.ant.ResourcesTask"/>
+<taskdef name="roles"     classname="org.apache.catalina.ant.RolesTask"/>
+<taskdef name="start"     classname="org.apache.catalina.ant.StartTask"/>
+<taskdef name="stop"      classname="org.apache.catalina.ant.StopTask"/>
+<taskdef name="undeploy"  classname="org.apache.catalina.ant.UndeployTask"/>
+
+
+<property name="manager.url"   value="http://atsei.dev.sabre.com/manager"/>
+<property name="manager.username" value="tomo"/>
+<property name="manager.password" value="amiko"/>
+<property name="app.name" value="performance"/>
+<property name="wardir" value="/login/sg620831/performance"/>
+
+  <target name="redeploy" depends="undeploy, deploy"/>
+
+  <target name="undeploy" description="Undeploys the Web Application">
+    <echo message="Undeploying ${app.name} ..."/>
+    <undeploy url="${manager.url}" 
+              username="${manager.username}"
+              password="${manager.password}" 
+              path="/${app.name}"/>
+  </target>
+
+  <target name="deploy" description="Deploys the Web Application">
+    <echo message="Deploying ${app.name} ..."/>
+    <echo message="File url= file:${wardir}/${app.name}.war"/>
+    <!-- <stop url="${manager.url}"
+           username="${manager.username}"
+           password="${manager.password}" 
+           path="/${app.name}"/> -->
+    <!-- <install url="${manager.url}"
+             username="${manager.username}"
+             password="${manager.password}" 
+             path="/${app.name}"
+             war="file://${wardir}/${app.name}.war"/> -->
+    <deploy url="${manager.url}"
+             username="${manager.username}"
+             password="${manager.password}" 
+             path="/${app.name}"
+             war="file:${wardir}/${app.name}.war"/>
+    <!-- <reload url="${manager.url}"
+            username="${manager.username}"
+            password="${manager.password}" 
+            path="/${app.name}"/> -->
+    <!-- <start url="${manager.url}"
+           username="${manager.username}"
+           password="${manager.password}" 
+           path="/${app.name}"/> -->
+  </target>
+
+  <target name="install" description="Deploys the Web Application">
+    <echo message="Install ${app.name} ..."/>
+    <echo message="File url= file:${wardir}/${app.name}.war"/>
+    <install url="${manager.url}"
+             username="${manager.username}"
+             password="${manager.password}" 
+             path="/${app.name}"
+             war="file:${wardir}/${app.name}.war"/>
+  </target>
+
+</project>

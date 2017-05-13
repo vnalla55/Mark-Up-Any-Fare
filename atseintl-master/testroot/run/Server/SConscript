@@ -1,0 +1,16 @@
+# Author: Gustaw Smolarczyk (gustaw.smolarczyk@sabre.com)
+# Copyright Sabre 2014
+
+import os
+
+Import('env')
+
+s = env.scout()
+
+MODULE_PATH = os.path.join(s.env.absroot, s.env.builddir,
+                           'testroot/bld/Server')
+
+s.env.add_ld_library_paths(MODULE_PATH)
+
+s.runtests()
+s.build()

@@ -1,0 +1,30 @@
+name: AddonFareInfo
+namespace: tse
+package: DBAccess
+
+factoryAggregate: EffectiveDate:  DateTime      effDate()
+factoryAggregate: DiscountDate:   DateTime      discDate()
+factoryAggregate: ExpireDate:     DateTime      expireDate()
+
+section: Flight
+  scalar: directionality:         Indicator     directionality()
+  scalar: owrt:                   Indicator     owrt()
+  scalar: gatewayMarket:          LocCode       gatewayMarket()
+  scalar: interiorMarket:         LocCode       interiorMarket()
+  scalar: carrier:                CarrierCode   carrier()
+  scalar: fareClass:              FareClassCode fareClass()
+  scalar: routing:                RoutingNumber routing()
+  scalar: arbZone:                AddonZone     arbZone()
+  scalar: addonTariff:            TariffNumber  addonTariff()
+  scalar: currency:               CurrencyCode  cur()
+  scalar: fareAmt:                MoneyAmount   fareAmt()
+  scalar: noDec:                  int           noDec()
+  scalar: vendor:                 VendorCode    vendor()
+endsection
+
+section: Footnotes
+  scalar: footNote1:              std::string   footNote1()
+  scalar: footNote2:              std::string   footNote2()
+endsection
+
+

@@ -1,0 +1,20 @@
+<Vector>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="WE3"
+               atpPaxType="WEB"
+               carrier="AA"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="WE3"
+               atpPaxType="WFA"
+               carrier="AA"
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+</Vector>

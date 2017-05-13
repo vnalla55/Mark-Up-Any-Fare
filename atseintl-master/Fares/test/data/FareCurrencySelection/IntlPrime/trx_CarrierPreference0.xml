@@ -1,0 +1,28 @@
+<CarrierPreference>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2004 month=5 day=21 hour=0 minute=0 second=0/>
+     <DiscountDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <FirstTravelDate year=2004 month=5 day=21 hour=0 minute=0 second=0/>
+     <LastTravelDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Misc
+          memoNo=0
+          freebaggageexempt="N"
+          availabilityApplyrul2st="Y"
+          availabilityApplyrul3st="Y"
+          bypassosc="N"
+          bypassrsc="N"
+          applysamenuctort="N"
+          openjawdefinition="Y"
+          applyrtevaltoterminalpt="N"
+          noApplydrvexceptus="N"
+          applyleastRestrStOptopu="N"
+          applyleastRestrtrnsftopu="N"
+          noApplycombtag1and3="N"
+          applysingleaddonconstr="N"
+          applyspecoveraddon="N"
+          noApplynigeriaCuradj="N"
+          carrier="BA"
+          carrierbasenation="GB"
+          description="BRITISH AIRWAYS"
+     />
+</CarrierPreference>

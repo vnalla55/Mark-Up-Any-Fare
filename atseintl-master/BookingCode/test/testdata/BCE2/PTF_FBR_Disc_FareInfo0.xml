@@ -1,0 +1,25 @@
+<FareInfo>
+     <Fare
+          fareAmount=583
+          originalFareAmount=583
+          noDec=0
+          fareTariff=912
+          currency="MYR"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="MH"
+          fareClass="DBZ"
+          market1LocCode="BKI"
+          market2LocCode="KUL"
+          footnote1="9B"
+          footnote2=""
+          owrt="1"
+          ruleNumber="MYEZ"
+          routingNumber="4000"
+          globalDirection="EH"
+          directionality="TO"
+          linkNumber=4
+          sequenceNumber=1
+     />
+</FareInfo>

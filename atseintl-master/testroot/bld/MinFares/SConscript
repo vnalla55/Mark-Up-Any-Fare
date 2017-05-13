@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+s = env.scout()
+s.env.add_defines(env['TSE_VOB_DIR_DEFINE_'], 'TIXML_USE_STL')
+s.werror = False
+s.env.add_libpaths('.')
+s.library('MinFaresTests', 'test/TestUtil.cpp')
+s.tests(locallib=1, libs=['MinFaresTests'], glob_pattern='test/*Test.cpp',
+        blacklist=['test/CTMMinimumFareNewTest.cpp'])
+s.build()
+

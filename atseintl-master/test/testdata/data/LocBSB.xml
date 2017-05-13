@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="BSB"
+          subarea="14"
+          area="1"
+          transtype="P"
+          nation="BR"
+          state=" "
+     />
+     <Position
+          latdegrees=15
+          latminutes=51
+          latseconds=38
+          lngdegrees=47
+          lngminutes=54
+          lngseconds=55
+          lathemisphere="S"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="BR01"
+          description="BRASILIA"
+     />
+</Loc>

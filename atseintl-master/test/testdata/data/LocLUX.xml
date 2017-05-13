@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="LUX"
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="LU"
+          state=" "
+     />
+     <Position
+          latdegrees=49
+          latminutes=37
+          latseconds=40
+          lngdegrees=6
+          lngminutes=12
+          lngseconds=24
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="LU01"
+          description="LUXEMBOURG"
+     />
+</Loc>

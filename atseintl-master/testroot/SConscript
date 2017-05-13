@@ -1,0 +1,21 @@
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2014
+
+Import('env')
+env.script_reading_msg()
+
+# Do not install the libraries that you build
+env.installdir = None
+
+# We use shared linktype on default everywhere in the tests
+env.linktype = 'shared'
+
+# Do not cache object nodes: always build libraries.
+env.direct_object_link = False
+
+# Allow warnings for test compilations
+env.werror = False
+
+for d in ['bld', 'run']:
+    SConscript('%s/SConscript' % d, exports='env')
+

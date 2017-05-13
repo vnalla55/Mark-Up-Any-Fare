@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="CBR"
+          subarea="34"
+          area="3"
+          transtype="P"
+          nation="AU"
+          state="AURR"
+     />
+     <Position
+          latdegrees=35
+          latminutes=18
+          latseconds=32
+          lngdegrees=149
+          lngminutes=11
+          lngseconds=42
+          lathemisphere="S"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="AU02"
+          description="CANBERRA"
+     />
+</Loc>

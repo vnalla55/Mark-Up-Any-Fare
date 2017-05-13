@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="STO"
+          subarea="21"
+          area="2"
+          transtype=" "
+          nation="SE"
+          state=" "
+     />
+     <Position
+          latdegrees=59
+          latminutes=30
+          latseconds=27
+          lngdegrees=17
+          lngminutes=56
+          lngseconds=25
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="SE01"
+          description="STOCKHOLM"
+     />
+</Loc>

@@ -1,0 +1,8 @@
+name: TaxOverride
+namespace: tse
+package: DataModel
+
+section: Attribute
+  scalar: taxAmount:  MoneyAmount taxAmt()
+  scalar: taxCode:    TaxCode     taxCode()
+endsection

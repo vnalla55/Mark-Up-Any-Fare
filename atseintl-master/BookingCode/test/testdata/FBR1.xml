@@ -1,0 +1,28 @@
+<PaxTypeFare>
+     <Status value="FareByRule"/>
+     <ActualPaxType file="/vobs/atseintl/BookingCode/test/testdata/FBR1_PaxType0.xml"/>
+     <FareClassAppInfo file="/vobs/atseintl/BookingCode/test/testdata/FBR1_FareClassAppInfo0.xml"/>
+     <FareClassAppSegInfo file="/vobs/atseintl/BookingCode/test/testdata/FBR1_FareClassAppSegInfo1.xml"/>
+     <FareTypeMatrix
+          cabin="2"
+          fareTypeDesignator=2
+          fareTypeApplication="N"
+     />
+     <FareMarket file="/vobs/atseintl/BookingCode/test/testdata/FBR1_FareMarket0.xml"/>
+     <Fare file="/vobs/atseintl/BookingCode/test/testdata/FBR1_Fare0.xml"/>
+     <PaxTypeFareRuleData
+          categoryNumber=16
+          isFareRule="t">
+          <PaxTypeFareRuleData file="/vobs/atseintl/BookingCode/test/testdata/FBR1_PaxTypeFareRuleData0.xml"/>
+     </PaxTypeFareRuleData>
+     <PaxTypeFareRuleData
+          categoryNumber=25
+          isFareRule="t">
+          <FBRPaxTypeFareRuleData file="/vobs/atseintl/BookingCode/test/testdata/FBR1_FBRPaxTypeFareRuleData0.xml"/>
+     </PaxTypeFareRuleData>
+     <PaxTypeFareRuleData
+          categoryNumber=35
+          isFareRule="t">
+          <NegPaxTypeFareRuleData file="/vobs/atseintl/BookingCode/test/testdata/FBR1_NegPaxTypeFareRuleData0.xml"/>
+     </PaxTypeFareRuleData>
+</PaxTypeFare>

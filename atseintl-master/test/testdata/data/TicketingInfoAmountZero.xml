@@ -1,0 +1,43 @@
+<TicketingFeesInfo>
+     <CreateDate year=2009 month=1 day=1 hour=0 minute=0 second=0/>
+     <ExpireDate year=2009 month=12 day=1 hour=0 minute=0 second=0/>
+     <EffectiveDate year=2009 month=1 day=1 hour=0 minute=0 second=0/>
+     <DiscDate year=2999 month=1 day=1 hour=0 minute=0 second=0/>
+     <loc1 file="/vobs/atseintl/test/testdata/data/LocKeyAEP.xml"/>
+     <loc2 file="/vobs/atseintl/test/testdata/data/LocKeyDFW.xml"/>
+     <locWhlWithin file="/vobs/atseintl/test/testdata/data/LocKeyFRA.xml"/>
+     <locVia file="/vobs/atseintl/test/testdata/data/LocKeyLON.xml"/>
+     <Attributes
+          publicPrivateInd="P"
+          journeyInd="Y"
+          fareInd="A"
+          refundReissue="N"
+          commission="N"
+          interline="N"
+          noCharge="X"
+          taxInclude=" "
+          vendor="ATP"
+          carrier="AF"
+          primaryFareCarrier="AA"
+          serviceTypeCode="OB"
+          serviceSubTypeCode="FCA"
+          paxType="ADT"
+          fareBasis="Y26B"
+          cur="USD"
+          maxFeeCur=""
+          fopBinNumber="4****"
+          seqNo=100200
+          svcFeesAccCodeTblItemNo=34567
+          svcFeesTktDsgnTblItemNo=123456
+          svcFeesSecurityTblItemNo=9876543
+          noDec=2
+          feePercentNoDec=0
+          maxFeeNoDec=0
+          feePercent=0
+          loc1ZoneItemNo="123"
+          loc2ZoneItemNo="456"
+          locZoneViaItemNo="789"
+          feeAmount=0
+          maxFeeAmount=0
+     />
+</TicketingFeesInfo>

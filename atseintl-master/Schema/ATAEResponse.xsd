@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Sabre User (Ru-Board) -->
+<!--
+!==================================================================
+//
+//  File:         ATAEResponse.xsd
+//  Author:       Witold Krzastek
+//  Created:      MAR 1, 2005
+//  Description:  ATAE Response definition
+//
+//  Copyright Sabre 2005
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+================================================================== -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.atse.sabre.com/ATAE/Response" targetNamespace="http://www.atse.sabre.com/ATAE/Response" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="ATAECommonTypes.xsd"/>
+	<xs:include schemaLocation="ATAEInterfaceTypes.xsd"/>
+	<xs:simpleType name="ATAEReturnCode">
+		<xs:annotation>
+			<xs:documentation>ATAE Return Codes Enumeration.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OK">
+				<xs:annotation>
+					<xs:documentation>Request handled correctly.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ERR">
+				<xs:annotation>
+					<xs:documentation>XML error</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PROC">
+				<xs:annotation>
+					<xs:documentation>ATAE processing error</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StatusValuesType">
+		<xs:annotation>
+			<xs:documentation>Sequence of availability status values. Numbers, max. 254, separated with commas</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="104"/>
+			<xs:minLength value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AVSCodesListType">
+		<xs:annotation>
+			<xs:documentation>AVS Codes List</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="52"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ParentSolutionIdsList">
+		<xs:annotation>
+			<xs:documentation>List of Parent Solution IDs</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ATS" type="AvailabilityResponseType">
+		<xs:annotation>
+			<xs:documentation>Root element of response</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="AvailabilityStatusBaseType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Availability Status Base Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="S1F" use="required">
+			<xs:annotation>
+				<xs:documentation>Status Values</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="StatusValuesType"/>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="S1G" type="ClassCodesListType" use="required">
+			<xs:annotation>
+				<xs:documentation>Statused Class Codes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q3C" type="xs:short" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>DCA Return Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SegmentAvailabilityStatusType">
+		<xs:annotation>
+			<xs:documentation>Segment Availability Status Type</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AvailabilityStatusBaseType">
+				<xs:attribute name="Q2X" type="xs:nonNegativeInteger" use="required">
+					<xs:annotation>
+						<xs:documentation>Availability Segment Reference</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Q3F" type="xs:unsignedByte" use="required">
+					<xs:annotation>
+						<xs:documentation>Availability Method Indicator</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Q3G" type="xs:unsignedByte" use="required">
+					<xs:annotation>
+						<xs:documentation>Availability Status Indicator</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="N1A" type="PollingIndicatorType" use="optional" default="N">
+					<xs:annotation>
+						<xs:documentation>Polling Indicator</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="S1H" type="AVSCodesListType" use="optional">
+					<xs:annotation>
+						<xs:documentation>AVS Codes</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Q2Z" type="ValidityIndicatorType" default="1">
+					<xs:annotation>
+						<xs:documentation>Validity Indicator for the segment</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SolutionAvailabilityStatusType">
+		<xs:annotation>
+			<xs:documentation>Solution Availability Status Type</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AvailabilityStatusBaseType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AvailabilitySolutionResponseType">
+		<xs:annotation>
+			<xs:documentation>Availability Solution Response Type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:sequence>
+				<xs:element name="SGS" type="SegmentAvailabilityStatusType" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Statused Segments</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:sequence>
+				<xs:element name="SLS" type="SolutionAvailabilityStatusType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Whole Solution Status, Could be optional when: single segment solution, different availbility methods used. If not present need to be calculated based on segment status on the client side</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="S1J" type="ParentSolutionIdsList" use="required">
+			<xs:annotation>
+				<xs:documentation>Parent Solution IDs List</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2Z" type="ValidityIndicatorType" use="optional" default="1">
+			<xs:annotation>
+				<xs:documentation>Validity Indicator for the Solution</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="AvailabilitySolutionsListType">
+		<xs:annotation>
+			<xs:documentation>Availability Solutions List Type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ASO" type="AvailabilitySolutionResponseType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Availability Solution</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AvailabilityResponseType">
+		<xs:annotation>
+			<xs:documentation>Availability Response Type - root type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ASL" type="AvailabilitySolutionsListType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Main response structure containing statused itineraries data. Response contains no  ASL element when an error occurs.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="STA" type="STAType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Statistics</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DIA" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Diagnostic Message</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Q3B" type="VersionType" use="required">
+			<xs:annotation>
+				<xs:documentation>Interface Version</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S1I" type="ATAEReturnCode" use="optional">
+			<xs:annotation>
+				<xs:documentation>Return Code. Gives information if the request was handled correctly (OK status) or if an error occurred.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+s = env.msscout()
+s.werror = True
+s.env.add_isystem_paths("$XALANC_CPPPATH_")
+s.env.add_isystem_paths("$XERCESC_CPPPATH_")
+s.mslibrary('tseDiagnostic', 'DIAG_SOURCES')
+s.mslibrary('tseDiagnosticFareDisplay', 'DIAG_FAREDISPLAY_SOURCES')
+s.build()

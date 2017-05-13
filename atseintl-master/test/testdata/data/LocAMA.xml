@@ -1,0 +1,20 @@
+<Loc>
+  <Area loc="AMA"
+        subarea="11"
+        area="1"
+        transtype="C"
+        nation="US"
+        state="TX" />
+  <Position latdegrees=32  latminutes=53 latseconds=45
+            lngdegrees=-96 lngminutes=-2 lngseconds=-14/>
+  <ExpirationDate year=2004 month=6 day=23/>
+  <EffectiveDate  year=2004 month=6 day=23/>
+  <Indicators cityInd="t"
+              bufferZoneInd="f"
+              ruralarpind="f"
+              multitransind="f"
+              faresind="f"/>
+  <Misc dstgrp="1234"
+        description="Amarillo airport, Texas"/>
+</Loc>
+

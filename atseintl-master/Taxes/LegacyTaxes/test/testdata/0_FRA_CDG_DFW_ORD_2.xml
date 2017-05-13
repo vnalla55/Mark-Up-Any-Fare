@@ -1,0 +1,35 @@
+<AirSeg>
+     <ClassOfService file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/ClassOfService_Y.xml"/>
+     <SegmentInfo
+          pnrSegment=3
+          segmentOrder=3
+          stopOver="f"
+          forcedStopOver="F"
+          forcedConx="F"
+          geoTravelType="Domestic"
+          origAirport="DFW"
+          boardMultiCity="DFW"
+          destAirport="ORD"
+          offMultiCity="CHI"
+     />
+     <FlightInfo
+          carrier="AA"
+          marketingFlightNumber=2324
+          operatingFlightNumber=2324
+          equipmentType="S80"
+     />
+     <Origin file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_FRA_CDG_DFW_ORD_1_Loc_DFW.xml"/>
+     <Destination file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_FRA_CDG_DFW_ORD_2_Loc_ORD.xml"/>
+     <Misc
+          bookedCabin="8"
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode=""
+          bookingCode="Y"
+          furthestPoint="f"
+          considerOnlyCabin=""
+          forcedFareBrk="F"
+          forcedNoFareBrk="F"
+          forcedSideTrip="F"
+     />
+</AirSeg>

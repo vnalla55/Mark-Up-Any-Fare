@@ -1,0 +1,5 @@
+APPCONSOLE_SOURCES := \
+    AppConsole.cpp \
+    ReceiveThread.cpp \
+    ProcessThread.cpp \
+    SocketUtils.cpp

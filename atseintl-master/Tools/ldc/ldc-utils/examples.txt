@@ -1,0 +1,3 @@
+./listCacheEvents -t SUPPORTCACHENOTIFY -h atseidb1 -P 3310 -e NUC
+./listBDB -d /stor05/sg364257/data/bdb -f NUC.1.db
+./cacheCompare -t INTLCACHENOTIFY -h pimhc003 -d /stor05/sg364257/data/bdb -f FARECLASSAPP.1.db

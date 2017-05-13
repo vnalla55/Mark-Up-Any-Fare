@@ -1,0 +1,19 @@
+<PaxType>
+
+    <!-- paxType can be ADULT, CHILD, INFANT, CNE, NEG, INE, CBC, PFA, CBI, HNN, JCB, JNF -->
+
+    <Misc  paxType="ADULT"
+           number=1
+           age=39
+           inputOrder=1
+           vendorCode="AA"/>
+
+    <!-- Let's make the actual PaxType be equivalent to the PaxType above -->
+
+    <ActualPaxType file="/vobs/atseintl/test/testdata/data/PaxType.xml"/>
+
+    <PaxTypeInfo paxType="ADT" vendor="ATP" childInd=" " adultInd=" " infantInd=" "
+                 description="PaxTypeInfo from factory." psgGroupType="ASTRING" numberSeatsReq=1/>
+
+</PaxType>
+

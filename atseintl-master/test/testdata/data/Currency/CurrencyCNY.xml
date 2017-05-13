@@ -1,0 +1,19 @@
+<Currency>
+     <expireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <effDate year=2008 month=1 day=7 hour=0 minute=0 second=0/>
+     <discDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <createDate year=2008 month=1 day=7 hour=14 minute=55 second=57/>
+     <Attributes
+          cur="CNY"
+          domRoundingFactor=-1
+          roundingFactorNoDec=0
+          noDec=0
+          curNo=456
+          curName="RENMINBI"
+          nucRoundingProcessNo="9"
+          controllingEntityDesc="CHINA"
+          taxOverrideRoundingUnitNoDec=0
+          taxOverrideRoundingUnit=1
+          taxOverrideRoundingRule=1
+     />
+</Currency>

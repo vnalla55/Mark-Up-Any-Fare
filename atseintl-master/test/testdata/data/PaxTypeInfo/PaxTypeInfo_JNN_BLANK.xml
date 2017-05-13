@@ -1,0 +1,12 @@
+<PaxTypeInfo>
+     <Attributes
+          paxType="JNN"
+          vendor="ATP"
+          description="CONTRACT BULK CHILD PSGR"
+          childInd="N"
+          adultInd="N"
+          infantInd="N"
+          psgGroupType="SP$"
+          numberSeatsReq=1
+     />
+</PaxTypeInfo>

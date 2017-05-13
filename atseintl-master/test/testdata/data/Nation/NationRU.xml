@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="RU"
+          isonumericCode=643
+          subArea="21"
+          area="2"
+          isoalphaCode="RUS"
+          primeCur="RUB"
+          alternateCur=""
+          conversionCur="EUR"
+          description="RUSSIA"
+     />
+     <CreateDate year=2006 month=12 day=4 hour=8 minute=9 second=41/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2006 month=12 day=4 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

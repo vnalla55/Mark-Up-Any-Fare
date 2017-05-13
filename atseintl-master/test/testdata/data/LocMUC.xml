@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="MUC"
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="DE"
+          state=" "
+     />
+     <Position
+          latdegrees=48
+          latminutes=21
+          latseconds=0
+          lngdegrees=11
+          lngminutes=47
+          lngseconds=0
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2006 month=3 day=22 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="DE01"
+          description="MUNICH"
+     />
+</Loc>

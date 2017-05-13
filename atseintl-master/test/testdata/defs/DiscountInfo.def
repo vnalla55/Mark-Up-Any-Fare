@@ -1,0 +1,57 @@
+name: DiscountInfo
+namespace: tse
+parent: RuleItemInfo
+package: DBAccess
+
+factoryAggregate: ExpirationDate: DateTime expireDate()
+factoryAggregate: EffectiveDate:  DateTime createDate()
+
+section: Attributes
+  scalar: unavailtag:             Indicator             unavailtag()
+  scalar: discPercent:            MoneyAmount           discPercent()
+  scalar: fareAmt1:               MoneyAmount           fareAmt1()
+  scalar: fareAmt2:               MoneyAmount           fareAmt2()
+  scalar: geoTblItemNo:           int                   geoTblItemNo()
+  scalar: category:               int                   category()
+  scalar: segCnt:                 int                   segCnt()
+  scalar: discPercentNoDec:       int                   discPercentNoDec()
+  scalar: noDec1:                 int                   noDec1()
+  scalar: noDec2:                 int                   noDec2()
+  scalar: minAge:                 int                   minAge()
+  scalar: maxAge:                 int                   maxAge()
+  scalar: firstOccur:             int                   firstOccur()
+  scalar: lastOccur:              int                   lastOccur()
+  scalar: discAppl:               Indicator             discAppl()
+  scalar: paxType:                PaxTypeCode           paxType()
+  scalar: psgid:                  Indicator             psgid()
+  scalar: farecalcInd:            Indicator             farecalcInd()
+  scalar: owrt:                   Indicator             owrt()
+  scalar: baseFareInd:            Indicator             baseFareInd()
+  scalar: baseFareClass:          FareClassCode         baseFareClass()
+  scalar: basePsgType:            PaxTypeCode           basePsgType()
+  scalar: baseFareType:           FareType              baseFareType()
+  scalar: bookingAppl:            Indicator             bookingAppl()
+  scalar: bookingCode:            BookingCode           bookingCode()
+  scalar: betweenMarket:          LocCode               betweenMarket()
+  scalar: andMarket:              LocCode               andMarket()
+  scalar: cur1:                   CurrencyCode          cur1()
+  scalar: cur2:                   CurrencyCode          cur2()
+  scalar: resultOwrt:             Indicator             resultOwrt()
+  scalar: resultFareClass:        FareClassCode         resultFareClass()
+  scalar: resultBookingCode:      BookingCode           resultBookingCode()
+  scalar: tktCode:                TktCode               tktCode()
+  scalar: tktCodeModifier:        TktCodeModifier       tktCodeModifier()
+  scalar: tktDesignator:          TktDesignator         tktDesignator()
+  scalar: tktDesignatorModifier:  TktDesignatorModifier tktDesignatorModifier()
+  scalar: accInd:                 Indicator             accInd()
+  scalar: accTvlAllSectors:       Indicator             accTvlAllSectors()
+  scalar: accTvlOut:              Indicator             accTvlOut()
+  scalar: accTvlOneSector:        Indicator             accTvlOneSector()
+  scalar: accTvlSameCpmt:         Indicator             accTvlSameCpmt()
+  scalar: accTvlSameRule:         Indicator             accTvlSameRule()
+  scalar: accPsgAppl:             Indicator             accPsgAppl()
+  scalar: fareClassBkgCodeInd:    Indicator             fareClassBkgCodeInd()
+  scalar: inhibit:                Indicator             inhibit()
+endsection
+
+factoryAggregate: DiscountSegInfo: std::vector<DiscountSegInfo*> segs() OwnsPointer

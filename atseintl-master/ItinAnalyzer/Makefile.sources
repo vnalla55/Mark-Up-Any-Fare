@@ -1,0 +1,36 @@
+ITIN_ANALYZER_SERVICE_SOURCES := \
+    FareDisplayAnalysis.cpp \
+    GenericInclusionCodePaxType.cpp \
+    InclusionCodePaxType.cpp \
+    SpecialInclusionCodePaxType.cpp \
+    ALLInclusionCodePaxType.cpp \
+    NullInclusionCodePaxType.cpp \
+    BrandedFaresDataRetriever.cpp\
+    ItinAnalyzerService.cpp \
+    ItinAnalyzerServiceShopping.cpp \
+    ItinAnalyzerService_deprecated.cpp \
+    FamilyLogicUtils.cpp \
+    FamilyLogicSplitter.cpp \
+    SoldoutCabinValidator.cpp \
+    ItinAnalyzerUtils.cpp \
+    Diag922Data.cpp \
+    JourneyPrepHelper.cpp \
+    FareMarketBuilder.cpp \
+    ExcItinUtil.cpp \
+    FDSuppressFareController.cpp \
+    InclusionCodeRetriever.cpp \
+    FDPrefRetriever.cpp \
+    SimplifiedFareMarketsBuilder.cpp \
+    ItinAnalyzerServiceWrapper.cpp \
+    ExcItinAnalyzerServiceWrapper.cpp \
+    SkipFareMarketByMileageSOL.cpp \
+    SoloCarnivalIAUtil.cpp \
+    SoloCarnivalFareFamiliesGrouper.cpp \
+    SoloCarnivalFareFamiliesGrouperImpl.cpp \
+    ItinAnalyzerServiceWrapperSOL.cpp \
+    SoloJourney.cpp \
+    SoloJourneySeg.cpp \
+    SoloJourneyUtil.cpp \
+    SegmentRange.cpp \
+    CodeShareValidatorSOL.cpp \
+    CouponMatcher.cpp 

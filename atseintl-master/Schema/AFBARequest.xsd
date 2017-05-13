@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ==================================================================
+//
+//
+//  File:         AFBRequest.xsd
+//  Author:       Hitha Alex
+//  Created:      August 2005
+//  Description:  Free Baggage Request definition
+//
+//  Copyright Sabre 2005
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+//
+//================================================================= -->
+<xs:schema
+  targetNamespace="http://www.atse.sabre.com/AFBA/Request"
+  xmlns="http://www.atse.sabre.com/AFBA/Request"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified">
+  <xs:include schemaLocation="CommonTypes.xsd"/>
+  <xs:include schemaLocation="CommonElements.xsd"/>
+
+
+  <xs:element name="AFBARequest" >
+    <xs:complexType>
+      <xs:annotation>
+        <xs:documentation>
+
+          AFBARequest   Free Baggage Request Message
+
+          Element(s)
+    
+            BIL   Billing info
+            FBR   Free Baggage Request
+
+        </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:element name="BIL" type="BILType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="FBR" type="FBRType" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:complexType name="FBRType">
+    <xs:annotation>
+      <xs:documentation>
+
+        FBRType   Free Baggage Request 
+
+        Element(s)
+
+          SGI   	AFBA Segment Info
+          BRI    	Free Baggage Request Item Info
+
+        Attribute(s)
+          
+	    B00	Carrier code
+	    D00	Request Date
+
+        </xs:documentation>
+      </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SGI" type="SGIType"           minOccurs="1"  maxOccurs="unbounded"/>
+      <xs:element name="BRI" type="BRIType"           minOccurs="1"  maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="B00" type="AirlineCodeType"    use="required" />
+    <xs:attribute name="D00" type="DateYYYY-MM-DDType" use="required" />    
+</xs:complexType>
+
+
+  <xs:complexType name="SGIType">
+    <xs:annotation>
+      <xs:documentation>
+
+        SGIType   AFBA segment info
+
+        Element(s)
+
+            FLB    Full Boarding Location Info
+	    FLD    Full Destination Location Info
+
+        Attribute(s)
+      
+            A60    Global Direction
+            B00    Carrier code
+	    B31    Booking Code
+	    B40    Equipment Type          
+            N04    Cabin Code
+	    P2M    Stop Over Segment 
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FLB" type="FLBType"   minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="FLD" type="FLDType"   minOccurs="1"  maxOccurs="1"/>    
+    </xs:sequence>
+    <xs:attribute name="A60" type="GlobalDirectionType"    use="required" />
+    <xs:attribute name="B00" type="AirlineCodeType"        use="required" />
+    <xs:attribute name="B31" type="BookingCodeType"        use="required" />
+    <xs:attribute name="B40" type="EquipmentCodeType"      use="required" />
+    <xs:attribute name="N04" type="AlphaNumCharType"       use="required" />
+    <xs:attribute name="P2M" type="BoolTFType"             use="required" />
+  </xs:complexType>
+
+
+  <xs:complexType name="BRIType">
+    <xs:annotation>
+      <xs:documentation>
+
+        BRIType   Free Baggage Request Item Info
+
+	  Element(s)
+
+          CMP    Fare Component Info
+
+        Attribute(s)
+
+          B70    Passenger type
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CMP" type="CMPType"   minOccurs="1"  maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="B70" type="PassengerCodeType" use="required" />
+  </xs:complexType>
+
+
+  <xs:complexType name="FLBType">
+    <xs:annotation>
+      <xs:documentation>
+
+        FLBType   Full Boarding Location Info
+
+        Attribute(s)
+
+          A01    Board Airport Code
+          A11    Board City Code
+          A31    Board State Code
+          A41    Board Country Code
+          A51    Board IATA Area Code         
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="A01" type="AirportCodeType"    use="required" />
+    <xs:attribute name="A11" type="CityCodeType"       use="required" />
+    <xs:attribute name="A31" type="StateCodeType"      use="optional" />
+    <xs:attribute name="A41" type="CountryCodeType"    use="required" />
+    <xs:attribute name="A51" type="IATAAreaCodeType"   use="required" />
+  </xs:complexType>
+
+
+  <xs:complexType name="FLDType">
+    <xs:annotation>
+      <xs:documentation>
+
+        FLDType   Full Destination Location Info
+
+        Attribute(s)
+
+          A02    Arrival Airport Code
+          A12    Arrival City Code
+          A32    Arival State Code
+          A42    Arrival Country Code
+          A52    Arrival IATA Area Code         
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="A02" type="AirportCodeType"    use="required" />
+    <xs:attribute name="A12" type="CityCodeType"       use="required" />
+    <xs:attribute name="A32" type="StateCodeType"      use="optional" />
+    <xs:attribute name="A42" type="CountryCodeType"    use="required" />
+    <xs:attribute name="A52" type="IATAAreaCodeType"   use="required" />
+  </xs:complexType>
+
+
+  <xs:complexType name="CMPType">
+    <xs:annotation>
+      <xs:documentation>
+
+        CMPType   Fare Component Info
+
+        Attribute(s)
+
+          A60	 Global Direction Type
+	  B02	 Governing Carrier
+	  Q4L    Index of Starting Segment Sequence
+          Q4M    Index of Ending Segment Sequence
+	  P3J    Inbound Fare
+	  S30	 Fare Type Name Abbrevation
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="A60" type="GlobalDirectionType"     use="required"/>
+    <xs:attribute name="B02" type="AirlineCodeType"         use="required"/>
+    <xs:attribute name="Q4L" type="xs:nonNegativeInteger"   use="required"/>
+    <xs:attribute name="Q4M" type="xs:nonNegativeInteger"   use="required"/>
+    <xs:attribute name="P3J" type="BoolTFType"   	    use="required"/>
+    <xs:attribute name="S30" type="FareTypeNameType"   	    use="required"/>
+  </xs:complexType>
+
+
+  <!-- attribute declarations -->
+  
+  <xs:simpleType name="EquipmentCodeType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9A-Z]{1,4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="FareTypeNameType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{1,3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+</xs:schema>

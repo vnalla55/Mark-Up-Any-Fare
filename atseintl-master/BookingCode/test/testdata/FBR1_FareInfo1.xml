@@ -1,0 +1,25 @@
+<FareInfo>
+     <Fare
+          fareAmount=3527
+          originalFareAmount=7054
+          noDec=2
+          fareTariff=27
+          currency="EUR"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="JJ"
+          fareClass="CFRAR"
+          market1LocCode="BUE"
+          market2LocCode="PAR"
+          footnote1=""
+          footnote2=""
+          owrt="2"
+          ruleNumber="FRAR"
+          routingNumber="0000"
+          globalDirection="AT"
+          directionality="TO"
+          linkNumber=2
+          sequenceNumber=9
+     />
+</FareInfo>

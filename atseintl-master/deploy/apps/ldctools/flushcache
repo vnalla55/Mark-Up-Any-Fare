@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# ensure we are running within the same directory
+# from which we are running
+cd $(dirname $(which ${0}))
+. ./env.vars
+
+cachetest.sh -cache ${1} -app ${APP} -host ${HOST} -port ${PORT} -cmd flush} 

@@ -1,0 +1,13 @@
+<PaxTypeFare>
+     <Status value="FareByRule"/>
+     <ActualPaxType file="/vobs/atseintl/FareDisplay/test/data/paxType.xml"/>
+     <FareClassAppInfo file="/vobs/atseintl/FareDisplay/test/data/fareClassAppInfo.xml"/>
+     <FareClassAppSegInfo file="/vobs/atseintl/FareDisplay/test/data/fareClassAppSegInfo.xml"/>
+     <FareTypeMatrix
+          cabin="1"
+          fareTypeDesignator=1
+          fareTypeApplication="S"
+     />
+     <FareMarket file="/vobs/atseintl/FareDisplay/test/data/fareMarket.xml"/>
+     <Fare file="/vobs/atseintl/FareDisplay/test/data/fare.xml"/>
+</PaxTypeFare>

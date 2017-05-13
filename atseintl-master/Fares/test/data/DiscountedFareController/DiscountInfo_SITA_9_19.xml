@@ -1,0 +1,59 @@
+<DiscountInfo>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2006 month=7 day=12 hour=16 minute=45 second=25/>
+     <Attributes
+          unavailtag=" "
+          discPercent=30
+          fareAmt1=0
+          fareAmt2=0
+          geoTblItemNo=0
+          category=19
+          segCnt=1
+          discPercentNoDec=4
+          noDec1=0
+          noDec2=0
+          minAge=2
+          maxAge=11
+          firstOccur=0
+          lastOccur=0
+          discAppl=" "
+          paxType="CNN"
+          psgid=" "
+          farecalcInd="C"
+          owrt=" "
+          baseFareInd=" "
+          baseFareClass=""
+          basePsgType=""
+          baseFareType=""
+          bookingAppl=" "
+          bookingCode=""
+          betweenMarket=""
+          andMarket=""
+          cur1=""
+          cur2=""
+          resultOwrt=" "
+          resultFareClass=""
+          resultBookingCode=""
+          tktCode=""
+          tktCodeModifier=""
+          tktDesignator="CH"
+          tktDesignatorModifier="3"
+          accInd=" "
+          accTvlAllSectors="X"
+          accTvlOut=" "
+          accTvlOneSector=" "
+          accTvlSameCpmt=" "
+          accTvlSameRule=" "
+          accPsgAppl=" "
+          fareClassBkgCodeInd=" "
+          inhibit="N"
+     />
+     <DiscountSegInfo file="/vobs/atseintl/Fares/test/data/DiscountedFareController/DiscountInfo_SITA_9_19_DiscountSegInfo0.xml"/>
+>
+     <Attributes
+          vendor="SITA"
+          itemNo=9
+          textTblItemNo=0
+          overrideDateTblItemNo=0
+     />
+</DiscountInfo>

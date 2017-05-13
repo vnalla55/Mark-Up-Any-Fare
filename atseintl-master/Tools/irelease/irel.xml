@@ -1,0 +1,187 @@
+<configrelease color="ffffff">
+    <group name="ATSEv2" color="#ff9">
+        <item value="Title" required="true" type="text" />
+        <item value="Date" required="true" type="text" default="now()" />
+        <item value="Description" required="true" type="multiline" />
+        <item value="Applies to" type="fixed-content" >
+            <subitem value="all agencies" type="checkbox" default="checked" />
+            <subitem value="all airlines" type="checkbox" default="checked" />
+            <subitem value="Abacus" type="checkbox" default="unchecked" />
+            <subitem value="Axess" type="checkbox" default="unchecked" />
+            <subitem value="LAN" type="checkbox" default="unchecked" />
+            <subitem value="Other" type="input-checkbox" default="unchecked" />
+        </item>
+        <item value="Activated by/Configuration change" type="multiline" required="true" />
+        <item value="Resolution/QA recommendation" type="multiline" />
+        <item value="Entry/XML to recreate" type="multiline" />
+        <item value="Example before" type="multiline" required="true" />
+        <item value="Example after" type="multiline" required="true" />
+        <item value="Files updated" type="multiline" default="files()" />
+        <item value="Unit tests files" type="multiline" />
+        <item value="DB" type="fixed-content" >
+            <subitem value="DB query update" type="input-checkbox" default="unchecked" />
+            <subitem value="DAO version number change" type="input-checkbox" default="unchecked" />
+            <subitem value="DBA contact" type="text" />
+        </item>
+        <item value="Application impact" type="fixed-content" >
+            <subitem value="WP" type="checkbox" default="checked" />
+            <subitem value="WPNC" type="checkbox" default="checked" />
+            <subitem value="WPA" type="checkbox" default="checked" />
+            <subitem value="Shopping" type="checkbox" default="checked" />
+            <subitem value="Fare Display" type="checkbox" default="checked" />
+            <subitem value="Historical" type="checkbox" default="checked" />
+            <subitem value="Taxes" type="checkbox" default="unchecked" />
+            <subitem value="Currency" type="checkbox" default="unchecked" />
+            <subitem value="Mileage" type="checkbox" default="unchecked" />
+            <subitem value="Baggage" type="checkbox" default="unchecked" />
+            <subitem value="Reissue/Exchange" type="checkbox" default="unchecked" />
+            <subitem value="Other" type="input-checkbox" default="unchecked" />
+        </item>
+        <item value="Schema update" type="fixed-content" >
+            <subitem value="Yes" type="checkbox" default="unchecked" />
+        </item>
+        <item value="Developer" type="text" required="true" default="user()" />
+        <item value="Code reviewers" type="text" required="true" />
+        <item value="BA" type="text" />
+        <item value="QA" type="text" />
+    </group>
+    <group name="PDC" color="#ff9">
+        <item value="Title" required="true" type="text" />
+        <item value="Date" required="true" type="text" default="now()" />
+        <item value="Description" required="true" type="multiline" />
+        <item value="Applies to" type="fixed-content" >
+            <subitem value="all agencies" type="checkbox" default="checked" />
+            <subitem value="all airlines" type="checkbox" default="checked" />
+            <subitem value="Abacus" type="checkbox" default="unchecked" />
+            <subitem value="Axess" type="checkbox" default="unchecked" />
+            <subitem value="LAN" type="checkbox" default="unchecked" />
+            <subitem value="Other" type="input-checkbox" default="unchecked" />
+        </item>
+        <item value="Activated by/Configuration change" type="multiline" required="true" />
+        <item value="Resolution/QA recommendation" type="multiline" />
+        <item value="Entry/XML to recreate" type="multiline" />
+        <item value="Example before" type="multiline" required="true" />
+        <item value="Example after" type="multiline" required="true" />
+        <item value="Files updated" type="multiline" default="files()" />
+        <item value="Unit tests files" type="multiline" />
+        <item value="DB" type="fixed-content" >
+            <subitem value="DB query update" type="input-checkbox" default="unchecked" />
+            <subitem value="DAO version number change" type="input-checkbox" default="unchecked" />
+            <subitem value="DBA contact" type="text" />
+        </item>
+        <item value="Application impact" type="fixed-content" >
+            <subitem value="WP" type="checkbox" default="checked" />
+            <subitem value="WPNC" type="checkbox" default="checked" />
+            <subitem value="WPA" type="checkbox" default="checked" />
+            <subitem value="Shopping" type="checkbox" default="checked" />
+            <subitem value="Fare Display" type="checkbox" default="checked" />
+            <subitem value="Historical" type="checkbox" default="checked" />
+            <subitem value="Taxes" type="checkbox" default="unchecked" />
+            <subitem value="Currency" type="checkbox" default="unchecked" />
+            <subitem value="Mileage" type="checkbox" default="unchecked" />
+            <subitem value="Baggage" type="checkbox" default="unchecked" />
+            <subitem value="Reissue/Exchange" type="checkbox" default="unchecked" />
+            <subitem value="Other" type="input-checkbox" default="unchecked" />
+        </item>
+        <item value="Schema update" type="fixed-content" >
+            <subitem value="Yes" type="checkbox" default="unchecked" />
+        </item>
+        <item value="Developer" type="text" required="true" default="user()" />
+        <item value="Code reviewers" type="text" required="true" />
+        <item value="BA" type="text" />
+        <item value="QA" type="text" />
+    </group>
+    <group name="RTG" color="#ff9">
+        <item value="Title" required="true" type="text" />
+        <item value="Date" required="true" type="text" default="now()" />
+        <item value="Description" required="true" type="multiline" />
+        <item value="Applies to" type="fixed-content" >
+            <subitem value="all agencies" type="checkbox" default="checked" />
+            <subitem value="all airlines" type="checkbox" default="checked" />
+            <subitem value="Abacus" type="checkbox" default="unchecked" />
+            <subitem value="Axess" type="checkbox" default="unchecked" />
+            <subitem value="LAN" type="checkbox" default="unchecked" />
+            <subitem value="Other" type="input-checkbox" default="unchecked" />
+        </item>
+        <item value="Activated by/Configuration change" type="multiline" required="true" />
+        <item value="Resolution/QA recommendation" type="multiline" />
+        <item value="Entry/XML to recreate" type="multiline" />
+        <item value="Example before" type="multiline" required="true" />
+        <item value="Example after" type="multiline" required="true" />
+        <item value="Files updated" type="multiline" default="files()" />
+        <item value="Unit tests files" type="multiline" />
+        <item value="DB" type="fixed-content" >
+            <subitem value="DB query update" type="input-checkbox" default="unchecked" />
+            <subitem value="DAO version number change" type="input-checkbox" default="unchecked" />
+            <subitem value="DBA contact" type="text" />
+        </item>
+        <item value="Application impact" type="fixed-content" >
+            <subitem value="WP" type="checkbox" default="checked" />
+            <subitem value="WPNC" type="checkbox" default="checked" />
+            <subitem value="WPA" type="checkbox" default="checked" />
+            <subitem value="Shopping" type="checkbox" default="checked" />
+            <subitem value="Fare Display" type="checkbox" default="checked" />
+            <subitem value="Historical" type="checkbox" default="checked" />
+            <subitem value="Taxes" type="checkbox" default="unchecked" />
+            <subitem value="Currency" type="checkbox" default="unchecked" />
+            <subitem value="Mileage" type="checkbox" default="unchecked" />
+            <subitem value="Baggage" type="checkbox" default="unchecked" />
+            <subitem value="Reissue/Exchange" type="checkbox" default="unchecked" />
+            <subitem value="Other" type="input-checkbox" default="unchecked" />
+        </item>
+        <item value="Schema update" type="fixed-content" >
+            <subitem value="Yes" type="checkbox" default="unchecked" />
+        </item>
+        <item value="Developer" type="text" required="true" default="user()" />
+        <item value="Code reviewers" type="text" required="true" />
+        <item value="BA" type="text" />
+        <item value="QA" type="text" />
+    </group>    
+    <!-- Default for unrecognized groups -->
+     <group name="*" color="#ff9">
+        <item value="Title" required="true" type="text" />
+        <item value="Date" required="true" type="text" default="now()" />
+        <item value="Description" required="true" type="multiline" />
+        <item value="Applies to" type="fixed-content" >
+            <subitem value="all agencies" type="checkbox" default="checked" />
+            <subitem value="all airlines" type="checkbox" default="checked" />
+            <subitem value="Abacus" type="checkbox" default="unchecked" />
+            <subitem value="Axess" type="checkbox" default="unchecked" />
+            <subitem value="LAN" type="checkbox" default="unchecked" />
+            <subitem value="Other" type="input-checkbox" default="unchecked" />
+        </item>
+        <item value="Activated by/Configuration change" type="multiline" required="true" />
+        <item value="Resolution/QA recommendation" type="multiline" />
+        <item value="Entry/XML to recreate" type="multiline" />
+        <item value="Example before" type="multiline"  />
+        <item value="Example after" type="multiline" />
+        <item value="Files updated" type="multiline" default="files()" />
+        <item value="Unit tests files" type="multiline" />
+        <item value="DB" type="fixed-content" >
+            <subitem value="DB query update" type="input-checkbox" default="unchecked" />
+            <subitem value="DAO version number change" type="input-checkbox" default="unchecked" />
+            <subitem value="DBA contact" type="text" />
+        </item>
+        <item value="Application impact" type="fixed-content" >
+            <subitem value="WP" type="checkbox" default="checked" />
+            <subitem value="WPNC" type="checkbox" default="checked" />
+            <subitem value="WPA" type="checkbox" default="checked" />
+            <subitem value="Shopping" type="checkbox" default="checked" />
+            <subitem value="Fare Display" type="checkbox" default="checked" />
+            <subitem value="Historical" type="checkbox" default="checked" />
+            <subitem value="Taxes" type="checkbox" default="unchecked" />
+            <subitem value="Currency" type="checkbox" default="unchecked" />
+            <subitem value="Mileage" type="checkbox" default="unchecked" />
+            <subitem value="Baggage" type="checkbox" default="unchecked" />
+            <subitem value="Reissue/Exchange" type="checkbox" default="unchecked" />
+            <subitem value="Other" type="input-checkbox" default="unchecked" />
+        </item>
+        <item value="Schema update" type="fixed-content" >
+            <subitem value="Yes" type="checkbox" default="unchecked" />
+        </item>
+        <item value="Developer" type="text" required="true" default="user()" />
+        <item value="Code reviewers" type="text" required="true" />
+        <item value="BA" type="text" />
+        <item value="QA" type="text" />
+    </group>
+</configrelease>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+==================================================================
+//
+//  File:         PricingCommonElements_v1.0.0.xsd
+//  Description:  Pricing Common Elements definition
+//
+//  Copyright Sabre 2011
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+================================================================== 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0.0">
+  <xs:include schemaLocation="PricingCommonTypes_v1.0.0.xsd"/>
+  <xs:complexType name="BILType">
+    <xs:annotation>
+      <xs:documentation>
+
+        BILType   Billing Information
+
+          A20    Pseudo City Code
+          A22    AAA City
+          A70    Action Code
+          AA0    Agent Sine In
+          AD0    User Set Address
+          AE0    Partition ID
+          C00    Parent transaction ID (for sender: my transaction id, for receiver: my parent transaction id)
+          C01    Client transaction ID (The highest level client transaction id)
+          C20    Parent service name (for sender: my name, for receiver: my parent name)
+          C21    Business function (The highest level client service name)
+          S0R    Source of Request
+          Q02    User Branch
+          Q03    User Station
+
+       *  L00    (Deprecated - use C01) Client transaction ID
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="A20" type="PseudoCityCodeType" use="optional"/>
+    <xs:attribute name="A22" type="PseudoCityCodeType" use="optional"/>
+    <xs:attribute name="A70" type="ActionCodeType" use="optional"/>
+    <xs:attribute name="AA0" type="AgentFunctionType" use="optional"/>
+    <xs:attribute name="AD0" type="LnIATAType" use="optional"/>
+    <xs:attribute name="AE0" type="PartitionIDType" use="optional"/>
+    <xs:attribute name="C00" type="TransactionIDType" use="optional"/>
+    <xs:attribute name="C01" type="TransactionIDType" use="optional"/>
+    <xs:attribute name="C20" type="ServiceNameType" use="optional"/>
+    <xs:attribute name="C21" type="ServiceNameType" use="optional"/>
+    <xs:attribute name="S0R" type="SourceOfRequestType" use="optional"/>
+    <xs:attribute name="Q02" type="xs:short" use="optional"/>
+    <xs:attribute name="Q03" type="xs:short" use="optional"/>
+    <xs:attribute name="L00" type="TransactionIDType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="ATHType">
+    <xs:annotation>
+      <xs:documentation>
+
+        ATHType   ICE Authorization Information
+
+          I01  ICE Binary Security Token
+          I02   Action Name
+          PCC Agent pseudo city code
+          AAA Agent AAA location 
+          HST Historical request
+          </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="I01" type="xs:string" use="optional"/>
+    <xs:attribute name="I02" type="xs:string" use="required"/>
+    <xs:attribute name="PCC" type="PseudoCityCodeType" use="optional"/>
+    <xs:attribute name="AAA" type="PseudoCityCodeType" use="optional"/>
+    <xs:attribute name="HST" type="BoolTFType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="DIGType">
+    <xs:annotation>
+      <xs:documentation>
+                        DIGType   Diagnostic Arguments
+                        Q0A  Argument Type
+                        S01  Argument Data
+                        </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Q0A" type="xs:short" use="optional"/>
+    <xs:attribute name="S01" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="FRTType">
+    <xs:annotation>
+      <xs:documentation>
+            FRTType  Forward Routing
+            S91    IP Address
+            S92    Port Number
+            </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="S91" type="IPAddressType" use="required"/>
+    <xs:attribute name="S92" type="PortNumberType" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="AGIType">
+    <xs:annotation>
+      <xs:documentation>
+      
+                        AGIType    Agent Information
+                        
+                        A10             City Code 
+                        A20             Pesudo City Code
+                        A21             Main Travel Agency Pesudo City Code 
+                        AB0             Travel agency IATA ARC Number 
+                        AB1             Home agency IATA ARC Number 
+                        AB2             Airline IATA number
+                        A90             Agent function 
+                        N0G             Agent duty
+                        A80           Airline Department
+                        B00             Airline Carrier Code 
+                        C40             Currency code for the agent 
+                        Q01             CoHost Identifier
+                        N0L             Agent Commission Type 
+                        C6C             Agent Commission Amount
+                        PAV        Abacus User
+                        AE0         Vendor CRS Code
+                        AE1             Office Designator
+                        AE2      Office/Station Code
+                        AE3      Default Ticketing Carrier
+            </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="A10" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A20" type="PseudoCityCodeType" use="optional"/>
+    <xs:attribute name="A21" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="PseudoCityCodeType">
+          <xs:whiteSpace value="collapse"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="AB0" type="ARCNumberType" use="optional"/>
+    <xs:attribute name="AB1" type="ARCNumberType" use="optional"/>
+    <xs:attribute name="AB2" type="ARCNumberType" use="optional"/>
+    <xs:attribute name="A90" type="AgentFunctionType" use="optional"/>
+    <xs:attribute name="N0G" type="AnyCharType" use="optional"/>
+    <xs:attribute name="A80" type="xs:string" use="optional"/>
+    <xs:attribute name="B00" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="Q01" type="xs:short" use="optional" default="0"/>
+    <xs:attribute name="N0L" type="CharType" use="optional"/>
+    <xs:attribute name="C6C" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="PAV" type="BoolTFType" use="optional"/>
+    <xs:attribute name="AE0" type="PartitionIDType" use="optional"/>
+    <xs:attribute name="AE1" type="OfficeDesignatorType" use="optional"/>
+    <xs:attribute name="AE2" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[0-9A-Z]{4,14}"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="AE3" type="AirlineCodeType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="MSGType">
+    <xs:annotation>
+      <xs:documentation>
+                        MSGType - Message Information
+                        N06 - Message Type
+                        Q0K - Message Fail Code
+                        B00 - Message Airline Code
+                        S18 - Message Text
+            </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="N06" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="Q0K" type="xs:short" use="optional"/>
+    <xs:attribute name="B00" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="S18" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="ECNType">
+    <xs:annotation>
+      <xs:documentation>
+                        ECNType - Enhanced Rule Display Constructed Fare Information
+                        AM0 - Gateway 1
+                        AN0 - Gateway 2
+                        N1J - Construction type
+                        C66 - Specified fare amount
+                        C6K - Constructed NUC amount
+                        </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="AM0" type="CityCodeType" use="optional"/>
+    <xs:attribute name="AN0" type="CityCodeType" use="optional"/>
+    <xs:attribute name="N1J" type="AnyCharType" use="optional"/>
+    <xs:attribute name="C66" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C6K" type="MonetaryAmountType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="PXIType">
+    <xs:annotation>
+      <xs:documentation>
+            PXIType   Passenger information
+            B70         Passenger type
+            Q0T         Passenger age
+            Q0U         Passenger type count
+            A30       Passenger state code
+        </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="B70" type="PassengerCodeType" use="optional"/>
+    <xs:attribute name="Q0U" type="xs:short" use="optional" default="1"/>
+    <xs:attribute name="Q0T" type="xs:short" use="optional"/>
+    <xs:attribute name="A30" type="StateCodeType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="C25Type">
+    <xs:annotation>
+      <xs:documentation>
+      C25 CAT25 Fare Information
+      S37  Vendor code
+      Q41  Item number
+      S70  Directionality
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="S37" type="VendorCodeType" use="optional"/>
+    <xs:attribute name="Q41" type="xs:string" use="optional"/>
+    <xs:attribute name="S70" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="C35Type">
+    <xs:annotation>
+      <xs:documentation>
+      C35 CAT35 Fare Information
+      S37  Vendor code
+      Q41  Item number
+      N1P    CAT 35 type
+      S70  Directionality
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="S37" type="VendorCodeType" use="optional"/>
+    <xs:attribute name="Q41" type="xs:string" use="optional"/>
+    <xs:attribute name="N1P" type="AnyCharType" use="optional"/>
+    <xs:attribute name="S70" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="DFIType">
+    <xs:annotation>
+      <xs:documentation>
+      DFI Discounted Fare Information
+      S37  Vendor code
+      Q41  Item number
+      S70  Directionality
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="S37" type="VendorCodeType" use="optional"/>
+    <xs:attribute name="Q41" type="xs:long" use="optional"/>
+    <xs:attribute name="S70" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="OAOType">
+    <xs:annotation>
+      <xs:documentation>
+      OAO Origin Addon Fare Information
+      S55  Footnote 1
+      S64  Footnote 2
+      BJ0      Fare class
+      Q3W  Tariff
+      S65  Routing
+      C50  Amount
+      C40  Currency
+      P04  OW/RT indicator
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="S55" type="FootnoteType" use="optional"/>
+    <xs:attribute name="S64" type="FootnoteType" use="optional"/>
+    <xs:attribute name="BJ0" type="xs:string" use="optional"/>
+    <xs:attribute name="Q3W" type="xs:short" use="optional"/>
+    <xs:attribute name="S65" type="RoutingType" use="optional"/>
+    <xs:attribute name="C50" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="P04" type="AnyCharType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="DAOType">
+    <xs:annotation>
+      <xs:documentation>
+      DAO Destination Addon Fare Information
+      S55  Footnote 1
+      S64  Footnote 2
+      BJ0      Fare class
+      Q3W  Tariff
+      S65  Routing
+      C50  Amount
+      C40  Currency
+      P04  OW/RT indicator
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="S55" type="FootnoteType" use="optional"/>
+    <xs:attribute name="S64" type="FootnoteType" use="optional"/>
+    <xs:attribute name="BJ0" type="xs:string" use="optional"/>
+    <xs:attribute name="Q3W" type="xs:short" use="optional"/>
+    <xs:attribute name="S65" type="RoutingType" use="optional"/>
+    <xs:attribute name="C50" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="P04" type="AnyCharType" use="optional"/>
+  </xs:complexType>
+</xs:schema>

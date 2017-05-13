@@ -1,0 +1,74 @@
+#! /bin/csh
+
+# Move VOB element(s)
+
+if ( "$2" == "" ) then
+	echo "Syntax: ct_mv <VOB elements> <dest dir>"
+	echo "        ct_mv <VOB element>  <dest element>"
+	exit 1
+endif
+
+@ last       = $#argv
+@ nexttolast = $last - 1
+
+# Destination is a directory
+if ( -d $argv[$last] ) then
+  set DEST_DIR = $argv[$last]
+	set DEST_TYPE = DIR
+# Destination is a single file
+else
+	if ( "$3" != "" ) then
+		echo "Error: Attempt to move multiple files to a single file"
+		exit 1
+	endif
+  set DEST_DIR = `dirname $argv[$last]`
+  set DEST = `basename $argv[$last]`
+	set DEST_TYPE = FILE
+endif
+
+echo " "
+
+cleartool checkout -nc $DEST_DIR
+
+set LAST_DIR = $DEST_DIR
+
+foreach FILE ($argv[1-$nexttolast])
+  set SRC_DIR = `dirname  $FILE`
+  set SRC     = `basename $FILE`
+
+  if ( $DEST_TYPE == DIR ) then
+    set DEST = $SRC
+  endif
+
+	echo " "
+	echo mv $SRC_DIR/$SRC $DEST_DIR/$DEST  
+
+	# If source directory has changed
+	if ( $LAST_DIR != $SRC_DIR ) then
+		# Checkin the previous source directory
+	  if ( $LAST_DIR != $DEST_DIR ) then
+			cleartool checkin -nc $LAST_DIR
+		endif
+
+		# Checkout the new source directory
+		if ( $DEST_DIR != $SRC_DIR ) then
+			cleartool checkout -nc $SRC_DIR
+		endif
+	endif
+	set LAST_DIR = $SRC_DIR
+	
+  # move the element
+  cleartool mv $SRC_DIR/$SRC $DEST_DIR/$DEST
+
+  if ( $DEST_TYPE == FILE ) then
+		break
+  endif
+end
+
+echo " "
+
+cleartool checkin -nc $DEST_DIR
+
+if ( $LAST_DIR != $DEST_DIR ) then
+	cleartool checkin -nc $LAST_DIR
+endif

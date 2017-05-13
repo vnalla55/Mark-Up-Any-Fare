@@ -1,0 +1,19 @@
+<Loc>
+  <Area loc="GRU"
+        subarea="13"
+        area="1"
+        transtype="P"
+        nation="BR" />
+  <Position latdegrees=23  latminutes=26 latseconds=6
+            lngdegrees=-46 lngminutes=-28 lngseconds=-18/>
+  <ExpirationDate year=9999 month=12 day=31/>
+  <EffectiveDate  year=2004 month=6 day=11/>
+  <Indicators cityInd="N"
+              bufferZoneInd="N"
+              ruralarpind="N"
+              multitransind="N"
+              faresind="N"/>
+  <Misc dstgrp="BR01"
+        description="Sao Paolo"/>
+</Loc>
+

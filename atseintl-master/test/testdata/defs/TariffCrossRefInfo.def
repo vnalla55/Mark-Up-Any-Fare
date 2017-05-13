@@ -1,0 +1,47 @@
+name: TariffCrossRefInfo
+namespace: tse
+package: DBAccess
+
+section: Misc
+  scalarWithCompare:  tariffCategory:   TariffCategory  _tariffCat
+  scalar:             zoneNo:           Zone            _zoneNo
+  scalarWithCompare:  vendor:           VendorCode      _vendor
+  scalarWithCompare:  carrier:          CarrierCode     _carrier
+  scalarWithCompare:  crossRefType:     RecordScope     _crossRefType
+  scalar:             globalDirection:  GlobalDirection _globalDirection
+endsection
+
+section: FareTariff
+  scalarWithCompare:  number: TariffNumber  _fareTariff
+  scalar:             code:   TariffCode    _fareTariffCode
+endsection
+
+section: RuleTariff
+  scalarWithCompare:  number: TariffNumber  _ruleTariff
+  scalar:             code:   TariffCode    _ruleTariffCode
+endsection
+
+section: GoverningTariff
+  scalarWithCompare:  number: TariffNumber  _governingTariff
+  scalar:             code:   TariffCode    _governingTariffCode
+endsection
+
+section: RoutingTariff1
+  scalar:             number: TariffNumber  _routingTariff1
+  scalar:             code:   TariffCode    _routingTariff1Code
+endsection
+
+section: RoutingTariff2
+  scalar:             number: TariffNumber  _routingTariff2
+  scalar:             code:   TariffCode    _routingTariff2Code
+endsection
+
+section: AddonTariff1
+  scalar:             number: TariffNumber  _addonTariff1
+  scalar:             code:   TariffCode    _addonTariff1Code
+endsection
+
+section: AddonTariff2
+  scalar:             number: TariffNumber  _addonTariff2
+  scalar:             code:   TariffCode    _addonTariff2Code
+endsection

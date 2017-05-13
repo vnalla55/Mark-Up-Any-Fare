@@ -1,0 +1,21 @@
+#! /bin/csh
+
+# Copy derived objects.  Note that all copies change when one is changed
+
+if ( "$2" == "" ) then
+	echo "Syntax: ct_cp <derived objects> <dest dir>"
+	echo "        ct_cp <derived object>  <dest object>"
+	exit 1
+endif
+
+@ last = $#argv
+@ nexttolast = $#argv - 1
+
+if ( -f $argv[$last]/$argv[-$nexttolast] ) then
+	rm $argv[$last]/$argv[-$nexttolast] 
+endif
+if ( -f $argv[$last]/$argv[-$nexttolast] ) then
+	ct_rm $argv[$last]/$argv[-$nexttolast]
+endif
+cleartool winkin -out $argv[$last] $argv[-$nexttolast]
+

@@ -1,0 +1,20 @@
+<Loc>
+  <Area loc="ANC"
+        subarea="11"
+        area="1"
+        transtype="C"
+        nation="US"
+        state="USAK" />
+  <Position latdegrees=21   latminutes=19  latseconds=33
+            lngdegrees=157 lngminutes=55 lngseconds=18/>
+  <ExpirationDate year=2004 month=6 day=23/>
+  <EffectiveDate  year=2004 month=6 day=23/>
+  <Indicators cityInd="t"
+              bufferZoneInd="f"
+              ruralarpind="f"
+              multitransind="f"
+              faresind="f"/>
+  <Misc dstgrp="1234"
+        description="Alaska International"/>
+</Loc>
+

@@ -1,0 +1,15 @@
+Name: TariffMileageAddon
+Namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: carrier:              CarrierCode     carrier()
+  scalar: unpublishedAddonLoc:  LocCode         unpublishedAddonLoc()
+  scalar: globalDir:            GlobalDirection globalDir()
+  scalar: milesAdded:           int             milesAdded()
+  scalar: publishedLoc:         LocCode         publishedLoc()
+endsection
+
+factoryAggregate: ExpirationDate: DateTime expireDate()
+factoryAggregate: EffectiveDate:  DateTime effDate()
+factoryAggregate: DiscountDate:   DateTime discDate()

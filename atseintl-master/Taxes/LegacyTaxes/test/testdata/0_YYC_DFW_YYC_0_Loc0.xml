@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="YYC"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="CA"
+          state="CAAB"
+     />
+     <Position
+          latdegrees=51
+          latminutes=6
+          latseconds=48
+          lngdegrees=114
+          lngminutes=1
+          lngseconds=12
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2002 month=2 day=4 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="t"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="CA05"
+          description="CALGARY INTL AB"
+     />
+</Loc>

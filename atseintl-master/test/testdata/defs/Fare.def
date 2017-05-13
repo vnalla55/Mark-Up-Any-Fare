@@ -1,0 +1,71 @@
+name: Fare
+namespace: tse
+package: DataModel
+
+factoryAggregateWithCompare: FareInfo:           FareInfo*           setFareInfo
+factoryAggregateWithCompare: TariffCrossRefInfo: TariffCrossRefInfo* setTariffCrossRefInfo
+
+section: Misc
+  scalarWithCompare: nucFareAmount: MoneyAmount nucFareAmount()
+endsection
+
+specialAggregate: FareStatus fareStatus: std::string status
+  read
+    if (false);
+  endRead
+  readLoop
+    else if (status == "$1")
+      item->status().set(Fare::FS_$1, true);
+  endReadLoop
+  writeLoop
+    if (item.status().isSet(Fare::FS_$1))
+      $write("$1");
+  endWriteLoop
+
+  loop: Domestic
+  loop: Transborder
+  loop: International
+  loop: ForeignDomestic
+  #loop: ScopeIsDefined
+  loop: PublishedFare
+  loop: ConstructedFare
+  loop: FBRBaseFare
+  loop: IndustryFare
+  loop: RoutingProcessed
+  loop: IsRouting
+  loop: RoutingValid
+  loop: ReversedDirection
+  loop: Cat15SecurityValid
+endSpecial
+
+specialAggregate: RuleStatus ruleStatus: std::string status
+  read
+    if (false);
+  endRead
+  readLoop
+    else if (status == "Cat${1%02u}")
+      item->setCategoryValid($1, false);
+  endReadLoop
+  writeLoop
+    if (!item.isCategoryValid($1))
+      $write("Cat${1%02u}");
+  endWriteLoop
+
+  loopNumbers: 2:12, 14:16
+endSpecial
+
+specialAggregate: RuleProcessStatus ruleProcessStatus: std::string status
+  read
+    if (false);
+  endRead
+  readLoop
+    else if (status == "Cat${1%02u}")
+      item->setCategoryProcessed($1, true);
+  endReadLoop
+  writeLoop
+    if (item.isCategoryProcessed($1))
+      $write("Cat${1%02u}");
+  endWriteLoop
+
+  loopNumbers: 2:12, 14:16
+endSpecial

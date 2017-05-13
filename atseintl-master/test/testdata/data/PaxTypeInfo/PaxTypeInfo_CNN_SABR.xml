@@ -1,0 +1,12 @@
+<PaxTypeInfo>
+     <Attributes
+          paxType="CNN"
+          vendor="ATP"
+          description="ACCOMPANIED CHILD PSGR"
+          childInd="Y"
+          adultInd="Y"
+          infantInd="N"
+          psgGroupType="CH$"
+          numberSeatsReq=1
+     />
+</PaxTypeInfo>

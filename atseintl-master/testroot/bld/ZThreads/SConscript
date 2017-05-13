@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+
+# Author: Piotr Smaron (Piotr.Smaron@sabre.com)
+# Copyright Sabre 2016
+
+Import('env')
+
+s = env.scout()
+s.tests()
+s.build()

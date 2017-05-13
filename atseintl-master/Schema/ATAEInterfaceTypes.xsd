@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by Piotr Bazan (Ru-Board)
+-->
+<!--
+!==================================================================
+//
+//  File:         ATAEInterfaceType.xsd
+//  Author:       Witold Krzastek
+//  Created:      MAR 1, 2005
+//  Description:  ATAE InterfaceTypes definitions
+//
+//  Copyright Sabre 2005
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+================================================================== 
+-->
+<!-- NOTE: Some of the types defined in this file will be moved to CommonTyps.xsd file -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="CommonTypes.xsd"/>
+	<!-- *********************************************
+	  Number of seats requested 
+	***********************************************-->
+	<xs:complexType name="SeatsRequested">
+		<xs:annotation>
+			<xs:documentation>Number of seats requested</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="NBR" use="required">
+			<xs:annotation>
+				<xs:documentation>The attribute holds the number of passengers requested</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--*********************************************************
+
+    Billing Info Type
+
+    ********************************************************-->
+	<xs:complexType name="BILType">
+		<xs:annotation>
+			<xs:documentation>Billing Info Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="A20" type="PseudoCityCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Pseudo City Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q03" type="xs:short" use="required">
+			<xs:annotation>
+				<xs:documentation>User Station</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q02" type="xs:short" use="required">
+			<xs:annotation>
+				<xs:documentation>User Branch</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AE0" type="PartitionIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>Partition ID</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AD0" type="LnIATAType" use="required">
+			<xs:annotation>
+				<xs:documentation>User Set Address</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A22" type="PseudoCityCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>AAA City</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AA0" type="AgentFunctionType" use="required">
+			<xs:annotation>
+				<xs:documentation>Agent Sine In</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C20" type="ServiceNameType" use="required">
+			<xs:annotation>
+				<xs:documentation>Parent service name</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C21" type="ServiceNameType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Client service name)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A70" type="ActionCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Action Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C00" type="xs:long" use="optional">
+			<xs:annotation>
+				<xs:documentation>Parent transaction ID</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C01" type="xs:long" use="optional">
+			<xs:annotation>
+				<xs:documentation>Client transaction ID</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="L00" type="xs:long" use="optional">
+			<xs:annotation>
+				<xs:documentation>(Deprecated - use C01) Client transaction ID</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MHD" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>MHD indicator - true if agent has MHDAAA keyword in EPR</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--*********************************************************
+
+    Star Alliance - RAS info 
+
+    ********************************************************-->
+	<xs:complexType name="RDOType">
+	    <xs:annotation>
+	      <xs:documentation>
+	        Star Alliance Membership - Redemption, Availability and Sell
+	      </xs:documentation>
+	    </xs:annotation>
+	    <xs:attribute name="CLS" use="required">
+	      <xs:annotation>
+	        <xs:documentation>
+	          Group class
+	        </xs:documentation>
+	      </xs:annotation>
+	      <xs:simpleType>
+	        <xs:restriction base="xs:string">
+	          <xs:enumeration value="A"/>
+	          <xs:enumeration value="G"/>
+	        </xs:restriction>
+	      </xs:simpleType>
+	    </xs:attribute>
+	    <xs:attribute name="SSC" use="required">
+	      <xs:annotation>
+	        <xs:documentation>
+	          Secondary screen code
+	        </xs:documentation>
+	      </xs:annotation>
+	      <xs:simpleType>
+	        <xs:restriction base="xs:string">
+	          <xs:pattern value="[a-zA-Z]{3}"/>
+	        </xs:restriction>
+	      </xs:simpleType>
+	    </xs:attribute>
+	  </xs:complexType>
+	<!--*********************************************************
+
+    Agent Info Type
+
+    ********************************************************-->
+	<xs:complexType name="AGIType">
+		<xs:annotation>
+			<xs:documentation>Agent Info Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="A10" type="CityCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Agent City Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A11" type="PseudoCityCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>City code part of Office Accounting Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="B11" type="AccountCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Accounting Code part of Office Accounting Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C11" type="OfficeCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Office Code part of Office Accounting Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D11" type="TicketingCarrierType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Default Ticketing Carrier for Office Accounting Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A20" type="PseudoCityCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Travel Agency Pesudo City Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A21" type="PseudoCityCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Main Travel Agency Pesudo City Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AB0" type="ARCNumberType" use="optional">
+			<xs:annotation>
+				<xs:documentation>ARC/IATA Travel Agency Registration Number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AB1" type="ARCNumberType" use="optional">
+			<xs:annotation>
+				<xs:documentation>ARC/IATA Home Travel Agency Registration Number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="B00" type="AirlineCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>CRS partition code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A80" type="AgentDepartmentCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Airline Dept Code - Today in Sabre this is a city code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N0G" type="AnyCharType" use="required">
+			<xs:annotation>
+				<xs:documentation>Agent duty code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A90" type="AgentFunctionType" use="required">
+			<xs:annotation>
+				<xs:documentation>Agent function code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="C40" type="CurrencyCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Currency code for the agent</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q01" type="xs:short" use="required">
+			<xs:annotation>
+				<xs:documentation>CoHost Identifier</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--*********************************************************
+
+    Request Info Type & Request Metadata
+
+    ********************************************************-->
+	<xs:complexType name="REQType">
+		<xs:annotation>
+			<xs:documentation>Request Info Type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0" maxOccurs="1">
+			<xs:sequence>
+				<xs:element name="MET" type="METAType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Request metadata</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:sequence>
+				<xs:element name="CTS" type="CTSControlType" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>CTS call control instructions</xs:documentation>
+					</xs:annotation>			
+				</xs:element>
+			</xs:sequence>
+			<xs:sequence>
+				<xs:element name="POC" type="POCType" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Point Of Commencement information</xs:documentation>
+					</xs:annotation>			
+				</xs:element>
+			</xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="B30" type="BookingCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Booking class requested as part of class specific CPA entry</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="P30" type="BoolTFType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Skip DCA cache update indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2Q" type="xs:long" use="optional">
+			<xs:annotation>
+				<xs:documentation>Number of CTS calls made by ASv2 when processing the request</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="JDP" type="JourneyDataPresenceType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Journey Data Presence Indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="METAType">
+		<xs:annotation>
+			<xs:documentation>Request Metadata</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="KEY" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Key</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="VAL" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Value</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CTSControlType">
+		<xs:annotation>
+			<xs:documentation>CTS call control instructions</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Q2Q" type="xs:int" use="optional">
+			<xs:annotation>
+				<xs:documentation>Number of calls to CTS already made as part of some larger logical transaction</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="P11" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>Enable CTS bypass logic if Q2Q exceeds ASv2 configured limit</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="POCType">
+		<xs:annotation>
+			<xs:documentation>Point Of Commencement information</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="A03" type="AirportCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Point of Commencement origin</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D01" type="DateYYYYMMDDType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Point of Commencement departure date</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D02" type="TimeHHMMType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Point of Commencement departure time</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--*********************************************************
+
+    ATAE Statistics Type
+
+    ********************************************************-->
+	<xs:complexType name="STAType">
+		<xs:annotation>
+			<xs:documentation>Statistics</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Q2E" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Number of Ext Status Request</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2F" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Number of Ext DCA Request</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2G" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Number of Ext Hosted Avail Request</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2H" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Number of Flights Requested DCA</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2I" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Number of Flights Requested Hosted</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2J" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Number of Flights Statused by AVS</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2K" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Number of Flights Statused by Cache</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2L" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Number of Flights Failed via DCA</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2M" type="xs:long">
+			<xs:annotation>
+				<xs:documentation>Number of Cache Hits Status</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2N" type="xs:long">
+			<xs:annotation>
+				<xs:documentation>Number of DB Reads Status</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2O" type="xs:long">
+			<xs:annotation>
+				<xs:documentation>microsecs Elapsed Waiting on PSS</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2P" type="xs:long">
+			<xs:annotation>
+				<xs:documentation>microsecs Elapsed Waiting on CTS</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2Q" type="xs:long">
+			<xs:annotation>
+				<xs:documentation>microsecs Elapsed Waiting on AM</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--*********************************************************
+
+    Journey Data specific types
+
+    ********************************************************-->
+	<xs:simpleType name="JoruneyDataNameType">
+		<xs:annotation>
+			<xs:documentation> Name Type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="70"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="JourneyDataPresenceType">
+		<xs:annotation>
+			<xs:documentation>Journey Data Presence Indicator</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y">
+				<xs:annotation>
+					<xs:documentation>Yes - Journey Data Present</xs:documentation>
+				</xs:annotation> 
+			</xs:enumeration>
+			<xs:enumeration value="N">
+				<xs:annotation>
+					<xs:documentation>No - Journey Data Not Present</xs:documentation>
+				</xs:annotation> 
+			</xs:enumeration>
+			<xs:enumeration value="M">
+				<xs:annotation>
+					<xs:documentation>Maybe - Journey Data May Be Present</xs:documentation>
+				</xs:annotation> 
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="JourneyDataSourceType">
+		<xs:annotation>
+			<xs:documentation>Journey Data Source</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+				<xs:enumeration value="C">
+					<xs:annotation>
+					  <xs:documentation>Cached</xs:documentation>
+					</xs:annotation> 
+				</xs:enumeration>
+				<xs:enumeration value="S">
+					<xs:annotation>
+						<xs:documentation>Source</xs:documentation>
+					</xs:annotation> 
+				</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FreqFlyerNbrType">
+		<xs:annotation>
+			<xs:documentation> Frequent Flyer Number Type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="25"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AgencyIATANumber">
+		<xs:annotation>
+			<xs:documentation> Agency IATA Number</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="14"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PNRRecordLocatorType">
+		<xs:annotation>
+			<xs:documentation>PNR Record Locator ID</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PaxQualifierType">
+		<xs:annotation>
+			<xs:documentation> Passenger Qualifier Type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SegmentActionStatusType">
+		<xs:annotation>
+			<xs:documentation>Segment Action Status Code</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BoolBAType">
+		<xs:annotation>
+			<xs:documentation>Before (B) or After (A) Type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:pattern value="[BA]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ElectronicTicketingIndicatorType">
+		<xs:annotation>
+			<xs:documentation> Electronic Ticketing Indicator</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ReservationDataType">
+		<xs:annotation>
+			<xs:documentation>Reservation Data</xs:documentation>
+		</xs:annotation>
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="RLI" type="RecordLocatorType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Record Locator List</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PAX" type="PNRPaxDataType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Passanger Data Items List</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PII" type="PaxItinItemType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Passenger Itinerary Items List</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CFI" type="CorporateFreqFlyerType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Corporate Frequent Flyer Items List</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OCI" type="OwnerCreatorType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Owner Creator Items List</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+    <xs:attribute name="JDS" type="JourneyDataSourceType" use="optional">
+      <xs:annotation>
+        <xs:documentation>Journey Data Source</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="RecordLocatorType">
+		<xs:annotation>
+			<xs:documentation>Record Locator Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="B00" type="AirlineCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Carrier Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S15" type="PNRRecordLocatorType" use="required">
+			<xs:annotation>
+				<xs:documentation>PNR Record Locator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PNRPaxDataType">
+		<xs:annotation>
+			<xs:documentation> PNR Passenger Data Type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TVL" type="TravelerType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>List of Travelers with same last name</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FQF" type="PNRFreqFlyerType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Frequent Flyer Items List</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="S16" type="PaxQualifierType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Qualifier, 'CP' for group</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S17" type="JoruneyDataNameType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Traveller's Last Name</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TravelerType">
+		<xs:annotation>
+			<xs:documentation> Traveler Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Q2S" type="xs:short" use="optional">
+			<xs:annotation>
+				<xs:documentation>Traveler's reference number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S16" type="PaxQualifierType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Traveler's qualifier</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N0T" type="AlphaNumCharType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Traveler with infant indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S18" type="JoruneyDataNameType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Traveler's given name</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S19" type="JoruneyDataNameType">
+			<xs:annotation>
+				<xs:documentation>Traveler's other name (e.g. middle name)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PNRFreqFlyerType">
+		<xs:annotation>
+			<xs:documentation>PNR Frequent Flyer Type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PFF" type="JourneyFreqFlyerType">
+				<xs:annotation>
+					<xs:documentation>Journey Data Frequent Flyer Item </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PCC" type="AirlineCodeType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>List of Partner Carriers Codes</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="JourneyFreqFlyerType">
+		<xs:annotation>
+			<xs:documentation> Journey Frequent Flyer Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Q2S" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Traveller's reference number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N0U" type="AlphaNumCharType">
+			<xs:annotation>
+				<xs:documentation>VIP Type, Platinum, Gold, etc.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="B00" type="AirlineCodeType">
+			<xs:annotation>
+				<xs:documentation>Carrier code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S1A" type="FreqFlyerNbrType">
+			<xs:annotation>
+				<xs:documentation>Frequent Flyer number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PaxItinItemType">
+		<xs:annotation>
+			<xs:documentation>Itinerary Item Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="B00" type="AirlineCodeType">
+			<xs:annotation>
+				<xs:documentation>Carrier code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q0B" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>flight number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="B30" type="BookingCodeType">
+			<xs:annotation>
+				<xs:documentation>class of service</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D01" type="DateYYYY-MM-DDType">
+			<xs:annotation>
+				<xs:documentation>Departure date</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D31" type="xs:unsignedShort">
+			<xs:annotation>
+				<xs:documentation>Departure Time</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A01" type="AirlineCodeType">
+			<xs:annotation>
+				<xs:documentation>Origin airport</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D02" type="DateYYYY-MM-DDType">
+			<xs:annotation>
+				<xs:documentation>Arrival date</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D32" type="xs:unsignedShort">
+			<xs:annotation>
+				<xs:documentation>Arrival Time</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A02" type="AirlineCodeType">
+			<xs:annotation>
+				<xs:documentation>Destination airport</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S1B" type="SegmentActionStatusType">
+			<xs:annotation>
+				<xs:documentation>Segment action status code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2T" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Number of party</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N0W" type="BoolBAType">
+			<xs:annotation>
+				<xs:documentation>before 'B' / after 'A'</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N0X" type="AlphaNumCharType">
+			<xs:annotation>
+				<xs:documentation>Married Connection Indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2U" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Married Connection Sequence Indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2W" type="xs:short">
+			<xs:annotation>
+				<xs:documentation>Married Connection Group Indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="N0Y" type="AlphaNumCharType">
+			<xs:annotation>
+				<xs:documentation>Polling Indicator (P/N/J)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S1C" type="ElectronicTicketingIndicatorType">
+			<xs:annotation>
+				<xs:documentation>Electronic Ticketing Indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CorporateFreqFlyerType">
+		<xs:annotation>
+			<xs:documentation>Corporate Frequent Flyer Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="B00" type="AirlineCodeType">
+			<xs:annotation>
+				<xs:documentation>Carrier Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S1A" type="FreqFlyerNbrType">
+			<xs:annotation>
+				<xs:documentation>Frequent Flyer number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="OwnerCreatorType">
+		<xs:annotation>
+			<xs:documentation> Owner Creator Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="N0Z" type="AlphaNumCharType">
+			<xs:annotation>
+				<xs:documentation>Owner/Creator Indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S1D" type="AgencyIATANumber">
+			<xs:annotation>
+				<xs:documentation>Owner/Creator IATA number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A20" type="PseudoCityCodeType">
+			<xs:annotation>
+				<xs:documentation>Owner/Create Pseudo City Code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A10" type="AirportCodeType">
+			<xs:annotation>
+				<xs:documentation>Owner/Creator City</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A40" type="CountryCodeType">
+			<xs:annotation>
+				<xs:documentation>Owner/Creator  Country</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AR0" type="AgentFunctionType">
+			<xs:annotation>
+				<xs:documentation>Owner/Creator CRS</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--*********************************************************
+
+    ATAE Interface specific types
+
+    ********************************************************-->
+	<xs:simpleType name="VersionType">
+		<xs:annotation>
+			<xs:documentation>Version of the interface: '0' - Minimal - standard ATAE interface, 1- including scoring</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ValidityIndicatorType">
+		<xs:annotation>
+			<xs:documentation>ValidityIndicatorType is an enumaration consisting of: Invalid (0), Valid (1), ValidNotRequired (2), DCARequired (3)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:enumeration value="0">
+				<xs:annotation>
+					<xs:documentation>Invalid</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Valid</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>ValidNotRequired</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>DCARequired</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Scoring">
+		<xs:annotation>
+			<xs:documentation>Scoring for segment</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ClassCodesListType">
+		<xs:annotation>
+			<xs:documentation>Class Codes Collection</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{0,26}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PollingIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Polling Indicator Type: Y - 100% poll, S - selective poll, N - no poll</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:pattern value="[YSN]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AVSPollingIndicatorType">
+		<xs:annotation>
+			<xs:documentation>AVS Polling Indicator Type: Y - poll, N - no poll, space - no AVS data</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:pattern value="[YN ]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="DiagnosticRequestType">
+		<xs:annotation>
+			<xs:documentation>Diagnostic Request</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Q0A" type="xs:short" use="required">
+			<xs:annotation>
+				<xs:documentation>Diagnostics number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StatusSimulatorType">
+		<xs:annotation>
+			<xs:documentation>StatusSimulatorType</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="PTY" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Type of processing to be applied</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CMD" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>Processing argument</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SegmentReferenceType">
+		<xs:annotation>
+			<xs:documentation>Segment Reference Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Q2X" type="xs:nonNegativeInteger" use="required">
+			<xs:annotation>
+				<xs:documentation>Availability Segment Reference</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2Y" type="xs:short" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>Date Adjustment</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2Z" type="ValidityIndicatorType" use="optional" default="1">
+			<xs:annotation>
+				<xs:documentation>Validity Indicator for the Segment</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

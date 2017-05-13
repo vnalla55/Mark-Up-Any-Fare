@@ -1,0 +1,25 @@
+name: IndustryPricingAppl
+namespace: tse
+package: DBAccess
+
+factoryAggregateWithCompare:  CreateDate:     DateTime createDate()
+factoryAggregate:             EffectiveDate:  DateTime effDate()
+factoryAggregate:             ExpireDate:     DateTime expireDate()
+factoryAggregate:             DiscDate:       DateTime discDate()
+
+section: Attributes
+  scalarWithCompare:  carrier:        CarrierCode     carrier()
+  scalar:             globalDir:      GlobalDirection globalDir()
+  scalar:             primePricAppl:  Indicator       primePricingAppl()
+  scalar:             minfareAppl:    Indicator       minimumFareAppl()
+  scalarWithCompare:  orderNo:        int             orderNo()
+  scalar:             directionality: Directionality  directionality()
+endsection
+
+factoryAggregate: LocKey1: LocKey loc1()
+factoryAggregate: LocKey2: LocKey loc2()
+
+NameString: "IndPrAppl_"
+NameField:  carrier()
+NameString: "-"
+NameField:  orderNo()

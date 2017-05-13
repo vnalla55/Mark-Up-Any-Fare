@@ -1,0 +1,19 @@
+<Currency>
+     <expireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <effDate year=2006 month=7 day=13 hour=0 minute=0 second=0/>
+     <discDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <createDate year=2006 month=7 day=13 hour=10 minute=36 second=56/>
+     <Attributes
+          cur="BRL"
+          domRoundingFactor=0
+          roundingFactorNoDec=0
+          noDec=2
+          curNo=76
+          curName="REAL"
+          nucRoundingProcessNo=""
+          controllingEntityDesc="BRAZIL"
+          taxOverrideRoundingUnitNoDec=0
+          taxOverrideRoundingUnit=-1
+          taxOverrideRoundingRule=3
+     />
+</Currency>

@@ -1,0 +1,29 @@
+<CarrierPreference>
+  <ExpirationDate year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+  <EffectiveDate year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+  <DiscountDate year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+  <FirstTravelDate year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+  <LastTravelDate year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+
+  <Misc memoNo=1
+        freebaggageexempt="N"
+        availabilityApplyrul2st=" "
+        availabilityApplyrul3st=" "
+        bypassosc=" "
+        bypassrsc=" "
+        applysamenuctort=" "
+        openjawdefinition=" "
+        applyrtevaltoterminalpt=" "
+        noApplydrvexceptus=" "
+        applyleastRestrStOptopu=" "
+        applyleastRestrtrnsftopu=" "
+        noApplycombtag1and3=" "
+        applysingleaddonconstr=" "
+        applyspecoveraddon=" "
+        noApplynigeriaCuradj=" "
+        carrier="AA"
+        carrierbasenation="US"
+        description="Default AA preference." />
+
+</CarrierPreference>
+

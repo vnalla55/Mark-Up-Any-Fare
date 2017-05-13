@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="BY"
+          isonumericCode=112
+          subArea="21"
+          area="2"
+          isoalphaCode="BLR"
+          primeCur="BYR"
+          alternateCur="EUR"
+          conversionCur=""
+          description="BELARUS"
+     />
+     <CreateDate year=2009 month=12 day=21 hour=9 minute=4 second=10/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2009 month=12 day=21 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

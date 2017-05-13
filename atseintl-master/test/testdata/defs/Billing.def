@@ -1,0 +1,21 @@
+name: Billing
+namespace: tse
+package: DataModel
+
+section: User
+  scalar: pseudoCityCode:       std::string userPseudoCityCode()
+  scalar: station:              std::string userStation()
+  scalar: branch:               std::string userBranch()
+  scalar: setAddress:           std::string userSetAddress()
+endsection
+
+section: Attributes
+  scalar: partitionID:          std::string partitionID()
+  scalar: serviceName:          std::string serviceName()
+  scalar: clientServiceName:    std::string clientServiceName()
+  scalar: aaaCity:              std::string aaaCity()
+  scalar: aaaSine:              std::string aaaSine()
+  scalar: actionCode:           std::string actionCode()
+  scalar: transactionID:        uint64_t    transactionID()
+  scalar: clientTransactionID:  uint64_t    clientTransactionID()
+endsection

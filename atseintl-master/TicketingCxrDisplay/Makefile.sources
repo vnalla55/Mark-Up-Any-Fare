@@ -1,0 +1,2 @@
+TICKETING_CXR_DISP_SOURCES := \
+    TicketingCxrDisplay.cpp

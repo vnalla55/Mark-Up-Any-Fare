@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# ensure we are running within the same directory
+# from which we are running
+cd $(dirname $(which ${0}))
+
+. ./env.vars
+
+cd ${APPDIR}
+
+app_stat=""
+grep_result=""
+
+while [ -z "${grep_result}" ] ; do
+  sleep 2
+  app_stat=$(./appstat.sh)
+  grep_result=$(echo ${app_stat} | grep RUNNING)
+done
+
+echo ${app_stat}

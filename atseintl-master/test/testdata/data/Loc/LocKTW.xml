@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="KTW"
+          city=""
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="PL"
+          state=""
+     />
+     <Position
+          latdegrees=50
+          latminutes=29
+          latseconds=0
+          lngdegrees=19
+          lngminutes=5
+          lngseconds=0
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="PL01"
+          description="KATOWICE"
+     />
+</Loc>

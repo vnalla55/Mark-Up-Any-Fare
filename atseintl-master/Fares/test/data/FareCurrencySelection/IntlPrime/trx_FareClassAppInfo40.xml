@@ -1,0 +1,32 @@
+<FareClassAppInfo>
+     <EffectiveDate year=2000 month=8 day=6 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Location
+          location1Type="N"
+          location1="GB"
+          location2Type="A"
+          location2="3"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="BA"
+          ruleTariff=4
+          ruleNumber="2035"
+          footnote1=""
+          footnote2=""
+          fareClass="W2BA"
+          MCN=4739619
+          textTBLItemNo=0
+          owrt="2"
+          routingAppl=" "
+          routingNumber=""
+          fareType="ER"
+          seasonType=" "
+          dowType=" "
+          pricingCatType="N"
+          displayCatType="N"
+          seqNo=100000
+          unavailTag=""
+     />
+     <FareClassAppSegInfo file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_FareClassAppSegInfo40.xml"/>
+</FareClassAppInfo>

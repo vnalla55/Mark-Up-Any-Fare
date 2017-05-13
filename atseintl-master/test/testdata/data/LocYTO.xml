@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="YTO"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="CA"
+          state="CAON"
+     />
+     <Position
+          latdegrees=43
+          latminutes=40
+          latseconds=47
+          lngdegrees=79
+          lngminutes=37
+          lngseconds=30
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2002 month=2 day=6 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="t"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="CA03"
+          description="TORONTO       ON"
+     />
+</Loc>

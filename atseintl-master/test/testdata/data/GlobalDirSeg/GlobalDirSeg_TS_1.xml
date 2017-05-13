@@ -1,0 +1,29 @@
+<GlobalDirSeg>
+     <Data
+          globalDir="TS"
+          directionality="B"
+          loc1Type="NATION"
+          loc1="RU"
+          loc2Type="IATA_AREA"
+          loc2="3"
+          allTvlOnCarrier=""
+          flightTrackingInd="T"
+          mustBeViaLocInd=" "
+          mustBeViaLocType="ZONE"
+          mustBeViaLoc="1025"
+          viaInterLoc1Type="SUBAREA"
+          viaInterLoc1="21"
+          viaInterLoc2Type="ZONE"
+          viaInterLoc2="1011"
+          mustNotBeViaLocInd=" "
+          mustNotBeViaLocType="IATA_AREA"
+          mustNotBeViaLoc="1"
+          notViaInterLoc1Type="UNKNOWN_LOC"
+          notViaInterLoc1=""
+          notViaInterLoc2Type="UNKNOWN_LOC"
+          notViaInterLoc2=""
+     />
+     <CreateDate year=1980 month=1 day=1 hour=0 minute=0 second=0/>
+     <SaleEffectiveDate year=2004 month=2 day=18 hour=0 minute=0 second=0/>
+     <SaleDiscDate year=2169 month=1 day=1 hour=1 minute=0 second=0/>
+</GlobalDirSeg>

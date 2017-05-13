@@ -1,0 +1,22 @@
+#! /bin/csh
+
+# Remove VOB elements
+
+if ( "$1" == "" ) then
+	echo "Syntax: ct_rm <VOB elements>"
+	exit 1
+endif
+
+foreach FILE ($*)
+  set DIR  = `dirname  $FILE`
+  set FILE = `basename $FILE`
+
+  # checkout dir
+  cleartool checkout -nc $DIR
+
+  # remove the element
+  cleartool rm $DIR/$FILE
+
+  cleartool checkin -nc $DIR
+end
+

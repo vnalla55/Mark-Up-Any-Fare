@@ -1,0 +1,11 @@
+#! /bin/csh
+
+# List version information (including current version and branches)
+
+if ( "$1" == "" ) then
+	echo "Syntax: ct_ls <vob elements>"
+	exit 1
+endif
+
+cleartool lsvtree $*
+

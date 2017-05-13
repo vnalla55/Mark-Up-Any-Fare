@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Mohammed Azam (EDS/SABRE ACCT) -->
+<xsd:schema xmlns:ota2="http://opentravel.org/common/v02" xmlns:ota2msg="http://opentravel.org/common/message/v02" xmlns:otm="http://www.OpenTravel.org/ns/OTA2/AppInfo_v01_00" xmlns:stl2="http://services.sabre.com/STL/v02" xmlns:vc="http://stl.sabre.com/AirPricing/validating_cxr/v0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://stl.sabre.com/AirPricing/validating_cxr/v0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+	<xsd:annotation>
+		<xsd:appinfo>
+			<otm:Library>
+				<otm:ProjectName>ValidatingCxrCommon.otp</otm:ProjectName>
+				<otm:LibraryName>ValidatingCxrCommon</otm:LibraryName>
+				<otm:LibraryVersion>0.0.0</otm:LibraryVersion>
+				<otm:SourceFile>/ValidatingCxrCommon_0_0_0.otm</otm:SourceFile>
+				<otm:CompilerVersion>3.1.rc2</otm:CompilerVersion>
+				<otm:CompileDate>2014-04-03T12:36:22.823-05:00</otm:CompileDate>
+			</otm:Library>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:import namespace="http://opentravel.org/common/message/v02" schemaLocation="built-ins/OTA2_Message_v2.0.0.xsd"/>
+	<xsd:import namespace="http://opentravel.org/common/v02" schemaLocation="built-ins/OTA2_BuiltIns_v2.0.0.xsd"/>
+	<xsd:import namespace="http://services.sabre.com/STL/v02" schemaLocation="built-ins/STL2_BuiltIn_Model.xsd"/>
+	<xsd:import namespace="http://www.OpenTravel.org/ns/OTA2/AppInfo_v01_00" schemaLocation="built-ins/OTA2_AppInfo_v1.0.0.xsd"/>
+	<xsd:element name="XMLDiagnostic" type="vc:XMLDiagnostic"/>
+	<xsd:complexType name="XMLDiagnostic">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">XMLDiagnostic</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Any" type="ota2:String_Long" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="BillingInformation" type="vc:BillingInformation"/>
+	<xsd:complexType name="BillingInformation">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">BillingInformation</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:attribute name="actionCode" type="xsd:string" use="required"/>
+		<xsd:attribute name="businessFunction" type="xsd:string" use="optional"/>
+		<xsd:attribute name="parentServiceName" type="xsd:string" use="optional"/>
+		<xsd:attribute name="parentTransactionID" type="xsd:string" use="optional"/>
+		<xsd:attribute name="sourceOfRequest" type="xsd:string" use="optional"/>
+		<xsd:attribute name="userBranch" type="xsd:string" use="optional"/>
+		<xsd:attribute name="userSetAddress" type="xsd:string" use="optional"/>
+		<xsd:attribute name="userStation" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	<xsd:element name="ForceRouting" type="vc:ForceRouting"/>
+	<xsd:complexType name="ForceRouting">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">ForceRouting</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:attribute name="Value1" type="xsd:string" use="optional"/>
+		<xsd:attribute name="Value2" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	<xsd:simpleType name="Option">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="Simple">Option</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:element name="RequestedDiagnostic" type="vc:RequestedDiagnostic"/>
+	<xsd:complexType name="RequestedDiagnostic">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">RequestedDiagnostic</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Option" type="vc:Option" minOccurs="0" maxOccurs="10"/>
+		</xsd:sequence>
+		<xsd:attribute name="number" type="xsd:positiveInteger" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="Diagnostic" type="vc:Diagnostic"/>
+	<xsd:complexType name="Diagnostic">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">Diagnostic</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="vc:ForceRouting" minOccurs="0"/>
+			<xsd:element ref="vc:RequestedDiagnostic" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="POS" type="vc:POS"/>
+	<xsd:complexType name="POS">
+		<xsd:annotation>
+			<xsd:documentation source="Description">Locations:
+				Psuedo - Agency PCC or Agent AAA 
+				Actual ? where the transaction is initiated
+				Home ? assigned to the agent account</xsd:documentation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">POS</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Actual" type="vc:POS_Location" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Description">Actual is where the transaction is initiated.</xsd:documentation>
+					<xsd:appinfo>
+						<otm:Equivalent context="STL2">Actual</otm:Equivalent>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Home" type="vc:POS_Location" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Description">Home is assigned to the agent account.</xsd:documentation>
+					<xsd:appinfo>
+						<otm:Equivalent context="STL2">Home</otm:Equivalent>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Pcc" type="stl2:Code_PseudoCity">
+				<xsd:annotation>
+					<xsd:documentation source="Description">Psuedo is either Agency PCC or Agent AAA. Required for
+						most source code is provided.</xsd:documentation>
+					<xsd:appinfo>
+						<otm:Equivalent context="STL2">Pseudo</otm:Equivalent>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="duty" type="stl2:Enum_CodeDuty" use="optional">
+			<xsd:annotation>
+				<xsd:documentation source="Description">An authority code assigned to a requestor.</xsd:documentation>
+				<xsd:appinfo>
+					<otm:Equivalent context="STL2">DutyCode</otm:Equivalent>
+				</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="lniata" type="stl2:Lniata" use="optional">
+			<xsd:annotation>
+				<xsd:documentation source="Description">LNIATA of the Console the agent signed into.</xsd:documentation>
+				<xsd:appinfo>
+					<otm:Equivalent context="STL2">Lniata</otm:Equivalent>
+				</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="sine" type="stl2:AgentSine" use="optional">
+			<xsd:annotation>
+				<xsd:documentation source="Description">Identifies the agent or party within the requesting entity.</xsd:documentation>
+				<xsd:appinfo>
+					<otm:Equivalent context="STL2">Sine</otm:Equivalent>
+				</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="multiHost" type="stl2:Code_Airline" use="required">
+			<xsd:annotation>
+				<xsd:documentation source="Description">Airline partition for multi-host source locations.</xsd:documentation>
+				<xsd:appinfo>
+					<otm:Equivalent context="STL2">MultiHost</otm:Equivalent>
+				</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="company" type="stl2:Code_Agency" use="optional">
+			<xsd:annotation>
+				<xsd:documentation source="Description">The IATA assigned code for the Agency or Airine</xsd:documentation>
+				<xsd:appinfo>
+					<otm:Equivalent context="STL2">Company</otm:Equivalent>
+				</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="POS_Location">
+		<xsd:annotation>
+			<xsd:documentation source="Description">A location for an airline or agency agent. Can be used
+				to describe the actual, pseudo or home location.</xsd:documentation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="ValueWithAttributes">POS_Location</otm:OTA2Entity>
+				<otm:Equivalent context="STL2">Location.POS</otm:Equivalent>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="ota2:Empty">
+				<xsd:attribute name="country" type="vc:Code_V2_Country" use="required">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<otm:Equivalent context="STL2">country</otm:Equivalent>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="province" type="stl2:Code_StateProv" use="optional">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<otm:Equivalent context="STL2">province</otm:Equivalent>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="city" type="stl2:Code_City" use="optional">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<otm:Equivalent context="STL2"/>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="number" type="stl2:Number_AgencyOrStation" use="optional">
+					<xsd:annotation>
+						<xsd:documentation source="Description">agent station number or agency iata number</xsd:documentation>
+						<xsd:appinfo>
+							<otm:Equivalent context="STL2">number</otm:Equivalent>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="Code_V2_Country">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="Simple">Code_V2_Country</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[a-zA-Z]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="TicketDate" type="vc:TicketDate"/>
+	<xsd:simpleType name="MessageType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="EnumerationClosed">MessageType</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="General">
+				<xsd:annotation>
+					<xsd:documentation source="Description">Function messages (include functional error conditions)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Diagnostic">
+				<xsd:annotation>
+					<xsd:documentation source="Description">Diagnostic respone message</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Error">
+				<xsd:annotation>
+					<xsd:documentation source="Description">System Error</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="Message">
+		<xsd:annotation>
+			<xsd:documentation source="Description">Validation message, functional errors or system errors</xsd:documentation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="ValueWithAttributes">Message</otm:OTA2Entity>
+				<otm:Example context="vc1">VALIDATING CARRIER - AA</otm:Example>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="code" type="xsd:positiveInteger" use="required"/>
+				<xsd:attribute name="type" type="vc:MessageType" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="TicketDate">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">TicketDate</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:attribute name="requestDate" type="xsd:date" use="optional"/>
+		<xsd:attribute name="requestTimeOfDay" type="xsd:int" use="optional"/>
+	</xsd:complexType>
+	<xsd:simpleType name="IATLevel">
+		<xsd:annotation>
+			<xsd:documentation source="Description">Interline agreement level</xsd:documentation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="EnumerationClosed">IATLevel</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="STD"/>
+			<xsd:enumeration value="3PT"/>
+			<xsd:enumeration value="PPR"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TicketType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="EnumerationClosed">TicketType</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ETKTPREF"/>
+			<xsd:enumeration value="ETKTREQ"/>
+			<xsd:enumeration value="PTKTPREF"/>
+			<xsd:enumeration value="PTKTREQ"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

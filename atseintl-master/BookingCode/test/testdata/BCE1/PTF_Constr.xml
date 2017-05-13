@@ -1,0 +1,33 @@
+<PaxTypeFare>
+     <Status value="FareByRule"/>
+     <ActualPaxType file="testdata/BCE1/PTF_Constr_PaxType0.xml"/>
+     <FareClassAppInfo file="testdata/BCE1/PTF_Constr_FareClassAppInfo0.xml"/>
+     <FareClassAppSegInfo file="testdata/BCE1/PTF_Constr_FareClassAppSegInfo0.xml"/>
+     <FareTypeMatrix
+          cabin="9"
+          fareTypeDesignator=0
+          fareTypeApplication="S"
+     />
+     <FareMarket file="testdata/BCE1/PTF_Constr_FMarket_LUXAUH-EY.xml"/>
+     <Fare file="testdata/BCE1/PTF_Constr_Fare1.xml"/>
+     <PaxTypeFareRuleData
+          categoryNumber=7
+          isFareRule="t">
+          <PaxTypeFareRuleData file="testdata/BCE1/PTF_Constr_PaxTypeFareRuleData4.xml"/>
+     </PaxTypeFareRuleData>
+     <PaxTypeFareRuleData
+          categoryNumber=16
+          isFareRule="t">
+          <PaxTypeFareRuleData file="testdata/BCE1/PTF_Constr_PaxTypeFareRuleData5.xml"/>
+     </PaxTypeFareRuleData>
+     <PaxTypeFareRuleData
+          categoryNumber=25
+          isFareRule="t">
+          <FBRPaxTypeFareRuleData file="testdata/BCE1/PTF_Constr_FBRPaxTypeFareRuleData0.xml"/>
+     </PaxTypeFareRuleData>
+     <PaxTypeFareRuleData
+          categoryNumber=35
+          isFareRule="t">
+          <NegPaxTypeFareRuleData file="testdata/BCE1/PTF_Constr_NegPaxTypeFareRuleData0.xml"/>
+     </PaxTypeFareRuleData>
+</PaxTypeFare>

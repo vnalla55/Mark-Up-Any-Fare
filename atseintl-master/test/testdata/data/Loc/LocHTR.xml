@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="HTR"
+          city=""
+          subarea="31"
+          area="3"
+          transtype="P"
+          nation="JP"
+          state=""
+     />
+     <Position
+          latdegrees=24
+          latminutes=3
+          latseconds=0
+          lngdegrees=123
+          lngminutes=47
+          lngseconds=0
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="JP01"
+          description="HATERUMA"
+     />
+</Loc>

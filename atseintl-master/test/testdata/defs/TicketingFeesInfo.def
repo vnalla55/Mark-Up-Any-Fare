@@ -1,0 +1,52 @@
+name: TicketingFeesInfo
+namespace: tse
+package: DBAccess
+
+factoryAggregate: CreateDate:     DateTime createDate()
+factoryAggregate: ExpireDate:     DateTime expireDate()
+factoryAggregate: EffectiveDate:  DateTime effDate()
+factoryAggregate: DiscDate:       DateTime discDate()
+
+factoryAggregate: loc1:         LocKey loc1()
+factoryAggregate: loc2:         LocKey loc2()
+factoryAggregate: locWhlWithin: LocKey locWhlWithin()
+factoryAggregate: locVia:       LocKey locVia()
+
+# no setter for the next two fields.
+#factoryAggregate: TicketEffectiveDate DateTime ticketEffDate()
+#factoryAggregate: TicketDiscDate      DateTime ticketDiscDate()
+
+section: Attributes
+  scalar: publicPrivateInd:         Indicator           publicPrivateInd()
+  scalar: journeyInd:               Indicator           journeyInd()
+  scalar: fareInd:                  Indicator           fareInd()
+  scalar: refundReissue:            Indicator           refundReissue()
+  scalar: commission:               Indicator           commission()
+  scalar: interline:                Indicator           interline()
+  scalar: noCharge:                 Indicator           noCharge()
+  scalar: taxInclude:               Indicator           taxInclude()
+  scalar: vendor:                   VendorCode          vendor()
+  scalar: carrier:                  CarrierCode         carrier()
+  scalar: primaryFareCarrier:       CarrierCode         primaryFareCarrier()
+  scalar: serviceTypeCode:          ServiceTypeCode     serviceTypeCode()
+  scalar: serviceSubTypeCode:       ServiceSubTypeCode  serviceSubTypeCode()
+  scalar: paxType:                  PaxTypeCode         paxType()
+  scalar: fareBasis:                FareBasisCode       fareBasis()
+  scalar: cur:                      CurrencyCode        cur()
+  scalar: maxFeeCur:                CurrencyCode        maxFeeCur()
+  scalar: fopBinNumber:             FopBinNumber        fopBinNumber()
+  scalar: seqNo:                    int                 seqNo()
+  scalar: svcFeesAccCodeTblItemNo:  int                 svcFeesAccCodeTblItemNo()
+  scalar: svcFeesTktDsgnTblItemNo:  int                 svcFeesTktDsgnTblItemNo()
+  scalar: svcFeesSecurityTblItemNo: int                 svcFeesSecurityTblItemNo()
+  scalar: noDec:                    int                 noDec()
+  scalar: feePercentNoDec:          int                 feePercentNoDec()
+  scalar: maxFeeNoDec:              int                 maxFeeNoDec()
+  scalar: feePercent:               Percent             feePercent()
+  scalar: loc1ZoneItemNo:           LocCode             loc1ZoneItemNo()
+  scalar: loc2ZoneItemNo:           LocCode             loc2ZoneItemNo()
+  scalar: locZoneWhlWithinItemNo:   LocCode             locZoneWhlWithinItemNo()
+  scalar: locZoneViaItemNo:         LocCode             locZoneViaItemNo()
+  scalar: feeAmount:                MoneyAmount         feeAmount()
+  scalar: maxFeeAmount:             MoneyAmount         maxFeeAmount()
+endsection

@@ -1,0 +1,25 @@
+<FareInfo>
+     <EffectiveDate year=2004 month=8 day=18 hour=17 minute=27 second=47/>
+     <ExpirationDate year=2004 month=8 day=18 hour=17 minute=27 second=47/>
+     <Fare
+          fareAmount=500
+          originalFareAmount=-1.98764
+          noDec=-1073757384
+          fareTariff=0
+          currency="USD"
+     />
+     <Misc
+          carrier="AA"
+          fareClass="BWE30"
+          market1LocCode="LHR"
+          market2LocCode="PAR"
+          footnote1=""
+          footnote2=""
+          ruleNumber="7100"
+          routingNumber="XXXX"
+          vendor="ATP"
+          directionality="FROM"
+          owrt="ONE_WAY_MAY_BE_DOUBLED"
+          globalDirection="AT"
+     />
+</FareInfo>

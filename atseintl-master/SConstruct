@@ -1,0 +1,428 @@
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+import os
+import sys
+import logging
+import textwrap
+
+log = logging.getLogger('scroot.SConstruct')
+
+# "#" is the directory with SConstruct.
+sys.path.append(os.path.join(Dir('#').abspath, 'scons'))
+import config
+sys.path.append(config.ENV['V2_LIBDIR_'])
+import configtasks
+import scommon
+
+def logger_general_setup():
+    console = logging.StreamHandler(sys.stdout)
+    formatter = logging.Formatter('%(levelname)-5s  -  %(message)s   [%(name)s]')
+    console.setFormatter(formatter)
+    logging.getLogger('').setLevel(logging.DEBUG)
+    logging.getLogger('').addHandler(console)
+    console.setLevel(logging.DEBUG)
+    return console
+
+def setup_logger_level(env):
+    '''
+    info: only the most important information,
+        like actual run parameters or sconscript
+        processing info
+    debug: detailed info for the current build,
+        but still meaningful and not flooded with
+        logs from minor libraries
+    trace: all possible logs on debug level
+
+
+    Effective logging levels for three groups
+    of libraries, depending on the user-selected
+    level:
+    level\libs  core        major       minor
+                -----------------------------
+    error       error       error       error
+    warning     warning     warning     warning
+    info        info        warning     warning
+    debug       debug       info        warning
+    trace       debug       debug       debug
+    '''
+
+    # the table above
+    m = {}
+    m['error'] = dict(core='error', major='error', minor='error')
+    m['warning'] = dict(core='warning', major='warning', minor='warning')
+    m['info'] = dict(core='info', major='warning', minor='warning')
+    m['debug'] = dict(core='debug', major='info', minor='warning')
+    m['trace'] = dict(core='debug', major='debug', minor='debug')
+
+    # distribution of libraries to the above groups
+    lib_loggers = {}
+    lib_loggers['core'] = ['', 'scroot', 'scommon.toolkit.optiontools']
+    lib_loggers['major'] = [
+        'scommon.env',
+        'scommon.scout',
+        'scommon.factory',
+        'scommon.utils',
+        'scommon.toolkit.sdselector',
+    ]
+    lib_loggers['minor'] = ['pytools.command']
+
+    # translation from a string to a symbol from the logging lib
+    d = dict(error=logging.ERROR, warning=logging.WARNING,
+        info=logging.INFO, debug=logging.DEBUG)
+
+    # user-selected level
+    level = env['LOG']
+    env['LOGGING_CONSOLE_'].setLevel(d[level])
+
+    for group in ['core', 'major', 'minor']:
+        for logger_name in lib_loggers[group]:
+            logging.getLogger(logger_name).setLevel(d[m[level][group]])
+
+
+def add_options():
+    AddOption("--show", action="store_true", dest="show", default=False,
+            help='show toolchain details')
+    AddOption("--allvars", action="store_true", dest="allvars", default=False,
+            help='display help for all command-line variables')
+
+def get_home_path(filename, user=None):
+    base = '~'
+    if user is not None:
+        base += user
+    return os.path.expanduser(os.path.join(base, filename))
+
+def default_config_file():
+    return get_home_path('sconsrc.py')
+
+def retrieve_config_file():
+    defaultfile = default_config_file()
+    AddOption('--userconfig', metavar='CONFIG_FILE',
+              default=defaultfile, help='User settings file for Scons.')
+    scons_config_file = os.path.expanduser(GetOption('userconfig'))
+    if os.path.exists(scons_config_file):
+        log.info('reading user config file %s' % scons_config_file)
+        return scons_config_file
+
+    if scons_config_file != defaultfile:
+        log.error('User config file not found: %s' % scons_config_file)
+        Exit(1)
+    return None
+
+def show_item_details(env, key, format):
+    return format % (key, env.subst(env[key]))
+
+def show_toolchain_details(env):
+    NAME_WIDTH=20
+    format = '%-' + str(NAME_WIDTH) + 's - %s'
+    print 'CURRENT BUILD CONFIGURATION:'
+    ret = []
+    ret.append('')
+    ret.append(format % ('ROOT_DIR', env.absroot))
+    for key in ['V2_LIBDIR_',
+                'THIRD_PARTY_LIBDIR_',
+                'BUILD_DIR_',
+                'LIB_INSTALL_DIR_',
+                'SERVER_APP_NAME_',
+                'STATIC_LIB_INSTALL_DIR_',
+                'SHARED_LIB_INSTALL_DIR_',
+                'LEGACY_SERVER_INSTALL_DIR_',
+                'SERVER_INSTALL_DIR_',
+                'SERVER_INSTALL_NAME_']:
+        ret.append(show_item_details(env, key, format))
+    ret.append('')
+    for key in ['STD_LIBPATH_',
+                'ISYSTEM_PATH_',
+                'INCLUDE_PATH_',
+                'IDOPCPP_CPPPATH',
+                'IDOPXML_CPPPATH',
+                'ASAP_DIR_',
+                'ASAPWRAPPER_DIR_',
+                'XERCESC_DIR_',
+                'BDB_DIR_',
+                'BOOST_DIR_',
+                'CURL_CPPPATH_',
+                'JEMALLOC_LIBPATH_',
+                'TBB_LIBPATH_',
+                'LOG4CXX_DIR_',
+                'MEMCACHED_DIR_',
+                'ORACLE_DIR_',
+                'SNAPPY_DIR_',
+                'LZ4_DIR_',
+                'CPPUNIT_DIR_',
+                'GMOCK_DIR_',
+                'GTEST_DIR_',
+                'XALANC_DIR_',
+                'EXTERNAL_LIBPATHS_',
+                'EXTERNAL_TEST_LIBPATHS_']:
+        ret.append(show_item_details(env, key, format))
+    ret.append('')
+    for key in ['CXX',
+                'ARFLAGS',
+                'CFLAGS',
+                'CCFLAGS',
+                'CXXFLAGS',
+                'CPPDEFINES',
+                'LINKFLAGS',
+                'RPATH_']:
+        ret.append(show_item_details(env, key, format))
+    print '\n'.join(ret)
+
+def read_variables(vars, octopus_file, major_only):
+    helptext = textwrap.dedent("""
+        SCons building system for ATSE V2.
+        Usage: scons [OPTION] [VARIABLE=VALUE] [TARGET] ...
+
+        Targets:
+            server                build shopping server (default target).
+            ldctools              build ldctools.
+            package               build baseline package components.
+            tests-lib             build tools and runners for C++ tests (the content of test/).
+            tests-build           build tests-lib and C++ unit tests for all directories.
+            tests, tests-run      run all C++ unit tests. See also the SKIPPASSED variable.
+            all                   build server + run tests.
+            <dir>                 build single directory.
+            testroot/bld/<dir>    build tests for single directory.
+            testroot/run/<dir>    run tests for single directory.
+            <any target> -c       clean target and its dependencies.
+            .                     every target in or below the main directory (debug).
+
+        Examples:
+            scons -j8                      build server on single machine in eight threads.
+            scons Pricing/                 build Pricing directory.
+            scons testroot/bld/Pricing/    build tests for Pricing.
+            scons testroot/run/Pricing/    run tests for Pricing.
+            scons all DIST=1 -j80          build all (including running tests) using octopus in 80 threads.
+            scons Pricing/ -c              clean Pricing and its dependencies.
+
+        Extra command-line options: (Use -H for regular options.)
+            --allvars         show less common variables as well (works with -h).
+            --show            show toolchain details.
+            --userconfig=CONFIG_FILE
+                              specify user file with variable definitions. The file uses
+                              the regular python script format, one definition per line, e.g.:
+                                  LOG = 'info'
+                                  VERBOSE = 0
+                              (By default, scons looks for {default_config_file})
+
+        V2-specific command-line variables: (Add --allvars to show less common variables as well.)
+        """).format(default_config_file=default_config_file())
+
+    Help(helptext)
+
+    # define command-line variables
+    adder = scommon.VarAdder()
+
+    adder.variable('TYPE',
+        'Build type.',
+        'debug', # default
+        allowed_values=('debug', 'release'),
+        map={'dbg':'debug', 'rel':'release'},
+        ignorecase=2, # ignore case and make lowercase
+        factory=EnumVariable)
+
+    adder.variable('CPPSTD',
+        'c++ standard.',
+        'c++14', # default
+        allowed_values=('c++14', 'c++1z'),
+        ignorecase=2, # ignore case and make lowercase
+        factory=EnumVariable)
+
+    adder.variable('COMPILER',
+        'Compiler version.',
+        'gcc-5.2.0', # default
+        allowed_values={'gcc-5.2.0', 'gcc-5.3.0', 'clang-3.9.0'},
+        ignorecase=2, # ignore case and make lowercase
+        factory=EnumVariable)
+
+    adder.variable('LINKTYPE',
+        'Link type.',
+        'shared', # default
+        allowed_values=('static', 'shared'),
+        ignorecase=2, # ignore case and make lowercase
+        factory=EnumVariable)
+
+    adder.variable('BUILDDIR',
+                   'Custom build directory',
+                   None,
+                   validator=PathVariable.PathAccept,
+                   factory=PathVariable)
+
+    adder.variable('THIRDPARTY', 'Custom 3rdParty directory',
+                   None, minor=True)
+
+    adder.variable('BINUTILS',
+                   'Custom Binutils directory',
+                   None,
+                   validator=PathVariable.PathAccept,
+                   factory=PathVariable)
+
+    adder.variable('CXX_DEBUG', 'Build server in special debug mode',
+                   False, factory=BoolVariable)
+
+    adder.variable('DISABLE_ASAP', 'Build server without ASAP support',
+                   False, factory=BoolVariable, minor=True)
+
+    adder.variable('DISABLE_DEBUG_SYMBOLS', 'Build server without debug symbols.',
+                   False, factory=BoolVariable)
+
+    adder.variable('ENABLE_SYMBOLS_COMPRESSION', 'Build with debug symbols compressed during linking.',
+                   False, factory=BoolVariable)
+
+    adder.variable('COVERAGE', 'Build server with code instrumented for coverage analysis.',
+                   False, factory=BoolVariable)
+
+    adder.variable('EXTEND_BRANCH_PREDICTION', 'Build server with compiler hint.',
+                   True, factory=BoolVariable)
+    
+    adder.variable('DEFINES', 'Comma separated list of defines passed to compiler', default='')
+
+    adder.variable('ENABLE_STDCPP_STATIC_LINK', 'Link server statically against libstdc++.',
+                   True, factory=BoolVariable)
+
+    adder.variable('TESTS_REPORTS_DESTINATION',
+                   'Directory to store the test reports into',
+                   None,
+                   validator=PathVariable.PathAccept,
+                   factory=PathVariable)
+
+    adder.variable('COMPILER_STDERR', 'Print compiler messages to stderr',
+                   False, factory=BoolVariable)
+
+    adder.variable('ASAN', 'Build server with an address sanitizer',
+                   False, factory=BoolVariable)
+
+    adder.variable('UBSAN', 'Build server with an undefined behavior sanitizer',
+                   False, factory=BoolVariable)
+
+    adder.variable('TSAN', 'Build server with a thread sanitizer',
+                   False, factory=BoolVariable)
+
+    adder.variable('NULL_ALLOCATOR', 'Use glibc allocator; ' +\
+        'enabled by default with ASAN',
+        'default',
+        allowed_values=('default', 'yes', 'no'),
+        map={'1':'yes', '0':'no',
+             'y':'yes', 'n':'no',
+             't':'yes', 'f':'no',
+             'true':'yes', 'false':'no'},
+        ignorecase=2, # ignore case and make lowercase
+        factory=EnumVariable)
+
+    adder.variable('TRACKING', 'Enable atseintl TRACKING functionality',
+                   False, factory=BoolVariable)
+
+    adder.variable('SKIPPASSED', 'Skip passed tests in subsequent runs.', False, factory=BoolVariable)
+
+    adder.variable('DIST', 'Enable distributed build. ' + \
+        'Jobs will be delegated to machines managed by Octopus. ' + \
+        'Increase --jobs to benefit from this option.',
+        False, factory=BoolVariable)
+
+    adder.variable('DISTCFG',
+        'Path to the config file for the Octopus library for executing commands remotely (used for distributed build).',
+        octopus_file, minor=1)
+
+    adder.variable('DISTLOG',
+        'Octopus logging messages level.',
+        'warning',
+        allowed_values=('warning', 'info', 'debug', 'off'),
+        map={'dbg':'debug', 'warn':'warning'},
+        ignorecase=2, # ignore case and make lowercase
+        factory=EnumVariable,
+        minor=1)
+
+    adder.variable('BUILD_LABEL', "This build's label.", 'SconsBuild',
+        minor=1)
+
+    adder.variable('VERBOSE', 'Print the whole command while building a target, not only the target name.',
+        False, factory=BoolVariable)
+
+    adder.variable('LOG',
+        'Messages logging level.',
+        'info', # default
+        allowed_values=('error', 'warning', 'info', 'debug', 'trace'),
+        map={'dbg':'debug', 'warn':'warning'},
+        ignorecase=2, # ignore case and make lowercase
+        factory=EnumVariable)
+
+    adder.variable('EXT_LOG',
+        'Extended messages logging with colors',
+        'basic', # default
+        allowed_values=('basic', 'extended'),
+        map={'bsc':'basic', 'ext':'extended'},
+        ignorecase=2, # ignore case and make lowercase
+        factory=EnumVariable)
+
+    adder.variable('DISPLAY_WARNINGS',
+        'Display warnings of successful compilations at the end. ' + \
+        'Currently only works with DIST.',
+        False, factory=BoolVariable)
+
+    adder.variable('OPT', 'Performance/quality tradeoff level.',
+        'quick',
+        allowed_values=('quick', 'normal', 'deep', 'paranoid'),
+        map={'q':'quick', 'n':'normal', 'd':'deep', 'p':'paranoid'},
+        ignorecase=2, # ignore case and make lowercase
+        factory=EnumVariable,
+        minor=1)
+
+    adder.variable('DECIDER',
+        'Algorithm used for deciding if a file has changed. md5 = MD5 checksum. hybrid = timestamp, then MD5 if timestamp changed.',
+        'hybrid', # default
+        allowed_values=('hybrid', 'md5'),
+        ignorecase=2, # ignore case and make lowercase
+        factory=EnumVariable,
+        minor=1)
+
+    adder.variable('ISYSTEM_DEPS', 'Track implicit dependencies from -isystem paths.',
+        False, factory=BoolVariable, minor=1)
+
+    defaults_from_minor_variables = adder.add_variables(vars, major_only=major_only)
+
+    return defaults_from_minor_variables
+
+logging_console = logger_general_setup()
+add_options()
+sc_config = retrieve_config_file()
+vars = Variables(sc_config, ARGUMENTS)
+if GetOption('allvars'):
+    major_only = False
+else:
+    major_only = True
+defaults_from_minor_variables = read_variables(vars, get_home_path('.octopusrc'), major_only=major_only)
+
+env = Environment(variables = vars)
+for k, v in defaults_from_minor_variables.iteritems():
+    if k not in env:
+        env[k] = v
+Help(vars.GenerateHelpText(env)) # update Help with vars descriptions
+
+
+env.Replace(LOGGING_CONSOLE_ = logging_console)
+setup_logger_level(env)
+
+
+# stop processing here if user only wanted to print help
+if not GetOption('help'):
+    env = scommon.Environment(env)
+
+    config_command = configtasks.tasks_as_command(env)
+    log.debug('SCONS INITIAL CONFIGURATION: BEGINNING')
+    config_command()
+    log.debug('SCONS INITIAL CONFIGURATION: FINISHED')
+
+    if GetOption('show'):
+        show_toolchain_details(env)
+        Exit(0)
+    else:
+        log.debug('DISPLAYING SUMMARY OF CHOSEN OPTIONS: BEGINNING')
+        scommon.optiontools.log_summary(env, vars)
+        log.debug('DISPLAYING SUMMARY OF CHOSEN OPTIONS: FINISHED')
+        log.info('running with %s parallel jobs' % GetOption('num_jobs'))
+
+        Export('env')
+
+        log.debug('READING SCONSCRIPTS: BEGINNING')
+        SConscript('SConscript', variant_dir = env['BUILD_DIR_'], duplicate=0)
+        log.debug('READING SCONSCRIPTS: FINISHED')

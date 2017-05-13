@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="YYY"
+          city=""
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="CA"
+          state="CAQC"
+     />
+     <Position
+          latdegrees=48
+          latminutes=36
+          latseconds=5
+          lngdegrees=68
+          lngminutes=12
+          lngseconds=5
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2002 month=2 day=5 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="t"
+          ruralarpind="t"
+          multitransind="f"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="CA03"
+          description="MONT JOLI QC"
+     />
+</Loc>

@@ -1,0 +1,24 @@
+#! /bin/csh
+
+# Add a clearcase file to a clearcase directory
+
+echo " "
+echo Enter full VOB-extended source directory name
+echo  To get this name enter ct_fullname {file}
+set srcdir=$<
+
+echo " "
+echo Enter VOB-extended source file name
+set src=$<
+
+echo " "
+echo Enter destination file name
+set dest=$<
+
+echo " "
+ctco .
+ct ln $srcdir/$src $dest
+ctci .
+ct protect -chown odym $dest
+echo " "
+

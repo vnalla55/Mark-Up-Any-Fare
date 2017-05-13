@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 (http://www.altova.com) by Pawel (Sabre Inc) -->
+<!--
+!==================================================================
+//
+//  File:         ATAERequest.xsd
+//  Author:       Witold Krzastek
+//  Created:      MAR 1, 2005
+//  Description:  ATAE Request definition
+//
+//  Copyright Sabre 2005
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+================================================================== -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.atse.sabre.com/ATAE/Request" targetNamespace="http://www.atse.sabre.com/ATAE/Request" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="ATAECommonTypes.xsd"/>
+	<xs:include schemaLocation="ATAEInterfaceTypes.xsd"/>
+	<xs:element name="ATQ" type="AvailabilityRequestType">
+		<xs:annotation>
+			<xs:documentation>Root element of request</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="AvailabilitySegmentType">
+		<xs:annotation>
+			<xs:documentation>Availability Segment Type</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Q2X" type="xs:nonNegativeInteger" use="required">
+			<xs:annotation>
+				<xs:documentation>Segment Reference Number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A01" type="AirportCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Segment's Origin</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="A02" type="AirportCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Segment's Destination</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="B00" type="AirlineCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Segment's Carrier</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="B01" type="AirlineCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Segment's Operating Carrier</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q0B" type="xs:positiveInteger" use="required">
+			<xs:annotation>
+				<xs:documentation>Segment's Flight Number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q0F" type="xs:positiveInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>Segment's Operating Flight  Number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D31" type="xs:unsignedShort" use="required">
+			<xs:annotation>
+				<xs:documentation>Segment's Departure Time in minutes from midnight</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D32" type="xs:unsignedShort" use="required">
+			<xs:annotation>
+				<xs:documentation>Segment's Arrival Time in minutes from midnight</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="S1E" type="ClassCodesListType" use="required">
+			<xs:annotation>
+				<xs:documentation>Segment's Requested Classcodes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="P0T" type="BoolTFType" use="optional" default="F">
+			<xs:annotation>
+				<xs:documentation>Is this BBR segment</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="AvailabilitySegmentsListType">
+		<xs:annotation>
+			<xs:documentation>Availability Segments List</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SEG" type="AvailabilitySegmentType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Availability Segments</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AvailabilitySolutionRequestType">
+		<xs:annotation>
+			<xs:documentation>Availability Solution Request Type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SGR" type="SegmentReferenceType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Segment Reference</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Q3A" type="xs:nonNegativeInteger" use="required">
+			<xs:annotation>
+				<xs:documentation>Solution Id</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q2Z" type="ValidityIndicatorType" use="optional" default="1">
+			<xs:annotation>
+				<xs:documentation>Validity Indicator for the Solution</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="D86" type="DateYYYYMMDDType" use="required">
+			<xs:annotation>
+				<xs:documentation>Exact Date, Year to Day</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Q3D" type="xs:unsignedByte">
+			<xs:annotation>
+				<xs:documentation>Requested availability method requested for the Solution</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="P50" type="CharTFCType" use="optional" default="F">
+			<xs:annotation>
+				<xs:documentation>Solo-Thru Indicator. If FALSE do not return SOLO availability for the Solution. If TRUE return both SOLO and THRU availability for the solution.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="AvailabilitySolutionsListType">
+		<xs:annotation>
+			<xs:documentation>Availability Solutions List Type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ASO" type="AvailabilitySolutionRequestType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Availability Solution</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AvailabilityRequestType">
+		<xs:annotation>
+			<xs:documentation>Availability Request Type - root type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SEA" type="SeatsRequested" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Number of seats requested</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ASG" type="AvailabilitySegmentsListType">
+				<xs:annotation>
+					<xs:documentation>Global unique list of segments passed with the requests. These segments are referenced inside AvailabilitySolution tag.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ASL" type="AvailabilitySolutionsListType">
+				<xs:annotation>
+					<xs:documentation>Main request structure containing Solutions List to status</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BIL" type="BILType">
+				<xs:annotation>
+					<xs:documentation>Billing Info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RDO" type="RDOType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Star Alliance - RAS info</xs:documentation>
+				</xs:annotation>
+			</xs:element>			
+			<xs:element name="AGI" type="AGIType">
+				<xs:annotation>
+					<xs:documentation>Agent Info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="REQ" type="REQType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Request Info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SIM" type="StatusSimulatorType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Seat Status Simulator</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RES" type="ReservationDataType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reservation Data</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="STA" type="STAType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Statistics</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DIA" type="DiagnosticRequestType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Diagnostics</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Q3B" type="VersionType" use="required">
+			<xs:annotation>
+				<xs:documentation>Interface Version</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

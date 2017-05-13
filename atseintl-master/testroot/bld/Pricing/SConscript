@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+PRICING_TEST_LIB_FILES = [
+    'test/PricingMockDataBuilder.cpp',
+    'test/MockFarePath.cpp',
+    'test/MockTrx.cpp'
+]
+
+
+s = env.scout()
+s.env.add_include_paths(s.env.absbuilddir)
+s.env.add_libpaths('.')
+s.library('PricingTests', PRICING_TEST_LIB_FILES)
+s.tests(locallib=1, libs=['PricingTests'], blacklist=PRICING_TEST_LIB_FILES)
+s.build()
+

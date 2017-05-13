@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export TRX_ALLOCATOR=JE
+exec "`dirname $0`/tseserver" "$@"

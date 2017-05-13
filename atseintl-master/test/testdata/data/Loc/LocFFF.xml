@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="FFF"
+          city=""
+          subarea="11"
+          area="1"
+          transtype=" "
+          nation="US"
+          state="USOK"
+     />
+     <Position
+          latdegrees=36
+          latminutes=11
+          latseconds=52
+          lngdegrees=95
+          lngminutes=53
+          lngseconds=23
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2002 month=11 day=8 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="US02"
+          description="SCHEDULE CHANGE"
+     />
+</Loc>

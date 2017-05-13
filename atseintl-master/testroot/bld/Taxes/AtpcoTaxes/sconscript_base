@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+
+import os
+
+Import('env')
+
+s = env.scout()
+s.env.add_flags('-W', '-Wall', '-Wextra', '-Wconversion', '-Wwrite-strings', '-Wcast-qual', '-Wcast-align', '-Werror', '-pedantic')
+s.env.add_include_paths('#/Taxes', '#/Taxes/AtpcoTaxes')
+s.env.add_defines('BOOST_ENABLE_ASSERT_HANDLER')
+
+# xml parsing should be removed from unit tests
+mainPath = os.path.join(s.env.absroot, 'Taxes/AtpcoTaxes/')
+s.env.add_defines(('MAIN_PATH', '"\\"' + mainPath + '\\""'))
+s.env.add_isystem_paths('#/Taxes/AtpcoTaxes/rapidxml')
+
+ # Atpco test utils lib (AtpcoTaxes/test)
+ 
+s.env.add_libpaths('#/' + s.env.builddir + '/testroot/bld/Taxes/AtpcoTaxes')
+s.env.add_libs('TaxTestUtils')
+
+s.tests()
+s.build()

@@ -1,0 +1,170 @@
+<TaxCodeReg>
+     <ExpireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2010 month=7 day=19 hour=0 minute=0 second=0/>
+     <DiscountDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <FirstTvlDate year=2010 month=7 day=19 hour=0 minute=0 second=0/>
+     <LastTvlDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <LockDate year=2010 month=7 day=19 hour=11 minute=6 second=34/>
+     <CreateDate year=2010 month=7 day=19 hour=10 minute=39 second=13/>
+     <Loc1
+          type="Z"
+          loccode="00019"
+          exclInd="N"
+          appl="E"
+     />
+     <Loc2
+          type="Z"
+          loccode="00019"
+          exclInd="N"
+          appl=" "
+     />
+     <Amounts
+          tax=7.12
+          min=0
+          max=14.25
+          plusup=0
+          lowRange=0
+          highRange=0
+          rangeIncrement=0
+          taxCurrency="CAD"
+          numberOfDecimals=2
+     />
+     <Misc
+          sequenceNumber=6
+          taxCode="CA1"
+          specialProcessNo=252
+          versionDate=9223371993654775807
+          taxNodec=2
+          taxcdRoundUnitNodec=0
+          fareRangeNodec=0
+          discPercentNodec=0
+          discPercent=0
+          taxcdRoundUnit=0
+          taxType="F"
+          nation="CA"
+          taxcdRoundRule=4
+          taxfullFareInd="N"
+          taxequivAmtInd="N"
+          taxexcessbagInd="N"
+          tvlDateasoriginInd="N"
+          displayonlyInd="N"
+          feeInd="N"
+          interlinableTaxInd="N"
+          showseparateInd="N"
+          posExclInd="N"
+          posLocType="UNKNOWN_LOC"
+          posLoc=""
+          poiLocType="UNKNOWN_LOC"
+          poiLoc=""
+          poiExclInd="N"
+          sellCurExclInd="N"
+          sellCur=""
+          occurrence=" "
+          freeTktexempt="N"
+          idTvlexempt="N"
+          rangeType=" "
+          rangeInd=" "
+          nextstopoverrestr="N"
+          spclTaxRounding="N"
+          fareclassExclInd="Y"
+          tktdsgExclInd="N"
+          valcxrExclInd="N"
+          exempequipExclInd="Y"
+          psgrExclInd="Y"
+          exempcxrExclInd="N"
+          fareTypeExclInd="N"
+          multioccconvrndInd="N"
+          originLocType="UNKNOWN_LOC"
+          originLoc=""
+          originLocExclInd="N"
+          versioninheritedInd="N"
+          versiondisplayInd="Y"
+          tripType="B"
+          travelType=" "
+          itineraryType=" "
+          formOfPayment="A"
+          taxOnTaxExcl="N"
+     />
+     <RestrictionPsg>
+         <Attributes psgType="CBI" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="FBI" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="FGI" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="FNF" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="INE" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="INF" showPsg="Y" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="INR" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="INY" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="ITF" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="JNF" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+          <Attributes psgType="LIF" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>     
+     <RestrictionFareClass value="YESSO"/>
+     <EquipmentCode value="TRN"/>
+     <ExemptionCxr>
+         <Attributes carrier="5T" airport1="" airport2="" direction=" " flightNumber1=0 flightNumber2=0 />
+     </ExemptionCxr>
+     <TaxCodeGenTexts>
+         <Data taxCode="CA1" messageDisplayCat="1" messageOrderNo=1 itemNo=238 keyWord1="TAXT" keyWord2=""/>
+         <TextMessages value="CANADA AIR SECURITY CHARGE - SUBJECT TO GST"/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="CA1" messageDisplayCat="4" messageOrderNo=1 itemNo=258 keyWord1="CA1" keyWord2="" />
+         <TextMessages value="APPLIES TO ENPLANEMENTS AT LISTED AIRPORTS IN CANADA FOR"/>
+         <TextMessages value="DOMESTIC CANADA OR TRANSBORDER TRAVEL TO THE UNITED STATES"/>
+         <TextMessages value="EXCLUDING HAWAII - TRAVEL TO HAWAII IS CONSIDERED"/>
+         <TextMessages value="INTERNATIONAL."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="CA1" messageDisplayCat="4" messageOrderNo=2 itemNo=256 keyWord1="CA1" keyWord2="" />
+         <TextMessages value="APPLIES TO CANADA AIR SECURITY CHARGE IS SUBJECT TO"/>
+         <TextMessages value="APPLICABLE GST/HST/QST THAT APPLIES TO THE FARE"/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="CA1" messageDisplayCat="B" messageOrderNo=1 itemNo=250 keyWord1="INF" keyWord2="" />
+         <TextMessages value="DOES NOT APPLY TO INFANTS FOR WHOM NO FARE IS PAID."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="CA1" messageDisplayCat="D" messageOrderNo=1 itemNo=252 keyWord1="CA1" keyWord2="" />
+         <TextMessages value="DOES NOT APPLYTO TRANSIT/TRANSFERS WITHIN 4 HOURS FOR"/>
+         <TextMessages value="DOMESTIC CANADA AND TRANSBORDER TRAVEL."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="CA1" messageDisplayCat="H" messageOrderNo=1 itemNo=254 keyWord1="CA1" keyWord2="" />
+         <TextMessages value="DOES NOT APPLYTO AIRLINE EMPLOYEES TRAVELING ON BUSINESS"/>
+         <TextMessages value="ON THEIR OWN CARRIER ORA WHOLLY OWNED SUBSIDIARY."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="CA1" messageDisplayCat="H" messageOrderNo=2 itemNo=255 keyWord1="DIPS" keyWord2="" />
+         <TextMessages value="DOES NOT APPLY TO ACCREDITED REPRESENTATIVES - DIPLOMATS"/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="CA1" messageDisplayCat="H" messageOrderNo=3 itemNo=253 keyWord1="CA1" keyWord2="" />
+         <TextMessages value="DOES NOT APPLY TO AIRCRAFT WITH A GROSS TAKEOFF WEIGHT OF"/>
+         <TextMessages value="LESS THAN 2,730 KILOS."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="CA1" messageDisplayCat="H" messageOrderNo=5 itemNo=251 keyWord1="CA1" keyWord2="" />
+         <TextMessages value="DOES NOT APPLY TO DOMESTIC CANADA SECTORS WHEN TICKETS ARE"/>
+         <TextMessages value="PURCHASED OUTSIDE CANADA."/>
+     </TaxCodeGenTexts>
+</TaxCodeReg>

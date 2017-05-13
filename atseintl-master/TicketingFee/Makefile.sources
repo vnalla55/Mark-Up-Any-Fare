@@ -1,0 +1,7 @@
+TICKETINGFEE_SOURCES := \
+    PseudoObjectsBuilder.cpp \
+    SecurityValidator.cpp \
+    SvcFeesAccountCodeValidator.cpp \
+    SvcFeesTktDesigValidator.cpp \
+    TicketingFeeCollector.cpp \
+    TicketingFeesService.cpp

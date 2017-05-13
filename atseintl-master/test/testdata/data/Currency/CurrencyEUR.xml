@@ -1,0 +1,19 @@
+<Currency>
+     <expireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <effDate year=2005 month=1 day=6 hour=0 minute=0 second=0/>
+     <discDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <createDate year=2005 month=1 day=6 hour=11 minute=32 second=20/>
+     <Attributes
+          cur="EUR"
+          domRoundingFactor=1
+          roundingFactorNoDec=0
+          noDec=2
+          curNo=978
+          curName="EURO"
+          nucRoundingProcessNo=""
+          controllingEntityDesc="EUROPEAN UNION"
+          taxOverrideRoundingUnitNoDec=2
+          taxOverrideRoundingUnit=0.01
+          taxOverrideRoundingRule=1
+     />
+</Currency>

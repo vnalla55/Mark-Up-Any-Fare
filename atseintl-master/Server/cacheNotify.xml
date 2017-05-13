@@ -1,0 +1,1921 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CacheNotifyConfig>
+   <Notification id="GROUPS">
+      <CacheId id="GROUPS" />
+      <CacheId id="GROUPSHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="VISITANOTHERCOUNTRY">
+      <CacheId id="VISITANOTHERCOUNTRY" />
+      <CacheId id="VISITANOTHERCOUNTRYHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="DEPOSITS">
+      <CacheId id="DEPOSITS" />
+      <CacheId id="DEPOSITSHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="REISSUESEQUENCE">
+      <CacheId id="REISSUESEQUENCE" />
+      <CacheId id="REISSUESEQUENCEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="TAXREISSUE">
+      <CacheId id="TAXREISSUE" />
+      <CacheId id="TAXREISSUEHISTORICAL" />
+      <KeyField id="TAXCODE" />
+   </Notification>
+   <Notification id="TAXRULESRECORD">
+      <CacheId id="TAXRULESRECORD" />
+      <CacheId id="TAXRULESRECORDHISTORICAL" />
+      <KeyField id="NATION" />
+      <KeyField id="TAXPOINTTAG" />
+   </Notification>
+   <Notification id="TAXREPORTINGRECORD">
+      <CacheId id="TAXREPORTINGRECORD" />
+      <CacheId id="TAXREPORTINGRECORDHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="NATION" />
+      <KeyField id="TAXCARRIER" />
+      <KeyField id="TAXCODE" />
+      <KeyField id="TAXTYPE" />
+   </Notification>
+   <Notification id="VOLUNTARYCHANGES">
+      <CacheId id="VOLUNTARYCHANGES" />
+      <CacheId id="VOLUNTARYCHANGESHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="VOLUNTARYREFUNDS">
+      <CacheId id="VOLUNTARYREFUNDS" />
+      <CacheId id="VOLUNTARYREFUNDSHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="VOLUNTARYREFUNDSCONFIG">
+      <CacheId id="VOLUNTARYREFUNDSCONFIG" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="WAIVER">
+      <CacheId id="WAIVER" />
+      <CacheId id="WAIVERHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+
+   <Notification id="ACCOMPANIEDTRAVEL">
+      <CacheId id="ACCOMPANIEDTRAVEL" />
+      <CacheId id="ACCOMPANIEDTRAVELHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="ADDONCOMBFARECLASS">
+      <CacheId id="ADDONCOMBFARECLASS" />
+      <CacheId id="ADDONCONSTRUCTION" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="FARETARIFF" />
+   </Notification>
+   <Notification id="ADDONFARE">
+      <CacheId id="ADDONFARE" />
+      <CacheId id="ADDONFAREHISTORICAL" />
+      <CacheId id="FDADDONFARE" />
+      <CacheId id="FDADDONFAREHISTORICAL" />
+      <CacheId id="ADDONCONSTRUCTION" />
+      <KeyField id="GATEWAYMARKET" />
+      <KeyField id="INTERIORMARKET" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="ADDONZONE">
+      <CacheId id="ADDONCONSTRUCTION" />
+      <CacheId id="ADDONZONE" />
+      <CacheId id="ADDONZONESITA" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="LOC" />
+   </Notification>
+   <Notification id="ADVRESTKT">
+      <CacheId id="ADVRESTKT" />
+      <CacheId id="ADVRESTKTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="BANKERSSELLINGRATE">
+      <CacheId id="BANKERSELLRATE" />
+      <KeyField id="CURRENCYCODE" />
+   </Notification>
+   <Notification id="BASEFAREINFOTBL">
+      <CacheId id="BASEFARERULE" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="BKGCDEXCEPTIONS">
+      <CacheId id="BOOKINGCODEEXCEPTIONSEQUENCE" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="BLACKOUTDATES">
+      <CacheId id="BLACKOUT" />
+      <CacheId id="BLACKOUTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="BOOKINGCODE">
+      <CacheId id="BOOKINGCODECONV" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+   </Notification>
+   <Notification id="BRAND">
+      <CacheId id="BRAND" />
+      <CacheId id="BRANDHISTORICAL" />
+      <KeyField id="USERAPPLTYPE" />
+      <KeyField id="USERAPPL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="BRANDEDCARRIER">
+      <CacheId id="BRANDEDCARRIER" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="BRANDEDFAREAPP">
+      <CacheId id="BRANDEDFAREAPP" />
+      <CacheId id="BRANDEDFAREAPPSEG" />
+      <KeyField id="USERAPPLTYPE" />
+      <KeyField id="USERAPPL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="CABIN">
+      <CacheId id="CABIN" />
+      <CacheId id="CABINHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="CARRIERAPPLICATION">
+      <CacheId id="CARRIERAPPLICATION" />
+      <CacheId id="CARRIERAPPLICATIONHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="CARRIERCOMBSEQ">
+      <CacheId id="CARRIERCOMBINATION" />
+      <CacheId id="CARRIERCOMBINATIONHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CATEGORY" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="CARRIERFLT">
+      <CacheId id="CARRIERFLIGHT" />
+      <CacheId id="CARRIERFLIGHTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="CARRIERMIXEDCLASS">
+      <CacheId id="CARRIERMIXEDCLASS" />
+      <CacheId id="CARRIERMIXEDCLASSHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="CARRIERPREFERENCE">
+      <CacheId id="CARRIERPREFERENCE" />
+      <CacheId id="CARRIERPREFERENCEHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="CONTRACTPREFERENCE">
+      <CacheId id="CONTRACTPREFERENCE" />
+      <CacheId id="CONTRACTPREFERENCEHISTORICAL" />
+      <KeyField id="PSEUDOCITY" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULE" />
+   </Notification>
+   <Notification id="CHILDRENSDISCOUNTS">
+      <CacheId id="DISCOUNT" />
+      <CacheId id="DISCOUNTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="TOURCONDUCTORDISCNT">
+      <CacheId id="DISCOUNT" />
+      <CacheId id="DISCOUNTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="AGENTDISCOUNTS">
+      <CacheId id="DISCOUNT" />
+      <CacheId id="DISCOUNTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="OTHERDISCOUNTS">
+      <CacheId id="DISCOUNT" />
+      <CacheId id="DISCOUNTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="CIRCLETRIPPROVISION">
+      <CacheId id="CIRCLETRIPPROVISION" />
+      <CacheId id="CIRCLETRIPPROVISIONHISTORICAL" />
+      <KeyField id="MARKET1" />
+      <KeyField id="MARKET2" />
+   </Notification>
+   <Notification id="COMBCATCNTL">
+      <CacheId id="COMBINABILITYRULE" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="CATEGORY" />
+   </Notification>
+   <Notification id="COMMISSIONCAP">
+      <CacheId id="COMMISSIONCAP" />
+      <CacheId id="COMMISSIONCAPHISTORICAL" />
+      <KeyField id="CARRIER" />
+      <KeyField id="CURRENCYCODE" />
+   </Notification>
+   <Notification id="COPMINIMUM">
+      <CacheId id="COPMINIMUM" />
+      <CacheId id="COPMINIMUMHISTORICAL" />
+      <KeyField id="NATIONCODE" />
+   </Notification>
+   <Notification id="COPPARTICIPATINGNATION">
+      <CacheId id="COPPARTICIPATINGNATION" />
+      <CacheId id="COPPARTICIPATINGNATIONHISTORICAL" />
+      <KeyField id="NATION" />
+      <KeyField id="COPNATION" />
+   </Notification>
+   <Notification id="CORPID">
+      <CacheId id="CORPID" />
+      <CacheId id="CORPIDHISTORICAL" />
+      <KeyField id="CORPID" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="ACCOUNTCODE" />
+   </Notification>
+   <Notification id="CT2COMP">
+      <CacheId id="ROUNDTRIPRULE" />
+      <CacheId id="ROUNDTRIPRULEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="CT2PLUSCOMP">
+      <CacheId id="CIRCLETRIPRULE" />
+      <CacheId id="CIRCLETRIPRULEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="CURRENCY">
+      <CacheId id="CURRENCY" />
+      <CacheId id="CURRENCYHISTORICAL" />
+      <KeyField id="CURRENCYCODE" />
+   </Notification>
+   <Notification id="CURRENCYSELECTION">
+      <CacheId id="CURRENCYSELECTION" />
+      <CacheId id="CURRENCYSELECTIONHISTORICAL" />
+      <KeyField id="NATIONCODE" />
+   </Notification>
+   <Notification id="CUSTOMER">
+      <CacheId id="CUSTOMER" />
+      <CacheId id="CUSTOMERHISTORICAL" />
+      <KeyField id="PSEUDOCITY" />
+      <KeyField id="ARCNO" />
+      <KeyField id="HOMEPSEUDOCITY" />
+      <KeyField id="HOMEARCNO" />
+   </Notification>
+   <Notification id="CUSTOMERSECURITYHAND">
+      <CacheId id="CUSTOMERSECURITYHANDSHAKE" />
+      <CacheId id="CUSTOMERSECURITYHANDSHAKEHISTORICAL" />
+      <KeyField id="SECURITYSOURCEPCC" />
+      <KeyField id="PRODUCTCD" />
+   </Notification>
+   <Notification id="DAYTIMEAPP">
+      <CacheId id="DAYTIMEAPPINFO" />
+      <CacheId id="DAYTIMEAPPINFOHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="DBECLASS">
+      <CacheId id="DBEGLOBAL" />
+      <KeyField id="DBEGLOBALCLASS" />
+   </Notification>
+   <Notification id="DIFFERENTIALS">
+      <CacheId id="DIFFERENTIALS" />
+      <CacheId id="DIFFERENTIALSHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="DOMESTICFARE">
+      <CacheId id="FARE" />
+      <CacheId id="ROUTINGFORMARKET" />
+      <KeyField id="MARKET1" />
+      <KeyField id="MARKET2" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="ELIGIBILITY">
+      <CacheId id="ELIGIBILITY" />
+      <CacheId id="ELIGIBILITYHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="EOE">
+      <CacheId id="ENDONEND" />
+      <CacheId id="ENDONENDHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="ESSAIRSVC">
+      <CacheId id="PFCESSAIRSVC" />
+      <CacheId id="PFCESSAIRSVCHISTORICAL" />
+      <KeyField id="EASHUBARPT" />
+      <KeyField id="EASARPT" />
+   </Notification>
+   <Notification id="EXCLUDEBYRULE">
+      <CacheId id="MINFARERULELEVELEXCL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="TEXTTBLITEMNO" />
+      <KeyField id="CARRIER" />
+      <KeyField id="TARIFFNUMBER" />
+   </Notification>
+   <Notification id="FAREBYRULE">
+      <CacheId id="FAREBYRULEITEM" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="FAREBYRULEAPP">
+      <CacheId id="FAREBYRULEAPP" />
+      <CacheId id="FAREBYRULEAPPRULETARIFF" />
+      <KeyField id="CARRIER" />
+      <KeyField id="PRIMEPSGTYPE" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="ACCOUNTCODE" />
+   </Notification>
+   <Notification id="FAREBYRULECNTL">
+      <CacheId id="FAREBYRULECTRL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="CATEGORY" />
+   </Notification>
+   <Notification id="FARECALCCONFIG">
+      <CacheId id="FARECALCCONFIG" />
+      <CacheId id="FARECALCCONFIGHISTORICAL" />
+      <KeyField id="USERAPPL" />
+      <KeyField id="USERAPPLCODE" />
+      <KeyField id="PSEUDOCITYCODE" />
+   </Notification>
+   <Notification id="FARECLASSAPPL">
+      <CacheId id="FARECLASSAPP" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="FARECLASS" />
+   </Notification>
+   <Notification id="FARECLASSTYPESEQ">
+      <CacheId id="FARECLASSREST" />
+      <CacheId id="FARECLASSRESTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CATEGORY" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="FAREDISPLAYHDRMSG">
+      <CacheId id="FDHEADERMSG" />
+      <KeyField id="USERAPPLTYPE" />
+      <KeyField id="USERAPPL" />
+      <KeyField id="PSEUDOCITYTYPE" />
+      <KeyField id="PSEUDOCITY" />
+      <KeyField id="SSGGROUPNO" />
+   </Notification>
+   <Notification id="FAREDISPLAYINCLCD">
+      <CacheId id="FAREDISPLAYINCLCD" />
+      <CacheId id="FAREDISPLAYINCLCDHISTORICAL" />
+      <CacheId id="FAREDISPREC1PSGTYPE" />
+      <CacheId id="FAREDISPREC1PSGTYPEHISTORICAL" />
+      <CacheId id="FAREDISPREC8PSGTYPE" />
+      <CacheId id="FAREDISPREC8PSGTYPEHISTORICAL" />
+      <CacheId id="FAREDISPCLDINFPSGTYPE" />
+      <CacheId id="FAREDISPCLDINFPSGTYPEHISTORICAL" />
+      <CacheId id="FAREDISPINCLDSPLTYPE" />
+      <CacheId id="FAREDISPINCLDSPLTYPEHISTORICAL" />
+      <CacheId id="FAREDISPINCLFARETYPE" />
+      <CacheId id="FAREDISPINCLFARETYPEHISTORICAL" />
+      <CacheId id="FAREDISPINCLRULETRF" />
+      <CacheId id="FAREDISPINCLRULETRFHISTORICAL" />
+      <KeyField id="USERAPPLTYPE" />
+      <KeyField id="USERAPPL" />
+      <KeyField id="PSEUDOCITYTYPE" />
+      <KeyField id="PSEUDOCITY" />
+      <KeyField id="INCLUSIONCODE" />
+   </Notification>
+   <Notification id="FAREDISPLAYPREF">
+      <CacheId id="FAREDISPLAYPREF" />
+      <CacheId id="FAREDISPLAYPREFSEG" />
+      <KeyField id="USERAPPLTYPE" />
+      <KeyField id="USERAPPL" />
+      <KeyField id="PSEUDOCITYTYPE" />
+      <KeyField id="PSEUDOCITY" />
+      <KeyField id="SSGGROUPNO" />
+   </Notification>
+   <Notification id="FAREDISPLAYSORT">
+      <CacheId id="FAREDISPLAYSORT" />
+      <CacheId id="FDSFAREBASISCOMB" />
+      <CacheId id="FDSGLOBALDIR" />
+      <CacheId id="FDSPSGTYPE" />
+      <CacheId id="FDSSORTING" />
+      <KeyField id="USERAPPLTYPE" />
+      <KeyField id="USERAPPL" />
+      <KeyField id="PSEUDOCITYTYPE" />
+      <KeyField id="PSEUDOCITY" />
+      <KeyField id="SSGGROUPNO" />
+   </Notification>
+   <Notification id="FAREDISPLAYWEB">
+      <CacheId id="FAREDISPLAYWEB" />
+      <CacheId id="FAREDISPLAYWEBSEG" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="FAREDISPSUPPRESS">
+      <CacheId id="FDSUPPRESSFARE" />
+      <CacheId id="FDSUPPRESSFAREHISTORICAL" />
+      <KeyField id="PSEUDOCITYCODE" />
+      <KeyField id="PSEUDOCITYTYPE" />
+      <KeyField id="SSGGROUPNO" />
+      <KeyField id="CARRIERCODE" />
+   </Notification>
+   <Notification id="FAREDISPTEMPLATE">
+      <CacheId id="FAREDISPTEMPLATE" />
+      <CacheId id="FAREDISPTEMPLATEHISTORICAL" />
+      <CacheId id="FAREDISPTEMPLATESEG" />
+      <CacheId id="FAREDISPTEMPLATESEGHISTORICAL" />
+      <KeyField id="TEMPLATEID" />
+      <KeyField id="TEMPLATETYPE" />
+   </Notification>
+   <Notification id="FAREFOCUSACCOUNTCD">
+      <CacheId id="FAREFOCUSACCOUNTCD" />
+      <CacheId id="FAREFOCUSACCOUNTCDHISTORICAL" />
+      <KeyField id="ACCOUNTCDITEMNO" />
+   </Notification>
+   <Notification id="FAREFOCUSROUTING">
+      <CacheId id="FAREFOCUSROUTING" />
+      <CacheId id="FAREFOCUSROUTINGHISTORICAL" />
+      <KeyField id="ROUTINGITEMNO" />
+   </Notification>
+   <Notification id="FAREFOCUSLOCATIONPAIR">
+      <CacheId id="FAREFOCUSLOCATIONPAIR" />
+      <CacheId id="FAREFOCUSLOCATIONPAIRHISTORICAL" />
+      <KeyField id="LOCATIONPAIRITEMNO" />
+   </Notification>
+   <Notification id="FAREFOCUSDAYTIMEAPPL">
+      <CacheId id="FAREFOCUSDAYTIMEAPPL" />
+      <CacheId id="FAREFOCUSDAYTIMEAPPLHISTORICAL" />
+      <KeyField id="DAYTIMEAPPITEMNO" />
+   </Notification>
+   <Notification id="FAREFOCUSDISPLAYCATTYPE">
+      <CacheId id="FAREFOCUSDISPLAYCATTYPE" />
+      <CacheId id="FAREFOCUSDISPLAYCATTYPEHISTORICAL" />
+      <KeyField id="DISPLAYCATTYPEITEMNO" />
+   </Notification>
+   <Notification id="FAREFOCUSPSGTYPE">
+      <CacheId id="FAREFOCUSPSGTYPE" />
+      <CacheId id="FAREFOCUSPSGTYPEHISTORICAL" />
+      <KeyField id="PSGTYPEITEMNO" />
+   </Notification>
+   <Notification id="FAREFOCUSBOOKINGCD">
+      <CacheId id="FAREFOCUSBOOKINGCODE" />
+      <CacheId id="FAREFOCUSBOOKINGCODEHISTORICAL" />
+      <KeyField id="BOOKINGCDITEMNO" />
+   </Notification>
+   <Notification id="FAREFOCUSFARECLASS">
+      <CacheId id="FAREFOCUSFARECLASS" />
+      <CacheId id="FAREFOCUSFARECLASSHISTORICAL" />
+      <KeyField id="FARECLASSITEMNO" />
+   </Notification>
+   <Notification id="FAREFOCUSLOOKUP">
+      <CacheId id="FAREFOCUSLOOKUP" />
+      <CacheId id="FAREFOCUSLOOKUPHISTORICAL" />
+      <KeyField id="PSEUDOCITY" />
+      <KeyField id="PSEUDOCITYTYPE" />
+   </Notification>
+   <Notification id="FAREFOCUSRULE">
+      <CacheId id="FAREFOCUSRULE" />
+      <CacheId id="FAREFOCUSRULEHISTORICAL" />
+      <KeyField id="FAREFOCUSRULEID" />
+   </Notification>
+   <Notification id="FAREFOCUSSECURITY">
+      <CacheId id="FAREFOCUSSECURITY" />
+      <CacheId id="FAREFOCUSSECURITYHISTORICAL" />
+      <KeyField id="SECURITYITEMNO" />
+   </Notification>
+   <Notification id="FAREFOCUSCARRIER">
+      <CacheId id="FAREFOCUSCARRIER" />
+      <CacheId id="FAREFOCUSCARRIERHISTORICAL" />
+      <KeyField id="CARRIERITEMNO" />
+   </Notification>
+   <Notification id="FAREFOCUSRULECODE">
+     <CacheId id="FAREFOCUSRULECODE" />
+     <CacheId id="FAREFOCUSRULECODEHISTORICAL" />
+     <KeyField id="RULECDITEMNO" />
+   </Notification>
+   <Notification id="FARERETAILERRULE">
+     <CacheId id="FARERETAILERRULE" />
+     <CacheId id="FARERETAILERRULEHISTORICAL" />
+     <KeyField id="FARERETAILERRULEID" />
+   </Notification>
+   <Notification id="FARERETAILERCALC">
+     <CacheId id="FARERETAILERCALC" />
+     <CacheId id="FARERETAILERCALCHISTORICAL" />
+     <KeyField id="FARERETAILERCALCITEMNO" />
+   </Notification>
+   <Notification id="FARERETRESULTNGFAREATTR">
+     <CacheId id="FARERETAILERRESULTINGFAREATTR" />
+     <CacheId id="FARERETAILERRESULTINGFAREATTRHISTORICAL" />
+     <KeyField id="RESULTINGFAREATTRITEMNO" />
+   </Notification>
+   <Notification id="FARERETAILERLOOKUP">
+     <CacheId id="FARERETAILERRULELOOKUP" />
+     <CacheId id="FARERETAILERRULELOOKUPHISTORICAL" />
+     <KeyField id="APPLICATIONTYPE" />
+     <KeyField id="SOURCEPSEUDOCITY" />
+     <KeyField id="PSEUDOCITY" />
+   </Notification>
+   <Notification id="FAREPROPERTIES">
+     <CacheId id="FAREPROPERTIES" />
+     <KeyField id="VENDOR" />
+     <KeyField id="CARRIER" />
+     <KeyField id="RULETARIFF" />
+     <KeyField id="RULE" />
+   </Notification>
+   <Notification id="FARETYPEMATRIX">
+      <CacheId id="FARETYPEMATRIX" />
+      <CacheId id="FARETYPEMATRIXHISTORICAL" />
+      <KeyField id="FARETYPE" />
+   </Notification>
+   <Notification id="FARETYPEQUALIFIER">
+      <CacheId id="FARETYPEQUALIFIER" />
+      <CacheId id="FARETYPEQUALIFIERHISTORICAL" />
+      <KeyField id="USERAPPLTYPE" />
+      <KeyField id="USERAPPL" />
+      <KeyField id="FARETYPEQUALIFIER" />
+   </Notification>
+   <Notification id="FLIGHTAPP">
+      <CacheId id="FLIGHTAPPRULE" />
+      <CacheId id="FLIGHTAPPRULEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="FLTTRKGCNTRYGRP">
+      <CacheId id="FLTTRKCNTRYGRP" />
+      <CacheId id="FLTTRKCNTRYGRPHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="FREEBAGGAGE">
+      <CacheId id="FREEBAGGAGE" />
+      <CacheId id="FREEBAGGAGEHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="BAGGAGESECTOREXCEPTION">
+      <CacheId id="BAGGAGESECTOREXCEPTION" />
+      <CacheId id="BAGGAGESECTOREXCEPTIONHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="SECTORBAGGAGECXRAPP">
+      <CacheId id="BAGGAGESECTORCARRIERAPP" />
+      <CacheId id="BAGGAGESECTORCARRIERAPPHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+  <Notification id="FTNTCNTL">
+      <CacheId id="FOOTNOTECTRL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="FARETARIFF" />
+      <KeyField id="FOOTNOTE" />
+      <KeyField id="CATEGORY" />
+   </Notification>
+   <Notification id="GENERALRULE">
+      <CacheId id="GENERALRULEAPP" />
+      <CacheId id="GENERALRULEAPPHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+   </Notification>
+   <Notification id="GENERICTAXCODES">
+      <CacheId id="GENERICTAXCODE" />
+      <CacheId id="GENERICTAXCODEHISTORICAL" />
+      <KeyField id="TAXCODE" />
+   </Notification>
+   <Notification id="GEOSPEC">
+      <CacheId id="GEORULE" />
+      <CacheId id="GEORULEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="GLOBALDIR">
+      <CacheId id="GLOBALDIR" />
+      <CacheId id="GLOBALDIRHISTORICAL" />
+      <KeyField id="GLOBALDIRECTION" />
+   </Notification>
+   <Notification id="HIPMILEAGEEXCEPT">
+      <CacheId id="HIPMILEAGEEXCEPT" />
+      <CacheId id="HIPMILEAGEEXCEPTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="INDFAREBASISMOD">
+      <CacheId id="INDUSTRYFAREBASISMOD" />
+      <CacheId id="INDUSTRYFAREBASISMODHISTORICAL" />
+      <KeyField id="CARRIER" />
+      <KeyField id="USERAPPLTYPE" />
+      <KeyField id="USERAPPLCODE" />
+   </Notification>
+   <Notification id="INDPRICINGAPPL">
+      <CacheId id="INDUSTRYPRICINGAPPL" />
+      <CacheId id="INDUSTRYPRICINGAPPLHISTORICAL" />
+      <KeyField id="CARRIER" />
+      <KeyField id="GLOBALDIRECTION" />
+   </Notification>
+   <Notification id="INDUSTRYFAREAPPL">
+      <CacheId id="INDUSTRYFAREAPPL" />
+      <CacheId id="INDUSTRYFAREAPPLHISTORICAL" />
+      <CacheId id="ISMULTILATERAL" />
+      <CacheId id="ISMULTILATERALHISTORICAL" />
+      <KeyField id="SELECTIONTYPE" />
+      <KeyField id="CARRIER" />
+   </Notification>
+    <Notification id="INTERLINETICKETCARRIER">
+      <CacheId id="INTERLINETICKETCARRIER" />
+      <KeyField id="CARRIER" />
+   </Notification>
+    <Notification id="INTERLINECARRIER">
+      <CacheId id="INTERLINECARRIER" />
+      <CacheId id="INTERLINECARRIERHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+    <Notification id="INTRALINECARRIER">
+      <CacheId id="INTRALINECARRIER" />
+      <CacheId id="INTRALINECARRIERHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="IETTKTCARRIERSTATUS">
+      <CacheId id="INTERLINETICKETCARRIERSTATUS" />
+      <CacheId id="INTERLINETICKETCARRIERSTATUSHISTORICAL" />
+      <KeyField id="CARRIER" />
+      <KeyField id="CRSCODE" />
+   </Notification>
+   <Notification id="INTERNATIONALFARE">
+      <CacheId id="FARE" />
+      <CacheId id="ROUTINGFORMARKET" />
+      <CacheId id="ADDONCONSTRUCTION" />
+      <KeyField id="MARKET1" />
+      <KeyField id="MARKET2" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="JOINTCARRIER">
+      <CacheId id="JOINTCARRIER" />
+      <CacheId id="JOINTCARRIERHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="LIMITATIONS">
+      <CacheId id="FCLIMITATION" />
+      <CacheId id="FCLIMITATIONHISTORICAL" />
+      <CacheId id="JLIMITATION" />
+      <CacheId id="JLIMITATIONHISTORICAL" />
+      <CacheId id="PULIMITATION" />
+      <CacheId id="PULIMITATIONHISTORICAL" />
+      <KeyField id="USERAPPLTYPE" />
+      <KeyField id="USERAPPLCODE" />
+   </Notification>
+   <Notification id="MARKET">
+      <CacheId id="LOC" />
+      <CacheId id="LOCHISTORICAL" />
+      <KeyField id="LOCCODE" />
+   </Notification>
+   <Notification id="MARKUPCONTROLPRC">
+      <CacheId id="MARKUPCONTROL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULE" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="SEQNO" />
+      <KeyField id="OWNERPSEUDOCITY" />
+   </Notification>
+   <Notification id="CUSTOMERACTIVATIONCNTL">
+      <CacheId id="CUSTOMERACTIVATIONCONTROL" />
+      <CacheId id="CUSTOMERACTIVATIONCONTROLHISTORICAL" />
+      <KeyField id="PROJCODE" />
+   </Notification>
+   <Notification id="MARKUPSECFILTER">
+      <CacheId id="MARKUPSECFILTER" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULENUMBER" />
+      <KeyField id="TARIFFNUMBER" />
+   </Notification>
+   <Notification id="MAXSTAY">
+      <CacheId id="MAXSTAYRESTRICTION" />
+      <CacheId id="MAXSTAYRESTRICTIONHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="MERCHACTIVATION">
+      <CacheId id="MERCHACTIVATION" />
+      <CacheId id="MERCHACTIVATIONHISTORICAL" />
+      <KeyField id="ACTIVATIONID" />
+      <KeyField id="PRODUCTID" />
+      <KeyField id="CARRIER" />
+      <KeyField id="PSEUDOCITY" />
+   </Notification>
+   <Notification id="MERCHCARRIERPREFERENCE">
+      <CacheId id="MERCHCARRIERPREFERENCE" />
+      <CacheId id="MERCHCARRIERPREFERENCEHISTORICAL" />
+      <KeyField id="CARRIER" />
+      <KeyField id="SVCGROUP" />
+   </Notification>
+   <Notification id="MILEAGE">
+      <CacheId id="MILEAGE" />
+      <CacheId id="MILEAGEHISTORICAL" />
+      <KeyField id="ORIGLOC" />
+      <KeyField id="DESTLOC" />
+      <KeyField id="MILEAGETYPE" />
+      <KeyField id="GLOBALDIR" />
+   </Notification>
+   <Notification id="MILEAGESUBSTITUTION">
+      <CacheId id="MILEAGESUBSTITUTION" />
+      <CacheId id="MILEAGESUBSTITUTIONHISTORICAL" />
+      <KeyField id="LOCCODE" />
+   </Notification>
+   <Notification id="MILEAGESURCHEXCEPT">
+      <CacheId id="MILEAGESURCHEXCEPT" />
+      <CacheId id="MILEAGESURCHEXCEPTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="TEXTTBLITEMNO" />
+      <KeyField id="CARRIER" />
+      <KeyField id="TARIFFNUMBER" />
+      <KeyField id="RULENUMBER" />
+   </Notification>
+   <Notification id="MINFAREDEFAULTLOGIC">
+      <CacheId id="MINFAREDEFAULTLOGIC" />
+      <KeyField id="GOVERNINGCARRIER" />
+   </Notification>
+   <Notification id="MINFAREFARETYPEGRP">
+      <CacheId id="MINFAREFARETYPEGRP" />
+      <CacheId id="MINFAREFARETYPEGRPHISTORICAL" />
+      <KeyField id="SPECIALPROCESSNAME" />
+   </Notification>
+   <Notification id="MINIMUMFARE">
+      <CacheId id="MINFAREAPPL" />
+      <KeyField id="TEXTTBLVENDOR" />
+      <KeyField id="TEXTTBLITEMNO" />
+      <KeyField id="GOVERNINGCARRIER" />
+   </Notification>
+   <Notification id="MINORCOMBSUBCAT">
+      <CacheId id="FARECLASSREST" />
+      <CacheId id="FARECLASSRESTHISTORICAL" />
+      <CacheId id="TARIFFRULEREST" />
+      <CacheId id="TARIFFRULERESTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CATEGORY" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="MINSTAY">
+      <CacheId id="MINSTAYRESTRICTION" />
+      <CacheId id="MINSTAYRESTRICTIONHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="MISCFARETAGS">
+      <CacheId id="MISCFARETAG" />
+      <CacheId id="MISCFARETAGHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="MULTIAIRPORTCITY">
+      <CacheId id="MULTIAIRPORTCITY" />
+      <CacheId id="MULTIAIRPORTCITYHISTORICAL" />
+      <KeyField id="LOCCODE" />
+   </Notification>
+   <Notification id="MULTICARRIERMKT">
+      <CacheId id="MARKETCARRIERS" />
+      <KeyField id="MARKET1" />
+      <KeyField id="MARKET2" />
+   </Notification>
+   <Notification id="MULTITRANSPORT">
+      <CacheId id="MULTITRANSPORT" />
+      <CacheId id="MULTITRANSPORTHISTORICAL" />
+      <CacheId id="MULTITRANSPORTCITY" />
+      <CacheId id="MULTITRANSPORTCITYHISTORICAL" />
+      <CacheId id="MULTITRANSPORTLOCS" />
+      <CacheId id="MULTITRANSPORTLOCSHISTORICAL" />
+      <KeyField id="MULTITRANSCITY" />
+      <KeyField id="CARRIER" />
+      <KeyField id="MULTITRANSLOC" />
+   </Notification>
+   <Notification id="NATION">
+      <CacheId id="NATION" />
+      <CacheId id="NATIONHISTORICAL" />
+      <KeyField id="NATIONCODE" />
+   </Notification>
+   <Notification id="NEGFARECALC">
+      <CacheId id="NEGFARECALC" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="NEGFAREREST">
+      <CacheId id="NEGFAREREST" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <HistoricalNotification id="NEGFAREREST">
+      <CacheId id="NEGFARERESTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+       <HistoricalNotification id="NEGFARERESTH">
+      <CacheId id="NEGFARERESTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <Notification id="NEGFARERESTEXT">
+      <CacheId id="NEGFARERESTEXT" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <HistoricalNotification id="NEGFARERESTEXT">
+      <CacheId id="NEGFARERESTEXTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="NEGFARERESTEXTH">
+     <CacheId id="NEGFARERESTEXTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <Notification id="NEGFARERESTEXTSEQ">
+      <CacheId id="NEGFARERESTEXTSEQ" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <HistoricalNotification id="NEGFARERESTEXTSEQ">
+      <CacheId id="NEGFARERESTEXTSEQHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="NEGFARERESTEXTSEQH">
+     <CacheId id="NEGFARERESTEXTSEQHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <Notification id="NEGFARESECURITY">
+      <CacheId id="NEGFARESECURITY" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="NONCOMBCATCNTL">
+      <CacheId id="GENERALFARERULE" />
+      <CacheId id="GENERALFARERULEBACKDATING" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="CATEGORY" />
+   </Notification>
+   <Notification id="NOPNRFARETYPEGROUP">
+      <CacheId id="NOPNRFARETYPEGROUP" />
+      <CacheId id="NOPNRFARETYPEGROUPHISTORICAL" />
+      <KeyField id="FARETYPEGROUP" />
+   </Notification>
+   <Notification id="NOPNROPTIONS">
+      <CacheId id="NOPNROPTIONS" />
+      <CacheId id="NOPNROPTIONSHISTORICAL" />
+      <KeyField id="USERAPPL" />
+      <KeyField id="USERAPPLCODE" />
+   </Notification>
+   <Notification id="NUC">
+      <CacheId id="NUC" />
+      <CacheId id="NUCALLCARRIERS" />
+      <KeyField id="CUR" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="OPENJAWS">
+      <CacheId id="OPENJAWRULE" />
+      <CacheId id="OPENJAWRULEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="OPENJAWSETSSEQ">
+      <CacheId id="OPENJAWRESTRICTION" />
+      <CacheId id="OPENJAWRESTRICTIONHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CATEGORY" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="OPTIONALSERVICES">
+      <CacheId id="OPTIONALSERVICES" />
+      <CacheId id="OPTIONALSERVICESHISTORICAL" />
+      <CacheId id="OPTIONALSERVICESMKT" />
+      <CacheId id="OPTIONALSERVICESMKTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="OPTIONALSERVICESACT">
+      <CacheId id="OPTIONALSERVICESACTIVATION" />
+      <CacheId id="OPTIONALSERVICESACTIVATIONHISTORICAL" />
+      <KeyField id="USERAPPLTYPE" />
+      <KeyField id="USERAPPL" />
+      <KeyField id="GROUPCODE" />
+      <KeyField id="APPLICATION" />
+   </Notification>
+   <Notification id="OPTIONALSVCSCONCUR">
+      <CacheId id="OPTIONALSERVICESCONCUR" />
+      <CacheId id="OPTIONALSERVICESCONCURHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="OVERRIDEDATE">
+      <CacheId id="DATEOVERRIDERULE" />
+      <CacheId id="DATEOVERRIDERULEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="PENALTIES">
+      <CacheId id="PENALTY" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="PFC">
+      <CacheId id="PFCPFC" />
+      <CacheId id="PFCPFCHISTORICAL" />
+      <KeyField id="PFCAIRPORT" />
+   </Notification>
+   <Notification id="PFCABSORB">
+      <CacheId id="PFCABSORB" />
+      <CacheId id="PFCABSORBHISTORICAL" />
+      <KeyField id="PFCAIRPORT" />
+      <KeyField id="LOCALCARRIER" />
+   </Notification>
+   <Notification id="PFCCOLLECTIONMETHOD">
+      <CacheId id="PFCCOLLECTMETH" />
+      <CacheId id="PFCCOLLECTMETHHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="PFCEQUIPTYPEEXEMPT">
+      <CacheId id="PFCEQUIPTYPEEXEMPT" />
+      <CacheId id="PFCEQUIPTYPEEXEMPTHISTORICAL" />
+      <KeyField id="EQUIP" />
+      <KeyField id="STATE" />
+   </Notification>
+   <Notification id="PFCEXEMPTION">
+      <CacheId id="PFCEXEMPTION" />
+      <CacheId id="PFCEXEMPTIONHISTORICAL" />
+      <KeyField id="NATIONCODE" />
+      <KeyField id="VENDOR" />
+   </Notification>
+   <Notification id="PFCMULTIAPT">
+      <CacheId id="PFCMULTIAIRPORT" />
+      <CacheId id="PFCMULTIAIRPORTHISTORICAL" />
+      <KeyField id="LOC" />
+   </Notification>
+   <Notification id="PFCTKTDESIGEXCEPT">
+      <CacheId id="PFCTKTDESIGEXCEPT" />
+      <CacheId id="PFCTKTDESIGEXCEPTHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="PSGTYPE">
+      <CacheId id="PAXTYPE" />
+      <CacheId id="PAXTYPEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="PAXTYPECODE" />
+      <KeyField id="PAXTYPEGRP" />
+   </Notification>
+   <Notification id="PSGTYPEMATRIX">
+      <CacheId id="PAXTYPEMATRIX" />
+      <CacheId id="PAXTYPEMATRIXHISTORICAL" />
+      <KeyField id="PAXTYPECODE" />
+   </Notification>
+   <Notification id="ROUTING">
+      <CacheId id="ROUTING" />
+      <CacheId id="ROUTINGHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="ROUTINGTARIFF" />
+      <KeyField id="ROUTING" />
+   </Notification>
+   <Notification id="RULECATALPHACD">
+      <CacheId id="RULECATALPHACD" />
+      <KeyField id="ALPHACODE" />
+   </Notification>
+   <Notification id="RULECATEGORYDESC">
+      <CacheId id="RULECATEGORYDESC" />
+      <CacheId id="RULECATEGORYDESCHISTORICAL" />
+      <KeyField id="CATNUMBER" />
+   </Notification>
+   <Notification id="SALESNATIONRESTR">
+      <CacheId id="SALESNATIONRESTR" />
+      <CacheId id="SALESNATIONRESTRHISTORICAL" />
+      <KeyField id="NATIONCODE" />
+   </Notification>
+   <Notification id="SALESREST">
+      <CacheId id="SALESRESTRICTION" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SAMEPOINTS">
+      <CacheId id="SAMEPOINT" />
+      <CacheId id="SAMEPOINTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SEASONALAPP">
+      <CacheId id="SEASONALAPPL" />
+      <CacheId id="SEASONALAPPLHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SEATCABINCHARACTERISTIC">
+      <CacheId id="SEATCABINCHARACTERISTIC" />
+      <CacheId id="SEATCABINCHARACTERISTICHISTORICAL" />
+      <KeyField id="CARRIER" />
+      <KeyField id="CODETYPE" />
+   </Notification>
+   <Notification id="SECTORSURCHARGE">
+      <CacheId id="SECTORSURCHARGE" />
+      <CacheId id="SECTORSURCHARGEHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="SERVICEFEESCXRACTIV">
+      <CacheId id="SERVICEFEESCXRACTIVATION" />
+      <CacheId id="SERVICEFEESCXRACTIVATIONHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="SERVICEGROUP">
+      <CacheId id="SERVICEGROUP" />
+      <CacheId id="SERVICEGROUPHISTORICAL" />
+      <KeyField id="SVCGROUP" />
+   </Notification>
+   <Notification id="STOPOVERS">
+      <CacheId id="STOPOVERS" />
+      <CacheId id="STOPOVERSHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SUBCODE">
+      <CacheId id="SUBCODE" />
+      <CacheId id="SUBCODEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="SUBJOURNEY">
+      <CacheId id="SUBJOURNEY" />
+      <CacheId id="SUBJOURNEYHISTORICAL" />
+      <KeyField id="SELECTIONTYPE" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="SURCHARGES">
+      <CacheId id="SURCHARGES" />
+      <CacheId id="SURCHARGESHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SURFACESECTORAPPL">
+      <CacheId id="SURFACESECTORAPPL" />
+      <CacheId id="SURFACESECTORAPPLHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="TEXTTBLITEMNO" />
+   </Notification>
+   <Notification id="SURFACESECTOREXEMPT">
+      <CacheId id="SURFACESECTOREXEMPT" />
+      <CacheId id="SURFACESECTOREXEMPTHISTORICAL" />
+      <KeyField id="ORIGLOC" />
+      <KeyField id="DESTLOC" />
+   </Notification>
+   <Notification id="SURFACESECTOREXEMPTION">
+      <CacheId id="SURFACESECTOREXEMPTION" />
+      <CacheId id="SURFACESECTOREXEMPTIONHISTORICAL" />
+      <KeyField id="VALIDATINGCARRIER" />
+   </Notification>
+   <Notification id="SURFACETRANSFERS">
+      <CacheId id="SURFACETRANSFERS" />
+      <CacheId id="SURFACETRANSFERSHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SVCFEESACCOUNTCODE">
+      <CacheId id="SVCFEESACCOUNTCODE" />
+      <CacheId id="SVCFEESACCOUNTCODEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SVCFEESCURRENCY">
+      <CacheId id="SVCFEESCURRENCY" />
+      <CacheId id="SVCFEESCURRENCYHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SVCFEESCXRRESULTINGFCL">
+      <CacheId id="SVCFEESCXRRESULTINGFCL" />
+      <CacheId id="SVCFEESCXRRESULTINGFCLHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SVCFEESRESBKGDESIG">
+      <CacheId id="SVCFEESRESBKGDESIG" />
+      <CacheId id="SVCFEESRESBKGDESIGHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SVCFEESSECURITY">
+      <CacheId id="SVCFEESSECURITY" />
+      <CacheId id="SVCFEESSECURITYHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SVCFEESTICKETDESIGNATOR">
+      <CacheId id="SVCFEESTICKETDESIGNATOR" />
+      <CacheId id="SVCFEESTICKETDESIGNATORHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="TARIFFCROSSREF">
+      <CacheId id="TARIFFCROSSREF" />
+      <CacheId id="TARIFFCROSSREFHISTORICAL" />
+      <CacheId id="ADDONCONSTRUCTION" />
+      <KeyField id="VENDOR" />
+      <KeyField id="TARIFFCROSSREFTYPE" />
+      <KeyField id="CARRIER" />
+      <KeyField id="FARETARIFF" />
+      <KeyField id="RULETARIFF" />
+   </Notification>
+   <Notification id="TARIFFINHIBITS">
+      <CacheId id="TARIFFINHIBITS" />
+      <CacheId id="TARIFFINHIBITSHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="TARIFFCROSSREFTYPE" />
+      <KeyField id="CARRIER" />
+      <KeyField id="FARETARIFF" />
+      <KeyField id="RULETARIFFCODE" />
+      <KeyField id="RULETARIFF" />
+   </Notification>
+   <Notification id="TARIFFMILEAGEADDON">
+      <CacheId id="TARIFFMILEAGEADDON" />
+      <CacheId id="TARIFFMILEAGEADDONHISTORICAL" />
+      <KeyField id="CARRIER" />
+      <KeyField id="LOCCODE" />
+      <KeyField id="GLOBALDIRECTION" />
+   </Notification>
+   <Notification id="TARIFFRULECOMBSEQ">
+      <CacheId id="TARIFFRULEREST" />
+      <CacheId id="TARIFFRULERESTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CATEGORY" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="TAXAKHI">
+      <CacheId id="TAXAKHIFACTOR" />
+      <CacheId id="TAXAKHIFACTORHISTORICAL" />
+      <KeyField id="LOCCODE" />
+   </Notification>
+   <Notification id="TAXCARRIERFLT">
+        <CacheId id="TAXCARRIERFLIGHT" />
+        <CacheId id="TAXCARRIERFLIGHTHISTORICAL" />
+        <KeyField id="VENDOR" />
+        <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="TAXCARRIERAPPL">
+        <CacheId id="TAXCARRIERAPPL" />
+        <CacheId id="TAXCARRIERAPPLHISTORICAL" />
+        <KeyField id="VENDOR" />
+        <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SERVICEBAGGAGE">
+        <CacheId id="SERVICEBAGGAGE" />
+        <CacheId id="SERVICEBAGGAGEHISTORICAL" />
+        <KeyField id="VENDOR" />
+        <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SECTORDETAIL">
+        <CacheId id="SECTORDETAIL" />
+        <CacheId id="SECTORDETAILHISTORICAL" />
+        <KeyField id="VENDOR" />
+        <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="PAXTYPECODE">
+        <CacheId id="PAXTYPECODE" />
+        <CacheId id="PAXTYPECODEHISTORICAL" />
+        <KeyField id="VENDOR" />
+        <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="TAXTEXT">
+        <CacheId id="TAXTEXT" />
+        <CacheId id="TAXTEXTHISTORICAL" />
+        <KeyField id="VENDOR" />
+        <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="TAXCODETEXT">
+        <CacheId id="TAXCODETEXT" />
+        <CacheId id="TAXCODETEXTHISTORICAL" />
+        <KeyField id="VENDOR" />
+        <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="TAXCODE">
+      <CacheId id="TAXCODE" />
+      <CacheId id="TAXCODEHISTORICAL" />
+      <KeyField id="TAXCODECODE" />
+   </Notification>
+   <Notification id="TAXNATION">
+      <CacheId id="TAXNATION" />
+      <CacheId id="TAXNATIONHISTORICAL" />
+      <KeyField id="NATIONCODE" />
+   </Notification>
+   <Notification id="TAXSEGABSORP">
+      <CacheId id="TAXSEGABSORB" />
+      <CacheId id="TAXSEGABSORBHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="TICKETENDORSEMENTS">
+      <CacheId id="TICKETENDORSEMENTS" />
+      <CacheId id="TICKETENDORSEMENTSHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="TICKETINGFEES">
+      <CacheId id="TICKETINGFEES" />
+      <CacheId id="TICKETINGFEESHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="TICKETSTOCK">
+      <CacheId id="TICKETSTOCK" />
+      <CacheId id="TICKETSTOCKHISTORICAL" />
+      <KeyField id="TKTSTOCKCODE" />
+   </Notification>
+   <Notification id="TOURS">
+      <CacheId id="TOURS" />
+      <CacheId id="TOURSHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="TPMEXCLUSION">
+      <CacheId id="TPMEXCLUSION" />
+      <CacheId id="TPMEXCLUSIONHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="TPDPSR">
+      <CacheId id="TPDPSR" />
+      <CacheId id="TPDPSRHISTORICAL" />
+      <KeyField id="APPLIND" />
+      <KeyField id="CARRIER" />
+      <KeyField id="AREA1" />
+      <KeyField id="AREA2" />
+   </Notification>
+   <Notification id="TRANSFERSA">
+      <CacheId id="TRANSFERS1" />
+      <CacheId id="TRANSFERS1HISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="TVLREST">
+      <CacheId id="TRAVELRESTRICTION" />
+      <CacheId id="TRAVELRESTRICTIONHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="FARETYPE974">
+      <CacheId id="FARETYPETABLE" />
+      <CacheId id="FARETYPETABLEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SEASONALITYDOW">
+      <CacheId id="SEASONALITYDOW" />
+      <CacheId id="SEASONALITYDOWHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+
+   <!--
+   Cache Notification of this table is disabled to improve the performance
+   of the application. Everytime VendorCrossRedDAO is access, the cache pointer
+   is duplicated and that caused DeleteList to grow enormously.
+   Please don't uncomment this section without changing the code in DAO class.
+   <Notification id="VENDORCROSSREF">
+      <CacheId id="VENDORCROSSREF" />
+      <KeyField id="VENDOR" />
+   </Notification>
+   -->
+   <Notification id="VOLUNTARYCHANGESCONFIG">
+      <CacheId id="VOLUNTARYCHANGESCONFIG" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="YQYRFEES">
+      <CacheId id="YQYRFEES" />
+      <CacheId id="YQYRFEESHISTORICAL" />
+      <CacheId id="YQYRFEESNONCONCUR" />
+      <CacheId id="YQYRFEESNONCONCURHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="YQYRFEESNONCONCUR">
+      <CacheId id="YQYRFEES" />
+      <CacheId id="YQYRFEESHISTORICAL" />
+      <CacheId id="YQYRFEESNONCONCUR" />
+      <CacheId id="YQYRFEESNONCONCURHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="ZONE">
+      <CacheId id="ZONE" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ZONENO" />
+      <KeyField id="ZONETYPE" />
+   </Notification>
+   <Notification id="TAXRESTRICTIONLOCATION">
+      <CacheId id="TAXRESTRICTIONLOCATION" />
+      <CacheId id="TAXRESTRICTIONLOCATIONHISTORICAL" />
+      <KeyField id="TAXRESTRICTIONLOCATIONNO" />
+   </Notification>
+   <Notification id="TAXSPECCONFIG">
+      <CacheId id="TAXSPECCONFIG" />
+      <CacheId id="TAXSPECCONFIGHISTORICAL" />
+      <KeyField id="SPECCONFIGNAME" />
+   </Notification>
+   <HistoricalNotification id="ADDONCOMBFARECLASS">
+      <CacheId id="ADDONCOMBFARECLASSHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="FARETARIFF" />
+   </HistoricalNotification>
+   <HistoricalNotification id="ADDONCOMBFARECLASSH">
+      <CacheId id="ADDONCOMBFARECLASSHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="FARETARIFF" />
+   </HistoricalNotification>
+   <HistoricalNotification id="ADDONFARE">
+      <CacheId id="ADDONFAREHISTORICAL" />
+      <CacheId id="FDADDONFAREHISTORICAL" />
+      <KeyField id="GATEWAYMARKET" />
+      <KeyField id="INTERIORMARKET" />
+      <KeyField id="CARRIER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="ADDONFAREH">
+      <CacheId id="ADDONFAREHISTORICAL" />
+      <CacheId id="FDADDONFAREHISTORICAL" />
+      <KeyField id="GATEWAYMARKET" />
+      <KeyField id="INTERIORMARKET" />
+      <KeyField id="CARRIER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="ADDONZONE">
+      <CacheId id="ADDONZONEHISTORICAL" />
+      <CacheId id="ADDONZONESITAHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="LOC" />
+   </HistoricalNotification>
+   <HistoricalNotification id="ADDONZONEH">
+      <CacheId id="ADDONZONEHISTORICAL" />
+      <CacheId id="ADDONZONESITAHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="LOC" />
+   </HistoricalNotification>
+   <HistoricalNotification id="BANKERSSELLINGRATE">
+      <CacheId id="BANKERSELLRATEHISTORICAL" />
+      <KeyField id="CURRENCYCODE" />
+   </HistoricalNotification>
+   <HistoricalNotification id="BANKERSSELLINGRATEH">
+      <CacheId id="BANKERSELLRATEHISTORICAL" />
+      <KeyField id="CURRENCYCODE" />
+   </HistoricalNotification>
+      <HistoricalNotification id="BASEFAREINFOTBL">
+      <CacheId id="BASEFARERULEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="BASEFAREINFOTBLH">
+      <CacheId id="BASEFARERULEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="BOOKINGCODE">
+      <CacheId id="BOOKINGCODECONVHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+   </HistoricalNotification>
+   <HistoricalNotification id="BOOKINGCODEH">
+      <CacheId id="BOOKINGCODECONVHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+   </HistoricalNotification>
+   <HistoricalNotification id="BKGCDEXCEPTIONS">
+      <CacheId id="BOOKINGCODEEXCEPTIONSEQUENCEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+      <HistoricalNotification id="BKGCDEXCEPTIONSH">
+      <CacheId id="BOOKINGCODEEXCEPTIONSEQUENCEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="COMBCATCNTL">
+      <CacheId id="COMBINABILITYRULEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="CATEGORY" />
+   </HistoricalNotification>
+   <HistoricalNotification id="COMBCATCNTLH">
+      <CacheId id="COMBINABILITYRULEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="CATEGORY" />
+   </HistoricalNotification>
+   <HistoricalNotification id="DOMESTICFARE">
+      <CacheId id="FAREHISTORICAL" />
+      <CacheId id="ROUTINGFORMARKETHISTORICAL" />
+      <KeyField id="MARKET1" />
+      <KeyField id="MARKET2" />
+      <KeyField id="CARRIER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="DOMESTICFAREH">
+      <CacheId id="FAREHISTORICAL" />
+      <CacheId id="ROUTINGFORMARKETHISTORICAL" />
+      <KeyField id="MARKET1" />
+      <KeyField id="MARKET2" />
+      <KeyField id="CARRIER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="EXCLUDEBYRULE">
+      <CacheId id="MINFARERULELEVELEXCLHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="TEXTTBLITEMNO" />
+      <KeyField id="CARRIER" />
+      <KeyField id="TARIFFNUMBER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="EXCLUDEBYRULEH">
+      <CacheId id="MINFARERULELEVELEXCLHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="TEXTTBLITEMNO" />
+      <KeyField id="CARRIER" />
+      <KeyField id="TARIFFNUMBER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="FAREBYRULEAPP">
+      <CacheId id="FAREBYRULEAPPHISTORICAL" />
+      <CacheId id="FAREBYRULEAPPRULETARIFFHISTORICAL" />
+      <KeyField id="CARRIER" />
+      <KeyField id="PRIMEPSGTYPE" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="ACCOUNTCODE" />
+   </HistoricalNotification>
+   <HistoricalNotification id="FAREBYRULEAPPH">
+      <CacheId id="FAREBYRULEAPPHISTORICAL" />
+      <CacheId id="FAREBYRULEAPPRULETARIFFHISTORICAL" />
+      <KeyField id="CARRIER" />
+      <KeyField id="PRIMEPSGTYPE" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="ACCOUNTCODE" />
+   </HistoricalNotification>
+   <HistoricalNotification id="FAREBYRULECNTL">
+      <CacheId id="FAREBYRULECTRLHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="CATEGORY" />
+   </HistoricalNotification>
+   <HistoricalNotification id="FAREBYRULECNTLH">
+      <CacheId id="FAREBYRULECTRLHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="CATEGORY" />
+   </HistoricalNotification>
+      <HistoricalNotification id="FAREBYRULE">
+      <CacheId id="FAREBYRULEITEMHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="FAREBYRULEH">
+      <CacheId id="FAREBYRULEITEMHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="FARECLASSAPPL">
+      <CacheId id="FARECLASSAPPHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="FARECLASS" />
+   </HistoricalNotification>
+   <HistoricalNotification id="FARECLASSAPPLH">
+      <CacheId id="FARECLASSAPPHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="FARECLASS" />
+   </HistoricalNotification>
+   <HistoricalNotification id="FAREPROPERTIES">
+     <CacheId id="FAREPROPERTIESHISTORICAL" />
+     <KeyField id="VENDOR" />
+     <KeyField id="CARRIER" />
+     <KeyField id="RULETARIFF" />
+     <KeyField id="RULE" />
+   </HistoricalNotification>
+   <HistoricalNotification id="FAREPROPERTIESH">
+     <CacheId id="FAREPROPERTIESHISTORICAL" />
+     <KeyField id="VENDOR" />
+     <KeyField id="CARRIER" />
+     <KeyField id="RULETARIFF" />
+     <KeyField id="RULE" />
+   </HistoricalNotification>
+   <HistoricalNotification id="FTNTCNTL">
+      <CacheId id="FOOTNOTECTRLHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="FARETARIFF" />
+      <KeyField id="FOOTNOTE" />
+      <KeyField id="CATEGORY" />
+   </HistoricalNotification>
+   <HistoricalNotification id="FTNTCNTLH">
+      <CacheId id="FOOTNOTECTRLHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="FARETARIFF" />
+      <KeyField id="FOOTNOTE" />
+      <KeyField id="CATEGORY" />
+   </HistoricalNotification>
+   <HistoricalNotification id="INTERNATIONALFARE">
+      <CacheId id="FAREHISTORICAL" />
+      <CacheId id="ROUTINGFORMARKETHISTORICAL" />
+      <KeyField id="MARKET1" />
+      <KeyField id="MARKET2" />
+      <KeyField id="CARRIER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="INTERNATIONALFAREH">
+      <CacheId id="FAREHISTORICAL" />
+      <CacheId id="ROUTINGFORMARKETHISTORICAL" />
+      <KeyField id="MARKET1" />
+      <KeyField id="MARKET2" />
+      <KeyField id="CARRIER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="MARKUPCONTROLPRC">
+      <CacheId id="MARKUPCONTROLHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULE" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="SEQNO" />
+      <KeyField id="OWNERPSEUDOCITY" />
+   </HistoricalNotification>
+   <HistoricalNotification id="MARKUPCONTROLH">
+      <CacheId id="MARKUPCONTROLHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULE" />
+      <KeyField id="RULETARIFF" />
+   </HistoricalNotification>
+   <HistoricalNotification id="MARKUPSECFILTER">
+      <CacheId id="MARKUPSECFILTERHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULENUMBER" />
+      <KeyField id="TARIFFNUMBER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="MARKUPSECFILTERH">
+      <CacheId id="MARKUPSECFILTERHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULENUMBER" />
+      <KeyField id="TARIFFNUMBER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="MINFAREDEFAULTLOGIC">
+      <CacheId id="MINFAREDEFAULTLOGICHISTORICAL" />
+      <KeyField id="GOVERNINGCARRIER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="MINIMUMFARE">
+      <CacheId id="MINFAREAPPLHISTORICAL" />
+      <KeyField id="TEXTTBLVENDOR" />
+      <KeyField id="TEXTTBLITEMNO" />
+      <KeyField id="GOVERNINGCARRIER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="MINIMUMFAREH">
+      <CacheId id="MINFAREAPPLHISTORICAL" />
+      <KeyField id="TEXTTBLVENDOR" />
+      <KeyField id="TEXTTBLITEMNO" />
+      <KeyField id="GOVERNINGCARRIER" />
+   </HistoricalNotification>
+      <HistoricalNotification id="NEGFARECALC">
+      <CacheId id="NEGFARECALCHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="NEGFARECALCH">
+      <CacheId id="NEGFARECALCHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+    <HistoricalNotification id="NEGFAREREST">
+      <CacheId id="NEGFARERESTHISTORICAL" />
+      <CacheId id="NEGFARERESTEXTHISTORICAL" />
+      <CacheId id="NEGFARERESTEXTSEQHISTORICAL"/>
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+       <HistoricalNotification id="NEGFARERESTH">
+      <CacheId id="NEGFARERESTHISTORICAL" />
+      <CacheId id="NEGFARERESTEXTHISTORICAL" />
+      <CacheId id="NEGFARERESTEXTSEQHISTORICAL"/>
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+      <HistoricalNotification id="NEGFARESECURITY">
+      <CacheId id="NEGFARESECURITYHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="NEGFARESECURITYH">
+      <CacheId id="NEGFARESECURITYHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="NONCOMBCATCNTL">
+      <CacheId id="GENERALFARERULEHISTORICAL" />
+      <CacheId id="GENERALFARERULEBACKDATING" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="CATEGORY" />
+   </HistoricalNotification>
+   <HistoricalNotification id="NONCOMBCATCNTLH">
+      <CacheId id="GENERALFARERULEHISTORICAL" />
+      <CacheId id="GENERALFARERULEBACKDATING" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+      <KeyField id="CATEGORY" />
+   </HistoricalNotification>
+   <HistoricalNotification id="NUC">
+      <CacheId id="NUCHISTORICAL" />
+      <CacheId id="NUCALLCARRIERSHISTORICAL" />
+      <KeyField id="CUR" />
+      <KeyField id="CARRIER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="NUCH">
+      <CacheId id="NUCHISTORICAL" />
+      <CacheId id="NUCALLCARRIERSHISTORICAL" />
+      <KeyField id="CUR" />
+      <KeyField id="CARRIER" />
+   </HistoricalNotification>
+  <Notification id="PRINTOPTION">
+    <CacheId id="PRINTOPTION" />
+    <CacheId id="PRINTOPTIONHISTORICAL" />
+    <KeyField id="VENDOR" />
+    <KeyField id="FARESOURCE" />
+  </Notification>
+  <HistoricalNotification id="PENALTIES">
+      <CacheId id="PENALTYHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="PENALTIESH">
+      <CacheId id="PENALTYHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="ROUTING">
+      <CacheId id="ROUTINGHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="ROUTINGTARIFF" />
+      <KeyField id="ROUTING" />
+   </HistoricalNotification>
+   <HistoricalNotification id="ROUTINGH">
+      <CacheId id="ROUTINGHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="ROUTINGTARIFF" />
+      <KeyField id="ROUTING" />
+   </HistoricalNotification>
+   <HistoricalNotification id="OPTIONALSERVICES">
+      <CacheId id="OPTIONALSERVICESHISTORICAL" />
+      <CacheId id="OPTIONALSERVICESMKTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+   </HistoricalNotification>
+   <HistoricalNotification id="OPTIONALSERVICESH">
+      <CacheId id="OPTIONALSERVICESHISTORICAL" />
+      <CacheId id="OPTIONALSERVICESMKTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+   </HistoricalNotification>
+  <Notification id="VALUECODEALGORITHM">
+    <CacheId id="VALUECODEALGORITHM"/>
+    <CacheId id="VALUECODEALGORITHMHISTORICAL" />
+    <KeyField id="VENDOR" />
+    <KeyField id="CARRIER" />
+    <KeyField id="ALGORITHMNAME" />
+  </Notification>
+     <HistoricalNotification id="SALESREST">
+      <CacheId id="SALESRESTRICTIONHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="SALESRESTH">
+      <CacheId id="SALESRESTRICTIONHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </HistoricalNotification>
+   <HistoricalNotification id="ZONE">
+      <CacheId id="ZONEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ZONENO" />
+      <KeyField id="ZONETYPE" />
+   </HistoricalNotification>
+   <HistoricalNotification id="ZONEH">
+      <CacheId id="ZONEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ZONENO" />
+      <KeyField id="ZONETYPE" />
+   </HistoricalNotification>
+   <HistoricalNotification id="TAXRESTRICTIONLOCATION">
+      <CacheId id="TAXRESTRICTIONLOCATIONHISTORICAL" />
+      <KeyField id="TAXRESTRICTIONLOCATION" />
+   </HistoricalNotification>
+   <Notification id="NVBNVA">
+      <CacheId id="NVBNVA" />
+      <CacheId id="NVBNVAHISTORICAL" />
+      <CacheId id="NVBNVASEG" />
+      <CacheId id="NVBNVASEGHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="RULETARIFF" />
+      <KeyField id="RULE" />
+   </Notification>
+   <Notification id="SERVICESDESCRIPTION">
+      <CacheId id="SERVICESDESCRIPTION" />
+      <CacheId id="SERVICESDESCRIPTIONHISTORICAL" />
+      <KeyField id="VALUE" />
+   </Notification>
+   <Notification id="SERVICESSUBGROUP">
+      <CacheId id="SERVICESSUBGROUP" />
+      <KeyField id="SVCGROUP" />
+      <KeyField id="SVCSUBGROUP" />
+   </Notification>
+   <Notification id="USDOTCARRIER">
+      <CacheId id="USDOTCARRIER" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="CTACARRIER">
+      <CacheId id="CTACARRIER" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <!--<Notification id="BRANDEDFARES">
+      <CacheId id="BRANDEDFARE"/>
+      <CacheId id="BRANDEDFAREHISTORICAL"/>
+      <KeyField id="VENDOR"/>
+      <KeyField id="CARRIER"/>
+   </Notification>-->
+   <Notification id="SVCFEESFAREID">
+      <CacheId id="SVCFEESFAREID" />
+      <CacheId id="SVCFEESFAREIDHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="SVCFEESFEATURE">
+      <CacheId id="SVCFEESFEATURE" />
+      <CacheId id="SVCFEESFEATUREHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="ITEMNO" />
+   </Notification>
+   <Notification id="BANKIDENTIFICATION">
+      <CacheId id="BANKIDENTIFICATION" />
+      <CacheId id="BANKIDENTIFICATIONHISTORICAL" />
+      <KeyField id="BANKIDENTIFICATIONNBR" />
+   </Notification>
+   <Notification id="CAT05OVERRIDECARRIER">
+      <CacheId id="CAT05OVERRIDECARRIER" />
+      <KeyField id="PSEUDOCITY" />
+   </Notification>
+   <Notification id="AIRLINEALLIANCECODEGRP">
+      <CacheId id="AIRLINEALLIANCECARRIER" />
+      <CacheId id="AIRLINEALLIANCECARRIERHISTORICAL" />
+      <CacheId id="AIRLINEALLIANCECONTINENT" />
+      <CacheId id="AIRLINEALLIANCECONTINENTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="GENERICAIRLINECODE" />
+   </Notification>
+   <Notification id="TKTDESIGNATOREXEMPT">
+      <CacheId id="TKTDESIGNATOREXEMPT" />
+      <CacheId id="TKTDESIGNATOREXEMPTHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="AIRLINECOUNTRYSP">
+      <CacheId id="AIRLINECOUNTRYSETTLEMENTPLAN" />
+      <CacheId id="AIRLINECOUNTRYSETTLEMENTPLANHISTORICAL" />
+      <KeyField id="GDS" />
+      <KeyField id="NATION" />
+      <KeyField id="AIRLINE" />
+      <KeyField id="SETTLEMENTPLAN" />
+   </Notification>
+   <Notification id="AIRLINEINTERLINEAGMT">
+      <CacheId id="AIRLINEINTERLINEAGREEMENT" />
+      <CacheId id="AIRLINEINTERLINEAGREEMENTHISTORICAL" />
+      <KeyField id="GDS" />
+      <KeyField id="NATION" />
+      <KeyField id="VALIDATINGCARRIER" />
+   </Notification>
+   <Notification id="COUNTRYSETTLEMENTPLAN">
+      <CacheId id="COUNTRYSETTLEMENTPLAN" />
+      <CacheId id="COUNTRYSETTLEMENTPLANHISTORICAL" />
+      <KeyField id="NATION" />
+   </Notification>
+   <Notification id="GENRLSLAGRCNTRY">
+      <CacheId id="GENSALESAGENT" />
+      <CacheId id="GENSALESAGENTHISTORICAL" />
+      <KeyField id="GDS" />
+      <KeyField id="NATION" />
+      <KeyField id="SETTLEMENTPLAN" />
+      <KeyField id="NONPARTICIPATINGCARRIER" />
+   </Notification>
+   <Notification id="NRTVLDALN">
+      <CacheId id="NEUTRALVALIDATINGAIRLINE" />
+      <CacheId id="NEUTRALVALIDATINGAIRLINEHISTORICAL" />
+      <KeyField id="GDS" />
+      <KeyField id="NATION" />
+      <KeyField id="SETTLEMENTPLAN" />
+   </Notification>
+   <Notification id="PASSENGERAIRLINE">
+      <CacheId id="PASSENGERAIRLINE" />
+      <CacheId id="PASSENGERAIRLINEHISTORICAL" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="EMDINTERLINEAGMT">
+      <CacheId id="EMDINTERLINEAGREEMENT" />
+      <KeyField id="GDS" />
+      <KeyField id="NATION" />
+      <KeyField id="VALIDATINGCARRIER" />
+   </Notification>
+
+   <Notification id="RBDBYCABIN">
+      <CacheId id="RBDBYCABIN" />
+      <CacheId id="RBDBYCABINHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+   </Notification>
+   <Notification id="FREQFLYERSTATUS">
+      <CacheId id="FREQUENTFLYERSTATUSSEG" />
+      <CacheId id="FREQUENTFLYERSTATUSSEGHISTORICAL" />
+      <CacheId id="FREQUENTFLYERSTATUS" />
+      <CacheId id="FREQUENTFLYERSTATUSHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+   </Notification>
+
+   <Notification id="COMMISSIONCONTRACT">
+      <CacheId id="COMMISSIONCONTRACT" />
+      <CacheId id="COMMISSIONCONTRACTHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CARRIER" />
+      <KeyField id="PCC" />
+   </Notification>
+
+   <Notification id="COMMISSIONPROGRAM">
+      <CacheId id="COMMISSIONPROGRAM" />
+      <CacheId id="COMMISSIONPROGRAMHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="CONTRACTID" />
+   </Notification>
+
+   <Notification id="TAXEXEMPTION">
+      <CacheId id="TAXEXEMPTION" />
+      <CacheId id="TAXEXEMPTIONHISTORICAL" />
+      <KeyField id="T" />
+      <KeyField id="C" />
+   </Notification>
+
+   <Notification id="COMMISSIONRULE">
+      <CacheId id="COMMISSIONRULE" />
+      <CacheId id="COMMISSIONRULEHISTORICAL" />
+      <KeyField id="VENDOR" />
+      <KeyField id="PROGRAMID" />
+   </Notification>
+   <Notification id="SPANISHREFERENCEFARE">
+      <CacheId id="SPANISHREFERENCEFARE" />
+      <CacheId id="SPANISHREFERENCEFAREHISTORICAL" />
+      <KeyField id="TKTCARRIER" />
+      <KeyField id="FARECARRIER" />
+      <KeyField id="ORIGINAIRPORT" />
+      <KeyField id="DESTINATIONAIRPORT" />
+   </Notification>
+</CacheNotifyConfig>

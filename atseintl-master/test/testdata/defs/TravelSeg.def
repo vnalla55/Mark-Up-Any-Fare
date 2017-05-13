@@ -1,0 +1,81 @@
+name: TravelSeg Abstract
+namespace: tse
+child: AirSeg
+child: ArunkSeg
+package: DataModel
+
+factoryAggregate: EarliestDepartureDT:  DateTime earliestDepartureDT()
+factoryAggregate: LatestDepartureDT:    DateTime latestDepartureDT()
+factoryAggregate: DepartureDate:        DateTime departureDT()
+factoryAggregate: ArrivalDate:          DateTime arrivalDT()
+factoryAggregate: BookingDate:          DateTime bookingDT()
+
+factoryAggregate: ClassOfService: std::vector<ClassOfService*> classOfService()
+
+section: SegmentInfo
+  scalar: pnrSegment:     int16_t       pnrSegment()
+  scalar: segmentOrder:   int16_t       segmentOrder()
+  scalar: stopOver:       bool          stopOver()
+  scalar: forcedStopOver: char          forcedStopOver()
+  scalar: forcedConx:     char          forcedConx()
+  scalar: geoTravelType:  GeoTravelType geoTravelType()
+  scalar: origAirport:    LocCode       origAirport()
+  scalar: boardMultiCity: LocCode       boardMultiCity()
+  scalar: destAirport:    LocCode       destAirport()
+  scalar: offMultiCity:   LocCode       offMultiCity()
+endsection
+
+section: FlightInfo
+  scalar: equipmentType: EquipmentType equipmentType()
+endsection
+
+factoryAggregate: Origin:       Loc* origin()
+factoryAggregate: Destination:  Loc* destination()
+
+section: Misc
+  scalar: validatedBookingCode: std::string validatedBookingCode()
+  scalar: resStatus:            std::string resStatus()
+  scalar: fareBasisCode:        std::string fareBasisCode()
+  scalar: bookingCode:          BookingCode getBookingCode
+  scalar: furthestPoint:        bool        furthestPoint()
+  scalar: forcedFareBrk:        char        forcedFareBrk()
+  scalar: forcedNoFareBrk:      char        forcedNoFareBrk()
+  scalar: forcedSideTrip:       char        forcedSideTrip()
+  scalar: legId:                int16_t     legId()
+endsection
+
+initLines
+  item->origin() = 0;
+  item->destination() = 0;
+  item->origAirport() = "";
+  item->boardMultiCity() = "";
+  item->destAirport() = "";
+  item->offMultiCity() = "";
+endInitLines
+
+postInitLines
+  if (!item->origin())
+  {
+    std::cout << "Warning! Origin for AirSegment is empty!" << std::endl;
+  }
+  else
+  {
+    if (item->origAirport().empty())
+      item->origAirport() = item->origin()->loc();
+    if (item->boardMultiCity().empty())
+      item->boardMultiCity() = item->origin()->loc();
+  }
+  if (!item->destination())
+  {
+    std::cout << "Warning! Destination for AirSegment is empty!" << std::endl;
+  }
+  else
+  {
+    if (item->destAirport().empty())
+      item->destAirport() = item->destination()->loc();
+    if (item->offMultiCity().empty())
+      item->offMultiCity() = item->destination()->loc();
+  }
+endPostInitLines
+
+scalarCompare: enum segmentType()

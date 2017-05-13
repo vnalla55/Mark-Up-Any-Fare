@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2005 rel. 5 U (http://www.xmlspy.com) by Mike Carroll (SABRE Holdings) -->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="CommonTypes.xsd"/>
+	<xs:element name="GenerateRuleRequest">
+		<xs:annotation>
+			<xs:documentation>
+			Generate Rule Request
+			TVLType		Travel information
+			AGIType		Agent information
+			RCSType		Rule Category Segment Information
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RCS" type="RCSType"/>
+			</xs:sequence>
+		</xs:complexType>
+
+	</xs:element>
+	<!-- Element reference declarations -->
+	<xs:complexType name="TVLType">
+		<xs:annotation>
+			<xs:documentation>
+			TVLType
+			D06		Ticketing Date
+			Q40		Diagnostic Number
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="D06" type="DateYYYY-MM-DDType" use="required"/>
+        <xs:attribute name="Q40" type="xs:short" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="AGIType">
+		<xs:annotation>
+			<xs:documentation>
+			AGIType
+			A20		Pesudo City Code
+			A21		Main Travel Agency Pesudo City Code
+			AB0		Travel agency IATA ARC Number
+			AB1		Home agency IATA ARC Number
+			A90		Agent function
+			N0G		Agent duty
+			A80		Airline department
+			B00		Airline Carrier Code
+			C40		Currency code for the agent
+			Q01		CoHost Identifier
+			AE0		Partition ID
+			A10		Agent city
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="A20" type="PseudoCityCodeType" use="optional"/>
+		<xs:attribute name="A21" type="PseudoCityCodeType" use="optional"/>
+		<xs:attribute name="AB0" type="ARCNumberType" use="optional"/>
+		<xs:attribute name="AB1" type="ARCNumberType" use="optional"/>
+		<xs:attribute name="A90" type="AgentFunctionType" use="optional"/>
+		<xs:attribute name="N0G" type="AnyCharType" use="optional"/>
+		<xs:attribute name="A80" type="AgentDepartmentCodeType" use="optional"/>
+		<xs:attribute name="B00" type="AirlineCodeType" use="optional"/>
+		<xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+		<xs:attribute name="Q01" type="xs:short" use="optional" default="0"/>
+		<xs:attribute name="AE0" type="PartitionIDType" use="optional"/>
+		<xs:attribute name="A10" type="CityCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="RCSType">
+		<xs:annotation>
+			<xs:documentation>
+			RCSType	Rule Category Segment
+			SSIType
+			R2KType
+			C25Type
+			C35Type
+			CSBType
+			S33		Location type
+			S34		Location value
+			S35		Location type (2)
+			S36		Location value (2)
+			B00		Carrier code
+			D06		Effective date
+			D05		Discontinue date
+			P95		International
+			N0W	Request type
+			A20		Pseudo city code
+			B50		Fare class code
+			P04		OWRT
+			Q3X		Joint carrier item number
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SSI" type="SSIType"/>
+			<xs:element name="R2K" type="R2KType"/>
+		</xs:sequence>
+		<xs:attribute name="S33" type="LocationKeyType" use="required"/>
+		<xs:attribute name="S34" type="LocationType" use="required"/>
+		<xs:attribute name="S35" type="LocationKeyType" use="required"/>
+		<xs:attribute name="S36" type="LocationType" use="required"/>
+		<xs:attribute name="B00" type="AirlineCodeType" use="required"/>
+		<xs:attribute name="D06" type="DateYYYY-MM-DDType" use="required"/>
+		<xs:attribute name="D05" type="DateYYYY-MM-DDType" use="required"/>
+		<xs:attribute name="P95" type="BoolTFType" use="required"/>
+		<xs:attribute name="N0W" type="AnyCharType" use="required"/>
+		<xs:attribute name="Q20" type="PseudoCityCodeType" use="required"/>
+		<xs:attribute name="B50" type="FareBasisCodeType" use="required"/>
+		<xs:attribute name="P04" type="BoolTFType" use="required"/>
+		<xs:attribute name="Q3X" type="xs:long" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="SSIType">
+		<xs:annotation>
+			<xs:documentation>
+			N0X		Relational indicator
+			N0Y		IN/OUT indicator
+			N0Z		Directionality
+			Q3V	Item category
+			L00		Item number
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="N0X" type="AnyCharType" use="optional"/>
+		<xs:attribute name="N0Y" type="AnyCharType" use="optional"/>
+		<xs:attribute name="N0Z" type="AlphaNumCharType" use="optional"/>
+		<xs:attribute name="Q3V" type="xs:short" use="optional"/>
+		<xs:attribute name="L00" type="xs:long" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="R2KType">
+		<xs:annotation>
+			<xs:documentation>
+			S37		Vendor key
+			Q3W	Rule tarriff key
+			B00		Carrier key
+			Q3T		Rule key
+			Q3V	Category key
+			L00		Sequence number key
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="S37" type="VendorCodeType" use="optional"/>
+		<xs:attribute name="Q3W" type="xs:short" use="optional"/>
+		<xs:attribute name="B00" type="AirlineCodeType" use="optional"/>
+		<xs:attribute name="Q3T" type="xs:unsignedInt" use="optional"/>
+		<xs:attribute name="Q3V" type="xs:short" use="optional"/>
+		<xs:attribute name="L00" type="xs:long" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="C25Type">
+		<xs:annotation>
+			<xs:documentation>
+			A11	Origin city
+			A12	Destination city
+			B40	Fare basis code
+			C50	Fare amount
+			Q05	Currency number of decimals
+			N0K	Fare indicator
+			C40	Fare currency code
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="A11" type="CityCodeType" use="optional"/>
+		<xs:attribute name="A12" type="CityCodeType" use="optional"/>
+		<xs:attribute name="B40" type="FareBasisCodeType" use="optional"/>
+		<xs:attribute name="C50" type="MonetaryAmountType" use="optional"/>
+		<xs:attribute name="Q05" type="xs:short" use="optional"/>
+		<xs:attribute name="N0K" type="AnyCharType" use="optional"/>
+		<xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="C35Type">
+		<xs:annotation>
+			<xs:documentation>
+			A20	Creator pseudo city
+			N0K	Fare indicator
+			C62	Selling fare amount
+			C40	Currency code
+			Q05	Selling fare amount number of decimals
+			C61	Selling percentage
+			Q06	Selling percentage number of decimals
+			N0P	Display indicator
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="A20" type="PseudoCityCodeType" use="optional"/>
+		<xs:attribute name="N0K" type="AnyCharType" use="optional"/>
+		<xs:attribute name="C62" type="MonetaryAmountType" use="optional"/>
+		<xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+		<xs:attribute name="Q05" type="xs:short" use="optional"/>
+		<xs:attribute name="C61" type="MonetaryAmountType" use="optional"/>
+		<xs:attribute name="Q06" type="xs:short" use="optional"/>
+		<xs:attribute name="N0P" type="AnyCharType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="CSBType">
+		<xs:annotation>
+			<xs:documentation>
+			Q3Z		Same points table item number
+			N1A		Single open jaw indicator
+			N1B		Open jaw occurrence indicator
+			N1C		Double open jaw indicator
+			P96		Carrier restrictions
+			P97		Tariff/Rule restrictions
+			P98		Fare class/type restrictions
+			P99		Circle trip indicator
+			PA1		CT carrier restrictions
+			PA2		CT tariff/rule restrictions
+			PA3		CT fare class/type restrictions
+			PA4		CT more than 2 components
+			PA5		CT2 carrier restrictions
+			PA6		CT2 tariff/rule restrictions
+			N1D		End-on-end indicator
+			PA7		EOE carrier restrictions
+			PA8		EOE tariff/rule restrictions
+			PA9		EOE fare class/type restrictions
+			N1E		Add-on indicator
+			PAA	Add-on carrier restrictions
+			PAB		Add-on tariff/rule restrictions
+			PAC		Add-on fare class/type restrictions
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Q3Z" type="xs:long" use="required"/>
+		<xs:attribute name="N1A" type="AnyCharType" use="required"/>
+		<xs:attribute name="N1B" type="AnyCharType" use="required"/>
+		<xs:attribute name="N1C" type="AnyCharType" use="required"/>
+		<xs:attribute name="P96" type="BoolYNType" use="required"/>
+		<xs:attribute name="P97" type="BoolYNType" use="required"/>
+		<xs:attribute name="P98" type="BoolYNType" use="required"/>
+		<xs:attribute name="P99" type="BoolYNType" use="required"/>
+		<xs:attribute name="PA1" type="BoolYNType" use="required"/>
+		<xs:attribute name="PA2" type="BoolYNType" use="required"/>
+		<xs:attribute name="PA3" type="BoolYNType" use="required"/>
+		<xs:attribute name="PA4" type="BoolYNType" use="required"/>
+		<xs:attribute name="PA5" type="BoolYNType" use="required"/>
+		<xs:attribute name="PA6" type="BoolYNType" use="required"/>
+		<xs:attribute name="N1D" type="AnyCharType" use="required"/>
+		<xs:attribute name="PA7" type="BoolYNType" use="required"/>
+		<xs:attribute name="PA8" type="BoolYNType" use="required"/>
+		<xs:attribute name="PA9" type="BoolYNType" use="required"/>
+		<xs:attribute name="N1E" type="AnyCharType" use="required"/>
+		<xs:attribute name="PAA" type="BoolYNType" use="required"/>
+		<xs:attribute name="PAB" type="BoolYNType" use="required"/>
+		<xs:attribute name="PAC" type="BoolYNType" use="required"/>
+	</xs:complexType>
+</xs:schema>

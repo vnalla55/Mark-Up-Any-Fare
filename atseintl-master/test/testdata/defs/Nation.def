@@ -1,0 +1,20 @@
+name: Nation
+namespace: tse
+package: DBAccess
+
+section: Misc
+  scalarWithCompare:  nation:         NationCode      nation()
+  scalarWithCompare:  isonumericCode: ISONumericCode  isonumericCode()
+  scalarWithCompare:  subArea:        IATASubAreaCode subArea()
+  scalarWithCompare:  area:           IATAAreaCode    area()
+  scalar:             isoalphaCode:   ISOAlphaCode    isoalphaCode()
+  scalar:             primeCur:       CurrencyCode    primeCur()
+  scalar:             alternateCur:   CurrencyCode    alternateCur()
+  scalar:             conversionCur:  CurrencyCode    conversionCur()
+  scalar:             description:    Description     description()
+endsection
+
+factoryAggregate: CreateDate:     DateTime createDate()
+factoryAggregate: ExpirationDate: DateTime expireDate()
+factoryAggregate: EffectiveDate:  DateTime effDate()
+factoryAggregate: DiscDate:       DateTime discDate()

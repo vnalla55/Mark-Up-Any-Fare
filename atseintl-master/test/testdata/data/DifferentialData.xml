@@ -1,0 +1,42 @@
+<DifferentialData>
+
+   <Origin file="/vobs/atseintl/test/testdata/data/LocDFW.xml"/>
+   <Destination file="/vobs/atseintl/test/testdata/data/LocLON.xml"/>
+
+   <AirSeg file="/vobs/atseintl/test/testdata/data/AirSegDFW_LON.xml"/>
+
+   <Amounts base=100.0 
+            fareClassHigh=150.0 
+            fareClassLow=75.5
+            hipFareClassHigh=120.6
+            hipFareClassLow=80.5
+            surcharge=12.0
+            hipAmount=50.0 />
+
+   <FareClassCodes fareClassHigh="AA" 
+                   fareClassLow="BB"
+                   hipSectorHighFare="CC"
+                   hipSectorLowFare="DD" />
+
+   <!-- status can be NOT_PROCESSED_YET, PASSED, FAILED, MATCH_1A, or MATCH_1B" -->
+
+   <Carrier value="BA"/>
+
+   <Trip cabin="A"
+         hipHighOrigin="DFW"
+         hipHighDestination="LON"
+         hipLowOrigin="DFW"
+         hipLowDestination="LON"
+         hipCabinHigh="F"
+         hipCabinLow="C"  
+         mileage="F" 
+         maxPermittedMileage=1000
+         tripType="B"
+         bookingCode="XX"
+         stops="t"
+         sameCarrier="f"
+         tag="abcd" 
+         status="NOT_PROCESSED_YET"/>
+
+</DifferentialData>
+

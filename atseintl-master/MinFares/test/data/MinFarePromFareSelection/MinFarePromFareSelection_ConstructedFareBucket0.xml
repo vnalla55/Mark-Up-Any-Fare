@@ -1,0 +1,11 @@
+<ConstructedFareBucket>
+     <SpecifiedFare file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/MinFarePromFareSelection_FareInfo1.xml"/>
+     <OrigAddon file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/MinFarePromFareSelection_AddonFareInfo0.xml"/>
+     <DestAddon file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/MinFarePromFareSelection_AddonFareInfo0.xml"/>
+     <Misc
+          gateway1=""
+          gateway2=""
+          isDoubleEnded="f"
+          oneWayAmount=0
+     />
+</ConstructedFareBucket>

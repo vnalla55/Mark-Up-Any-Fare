@@ -1,0 +1,25 @@
+<FareInfo>
+     <Fare
+          fareAmount=2136.9
+          originalFareAmount=2136.9
+          noDec=2
+          fareTariff=903
+          currency="EUR"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="EY"
+          fareClass="AOWLU"
+          market1LocCode="AUH"
+          market2LocCode="LUX"
+          footnote1=""
+          footnote2=""
+          owrt="3"
+          ruleNumber="LUIT"
+          routingNumber="0018"
+          globalDirection="EH"
+          directionality="TO"
+          linkNumber=1
+          sequenceNumber=1
+     />
+</FareInfo>

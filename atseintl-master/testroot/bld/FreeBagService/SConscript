@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+LIB_FILES = [
+    'test/S7Builder.cpp',
+    'test/S5Builder.cpp',
+    'test/BaggageTravelBuilder.cpp',
+    'test/AirSegBuilder.cpp'
+]
+
+s = env.scout()
+s.env.add_libpaths('.')
+s.library('FreeBagServiceTests', LIB_FILES)
+s.tests(locallib=1, libs=['FreeBagServiceTests'], glob_pattern='test/*Test.cpp')
+s.build()
+

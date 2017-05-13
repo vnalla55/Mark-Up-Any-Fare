@@ -1,0 +1,53 @@
+name: DifferentialData
+namespace: tse
+package: DataModel
+
+factoryAggregate: Origin:       Loc* origin()
+factoryAggregate: Destination:  Loc* destination()
+
+factoryAggregate: AirSeg: std::vector<TravelSeg*> travelSeg()
+# Could also specify ground segments
+#factoryAggregate: GroundSegment std::vector<TravelSeg*> travelSeg()
+
+section: Amounts
+  scalar: base:             MoneyAmount amount()
+  scalar: fareClassHigh:    MoneyAmount amountFareClassHigh()
+  scalar: fareClassLow:     MoneyAmount amountFareClassLow()
+  scalar: hipFareClassHigh: MoneyAmount hipAmtFareClassHigh()
+  scalar: hipFareClassLow:  MoneyAmount hipAmtFareClassLow()
+  scalar: hipAmount:        MoneyAmount hipAmount()
+endsection
+
+section: FareClassCodes
+  scalar: fareClassHigh:      FareClassCode fareClassHigh()
+  scalar: fareClassLow:       FareClassCode fareClassLow()
+endsection
+
+scalarAggregate: Carrier: std::vector<CarrierCode> carrier()
+
+factoryAggregate: throughFare:  PaxTypeFare* throughFare()
+factoryAggregate: fareLow:      PaxTypeFare* fareLow()
+factoryAggregate: fareHigh:     PaxTypeFare* fareHigh()
+
+section: Trip
+  scalar: cabin:                DifferentialData::FareTypeDesignators cabin()
+  scalar: hipHighOrigin:        LocCode                               hipHighOrigin()
+  scalar: hipHighDestination:   LocCode                               hipHighDestination()
+  scalar: hipLowOrigin:         LocCode                               hipLowOrigin()
+  scalar: hipLowDestination:    LocCode                               hipLowDestination()
+  scalar: hipCabinHigh:         DifferentialData::HipRelated          hipCabinHigh()
+  scalar: hipCabinLow:          DifferentialData::HipRelated          hipCabinLow()
+  scalar: mileage:              Indicator                             mileage()
+  scalar: maxPermittedMileage:  uint32_t                              maxPermittedMileage()
+  scalar: tripType:             Indicator                             tripType()
+  scalar: bookingCode:          BookingCode                           bookingCode()
+  scalar: stops:                bool                                  stops()
+  scalar: sameCarrier:          bool                                  isSameCarrier()
+  scalar: tag:                  DifferentialTag                       tag()
+  scalar: status:               DifferentialData::STATUS_TYPE         status()
+  scalar: calculationIndicator: Indicator                             calculationIndicator()
+endsection
+
+#  // Start of HIP area
+#  // End of HIP area
+factoryAggregate: FareMarket: std::vector<FareMarket*> fareMarket()

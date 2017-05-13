@@ -1,0 +1,13 @@
+name: LocKey
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalarWithCompare: loc:      LocCode     loc()
+  scalarWithCompare: locType:  LocTypeCode locType()
+endsection
+
+NameString: "LocKey_"
+NameString: (item.locType() == ' ' ? '0' : item.locType())
+NameString: (item.loc().size() ? "-" : "")
+NameField:  loc()

@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="BE"
+          isonumericCode=56
+          subArea="21"
+          area="2"
+          isoalphaCode="BEL"
+          primeCur="EUR"
+          alternateCur=""
+          conversionCur=""
+          description="BELGIUM"
+     />
+     <CreateDate year=2003 month=7 day=18 hour=13 minute=20 second=17/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2003 month=7 day=16 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

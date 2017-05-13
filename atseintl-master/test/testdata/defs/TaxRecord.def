@@ -1,0 +1,16 @@
+name: TaxRecord
+namespace: tse
+package: Taxes/LegacyTaxes
+
+scalarWithCompare:  taxAmount:              MoneyAmount     getTaxAmount
+scalarWithCompare:  taxNodec:               uint16_t        taxNoDec()
+scalarWithCompare:  taxCurrCode:            CurrencyCode    taxCurrencyCode()
+scalarWithCompare:  taxID:                  TaxCode         setTaxCode
+scalarWithCompare:  taxDescription:         TaxDescription  setTaxDescription
+scalarWithCompare:  taxNation:              NationCode      setTaxNation
+scalarWithCompare:  taxType:                TaxTypeCode     setTaxType
+scalarWithCompare:  taxRolledXTInd:         char            taxRolledXTInd()
+scalarWithCompare:  taxItemIndex:           uint16_t        setTaxItemIndex
+scalar:             failCode:               char            setFailCode
+scalar:             carrierCode:            CarrierCode     setCarrierCode
+scalar:             legId:                  int16_t         setLegId

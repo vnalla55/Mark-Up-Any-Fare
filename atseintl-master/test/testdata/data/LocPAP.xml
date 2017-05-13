@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="PAP"
+          subarea="12"
+          area="1"
+          transtype="P"
+          nation="HT"
+          state=" "
+     />
+     <Position
+          latdegrees=18
+          latminutes=34
+          latseconds=42
+          lngdegrees=72
+          lngminutes=17
+          lngseconds=42
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="HT01"
+          description="PORT AU PRINCE"
+     />
+</Loc>

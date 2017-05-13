@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# add to crontab like this (will run every 10 minutes):
+# */10 * * * * /path/to/command
+
+psout=`ps x | grep releasenotes | grep -v grep`
+
+if [ "$psout" == "" ]; then
+    echo 'Not running, will start...'
+    cleartool setview atsev2ci-atsev2_ReleaseNotes
+    nohup /vobs/atseintl/Releases/new_notice -port 2227 -nokey  0<&- &> /tmp/release_notes.log &
+fi
+

@@ -1,0 +1,28 @@
+<ZoneInfo>
+     <Attributes
+          vendor="ATP"
+          zone="0000000"
+          zoneType="R"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="N"
+          loc="CA"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="N"
+          loc="MX"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="N"
+          loc="US"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+</ZoneInfo>

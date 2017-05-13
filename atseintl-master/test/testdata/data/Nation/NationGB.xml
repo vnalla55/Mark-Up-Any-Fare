@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="GB"
+          isonumericCode=826
+          subArea="21"
+          area="2"
+          isoalphaCode="GBR"
+          primeCur="GBP"
+          alternateCur=""
+          conversionCur=""
+          description="UNITED KINGDOM"
+     />
+     <CreateDate year=2003 month=7 day=17 hour=10 minute=42 second=10/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2003 month=7 day=15 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

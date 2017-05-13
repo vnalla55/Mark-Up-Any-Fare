@@ -1,0 +1,41 @@
+name: MileageRouteItem
+namespace: tse
+package: Routing
+typePackage: DBAccess Loc
+typePackage: DBAccess TpdPsrViaGeoLoc
+
+section: MileageData
+  scalarWithCompare: isSurface:                       bool            isSurface()
+  scalarWithCompare: isConstructed:                   bool            isConstructed()
+  scalarWithCompare: tpmGlobalDirection:              GlobalDirection tpmGlobalDirection()
+  scalarWithCompare: mpmGlobalDirection:              GlobalDirection mpmGlobalDirection()
+  scalarWithCompare: tpm:                             uint16_t        tpm()
+  scalarWithCompare: tpd:                             uint16_t        tpd()
+  scalarWithCompare: mpm:                             uint16_t        mpm()
+  scalarWithCompare: tpmSurfaceSectorExempt:          bool            tpmSurfaceSectorExempt()
+  scalarWithCompare: southAtlanticExclusion:          bool            southAtlanticExclusion()
+  scalarWithCompare: psrApplies:                      bool            psrApplies()
+  scalarWithCompare: psrMayApply:                     bool            psrMayApply()
+  scalarWithCompare: segmentCarrier:                  CarrierCode     segmentCarrier()
+  scalarWithCompare: isStopover:                      bool            isStopover()
+  scalarWithCompare: isDirectFromRouteBegin:          bool            isDirectFromRouteBegin()
+  scalarWithCompare: isDirectToRouteEnd:              bool            isDirectToRouteEnd()
+  scalarWithCompare: isFirstOccurrenceFromRouteBegin: bool            isFirstOccurrenceFromRouteBegin()
+  scalarWithCompare: isLastOccurrenceToRouteEnd:      bool            isLastOccurrenceToRouteEnd()
+  scalarWithCompare: failedDirService:                bool            failedDirService()
+  scalarWithCompare: forcedConx:                      char            forcedConx()
+  scalarWithCompare: psrStopNotAllowed:               bool            psrStopNotAllowed()
+  scalarWithCompare: pnrSegment:                      int16_t         pnrSegment()
+  scalarWithCompare: forcedStopOver:                  char            forcedStopOver()
+endsection
+
+factoryAggregateWithCompare: City1:           Loc* city1()
+factoryAggregateWithCompare: City2:           Loc* city2()
+
+factoryAggregate: multiTransportOrigin:       Loc* multiTransportOrigin()
+factoryAggregate: multiTransportDestination:  Loc* multiTransportDestination()
+
+factoryAggregate: TravelDate: DateTime travelDate()
+
+factoryAggregate: HiddenLocs: std::vector<const Loc*>             hiddenLocs()
+factoryAggregate: TpdPsrs:    std::vector<const TpdPsrViaGeoLoc*> condTpdViaGeoLocs()

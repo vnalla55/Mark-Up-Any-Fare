@@ -1,0 +1,13 @@
+name: SvcFeesAccCodeInfo
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: vendor:       VendorCode  vendor()
+  scalar: itemNo:       int         itemNo()
+  scalar: seqNo:        int         seqNo()
+  scalar: accountCode:  AccountCode accountCode()
+endsection
+
+factoryAggregate: CreateDate:     DateTime createDate()
+factoryAggregate: ExpirationDate: DateTime expireDate()

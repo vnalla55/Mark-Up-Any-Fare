@@ -1,0 +1,6 @@
+mkdir -p ~/txdiff
+export TX_DIFF_DATE=`date +%Y_%m_%d`
+ssh atseqa01.dev.sabre.com 'cp /opt/airpricingqa/RCC/testenvironment/prod_replay/requests/pricing_cats/PricingRequest.txt ~/txdiff/PricingRequest_'$TX_DIFF_DATE'.txt'
+tx_diff_tool.py < ~/txdiff/PricingRequest_$TX_DIFF_DATE'.txt'
+cp tx_diff_tool.log ~/txdiff/raw_`$TX_DIFF_DATE
+./generate.sh < tx_diff_tool.log > ~/txdiff/taxes_$TX_DIFF_DATE.csv

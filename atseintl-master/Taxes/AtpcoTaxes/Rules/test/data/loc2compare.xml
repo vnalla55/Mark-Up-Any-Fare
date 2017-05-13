@@ -1,0 +1,54 @@
+<TaxRq>
+  <PointOfSale PointOfSaleLoc="TYO" />
+  <ProcessingOptions/>
+  <TicketingOptions FormOfPayment=" " PaymentCurrency="USD" TicketingDate="2013-04-30" TicketingTime="11:15"/>
+  <GeoPath Id="0">
+    <Geo Type="D" Loc="BJS" />
+    <Geo Type="A" Loc="TYO" />
+    <Geo Type="D" Loc="TYO" />
+    <Geo Type="A" Loc="LAX" UnticketedTransfer="Y"/>
+    <Geo Type="D" Loc="LAX" UnticketedTransfer="Y"/>
+    <Geo Type="A" Loc="SEA" />
+    <Geo Type="D" Loc="SEA" />
+    <Geo Type="A" Loc="FAR" />
+  </GeoPath>
+  <Passenger Id="0" PassengerCode="ADT" DateOfBirth="2013-02-01" StateCode="VI" Nationality="PL" Residency="US" Employment="DE"></Passenger>
+  <Fare Id="0" BasisCode="WFM0FR" TypeCode="PSD" OneWayRoundTrip="O" Directionality=" " Amount="12" />
+  <Fare Id="1" BasisCode="ZZX32P" TypeCode="YRT" OneWayRoundTrip="O" Directionality="3" Amount="22" />
+  <FarePath Id="0" TotalAmount="34" ValidatingCarrier="AP">
+    <FareUsage FareRefId="0" />
+    <FareUsage FareRefId="1" />
+  </FarePath>
+  <GeoPathMapping Id="0">
+    <Mapping>
+      <Map GeoRefId="0" />
+      <Map GeoRefId="1" />
+      <Map GeoRefId="2" />
+      <Map GeoRefId="3" />
+    </Mapping>
+    <Mapping>
+      <Map GeoRefId="4" />
+      <Map GeoRefId="5" />
+      <Map GeoRefId="6" />
+      <Map GeoRefId="7" />
+    </Mapping>
+  </GeoPathMapping>
+  <Flight Id="0" DepartureTime="05:45:00" ArrivalTime="06:52:00" ArrivalDateShift="0" MarketingCarrier="AA" OperatingCarrier="AA" MarketingCarrierFlightNumber="469" Equipment="320" />
+  <Flight Id="1" DepartureTime="09:35:00" ArrivalTime="11:14:00" ArrivalDateShift="0" MarketingCarrier="AA" OperatingCarrier="AA" MarketingCarrierFlightNumber="445" Equipment="321" />
+  <Flight Id="2" DepartureTime="11:15:00" ArrivalTime="12:00:00" ArrivalDateShift="0" MarketingCarrier="DL" OperatingCarrier="DL" MarketingCarrierFlightNumber="1148" Equipment="73H" />
+  <Flight Id="3" DepartureTime="13:15:00" ArrivalTime="14:15:00" ArrivalDateShift="0" MarketingCarrier="DL" OperatingCarrier="DL" MarketingCarrierFlightNumber="3718" Equipment="CR9" />
+  <FlightPath Id="0">
+    <FlightUsage FlightRefId="0" BookingCodeType="U" ConnectionDateShift="0" />
+    <FlightUsage FlightRefId="1" BookingCodeType="U" ConnectionDateShift="0" />
+    <FlightUsage FlightRefId="2" BookingCodeType="U" ConnectionDateShift="0" />
+    <FlightUsage FlightRefId="3" BookingCodeType="U" ConnectionDateShift="0" />
+  </FlightPath>
+  <Itin Id="0" PassengerRefId="0" Id="0" GeoPathRefId="0" FarePathRefId="0" FlightPathRefId="0" FarePathGeoPathMappingRefId="0" />
+  <TestData>
+    <Loc NationCode="CN" LocCode="BJS"/>
+    <Loc NationCode="JP" LocCode="TYO" CityCode="AAA"/>
+    <Loc NationCode="US" LocCode="LAX"/>
+    <Loc NationCode="US" LocCode="SEA"/>
+    <Loc NationCode="US" LocCode="FAR" CityCode="AAA"/>
+  </TestData>
+</TaxRq>

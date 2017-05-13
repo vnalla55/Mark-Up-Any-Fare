@@ -1,0 +1,12 @@
+<CategoryRuleInfo>
+     <Attributes
+          vendorCode="SITA"
+          tariffNumber=60
+          carrierCode="YY"
+          ruleNumber="G999"
+          categoryNumber=7
+          sequenceNumber=8000
+     />
+     <Location1 file="testdata/BCE1/PTF_Ind_LocKey_0.xml"/>
+     <Location2 file="testdata/BCE1/PTF_Ind_LocKey_0.xml"/>
+</CategoryRuleInfo>

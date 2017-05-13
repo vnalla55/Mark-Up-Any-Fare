@@ -1,0 +1,12 @@
+<PaxTypeInfo>
+     <Attributes
+          paxType="PFA"
+          vendor="ATP"
+          description="PFA PSGR"
+          childInd="N"
+          adultInd="Y"
+          infantInd="N"
+          psgGroupType="NG$"
+          numberSeatsReq=1
+     />
+</PaxTypeInfo>

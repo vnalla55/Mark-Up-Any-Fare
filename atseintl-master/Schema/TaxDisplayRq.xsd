@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ==================================================================
+//
+//  Copyright Sabre 2016
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+//
+//================================================================= 
+Note that this schema fits only for TX (ATPCO Tax Display) requests; it's not for TXN reqs
+//================================================================= 
+-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="CommonTypes.xsd"/>
+  <xs:element name="TaxDisplayRQ">
+    <xs:complexType>
+      <xs:all>
+        <xs:element ref="Airport" minOccurs="0" />            <!-- new tag -->
+        <xs:element ref="CarrierCodes" minOccurs="0" />       <!-- new tag -->
+        <xs:element ref="Category" minOccurs="0" />           <!-- new attributes in old tag, used, here described only needed attributes -->
+        <xs:element ref="DetailLevels" minOccurs="0" />       <!-- new tag -->
+        <xs:element ref="RequestDate" />                      <!-- new tag -->
+        <xs:element ref="TravelDate" minOccurs="0" />         <!-- new tag -->
+        <xs:element ref="Nation" minOccurs="0" />             <!-- new attributes in old tag, used, here described only needed attributes -->
+        <xs:element ref="Reissue" minOccurs="0" />            <!-- old tag, used, here described only needed attributes -->
+        <xs:element ref="Sequence" minOccurs="0" />           <!-- old tag, used, here described only needed attributes -->
+        <xs:element ref="TaxCode" minOccurs="0" />            <!-- old tag, used, here described only needed attributes -->
+        <xs:element ref="TaxType" minOccurs="0" />            <!-- new tag -->
+        <xs:element ref="TxEntry" />                          <!-- new tag -->
+        <xs:element name="Source">                            <!-- old tags, used just like in TXN -->
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="TPA_Extensions">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="UserInfo">
+                      <xs:complexType>
+                        <xs:all>
+                          <xs:element ref="Partition" />
+                          <xs:element ref="Service" />
+                          <xs:element ref="ClientService" />
+                          <xs:element ref="ParentService" />
+                          <xs:element ref="Transaction" />
+                          <xs:element ref="ClientTransaction" />
+                          <xs:element ref="ParentTransaction" />
+                          <xs:element ref="Action" />
+                          <xs:element ref="AAACity" />
+                          <xs:element ref="AgentSine" />
+                        </xs:all>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+            <xs:attribute name="PseudoCityCode" type="PseudoCityCodeType" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RetrievalDate" minOccurs="0" />     <!-- old tag, unused, not defined here -->
+        <xs:element name="Menu" minOccurs="0" />              <!-- old tag, unused, not defined here -->
+        <xs:element name="TaxHelp" minOccurs="0" />           <!-- old tag, unused, not defined here -->
+        <xs:element name="USTaxHelp" minOccurs="0" />         <!-- old tag, unused, not defined here -->
+        <xs:element name="CalculateTax" minOccurs="0" />      <!-- old tag, unused, not defined here -->
+        <xs:element name="Station" minOccurs="0" />           <!-- old tag, unused, not defined here -->
+        <xs:element name="Branch" minOccurs="0" />            <!-- old tag, unused, not defined here -->
+        <xs:element name="SetAddress" minOccurs="0" />        <!-- old tag, unused, not defined here -->
+        <xs:element name="OfficeDesignator" minOccurs="0" />  <!-- old tag, unused, not defined here -->
+        <xs:element name="CarrierCode" minOccurs="0" />       <!-- old tag, unused, not defined here -->
+        <xs:element name="HistoricalDate" minOccurs="0" />    <!-- old tag, unused, not defined here -->
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Airport">
+    <xs:complexType>
+      <xs:attribute name="Code" type="Code3" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CarrierCodes">
+    <xs:complexType>
+      <xs:attribute name="Code" type="CarrierCodesType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Category">
+    <xs:complexType>
+      <xs:attribute name="CatList" type="NumberList" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DetailLevels">
+    <xs:complexType>
+      <xs:attribute name="Levels" type="NumberList" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestDate">
+    <xs:complexType>
+      <xs:attribute name="Code" type="DateYYYY-MM-DDType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TravelDate">
+    <xs:complexType>
+      <xs:attribute name="Code" type="DateYYYY-MM-DDType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Nation">
+    <xs:complexType>
+      <xs:attribute name="Code" type="Code2" />
+      <xs:attribute name="Name" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TaxCode">
+    <xs:complexType>
+      <xs:attribute name="Code" type="Code2" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TaxType">
+    <xs:complexType>
+      <xs:attribute name="Code" type="Code3" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Reissue">
+    <xs:complexType>
+      <xs:attribute name="Code" type="Indicator" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sequence">
+    <xs:complexType>
+      <xs:attribute name="SequenceMatch" type="xs:positiveInteger" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TxEntry">
+    <xs:complexType>
+      <xs:attribute name="Cmd" type="EntryCommand" use="required" />
+      <xs:attribute name="Type" type="EntryType" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Partition">
+    <xs:complexType>
+      <xs:attribute name="ID" type="PartitionIDType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Service">
+    <xs:complexType>
+      <xs:attribute name="Name" type="ServiceNameType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientService">
+    <xs:complexType>
+      <xs:attribute name="Name" type="ServiceNameType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParentService">
+    <xs:complexType>
+      <xs:attribute name="Name" type="ServiceNameType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Transaction">
+    <xs:complexType>
+      <xs:attribute name="ID" type="TransactionIDType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientTransaction">
+    <xs:complexType>
+      <xs:attribute name="ID" type="TransactionIDType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParentTransaction">
+    <xs:complexType>
+      <xs:attribute name="ID" type="TransactionIDType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Action">
+    <xs:complexType>
+      <xs:attribute name="Code" type="ActionCodeType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AAACity">
+    <xs:complexType>
+      <xs:attribute name="Code" type="PseudoCityCodeType" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgentSine">
+    <xs:complexType>
+      <xs:attribute name="Code" type="AgentFunctionType" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="Code2">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="2"/>
+      <xs:maxLength value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Code3">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="3"/>
+      <xs:maxLength value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumberList">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]*(\|[0-9]*)*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EntryCommand">
+    <xs:annotation>
+      <xs:documentation>
+      Enum Values:
+      TX    - Reporting Record
+      TX1   - Rules Record
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TX" />
+      <xs:enumeration value="TX1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EntryType">
+    <xs:annotation>
+      <xs:documentation>
+      Enum Values:
+      *     - Entry by Nation
+      **    - Entry by Tax Code
+      HELP  - Help
+      /HELP - Help for tax calculation breakdown
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="*" />
+      <xs:enumeration value="**" />
+      <xs:enumeration value="HELP" />
+      <xs:enumeration value="/HELP" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Indicator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Y" />
+      <xs:enumeration value="N" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

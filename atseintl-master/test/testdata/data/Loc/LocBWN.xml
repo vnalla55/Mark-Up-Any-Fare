@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="BWN"
+          city=""
+          subarea="32"
+          area="3"
+          transtype="P"
+          nation="BN"
+          state=""
+     />
+     <Position
+          latdegrees=4
+          latminutes=55
+          latseconds=30
+          lngdegrees=114
+          lngminutes=55
+          lngseconds=40
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="BN01"
+          description="BANDAR SERI BEGWN"
+     />
+</Loc>

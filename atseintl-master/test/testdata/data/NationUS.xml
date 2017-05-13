@@ -1,0 +1,16 @@
+<Nation>
+  <Misc nation="US"
+        isonumericCode="840"
+        subArea="11"
+        area="1"
+        isoalphaCode="USA"
+        primeCur="USD"
+        alternativeCur=""
+        conversionCur="USD"
+        description="UNITED STATES" />
+  <CreateDate year=2005 month=4 day=14/>
+  <EffectiveDate  year=2005 month=4 day=14/>
+  <ExpirationDate year=9999 month=6 day=14/>
+  <DiscDate year=9999 month=6 day=23/>
+</Nation>
+

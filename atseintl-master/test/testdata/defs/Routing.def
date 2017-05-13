@@ -1,0 +1,35 @@
+name: Routing
+namespace: tse
+package: DBAccess
+
+factoryAggregate: CreateDate:       DateTime createDate()
+factoryAggregate: EffectiveDate:    DateTime effDate()
+factoryAggregate: DiscontinueDate:  DateTime discDate()
+factoryAggregate: ExpireDate:       DateTime expireDate()
+
+section: DateStrings
+  scalar: effectiveDateStr: std::string effDateStr()
+endsection
+
+section: Attributes
+  scalar: vendor:               VendorCode    vendor()
+  scalar: carrier:              CarrierCode   carrier()
+  scalar: routingTariff:        TariffNumber  routingTariff()
+  scalar: routingNumber:        RoutingNumber routing()
+  scalar: linkNumber:           int           linkNo()
+  scalar: numberOfHeaders:      int           noofheaders()
+  scalar: numberOfRestrictions: int           noofRestrictions()
+  scalar: numberOfTexts:        int           nooftexts()
+endsection
+
+section: Indicators
+  scalar: validity:           Indicator validityInd()
+  scalar: inhibit:            Indicator inhibit()
+  scalar: directional:        Indicator directionalInd()
+  scalar: domesticRoutingVal: Indicator domRtgvalInd()
+  scalar: commonPoint:        Indicator commonPointInd()
+  scalar: jointRoutingOption: Indicator jointRoutingOpt()
+endsection
+
+factoryAggregate: Restriction:  std::vector<RoutingRestriction*>  rests() OwnsPointer
+factoryAggregate: RoutingMap:   std::vector<RoutingMap*>          rmaps() OwnsPointer

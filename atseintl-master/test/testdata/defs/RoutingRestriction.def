@@ -1,0 +1,23 @@
+name: RoutingRestriction
+namespace: tse
+package: DBAccess
+
+section: LocCodes
+  scalar: market1:    LocCode market1()
+  scalar: market2:    LocCode market2()
+  scalar: viaMarket:  LocCode viaMarket()
+endsection
+
+section: Misc
+  scalar: restrictionSequenceNumber:  int               restrSeqNo()
+  scalar: restrictionNumber:          RestrictionNumber restriction()
+  scalar: viaCarrier:                 CarrierCode       viaCarrier()
+endsection
+
+section: Indicators
+  scalar: marketApplicable: Indicator marketAppl()
+  scalar: negViaApplicable: Indicator negViaAppl()
+  scalar: viaType:          Indicator viaType()
+  scalar: nonStopDirect:    Indicator nonStopDirectInd()
+  scalar: airSurface:       Indicator airSurfaceInd()
+endsection

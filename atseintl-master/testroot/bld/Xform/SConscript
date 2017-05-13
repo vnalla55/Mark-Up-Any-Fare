@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+EXCLUDED_TESTS = [
+    'test/WPDFContentHandlerTest.cpp',
+    'test/TaxInfoXmlBuilderTest.cpp',
+]
+
+s = env.scout()
+s.env.add_include_paths('$XERCESC_CPPPATH_')
+s.werror = False
+
+s.tests(blacklist = EXCLUDED_TESTS)
+s.build()

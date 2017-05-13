@@ -1,0 +1,22 @@
+<settings>
+    <mirrors>
+        <mirror>
+            <id>sabre maven</id>
+            <name>all</name>
+            <url>http://maven.sabre.com/content/groups/all</url>
+            <mirrorOf>*</mirrorOf>
+        </mirror>
+    </mirrors>
+    <servers>
+        <server>
+            <id>sabre.releases</id>
+            <username>airpricing</username>
+            <password>airpricing</password>
+        </server>
+        <server>
+            <id>sabre.snapshots</id>
+            <username>airpricing</username>
+            <password>airpricing</password>
+        </server>
+    </servers>
+</settings>

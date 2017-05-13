@@ -1,0 +1,14 @@
+name: PfcItem
+namespace: tse
+package: Taxes/Pfc
+
+section: Attributes
+  scalar: absorptionInd:  bool          setAbsorptionInd
+  scalar: amount:         MoneyAmount   setPfcAmount
+  scalar: currency:       CurrencyCode  setPfcCurrencyCode
+  scalar: numDecimals:    uint32_t      setPfcDecimals
+  scalar: couponNumber:   uint32_t      setCouponNumber
+  scalar: airport:        LocCode       setPfcAirportCode
+  scalar: carrier:        CarrierCode   carrierCode()
+  scalar: legId:          int16_t       legId()
+endsection

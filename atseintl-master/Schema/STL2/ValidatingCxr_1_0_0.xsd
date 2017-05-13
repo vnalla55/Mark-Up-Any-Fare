@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Mohammed Azam (EDS/SABRE ACCT) -->
+<xsd:schema xmlns:msg="http://services.sabre.com/STL_MessageCommon/v02_01" xmlns:ota2="http://opentravel.org/common/v02" xmlns:ota2msg="http://opentravel.org/common/message/v02" xmlns:otm="http://www.OpenTravel.org/ns/OTA2/AppInfo_v01_00" xmlns:stl2="http://services.sabre.com/STL/v02" xmlns:stlp="http://services.sabre.com/STL_Payload/v02_01" xmlns:vc="http://stl.sabre.com/AirPricing/validating_cxr/v0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://stl.sabre.com/AirPricing/validating_cxr/v0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+	<xsd:annotation>
+		<xsd:appinfo>
+			<otm:Library>
+				<otm:ProjectName>ValidatingCxr.otp</otm:ProjectName>
+				<otm:LibraryName>ValidatingCxr</otm:LibraryName>
+				<otm:LibraryVersion>0.0.0</otm:LibraryVersion>
+				<otm:SourceFile>/ValidatingCxr_0_0_0.otm</otm:SourceFile>
+				<otm:CompilerVersion>3.1.rc2</otm:CompilerVersion>
+				<otm:CompileDate>2014-03-11T15:49:39.177-05:00</otm:CompileDate>
+			</otm:Library>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:import namespace="http://opentravel.org/common/message/v02" schemaLocation="built-ins/OTA2_Message_v2.0.0.xsd"/>
+	<xsd:import namespace="http://services.sabre.com/STL_Payload/v02_01" schemaLocation="built-ins/STL2_Payload_v02_01.xsd"/>
+	<xsd:import namespace="http://services.sabre.com/STL_MessageCommon/v02_01" schemaLocation="built-ins/STL2_MsgCommon_v02_01.xsd"/>
+	<xsd:import namespace="http://opentravel.org/common/v02" schemaLocation="built-ins/OTA2_BuiltIns_v2.0.0.xsd"/>
+	<xsd:import namespace="http://services.sabre.com/STL/v02" schemaLocation="built-ins/STL2_BuiltIn_Model.xsd"/>
+	<xsd:import namespace="http://www.OpenTravel.org/ns/OTA2/AppInfo_v01_00" schemaLocation="built-ins/OTA2_AppInfo_v1.0.0.xsd"/>
+	<xsd:include schemaLocation="ValidatingCxrCommon_1_0_0.xsd"/>
+	<xsd:simpleType name="SettlementPlan">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="Simple">SettlementPlan</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="ota2:String_Alpha3"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ValidatingCxr">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="Simple">ValidatingCxr</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="stl2:Code_Airline"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ValidationResult">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="EnumerationClosed">ValidationResult</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Valid"/>
+			<xsd:enumeration value="ValidSingleGSASwap"/>
+			<xsd:enumeration value="ValidMultipleGSASwap"/>
+			<xsd:enumeration value="NotValid"/>
+			<xsd:enumeration value="Error"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="ParticipatingCxr">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="ValueWithAttributes">ParticipatingCxr</otm:OTA2Entity>
+				<otm:Example context="vc1">US</otm:Example>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="stl2:Code_Airline">
+				<xsd:attribute name="iatLevel" type="vc:IATLevel" use="optional"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:element name="ValidatingCxrResult" type="vc:ValidatingCxrResult"/>
+	<xsd:complexType name="ValidatingCxrResult">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">ValidatingCxrResult</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ValidationResult" type="vc:ValidationResult" minOccurs="0"/>
+			<xsd:element name="ValidatingCxr" type="vc:ValidatingCxr" minOccurs="0"/>
+			<xsd:element name="ParticipatingCxr" type="vc:ParticipatingCxr" minOccurs="0" maxOccurs="47"/>
+			<xsd:element name="TicketType" type="vc:TicketType" minOccurs="0"/>
+			<xsd:element name="Message" type="vc:Message"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="SettlementPlanCheck" type="vc:SettlementPlanCheck"/>
+	<xsd:complexType name="SettlementPlanCheck">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">SettlementPlanCheck</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ValidatingCxr" type="vc:ValidatingCxr"/>
+			<xsd:element name="SettlementPlan" type="vc:SettlementPlan"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ValidatingCxrCheck" type="vc:ValidatingCxrCheck"/>
+	<xsd:complexType name="ValidatingCxrCheck">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="CoreObject">ValidatingCxrCheck</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ValidatingCxr" type="vc:ValidatingCxr"/>
+			<xsd:element name="ParticipatingCxr" type="vc:ParticipatingCxr" maxOccurs="48"/>
+			<xsd:element name="SettlementPlan" type="vc:SettlementPlan" minOccurs="0"/>
+			<xsd:element name="TicketType" type="vc:TicketType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="countryCode" type="vc:Code_V2_Country" use="optional">
+			<xsd:annotation>
+				<xsd:appinfo>
+					<otm:Example context="vc1">US</otm:Example>
+				</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:element name="TicketingCxrServiceRQ" substitutionGroup="stlp:STL_Request_Payload">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="vc:TicketingCxrService_RQ">
+					<xsd:choice>
+						<xsd:element ref="vc:ValidatingCxrCheck"/>
+						<xsd:element ref="vc:SettlementPlanCheck"/>
+					</xsd:choice>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="TicketingCxrService_RQ">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="Operation">ValidatingCxrService_TicketingCxrService</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="stlp:STL_Request_Payload">
+				<xsd:sequence>
+					<xsd:element ref="vc:POS"/>
+					<xsd:element ref="vc:Diagnostic" minOccurs="0"/>
+					<xsd:element ref="vc:BillingInformation" minOccurs="0"/>
+					<xsd:element ref="vc:TicketDate" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="TicketingCxrServiceRS" type="vc:TicketingCxrService_RS" substitutionGroup="stlp:STL_Response_Payload"/>
+	<xsd:complexType name="TicketingCxrService_RS">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<otm:OTA2Entity type="Operation">ValidatingCxrService_TicketingCxrService</otm:OTA2Entity>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="stlp:STL_Response_Payload">
+				<xsd:sequence>
+					<xsd:element ref="vc:ValidatingCxrResult" minOccurs="0"/>
+					<xsd:element ref="vc:XMLDiagnostic" minOccurs="0"/>
+					<xsd:element name="Message" type="vc:Message" minOccurs="0" maxOccurs="1000"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

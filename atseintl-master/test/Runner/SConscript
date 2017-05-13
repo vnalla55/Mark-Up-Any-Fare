@@ -1,0 +1,44 @@
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2014
+
+Import('env')
+import os
+import scommon
+
+
+RUNNER_FILES = '''
+AtseTestRunner.cpp
+CommandLineParser.cpp
+FailuresOutputter.cpp
+JUnitLikeXmlOutputter.cpp
+MockDataManager.cpp
+MockTseServer.cpp
+ProgressListener.cpp
+SkipException.cpp
+TestMemHandle.cpp
+TimekeepingTestResultCollector.cpp
+'''
+
+SERVER_FILES = [
+    'TseServer.cpp',
+    'DynamicLibrary.cpp',
+    'AppConsoleController.cpp',
+    'TseAppConsole.cpp'
+]
+
+def build_runner_library(env, dircontext):
+    lm = env.factory.libmaker('Runner')
+    lm.add_sources(RUNNER_FILES)
+    coll = scommon.NodeCollector(env.stash['SERVER_OBJECTS'])
+    server_objects = coll.retrieve_nodes(SERVER_FILES)
+    lm.add_objects(server_objects)
+    lm.make()
+
+
+s = env.scout()
+s.werror = 0
+s.env.add_isystem_paths('$CPPUNIT_CPPPATH_')
+s.env.add_defines(env['TSE_VOB_DIR_DEFINE_'])
+s.add_task(build_runner_library)
+s.build()
+

@@ -1,0 +1,32 @@
+#! /bin/csh
+
+# Get full vob extended name of vob elements
+
+if ( "$1" == "" ) then
+	echo "Syntax: ct_fullname <VOB elements>"
+	exit 1
+endif
+
+pushd . > /dev/null
+
+set dir=`cleartool ls -d -s .`
+
+# Enter VOB-extended namespace
+cd $dir
+set dir=`pwd`
+echo " "
+echo "DIRECTORY NAME:"
+echo $dir
+echo " "
+echo "FILE NAME(S):"
+
+# Exit VOB-extended namespace
+popd > /dev/null
+
+foreach NAME ($*)
+  set file=`cleartool ls -s $NAME`
+  echo "  $file"
+end
+
+echo " "
+

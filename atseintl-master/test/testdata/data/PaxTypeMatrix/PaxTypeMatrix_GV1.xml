@@ -1,0 +1,65 @@
+<Vector>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="GV1"
+               atpPaxType="ADT"
+               carrier=""
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="GV1"
+               atpPaxType="CTZ"
+               carrier=""
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="GV1"
+               atpPaxType="GCF"
+               carrier=""
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="GV1"
+               atpPaxType="GDP"
+               carrier=""
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="GV1"
+               atpPaxType="GEX"
+               carrier=""
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="GV1"
+               atpPaxType="GVT"
+               carrier=""
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+     <PaxTypeMatrix     >
+          <Attributes
+               sabrePaxType="GV1"
+               atpPaxType="LTC"
+               carrier=""
+               alternatePaxType=""
+               bulkInd="N"
+          />
+     </PaxTypeMatrix>
+</Vector>

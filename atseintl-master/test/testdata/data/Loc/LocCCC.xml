@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="CCC"
+          city=""
+          subarea="12"
+          area="1"
+          transtype="P"
+          nation="CU"
+          state=""
+     />
+     <Position
+          latdegrees=22
+          latminutes=30
+          latseconds=50
+          lngdegrees=78
+          lngminutes=30
+          lngseconds=30
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="CU01"
+          description="CAYO COCO"
+     />
+</Loc>

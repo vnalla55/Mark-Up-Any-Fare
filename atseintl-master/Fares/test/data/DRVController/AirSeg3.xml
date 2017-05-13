@@ -1,0 +1,33 @@
+<AirSeg>
+     <DepartureDate year=2004 month=8 day=18 hour=17 minute=27 second=47/>
+     <ArrivalDate year=2004 month=8 day=18 hour=17 minute=27 second=47/>
+     <BookingDate year=2004 month=8 day=18 hour=17 minute=27 second=47/>
+     <SegmentInfo
+          pnrSegment=0
+          segmentOrder=0
+          stopOver="f"
+          forcedStopOver=""
+          forcedConx=""
+          geoTravelType="International"
+     />
+     <FlightInfo
+          carrier="BA"
+          flightNumber=0
+          marketingFlightNumber=0
+          operatingFlightNumber=0
+          equipmentType=""
+     />
+     <Origin file="/vobs/atseintl/Fares/test/data/DRVController/Loc0.xml"/>
+     <Destination file="/vobs/atseintl/Fares/test/data/DRVController/Loc1.xml"/>
+     <Misc
+          validatedBookingCode=""
+          resStatus=""
+          fareBasisCode=""
+          bookingCode=""
+          furthestPoint="f"
+          considerOnlyCabin=""
+          forcedFareBrk=""
+          forcedNoFareBrk=""
+          forcedSideTrip=""
+     />
+</AirSeg>

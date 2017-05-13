@@ -1,0 +1,9 @@
+name: City
+namespace: tse
+outerClass: TravelRoute
+package: Routing
+
+section: Attributes
+  scalar: loc:          LocCode loc()
+  scalar: isHiddenCity: bool    isHiddenCity()
+endsection

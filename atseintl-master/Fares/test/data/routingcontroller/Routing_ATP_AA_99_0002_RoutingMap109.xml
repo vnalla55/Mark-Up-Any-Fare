@@ -1,0 +1,16 @@
+<RoutingMap>
+     <EffectiveDate year=2010 month=3 day=16 hour=0 minute=0 second=0/>
+     <Loc1Key file="/vobs/atseintl/Fares/test/data/routingcontroller/Routing_ATP_AA_99_0002_LocKey_C-STL.xml"/>
+     <Attributes
+          vendor="ATP"
+          carrier="AA"
+          routingTariff=99
+          routingNumber="0002"
+          lnkMapSequence=110
+          loc1Number=110
+          locTag=" "
+          nextLocNo=115
+          altLocNo=111
+          localRoutineCode=""
+     />
+</RoutingMap>

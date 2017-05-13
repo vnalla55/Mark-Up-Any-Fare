@@ -1,0 +1,25 @@
+<TaxItem>
+     <Currency
+          paymentCurrency="USD"
+          paymentCurrencyNoDec=2
+     />
+     <Tax
+          amount=20.5
+          taxableFare=10.5
+          taxablePartialFare=5.6
+          milesLocal=100
+          milesThru=200
+          localBoard="DFW"
+          localOff="LAX"
+          thruBoard="NYC"
+          thruOff="BAL"
+          description="The description."
+          taxOnTaxInfo="The tax on tax info."
+     />
+     <Misc
+          failCode="a"
+          partialTax="p"
+          travelSegStartIndex=1
+          travelSegEndIndex=2
+     />
+</TaxItem>

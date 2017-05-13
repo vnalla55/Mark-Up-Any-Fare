@@ -1,0 +1,12 @@
+name: ClassOfService
+namespace: tse
+package: Common
+
+scalarWithCompare:  bookingcode: BookingCode bookingCode()
+scalar:             numSeats:    uint16_t    numSeats()
+scalarWithCompare:  cabin:       CabinType   cabin()
+
+NameString: "COS_"
+NameField: bookingCode()
+NameString: "-"
+NameField: cabin()

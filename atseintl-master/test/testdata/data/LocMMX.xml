@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="MMX"
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="SE"
+          state=" "
+     />
+     <Position
+          latdegrees=55
+          latminutes=31
+          latseconds=40
+          lngdegrees=13
+          lngminutes=22
+          lngseconds=7
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2004 month=7 day=19 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="SE01"
+          description="MALMO      STURUP"
+     />
+</Loc>

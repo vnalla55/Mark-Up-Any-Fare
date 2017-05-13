@@ -1,0 +1,22 @@
+<FareUsage>
+   <PaxTypeFare file="/vobs/atseintl/test/testdata/data/PaxTypeFare.xml" />
+   <CombinabilityRuleInfo file="/vobs/atseintl/test/testdata/data/CombinabilityRuleInfo.xml" />
+   <AirSeg file="/vobs/atseintl/test/testdata/data/AirSegDFW_LON.xml" />
+   <AirSeg file="/vobs/atseintl/test/testdata/data/AirSegDFW_LON.xml" />
+   <Status value = "Inbound" />
+   <Status value = "AppendNR" />
+   
+   <Misc 
+      SurchargeAmt = 100
+      TransferAmt = 140
+      StopOverAmpt = 130
+      AbsorptionAdjustment = 120
+      MinimumFarePlusUp = 150
+      AdjustedStopOvers = 160
+      HasSideTrip = "t"
+      PenaltyRestInd = "I"
+      AppendageCode = "ABCDE"
+  />
+
+</FareUsage>
+

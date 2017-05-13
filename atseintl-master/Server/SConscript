@@ -1,0 +1,154 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+import os
+import scommon
+
+Import('env')
+server_objects = {}
+env.stash['SERVER_OBJECTS'] = server_objects
+collector = scommon.NodeCollector(server_objects)
+
+
+InternalLibs = [
+    'Allocator',
+    'AddonConstruction',
+    'AppConsole',
+    'DSSServices',
+    'BookingCode',
+    'BrandingService',
+    'ClientSocket',
+    'Common',
+    'DataModel',
+    'DBAccess',
+    'Decode',
+    'tseDiagnostic',
+    'tseDiagnosticFareDisplay',
+    'DSS',
+    'FaresCommon',
+    'FileLoader',
+    'Limitations',
+    'MinFares',
+    'RTG',
+    'Rules',
+    'CustomXMLParser',
+    'XformCommon',
+    'CacheNotifyAdapter',
+    'DiskCacheAdapter',
+    'ServerSocketAdapter',
+    'CacheNotifyManager',
+    'DiskCacheManager',
+    'ServerSocketManager',
+    'Service',
+    'Billing',
+    'BrandedFares',
+    'CacheUpdate',
+    'CurrencyService',
+    'FareCalc',
+    'FareDisplay',
+    'FareSelectorSvc',
+    'FaresCollector',
+    'FaresValidator',
+    'FreeBagService',
+    'InternalService',
+    'ItinAnalyzerService',
+    'Pricing',
+    'RequestResponse',
+    'RexFareSelector',
+    'Routing',
+    'TO',
+    'ServiceFees',
+    'Shopping',
+    'taxes',
+    'TicketingFee',
+    'TicketingCxrService',
+    'TicketingCxrDisplayService',
+    'Util',
+    'Xform',
+    'XformBillingXML',
+    'XformCacheMessage',
+    'XformClientShoppingXML',
+    'XformClientXML',
+    'XformTaxXML',
+    'Xray',
+    'ZThreads'
+]
+
+ExternalLibs = [
+    'boost_date_time',
+    'boost_regex',
+    'boost_thread',
+    'boost_filesystem',
+    'boost_system',
+    'boost_program_options',
+    'boost_chrono',
+    'log4cxx',
+    'xerces-c',
+    'db-5.0',
+    'memcached',
+    'rt',
+    'jemalloc',
+    'tbbmalloc',
+    'snappy',
+    'lz4',
+    'z',
+    'dl',
+    'ssl',
+    'crypto',
+    'clntsh',
+    'nnz',
+    'occi',
+    'ociei',
+    'curl',
+    'ncurses',
+    'bz2',
+    'xalan-c'
+]
+
+def build_server(env, dircontext):
+
+    env.add_libpaths('$STD_LIBPATH_', '$EXTERNAL_LIBPATHS_')
+    env.add_libs(*ExternalLibs)
+    env.add_libs(*env['ASAP_LIBLIST_'])
+    env.add_rpaths('$RPATH_')
+
+    pmaker = env.factory.progmaker(env['SERVER_APP_NAME_'], objobserver=collector)
+    pmaker.add_sources(dircontext.mksources.filelist('TSESERVER_SOURCES'))
+    if env.direct_object_link:
+        # We link with objects directly (not creating libraries).
+        objcache = env.stash['DIRECTLY_LINKED_OBJECTS']
+        for libname in InternalLibs:
+            pmaker.add_objects(objcache[libname])
+        # Add all remaining DBAccess objects directly
+        for libname in ['DBAccess1', 'DBAccess2', 'DBAccess3',
+                        'DBAccess4', 'DBAccess5', 'DBAccessTaxes']:
+            pmaker.add_objects(objcache[libname])
+    else:
+        pmaker.env.add_libs(*InternalLibs)
+        pmaker.env.add_libpaths('$LIB_INSTALL_DIR_')
+
+    p = pmaker.make()
+    env.raw.InstallAs(os.path.join(env['SERVER_INSTALL_DIR_'], env['SERVER_INSTALL_NAME_']), p)
+    # Below line is only to support legacy build directory - should be removed as soon as new way proof it's flexibility
+    env.raw.InstallAs(os.path.join(env['LEGACY_SERVER_INSTALL_DIR_'], env['SERVER_INSTALL_NAME_']), p)
+
+
+def build_server_start_env(env, dircontext):
+    target_path = os.path.join(env.absbuilddir, 'bin')
+    for source_dir, file in env['SERVER_START_LINKS_']:
+        target = os.path.join(target_path, file)
+        source = os.path.join(env.absroot, source_dir, file)
+        # Do not cache repo local links
+        NoCache(target)
+        env.factory.linkmaker(target).add_objects([source]).make()
+
+s = env.msscout()
+s.env.add_isystem_paths('$XERCESC_CPPPATH_')
+s.env.add_linkflags('-g', '-Wall', '-pthread', '-export-dynamic')
+s.add_task(build_server)
+s.add_task(build_server_start_env)
+s.werror = True
+s.build()
+

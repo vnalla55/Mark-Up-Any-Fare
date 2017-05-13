@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+USINGDB = [
+    'test/ItinAnalyzerService_CheckItinFamilyTest.cpp',
+    'test/ItinAnalyzerService_CheckItinTest.cpp',
+    'test/ItinAnalyzerService_FindCOSKeysTest.cpp',
+    'test/ItinAnalyzerService_SegmentOrderWithoutArunkTest.cpp'
+]
+
+
+s = env.scout()
+s.env.add_defines(env['TSE_VOB_DIR_DEFINE_'])
+s.tests(blacklist = USINGDB)
+s.tests(whitelist = USINGDB, executor='utexedb')
+s.build()

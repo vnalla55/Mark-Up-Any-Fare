@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+LIBFILE = '/opt/cppunit-1.12.1/examples/cppunittest/XmlUniformiser.cpp'
+
+def build_lib(env,  dircontext):
+    oo = env.factory.primitives.shared_object(source=LIBFILE, target='XmlUniformiser.o')
+    lm = env.factory.libmaker('RunnerTests')
+    lm.add_objects(oo)
+    lm.make()
+
+s = env.scout()
+s.env.add_isystem_paths('$CPPUNIT_CPPPATH_')
+s.env.add_include_paths('/opt/cppunit-1.12.1/examples/cppunittest')
+s.env.add_libpaths('.')
+s.add_task(build_lib)
+s.tests(locallib=1, libs=['RunnerTests'], blacklist=[LIBFILE])
+s.build()

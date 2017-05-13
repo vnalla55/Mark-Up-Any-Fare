@@ -1,0 +1,18 @@
+name: FareClassRestRule
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: orderNo:                int           orderNo()
+  scalar: fareClassTypeApplInd:   Indicator     fareClassTypeApplInd()
+  scalar: normalFaresInd:         Indicator     normalFaresInd()
+  scalar: owrt:                   Indicator     owrt()
+  scalar: sametrfRuleInd:         Indicator     sametrfRuleInd()
+  scalar: samediffInd:            Indicator     samediffInd()
+  scalar: sameminMaxInd:          Indicator     sameminMaxInd()
+  scalar: typeInd:                Indicator     typeInd()
+  scalar: typeCode:               FareType      typeCode()
+  scalar: penaltysvcchrgApplInd:  Indicator     penaltysvcchrgApplInd()
+  scalar: penaltyRestInd:         Indicator     penaltyRestInd()
+  scalar: appendageCode:          AppendageCode appendageCode()
+endsection

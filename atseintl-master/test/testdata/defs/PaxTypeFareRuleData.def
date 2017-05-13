@@ -1,0 +1,14 @@
+name: PaxTypeFareRuleData
+namespace: tse
+package: DataModel
+
+factoryAggregate: CategoryRuleInfo:         CategoryRuleInfo*         categoryRuleInfo()
+factoryAggregate: CategoryRuleItemInfo:     CategoryRuleItemInfo*     categoryRuleItemInfo()
+factoryAggregate: RuleItemInfo:             RuleItemInfo*             ruleItemInfo()
+factoryAggregate: PaxTypeFare:              PaxTypeFare*              baseFare()
+
+#factoryAggregate: CategoryRuleItemInfo: std::vector<CategoryRuleItemInfo> categoryRuleItemInfoVec()
+
+section: Attributes
+  scalar: isLocationSwapped: bool isLocationSwapped()
+endsection

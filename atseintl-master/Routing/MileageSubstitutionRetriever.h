@@ -1,0 +1,63 @@
+#pragma once
+
+// FIXME: <memory> should be included by Singleton.h
+#include "Common/Singleton.h"
+#include "Common/TseConsts.h"
+#include "Routing/MileageDataRetriever.h"
+
+#include <memory>
+
+namespace tse
+{
+
+class DataHandle;
+class DateTime;
+class MileageRouteItem;
+class MileageSubstitution;
+
+/**
+ * @class MileageSubstitutionRetriever
+ *
+ * A singleton - stateless class to retrieve data from MileageSubstitution table.
+ */
+class MileageSubstitutionRetriever : public MileageDataRetriever
+{
+public:
+  /**
+   * @function retrieve
+   *
+   * Concrete implementation of retrieval from MileageSubstitution table.
+   *
+   * @param MileageRouteItem& - mileage route item that provides data needed to match and retrieve
+   *data
+   *                 from db, and to be updated with alternate locations
+   * @param DataHandle& - data handle through which the data will be actually retrieved
+   * @param Indicator - ignored
+   * @return bool - true if retrieval was successful, false otherwise
+   */
+  virtual bool retrieve(MileageRouteItem&, DataHandle&, Indicator mileageType = TPM) const override;
+
+protected:
+  /**
+   * Construction, destruction and copying prohibited for a singleton.
+   */
+  MileageSubstitutionRetriever() {}
+  MileageSubstitutionRetriever(const MileageSubstitutionRetriever&);
+  MileageSubstitutionRetriever& operator=(const MileageSubstitutionRetriever&);
+  /**
+   * Protected destructor not really necessary, Should it cause any problem,
+   * can be safely made back public (and friendship of unique_ptr removed).
+   */
+  ~MileageSubstitutionRetriever() {}
+  friend class tse::Singleton<MileageSubstitutionRetriever>;
+  friend class std::unique_ptr<MileageSubstitutionRetriever>;
+
+private:
+  /**
+   * An auxiliary method to make unit tests independent of DataHandle.
+   */
+  virtual const MileageSubstitution* getData(DataHandle&, const LocCode&, const DateTime&) const;
+};
+
+} // namespace tse
+

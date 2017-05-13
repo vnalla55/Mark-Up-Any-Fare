@@ -1,0 +1,60 @@
+<TaxRq>
+  <PointOfSale PointOfSaleLoc="DAL" />
+  <ProcessingOptions/>
+  <TicketingOptions TicketingDate="2013-05-23"  TicketingTime="11:15"/>
+  <GeoPath>
+    <Geo Loc="KRK" Type="D" />
+    <Geo Loc="MUC" Type="A" UnticketedTransfer="Y" />
+    <Geo Loc="MUC" Type="D" UnticketedTransfer="Y" />
+    <Geo Loc="FRA" Type="A" />
+    <Geo Loc="FRA" Type="D" />
+    <Geo Loc="LHR" Type="A" />
+  </GeoPath>
+  <FarePath>
+    <FareUsage FareRefId="0" />
+    <FareUsage FareRefId="1" />
+  </FarePath>
+  <GeoPathMapping>
+    <Mapping>
+      <Map GeoRefId="0" />
+      <Map GeoRefId="1" />
+      <Map GeoRefId="2" />
+      <Map GeoRefId="3" />
+    </Mapping>
+    <Mapping>
+      <Map GeoRefId="4" />
+      <Map GeoRefId="5" />
+    </Mapping>
+  </GeoPathMapping>
+  <Passenger PassengerCode="ADT" DateOfBirth="2013-02-01" StateCode="VI" Nationality="PL" Residency="US" Employment="DE"></Passenger>
+  <Flight ArrivalDateShift="0" ArrivalTime="16:00" DepartureTime="12:00" />
+  <Flight ArrivalDateShift="0" ArrivalTime="16:00" DepartureTime="12:00" />
+  <Flight ArrivalDateShift="0" ArrivalTime="16:00" DepartureTime="12:00" />
+  <FlightPath>
+    <FlightUsage ConnectionDateShift="0" FlightRefId="0" />
+    <FlightUsage ConnectionDateShift="1" FlightRefId="1" />
+    <FlightUsage ConnectionDateShift="0" FlightRefId="2" />
+  </FlightPath>
+  <Itin PassengerRefId="0" FarePathGeoPathMappingRefId="0" FarePathRefId="0" FlightPathRefId="0" GeoPathRefId="0" Id="0" TravelOriginDate="2013-06-23">
+  </Itin>
+  <Fare Amount="555" BasisCode="X2RT" Directionality="I" OneWayRoundTrip="O" TypeCode="PSD" />
+  <Fare Amount="133" BasisCode="X2XX" Directionality="O" OneWayRoundTrip="O" TypeCode="YRT" />
+  <TestData>
+    <RulesRecord TICKETEDPOINTTAG=" " JRNYINCLUDESLOCTYPE="N" JRNYINCLUDESLOC="DE" NATION="PL" PERCENTFLATTAG="F" SEQNO="101" TAXAMT="13" TAXCODE="AA" TAXPOINTTAG="D" TAXTYPE="001" VENDOR="ATPCO" />
+    <RulesRecord TICKETEDPOINTTAG="U" JRNYINCLUDESLOCTYPE="N" JRNYINCLUDESLOC="DE" NATION="PL" PERCENTFLATTAG="F" SEQNO="102" TAXAMT="77" TAXCODE="BB" TAXPOINTTAG="D" TAXTYPE="021" VENDOR="ATPCO" />
+    <Loc Id="0" LocCode="KRK" NationCode="PL" />
+    <Loc Id="1" LocCode="MUC" NationCode="DE" />
+    <Loc Id="2" LocCode="FRA" NationCode="DE" />
+    <Loc Id="3" LocCode="LHR" NationCode="UK" />
+    <IsInLoc LocCode="PL" LocType="N" Vendor="ATPCO">
+      <LocUsage LocRefId="0" />
+    </IsInLoc>
+    <IsInLoc LocCode="DE" LocType="N" Vendor="ATPCO">
+      <LocUsage LocRefId="1" />
+      <LocUsage LocRefId="2" />
+    </IsInLoc>
+    <IsInLoc LocCode="UK" LocType="N" Vendor="ATPCO">
+      <LocUsage LocRefId="3" />
+    </IsInLoc>
+  </TestData>
+</TaxRq>

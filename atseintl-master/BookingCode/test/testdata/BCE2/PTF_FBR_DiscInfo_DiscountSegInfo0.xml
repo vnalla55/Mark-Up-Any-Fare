@@ -1,0 +1,18 @@
+<DiscountSegInfo>
+     <Attributes
+          orderNo=1
+          minNoPsg=0
+          maxNoPsg=0
+          minAge1=12
+          maxAge1=0
+          minAge2=0
+          maxAge2=0
+          minAge3=0
+          maxAge3=0
+          accPsgType1="ADT"
+          accPsgType2=""
+          accPsgType3=""
+          fareClass=""
+          bookingCode=""
+     />
+</DiscountSegInfo>

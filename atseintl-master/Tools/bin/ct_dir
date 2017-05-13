@@ -1,0 +1,22 @@
+#! /bin/csh
+
+# Create vob directory(s)
+
+if ( "$1" == "" ) then
+	echo "Syntax: ct_dir <dir names>"
+	exit 1
+endif
+
+foreach NAME ($*)
+	set NEWDIR = `basename $NAME`
+	set DIR = `dirname $NAME`
+
+	echo "Make VOB Directory '$NEWDIR' in '$DIR'..."
+
+	cleartool checkout -nc $DIR
+	cleartool mkdir -nco -nc $NAME
+	cleartool protect -chmod 775 $NAME
+	cleartool protect -chgrp crm $1
+	cleartool checkin -nc $DIR
+end
+

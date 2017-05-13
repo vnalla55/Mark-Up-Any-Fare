@@ -1,0 +1,5 @@
+<PaxTypeFareRuleData>
+     <CategoryRuleInfo file="/vobs/atseintl/BookingCode/test/testdata/FBR1_CategoryRuleInfo2.xml"/>
+     <CategoryRuleItemInfoSet file="/vobs/atseintl/BookingCode/test/testdata/FBR1_CategoryRuleItemInfoSet1.xml"/>
+          isLocationSwapped="f"
+</PaxTypeFareRuleData>

@@ -1,0 +1,11 @@
+<Itin>
+  <Attributes
+     geoTravelType="Domestic" 
+     ticketingCarrier="AA" 
+  />
+
+  <TravelSeg file="/vobs/atseintl/test/testdata/data/AirSegDFW_LAX.xml"/>
+  <TravelSeg file="/vobs/atseintl/test/testdata/data/ArunkSegLAX_LAX.xml"/>
+  <TravelSeg file="/vobs/atseintl/test/testdata/data/AirSegLAX_DFW.xml"/>
+
+</Itin>

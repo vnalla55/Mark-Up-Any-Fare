@@ -1,0 +1,11 @@
+#!	/usr/bin/csh
+
+# Change the group to crm
+
+if ( "$1" == "" ) then
+	echo "Syntax: ct_grp <vob objects>"
+	exit 1
+endif
+
+cleartool protect -chgrp crm $*
+

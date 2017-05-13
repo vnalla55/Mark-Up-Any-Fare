@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ==================================================================
+//
+//
+//  File:         CommonElements.xsd
+//  Author:       Jim Stoltenberg
+//  Created:      April 2005
+//  Description:  Collection of Shared XML Element Definitions
+//
+//  Copyright Sabre 2005
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+//
+//================================================================= -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="CommonTypes.xsd"/>
+	<xs:complexType name="FIDType">
+		<xs:annotation>
+			<xs:documentation>
+				FIDType    List of Flight per LEG
+				Q1K      Flight ID
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Q1K" type="xs:short" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="BILType">
+		<xs:annotation>
+			<xs:documentation>
+
+        BILType   Billing Information
+
+        Attribute(s)
+
+          A20    Pseudo City Code
+          A22    AAA City
+          A70    Action Code
+          AA0    Agent Sine In
+          AD0    User Set Address
+          AE0    Partition ID
+          C00    Parent transaction ID (for sender: my transaction id, for receiver: my parent transaction id)
+          C01    Client transaction ID (The highest level client transaction id)
+          C20    Parent service name (for sender: my name, for receiver: my parent name)
+          C21    Business function (The highest level client service name)
+          S0R    Source of Request
+          Q02    User Branch
+          Q03    User Station
+
+       *  L00    (Deprecated - use C01) Client transaction ID
+
+      </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="A20" type="PseudoCityCodeType" use="optional"/>
+		<xs:attribute name="A22" type="PseudoCityCodeType" use="optional"/>
+		<xs:attribute name="A70" type="ActionCodeType" use="optional"/>
+		<xs:attribute name="AA0" type="AgentFunctionType" use="optional"/>
+		<xs:attribute name="AD0" type="LnIATAType" use="optional"/>
+		<xs:attribute name="AE0" type="PartitionIDType" use="optional"/>
+		<xs:attribute name="C00" type="TransactionIDType" use="optional"/>
+		<xs:attribute name="C01" type="TransactionIDType" use="optional"/>
+		<xs:attribute name="C20" type="ServiceNameType" use="optional"/>
+		<xs:attribute name="C21" type="ServiceNameType" use="optional"/>
+		<xs:attribute name="S0R" type="SourceOfRequestType" use="optional"/>
+		<xs:attribute name="Q02" type="xs:short" use="optional"/>
+		<xs:attribute name="Q03" type="xs:short" use="optional"/>
+		<xs:attribute name="L00" type="TransactionIDType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ATHType">
+		<xs:annotation>
+			<xs:documentation>
+
+        ATHType   ICE Authorization Information
+
+        Attribute(s)
+
+          I01  ICE Binary Security Token
+          I02   Action Name
+          PCC Agent pseudo city code
+          AAA Agent AAA location 
+          </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="I01" type="xs:string" use="required"/>
+		<xs:attribute name="I02" type="xs:string" use="required"/>
+		<xs:attribute name="PCC" type="PseudoCityCodeType" use="optional"/>
+		<xs:attribute name="AAA" type="PseudoCityCodeType" use="optional"/>
+	</xs:complexType>
+</xs:schema>

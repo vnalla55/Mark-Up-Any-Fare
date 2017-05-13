@@ -1,0 +1,14 @@
+<ZoneInfo>
+     <Attributes
+          vendor="ATP"
+          zone="0000005"
+          zoneType="U"
+     />
+     <ZoneSeg
+          setNo=1
+          locType="N"
+          loc="CA"
+          inclExclInd="I"
+          directionalQualifier="N"
+     />
+</ZoneInfo>

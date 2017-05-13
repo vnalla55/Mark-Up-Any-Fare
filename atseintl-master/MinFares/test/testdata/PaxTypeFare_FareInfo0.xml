@@ -1,0 +1,25 @@
+<FareInfo>
+     <Fare
+          fareAmount=556
+          originalFareAmount=1112
+          noDec=2
+          fareTariff=732
+          currency="USD"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="DL"
+          fareClass="UHXTO9"
+          market1LocCode="CVG"
+          market2LocCode="ROM"
+          footnote1=""
+          footnote2=""
+          owrt="2"
+          ruleNumber="5855"
+          routingNumber="0000"
+          globalDirection="AT"
+          directionality="FROM"
+          linkNumber=1
+          sequenceNumber=3
+     />
+</FareInfo>

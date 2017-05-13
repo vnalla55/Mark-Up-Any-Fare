@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="AUS"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="US"
+          state="USTX"
+     />
+     <Position
+          latdegrees=30
+          latminutes=11
+          latseconds=40
+          lngdegrees=97
+          lngminutes=40
+          lngseconds=11
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2002 month=5 day=9 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="US02"
+          description="AUSTIN"
+     />
+</Loc>

@@ -1,0 +1,8 @@
+<TaxResponse>
+    <FarePath file="/vobs/atseintl/test/testdata/data/FarePath.xml"/>
+    <PfcItem file="/vobs/atseintl/test/testdata/data/PfcItem.xml"/>
+    <TaxRecord file="/vobs/atseintl/test/testdata/data/TaxRecord.xml"/>
+    <Misc paxTypeCode="ADT" />
+
+</TaxResponse>
+

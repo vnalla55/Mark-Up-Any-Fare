@@ -1,0 +1,105 @@
+name: PaxTypeFare
+namespace: tse
+package: DataModel
+specialPublicField: std::set<std::string> requestedFareClass
+specialPublicField: std::set<std::string> requestedPassangerType
+specialPublicField: bool                  writeCategoryRuleData = false
+
+extraInclude: test/testdata/TestPaxTypeFareRuleDataFactory.h
+extraInclude: test/testdata/TestFBRPaxTypeFareRuleDataFactory.h
+extraInclude: test/testdata/TestNegPaxTypeFareRuleDataFactory.h
+
+specialAggregate: Status: std::string status
+  read
+    if (false);
+  endRead
+  readLoop
+    else if (status == "$1")
+      item->status().set(PaxTypeFare::PTF_$1, true);
+  endReadLoop
+  writeLoop
+    if (item.status().isSet(PaxTypeFare::PTF_$1))
+      $write("$1");
+  endWriteLoop
+
+  loop: FareByRule
+  loop: Discounted
+  loop: Negotiated
+endSpecial
+
+# RuleStatus is disabled?
+
+# TODO recursive aggregates/sections
+# TODO SegmentStatus
+
+section: SegmentStatus
+  scalar: bookingCode: BookingCode segstatus._bkgCodeReBook
+endsection
+
+specialAggregate: BookingCodeSegStatus: std::string status
+  read
+    if (false);
+  endRead
+  readLoop
+    else if (status == "$1" )
+      segstatus._bkgCodeSegStatus.set(PaxTypeFare::BKSS_$1, true);
+  endReadLoop
+  writeLoop
+    if (( *segIter)._bkgCodeSegStatus.isSet(PaxTypeFare::BKSS_$1))
+      $write("$1");
+  endWriteLoop
+
+  loop: NOT_YET_PROCESSED
+  loop: SURFACE
+  loop: FAIL
+  loop: PASS
+  loop: NOMATCH
+  loop: FAIL_T999
+  loop: FAIL_REC1_T999
+  loop: FAIL_CONV1_T999
+  loop: FAIL_CONV2_T999
+  loop: FAIL_MIXEDCLASS
+  loop: FAIL_LOCALMARKET
+  loop: FAIL_PRIME_RBD_DOMESTIC
+  loop: FAIL_PRIME_RBD_INTERNATIONAL
+  loop: REBOOKED
+  loop: DIFFERENTIAL
+  loop: NEED_REVALIDATION
+  loop: NEED_REVALIDATION_REC1
+  loop: NEED_REVALIDATION_CONV1
+  loop: NEED_REVALIDATION_CONV2
+endSpecial
+
+factoryAggregateWithCompare: ActualPaxType:        PaxType*              actualPaxType()
+factoryAggregateWithCompare: FareClassAppInfo:     FareClassAppInfo*     fareClassAppInfo()
+factoryAggregateWithCompare: FareClassAppSegInfo:  FareClassAppSegInfo*  fareClassAppSegInfo()
+
+section: FareTypeMatrix
+  scalarWithCompare:  cabin:                CabinType           cabin()
+  scalarWithCompare:  fareTypeDesignator:   FareTypeDesignator  fareTypeDesignator()
+  scalar:             fareTypeApplication:  Indicator           fareTypeApplication()
+endsection
+
+factoryAggregate:             FareMarket: FareMarket* fareMarket()
+factoryAggregateWithCompare:  Fare:       Fare*       setFare
+
+# TODO PaxTypeFareRuleData
+
+section: PaxTypeFareRuleData
+  scalar: categoryNumber: int   categoryNumber
+  scalar: isFareRule:     bool  isFareRule
+endsection
+
+checkItemLines
+  if (!_requestedFareClass.empty() &&
+       _requestedFareClass.find(item.fareClass()) == _requestedFareClass.end())
+    return false;
+
+  if (!_requestedPassangerType.empty() &&
+       _requestedPassangerType.find(item.fcasPaxType()) == _requestedPassangerType.end())
+    return false;
+endCheckitemLines
+
+scalarCompare:  status().isSet(PaxTypeFare::PTF_FareByRule)
+scalarCompare:  status().isSet(PaxTypeFare::PTF_Discounted)
+scalarCompare:  status().isSet(PaxTypeFare::PTF_Negotiated)

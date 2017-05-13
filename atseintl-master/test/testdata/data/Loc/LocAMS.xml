@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="AMS"
+          city=""
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="NL"
+          state=""
+     />
+     <Position
+          latdegrees=52
+          latminutes=18
+          latseconds=30
+          lngdegrees=4
+          lngminutes=46
+          lngseconds=5
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2005 month=1 day=6 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="NL01"
+          description="AMSTERDAM"
+     />
+</Loc>

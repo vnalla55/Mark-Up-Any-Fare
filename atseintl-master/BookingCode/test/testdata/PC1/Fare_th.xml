@@ -1,0 +1,23 @@
+<Fare>
+     <FareInfo file="testdata/PC1/FareInfo_th.xml"/>
+     <TariffCrossRefInfo file="testdata/PC1/TariffCrossRefInfo.xml"/>
+     <Misc
+          nucFareAmount=4204.54
+     />
+     <FareStatus fareStatus="International"/>
+     <FareStatus fareStatus="PublishedFare"/>
+     <FareStatus fareStatus="RoutingProcessed"/>
+     <FareStatus fareStatus="RoutingValid"/>
+     <FareStatus fareStatus="ReversedDirection"/>
+     <RuleProcessStatus ruleProcessStatus="Cat02"/>
+     <RuleProcessStatus ruleProcessStatus="Cat03"/>
+     <RuleProcessStatus ruleProcessStatus="Cat04"/>
+     <RuleProcessStatus ruleProcessStatus="Cat05"/>
+     <RuleProcessStatus ruleProcessStatus="Cat06"/>
+     <RuleProcessStatus ruleProcessStatus="Cat07"/>
+     <RuleProcessStatus ruleProcessStatus="Cat08"/>
+     <RuleProcessStatus ruleProcessStatus="Cat09"/>
+     <RuleProcessStatus ruleProcessStatus="Cat11"/>
+     <RuleProcessStatus ruleProcessStatus="Cat14"/>
+     <RuleProcessStatus ruleProcessStatus="Cat15"/>
+</Fare>

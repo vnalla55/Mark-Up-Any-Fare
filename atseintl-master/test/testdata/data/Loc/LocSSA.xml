@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="SSA"
+          city=""
+          subarea="14"
+          area="1"
+          transtype="P"
+          nation="BR"
+          state=""
+     />
+     <Position
+          latdegrees=12
+          latminutes=54
+          latseconds=56
+          lngdegrees=38
+          lngminutes=20
+          lngseconds=10
+          lathemisphere="S"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2003 month=10 day=20 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="BR1A"
+          description="SALVADOR"
+     />
+</Loc>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>                         
+<!-- ==================================================================
+//
+//
+//  File:         AFBAResponse.xsd
+//  Author:       Hitha Alex
+//  Created:      August 2005
+//  Description:  Low Fare Search Response definition
+//
+//  Copyright Sabre 2005
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+//
+//================================================================= -->
+<xs:schema
+  targetNamespace="http://www.atse.sabre.com/AFBA/Response"
+  xmlns="http://www.atse.sabre.com/AFBA/Response"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified">
+   <xs:include schemaLocation="CommonTypes.xsd"/>
+
+
+   <xs:element name="AFBAResponse" >
+    <xs:complexType>
+      <xs:annotation>
+        <xs:documentation>
+
+          AFBAResponse   Free Baggage Response Message
+
+	    Element(s)
+
+        BAV   Baggage Allowance Vector
+          
+	    Attribute(s)
+
+	    C00   Transaction Id
+	    Q3M   Return Code
+	    S71   Return Message
+
+        </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:element name="BAV" type="BAVType" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="C00" type="ClientTransactionIDType"    use="required"/>
+      <xs:attribute name="Q3M" type="xs:short"   use="required"/>
+      <xs:attribute name="S71" type="xs:string"  use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:complexType name="BAVType">
+    <xs:annotation>
+      <xs:documentation>
+
+        BAVType   Baggage Allowance Vector
+
+        Element(s)
+        BAL   	Baggage Allowance
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BAL" type="BaggageAllowanceType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>    
+  </xs:complexType>
+
+  <!-- attribute declarations -->
+
+
+  <xs:simpleType name="BaggageAllowanceType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9A-Z]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+

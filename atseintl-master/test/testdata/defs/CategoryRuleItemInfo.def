@@ -1,0 +1,12 @@
+name: CategoryRuleItemInfo
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalarWithCompare: itemcat:         uint32_t  itemcat()
+  scalarWithCompare: orderNo:         uint32_t  orderNo()
+  scalarWithCompare: relationalInd:   uint32_t  relationalInd()
+  scalarWithCompare: inOutInd:        Indicator inOutInd()
+  scalarWithCompare: directionality:  Indicator directionality()
+  scalarWithCompare: itemNo:          uint32_t  itemNo()
+endsection

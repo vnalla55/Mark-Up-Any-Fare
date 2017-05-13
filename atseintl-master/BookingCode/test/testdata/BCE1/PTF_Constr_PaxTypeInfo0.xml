@@ -1,0 +1,12 @@
+<PaxTypeInfo>
+     <Attributes
+          paxType="ITX"
+          vendor="ATP"
+          description="INDIVIDUAL INCLUSIVE TOUR PSGR"
+          childInd="N"
+          adultInd="Y"
+          infantInd="N"
+          psgGroupType="OT$"
+          numberSeatsReq=1
+     />
+</PaxTypeInfo>

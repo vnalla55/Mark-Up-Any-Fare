@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="NCL"
+          city=""
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="GB"
+          state=""
+     />
+     <Position
+          latdegrees=55
+          latminutes=2
+          latseconds=16
+          lngdegrees=1
+          lngminutes=41
+          lngseconds=12
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="GB01"
+          description="NEWCASTLE      UK"
+     />
+</Loc>

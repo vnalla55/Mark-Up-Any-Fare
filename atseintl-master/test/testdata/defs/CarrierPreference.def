@@ -1,0 +1,51 @@
+name: CarrierPreference
+namespace: tse
+package: DBAccess
+
+factoryAggregate: ExpirationDate:   DateTime expireDate()
+factoryAggregate: EffectiveDate:    DateTime effDate()
+factoryAggregate: DiscountDate:     DateTime discDate()
+factoryAggregate: FirstTravelDate:  DateTime firstTvlDate()
+factoryAggregate: LastTravelDate:   DateTime lastTvlDate()
+
+section: Misc
+  scalar: memoNo:                           int         memoNo()
+  scalar: freebaggageexempt:                Indicator   freebaggageexempt()
+  scalar: availabilityApplyrul2st:          Indicator   availabilityApplyrul2st()
+  scalar: availabilityApplyrul3st:          Indicator   availabilityApplyrul3st()
+  scalar: bypassosc:                        Indicator   bypassosc()
+  scalar: bypassrsc:                        Indicator   bypassrsc()
+  scalar: applysamenuctort:                 Indicator   applysamenuctort()
+  scalar: applyrtevaltoterminalpt:          Indicator   applyrtevaltoterminalpt()
+  scalar: noApplydrvexceptus:               Indicator   noApplydrvexceptus()
+  scalar: applyleastRestrStOptopu:          Indicator   applyleastRestrStOptopu()
+  scalar: applyleastRestrtrnsftopu:         Indicator   applyleastRestrtrnsftopu()
+  scalar: noApplycombtag1and3:              Indicator   noApplycombtag1and3()
+  scalar: applysingleaddonconstr:           Indicator   applysingleaddonconstr()
+  scalar: applyspecoveraddon:               Indicator   applyspecoveraddon()
+  scalar: noApplynigeriaCuradj:             Indicator   noApplynigeriaCuradj()
+  scalar: carrier:                          CarrierCode carrier()
+  scalar: carrierbasenation:                CarrierCode carrierbasenation()
+  scalar: description:                      std::string description()
+  scalar: flowMktJourneyType:               Indicator   flowMktJourneyType()
+  scalar: localMktJourneyType:              Indicator   localMktJourneyType()
+  scalar: activateSoloPricing:              Indicator   activateSoloPricing()
+  scalar: activateSoloShopping:             Indicator   activateSoloShopping()
+  scalar: activateJourneyPricing:           Indicator   activateJourneyPricing()
+  scalar: activateJourneyShopping:          Indicator   activateJourneyShopping()
+  scalar: applyUS2TaxOnFreeTkt:             Indicator   applyUS2TaxOnFreeTkt()
+  scalar: privateFareInd:                   Indicator   privateFareInd()
+  scalar: freeBaggageCarrierExempt:         Indicator   freeBaggageCarrierExempt()
+  scalar: applyPremBusCabinDiffCalc:        Indicator   applyPremBusCabinDiffCalc()
+  scalar: applyPremEconCabinDiffCalc:       Indicator   applyPremEconCabinDiffCalc()
+  scalar: noApplySlideToNonPremium:         Indicator   noApplySlideToNonPremium()
+  scalar: noApplyBagExceptOnCombArea1_3:    Indicator   noApplyBagExceptOnCombArea1_3()
+  scalar: ovrideFreeBagFareCompLogic:       Indicator   ovrideFreeBagFareCompLogic()
+  scalar: applyNormalFareOJInDiffCntrys:    Indicator   applyNormalFareOJInDiffCntrys()
+  scalar: applySingleTOJBetwAreasShorterFC: Indicator   applySingleTOJBetwAreasShorterFC()
+  scalar: applySingleTOJBetwAreasLongerFC:  Indicator   applySingleTOJBetwAreasLongerFC()
+  scalar: applySpclDOJEurope:               Indicator   applySpclDOJEurope()
+endsection
+
+NameString: "CxrPref_"
+NameField: carrier()

@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="PL"
+          isonumericCode=616
+          subArea="21"
+          area="2"
+          isoalphaCode="POL"
+          primeCur="PLN"
+          alternateCur=""
+          conversionCur=""
+          description="POLAND"
+     />
+     <CreateDate year=2005 month=1 day=13 hour=10 minute=43 second=7/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2004 month=3 day=1 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

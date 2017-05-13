@@ -1,0 +1,28 @@
+<CarrierPreference>
+     <ExpirationDate year=2004 month=8 day=18 hour=17 minute=31 second=40/>
+     <EffectiveDate year=2004 month=8 day=18 hour=17 minute=31 second=40/>
+     <DiscountDate year=2004 month=8 day=18 hour=17 minute=31 second=40/>
+     <FirstTravelDate year=2004 month=8 day=18 hour=17 minute=31 second=40/>
+     <LastTravelDate year=2004 month=8 day=18 hour=17 minute=31 second=40/>
+     <Misc
+          memoNo=135895672
+          freebaggageexempt="ÿ"
+          availabilityApplyrul2st="ÿ"
+          availabilityApplyrul3st="ÿ"
+          bypassosc="ÿ"
+          bypassrsc="ÿ"
+          applysamenuctort="ÿ"
+          openjawdefinition="ÿ"
+          applyrtevaltoterminalpt="ÿ"
+          noApplydrvexceptus=""
+          applyleastRestrStOptopu=""
+          applyleastRestrtrnsftopu=""
+          noApplycombtag1and3=""
+          applysingleaddonconstr=""
+          applyspecoveraddon=""
+          noApplynigeriaCuradj=""
+          carrier=""
+          carrierbasenation=""
+          description=""
+     />
+</CarrierPreference>

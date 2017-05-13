@@ -1,0 +1,100 @@
+=== Quick introduction to new release note validator for ATSEv2 team.
+
+As it was requested you will be using similar workflow to deal with release notes as in ISELL team now. We decided to enhance existing ISELL tool to satisfy both team needs in those terms and don't make two separate tools.
+
+Let me quickly introduct you to this workflow:
+
+First of all release notes will be now stored in files in /Releases directory on atse vob. Files are separated on different releases. File name format is release_note_[YEAR]_[RELEASE_NO], i.e. release_note_2012_10. Inside such files we have release notes divided on three release note groups: ATSEv2 (general), RTG and PDC depending on what kind of change is described by specific release note. Groups are similar to option groups in INI files:
+
+==================
+[ATSEv2]
+
+release_note1
+
+release_note2
+
+[RTG]
+
+release_note1
+==================
+
+You should know that every release_note_* file has attached check-in trigger. When you checkin the file a difference of two last checkins is computed, then it is validated, converted to HTML format and sent to all of subscribers for ATSEv2 release notes. It's important to write note correctly. For example checkin of file with any of required fields in release note empty will result in generating HTML document with big header "Validation error occured" and detailed information about commited errors. Such release note files should be corrected asap. 
+
+Now let's describe single release note format. First of all it's very important to have no blank lines in single release note definition. 
+Format in all three groups is the same:
+
+==================
+Title: SomeTitle
+Date: 20 Aug, 2012
+Description: Some description
+Applies to:
+		[X] all agencies
+		[X] all airlines
+		[ ] Abacus
+		[ ] Axess
+		[ ] LAN
+		[ ] Other: 
+Activated by/Configuration change: 
+Resolution/QA recommendation: 
+Example before: 
+Example after: 
+Files updated:
+		/etc/file1
+		/etc/file2
+Unit tests files:
+		/etc/file1test
+DB:
+		[ ] DB query update: 
+		[ ] DAO version number change: 
+		DBA contact: 
+Application impact:
+		[X] WP
+		[X] WPNC
+		[X] WPA
+		[X] Shopping
+		[X] Fare Display
+		[X] Historical
+		[ ] Taxes
+		[ ] Currency
+		[ ] Mileage
+		[ ] Baggage
+		[ ] Reissue/Exchange
+		[ ] Other: 
+Schema update:
+		[ ] Yes
+Developer: Some developer
+Code reviewers: Some reviewers
+BA: 
+QA: 
+==================
+
+Any change or reorder in elements will cause validation errors. There are 5 required fields to fill: Title, Date, Description, Developer and Code reviewer. Checkboxes fields are filled by inserting space (FALSE), X (TRUE) or x (also TRUE) between brackets. Checkboxes with semicolon after name can be filled with your text. Also when you check it cannot be empty. Fields that are multiline must be proceeded by at least one whitespace character. On the other hand all the rest of fields cannot be indented at all.
+
+To fill those fields you can use formatted text using some of enabled HTML-like markup tags:
+    * <br />, <br>                              - new line enforcement
+    * <b> TEXT </b>                             - bold
+    * <i> TEXT </i>                             - italics
+    * <u> TEXT </u>                             - underline
+    * <code> TEXT </code>                       - monospaced font (like source code)
+    * <color=yellow> TEXT </color>              - text color
+      <color=#fa893a> TEXT </color>
+    * <bgcolor=yellow> TEXT </color>            - text background color
+      <bgcolor=#fa893a> TEXT </color>
+    * <a>http://google.com/ </a>                - hyperlink
+      <a href=http://google.com/> TEXT </a>
+	
+There are two tools made available to you to help you with this new behaviour. First is command-line validator of release note file. It prints the same errors you get in mail after checkin. Command and more info: 
+	$ ./irelvalid.py --help 
+Second tool is generator of template for given group of release note. It is able to fill some fields automatically (i.e developer name).
+	$ ./irelgen.py --help
+Both tools are placed in /Tools/irelease directory.
+
+If somebody want to see detailed specification of new release note format please see Tools/irelease/irel.xml file.
+
+I hope you will be satisfied with new tool.
+
+Regards,
+Bartek Szczepanik
+
+
+

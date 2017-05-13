@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="CA"
+          isonumericCode=124
+          subArea="11"
+          area="1"
+          isoalphaCode="CAN"
+          primeCur="CAD"
+          alternateCur=""
+          conversionCur=""
+          description="CANADA"
+     />
+     <CreateDate year=2003 month=7 day=16 hour=15 minute=34 second=37/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2003 month=7 day=15 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

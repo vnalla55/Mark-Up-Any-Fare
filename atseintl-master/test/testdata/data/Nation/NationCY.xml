@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="CY"
+          isonumericCode=196
+          subArea="21"
+          area="2"
+          isoalphaCode="CYP"
+          primeCur="EUR"
+          alternateCur=""
+          conversionCur=""
+          description="CYPRUS"
+     />
+     <CreateDate year=2007 month=12 day=31 hour=15 minute=6 second=50/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2008 month=1 day=1 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

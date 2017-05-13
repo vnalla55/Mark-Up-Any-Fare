@@ -1,0 +1,1706 @@
+[ATSEv2]
+
+
+Title: BaggageTravel refactoring, S-293313 T171 soft match
+Date: 02/01/2013
+Description:
+        Refactoring of the BaggageTravel struct to get rid of ChargeTuple.
+        Additional elements in the AncillaryPricingResponse after T171 soft match.
+Applies to:
+        [X] all agencies
+        [X] all airlines
+        [ ] Abacus
+        [ ] Axess
+        [ ] LAN
+        [ ] Other: 
+Activated by/Configuration change:
+        Activated by schema version.
+Resolution/QA recommendation:
+Entry/XML to recreate:
+        <AncillaryPricingRequest xmlns="<a href=http://www.atse.sabre.com/AncillaryPricing/Request>http://www.atse.sabre.com/AncillaryPricing/Request</a>" Version="2.0.0">
+          <AGI A10="ANC" A80="AS" A90="ANC" B00="1S" N0G="*" />
+          <TAG A10="ANC" A20="B4T0" A80="AS" A90="ANC" AB0="9999999" AE0="1S" N0G="*" />
+          <BIL A20="ANC" A22="ANC" A70="A" AA0="-SG" AD0="819AF7" AE0="AS" C00="128040305747631106" C01="128040305747631106" C20="ANCPRICE" L00="V2DIAG" Q02="0" Q03="0" S0R="PACS" />
+          <PRO L01="T" PS1="F">
+            <FFY B00="AF" Q7D="1" />
+            <RFG S01="BG">
+              <AST AST="C" />
+            </RFG>
+          </PRO>
+          <ITN Q00="1">
+            <SGI Q00="1">
+              <FLI A01="CDG" A02="FRA" B00="AF" B01="AF" B30="Y" BB0="OK" C7B="T" D01="2013-03-03" D02="2013-03-03" D31="1230" D32="1630" N0E="Y" Q0B="2306" S95="JET" />
+            </SGI>
+            <SGI Q00="2">
+              <FLI A01="FRA" A02="JFK" B00="AF" B01="AF" B30="Y" BB0="OK" C7B="T" D01="2013-03-04" D02="2013-03-04" D31="1230" D32="1630" N0E="Y" Q0B="2306" S95="JET" />
+            </SGI>
+          </ITN>
+          <ITN Q00="2">
+            <IRO>
+              <PXI B70="ADT" Q0U="1" />
+            </IRO>
+            <SGI Q00="1">
+             <FLI A01="CDG" A02="FRA" B00="AF" B01="AF" B30="Y" BB0="OK" C7B="T" D01="2013-03-03" D02="2013-03-03" D31="1230" D32="1630" N0E="Y" Q0B="2306" S95="JET" />
+            </SGI>
+            <SGI Q00="2">
+              <FLI A01="FRA" A02="JFK" B00="AF" B01="AF" B30="Y" BB0="OK" C7B="T" D01="2013-03-04" D02="2013-03-04" D31="1230" D32="1630" N0E="Y" Q0B="2306" S95="JET" />
+            </SGI>
+          </ITN>
+        </AncillaryPricingRequest>
+Example before:
+        <AncillaryPricingResponse xmlns="<a href=http://www.atse.sabre.com/AncillaryPricing/Response>http://www.atse.sabre.com/AncillaryPricing/Response</a>">
+          <ITN Q00="2">
+            <OCG Q00="10" SF0="BG">
+              <OSC SHK="0DG" SFF="WEIGHT SYSTEM CHARGE" SFV="ATP" B01="AF" N02="4" ASG="XS" ASD="BAGGAGE EXCESS" AST="C">
+                <SDC DC1="WT" D00="WEIGHT SYSTEM CHARGE" />
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="30.00" C5A="EUR" C52="39.00" C5B="USD" N21="X" C50="39.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="K" N45="N" P03="N" P04="Y" SEQ="115000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0EC" SFF="BICYCLE" SFV="ATP" B01="AF" N02="4" ASG="SP" ASD="SPORTING EQUIPMENT" AST="C">
+                <SDC DC1="BI" D00="BICYCLE" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="100750" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0EE" SFF="SCUBA EQUIPMENT" SFV="ATP" B01="AF" N02="4" ASG="SP" ASD="SPORTING EQUIPMENT" AST="C">
+                <SDC DC1="SE" D00="SCUBA EQUIPMENT" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="100750" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="60.00" C5A="EUR" C52="78.00" C5B="USD" N21="X" C50="78.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="60.00" C5A="EUR" C52="78.00" C5B="USD" N21="X" C50="78.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0EM" SFF="ANTLERS UP TO 120 INCHES" SFV="ATP" B01="AF" N02="4" ASG="SI" ASD="SPECIALTY ITEMS" AST="C">
+                <BIR B20="120" N0D="I" L01="U" />
+                <SDC DC1="AN" D00="ANTLERS" />
+                <SDC DC1="9T" D00="UP TO 120 INCHES" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="100750" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0EW" SFF="UPTO100LB 45KG AND 62LI 158LCM" SFV="ATP" B01="AF" N02="4" AST="C">
+                <BIR B20="100" N0D="L" L01="U" />
+                <BIR B20="45" N0D="K" L01="U" />
+                <BIR B20="62" N0D="I" L01="U" />
+                <BIR B20="158" N0D="C" L01="U" />
+                <SDC DC1="45" D00="UP TO 100 POUNDS/45 KILOGRAMS" />
+                <SDC DC1="6U" D00="UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="210.00" C5A="EUR" C52="274.00" C5B="USD" N21="X" C50="274.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1731000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="300.00" C5A="EUR" C52="392.00" C5B="USD" N21="X" C50="392.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1735250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="300.00" C5A="EUR" C52="392.00" C5B="USD" N21="X" C50="392.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1735500" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0FA" SFF="UPTO50LB 23KG OVER62LI 158LCM" SFV="ATP" B01="AF" N02="4" AST="C">
+                <BIR B20="50" N0D="L" L01="U" />
+                <BIR B20="23" N0D="K" L01="U" />
+                <BIR B20="62" N0D="I" L01="O" />
+                <BIR B20="158" N0D="C" L01="O" />
+                <SDC DC1="23" D00="UP TO 50 POUNDS/23 KILOGRAMS" />
+                <SDC DC1="6X" D00="OVER 62 LINEAR INCHES/158 LINEAR CENTIMETERS" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="355000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="415000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1245000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1305000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1420000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1480000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="375.00" C5A="EUR" C52="489.00" C5B="USD" N21="X" C50="489.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1540000" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1545000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="75.00" C5A="EUR" C52="98.00" C5B="USD" N21="X" C50="98.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1550000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="400.00" C5A="EUR" C52="522.00" C5B="USD" N21="X" C50="522.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1720000" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1725000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                 <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="300.00" C5A="EUR" C52="392.00" C5B="USD" N21="X" C50="392.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1730000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0FJ" SFF="UPTO70LB 32KG OVER62LI 158LCM" SFV="ATP" B01="AF" N02="4" AST="C">
+                <BIR B20="70" N0D="L" L01="U" />
+                <BIR B20="32" N0D="K" L01="U" />
+                <BIR B20="62" N0D="I" L01="O" />
+                <BIR B20="158" N0D="C" L01="O" />
+                <SDC DC1="32" D00="UP TO 70 POUNDS/32 KILOGRAMS" />
+                <SDC DC1="6X" D00="OVER 62 LINEAR INCHES/158 LINEAR CENTIMETERS" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="575.00" C5A="EUR" C52="751.00" C5B="USD" N21="X" C50="751.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="355000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="600.00" C5A="EUR" C52="783.00" C5B="USD" N21="X" C50="783.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="415000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="575.00" C5A="EUR" C52="751.00" C5B="USD" N21="X" C50="751.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1245000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="600.00" C5A="EUR" C52="783.00" C5B="USD" N21="X" C50="783.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1305000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="575.00" C5A="EUR" C52="751.00" C5B="USD" N21="X" C50="751.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1420000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="600.00" C5A="EUR" C52="783.00" C5B="USD" N21="X" C50="783.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1480000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="450.00" C5A="EUR" C52="587.00" C5B="USD" N21="X" C50="587.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1540000" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="575.00" C5A="EUR" C52="751.00" C5B="USD" N21="X" C50="751.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1545000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="375.00" C5A="EUR" C52="489.00" C5B="USD" N21="X" C50="489.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1550000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1720000" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="600.00" C5A="EUR" C52="783.00" C5B="USD" N21="X" C50="783.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1725000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="400.00" C5A="EUR" C52="522.00" C5B="USD" N21="X" C50="522.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1730000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0GD" SFF="SURFBOARD" SFV="ATP" B01="AF" N02="4" ASG="SP" ASD="SPORTING EQUIPMENT" AST="C">
+                <SDC DC1="SF" D00="SURFBOARD" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="100750" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0GO" SFF="UPTO50LB/23KG AND62LI/158LCM" SFV="ATP" B01="AF" N02="4" AST="C">
+                <BIR B20="50" N0D="L" L01="U" />
+                <BIR B20="23" N0D="K" L01="U" />
+                <BIR B20="62" N0D="I" L01="U" />
+                <BIR B20="158" N0D="C" L01="U" />
+                <SDC DC1="23" D00="UP TO 50 POUNDS/23 KILOGRAMS" />
+                <SDC DC1="6U" D00="UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS" />
+                <OOS N11="P" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="350750" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="P" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="351250" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="P" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="351750" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="P" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="352250" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="P" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="USD" N21="X" C50="100.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="352437" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="363625" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="70.00" C5A="EUR" C52="91.00" C5B="USD" N21="X" C50="91.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="367750" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="75.00" C5A="EUR" C52="98.00" C5B="USD" N21="X" C50="98.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="372000" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="372250" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="373000" />
+                  <BGD OC1="2" OC2="8" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="373500" />
+                  <BGD OC1="2" OC2="8" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0I5" SFF="UPTO 118LI 300LCM OVERSIZE BAG" SFV="ATP" B01="AF" N02="4" AST="C">
+                <BIR B20="118" N0D="I" L01="U" />
+                <BIR B20="300" N0D="C" L01="U" />
+                <SDC DC1="3B" D00="UP TO 118 LINEAR INCHES/300 LINEAR CENTIMETERS" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="210.00" C5A="EUR" C52="274.00" C5B="USD" N21="X" C50="274.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="100750" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="300.00" C5A="EUR" C52="392.00" C5B="USD" N21="X" C50="392.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="300.00" C5A="EUR" C52="392.00" C5B="USD" N21="X" C50="392.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+            </OCG>
+          </ITN>
+        </AncillaryPricingResponse>
+Example after:
+        <AncillaryPricingResponse xmlns="<a href=http://www.atse.sabre.com/AncillaryPricing/Response>http://www.atse.sabre.com/AncillaryPricing/Response</a>">
+          <ITN Q00="2">
+            <OCG Q00="10" SF0="BG">
+              <OSC SHK="0DG" SFF="WEIGHT SYSTEM CHARGE" SFV="ATP" B01="AF" N02="4" ASG="XS" ASD="BAGGAGE EXCESS" AST="C">
+                <SDC DC1="WT" D00="WEIGHT SYSTEM CHARGE" />
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="30.00" C5A="EUR" C52="39.00" C5B="USD" N21="X" C50="39.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="K" N45="N" P03="N" P04="Y" SEQ="115000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0EC" SFF="BICYCLE" SFV="ATP" B01="AF" N02="4" ASG="SP" ASD="SPORTING EQUIPMENT" AST="C">
+                <SDC DC1="BI" D00="BICYCLE" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="100750" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0EE" SFF="SCUBA EQUIPMENT" SFV="ATP" B01="AF" N02="4" ASG="SP" ASD="SPORTING EQUIPMENT" AST="C">
+                <SDC DC1="SE" D00="SCUBA EQUIPMENT" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="100750" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="60.00" C5A="EUR" C52="78.00" C5B="USD" N21="X" C50="78.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="60.00" C5A="EUR" C52="78.00" C5B="USD" N21="X" C50="78.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0EM" SFF="ANTLERS UP TO 120 INCHES" SFV="ATP" B01="AF" N02="4" ASG="SI" ASD="SPECIALTY ITEMS" AST="C">
+                <BIR B20="120" N0D="I" L01="U" />
+                <SDC DC1="AN" D00="ANTLERS" />
+                <SDC DC1="9T" D00="UP TO 120 INCHES" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="100750" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0EW" SFF="UPTO100LB 45KG AND 62LI 158LCM" SFV="ATP" B01="AF" N02="4" AST="C">
+                <BIR B20="100" N0D="L" L01="U" />
+                <BIR B20="45" N0D="K" L01="U" />
+                <BIR B20="62" N0D="I" L01="U" />
+                <BIR B20="158" N0D="C" L01="U" />
+                <SDC DC1="45" D00="UP TO 100 POUNDS/45 KILOGRAMS" />
+                <SDC DC1="6U" D00="UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="210.00" C5A="EUR" C52="274.00" C5B="USD" N21="X" C50="274.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1731000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="300.00" C5A="EUR" C52="392.00" C5B="USD" N21="X" C50="392.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1735250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="300.00" C5A="EUR" C52="392.00" C5B="USD" N21="X" C50="392.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1735500" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0FA" SFF="UPTO50LB 23KG OVER62LI 158LCM" SFV="ATP" B01="AF" N02="4" AST="C">
+                <BIR B20="50" N0D="L" L01="U" />
+                <BIR B20="23" N0D="K" L01="U" />
+                <BIR B20="62" N0D="I" L01="O" />
+                <BIR B20="158" N0D="C" L01="O" />
+                <SDC DC1="23" D00="UP TO 50 POUNDS/23 KILOGRAMS" />
+                <SDC DC1="6X" D00="OVER 62 LINEAR INCHES/158 LINEAR CENTIMETERS" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="355000" />
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDHR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDLR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDMR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDPR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDUR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDVR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDWR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDR2" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPA" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPD" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPY" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-PRID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISA" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISD" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISY" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SCID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SLID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-GMID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SMID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-PSID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-GLID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDR1" /></bgcolor>
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="415000" />
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDHR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDLR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDMR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDPR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDUR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDVR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDWR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDR2" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPA" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPD" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPY" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-PRID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISA" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISD" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISY" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SCID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SLID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-GMID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SMID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-PSID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-GLID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDR1" /></bgcolor>
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1245000" />
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SAIL" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-OFYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SCYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-WMYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-ESM" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-EWAB" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-COP" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-FOP" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-OFFS" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-WND" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-VF" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M3YWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M3OWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AAOWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AAYWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AEOWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AEYWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M5YFR" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M4YWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M4YFR" /></bgcolor>
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1305000" />
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SAIL" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-OFYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SCYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-WMYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-ESM" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-EWAB" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-COP" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-FOP" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-OFFS" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-WND" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-VF" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M3YWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M3OWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AAOWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AAYWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AEOWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AEYWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M5YFR" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M4YWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M4YFR" /></bgcolor>
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1420000" />
+                  <FCL B61="AF" BJ0="-RTWSKY" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1480000" />
+                  <FCL B61="AF" BJ0="-RTWSKY" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="375.00" C5A="EUR" C52="489.00" C5B="USD" N21="X" C50="489.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1540000" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1545000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="75.00" C5A="EUR" C52="98.00" C5B="USD" N21="X" C50="98.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1550000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="400.00" C5A="EUR" C52="522.00" C5B="USD" N21="X" C50="522.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1720000" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1725000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="300.00" C5A="EUR" C52="392.00" C5B="USD" N21="X" C50="392.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1730000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0FJ" SFF="UPTO70LB 32KG OVER62LI 158LCM" SFV="ATP" B01="AF" N02="4" AST="C">
+                <BIR B20="70" N0D="L" L01="U" />
+                <BIR B20="32" N0D="K" L01="U" />
+                <BIR B20="62" N0D="I" L01="O" />
+                <BIR B20="158" N0D="C" L01="O" />
+                <SDC DC1="32" D00="UP TO 70 POUNDS/32 KILOGRAMS" />
+                <SDC DC1="6X" D00="OVER 62 LINEAR INCHES/158 LINEAR CENTIMETERS" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="575.00" C5A="EUR" C52="751.00" C5B="USD" N21="X" C50="751.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="355000" />
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDHR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDLR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDMR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDPR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDUR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDVR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDWR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDR2" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPA" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPD" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPY" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-PRID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISA" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISD" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISY" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SCID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SLID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-GMID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SMID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-PSID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-GLID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDR1" /></bgcolor>
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="600.00" C5A="EUR" C52="783.00" C5B="USD" N21="X" C50="783.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="415000" />
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDHR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDLR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDMR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDPR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDUR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDVR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDWR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDR2" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPA" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPD" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPY" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-PRID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISA" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISD" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISY" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SCID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SLID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-GMID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SMID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-PSID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-GLID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDR1" /></bgcolor>
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="575.00" C5A="EUR" C52="751.00" C5B="USD" N21="X" C50="751.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1245000" />
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SAIL" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-OFYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SCYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-WMYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-ESM" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-EWAB" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-COP" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-FOP" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-OFFS" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-WND" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-VF" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M3YWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M3OWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AAOWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AAYWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AEOWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AEYWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M5YFR" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M4YWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M4YFR" /></bgcolor>
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="600.00" C5A="EUR" C52="783.00" C5B="USD" N21="X" C50="783.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1305000" />
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SAIL" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-OFYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SCYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-WMYW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-ESM" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-EWAB" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-COP" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-FOP" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-OFFS" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-WND" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-VF" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M3YWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M3OWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AAOWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AAYWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AEOWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-AEYWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M5YFR" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M4YWW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-M4YFR" /></bgcolor>
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="575.00" C5A="EUR" C52="751.00" C5B="USD" N21="X" C50="751.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1420000" />
+                  <FCL B61="AF" BJ0="-RTWSKY" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="600.00" C5A="EUR" C52="783.00" C5B="USD" N21="X" C50="783.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="1480000" />
+                  <FCL B61="AF" BJ0="-RTWSKY" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="450.00" C5A="EUR" C52="587.00" C5B="USD" N21="X" C50="587.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1540000" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="575.00" C5A="EUR" C52="751.00" C5B="USD" N21="X" C50="751.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1545000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="375.00" C5A="EUR" C52="489.00" C5B="USD" N21="X" C50="489.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1550000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="500.00" C5A="EUR" C52="653.00" C5B="USD" N21="X" C50="653.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1720000" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="600.00" C5A="EUR" C52="783.00" C5B="USD" N21="X" C50="783.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1725000" />
+                  <BGD OC1="1" OC2="6" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="400.00" C5A="EUR" C52="522.00" C5B="USD" N21="X" C50="522.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="1730000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0GD" SFF="SURFBOARD" SFV="ATP" B01="AF" N02="4" ASG="SP" ASD="SPORTING EQUIPMENT" AST="C">
+                <SDC DC1="SF" D00="SURFBOARD" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="100750" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0GO" SFF="UPTO50LB/23KG AND62LI/158LCM" SFV="ATP" B01="AF" N02="4" AST="C">
+                <BIR B20="50" N0D="L" L01="U" />
+                <BIR B20="23" N0D="K" L01="U" />
+                <BIR B20="62" N0D="I" L01="U" />
+                <BIR B20="158" N0D="C" L01="U" />
+                <SDC DC1="23" D00="UP TO 50 POUNDS/23 KILOGRAMS" />
+                <SDC DC1="6U" D00="UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS" />
+                <OOS N11="P" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="350750" />
+                  <FCL B61="AF" BJ0="-AA0WW" />
+                  <FCL B61="AF" BJ0="-AAYWW" />
+                  <FCL B61="AF" BJ0="-AE0WW" />
+                  <FCL B61="AF" BJ0="-AEYWW" />
+                  <FCL B61="AF" BJ0="-RTWSKY" />
+                  <FCL B61="AF" BJ0="-WMYW" />
+                  <FCL B61="AF" BJ0="-WND" />
+                  <FCL B61="AF" BJ0="-VF" />
+                  <FCL B61="AF" BJ0="-M5YFR" />
+                  <FCL B61="AF" BJ0="-M4YWW" />
+                  <FCL B61="AF" BJ0="-M4YFR" />
+                  <FCL B61="AF" BJ0="-M1YWW" />
+                  <FCL B61="AF" BJ0="-M2YWW" />
+                  <FCL B61="AF" BJ0="-M3YWW" />
+                  <FCL B61="AF" BJ0="-M7YWW" />
+                  <FCL B61="AF" BJ0="-M11YWW" />
+                  <FCL B61="AF" BJ0="-M13YWW" />
+                  <FCL B61="AF" BJ0="-M10WW" />
+                  <FCL B61="AF" BJ0="-M20WW" />
+                  <FCL B61="AF" BJ0="-M30WW" />
+                  <FCL B61="AF" BJ0="-M70WW" />
+                  <FCL B61="AF" BJ0="-SC" />
+                  <FCL B61="AF" BJ0="-SAIL" />
+                  <FCL B61="AF" BJ0="-SCYW" />
+                  <FCL B61="AF" BJ0="-OFYW" />
+                  <FCL B61="AF" BJ0="-OFFS" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="P" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="351250" />
+                  <FCL B61="AF" BJ0="-AA0WW" />
+                  <FCL B61="AF" BJ0="-AAYWW" />
+                  <FCL B61="AF" BJ0="-AE0WW" />
+                  <FCL B61="AF" BJ0="-AEYWW" />
+                  <FCL B61="AF" BJ0="-RTWSKY" />
+                  <FCL B61="AF" BJ0="-WMYW" />
+                  <FCL B61="AF" BJ0="-WND" />
+                  <FCL B61="AF" BJ0="-VF" />
+                  <FCL B61="AF" BJ0="-M5YFR" />
+                  <FCL B61="AF" BJ0="-M4YWW" />
+                  <FCL B61="AF" BJ0="-M4YFR" />
+                  <FCL B61="AF" BJ0="-M1YWW" />
+                  <FCL B61="AF" BJ0="-M2YWW" />
+                  <FCL B61="AF" BJ0="-M3YWW" />
+                  <FCL B61="AF" BJ0="-M7YWW" />
+                  <FCL B61="AF" BJ0="-M11YWW" />
+                  <FCL B61="AF" BJ0="-M13YWW" />
+                  <FCL B61="AF" BJ0="-M10WW" />
+                  <FCL B61="AF" BJ0="-M20WW" />
+                  <FCL B61="AF" BJ0="-M30WW" />
+                  <FCL B61="AF" BJ0="-M70WW" />
+                  <FCL B61="AF" BJ0="-SC" />
+                  <FCL B61="AF" BJ0="-SAIL" />
+                  <FCL B61="AF" BJ0="-SCYW" />
+                  <FCL B61="AF" BJ0="-OFYW" />
+                  <FCL B61="AF" BJ0="-OFFS" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="P" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="351750" />
+                  <FCL B61="AF" BJ0="-IDHR1" />
+                  <FCL B61="AF" BJ0="-IDLR1" />
+                  <FCL B61="AF" BJ0="-IDMR1" />
+                  <FCL B61="AF" BJ0="-IDPR1" />
+                  <FCL B61="AF" BJ0="-IDUR1" />
+                  <FCL B61="AF" BJ0="-IDVR1" />
+                  <FCL B61="AF" BJ0="-IDWR1" />
+                  <FCL B61="AF" BJ0="-IDR2" />
+                  <FCL B61="AF" BJ0="-MEPA" />
+                  <FCL B61="AF" BJ0="-MEPD" />
+                  <FCL B61="AF" BJ0="-MEPW" />
+                  <FCL B61="AF" BJ0="-MEPY" />
+                  <FCL B61="AF" BJ0="-PRID" />
+                  <FCL B61="AF" BJ0="-MISA" />
+                  <FCL B61="AF" BJ0="-MISD" />
+                  <FCL B61="AF" BJ0="-MISW" />
+                  <FCL B61="AF" BJ0="-MISY" />
+                  <FCL B61="AF" BJ0="-SCID" />
+                 <FCL B61="AF" BJ0="-SLID" />
+                  <FCL B61="AF" BJ0="-GMID" />
+                  <FCL B61="AF" BJ0="-SMID" />
+                  <FCL B61="AF" BJ0="-PSID" />
+                  <FCL B61="AF" BJ0="-GLID" />
+                  <FCL B61="AF" BJ0="-IDR1" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="P" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="352250" />
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDHR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDLR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDMR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDPR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDUR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDVR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDWR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDR2" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPA" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPD" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MEPY" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-PRID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISA" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISD" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISW" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-MISY" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SCID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SLID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-GMID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-SMID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-PSID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-GLID" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="-IDR1" /></bgcolor>
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="P" A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="USD" N21="X" C50="100.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="352437" />
+                  <FCL B61="AF" BJ0="-RTWSKY" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS A01="CDG" A02="JFK" BTI="1" PS1="T">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" P01="T" N45="N" P03="N" P04="Y" SEQ="363625" />
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="YRPFR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="YRPWFR1" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="YRPGF" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="YRPWGF" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="Y3RPGF" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="Y3RPWGF" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="Y3RPMQ" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="Y3RPWMQ" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="Y3RPGP" /></bgcolor>
+        <bgcolor=yellow>          <FCL B61="AF" BJ0="Y3RPWGP" /></bgcolor>
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="70.00" C5A="EUR" C52="91.00" C5B="USD" N21="X" C50="91.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="367750" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="75.00" C5A="EUR" C52="98.00" C5B="USD" N21="X" C50="98.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="372000" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="100.00" C5A="EUR" C52="131.00" C5B="USD" N21="X" C50="131.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="372250" />
+                  <BGD OC1="1" OC2="1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="373000" />
+                  <BGD OC1="2" OC2="8" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="200.00" C5A="EUR" C52="261.00" C5B="USD" N21="X" C50="261.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="373500" />
+                  <BGD OC1="2" OC2="8" />
+                </OOS>
+              </OSC>
+              <OSC SHK="0I5" SFF="UPTO 118LI 300LCM OVERSIZE BAG" SFV="ATP" B01="AF" N02="4" AST="C">
+                <BIR B20="118" N0D="I" L01="U" />
+                <BIR B20="300" N0D="C" L01="U" />
+                <SDC DC1="3B" D00="UP TO 118 LINEAR INCHES/300 LINEAR CENTIMETERS" />
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="210.00" C5A="EUR" C52="274.00" C5B="USD" N21="X" C50="274.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="100750" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="300.00" C5A="EUR" C52="392.00" C5B="USD" N21="X" C50="392.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105000" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+                <OOS N11="J" A01="CDG" A02="JFK" BTI="1">
+                  <QBT>01</QBT>
+                  <QBT>02</QBT>
+                  <Q00>01</Q00>
+                  <Q00>02</Q00>
+                  <SUM B70="ADT" C51="300.00" C5A="EUR" C52="392.00" C5B="USD" N21="X" C50="392.00" />
+                  <SFQ />
+                  <DTE D01="1980-01-01" D02="9999-12-31" />
+                  <FAT N41="4" N45="N" P03="N" P04="Y" SEQ="105250" />
+                  <BGD OC1="-1" OC2="-1" />
+                </OOS>
+              </OSC>
+            </OCG>
+          </ITN>
+        </AncillaryPricingResponse>
+Files updated:
+        /vobs/atseintl/DataModel/BaggageTravel.h@@/main/atsev2_Integration/14
+         /vobs/atseintl/FreeBagService@@/main/atsev2_Integration/108
+         /vobs/atseintl/FreeBagService/BaggageCharge.h@@/main/atsev2_Integration/1
+         /vobs/atseintl/FreeBagService/AncillaryResultProcessor.cpp@@/main/atsev2_Integration/10
+         /vobs/atseintl/FreeBagService/AncillaryResultProcessor.h@@/main/atsev2_Integration/12
+         /vobs/atseintl/FreeBagService/BaggageAncillaryChargesValidator.cpp@@/main/atsev2_Integration/17
+         /vobs/atseintl/FreeBagService/BaggageAncillaryChargesValidator.h@@/main/atsev2_Integration/12
+         /vobs/atseintl/FreeBagService/BaggageOcValidationAdapter.cpp@@/main/atsev2_Integration/8
+         /vobs/atseintl/FreeBagService/BaggageChargesValidator.h@@/main/atsev2_Integration/12
+         /vobs/atseintl/FreeBagService/BaggageChargesValidator.cpp@@/main/atsev2_Integration/17
+         /vobs/atseintl/FreeBagService/ChargesDataStrategy.cpp@@/main/atsev2_Integration/16
+         /vobs/atseintl/FreeBagService/AllowanceDataStrategy.cpp@@/main/atsev2_Integration/18
+         /vobs/atseintl/FreeBagService/BaggageOcValidationAdapter.h@@/main/atsev2_Integration/7
+         /vobs/atseintl/FreeBagService/AllowanceDataStrategy.h@@/main/atsev2_Integration/9
+         /vobs/atseintl/FreeBagService/AncillaryChargesDataStrategy.cpp@@/main/atsev2_Integration/9
+         /vobs/atseintl/FreeBagService/BaggageAllowanceValidator.cpp@@/main/atsev2_Integration/42
+         /vobs/atseintl/FreeBagService/BaggageAllowanceValidator.h@@/main/atsev2_Integration/15
+         /vobs/atseintl/FreeBagService/BaggageFastForwardAllowanceValidator.cpp@@/main/atsev2_Integration/3
+         /vobs/atseintl/FreeBagService/BaggageFastForwardAllowanceValidator.h@@/main/atsev2_Integration/2
+         /vobs/atseintl/FreeBagService/BaggageResultProcessor.cpp@@/main/atsev2_Integration/16
+         /vobs/atseintl/FreeBagService/BaggageResultProcessor.h@@/main/atsev2_Integration/10
+         /vobs/atseintl/FreeBagService/ChargesDataStrategy.h@@/main/atsev2_Integration/12
+         /vobs/atseintl/Diagnostic/Diag852Collector.cpp@@/main/atsev2_Integration/58
+         /vobs/atseintl/Diagnostic/Diag852Collector.h@@/main/atsev2_Integration/32<br>
+Unit tests files:
+        /vobs/atseintl/Diagnostic/test/Diag852CollectorTest.cpp@@/main/atsev2_Integration/18
+        /vobs/atseintl/FreeBagService/test/AncillaryResultProcessorTest.cpp@@/main/atsev2_Integration/8
+        /vobs/atseintl/FreeBagService/test/BaggageAncillaryChargesValidatorTest.cpp@@/main/atsev2_Integration/11
+        /vobs/atseintl/FreeBagService/test/BaggageItinAnalyzerTest.cpp@@/main/atsev2_Integration/16
+        /vobs/atseintl/FreeBagService/test/BaggageResultProcessorTest.cpp@@/main/atsev2_Integration/15
+        /vobs/atseintl/FreeBagService/test/ChargesDataStrategyTest.cpp@@/main/atsev2_Integration/20
+DB: 
+        [ ] DB query update:
+        [ ] DAO version number change:
+        DBA contact: 
+Application impact:
+        [X] WP
+        [X] WPNC
+        [X] WPA
+        [X] Shopping
+        [X] Fare Display
+        [X] Historical
+        [ ] Taxes
+        [ ] Currency
+        [ ] Mileage
+        [X] Baggage
+        [ ] Reissue/Exchange
+        [ ] Other: 
+Schema update: 
+        [ ] Yes
+Developer: Maciej Sufa
+Code reviewers: Konrad Koch
+BA: Natalia Blasinska-Kapusta
+QA: Kasia Jelonek
+

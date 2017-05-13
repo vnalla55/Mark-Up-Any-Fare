@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="CPH"
+          city="CPH"
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="DK"
+          state=""
+     />
+     <Position
+          latdegrees=55
+          latminutes=37
+          latseconds=6
+          lngdegrees=12
+          lngminutes=39
+          lngseconds=24
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2005 month=1 day=5 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="DK01"
+          description="COPENHAGEN"
+     />
+</Loc>

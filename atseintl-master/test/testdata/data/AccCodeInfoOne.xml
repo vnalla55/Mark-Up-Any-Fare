@@ -1,0 +1,10 @@
+<SvcFeesAccCodeInfo>
+     <CreateDate year=2009 month=1 day=1 hour=0 minute=0 second=0/>
+     <ExpireDate year=2009 month=12 day=1 hour=0 minute=0 second=0/>
+     <Attributes
+          vendor="ATP"
+          itemNo=123456
+          seqNo=101020
+          accountCode="AAA00"
+     />
+</SvcFeesAccCodeInfo>

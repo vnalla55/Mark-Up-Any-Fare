@@ -1,0 +1,33 @@
+name: TaxRestrictionTransit
+namespace: tse
+package: DBAccess
+
+scalar: orderNo: int orderNo()
+
+section: transitIndicators
+  scalar: Taxonly:    Indicator transitTaxonly()
+  scalar: DomDom:     Indicator transitDomDom()
+  scalar: DomIntl:    Indicator transitDomIntl()
+  scalar: IntlDom:    Indicator transitIntlDom()
+  scalar: IntlIntl:   Indicator transitIntlIntl()
+  scalar: SurfDom:    Indicator transitSurfDom()
+  scalar: SurfIntl:   Indicator transitSurfIntl()
+  scalar: OfflineCxr: Indicator transitOfflineCxr()
+  scalar: sameDay:    Indicator sameDayInd()
+  scalar: nextDay:    Indicator nextDayInd()
+  scalar: sameFlight: Indicator sameFlight()
+endsection
+
+section: Loc
+  scalar: viaLocType: LocType viaLocType()
+  scalar: viaLoc:     LocCode viaLoc()
+endsection
+
+section: Time
+  scalar: transitHours:         int transitHours()
+  scalar: transitMinutes:       int transitMinutes()
+  scalar: flightArrivalHours:   int flightArrivalHours()
+  scalar: flightArrivalMinutes: int flightArrivalMinutes()
+  scalar: flightDepartHours:    int flightDepartHours()
+  scalar: flightDepartMinutes:  int flightDepartMinutes()
+endsection

@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+
+Import('env')
+
+def build_taxtestutils_library(env, dircontext):
+    sources = env.multiglob('test/*.cpp')
+    lm = env.factory.libmaker('TaxTestUtils')
+    lm.add_sources(sources)
+    lm.make()
+
+s = env.scout()
+s.env.add_include_paths('#/Taxes', '#/Taxes/AtpcoTaxes')
+s.env.add_isystem_paths('#/Taxes/AtpcoTaxes/rapidxml')
+s.env.add_isystem_paths('$CPPUNIT_CPPPATH_')
+s.add_task(build_taxtestutils_library)
+s.build()

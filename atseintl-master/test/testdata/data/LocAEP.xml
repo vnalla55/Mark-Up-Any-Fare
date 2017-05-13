@@ -1,0 +1,20 @@
+<Loc>
+  <Area loc="AEP"
+        subarea="31"
+        area="3"
+        transtype="C"
+        nation="AR"
+        state="" />
+  <Position latdegrees=35 latminutes=15 latseconds=6
+            lngdegrees=136 lngminutes=55 lngseconds=39/>
+  <ExpirationDate year=2004 month=6 day=23/>
+  <EffectiveDate  year=2004 month=6 day=23/>
+  <Indicators cityInd="t"
+              bufferZoneInd="f"
+              ruralarpind="f"
+              multitransind="f"
+              faresind="f"/>
+  <Misc dstgrp="1234"
+        description="Argentina Int Airport"/>
+</Loc>
+

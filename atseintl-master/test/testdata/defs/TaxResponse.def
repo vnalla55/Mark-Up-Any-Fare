@@ -1,0 +1,15 @@
+name: TaxResponse
+namespace: tse
+package: DataModel
+typePackage: Taxes PfcItem
+typePackage: Taxes TaxRecord
+typePackage: Taxes TaxItem
+
+#factoryAggregate: FarePath    FarePath    farePath()
+factoryAggregate: PfcItem:    std::vector<PfcItem*>   pfcItemVector()
+factoryAggregate: TaxRecord:  std::vector<TaxRecord*> taxRecordVector()
+factoryAggregate: TaxItem:    std::vector<TaxItem*>   taxItemVector()
+
+section: Misc
+  scalar: paxTypeCode: PaxTypeCode paxTypeCode()
+endsection

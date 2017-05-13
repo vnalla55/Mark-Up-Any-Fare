@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+
+s = env.scout()
+s.env.add_include_paths('$CURL_CPPPATH_')
+s.tests()
+s.build()
+

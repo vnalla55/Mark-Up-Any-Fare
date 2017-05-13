@@ -1,0 +1,193 @@
+<TaxCodeReg>
+     <ExpireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2009 month=11 day=20 hour=0 minute=0 second=0/>
+     <DiscountDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <FirstTvlDate year=2009 month=11 day=20 hour=0 minute=0 second=0/>
+     <LastTvlDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <LockDate year=2010 month=7 day=14 hour=10 minute=24 second=15/>
+     <CreateDate year=2009 month=11 day=20 hour=14 minute=23 second=29/>
+     <Loc1
+          type=" "
+          loccode=""
+          exclInd="N"
+          appl=" "
+     />
+     <Loc2
+          type=" "
+          loccode=""
+          exclInd="N"
+          appl=" "
+     />
+     <Amounts
+          tax=0.075
+          min=0
+          max=0
+          plusup=0
+          lowRange=0
+          highRange=0
+          rangeIncrement=0
+          taxCurrency="USD"
+          numberOfDecimals=0
+     />
+     <Misc
+          sequenceNumber=50
+          taxCode="US1"
+          specialProcessNo=11
+          versionDate=9223371993654775807
+          taxNodec=3
+          taxcdRoundUnitNodec=0
+          fareRangeNodec=0
+          discPercentNodec=0
+          discPercent=0
+          taxcdRoundUnit=0
+          taxType="P"
+          nation="US"
+          taxcdRoundRule=3
+          taxfullFareInd="N"
+          taxequivAmtInd="N"
+          taxexcessbagInd="N"
+          tvlDateasoriginInd="N"
+          displayonlyInd="N"
+          feeInd="N"
+          interlinableTaxInd="N"
+          showseparateInd="N"
+          posExclInd="N"
+          posLocType="UNKNOWN_LOC"
+          posLoc=""
+          poiLocType="UNKNOWN_LOC"
+          poiLoc=""
+          poiExclInd="N"
+          sellCurExclInd="N"
+          sellCur=""
+          occurrence=" "
+          freeTktexempt="N"
+          idTvlexempt="N"
+          rangeType=" "
+          rangeInd=" "
+          nextstopoverrestr="N"
+          spclTaxRounding="Y"
+          fareclassExclInd="N"
+          tktdsgExclInd="N"
+          valcxrExclInd="Y"
+          exempequipExclInd="Y"
+          psgrExclInd="Y"
+          exempcxrExclInd="Y"
+          fareTypeExclInd="N"
+          multioccconvrndInd="N"
+          originLocType="UNKNOWN_LOC"
+          originLoc=""
+          originLocExclInd="N"
+          versioninheritedInd="N"
+          versiondisplayInd="Y"
+          tripType=" "
+          travelType=" "
+          itineraryType=" "
+          formOfPayment="A"
+          taxOnTaxExcl="N"
+     />
+     <RestrictionValidationCxr value="B6"/>
+     <RestrictionValidationCxr value="DL"/>
+     <RestrictionValidationCxr value="VH"/>
+     <RestrictionPsg>
+         <Attributes psgType="VAC" showPsg="Y" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="VAG" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="VFR" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <RestrictionPsg>
+         <Attributes psgType="VNN" showPsg="N" fareZeroOnly="N" minAge=0 maxAge=0 />
+     </RestrictionPsg>
+     <EquipmentCode value="BUS"/>
+     <EquipmentCode value="TRN"/>
+     <ExemptionCxr>
+         <Attributes carrier="M5" airport1="" airport2="" direction=" " flightNumber1=100 flightNumber2=499 />
+     </ExemptionCxr>
+     <ExemptionCxr>
+         <Attributes carrier="M5" airport1="" airport2="" direction=" " flightNumber1=600 flightNumber2=699 />
+     </ExemptionCxr>
+     <RestrictionTransit orderNo=0>
+         <transitIndicators Taxonly="N" DomDom="N" DomIntl="N" IntlDom="N" IntlIntl="N" SurfDom="N" SurfIntl="N" OfflineCxr="N" sameDay="N" nextDay="N" sameFlight="N" />
+         <Loc viaLocType="UNKNOWN_LOC" viaLoc="" />
+         <Time transitHours=12 transitMinutes=0 flightArrivalHours=0 flightArrivalMinutes=0 flightDepartHours=0 flightDepartMinutes=0 />
+     </RestrictionTransit>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="1" messageOrderNo=1 itemNo=12 keyWord1="TAXT" keyWord2="US1" />
+         <TextMessages value="US DOMESTIC TRANSPORTATION TAX"/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="D" messageOrderNo=1 itemNo=20 keyWord1="US1" keyWord2="" />
+         <TextMessages value="APPLIES TO AIR TRANSPORTATION WHOLLY WITHIN THE"/>
+         <TextMessages value="CONTINENTAL US, ALASKA, OR HAWAII. ALSO APPLIES TO AIR"/>
+         <TextMessages value="TRANPORATION BETWEEN THE CONTINENTAL US AND THE 225 MILE"/>
+         <TextMessages value="CANADIAN OR MEXICAN BUFFER ZONE, BUT ONLY FOR SALES IN THE"/>
+         <TextMessages value="USA."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="D" messageOrderNo=2 itemNo=21 keyWord1="US1" keyWord2="" />
+         <TextMessages value="APPLIES TO AIR TRANSPORTATION BETWEEN POINTS IN THE"/>
+         <TextMessages value="CANADIAN OR MEXICAN BUFFER ZONES, BUT ONLY FOR SALES IN"/>
+         <TextMessages value="THE USA."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="D" messageOrderNo=3 itemNo=22 keyWord1="US1" keyWord2="" />
+         <TextMessages value="APPLIES TO AIR TRANSPORTATION WHICH IS DIRECTLY OR"/>
+         <TextMessages value="INDIRECTLY FROM ONE POINT IN THE US TO ANOTHER POINT IN"/>
+         <TextMessages value="THE US WITH A STOPOVER IN EXCESS OF 12 HOURS PRIOR TO"/>
+         <TextMessages value="INTERNATIONAL TRAVEL - APPLIES TO TICKETS SOLD IN THE US"/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="D" messageOrderNo=4 itemNo=26 keyWord1="US1" keyWord2="" />
+         <TextMessages value="DOES NOT APPLY TO TRANSIT EXEMPTION OF 12 HOURS FOR"/>
+         <TextMessages value="TICKETS PURCHASED IN THE US."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="H" messageOrderNo=5 itemNo=19 keyWord1="US1" keyWord2="" />
+         <TextMessages value="TO TICKETS, MCO AND PTA PURCHASHED IN THE US."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="H" messageOrderNo=6 itemNo=25 keyWord1="US1" keyWord2="" />
+         <TextMessages value="APPLIES TO TICKETS, MCOS, AND PTA PURCHASED OUTSIDE THE US"/>
+         <TextMessages value="FOR TRAVEL WHOLLY WITHIN THE US INCLUDING TAVEL WITHIN THE"/>
+         <TextMessages value="CONTINENTAL US, ALAKSA, OR HAWAII. FOR TRAVEL BETWEEN"/>
+         <TextMessages value="ALAKSA/HAWAII AND THE CONTINENTAL US ONLY A PORTION OF THE"/>
+         <TextMessages value="US1 TAX WOULD APPLY. FOR TAX RATE INFORMATION, USE ENTRY OF"/>
+         <TextMessages value="TX/HELP."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="H" messageOrderNo=7 itemNo=24 keyWord1="US1" keyWord2="" />
+         <TextMessages value="APPLIES TO TRAVEL BETWEEN THE CONTINENTAL US AND"/>
+         <TextMessages value="ALASKA/HAWAII. ALSO APPLIES TO TRAVEL BETWEEN ALASKA AND"/>
+         <TextMessages value="HAWAII. HOWEVER ONLY A PORTION OF THE US1 TAX IS"/>
+         <TextMessages value="APPLICABLE. TAX RATE INFORMATION USE THE ENTRY TX/HELP."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="H" messageOrderNo=8 itemNo=27 keyWord1="US1" keyWord2="" />
+         <TextMessages value="DOES NOT APPLY TO SALES OUTSIDE THE US FOR TRAVEL WITHIN"/>
+         <TextMessages value="THE US, INCLUDING ALASKA AND HAWAII, WHEN TICKET IS"/>
+         <TextMessages value="INCLUDES INTERNATIONAL TRAVEL TO OR FROM THE  USA OR IS"/>
+         <TextMessages value="CROSS REFERENCED WITH ANOTHER INTERNATIONAL TICKET."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="H" messageOrderNo=9 itemNo=28 keyWord1="US1" keyWord2="" />
+         <TextMessages value="DOES NOT APPLY TO CROSS REFERENCED TICKETS INDICATING THE"/>
+         <TextMessages value="ORIGIN/DESTINATION OR INTERNATIONAL TRAVEL SHOWING THE"/>
+         <TextMessages value="CARRIER ABD THEFORM AND SERIAL NUMBER OF THE INTERNATIONAL"/>
+         <TextMessages value="TRAVEL DOCUMENT.  MUST ALSO INDICATE THE NATURE/AMOUNT OF"/>
+         <TextMessages value="US TAX THAT IS FREE/EXEMPTED."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="H" messageOrderNo=10 itemNo=29 keyWord1="US1" keyWord2="" />
+         <TextMessages value="APPLIES TO-"/>
+         <TextMessages value="-CABIN BAGGAGE TAX RATE IS 6.25 PERCENT RATHER THAN 7.5"/>
+         <TextMessages value="PERCENT."/>
+     </TaxCodeGenTexts>
+     <TaxCodeGenTexts>
+         <Data taxCode="US1" messageDisplayCat="H" messageOrderNo=11 itemNo=30 keyWord1="US1" keyWord2="" />
+         <TextMessages value="APPLIES TO-"/>
+         <TextMessages value="-FOR ADDITIONAL INFORMATION ON CHANGES TO US DOMESTIC TAXES"/>
+         <TextMessages value="SEE N*/USTAX1 AND N*/USTAX2"/>
+     </TaxCodeGenTexts>
+</TaxCodeReg>

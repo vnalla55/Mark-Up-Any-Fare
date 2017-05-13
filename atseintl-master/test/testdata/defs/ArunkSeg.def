@@ -1,0 +1,24 @@
+name: ArunkSeg
+namespace: tse
+parent: TravelSeg
+package: DataModel
+
+# No own members, all derived from TravelSeg
+
+scalarCompare: void pnrSegment()
+scalarCompare: void segmentOrder()
+scalarCompare: void stopOver()
+scalarCompare: void forcedStopOver()
+scalarCompare: void forcedConx()
+scalarCompare: void geoTravelType()
+scalarCompare: void origAirport()
+scalarCompare: void boardMultiCity()
+scalarCompare: void destAirport()
+scalarCompare: void offMultiCity()
+scalarCompare: void equipmentType()
+factoryCompare: Loc* origin()
+factoryCompare: Loc* destination()
+
+NameString: "ArunkSeg_"
+NameField: origAirport()
+NameField: destAirport()

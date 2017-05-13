@@ -1,0 +1,11 @@
+<PfcItem>
+  <Attributes
+     absorptionInd="t"
+     amount="123"
+     currency="USD"
+     numDecimals=2
+     couponNumber=12345
+     airport="DFW"
+   />
+</PfcItem>
+

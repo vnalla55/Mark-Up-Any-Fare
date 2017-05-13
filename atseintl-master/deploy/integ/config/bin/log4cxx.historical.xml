@@ -1,0 +1,946 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' >
+    <!-- TODO Remove with ROUTING_CYCLE_DETECTOR_HARDENING -->
+    <appender name="ASYNC_ROUTING_CYCLE_LOG" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="ROUTING_CYCLE_LOG"/>
+    </appender>
+    <appender name="ROUTING_CYCLE_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="routing_cycle.log" />
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+    <logger name="atseintl.Common.RoutingCycleDetector" additivity="false">
+        <level value="info" />
+        <appender-ref ref="ASYNC_ROUTING_CYCLE_LOG" />
+    </logger>
+
+    <appender name="ASYNC_DB_ERRORS_LOG" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="DB_ERRORS_LOG"/>
+    </appender>
+    <appender name="DB_ERRORS_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="db_errors.log" />
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+    <logger name="atseintl.Common.RoutingDbValidator" additivity="false">
+        <level value="info" />
+        <appender-ref ref="ASYNC_DB_ERRORS_LOG" />
+    </logger>
+
+    <appender name="ASYNC_ASSERT_LOG" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="ASSERT_LOG"/>
+    </appender>
+    <appender name="ASSERT_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="assert.log" />
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+    <logger name="atseintl.Assert" additivity="true">
+        <level value="info" />
+        <appender-ref ref="ASYNC_ASSERT_LOG" />
+    </logger>
+
+    <appender name="ASYNC_STDOUT" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="STDOUT"/>
+    </appender>
+
+    <appender name="ASYNC_TSE_SERVER" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="TSE_SERVER"/>
+    </appender>
+
+    <appender name="ASYNC_METRICS" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="METRICS_LOGGER"/>
+    </appender>
+
+    <appender name="ASYNC_REQUEST" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="REQUEST_LOGGER"/>
+    </appender>
+
+    <appender name="ASYNC_LONG_RUNNING_TRX" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="LONG_RUNNING_TRX_LOGGER"/>
+    </appender>
+
+    <appender name="ASYNC_SAX_PARSER" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="SAX_PARSER"/>
+    </appender>
+
+    <appender name="ASYNC_FARES_INFO" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="FARES_INFO"/>
+    </appender>
+
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="TSE_SERVER" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="tseserver.log" />
+        <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="DBOUT" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="db.log" />
+        <param name="Append" value="false" />
+        <!-- Create 5 backup logfiles. -->
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="METRICS_LOGGER" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="tsemetrics.log" />
+        <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="REQUEST_LOGGER" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="tserequest.log" />
+        <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="LONG_RUNNING_TRX_LOGGER" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="longrunningtrx.log" />
+        <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="SAX_PARSER" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="SAXParser.log" />
+        <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="NotTimingOutRequestAppender" class="org.apache.log4j.RollingFileAppender">
+	    <param name="File"   value="nottimingoutrequest.log" />
+	    <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+	    <param name="MaxBackupIndex" value="5" />
+	    <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="atseintl.NotTimingOutRequest" additivity="false">
+        <level value="info" />
+        <appender-ref ref="NotTimingOutRequestAppender" />
+    </logger>
+
+    <appender name="SegvTransactionsAppender" class="org.apache.log4j.RollingFileAppender">
+      <param name="File"   value="corerequest.log" />
+      <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+      <param name="MaxBackupIndex" value="5" />
+      <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="atseintl.SegvTransactions" additivity="false">
+        <level value="info" />
+        <appender-ref ref="SegvTransactionsAppender" />
+    </logger>
+
+    <appender name="LowMemoryTransactionsAppender" class="org.apache.log4j.RollingFileAppender">
+      <param name="File"   value="lowmemoryrequest.log" />
+      <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+      <param name="MaxBackupIndex" value="5" />
+      <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="atseintl.LowMemoryTransactions" additivity="false">
+        <level value="info" />
+        <appender-ref ref="LowMemoryTransactionsAppender" />
+    </logger>
+
+    <appender name="RemoteCacheAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="remotecache.log" />
+        <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="atseintl.RemoteCache.RCStatistics" additivity="false">
+        <level value="info" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+    <logger name="atseintl.DBAccess.RemoteCache.ASIOServer" additivity="false">
+        <level value="info" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+    <logger name="atseintl.DBAccess.RemoteCache.ClientStatusBase" additivity="false">
+        <level value="info" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+    <logger name="atseintl.DBAccess.RemoteCache.Connection" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+    <logger name="atseintl.DBAccess.RemoteCache.RequestHandler" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+    <logger name="atseintl.DBAccess.RemoteCache.IOServicePool" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+    <logger name="atseintl.DBAccess.RemoteCache.RCClient" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+    <logger name="atseintl.DBAccess.RemoteCache.RCRequest" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+    <logger name="atseintl.DBAccess.RemoteCache.Client" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+    <logger name="atseintl.DBAccess.RemoteCache.ClientManager" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+    <logger name="atseintl.DBAccess.RemoteCache.ClientPool" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+    <logger name="atseintl.DBAccess.RemoteCache.Session" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="RemoteCacheAppender" />
+    </logger>
+
+    <appender name="ThreadTaskStatisticsAppender" class="org.apache.log4j.RollingFileAppender">
+	    <param name="File"   value="threadtaskstats.log" />
+	    <param name="Append" value="false" />
+        <!-- Create 5 backup logfiles. -->
+	    <param name="MaxBackupIndex" value="5" />
+	    <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="atseintl.ThreadTaskStatistics" additivity="false">
+        <level value="info" />
+        <appender-ref ref="ThreadTaskStatisticsAppender" />
+    </logger>
+
+    <appender name="CACHE_NOTIFY_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="cachenotify.log" />
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="SOCKET_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="tsesocket.log" />
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="CACHE_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="cacheupdate.log" />
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="LDC_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="ldc.log" />
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="AUTO_RULES_ERRORS" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="auto_rules_errors.log" />
+        <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="RESPONSE_FORMATTER_ERRORS" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="response_formatter_errors.log" />
+        <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="FARES_INFO" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"   value="fares_info.log" />
+        <param name="Append" value="true" />
+        <!-- Create 5 backup logfiles. -->
+        <param name="MaxBackupIndex" value="5" />
+        <param name="MaxFileSize" value="50MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%d: %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="ORDERNO_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="orderno.log" />
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="7" />
+        <param name="MaxFileSize" value="2MB" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="TimeZone" value="US/Central"/>
+            <param name="ConversionPattern" value="%m%n"/>
+        </layout>
+    </appender>
+
+    <category name="atseintl.Server">
+        <priority value="info" />
+    </category>
+
+    <category name="atseintl.Service.TransactionOrchestrator">
+        <priority value="info" />
+    </category>
+
+    <category name="atseintl.Manager.TseManagerUtil">
+        <priority value="info" />
+    </category>
+
+    <category name="atseintl.Xray.AsyncJsonContainer">
+        <priority value="info" />
+    </category>
+
+    <category name="atseintl.Xray.XraySender">
+        <priority value="info" />
+    </category>
+
+    <category name="atseintl.Xray.XrayClient">
+        <priority value="info" />
+    </category>
+
+    <category name="atseintl.Common.TrxUtil">
+        <priority value="error" />
+    </category>
+
+    <category name="atseintl.Manager.ServerSocketShutdownHandler">
+        <priority value="error" />
+    </category>
+
+    <logger name="atseintl.Metrics" additivity="false">
+        <level value="info" />
+        <appender-ref ref="ASYNC_METRICS" />
+    </logger>
+    <logger name="atseintl.Request" additivity="false">
+        <level value="info" />
+        <appender-ref ref="ASYNC_REQUEST" />
+    </logger>
+    <logger name="atseintl.LongRunningTrx" additivity="false">
+        <level value="info" />
+        <appender-ref ref="ASYNC_LONG_RUNNING_TRX" />
+    </logger>
+    <logger name="atseintl.Xform.FareDisplayResponseFormatter" additivity="false">
+        <level value="error" />
+        <appender-ref ref="RESPONSE_FORMATTER_ERRORS" />
+    </logger>
+    <logger name="atseintl.CacheUpdate.CacheUpdateService" additivity="false">
+         <level value="info" />
+         <appender-ref ref="CACHE_LOG"/>
+    </logger>
+    <logger name="atseintl.DataModel.CacheUpdateLog" additivity="false">
+         <level value="info" />
+         <appender-ref ref="CACHE_LOG"/>
+    </logger>
+    <logger name="atseintl.Adapter.ServerSocketAdapter" additivity="false">
+         <level value="info" />
+    </logger>
+    <logger name="atseintl.RexPricing.RexPricingTrx.FareInfo" additivity="false">
+        <level value="info" />
+        <appender-ref ref="ASYNC_FARES_INFO" />
+    </logger>
+
+    <category name="atseintl.DBAccess.DataBlobHelper">
+      <priority value="info" />
+    </category>
+
+    <category name="atseintl.DBAccess.DistCache">
+      <priority value="info" />
+    </category>
+
+    <category name="atseintl.DBAccess.DataAccessObject">
+        <priority value="info" />
+    </category>
+
+    <category name="atseintl.DBAccess.HistoricalDataAccessObject">
+        <priority value="info" />
+    </category>
+
+    <category name="atseintl.Common.DiskspaceWatcher">
+        <priority value="info" />
+    </category>
+
+    <category name="atseintl.Adapter.CacheNotifyAdapter">
+        <priority value="info" />
+    </category>
+
+    <category name="atseintl.Common.Memory.GlobalManager">
+        <priority value="info" />
+    </category>
+
+    <category name="atseintl.DBAccess.DBConnectionInfoManagerImplBase">
+      <priority value="info" />
+    </category>
+    <category name="atseintl.DBAccess.DBPoolInfo">
+      <priority value="info" />
+    </category>
+    <category name="atseintl.DBAccess.ORACLEDBConnectionInfoManager">
+      <priority value="info" />
+    </category>
+
+    <category name="atseintl.DataModel.DelayedUpdates">
+        <priority value="warn" />
+    </category>
+
+<!--
+       <category name="atseintl.Rules.RuleUtil.TSI">
+           <priority value="info" />
+       </category>
+       <category name="atseintl.Pricing.CombinabilityScoreboard">
+           <priority value="info" />
+       </category>
+       <category name="atseintl.Pricing.Combinations">
+           <priority value="info" />
+       </category>
+       <category name="atseintl.Pricing">
+           <priority value="info" />
+       </category>
+       <category name="atseintl.Pricing.Combinations.DataString">
+           <priority value="info" />
+       </category>
+       <category name="atseintl.DBAccess.MYSQLDBServer">
+           <priority value="info" />
+           <appender-ref ref="DBOUT" />
+       </category>
+
+       <logger name="atseintl.CacheUpdate.CacheUpdateService" additivity="false">
+           <level value="info" />
+           <appender-ref ref="CACHE_NOTIFY_LOG"/>
+       </logger>
+       <logger name="atseintl.Manager.SocketRequestImpl" additivity="false">
+           <level value="info" />
+           <appender-ref ref="SOCKET_LOG"/>
+       </logger>
+       <logger name="atseintl.Xform.XformClientXML" additivity="false">
+           <level value="info" />
+           <appender-ref ref="ASYNC_SAX_PARSER" />
+       </logger>
+       <logger name="atseintl.Xform.PricingResponseFormatter" additivity="false">
+           <level value="info" />
+           <appender-ref ref="ASYNC_SAX_PARSER" />
+       </logger>
+       <logger name="atseintl.Xform.PricingDetailResponseFormatter" additivity="false">
+           <level value="info" />
+           <appender-ref ref="ASYNC_SAX_PARSER" />
+       </logger>
+       <logger name="atseintl.Xform.AltPricingResponseFormatter" additivity="false">
+           <level value="info" />
+           <appender-ref ref="ASYNC_SAX_PARSER" />
+       </logger>
+       <logger name="atseintl.Xform.XformClientShoppingXML" additivity="false">
+           <level value="info" />
+           <appender-ref ref="ASYNC_SAX_PARSER" />
+       </logger>
+       <logger name="atseintl.AutoRulesErrors" additivity="false">
+           <level value="info" />
+           <appender-ref ref="AUTO_RULES_ERRORS" />
+       </logger>
+  -->
+
+    <logger name="atseintl.Adapter.DiskCacheAdapter"                 additivity="true" > <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.Manager.DiskCacheManager"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.Manager.DiskCacheThread"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DiskCache"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+
+    <logger name="atseintl.DBAccess.AccompaniedTravelDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddOnCombFareClassDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddOnFareDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddOnMarketCarriersDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddOnZoneDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddOnZoneInfoDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddonZoneSITADAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AdvResTktDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ATPResNationZonesDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BankerSellRateDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BaseFareRuleDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BasicBookingRequestDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BlackoutDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BookingCodeConvDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BookingCodeExceptionSequenceDAO" additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BoundFareDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BrandDAO"                        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BrandedCarrierDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BrandedFareAppDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CabinDAO"                        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CarrierApplicationDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CarrierCombinationDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CarrierFlightDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CarrierMixedClassDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CarrierPreferenceDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CircleTripProvisionDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CircleTripRuleDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CombinabilityRuleDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CommissionCapDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ContractPreferenceDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CopMinimumDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CopParticipatingNationDAO"       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CorpIdDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CurrencyDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CurrencySelectionDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CustomerDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DateOverrideRuleDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DayTimeAppInfoDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DBEGlobalClassDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DepositsDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DifferentialsDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DiscountDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DSTDAO"                          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.EligibilityDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.EndOnEndDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ETicketCarrierDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ETicketPseudoDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareByRuleAppDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareByRuleAppRuleTariffDAO"      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareByRuleCtrlDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareByRuleItemDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareCalcConfigDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareClassAppDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareClassRestDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDAO"                         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispCldInfPsgTypeDAO"        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispInclDsplTypeDAO"         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispInclFareTypeDAO"         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispInclRuleTrfDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDisplayInclCdDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDisplayPrefDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDisplayPrefSegDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDisplaySortDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDisplayWebDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispRec1PsgTypeDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispRec8PsgTypeDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispTemplateDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispTemplateSegDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareTypeMatrixDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareTypeQualifierDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FCLimitationDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDAddOnFareDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDHeaderMsgDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDHeaderMsgTextDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDSFareBasisCombDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDSGlobalDirDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDSPsgTypeDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDSSortingDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDSuppressFareDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FlightAppRuleDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FltTrkCntryGrpDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FootNoteCtrlDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FreeBaggageDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FreeBaggageNotExpiredDAO"        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GeneralFareRuleDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GeneralRuleAppDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GenericTaxCodeDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GeoRuleDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GlobalDirDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GroupsDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.HipMileageExceptDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.IndustryFareApplDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.IndustryFareBasisModDAO"         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.IndustryPricingApplDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.IsMultilateralDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.JLimitationDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.JointCarrierDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.LocDAO"                          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MarketCarriers2DAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MarketCarriersDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MarketRoutingDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MarkupSecFilterDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MarriedCabinDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MaxStayRestrictionDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MileageDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MileageSubstitutionDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MileageSurchExceptDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MinFareApplDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MinFareDefaultLogicDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MinFareFareTypeGrpDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MinFareRuleLevelExclDAO"         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MinStayRestrictionDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MiscFareTagDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MsgTextDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiAirportCityDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiAirportsByCityDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiCityAirportDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiTransportCityDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiTransportDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiTransportLocsDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NationDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NationInAreaDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NationInSubAreaDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NationInZoneDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NegFareCalcDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NegFareRestDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NegFareSecurityDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NoPNRFareTypeGroupDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NoPNROptionsDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NUCAllCarriersDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NUCDAO"                          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.OpenJawRestrictionDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.OpenJawRuleDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PaxTypeDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PaxTypeMatrixDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PenaltyDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcAbsorbDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcCollectMethDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcEquipTypeExemptDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcEssAirSvcDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcExemptionDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcMultiAirportDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcPFCDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcTktDesigExceptDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PULimitationDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ReissueSequenceDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RoundTripRuleDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RoutingDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RoutingForMarketDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RuleApplicationDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RuleCatAlphaCodeDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RuleCategoryDescDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SalesNationRestrDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SalesRestrictionDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SamePointDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SeasonalApplDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SectorSurchargeDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ServiceRec1DAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.StateDAO"                        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.StateInAreaDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.StateInSubAreaDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.StateInZoneDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.StopoversDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SubJourneyDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SurchargesDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SurfaceSectorApplDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SurfaceSectorExemptDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SurfaceTransfersDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TariffCrossRefDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TariffInhibitsDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TariffMileageAddonDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TariffRuleRestDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TaxAkHiFactorDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TaxCodeDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TaxNationDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TaxReissueDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TaxSegAbsorbDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TicketEndorsementsDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TicketStockDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ToursDAO"                        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TpdPsrDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.Transfers1DAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TravelRestrictionDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TSIDAO"                          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.VendorCrossRefDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.VisitAnotherCountryDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.VoluntaryChangesDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.WaiverDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.YQYRFeesDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.YQYRFeesNonConcurDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ZoneDAO"                         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+
+    <logger name="atseintl.DBAccess.AccompaniedTravelHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddOnCombFareClassHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddOnFareHistoricalDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddOnMarketCarriersHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddOnZoneHistoricalDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddOnZoneInfoHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AddonZoneSITAHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.AdvResTktHistoricalDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ATPResNationZonesHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BankerSellRateHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BaseFareRuleHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BasicBookingRequestHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BlackoutHistoricalDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BookingCodeConvHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BookingCodeExceptionSequenceHistoricalDAO" additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BoundFareHistoricalDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BrandHistoricalDAO"                        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BrandedCarrierHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.BrandedFareAppHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CabinHistoricalDAO"                        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CarrierApplicationHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CarrierCombinationHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CarrierFlightHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CarrierMixedClassHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CarrierPreferenceHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CircleTripProvisionHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CircleTripRuleHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CombinabilityRuleHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CommissionCapHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ContractPreferenceHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CopMinimumHistoricalDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CopParticipatingNationHistoricalDAO"       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CorpIdHistoricalDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CurrencyHistoricalDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CurrencySelectionHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.CustomerHistoricalDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DateOverrideRuleHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DayTimeAppInfoHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DBEGlobalClassHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DepositsHistoricalDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DifferentialsHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DiscountHistoricalDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.DSTHistoricalDAO"                          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.EligibilityHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.EndOnEndHistoricalDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ETicketCarrierHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ETicketPseudoHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareByRuleAppHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareByRuleAppRuleTariffHistoricalDAO"      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareByRuleCtrlHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareByRuleItemHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareCalcConfigHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareClassAppHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareClassRestHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareHistoricalDAO"                         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispCldInfPsgTypeHistoricalDAO"        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispInclDsplTypeHistoricalDAO"         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispInclFareTypeHistoricalDAO"         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispInclRuleTrfHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDisplayInclCdHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDisplayPrefHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDisplayPrefSegHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDisplaySortHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDisplayWebHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispRec1PsgTypeHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispRec8PsgTypeHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispTemplateHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareDispTemplateSegHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareTypeMatrixHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FareTypeQualifierHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FCLimitationHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDAddOnFareHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDHeaderMsgHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDHeaderMsgTextHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDSFareBasisCombHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDSGlobalDirHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDSPsgTypeHistoricalDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDSSortingHistoricalDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FDSuppressFareHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FlightAppRuleHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FltTrkCntryGrpHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FootNoteCtrlHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FreeBaggageHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.FreeBaggageNotExpiredHistoricalDAO"        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GeneralFareRuleHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GeneralRuleAppHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GenericTaxCodeHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GeoRuleHistoricalDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GlobalDirHistoricalDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.GroupsHistoricalDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.HipMileageExceptHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.IndustryFareApplHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.IndustryFareBasisModHistoricalDAO"         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.IndustryPricingApplHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.IsMultilateralHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.JLimitationHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.JointCarrierHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.LocHistoricalDAO"                          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MarketCarriers2HistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MarketCarriersHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MarketRoutingHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MarkupSecFilterHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MarriedCabinHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MaxStayRestrictionHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MileageHistoricalDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MileageSubstitutionHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MileageSurchExceptHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MinFareApplHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MinFareDefaultLogicHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MinFareFareTypeGrpHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MinFareRuleLevelExclHistoricalDAO"         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MinStayRestrictionHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MiscFareTagHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MsgTextHistoricalDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiAirportCityHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiAirportsByCityHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiCityAirportHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiTransportCityHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiTransportHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.MultiTransportLocsHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NationHistoricalDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NationInAreaHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NationInSubAreaHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NationInZoneHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NegFareCalcHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NegFareRestHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NegFareSecurityHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NoPNRFareTypeGroupHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NoPNROptionsHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NUCAllCarriersHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.NUCHistoricalDAO"                          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.OpenJawRestrictionHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.OpenJawRuleHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PaxTypeHistoricalDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PaxTypeMatrixHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PenaltyHistoricalDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcAbsorbHistoricalDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcCollectMethHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcEquipTypeExemptHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcEssAirSvcHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcExemptionHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcMultiAirportHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcPFCHistoricalDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PfcTktDesigExceptHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.PULimitationHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ReissueSequenceHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RoundTripRuleHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RoutingHistoricalDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RoutingForMarketHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RuleApplicationHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RuleCatAlphaCodeHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.RuleCategoryDescHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SalesNationRestrHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SalesRestrictionHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SamePointHistoricalDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SeasonalApplHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SectorSurchargeHistoricalDAO"              additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ServiceRec1HistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.StateHistoricalDAO"                        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.StateInAreaHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.StateInSubAreaHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.StateInZoneHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.StopoversHistoricalDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SubJourneyHistoricalDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SurchargesHistoricalDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SurfaceSectorApplHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SurfaceSectorExemptHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.SurfaceTransfersHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TariffCrossRefHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TariffInhibitsHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TariffMileageAddonHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TariffRuleRestHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TaxAkHiFactorHistoricalDAO"                additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TaxCodeHistoricalDAO"                      additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TaxNationHistoricalDAO"                    additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TaxReissueHistoricalDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TaxSegAbsorbHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TicketEndorsementsHistoricalDAO"           additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TicketStockHistoricalDAO"                  additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ToursHistoricalDAO"                        additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TpdPsrHistoricalDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TPMExclusionHistoricalDAO"                 additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.Transfers1HistoricalDAO"                   additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TravelRestrictionHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.TSIHistoricalDAO"                          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.VendorCrossRefHistoricalDAO"               additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.VisitAnotherCountryHistoricalDAO"          additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.VoluntaryChangesHistoricalDAO"             additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.WaiverHistoricalDAO"                       additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.YQYRFeesHistoricalDAO"                     additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.YQYRFeesNonConcurHistoricalDAO"            additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+    <logger name="atseintl.DBAccess.ZoneHistoricalDAO"                         additivity="false"> <level value="info" /> <appender-ref ref="LDC_LOG" /> </logger>
+
+    <logger name="atseintl.Adapter.CacheNotifyAdapterOrderNo"                  additivity="false" ><level value="info" /> <appender-ref ref="ORDERNO_LOG" /></logger>
+
+    <root>
+        <priority value ="error" />
+        <appender-ref ref="ASYNC_STDOUT" />
+        <appender-ref ref="ASYNC_TSE_SERVER" />
+    </root>
+
+</log4j:configuration>

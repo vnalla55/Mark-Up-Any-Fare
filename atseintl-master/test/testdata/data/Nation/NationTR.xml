@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="TR"
+          isonumericCode=792
+          subArea="21"
+          area="2"
+          isoalphaCode="TUR"
+          primeCur="TRY"
+          alternateCur=""
+          conversionCur="EUR"
+          description="TURKEY"
+     />
+     <CreateDate year=2005 month=4 day=6 hour=18 minute=57 second=8/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2005 month=4 day=1 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

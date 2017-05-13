@@ -1,0 +1,28 @@
+<TktDesignatorExemptInfo>
+ <versionDate    year=2014 month=2 day=23 hour=12 minute=0 second=0/>
+ <createDate     year=2014 month=2 day=23 hour=12 minute=0 second=0/>
+ <effDate        year=2014 month=2 day=23 hour=12 minute=0 second=0/>
+ <discDate       year=2099 month=6 day=22 hour=14 minute=30 second=0/>
+ <expireDate     year=2099 month=2 day=23 hour=12 minute=0 second=0/>
+
+<Attributes
+ carrier="AA"
+ sequenceNumber="427750"
+ validityInd="Y"
+ description=" "
+ exemptionType=" "
+ ticketDesignator="TEST"
+ paxType="ADT"
+ taxExempt="U"
+ pfcExempt="X"
+ ruleTariff="-1"
+ ruleNumber1=" "
+ ruleRelational=" "
+ ruleNumber2=" "
+ directionality=" "
+ locType1=" "
+ loc1=" "
+ locType2=" "
+ loc2=" "
+ />
+</TktDesignatorExemptInfo>

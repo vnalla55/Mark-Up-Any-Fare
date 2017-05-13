@@ -1,0 +1,21 @@
+<PaxTypeBucket>
+
+   <RequestedPaxType>
+
+       <Misc  paxType="ADULT" number=1 age=39 inputOrder=1 vendorCode="AA"/>
+
+       <ActualPaxType>
+           <PaxTypeInfo paxType="ADT" vendor="ATP" childInd=" " adultInd=" " infantInd=" "
+                        description="PaxTypeInfo from factory." psgGroupType="ASTRING" numberSeatsReq=1/>
+
+           <Misc  paxType="ADULT" number=1 age=39 inputOrder=1 vendorCode="AA"/>
+    
+       </ActualPaxType>
+
+       <PaxTypeInfo paxType="ADT" vendor="ATP" childInd=" " adultInd=" " infantInd=" "
+                    description="PaxTypeInfo from factory." psgGroupType="ASTRING" numberSeatsReq=1/>
+
+   </RequestedPaxType>
+
+</PaxTypeBucket>
+

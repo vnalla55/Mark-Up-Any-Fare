@@ -1,0 +1,29 @@
+name: PaxTypeBucket
+namespace: tse
+package: DataModel
+
+factoryAggregate: RequestedPaxType: PaxType*                  requestedPaxType()
+factoryAggregate: ActualPaxType:    std::vector<PaxType*>     actualPaxType()
+factoryAggregate: PaxTypeFare:      std::vector<PaxTypeFare*> paxTypeFare()
+
+section: Misc
+  scalar: inboundCurrency:  CurrencyCode inboundCurrency()
+  scalar: outboundCurrency: CurrencyCode outboundCurrency()
+endsection
+
+checkItemLines
+  bool req = false;
+  std::vector<PaxTypeFare*>::const_iterator
+    iB = item.paxTypeFare().begin(),
+    iE = item.paxTypeFare().end();
+  for(; iB != iE; ++iB)
+  {
+    if (TestPaxTypeFareFactory::checkItem(**iB))
+    {
+      req=true;
+      break;
+    }
+  }
+  if (!req)
+    return false;
+endCheckItemLines

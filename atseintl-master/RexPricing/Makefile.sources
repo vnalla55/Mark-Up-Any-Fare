@@ -1,0 +1,34 @@
+REX_FARE_SELECTOR_SOURCES := \
+    RexFareSelectorService.cpp \
+    RexFareSelector.cpp \
+    PrepareRexFareRules.cpp \
+    CheckTrxError.cpp \
+    PenaltyEstimator.cpp \
+    PermutationGenerator.cpp \
+    TagWarEngine.cpp \
+    FareBreakProcessor.cpp \
+    FarePathChangeDetermination.cpp \
+    RepriceSolutionValidator.cpp \
+    RefundSolutionValidator.cpp \
+    ReissuePenaltyCalculator.cpp \
+    PenaltyCalculator.cpp \
+    RexAdvResTktValidator.cpp \
+    GenericRexMapper.cpp \
+    SequenceStopByteByTag.cpp \
+    RexFareSelectorStrategy.cpp \
+    RexFareSelectorBasicStrategy.cpp \
+    RexFareSelectorVarianceStrategy.cpp \
+    RexFareSelectorVCTRStrategy.cpp \
+    RexFareSelectorDiscountedStrategy.cpp \
+    RexFareSelectorHipStrategy.cpp \
+    ReissueToLowerValidator.cpp \
+    RexPaxTypeFareValidator.cpp \
+    RefundDiscountApplier.cpp \
+    RefundPermutationGenerator.cpp \
+    EnhancedRefundDiscountApplier.cpp \
+    ExpndKeepFareValidator.cpp \
+    RexFareBytesValidator.cpp \
+    NewTicketEqualOrHigherValidator.cpp \
+    StopoverConnectionValidator.cpp \
+    OptimizationMapper.cpp
+    

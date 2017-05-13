@@ -1,0 +1,41 @@
+name: FareClassAppInfo
+namespace: tse
+package: DBAccess
+
+factoryAggregate: EffectiveDate:  DateTime _effectiveDate
+factoryAggregate: ExpirationDate: DateTime _expirationDate
+
+section: Location
+  scalar: location1Type:  LocTypeCode _location1Type
+  scalar: location1:      LocCode     _location1
+  scalar: location2Type:  LocTypeCode _location2Type
+  scalar: location2:      LocCode     _location2
+endsection
+
+section: Misc
+  scalarWithCompare:  vendor:         VendorCode    _vendor
+  scalarWithCompare:  carrier:        CarrierCode   _carrier
+  scalarWithCompare:  ruleTariff:     TariffNumber  _ruleTariff
+  scalarWithCompare:  ruleNumber:     RuleNumber    _ruleNumber
+  scalar:             footnote1:      Footnote      _footnote1
+  scalar:             footnote2:      Footnote      _footnote2
+  scalarWithCompare:  fareClass:      FareClassCode _fareClass
+  scalar:             MCN:            int           _MCN
+  scalar:             textTBLItemNo:  int           _textTBLItemNo
+  scalarWithCompare:  owrt:           Indicator     _owrt
+  scalar:             routingAppl:    Indicator     _routingAppl
+  scalarWithCompare:  routingNumber:  RoutingNumber _routingNumber
+  scalarWithCompare:  fareType:       FareType      _fareType
+  scalar:             seasonType:     Indicator     _seasonType
+  scalar:             dowType:        Indicator     _dowType
+  scalar:             pricingCatType: Indicator     _pricingCatType
+  scalar:             displayCatType: Indicator     _displayCatType
+  scalar:             seqNo:          int           _seqNo
+  scalar:             unavailTag:     int           _unavailTag
+endsection
+
+factoryAggregateWithCompare: FareClassAppSegInfo: std::vector<FareClassAppSegInfo*> _segs OwnsPointer
+
+postInitLines
+  item->_segCount = item->_segs.size();
+endPostInitLines

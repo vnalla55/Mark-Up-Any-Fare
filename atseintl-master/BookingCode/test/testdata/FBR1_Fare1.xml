@@ -1,0 +1,11 @@
+<Fare>
+     <FareInfo file="/vobs/atseintl/BookingCode/test/testdata/FBR1_FareInfo1.xml"/>
+     <TariffCrossRefInfo file="/vobs/atseintl/BookingCode/test/testdata/FBR1_TariffCrossRefInfo1.xml"/>
+     <Misc
+          nucFareAmount=5486.83
+     />
+     <FareStatus fareStatus="International"/>
+     <FareStatus fareStatus="PublishedFare"/>
+     <FareStatus fareStatus="ReversedDirection"/>
+     <RuleProcessStatus ruleProcessStatus="Cat15"/>
+</Fare>

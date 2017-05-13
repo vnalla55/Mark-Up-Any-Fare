@@ -1,0 +1,15 @@
+name: BookingCodeExceptionSequence
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalarWithCompare:  itemNo:             uint32_t  itemNo()
+  scalarWithCompare:  primeInd:           char      primeInd()
+  scalarWithCompare:  tableType:          char      tableType()
+  scalarWithCompare:  seqNo:              uint32_t  seqNo()
+  scalar:             constructSpecified: char      constructSpecified()
+  scalarWithCompare:  ifTag:              char      ifTag()
+  scalarWithCompare:  segCnt:             uint16_t  segCnt()
+endsection
+
+factoryAggregate: BookingCodeExceptionSegment: std::vector<BookingCodeExceptionSegment*> segmentVector() OwnsPointer

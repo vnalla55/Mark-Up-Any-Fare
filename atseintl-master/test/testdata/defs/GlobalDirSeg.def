@@ -1,0 +1,32 @@
+name: GlobalDirSeg
+namespace: tse
+package: DBAccess
+
+section: Data
+  scalar: globalDir:            std::string globalDir()
+  scalar: directionality:       Indicator   directionality()
+  scalar: loc1Type:             LocType     loc1Type()
+  scalar: loc1:                 LocCode     loc1()
+  scalar: loc2Type:             LocType     loc2Type()
+  scalar: loc2:                 LocCode     loc2()
+  scalar: allTvlOnCarrier:      std::string allTvlOnCarrier()
+  scalar: flightTrackingInd:    Indicator   flightTrackingInd()
+  scalar: mustBeViaLocInd:      Indicator   mustBeViaLocInd()
+  scalar: mustBeViaLocType:     LocType     mustBeViaLocType()
+  scalar: mustBeViaLoc:         LocCode     mustBeViaLoc()
+  scalar: viaInterLoc1Type:     LocType     viaInterLoc1Type()
+  scalar: viaInterLoc1:         LocCode     viaInterLoc1()
+  scalar: viaInterLoc2Type:     LocType     viaInterLoc2Type()
+  scalar: viaInterLoc2:         LocCode     viaInterLoc2()
+  scalar: mustNotBeViaLocInd:   Indicator   mustNotBeViaLocInd()
+  scalar: mustNotBeViaLocType:  LocType     mustNotBeViaLocType()
+  scalar: mustNotBeViaLoc:      LocCode     mustNotBeViaLoc()
+  scalar: notViaInterLoc1Type:  LocType     notViaInterLoc1Type()
+  scalar: notViaInterLoc1:      LocCode     notViaInterLoc1()
+  scalar: notViaInterLoc2Type:  LocType     notViaInterLoc2Type()
+  scalar: notViaInterLoc2:      LocCode     notViaInterLoc2()
+endsection
+
+factoryAggregate: CreateDate:         DateTime createDate()
+factoryAggregate: SaleEffectiveDate:  DateTime saleEffDate()
+factoryAggregate: SaleDiscDate:       DateTime saleDiscDate()

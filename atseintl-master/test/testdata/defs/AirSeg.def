@@ -1,0 +1,35 @@
+name: AirSeg
+namespace: tse
+parent: TravelSeg
+package: DataModel
+
+# only parameters from AirSeg, rest is in TravelSeg
+
+section: FlightInfo
+  scalarWithCompare:  carrier:                CarrierCode   carrier()
+  scalarWithCompare:  marketingFlightNumber:  FlightNumber  marketingFlightNumber()
+  scalarWithCompare:  operatingFlightNumber:  FlightNumber  operatingFlightNumber()
+endsection
+
+section: Misc
+  scalar:             considerOnlyCabin:      std::string   considerOnlyCabin()
+endsection
+
+
+scalarCompare: void pnrSegment()
+scalarCompare: void segmentOrder()
+scalarCompare: void stopOver()
+scalarCompare: void forcedStopOver()
+scalarCompare: void forcedConx()
+scalarCompare: void geoTravelType()
+scalarCompare: void origAirport()
+scalarCompare: void boardMultiCity()
+scalarCompare: void destAirport()
+scalarCompare: void offMultiCity()
+scalarCompare: void equipmentType()
+factoryCompare: Loc* origin()
+factoryCompare: Loc* destination()
+
+NameString: "AirSeg_"
+NameField: origAirport()
+NameField: destAirport()

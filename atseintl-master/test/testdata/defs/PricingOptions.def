@@ -1,0 +1,51 @@
+name: PricingOptions
+namespace: tse
+package: DataModel
+
+section: Attribute
+  scalar: numberOfSolutions:        int16_t       getRequestedNumberOfSolutions
+  scalar: resTicketRestr:           char          resTicketRestr()
+  scalar: privateFares:             char          privateFares()
+  scalar: publishedFares:           char          publishedFares()
+  scalar: xoFares:                  char          xoFares()
+  scalar: onlineFares:              char          onlineFares()
+  scalar: iataFares:                char          iataFares()
+  scalar: firstFlightRepeat:        char          firstFlightRepeat()
+  scalar: currencyOverride:         std::string   currencyOverride()
+  scalar: ticketStock:              int16_t       ticketStock()
+  scalar: ticketTimeOverride:       int16_t       ticketTimeOverride()
+  scalar: returnAllData:            char          returnAllData()
+  scalar: noPenalties:              char          noPenalties()
+  scalar: noAdvPurchRestr:          char          noAdvPurchRestr()
+  scalar: noMinMaxStayRestr:        char          noMinMaxStayRestr()
+  scalar: normalFare:               char          normalFare()
+  scalar: cat35NotAllowed:          char          cat35NotAllowed()
+  scalar: cat35FareShouldBeIgnored: char          cat35FareShouldBeIgnored()
+  scalar: returnFareCalc:           char          returnFareCalc()
+  scalar: fareByRuleEntry:          char          fareByRuleEntry()
+  scalar: web:                      char          web()
+  scalar: fareByRuleShipRegistry:   std::string   fareByRuleShipRegistry()
+  scalar: alternateCurrency:        CurrencyCode  alternateCurrency()
+  scalar: fareCalculationDisplay:   char          fareCalculationDisplay()
+  scalar: pnr:                      std::string   pnr()
+  scalar: lineEntry:                std::string   lineEntry()
+  scalar: mOverride:                char          mOverride()
+  scalar: cat35Sell:                char          cat35Sell()
+  scalar: cat35Net:                 char          cat35Net()
+  scalar: recordQuote:              char          recordQuote()
+  scalar: nationality:              NationCode    nationality()
+  scalar: residency:                NationCode    residency()
+  scalar: employment:               NationCode    employment()
+  scalar: amount:                   double        amount()
+  scalar: baseCountry:              NationCode    baseCountry()
+  scalar: commandText:              std::string   commandText()
+  scalar: baseCurrency:             CurrencyCode  baseCurrency()
+  scalar: reciprocal:               std::string   reciprocal()
+  scalar: sortTaxByOrigCity:        char          sortTaxByOrigCity()
+endsection
+
+# std::set<std::string> eprKeywords() 
+
+scalarAggregate:  excludeCarrier: std::vector<std::string>  excludeCarrier()
+
+factoryAggregate: baseDT:         DateTime                  baseDT()

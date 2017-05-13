@@ -1,0 +1,71 @@
+<FareClassAppInfo>
+    <EffectiveDate  year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+    <ExpirationDate year=2004 month=6 day=23 hour=12 minute=0 second=0/>
+
+    <Location location1Type="C"
+              location1="DFW"
+              location2Type="C"
+              location2="LAX" />
+
+    <Misc vendor="ATP"
+          carrier="AA"    
+          ruleTariff=0
+          ruleNumber="0"
+          footnote1="LM"
+          footnote2="NO"
+          fareClass = "Y"
+          MCN=0
+          textTBLItemNo=0
+          owrt=" "
+          routingAppl=" "
+          routingNumber="XXXX"
+          fareType = "EU"
+          seasonType = " "
+          dowType = " "
+          pricingCatType="N"
+          displayCatType=" "
+          seqNo=1
+          unavailTag=" " />
+
+    <!-- Most developers will not need the FareClassAppSegInfo  list that exists in the -->
+    <!-- FareClassAppInfo, so this section can be deleted from most data creations -->
+
+    <FareClassAppSegInfo>
+
+        <!-- directionality can be "ORIGINATING_LOC1", "ORIGINATING_LOC2", or "DIR_IND_NOT_DEFINED" -->
+        <Misc seqNo=1
+              bookingCodeTblItemNo=0
+              overrideDateTblNo=0
+              minAge=0
+              maxAge=199
+              paxType="ADT"
+              directionality="ORIGINATING_LOC1" />
+
+        <Ticket  ticketCode = "1234567890"
+                 ticketCodeModifier = "ABC"
+                 ticketDesignator = "1234567890"
+                 ticketDesignatorModifier = "ABC" />
+
+        <!-- Note that we've left off the bookingCode array, initializing it in code -->
+    </FareClassAppSegInfo>
+    <FareClassAppSegInfo>
+
+        <!-- directionality can be "ORIGINATING_LOC1", "ORIGINATING_LOC2", or "DIR_IND_NOT_DEFINED" -->
+        <Misc seqNo=2
+              bookingCodeTblItemNo=0
+              overrideDateTblNo=0
+              minAge=0
+              maxAge=199
+              paxType="ADT"
+              directionality="ORIGINATING_LOC1" />
+
+        <Ticket  ticketCode = "0987654321"
+                 ticketCodeModifier = "ABC"
+                 ticketDesignator = "1234567890"
+                 ticketDesignatorModifier = "ABC" />
+
+        <!-- Note that we've left off the bookingCode array, initializing it in code -->
+    </FareClassAppSegInfo>
+
+</FareClassAppInfo>
+

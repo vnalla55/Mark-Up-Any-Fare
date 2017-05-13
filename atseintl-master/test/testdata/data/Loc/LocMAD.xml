@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="MAD"
+          city=""
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="ES"
+          state=""
+     />
+     <Position
+          latdegrees=40
+          latminutes=28
+          latseconds=20
+          lngdegrees=3
+          lngminutes=33
+          lngseconds=48
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2003 month=3 day=6 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="ES01"
+          description="MADRID"
+     />
+</Loc>

@@ -1,0 +1,32 @@
+<FareClassAppInfo>
+     <EffectiveDate year=2004 month=4 day=28 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Location
+          location1Type="Z"
+          location1="00210"
+          location2Type="A"
+          location2="3"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="BA"
+          ruleTariff=677
+          ruleNumber="GB10"
+          footnote1=""
+          footnote2=""
+          fareClass="HHUQB"
+          MCN=4797268
+          textTBLItemNo=0
+          owrt="2"
+          routingAppl=" "
+          routingNumber=""
+          fareType="XAN"
+          seasonType=" "
+          dowType=" "
+          pricingCatType="S"
+          displayCatType="E"
+          seqNo=1000000
+          unavailTag=""
+     />
+     <FareClassAppSegInfo file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_FareClassAppSegInfo71.xml"/>
+</FareClassAppInfo>

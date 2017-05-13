@@ -1,0 +1,17 @@
+<Nation>
+     <Misc
+          nation="BG"
+          isonumericCode=100
+          subArea="21"
+          area="2"
+          isoalphaCode="BGR"
+          primeCur="BGN"
+          alternateCur=""
+          conversionCur="EUR"
+          description="BULGARIA"
+     />
+     <CreateDate year=2004 month=6 day=16 hour=15 minute=34 second=23/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2004 month=6 day=16 hour=0 minute=0 second=0/>
+     <DiscDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+</Nation>

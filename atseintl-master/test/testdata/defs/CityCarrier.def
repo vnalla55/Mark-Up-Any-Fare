@@ -1,0 +1,14 @@
+name: CityCarrier
+namespace: tse
+outerClass: TravelRoute
+package: Routing
+
+factoryAggregate: BoardCity:  TravelRoute::City boardCity()
+factoryAggregate: OffCity:    TravelRoute::City offCity()
+
+section: Info
+  scalar: boardNation:  NationCode  boardNation()
+  scalar: offNation:    NationCode  offNation()
+  scalar: carrier:      CarrierCode carrier()
+  scalar: stopover:     bool        stopover()
+endsection

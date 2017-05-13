@@ -1,0 +1,22 @@
+<PaxTypeFare>
+     <Status value="FareByRule"/>
+     <ActualPaxType file="FareSelectorData/PaxTypeChild.xml"/>
+     <FareClassAppInfo file="FareSelectorData/FareClassAppInfo4.xml"/>
+     <FareClassAppSegInfo file="FareSelectorData/FareClassAppSegInfo4.xml"/>
+     <FareTypeMatrix
+          cabin="3"
+          fareTypeDesignator=-1
+          fareTypeApplication=" "
+     />
+     <Misc
+          surchargeAmt=0
+          transferAmt=0
+          stopOverAmt=0
+          hipAmount=0
+          hipBoardPoint=""
+          hipOffPoint=""
+          bhcAmount=0
+     />
+     <Fare file="FareSelectorData/Fare4.xml"/>
+     <FareMarket file="FareSelectorData/fareMarket.xml"/>
+</PaxTypeFare>

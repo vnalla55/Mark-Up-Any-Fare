@@ -1,0 +1,20 @@
+name: DiscountSegInfo
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: orderNo:      int           orderNo()
+  scalar: minNoPsg:     int           minNoPsg()
+  scalar: maxNoPsg:     int           maxNoPsg()
+  scalar: minAge1:      int           minAge1()
+  scalar: maxAge1:      int           maxAge1()
+  scalar: minAge2:      int           minAge2()
+  scalar: maxAge2:      int           maxAge2()
+  scalar: minAge3:      int           minAge3()
+  scalar: maxAge3:      int           maxAge3()
+  scalar: accPsgType1:  PaxTypeCode   accPsgType1()
+  scalar: accPsgType2:  PaxTypeCode   accPsgType2()
+  scalar: accPsgType3:  PaxTypeCode   accPsgType3()
+  scalar: fareClass:    FareClassCode fareClass()
+  scalar: bookingCode:  BookingCode   bookingCode()
+endsection

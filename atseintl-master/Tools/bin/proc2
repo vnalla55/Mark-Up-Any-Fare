@@ -1,0 +1,10 @@
+#!/bin/csh
+
+# Must use shell script in order to set ORACLE_HOME and LD_LIBRARY_PATH
+
+setenv ORACLE_HOME $1
+setenv LD_LIBRARY_PATH $1/lib
+unsetenv LD_LIBRARY_PATH_64
+
+$1/bin/proc $argv[2-]
+

@@ -1,0 +1,14 @@
+<Fare>
+     <FareInfo file="fare/fare_FareInfo0.xml"/>
+     <TariffCrossRefInfo file="fare/fare_TariffCrossRefInfo0.xml"/>
+     <Misc
+          nucFareAmount=275.5
+     />
+     <FareStatus fareStatus="Domestic"/>
+     <FareStatus fareStatus="PublishedFare"/>
+     <RuleStatus ruleStatus="Cat03"/>
+     <RuleStatus ruleStatus="Cat05"/>
+     <RuleStatus ruleStatus="Cat15"/>
+     <RuleProcessStatus ruleProcessStatus="Cat07"/>
+     <RuleProcessStatus ruleProcessStatus="Cat14"/>
+</Fare>

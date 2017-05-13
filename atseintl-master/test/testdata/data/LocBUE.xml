@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="BUE"
+          city=""
+          subarea="14"
+          area="1"
+          transtype=" "
+          nation="AR"
+          state=""
+     />
+     <Position
+          latdegrees=34
+          latminutes=41
+          latseconds=22
+          lngdegrees=58
+          lngminutes=28
+          lngseconds=30
+          lathemisphere="S"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="AR01"
+          description="BUENOS AIRES   AR"
+     />
+</Loc>

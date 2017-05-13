@@ -1,0 +1,11 @@
+<PaxTypeBucket>
+     <RequestedPaxType file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/paxType.xml"/>
+     <PaxTypeFare file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/MinFarePromFareSelection_PaxTypeFare0.xml"/>
+     <PaxTypeFare file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/MinFarePromFareSelection_PaxTypeFare1.xml"/>
+     <PaxTypeFare file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/MinFarePromFareSelection_PaxTypeFare2.xml"/>
+     <PaxTypeFare file="/vobs/atseintl/MinFares/test/data/MinFarePromFareSelection/MinFarePromFareSelection_PaxTypeFare3.xml"/>
+     <Misc
+          inboundCurrency="USD"
+          outboundCurrency="USD"
+     />
+</PaxTypeBucket>

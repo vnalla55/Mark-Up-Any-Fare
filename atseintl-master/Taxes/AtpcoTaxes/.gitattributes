@@ -1,0 +1,12 @@
+Common/* text=true
+Common/test/* text=true
+Diagnostic/* text=true
+Diagnostic/test/* text=true
+Interfaces/Db/* text=true
+Interfaces/Io/* text=true
+Interfaces/Services/* text=true
+Rules/* text=true
+Rules/test/* text=true
+test/* text=true
+test/data/* text=true
+test/Runner/* text=true

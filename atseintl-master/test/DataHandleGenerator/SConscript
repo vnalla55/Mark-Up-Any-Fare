@@ -1,0 +1,54 @@
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2014
+
+import os
+Import('env')
+
+DATA_HANDLE_GENERATOR_FILES = '''
+Config.cpp
+DataHandleDataMap.cpp
+DHGenerator.cpp
+DHHeaderParser.cpp
+main.cpp
+Types.cpp
+'''
+
+LIBS = [
+    'boost_regex',
+    'boost_program_options',
+    'boost_system',
+    'boost_filesystem',
+    'log4cxx',
+    'xerces-c'
+]
+
+def generate_scanner_cc(env,  dircontext):
+    if env['REDHAT_VERSION_'] == 5:
+        flag = '-Pscan'
+    else:
+        flag = '-Pyy'
+
+    env.raw.Command('scanner.cc', 'scanner.l', '/usr/bin/flex -d %s -o${TARGET} $SOURCE' % flag)
+
+def build_generator(env, dircontext):
+    env.add_libs(*LIBS)
+    m = env.factory.progmaker('DataHandleGenerator')
+    m.add_sources(DATA_HANDLE_GENERATOR_FILES)
+    prognode = m.make()
+    dircontext.toreturn['generator'] = prognode[0]
+
+def localize_config(env, dircontext):
+    new_config_node = env.raw.Command('localized_config.ini', 'config.ini',
+            "sed -e 's|/vobs/atseintl|.|g' < $SOURCE > $TARGET")
+    dircontext.toreturn['localized_config'] = new_config_node[0]
+
+s = env.scout()
+s.env.add_isystem_paths('$XERCESC_CPPPATH_')
+s.env.add_libpaths('$BOOST_LIBPATH_', '$LOG4CXX_LIBPATH_', '$XERCESC_LIBPATH_')
+s.werror = False
+s.env['INCLUDE_PATH_'] = [os.path.join('..', '..'), '.']
+s.add_task(generate_scanner_cc)
+s.add_task(build_generator, copyenv=True)
+s.add_task(localize_config)
+toreturn = s.build()
+Return('toreturn')

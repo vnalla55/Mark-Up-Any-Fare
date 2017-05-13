@@ -1,0 +1,25 @@
+name: TravelRoute
+namespace: tse
+package: Routing
+typePackage: DataModel TravelSeg
+
+factoryAggregate: TravelRoute:        std::vector<TravelRoute::CityCarrier> travelRoute()
+factoryAggregate: MileageTravelRoute: std::vector<TravelSeg*>               mileageTravelRoute()
+
+factoryAggregate: TravelDate: DateTime travelDate()
+
+section: Attributes
+  scalar: origin:                     LocCode         origin()
+  scalar: originNation:               NationCode      originNation()
+  scalar: destination:                LocCode         destination()
+  scalar: destinationNation:          NationCode      destinationNation()
+  scalar: governingCarrier:           CarrierCode     govCxr()
+  scalar: flightTrackingCarrier:      bool            flightTrackingCxr()
+  scalar: globalDirection:            GlobalDirection globalDir()
+  scalar: maxPermittedMileage:        uint16_t        maxPermittedMileage()
+  scalar: totalTicketedPointMileage:  uint16_t        totalTPM()
+  scalar: doNotApplyDRV:              bool            doNotApplyDRV()
+  scalar: terminalPoints:             bool            terminalPoints()
+endsection
+
+factoryAggregate: primarySector: TravelSeg* primarySector()

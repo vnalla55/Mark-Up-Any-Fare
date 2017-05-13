@@ -1,0 +1,33 @@
+name: TktDesignatorExemptInfo 
+namespace: tse
+package: DBAccess
+
+factoryAggregate: versionDate:        DateTime versionDate()
+factoryAggregate: createDate:         DateTime createDate()
+factoryAggregate: effDate:            DateTime effDate()
+factoryAggregate: discDate:           DateTime discDate()
+factoryAggregate: expireDate:   DateTime expireDate()
+
+
+
+section: Attributes
+  scalar:  carrier:               CarrierCode                                             carrier()
+  scalar:  sequenceNumber:        SequenceNumber                                          sequenceNumber()
+  scalar:  validityInd:           Indicator                                               validityInd()
+  scalar:  description:           Description                                             description()
+  scalar:  exemptionType:         Indicator                                               exemptionType()
+  scalar:  ticketDesignator:      TktDesignator                                           ticketDesignator()
+  scalar:  paxType:               PaxTypeCode                                             paxType()
+  scalar:  taxExempt:             Indicator                                               taxExempt()
+  scalar:  pfcExempt:             Indicator                                               pfcExempt()
+  scalar:  ruleTariff:            TariffNumber                                            ruleTariff()
+  scalar:  ruleNumber1:           RuleNumber                                              ruleNumber1()
+  scalar:  ruleRelational:        Indicator                                               ruleRelational()
+  scalar:  ruleNumber2:           RuleNumber                                              ruleNumber2()
+  scalar:  directionality:        Directionality                                          directionality()
+  scalar:  locType1:              Indicator                                               locType1()
+  scalar:  loc1:                  LocCode                                                 loc1()
+  scalar:  locType2:              Indicator                                               locType2()
+  scalar:  loc2:                  LocCode                                                 loc2()
+endsection
+

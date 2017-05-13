@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# ensure we are running within the same directory
+# from which we are running
+cd $(dirname $(which ${0}))
+. ./env.vars
+
+echo "Comparing keys..."
+./cachetest.sh ${tbl_param} -app ${APP} -host ${HOST} -port ${PORT} -cmd compkeys ${all} > ${CKEYFILE} 
+
+tail -2 ${CKEYFILE} 
+
+echo "Comparing values..."
+./cachetest.sh ${tbl_param} -app ${APP} -host ${HOST} -port ${PORT} -cmd compvals ${all} > ${CVALFILE}
+
+tail -2 ${CVALFILE} 
+
+bash ./dumpkeys.sh ${tbl_param} -app ${APP} -host ${HOST} -port ${PORT} > ${DKEYFILE} 
+

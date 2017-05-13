@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="LSC"
+          city=""
+          subarea="14"
+          area="1"
+          transtype="P"
+          nation="CL"
+          state=""
+     />
+     <Position
+          latdegrees=29
+          latminutes=55
+          latseconds=0
+          lngdegrees=71
+          lngminutes=12
+          lngseconds=0
+          lathemisphere="S"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="CL01"
+          description="LA SERENA"
+     />
+</Loc>

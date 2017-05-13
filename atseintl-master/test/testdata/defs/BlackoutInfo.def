@@ -1,0 +1,25 @@
+name: BlackoutInfo
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar:         overrideDateTblItemNo:  int       overrideDateTblItemNo()
+  scalar:         geoTblItemNoBetween:    int       geoTblItemNoBetween()
+  scalar:         geoTblItemNoAnd:        int       geoTblItemNoAnd()
+  scalar:         tvlStartYear:           int       tvlStartYear()
+  scalar:         tvlStartMonth:          int       tvlStartMonth()
+  scalar:         tvlStartDay:            int       tvlStartDay()
+  scalar:         tvlStopYear:            int       tvlStopYear()
+  scalar:         tvlStopMonth:           int       tvlStopMonth()
+  scalar:         tvlStopDay:             int       tvlStopDay()
+endsection
+
+section: Indicators
+  scalar:         blackoutAppl:           Indicator blackoutAppl()
+  scalar:         unavailtag:             Indicator unavailtag()
+  scalar:         intlRest:               Indicator intlRest()
+  scalar:         inhibit:                Indicator inhibit()
+endsection
+
+factoryAggregate: CreateDate:             DateTime  createDate()
+factoryAggregate: ExpireDate:             DateTime  expireDate()

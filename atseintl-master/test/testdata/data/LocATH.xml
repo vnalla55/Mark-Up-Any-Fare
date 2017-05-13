@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="ATH"
+          subarea="21"
+          area="2"
+          transtype="P"
+          nation="GR"
+          state=" "
+     />
+     <Position
+          latdegrees=37
+          latminutes=56
+          latseconds=0
+          lngdegrees=23
+          lngminutes=56
+          lngseconds=39
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="GR01"
+          description="ATHENS"
+     />
+</Loc>

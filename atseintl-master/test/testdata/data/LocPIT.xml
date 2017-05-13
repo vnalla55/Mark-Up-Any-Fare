@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="PIT"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="US"
+          state="USPA"
+     />
+     <Position
+          latdegrees=40
+          latminutes=29
+          latseconds=48
+          lngdegrees=80
+          lngminutes=14
+          lngseconds=9
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="US01"
+          description="PITTSBURGH"
+     />
+</Loc>

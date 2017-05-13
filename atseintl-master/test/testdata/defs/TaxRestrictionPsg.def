@@ -1,0 +1,11 @@
+name: TaxRestrictionPsg
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: psgType:      PaxTypeCode psgType()
+  scalar: showPsg:      Indicator   showPsg()
+  scalar: fareZeroOnly: Indicator   fareZeroOnly()
+  scalar: minAge:       int         minAge()
+  scalar: maxAge:       int         maxAge()
+endsection

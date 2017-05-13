@@ -1,0 +1,43 @@
+name: FareUsage
+namespace: tse
+package: DataModel
+
+factoryAggregateWithCompare: PaxTypeFare:  PaxTypeFare*            paxTypeFare()
+factoryAggregateWithCompare: AirSeg:       std::vector<TravelSeg*> travelSeg()
+
+specialAggregate: Status: std::string status
+  read
+    if (false);
+  endRead
+  readLoop
+    else if (status == "$1")
+      item->$2;
+  endReadLoop
+  writeLoop
+    if (item.$3)
+      $write("$1");
+  endWriteLoop
+
+  loop: Inbound                   | inbound() = true                | isInbound()
+  loop: Outbound                  | inbound() = false               | isOutbound()
+  loop: PerTktCharges             | perTktCharges()                 | isPerTktCharges()
+  loop: PaperTktSurchargeMayApply | setPaperTktSurchargeMayApply()  | isPaperTktSurchargeMayApply()
+  loop: PaperTktSurchargeIncluded | paperTktSurchargeIncluded()     | isPaperTktSurchargeIncluded()
+endSpecial
+
+section: Misc
+  scalar: SurchargeAmt:         MoneyAmount   surchargeAmt()
+  scalar: TransferAmt:          MoneyAmount   transferAmt()
+  scalar: StopOverAmt:          MoneyAmount   stopOverAmt()
+  scalar: AbsorptionAdjustment: MoneyAmount   absorptionAdjustment()
+  scalar: AdjustedStopOvers:    int16_t       adjustedStopOvers()
+  scalar: HasSideTrip:          bool          hasSideTrip()
+  scalar: PenaltyRestInd:       Indicator     penaltyRestInd()
+  scalar: AppendageCode:        AppendageCode appendageCode()
+  scalar: differSeqNumber:      uint16_t      differSeqNumber()
+  scalar: calculationInd:       Indicator     calculationInd()
+  scalar: hipExemptInd:         Indicator     hipExemptInd()
+endsection
+
+scalarCompare: bool isInbound()
+scalarCompare: bool isOutbound()

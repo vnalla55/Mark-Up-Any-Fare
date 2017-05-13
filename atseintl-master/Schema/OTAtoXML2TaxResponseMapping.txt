@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AirTaxRS xmlns="http://webservices.sabre.com/sabreXML/2003/07" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EchoToken="String" TimeStamp="2001-12-17T09:30:47-05:00" Target="Production" Version="2003A.TsabreXML1.0.1" SequenceNmbr="1" PrimaryLangID="en-us" AltLangID="en-us">
+	<!--"Success" indicates a successful response.-->
+	<Success/>
+	<Warnings>
+        <!-- Repeatable -->
+		<!--"ShortText" is equivalent to S32 under ITN.-->
+        <!-- "RPH" is equivalent to Q1K under ITN -->
+		<Warning ShortText="" RPH=""/>
+	</Warnings>
+	<ItineraryInfos>
+		<!--Repeatable-->
+        <!-- "RPH" is equivalent to Q1K under ITN -->
+		<ItineraryInfo RPH="">
+			<PTC_FareBreakdown>
+				<!--"Quantity" is equivalent to Q0U under PXI.-->
+				<!--"Code" is equivalent to B70 under PXI.-->
+				<!--"Age" is equivalent to Q0T under PXI.-->
+				<!--"Total" is equivalent to C66 under PXI.-->
+				<PassengerType Quantity="2" Code="SRC" Age="" Total=""/>
+			</PTC_FareBreakdown>
+			<!--"RPH" is equivalent to QIK under ITN.-->
+			<!--"Total" is equivalent to C65 under ITN.-->
+			<TaxInfo RPH="" Total="">
+				<Taxes>
+					<!--Repeatable-->
+					<!--"Amount" is equivalent to C6B under TAX.-->
+					<!--"TaxCode" is equivalent to BC0 under TAX.-->
+					<Tax TaxCode="US" Amount="26.80">
+						<!--"Text" is equivalent to S04 under TAX.-->
+						<Text/>
+					</Tax>
+				</Taxes>
+			</TaxInfo>
+		</ItineraryInfo>
+	</ItineraryInfos>
+</AirTaxRS>

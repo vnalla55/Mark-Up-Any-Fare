@@ -1,0 +1,10 @@
+name: OriginDestination
+outerClass: PricingTrx
+package: DataModel
+namespace: tse
+
+section: Attributes
+  scalar: boardMultiCity: LocCode   boardMultiCity
+  scalar: offMultiCity:   LocCode   offMultiCity
+  scalar: travelDate:     DateTime  travelDate
+endsection

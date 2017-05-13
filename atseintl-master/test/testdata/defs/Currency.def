@@ -1,0 +1,24 @@
+name: Currency
+namespace: tse
+package: DBAccess
+
+factoryAggregate: expireDate: DateTime expireDate()
+factoryAggregate: effDate:    DateTime effDate()
+factoryAggregate: discDate:   DateTime discDate()
+factoryAggregate: createDate: DateTime createDate()
+
+section: Attributes
+  scalar: cur:                          CurrencyCode    cur()
+  scalar: domRoundingFactor:            CurrencyFactor  domRoundingFactor()
+  scalar: roundingFactorNoDec:          CurrencyNoDec   roundingFactorNoDec()
+  scalar: noDec:                        CurrencyNoDec   noDec()
+  scalar: curNo:                        int             curNo()
+  scalar: curName:                      std::string     curName()
+  scalar: nucRoundingProcessNo:         std::string     nucRoundingProcessNo()
+  scalar: controllingEntityDesc:        std::string     controllingEntityDesc()
+  scalar: taxOverrideRoundingUnitNoDec: CurrencyNoDec   taxOverrideRoundingUnitNoDec()
+  scalar: taxOverrideRoundingUnit:      double          taxOverrideRoundingUnit()
+  scalar: taxOverrideRoundingRule:      RoundingRule    taxOverrideRoundingRule()
+endsection
+
+scalarAggregate: nationRes: std::vector<NationCode> nationRes()

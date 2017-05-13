@@ -1,0 +1,13 @@
+<CategoryRuleInfo>
+     <Attributes
+          vendorCode="ATP"
+          tariffNumber=27
+          carrierCode="JJ"
+          ruleNumber="FRAR"
+          categoryNumber=15
+          sequenceNumber=9000000
+     />
+     <CategoryRuleItemInfoSet file="/vobs/atseintl/BookingCode/test/testdata/FBR1_CategoryRuleItemInfoSet2.xml"/>
+     <Location1 file="/vobs/atseintl/BookingCode/test/testdata/FBR1_LocKey9.xml"/>
+     <Location2 file="/vobs/atseintl/BookingCode/test/testdata/FBR1_LocKey10.xml"/>
+</CategoryRuleInfo>

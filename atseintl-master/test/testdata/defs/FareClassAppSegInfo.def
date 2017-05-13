@@ -1,0 +1,40 @@
+name: FareClassAppSegInfo
+namespace: tse
+package: DBAccess
+
+section: Ticket
+  scalarWithCompare:  ticketCode:               TktCode               _tktCode
+  scalar:             ticketCodeModifier:       TktCodeModifier       _tktCodeModifier
+  scalarWithCompare:  ticketDesignator:         TktDesignator         _tktDesignator
+  scalar:             ticketDesignatorModifier: TktDesignatorModifier _tktDesignatorModifier
+  scalar:             bookingCode:              char                  _bookingCode[0]
+  scalar:             bookingCode2:             char                  _bookingCode[1]
+endsection
+
+section: Misc
+  scalar:             seqNo:                    long                  _seqNo
+  scalarWithCompare:  bookingCodeTblItemNo:     long                  _bookingCodeTblItemNo
+  scalarWithCompare:  overrideDateTblNo:        long                  _overrideDateTblNo
+  scalar:             minAge:                   int                   _minAge
+  scalar:             maxAge:                   int                   _maxAge
+  scalarWithCompare:  paxType:                  PaxTypeCode           _paxType
+  scalar:             directionality:           FCASegDirectionality  _directionality
+  scalar:             carrierApplTblItemNo:     int                   _carrierApplTblItemNo
+endsection
+
+initLines
+  for (int i = 0; i < FareClassAppSegInfo::BK_CODE_SIZE; ++i)
+  {
+    char foo = 0;
+    item->_bookingCode[i] = foo;
+  }
+endInitLines
+
+scalarCompare: char _bookingCode[0]
+scalarCompare: char _bookingCode[1]
+scalarCompare: char _bookingCode[2]
+scalarCompare: char _bookingCode[3]
+scalarCompare: char _bookingCode[4]
+scalarCompare: char _bookingCode[5]
+scalarCompare: char _bookingCode[6]
+scalarCompare: char _bookingCode[7]

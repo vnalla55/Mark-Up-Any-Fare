@@ -1,0 +1,69 @@
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2014
+
+Import('env')
+import os
+import scommon
+
+
+def install_builders(env, dircontext):
+    install_data_handler_builder(env, 'CreateDHCpp')
+    install_data_handler_builder(env, 'CreateDHMockH')
+    install_data_handler_builder(env, 'CreateDHMockCpp')
+
+def install_data_handler_builder(env, creation_type):
+    b = scommon.plugins.DataHandleBuilder(
+            env.stash['datahandle_generator_app'],
+            creation_type)
+    env.add_builder(creation_type, b)
+
+def generate_data_handles(env):
+    env = env.clone()
+    library_paths_raw = env['EXTERNAL_LIBPATHS_'] + [env['STD_LIBPATH_']]
+    env.add_ld_library_paths(*map(env.subst, library_paths_raw))
+    localized_cfg = env.stash['localized_dhgenerator_config']
+
+    mock_h = env.raw.CreateDHMockH(localized_cfg)[0]
+    dh_cpp = env.raw.CreateDHCpp(localized_cfg)[0]
+    dh_mock_cpp = env.raw.CreateDHMockCpp(localized_cfg)[0]
+
+    env.log.debug('mock header: %s', str(mock_h))
+    env.log.debug('dh cpp: %s', str(dh_cpp))
+    env.log.debug('dh mock cpp: %s', str(dh_mock_cpp))
+
+    for h in [mock_h, dh_cpp, dh_mock_cpp]:
+        scommon.bridge.depends(h, env.stash['dbaccess_lib_node'])
+
+    return [dh_cpp, dh_mock_cpp]
+
+ADDITIONAL_DBACCESS_SOURCES = [
+    'Queries/PrintBaseSQL.cpp',
+    'Queries/QueryGetCacheNotify.cpp',
+    'BoundFareDAO.cpp',
+    'MarketRoutingDAO.cpp']
+
+def retrieve_dbaccess_objects(env, dircontext):
+    filelist = dircontext.mksources.filelist('DB_SOURCES') + ADDITIONAL_DBACCESS_SOURCES
+    collector = scommon.NodeCollector(env.stash['DBACCESS_OBJECTS'])
+    # skip the original DataHandle object
+    return collector.retrieve_nodes(filelist, excludes = ['DataHandle'])
+
+
+def build_mock_lib_dbaccess(env, dircontext):
+    lm = env.factory.libmaker('MockDBAccess')
+    reused_dbaccess_objects = retrieve_dbaccess_objects(env, dircontext)
+    lm.add_objects(reused_dbaccess_objects)
+    handles = generate_data_handles(env)
+    lm.add_sources(handles)
+    lm.add_sources('DataHandleMockFactory.cpp')
+    lm.make()
+
+
+s = env.msscout(makefile_sources_path=os.path.join(
+        env.absroot, 'DBAccess', 'Makefile.sources'))
+s.werror = False
+s.env['INCLUDE_PATH_'] = ['../..', '.', '#/DBAccess', '../testdata', '$BDB_CPPPATH_']
+s.env.add_defines(env['TSE_VOB_DIR_DEFINE_'], 'TIXML_USE_STL')
+s.add_task(install_builders)
+s.add_task(build_mock_lib_dbaccess)
+s.build()

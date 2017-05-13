@@ -1,0 +1,13 @@
+#! /bin/csh
+
+# Check out vob objects
+# 	can be implemented as an alias:
+#		alias ct_co 			cleartool checkout -nc
+
+if ( "$1" == "" ) then
+	echo "Syntax: ct_co <vob objects>"
+	exit 1
+endif
+
+cleartool checkout -nc $*
+

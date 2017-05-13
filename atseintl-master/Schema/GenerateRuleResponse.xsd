@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2005 rel. 5 U (http://www.xmlspy.com) by Mike Carroll (SABRE Holdings) -->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="CommonTypes.xsd"/>
+	<xs:element name="GenerateRuleResponse">
+		<xs:annotation>
+			<xs:documentation>
+			RTG  Generate Rule Response
+			S38	 Category header
+			S39	 Record 2 restriction
+			S40	 Combinability scoreboard
+			S41	 Rule text
+			S42	 Same point city pair text
+			S43	 Full rule text
+			S31	 Error message
+			Q3Y Status code
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="S38" type="xs:string" use="required"/>
+			<xs:attribute name="S39" type="xs:string" use="required"/>
+			<xs:attribute name="S40" type="xs:string" use="required"/>
+			<xs:attribute name="S41" type="xs:string" use="required"/>
+			<xs:attribute name="S42" type="xs:string" use="required"/>
+			<xs:attribute name="S43" type="xs:string" use="required"/>
+			<xs:attribute name="S31" type="xs:string" use="required"/>
+			<xs:attribute name="Q3Y" type="xs:short" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

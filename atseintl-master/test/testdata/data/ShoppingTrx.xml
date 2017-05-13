@@ -1,0 +1,8 @@
+<ShoppingTrx>
+    <PricingOptions file="/vobs/atseintl/test/testdata/data/pricingOptions.xml"/>
+    <ShoppingAttributes
+      altDates="true"
+      numberOfSolutions=1
+    />
+    <PricingRequest file="/vobs/atseintl/test/testdata/data/pricingRequest.xml"/>
+</ShoppingTrx>

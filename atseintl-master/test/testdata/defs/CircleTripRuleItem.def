@@ -1,0 +1,13 @@
+name: CircleTripRuleItem
+namespace: tse
+package: DBAccess
+
+section: Attributes
+  scalar: unavailtag:     Indicator   unavailtag()
+  scalar: sameCarrierInd: Indicator   sameCarrierInd()
+  scalar: atwInd:         Indicator   atwInd()
+  scalar: breakPoints:    Indicator   breakPoints()
+  scalar: stopoverCnt:    std::string stopoverCnt()
+endsection
+
+factoryAggregate: ExpirationDate: DateTime expireDate()

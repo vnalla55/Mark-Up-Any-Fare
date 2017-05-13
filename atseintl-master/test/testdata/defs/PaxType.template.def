@@ -1,0 +1,44 @@
+name: PaxType
+namespace: tse
+package: DataModel
+
+factoryAggregate: PaxTypeInfo: PaxTypeInfo* paxTypeInfo()
+
+specialSection: Misc paxType: std::string type
+  read
+    if (false);
+  endRead
+  readLoop
+    else if (type == "$1")
+      item->paxType() = $1;
+  endReadLoop
+  writeLoop
+    if (item.paxType() == $1)
+      $write("$1");
+  endWriteLoop
+
+  loop: ADULT
+  loop: CHILD
+  loop: INFANT
+  loop: INS
+  loop: CNE
+  loop: NEG
+  loop: INE
+  loop: CBC
+  loop: PFA
+  loop: CBI
+  loop: JNN
+  loop: UNR
+  loop: JCB
+  loop: JNF
+
+  scalar:             number:     uint16_t    number()
+  scalarWithCompare:  age:        uint16_t    age()
+  scalar:             inputOrder: uint16_t    inputOrder()
+  scalar:             vendorCode: VendorCode  vendorCode()
+endSpecial
+
+# TODO actualPaxType - implement map
+
+scalarCompare: enum paxType()
+scalarCompare: void totalPaxNumber()

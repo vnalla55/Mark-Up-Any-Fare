@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="DXB"
+          subarea="22"
+          area="2"
+          transtype="P"
+          nation="AE"
+          state=" "
+     />
+     <Position
+          latdegrees=25
+          latminutes=15
+          latseconds=0
+          lngdegrees=55
+          lngminutes=21
+          lngseconds=28
+          lathemisphere="N"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2006 month=3 day=13 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="AE01"
+          description="DUBAI"
+     />
+</Loc>

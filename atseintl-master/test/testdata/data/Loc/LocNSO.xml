@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="NSO"
+          city=""
+          subarea="34"
+          area="3"
+          transtype="P"
+          nation="AU"
+          state="AUNS"
+     />
+     <Position
+          latdegrees=32
+          latminutes=2
+          latseconds=10
+          lngdegrees=150
+          lngminutes=49
+          lngseconds=57
+          lathemisphere="S"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="AU02"
+          description="SCONE"
+     />
+</Loc>

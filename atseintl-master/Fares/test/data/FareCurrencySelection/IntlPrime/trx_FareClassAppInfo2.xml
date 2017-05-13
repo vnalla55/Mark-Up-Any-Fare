@@ -1,0 +1,32 @@
+<FareClassAppInfo>
+     <EffectiveDate year=2002 month=10 day=17 hour=0 minute=0 second=0/>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Location
+          location1Type="A"
+          location1="2"
+          location2Type="A"
+          location2="3"
+     />
+     <Misc
+          vendor="ATP"
+          carrier="BA"
+          ruleTariff=4
+          ruleNumber="3950"
+          footnote1=""
+          footnote2=""
+          fareClass="AHAP"
+          MCN=4739619
+          textTBLItemNo=0
+          owrt="2"
+          routingAppl=" "
+          routingNumber=""
+          fareType="FX"
+          seasonType=" "
+          dowType=" "
+          pricingCatType="S"
+          displayCatType="E"
+          seqNo=100000
+          unavailTag=""
+     />
+     <FareClassAppSegInfo file="/vobs/atseintl/Fares/test/data/FareCurrencySelection/IntlPrime/trx_FareClassAppSegInfo2.xml"/>
+</FareClassAppInfo>

@@ -1,0 +1,10 @@
+<PaxType>
+     <PaxTypeInfo file="AccompaniedTravelData/PaxTypeInfo0.xml"/>
+     <Misc
+          paxType="ADULT"
+          number=2
+          age=0
+          inputOrder=0
+          vendorCode=""
+     />
+</PaxType>

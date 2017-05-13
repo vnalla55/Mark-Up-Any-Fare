@@ -1,0 +1,35 @@
+name: PricingUnit
+namespace: tse
+package: DataModel
+
+factoryAggregate: AirSeg:               std::vector<TravelSeg*>   travelSeg()
+factoryAggregate: FareUsage:            std::vector<FareUsage*>   fareUsage()
+factoryAggregate: SideTripPricingUnit:  std::vector<PricingUnit*> sideTripPUs()
+
+factoryAggregate: EarlistTicketDate:  DateTime earliestTktDT()
+factoryAggregate: LatestTicketDate:   DateTime latestTktDT()
+
+# We haven't implemented the turnAroundPoint as it is a TravelSeg, and we're very limited
+# in how we handle TravelSeg/AirSegs at this point
+#factoryAggregate: turnAroundPoint: TravelSeg* turnAroundPoint()
+
+
+section: Misc
+  scalar: puType:           PricingUnit::PUType           puType()
+  scalar: puSubType:        PricingUnit::PUSubType        puSubType()
+  scalar: ojSurfaceStatus:  PricingUnit::OJSurfaceStatus  ojSurfaceStatus()
+  scalar: puFareType:       PricingUnit::PUFareType       puFareType()
+  scalar: geoTravelType:    GeoTravelType                 geoTravelType()
+  scalar: isSideTripPU:     bool                          hasSideTrip()
+  scalar: hasSideTrip:      bool                          hasSideTrip()
+  scalar: sameNationOJ:     bool                          sameNationOJ()
+  #scalar: totalPuNucAmount: MoneyAmount                   setTotalPuNucAmount()
+  scalar: sideTripNumber:   uint8_t                       sideTripNumber()
+  scalar: noPUToEOE:        bool                          noPUToEOE()
+  # The MinFarePlusUp class needs to add getter/setters before we can add a test factory.
+  #scalar: minFarePlusUp:    MinFarePlusUp                 minFarePlusUp()
+endsection
+
+#factoryAggregate: OriginalDepartureDate DateTime origDepartureDT()
+
+# Note that we have not addressed the 2 multimaps in the PricingUnit, _minFarePlusUp and _minFareUnchecked.

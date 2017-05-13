@@ -1,0 +1,7 @@
+name: NetRemitFarePath
+parent: FarePath
+namespace: tse
+package: DataModel
+
+section: Foo
+endsection

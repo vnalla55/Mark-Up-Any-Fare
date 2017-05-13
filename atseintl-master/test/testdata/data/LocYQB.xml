@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="YQB"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="CA"
+          state="CAQC"
+     />
+     <Position
+          latdegrees=46
+          latminutes=47
+          latseconds=6
+          lngdegrees=71
+          lngminutes=23
+          lngseconds=5
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2002 month=2 day=6 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="t"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="CA03"
+          description="QUEBEC QC"
+     />
+</Loc>

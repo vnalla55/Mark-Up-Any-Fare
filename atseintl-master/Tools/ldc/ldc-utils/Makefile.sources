@@ -1,0 +1,43 @@
+LISTBDB_SOURCES := \
+    stringFunc.cpp \
+    CommandLine.cpp \
+    FileAccess.cpp \
+    listBDB.cpp \
+    LDCUtil.cpp \
+    CacheEvent.cpp
+
+CACHECOMPARE_SOURCES := \
+    stringFunc.cpp \
+    CommandLine.cpp \
+    FileAccess.cpp \
+    cacheCompare.cpp \
+    LDCUtil.cpp \
+    CacheEvent.cpp
+
+LISTCACHEEVENTS_SOURCES := \
+    stringFunc.cpp \
+    CommandLine.cpp \
+    FileAccess.cpp \
+    listCacheEvents.cpp \
+    CacheEvent.cpp
+    
+BDBCOMPARE_SOURCES := \
+    stringFunc.cpp \
+    CommandLine.cpp \
+    FileAccess.cpp \
+    bdbCompare.cpp \
+    LDCUtil.cpp
+
+READTEST_SOURCES := \
+    stringFunc.cpp \
+    CommandLine.cpp \
+    FileAccess.cpp \
+    readTest.cpp \
+    LDCUtil.cpp
+
+THREADTEST_SOURCES := \
+    stringFunc.cpp \
+    CommandLine.cpp \
+    FileAccess.cpp \
+    threadTest.cpp \
+    LDCUtil-mt.cpp

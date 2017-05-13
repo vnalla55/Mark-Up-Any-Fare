@@ -1,0 +1,6 @@
+name: CategoryRuleItemInfoSet
+namespace: tse
+package: DBAccess
+
+# Pointer aggregates take sectionName, factory to create, and accessor ....
+factoryAggregateWithCompare: CategoryRuleItemInfo: std::vector<CategoryRuleItemInfo> categoryRuleItemInfo() OwnsPointer

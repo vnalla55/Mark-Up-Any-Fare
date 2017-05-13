@@ -1,0 +1,45 @@
+<CarrierPreference>
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2010 month=6 day=9 hour=0 minute=0 second=0/>
+     <DiscountDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <FirstTravelDate year=2010 month=6 day=9 hour=0 minute=0 second=0/>
+     <LastTravelDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <Misc
+          memoNo=211533
+          freebaggageexempt="N"
+          availabilityApplyrul2st="Y"
+          availabilityApplyrul3st="Y"
+          bypassosc="N"
+          bypassrsc="N"
+          applysamenuctort="N"
+          applyrtevaltoterminalpt="N"
+          noApplydrvexceptus="N"
+          applyleastRestrStOptopu="N"
+          applyleastRestrtrnsftopu="N"
+          noApplycombtag1and3="Y"
+          applysingleaddonconstr="Y"
+          applyspecoveraddon="Y"
+          noApplynigeriaCuradj="Y"
+          carrier="LH"
+          carrierbasenation="DE"
+          description="LUFTHANSA"
+          flowMktJourneyType="Y"
+          localMktJourneyType="N"
+          activateSoloPricing="N"
+          activateSoloShopping="N"
+          activateJourneyPricing="N"
+          activateJourneyShopping="N"
+          applyUS2TaxOnFreeTkt="N"
+          privateFareInd="N"
+          freeBaggageCarrierExempt="N"
+          applyPremBusCabinDiffCalc="N"
+          applyPremEconCabinDiffCalc="N"
+          noApplySlideToNonPremium="N"
+          noApplyBagExceptOnCombArea1_3="N"
+          ovrideFreeBagFareCompLogic="N"
+          applyNormalFareOJInDiffCntrys="Y"
+          applySingleTOJBetwAreasShorterFC="N"
+          applySingleTOJBetwAreasLongerFC="Y"
+          applySpclDOJEurope="N"
+     />
+</CarrierPreference>

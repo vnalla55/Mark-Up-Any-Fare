@@ -1,0 +1,19 @@
+name: RoutingMap
+namespace: tse
+package: DBAccess
+
+factoryAggregate: EffectiveDate:  DateTime  effDate()
+factoryAggregate: Loc1Key:        LocKey    loc1()
+
+section: Attributes
+  scalar: vendor:           VendorCode    vendor()
+  scalar: carrier:          CarrierCode   carrier()
+  scalar: routingTariff:    TariffNumber  routingTariff()
+  scalar: routingNumber:    RoutingNumber routing()
+  scalar: lnkMapSequence:   int           lnkmapsequence()
+  scalar: loc1Number:       int           loc1No()
+  scalar: locTag:           Indicator     loctag()
+  scalar: nextLocNo:        int           nextLocNo()
+  scalar: altLocNo:         int           altLocNo()
+  scalar: localRoutineCode: LocCode       localRouting()
+endsection

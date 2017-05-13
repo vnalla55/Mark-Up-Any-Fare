@@ -1,0 +1,18 @@
+#!	/usr/bin/csh
+
+# Convert view private files to vob elements
+
+if ( "$1" == "" ) then
+	echo "Syntax: ct_el <view private objects>"
+	exit 1
+endif
+
+cleartool checkout -nc .
+
+foreach FILE ($*)
+	cleartool mkelem -nc -ci $FILE
+#cleartool protect -chgrp crm $FILE
+end
+
+cleartool checkin -nc .
+

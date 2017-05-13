@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+
+Import('env')
+
+s = env.scout()
+s.tests()
+s.werror = True
+s.build()

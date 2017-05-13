@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="ORD"
+          subarea="11"
+          area="1"
+          transtype="P"
+          nation="US"
+          state="USIL"
+     />
+     <Position
+          latdegrees=41
+          latminutes=58
+          latseconds=41
+          lngdegrees=87
+          lngminutes=54
+          lngseconds=22
+          lathemisphere="N"
+          lnghemisphere="W"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=13 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="t"
+     />
+     <Misc
+          dstgrp="US02"
+          description="CHICAGO OHARE"
+     />
+</Loc>

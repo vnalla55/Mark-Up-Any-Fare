@@ -1,0 +1,6 @@
+name: BookingCodeExceptionList
+namespace: tse
+package: DBAccess
+
+# TODO direct accessor
+factoryAggregate: BookingCodeExceptionSequence: std::vector<BookingCodeExceptionSequence*> _

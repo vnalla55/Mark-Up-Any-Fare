@@ -1,0 +1,34 @@
+<Loc>
+     <Area
+          loc="BNE"
+          city=""
+          subarea="34"
+          area="3"
+          transtype="P"
+          nation="AU"
+          state="AUQL"
+     />
+     <Position
+          latdegrees=27
+          latminutes=23
+          latseconds=12
+          lngdegrees=153
+          lngminutes=7
+          lngseconds=0
+          lathemisphere="S"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2001 month=12 day=12 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="f"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="AU2B"
+          description="BRISBANE"
+     />
+</Loc>

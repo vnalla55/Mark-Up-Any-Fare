@@ -1,0 +1,31 @@
+FARE_CALC_SOURCES := \
+    FareUsageIter.cpp \
+    FareAmountAdjustment.cpp \
+    FormattedFareCalcLine.cpp \
+    NoPNRFareCalcController.cpp \
+    NoPNRFareCalcCollector.cpp \
+    NoPNRFareCalculation.cpp \
+    NoPNRFcCollector.cpp \
+    AltFareCalcController.cpp \
+    AltFareCalcCollector.cpp \
+    AltFareCalculation.cpp \
+    FcDispItem.cpp \
+    FcDispFarePath.cpp \
+    FcDispFareUsage.cpp \
+    FcCollector.cpp \
+    FcTaxInfo.cpp \
+    FareAmountsConverter.cpp \
+    FareCalcConsts.cpp \
+    FareCalcHelper.cpp \
+    FareCalcService.cpp \
+    FareCalcController.cpp \
+    FareCalcItinerary.cpp \
+    FareCalculation.cpp\
+    FareCalcCollector.cpp \
+    CalcTotals.cpp \
+    NvbNvaOrchestrator.cpp \
+    SoloCarnivalFCUtil.cpp \
+    AirlineShoppingFCUtil.cpp \
+    IETValidator.cpp \
+    PrepareFareCalcForShoppingTrx.cpp \
+    TaxConfig.cpp

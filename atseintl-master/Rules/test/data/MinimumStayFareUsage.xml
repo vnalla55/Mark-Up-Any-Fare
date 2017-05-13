@@ -1,0 +1,18 @@
+<FareUsage>
+   <PaxTypeFare file="/vobs/atseintl/Rules/test/data/PaxTypeFare.xml" />
+   <AirSeg file="/vobs/atseintl/Rules/test/data/AirSegMSP_MIA.xml" />
+   <AirSeg file="/vobs/atseintl/Rules/test/data/AirSegMIA_MSP.xml" />
+   <Status value = "Inbound" />
+   <Status value = "AppendNR" />
+   
+   <Misc 
+      SurchargeAmt = 100
+      TransferAmt = 140
+      StopOverAmpt = 130
+      AbsorptionAdjustment = 120
+      MinimumFarePlusUp = 150
+      AdjustedStopOvers = 160
+      HasSideTrip = "t" />
+
+</FareUsage>
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AirTaxRQ xmlns="http://webservices.sabre.com/sabreXML/2003/07" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EchoToken="String" TimeStamp="2001-12-17T09:30:47-05:00" Target="Production" Version="2003A.TsabreXML1.0.1" SequenceNmbr="1" PrimaryLangID="en-us" AltLangID="en-us">
+  <POS>
+    <!--"PseudoCityCode" is equivalent to A20 under BIL.-->
+    <Source PseudoCityCode="">
+      <TPA_Extensions>
+        <UserInfo>
+          <!--"Code" is equivalent to Q03 under BIL.-->
+          <Station Code=""/>
+          <!--"Code" is equivalent to Q02 under BIL.-->
+          <Branch Code=""/>
+          <!--"ID" is equivalent to AE0 under BIL.-->
+          <Partition ID=""/>
+          <!--"SetAddress" is equivalent to AD0 under BIL.-->
+          <SetAddress></SetAddress>
+          <!--"Name" is equivalent to C20 under BIL.-->
+          <Service Name=""/>
+          <!--"Code" is equivalent to A22 under BIL.-->
+          <AAACity1 Code=""/>
+          <!--"Code" is equivalent to AA0 under BIL.-->
+          <AgentSine Code=""/>
+          <!--"Code" is equivalent to A70 under BIL.-->
+          <Action Code=""/>
+          <!--"ID" is equivalent to LOO under BIL.-->
+          <Transaction ID=""/>
+        </UserInfo>
+      </TPA_Extensions>
+    </Source>
+  </POS>
+  <ItineraryInfos>
+    <!-- Repeatable -->
+    <ItineraryInfo>
+      <ReservationItems>
+        <!--"RPH" is equivalent to Q1K under ITN.-->
+        <!--"TicketingCarrier" is equivalent to S12 under ITN.-->
+        <!--"ValidatingCarrier" is equivalent to B05 under ITN.-->
+        <!--"SalePseudoCityCode" is equivalent to A20 under ITN.-->
+        <Item RPH="" TicketingCarrier="" ValidatingCarrier="" SalePseudoCityCode="">
+          <!--Repeatable-->
+          <!--"DepartureDateTime" is equivalent to D01 followed  by D31 under FLI.-->
+          <!--"ArrivalDateTime" is equivalent to D02 followed  by D32 under FLI.-->
+          <!--"FlightNumber" is equivalent to Q0B under FLI.-->
+          <!--"ResBookDesigCode" is equivalent to B30 under BCC.-->
+          <FlightSegment DepartureDateTime="2005-11-22T12:40:00" ArrivalDateTime="2005-11-22T17:49:00" FlightNumber="1488" ResBookDesigCode="Y">
+            <!--"LocationCode" is equivalent to A01 under FLI.-->
+            <DepartureAirport LocationCode="SAN" CodeContext="IATA"/>
+            <!--"LocationCode" is equivalent to A02 under FLI.-->
+            <ArrivalAirport LocationCode="IAH" CodeContext="IATA"/>
+            <!--"AirEquipType" is equivalent to B40 under FLI.-->
+            <Equipment AirEquipType="737"/>
+            <!--"Code" is equivalent to B00 under FLI.-->
+            <MarketingAirline Code="XX"/>
+          </FlightSegment>
+          <AirFareInfo>
+            <PTC_FareBreakdown>
+              <!--"Quantity" is equivalent to Q0U under PXI.-->
+              <!--"Code" is equivalent to B70 under PXI.-->
+              <!--"Age" is equivalent to Q0T under PXI.-->
+              <PassengerType Quantity="2" Code="SRC" Age=""/>
+              <!--"FareBasisCode" is equivalent to B50 under FLI.-->
+              <FareBasisCode></FareBasisCode>
+              <PassengerFare>
+                <!--"Amount" is equivalent to C5A under FLI.-->
+                <!--"CurrencyCode" is equivalent to C46 under FLI.-->
+                <BaseFare Amount="4012.00" CurrencyCode="USD"/>
+                <!--"Amount" is equivalent to C5F under FLI.-->
+                <!--"CurrencyCode" is equivalent to C45 under FLI.-->
+                <EquivFare Amount="" CurrencyCode=""/>
+              </PassengerFare>
+            </PTC_FareBreakdown>
+          </AirFareInfo>
+        </Item>
+      </ReservationItems>
+    </ItineraryInfo>
+  </ItineraryInfos>
+</AirTaxRQ>

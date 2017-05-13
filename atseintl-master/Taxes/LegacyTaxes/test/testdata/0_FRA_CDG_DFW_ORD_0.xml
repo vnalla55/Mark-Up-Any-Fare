@@ -1,0 +1,35 @@
+<AirSeg>
+     <ClassOfService file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/ClassOfService_Y.xml"/>
+     <SegmentInfo
+          pnrSegment=1
+          segmentOrder=1
+          stopOver="t"
+          forcedStopOver=" "
+          forcedConx=" "
+          geoTravelType="International"
+          origAirport="FRA"
+          boardMultiCity="FRA"
+          destAirport="CDG"
+          offMultiCity="PAR"
+     />
+     <FlightInfo
+          carrier="LH"
+          marketingFlightNumber=4210
+          operatingFlightNumber=4210
+          equipmentType="320"
+     />
+     <Origin file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_FRA_CDG_DFW_ORD_0_Loc_FRA.xml"/>
+     <Destination file="/vobs/atseintl/Taxes/LegacyTaxes/test/testdata/0_FRA_CDG_DFW_ORD_0_Loc_CDG.xml"/>
+     <Misc
+          bookedCabin="8"
+          validatedBookingCode=""
+          resStatus="OK"
+          fareBasisCode=""
+          bookingCode="Y"
+          furthestPoint="f"
+          considerOnlyCabin=""
+          forcedFareBrk=" "
+          forcedNoFareBrk=" "
+          forcedSideTrip=" "
+     />
+</AirSeg>

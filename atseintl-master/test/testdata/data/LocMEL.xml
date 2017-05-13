@@ -1,0 +1,33 @@
+<Loc>
+     <Area
+          loc="MEL"
+          subarea="34"
+          area="3"
+          transtype="P"
+          nation="AU"
+          state="AUVQ"
+     />
+     <Position
+          latdegrees=37
+          latminutes=40
+          latseconds=24
+          lngdegrees=144
+          lngminutes=50
+          lngseconds=30
+          lathemisphere="S"
+          lnghemisphere="E"
+     />
+     <ExpirationDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <EffectiveDate year=2005 month=1 day=5 hour=0 minute=0 second=0/>
+     <Indicators
+          cityInd="t"
+          bufferZoneInd="f"
+          ruralarpind="f"
+          multitransind="t"
+          faresind="f"
+     />
+     <Misc
+          dstgrp="AU02"
+          description="MELBOURNE"
+     />
+</Loc>

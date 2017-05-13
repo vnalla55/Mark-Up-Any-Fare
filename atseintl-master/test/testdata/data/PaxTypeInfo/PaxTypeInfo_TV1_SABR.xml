@@ -1,0 +1,12 @@
+<PaxTypeInfo>
+     <Attributes
+          paxType="TV1"
+          vendor="SABR"
+          description="ADULT BULK PAX TYPE"
+          childInd="N"
+          adultInd="Y"
+          infantInd="N"
+          psgGroupType="TV1"
+          numberSeatsReq=1
+     />
+</PaxTypeInfo>

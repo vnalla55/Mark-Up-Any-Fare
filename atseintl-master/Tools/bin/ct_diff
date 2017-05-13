@@ -1,0 +1,11 @@
+#! /bin/csh
+
+# Show differences between current version and previous version of a vob object
+
+if ( "$1" == "" ) then
+	echo "Syntax: ct_diff <vob object>"
+	exit 1
+endif
+
+cleartool diff -pre $1
+

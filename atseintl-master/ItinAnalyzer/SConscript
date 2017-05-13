@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+s = env.msscout()
+s.mslibrary('ItinAnalyzerService', 'ITIN_ANALYZER_SERVICE_SOURCES')
+s.werror = True
+s.build()

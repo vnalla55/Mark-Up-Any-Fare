@@ -1,0 +1,51 @@
+Import('env')
+
+sources = env.multiglob(
+	'Server/*.cpp',
+	'Xform/*.cpp',
+	'Fallbacks/*.cpp',
+	'AtpcoTaxes/Processor/*.cpp',
+	'AtpcoTaxes/Diagnostic/*.cpp',
+	'AtpcoTaxes/Rules/*.cpp',
+	'Facades/*.cpp',
+	'AtpcoTaxes/Factories/*.cpp',
+	'AtpcoTaxes/DomainDataObjects/*.cpp',
+	'AtpcoTaxes/ServiceInterfaces/*.cpp',
+	'AtpcoTaxes/Common/*.cpp',
+	'AtpcoTaxes/TaxDisplay/*.cpp',
+	'AtpcoTaxes/TaxDisplay/Common/*.cpp',
+	'AtpcoTaxes/TaxDisplay/Response/*.cpp')
+
+def build_test_server(env, dircontext):
+	# TODO: remove 'TestServer' from paths in #include directives
+	# in source code, and then remove the '#/..' include path
+	env['INCLUDE_PATH_'] = ['#/AtpcoTaxes', '#/Facades', '#/..']
+
+	env.add_flags('-W', '-Wall', '-Wextra', '-Wconversion', '-Wwrite-strings', '-Wcast-qual', '-Wcast-align', '-Werror', '-pedantic')
+	env.add_isystem_paths('AtpcoTaxes/rapidxml')
+	env.add_defines('BOOST_ENABLE_ASSERT_HANDLER')
+	env.add_libpaths('$STD_LIBPATH_', '$EXTERNAL_LIBPATHS_')
+
+	ExternalLibs = [
+		'boost_date_time',
+		'boost_regex',
+		'boost_serialization',
+		'boost_filesystem',
+		'boost_system',
+		'boost_program_options']
+
+	env.add_libs(ExternalLibs)
+
+	pmaker = env.factory.progmaker('xtaxserver')
+	pmaker.add_sources(sources)
+	p = pmaker.make()
+	env.raw.InstallAs('#/Server/debug/xtaxserver', p)
+
+
+
+env['SERVER_INSTALL_DIR_'] = '#/Server/debug'
+env.raw.Alias('atpco_test_server', '#/Server/debug') # 'atpco_test_server' should be used as target (i.e: scons atpco_test_server -j 120 DIST=1)
+
+s = env.scout()
+s.add_task(build_test_server, copyenv=True)
+s.build()

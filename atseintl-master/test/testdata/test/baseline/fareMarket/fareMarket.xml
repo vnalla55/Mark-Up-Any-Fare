@@ -1,0 +1,15 @@
+<FareMarket>
+     <AirSeg file="fareMarket/fareMarket_AirSeg0.xml"/>
+     <Misc
+          globalDirection="AT"
+          geoTravelType="International"
+          fltTrkIndicator="f"
+          direction="OUTBOUND"
+          failCode="NO_ERROR"
+          travelBoundary="TravelWithinOneIATA"
+     />
+     <PaxTypeBucket file="fareMarket/fareMarket_PaxTypeBucket0.xml"/>
+     <PaxTypeFare file="fareMarket/fareMarket_PaxTypeFare0.xml"/>
+     <InBoundAseanCurrency value="USD"/>
+     <OutBoundAseanCurrency value="USD"/>
+</FareMarket>

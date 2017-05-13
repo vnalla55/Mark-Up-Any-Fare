@@ -1,0 +1,203 @@
+***************************************************************************
+***************************************************************************
+***************************************************************************
+
+NOT COMPLETE:
+
+----------------------------------------------------------------------------
+
+TestPricingUnitFactory.cpp
+TestPricingUnitFactory.h
+
+NOT COMPLETE: Requires full attributes
+
+----------------------------------------------------------------------------
+
+TestFareUsageFactory.cpp
+TestFareUsageFactory.h
+
+NOT COMPLETE: Requires full attributes
+
+----------------------------------------------------------------------------
+
+TestTaxCodeRegFactory.cpp
+TestTaxCodeRegFactory.h
+
+NOT COMPLETE: Requires full attributes
+
+----------------------------------------------------------------------------
+
+TestTaxResponseFactory.cpp
+TestTaxResponseFactory.h
+
+NOT COMPLETE: Requires
+    //FarePath*                      _farePath;
+    //TaxItemVector _taxItemVector (i.e., needs TaxItems, which need .....)
+
+----------------------------------------------------------------------------
+***************************************************************************
+***************************************************************************
+***************************************************************************
+
+COMPLETE:
+
+----------------------------------------------------------------------------
+
+TestAddonFareInfoFactory.cpp
+TestAddonFareInfoFactory.h
+
+Completed; using XML.
+
+----------------------------------------------------------------------------
+
+TestAirSegFactory.cpp
+TestAirSegFactory.h
+
+Completed; using XML.
+
+----------------------------------------------------------------------------
+
+TestCarrierPreferenceFactory.cpp
+TestCarrierPreferenceFactory.h
+
+Completed: Generic create(); using XML.
+
+----------------------------------------------------------------------------
+
+TestClassOfServiceFactory.cpp
+TestClassOfServiceFactory.h
+
+Completed: Generic create(); using XML.
+
+----------------------------------------------------------------------------
+
+TestConstructedFareBucketFactory.cpp
+TestConstructedFareBucketFactory.h
+
+Completed: Generic create(); using XML.
+
+----------------------------------------------------------------------------
+
+TestDateTimeFactory.cpp
+TestDateTimeFactory.h
+
+Completed: Generic create(); using XML.
+
+----------------------------------------------------------------------------
+
+TestDifferentialDataFactory.cpp
+TestDifferentialDataFactory.h
+
+Completed: Generic create(); using XML.
+
+----------------------------------------------------------------------------
+
+TestFareFactory.cpp
+TestFareFactory.h
+
+Completed: generic create(); using XML.
+
+----------------------------------------------------------------------------
+
+TestFareClassAppInfoFactory.cpp
+TestFareClassAppInfoFactory.h
+
+Completed: generic create; using XML.
+
+----------------------------------------------------------------------------
+
+TestFareClassAppSegInfoFactory.cpp
+TestFareClassAppSegInfoFactory.h
+
+Completed: generic create; using XML
+
+----------------------------------------------------------------------------
+
+TestFareInfoFactory.cpp
+TestFareInfoFactory.h
+
+Completed: generic create; using XML
+
+----------------------------------------------------------------------------
+
+TestFareMarketFactory.cpp
+TestFareMarketFactory.h
+
+Completed; using XML
+
+----------------------------------------------------------------------------
+
+TestLocFactory.cpp
+TestLocFactory.h
+
+Completed: Generic create, with helper specific locations; using XML.
+
+----------------------------------------------------------------------------
+
+TestPaxTypeCortegeFactory.cpp
+TestPaxTypeCortegeFactory.h
+
+Completed: Generic create; using XML
+
+----------------------------------------------------------------------------
+
+TestPaxTypeFactory.cpp
+TestPaxTypeFactory.h
+
+Completed: generic create; using XML
+
+----------------------------------------------------------------------------
+
+TestPaxTypeFareFactory.cpp
+TestPaxTypeFareFactory.h
+
+Completed: generic create; using XML
+
+----------------------------------------------------------------------------
+
+TestPaxTypeInfoFactory.cpp
+TestPaxTypeInfoFactory.h
+
+Completed: generic create; using XML
+
+----------------------------------------------------------------------------
+
+TestPfxItemFactory.cpp
+TestPfxItemFactory.h
+
+Completed: generic create; using XML
+
+----------------------------------------------------------------------------
+
+TestPlusUpFactory.cpp
+TestPlusUpFactory.h
+
+Completed: generic create; using XML
+
+----------------------------------------------------------------------------
+
+TestTariffCrossRefInfoFactory.cpp
+TestTariffCrossRefInfoFactory.h
+
+Completed: generic create; using XML
+
+----------------------------------------------------------------------------
+
+TestTaxItemFactory.cpp
+TestTaxItemFactory.h
+
+Completed: generic create; using XML
+
+----------------------------------------------------------------------------
+
+TestTaxRecordFactory.cpp
+TestTaxRecordFactory.h
+
+Completed: generic create; using XML
+
+----------------------------------------------------------------------------
+
+
+***************************************************************************
+***************************************************************************
+***************************************************************************

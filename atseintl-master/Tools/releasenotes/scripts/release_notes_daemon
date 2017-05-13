@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# WHAT IS THIS FILE? - Ask sg933444
+# add to crontab, run every 10 minutes
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+BASE_DIR=$SCRIPT_DIR/../../..
+RNT_DIR=$BASE_DIR/Tools/releasenotes
+BINARY="$RNT_DIR/target/rnt-1.0-SNAPSHOT-jar-with-dependencies.jar"
+
+export JAVA_HOME=/opt/java/jdk1.7.0_45
+
+function build {
+    if [ ! -e "$BINARY" ]
+    then
+        echo RNT executable not found. Building...
+        cd "$RNT_DIR"
+        /opt/maven/apache-maven-3.3.3/bin/mvn install -s settings.xml
+    fi
+}
+
+function run {
+    psout=`ps x | grep rnt-1.0 | grep -v grep`
+
+    if [ "$psout" == "" ]; then
+        build
+        echo RNT not running. Will start..
+        $BASE_DIR/Releases/new_notice -port 2227 -nokey -nouser 0<&- &> /tmp/release_notes.log &
+    fi
+}
+
+################################################################
+run

@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Andrea Yang (EDS/SABRE ACCT) -->
+<!--
+//============================================================================
+//
+//  File:        RexPricingResponse.xsd
+//  Author:      Greg Graham
+//  Created:     September 6, 2005
+//  Description: Pricing Response definition
+//
+//  Copyright Sabre 2016
+//
+//          The copyright to the computer program(s) herein
+//          is the property of Sabre.
+//          The program(s) may be used and/or copied only with
+//          the written permission of Sabre or in accordance
+//          with the terms and conditions stipulated in the
+//          agreement/contract under which the program(s)
+//          have been supplied.
+//
+//============================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0.0">
+  <xs:include schemaLocation="PricingCommonElements_v1.1.4.xsd"/>
+  <xs:include schemaLocation="BaggageRulesDisclosure_v1.1.2.xsd"/>
+  <xs:element name="RexPricingResponse">
+    <xs:annotation>
+      <xs:documentation>
+      ATSE response for pricing entries
+      AGI - Agency Information
+      BIL - Billing Information
+      SUM - Summary Information
+      MSG - Display Messages
+      UMG - Display UpSell Messages
+        S96 - Exchange Type
+        SA8 - Secondary Exchange Type
+        OSC - Definitions of OC subcodes reffered from baggage rules disclosure
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AGI" type="AGIType"/>
+        <xs:element name="BIL" type="BILType"/>
+        <xs:element name="SUM" type="SUMType" minOccurs="0" maxOccurs="3"/>
+        <xs:element name="UFL" type="UFLType" minOccurs="0"/>
+        <xs:element name="MSG" type="MSGType" maxOccurs="unbounded"/>
+        <xs:element name="OSC" type="OSCType" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="S96" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="AR"/>
+            <xs:enumeration value="FE"/>
+            <xs:enumeration value="PE"/>
+            <xs:enumeration value="ME"/>
+            <xs:enumeration value="CE"/>
+            <xs:enumeration value="AM"/>
+            <xs:enumeration value="AF"/>
+            <xs:enumeration value="TX"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="SA8" use="optional">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="FE"/>
+            <xs:enumeration value="PE"/>
+            <xs:enumeration value="CE"/>
+            <xs:enumeration value="AM"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SUMType">
+    <xs:annotation>
+      <xs:documentation>
+      SUMType - Summary Information
+      PXI - Passenger Detail Information
+      Q6F - Itinerary Number
+      N27 - Reissue vs. Exchange Indicator
+      D95 - ROE and BSR Date
+      T95 - ROE and BSR Time
+      C56 - Total Price
+      C51 - Net Remit Total Price
+      C40 - Total Currency Code
+      C74 - Consolidator Plus Up Currency Code
+      C6Z - Consolidator Plus Up Fare Calc Amount
+      S69 - IATA Sales Code
+      AO0 - Sales Location
+      AF0 - Ticket Point Override
+      D14 - Advanced Purchase Date
+      B00 - Validating Carrier
+      D00 - Last Ticket Day
+      D16 - Purchase By Date
+      PBC - Simultaneous Reservation
+      D60 - Last Ticket Time
+      PAR - Private Fare Indication
+      S79 - Server Hostname
+      P06 - Ticketing Restricted
+      P3J - Fare Calc Too Long
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PXI" type="PXIDetailType"/>
+    </xs:sequence>
+    <xs:attribute name="Q6F" type="xs:unsignedShort" use="optional"/>
+    <xs:attribute name="N27" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="AlphaNumCharType">
+          <xs:enumeration value="1"/>
+          <xs:enumeration value="2"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="D95" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="T95" type="TimeHHMMColonType" use="optional"/>
+    <xs:attribute name="C56" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C51" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C74" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C6Z" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="S69" type="xs:string" use="optional"/>
+    <xs:attribute name="AO0" type="CityCodeType" use="optional"/>
+    <xs:attribute name="AF0" type="CityCodeType" use="optional"/>
+    <xs:attribute name="D14" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="B00" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="D00" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D16" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="PBC" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="D60" type="TimeHHMMColonType" use="optional"/>
+    <xs:attribute name="PAR" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P3J" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="S79" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="PXIDetailType">
+    <xs:annotation>
+      <xs:documentation>
+      PXIDetailType - Passenger Detail Information
+      MSG - Message
+      TAX - Tax Information
+      TBD - Tax Breakdown
+      TBE - Tax Breakdown for exempt taxes
+      TBR - Tax Banker Sell Rate
+      FIR - Fare IATA Rate
+      P45 - Fare Banker Sell Rate
+      CAL - Fare Calc Information
+      PUP - Plus Up Information
+      NET - Net Remit Information
+      ABL - Abacus Billing Date
+      REX - Reissue Information
+      PEN - Penalty Information
+      PTI - Previous Ticket Information
+      B70 - Passenger Type
+      P3K - Net Remit Published Fare Retrieved
+      C43 - Construction Currency Code
+      C5E - Construction Total Amount
+      S85 - Accompanied Travel Data
+      PBS - Requested Accompanied Travel Data
+      Q4P - Option Number
+      C4B - Net Remit Construction Currency Code
+      C52 - Net Remit Construction Total Amount
+      C40 - Base Currency Code
+      C5A - Base Fare Amount
+      C4A - Net Remit Base Fare Currency Code
+      C51 - Net Remit Base Fare Amount
+      C45 - Equivalent Currency Code
+      C5F - Equivalent Amount
+      C53 - Net Remit Equivalent Amount
+      C54 - Exchange Rate One
+      Q05 - Number Decimal Places Exchange Rate One
+      C46 - Pax Fare Currency Code
+      C66 - Total Per Passenger
+      C6B - Net Remit Total Per Passenger
+      C50 - Total Per Passenger Plus Absorbtion
+      C65 - Total Taxes
+      C6A - Net Remit Total Taxes
+      C5D - Commission Percentage
+      C5B - Commission Amount
+      S66 - Fare Calculation
+      P27 - Non Refundable
+      P06 - Ticketing Restricted
+      P3L - TFR Restricted
+      N1U - Private Fare Indicator
+      P26 - Cat 35 Used
+      S83 - Ticket Fare Vendor Source
+      S02 - Tour Code Description
+      S01 - Text Box
+      N0C - Tour Indicator
+      N0B - Net Gross
+      N0A - BSP Method Type
+      C62 - Net Fare Equivalent Amount
+      C61 - Cat 35 Commission Percentage
+      C60 - Cat 35 Commission Amount
+      Q0W - Pax Fare Passenger Number
+      Q0V - Cat 35 Warning
+      S87 - Value Code
+      N1S - Print Option
+      Q0X - Stop Over Count
+      C63 - Stop Over Charges
+      C73 - Stopover Published Currency Code
+      C71 - Transfer Count
+      C70 - Transfer Charges
+      C72 - Transfer Published Currency Code
+      P3J - Ticketing Segment Fee Message
+      PXN - Electronic Ticket Required
+      FGI - Fee Guarantee Indicator
+      USI - US DOT Itinerary Indicator
+      PY5 - Spanish Discount Indicator
+      NRA - Nonrefundable Base Fare Amount
+      PY6 - Net selling indicator with cat35 it/bt
+      C5N - Net Fare Construction Total Amount
+      C5P - Net Fare Total Per Passenger
+      C5M - Net Fare Base Amount
+      C5G - Net Fare Equivalent Amount plus cat8 9 12 charges
+      C5O - Net Fare Total Taxes
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MSG" type="MSGType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="TAX" type="TAXType" maxOccurs="unbounded"/>
+      <xs:element name="TBD" type="TBDType" maxOccurs="unbounded"/>
+      <xs:element name="TBE" type="TBEType" maxOccurs="unbounded"/>
+      <xs:element name="TBR" type="TBRType" maxOccurs="unbounded"/>
+      <xs:element name="FIR" type="FIRType" minOccurs="0"/>
+      <xs:element name="P45" type="P45Type"/>
+      <xs:element name="CAL" type="CALType" maxOccurs="unbounded"/>
+      <xs:element name="PUP" type="PUPType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="NET" type="NETType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ABL" type="ABLType" minOccurs="0"/>
+      <xs:element name="REX" type="REXType"/>
+      <xs:element name="BDI" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="BDIType"/>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PEN" type="PENResponseType" minOccurs="0"/>
+      <xs:element name="PTI" type="PTIType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="B70" type="PassengerCodeType" use="optional"/>
+    <xs:attribute name="P3K" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="C43" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C5E" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="S85" type="xs:string" use="optional"/>
+    <xs:attribute name="PBS" type="xs:string" use="optional"/>
+    <xs:attribute name="Q4P" type="xs:short" use="optional"/>
+    <xs:attribute name="C4B" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C52" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C5A" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C4A" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C51" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C45" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C5F" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C53" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C54" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="Q05" type="xs:short" use="optional"/>
+    <xs:attribute name="C46" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C66" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C6B" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C50" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C65" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C6A" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C5D" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C5B" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="S66" type="xs:string" use="optional"/>
+    <xs:attribute name="P27" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P06" type="BoolTFType" use="optional"/>
+    <xs:attribute name="P3L" type="BoolTFType" use="optional"/>
+    <xs:attribute name="N1U" type="PrivateFareIndType" use="optional"/>
+    <xs:attribute name="P26" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="S83" type="xs:string" use="optional"/>
+    <xs:attribute name="S02" type="xs:string" use="optional"/>
+    <xs:attribute name="S01" type="xs:string" use="optional"/>
+    <xs:attribute name="N0C" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="N0B" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="N0A" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="C62" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C61" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C60" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="Q0W" type="xs:short" use="optional"/>
+    <xs:attribute name="Q0V" type="xs:short" use="optional"/>
+    <xs:attribute name="S87" type="xs:string" use="optional"/>
+    <xs:attribute name="N1S" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="Q0X" type="xs:short" use="optional"/>
+    <xs:attribute name="C63" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C73" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C71" type="xs:short" use="optional"/>
+    <xs:attribute name="C00" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C72" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="P3J" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PXN" type="BoolTFType" use="optional"/>
+    <xs:attribute name="FGI" type="AnyCharType" use="optional"/>
+    <xs:attribute name="USI" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PY5" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="NRA" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="PY6" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="C5N" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C5P" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C5M" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C5G" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C5O" type="MonetaryAmountType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="PTIType">
+    <xs:annotation>
+      <xs:documentation>
+      PTIType - Previous Ticket Information
+      TAX  Tax Information
+      TBD  Tax Breakdown
+          </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TAX" type="TAXType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="TBD" type="TBDType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TAXType">
+    <xs:annotation>
+      <xs:documentation>
+      TAXType - TAX Summary Information
+      BC0 - Tax Code
+      C6B - Tax Amount
+      C40 - Tax Currency Code
+      S05 - Station Code
+      S04 - Tax Description
+      C6A - Amount Published
+      C41 - Published Currency
+      A40 - Tax Country Code
+      P2Q - Good and Services Tax (GST)
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="BC0" type="TaxCodeType" use="optional"/>
+    <xs:attribute name="C6B" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="S05" type="xs:string" use="optional"/>
+    <xs:attribute name="S04" type="xs:string" use="optional"/>
+    <xs:attribute name="C6A" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C41" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="A40" type="CountryCodeType" use="optional"/>
+    <xs:attribute name="P2Q" type="BoolTFType" use="optional" default="F"/>
+  </xs:complexType>
+  <xs:complexType name="TBDType">
+    <xs:annotation>
+      <xs:documentation>
+      TBDType - Tax Break Down Information
+      BC0 - Tax Code
+      C6B - Tax Amount
+      C40 - Tax Currency Code
+      S05 - Station Code
+      S04 - Tax Description
+      C6A - Amount Published
+      C41 - Published Currency
+      A40 - Tax Country Code
+      A04 - Tax Airline Code
+      A06 - Tax Type Indicator
+      A05 - Reissue Tax Type Indicator
+      PXF - Reissue Restriction Apply
+      PXG - TAX Apply to reissue
+      PXH - Reissue TAX Refundable
+      C79 - Reissue Tax Max Amount Currency
+      C80 - Reissue Tax Max Amount
+      C6D - Min Tax Amount
+      C6E - Max Tax Amount
+      C47 - Min Max Tax Currency
+      C6F - Tax Rate Used
+      X20 - Tax Carrier
+      X21 - Refundable Tax Tag 
+              Y: Yes (Tax is refundable)
+              N: No (Tax is non-refundable)
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="BC0" type="TaxCodeType" use="optional"/>
+    <xs:attribute name="C6B" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="S05" type="xs:string" use="optional"/>
+    <xs:attribute name="S04" type="xs:string" use="optional"/>
+    <xs:attribute name="C6A" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C41" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="A40" type="CountryCodeType" use="optional"/>
+    <xs:attribute name="A04" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="A05" type="AnyCharType" use="optional"/>
+    <xs:attribute name="PXF" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PXG" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PXH" type="BoolTFType" use="optional"/>
+    <xs:attribute name="C79" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C80" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C6D" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C6E" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C47" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C6F" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="A06" type="AnyCharType" use="optional"/>
+    <xs:attribute name="X20" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="X21" type="AnyCharType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="TBEType">
+    <xs:annotation>
+      <xs:documentation>
+      TBEType - Tax Break Down Information for exempt taxes
+      BC0 - Tax Code
+      C6B - Tax Amount
+      C40 - Tax Currency Code
+      S05 - Station Code
+      A04 - Tax Airline Code
+      A06 - Tax Type Indicator
+      C6D - Min Tax Amount
+      C6E - Max Tax Amount
+      C47 - Min Max Tax Currency
+      C6F - Tax Rate Used
+    </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="BC0" type="TaxCodeType" use="optional"/>
+    <xs:attribute name="C6B" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="S05" type="xs:string" use="optional"/>
+    <xs:attribute name="A04" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="A06" type="AnyCharType" use="optional"/>
+    <xs:attribute name="C6D" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C6E" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C47" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C6F" type="MonetaryAmountType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="TBRType">
+    <xs:annotation>
+      <xs:documentation>
+      TBRType - Tax Bankers Sell Rate Information
+      CCD - Currency Conversion Information
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CCD" type="CCDType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FIRType">
+    <xs:annotation>
+      <xs:documentation>
+      FIRType - Fare IATA Rate Information
+      CCD - Currency Conversion Information
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CCD" type="CCDType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="P45Type">
+    <xs:annotation>
+      <xs:documentation>
+      P45Type - Fare Bankers Sell Rate Information
+      CCD - Currency Conversion Information
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CCD" type="CCDType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CCDType">
+    <xs:annotation>
+      <xs:documentation>
+      CCDType - Currency Conversion Information
+      C41 - From Currency
+      C42 - To Currency
+      C54 - Exchange Rate One
+      Q05 - Number of decimal places for Exchange Rate One
+      C46 - Intermmediate Currency
+      C55 - Exchange Rate Two
+      Q06 - Number of decimal places for Exchange Rate Two
+      D06 - Effective Date
+      D05 - Discontinue Date
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="C41" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C42" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C54" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="Q05" type="xs:short" use="optional"/>
+    <xs:attribute name="C46" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C55" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="Q06" type="xs:short" use="optional"/>
+    <xs:attribute name="D06" type="DateDDMMMYYType" use="optional"/>
+    <xs:attribute name="D05" type="DateDDMMMYYType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="CALType">
+    <xs:annotation>
+      <xs:documentation>
+      CALType - Fare Calc Detail Information
+      NET - Net Remit Info
+      HIP - Differential Information
+      PUP - Plus Up Information
+      CAT - List of Applicable Categories
+      SEG - Travel Segment Information
+      A11 - Fare Calc Departure City
+      A01 - Fare Calc Departure Airport
+      B08 - True Governing Carrier
+      B03 - Second Governing Carrier
+      A12 - Fare Calc Arrival City
+      A02 - Fare Calc Arrival Airport
+      S67 - Discount Code
+      Q17 - Discount Percentage
+      C50 - Fare Amount
+      B50 - Fare Basis Code
+      Q04 - Fare Basis Code Length
+      C52 - Net Remit Published Fare Amount
+      B51 - Net Remit Published Fare Basis Code
+      Q10 - Net Remit Published Fare Basis Code Length
+      B71 - Requested Passenger Type
+      B02 - Marketing Carrier
+      N00 - Fare Calc Cabin Code
+      A41 - Departure Country
+      A51 - Departure IATA
+      A31 - Departure State Or Provine
+      A42 - Arrival Country
+      A52 - Arrival IATA
+      A32 - Arrival State Or Provine
+      C51 - Published Fare Amount
+      C40 - Fare Component Currency Code
+      P05 - One Way Fare
+      P04 - Round Trip Fare
+      D00 - Commencement Date
+      N0K - Type of Fare
+      P2M - Stopover Segment
+      PAY - Is Mileage Routing
+      Q48 - Mileage Surcharge Percentage
+      PAZ - Special Fare
+      Q4J - Pricing Unit Count
+      N1K - Pricing Unit Type
+      S70 - Fare Calc Directionality
+      A60 - Global Direction
+      AC0 - Corp ID
+      A13 - HIP Origin City
+      A14 - HIP Destination City
+      A18 - Constructed HIP City
+      P2N - Side Trip Indicator
+      Q0U - Number of segments in this CAL
+      FTY - Fare Type bitmap
+      S53 - FareClassApp Fare Type
+      C5R - Net Fare Amount
+      SB2 - Brand Code
+      SB3 - Brand Name
+      SC0 - Program Code
+      SC2 - Program name
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SEG" type="SEGType" maxOccurs="unbounded"/>
+      <xs:element name="PUP" type="PUPType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="NET" type="NETType" minOccurs="0"/>
+      <xs:element name="CAT" type="CATType" minOccurs="0"/>
+      <xs:element name="HIP" type="HIPType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="A11" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A01" type="AirportCodeType" use="optional"/>
+    <xs:attribute name="B08" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="B03" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="A12" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A02" type="AirportCodeType" use="optional"/>
+    <xs:attribute name="S67" type="xs:string" use="optional"/>
+    <xs:attribute name="Q17" type="xs:short" use="optional"/>
+    <xs:attribute name="C50" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="B50" type="FareBasisCodeType" use="optional"/>
+    <xs:attribute name="Q04" type="xs:short" use="optional"/>
+    <xs:attribute name="C52" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="B51" type="FareBasisCodeType" use="optional"/>
+    <xs:attribute name="Q10" type="xs:short" use="optional"/>
+    <xs:attribute name="B71" type="PassengerCodeType" use="optional"/>
+    <xs:attribute name="B02" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="N00" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="A41" type="CountryCodeType" use="optional"/>
+    <xs:attribute name="A51" type="IATAAreaCodeType" use="optional"/>
+    <xs:attribute name="A31" type="StateCodeType" use="optional"/>
+    <xs:attribute name="A42" type="CountryCodeType" use="optional"/>
+    <xs:attribute name="A52" type="IATAAreaCodeType" use="optional"/>
+    <xs:attribute name="A32" type="StateCodeType" use="optional"/>
+    <xs:attribute name="C51" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C40" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="P05" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P04" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="D00" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="N0K" type="AnyCharType" use="optional"/>
+    <xs:attribute name="P2M" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PAY" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="Q48" type="xs:short" use="optional"/>
+    <xs:attribute name="PAZ" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="Q4J" type="xs:unsignedShort" use="optional"/>
+    <xs:attribute name="N1K" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="S70" type="xs:string" use="optional"/>
+    <xs:attribute name="A60" type="GlobalDirectionType" use="optional"/>
+    <xs:attribute name="AC0" type="CorporateIDType" use="optional"/>
+    <xs:attribute name="A13" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A14" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A18" type="CityCodeType" use="optional"/>
+    <xs:attribute name="P2N" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="Q0U" type="xs:unsignedShort" use="optional"/>
+    <xs:attribute name="FTY" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="S53" type="xs:string" use="optional"/>
+    <xs:attribute name="C5R" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="SB2" type="BrandCodeType" use="optional"/>
+    <xs:attribute name="SB3" type="BrandProgramNameType" use="optional"/>
+    <xs:attribute name="SC0" type="ProgramCodeType" use="optional"/>
+    <xs:attribute name="SC2" type="BrandProgramNameType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="NETType">
+    <xs:annotation>
+      <xs:documentation>
+      NETType - Net Remit Information
+      S66   Fare Calc Line
+      PUP   Plus Up Information
+      SUR  Surcharge Information
+      TAX  Tax Information
+      TBR   Tax Banker Seller Rate
+      TBD - Tax Breakdown
+      TBE - Tax Breakdown for Exempt Taxes
+      MIL - Mileage Information
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="TAX" type="TAXType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="TBR" type="TBRType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="SUR" type="SURType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="PUP" type="PUPType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="TBD" type="TBDType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="TBE" type="TBEType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="MIL" type="MILType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="S66" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="PUPType">
+    <xs:annotation>
+      <xs:documentation>
+      PUPType - Plus Up Information
+      C6L - Plus Up Amount
+      A11 - Plus Up Origin City
+      A12 - Plus Up Destination City
+      A13 - Plus Up Fare Origin City
+      A14 - Plus Up Fare Destination City
+      A18 - Plus Up Via City
+      S68 - Plus Up Message
+      A40 - Plus Up Country of Payment
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="C6L" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="A11" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A12" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A13" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A14" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A18" type="CityCodeType" use="optional"/>
+    <xs:attribute name="S68" type="xs:string" use="optional"/>
+    <xs:attribute name="A40" type="CountryCodeType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="HIPType">
+    <xs:annotation>
+      <xs:documentation>
+      HIPType - Differential Information
+      C50 - Amount HIP
+      A13 - Origin City HIP
+      A14 - Destination City HIP
+      A01 - Low Origin City HIP
+      A02 - Low Destination City HIP
+      A03 - High Origin City HIP
+      A04 - High Destination City HIP
+      B30 - Fare Class Low
+      BJ0 - Fare Class High
+      N00 - Cabin Low HIP
+      N04 - Cabin High HIP
+      Q4S- Origin Segment Order
+      Q4T- Destination Segment Order
+      Q48 - Mileage Surcharge Percentage
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="C50" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="A13" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A14" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A01" type="AirportCodeType" use="optional"/>
+    <xs:attribute name="A02" type="AirportCodeType" use="optional"/>
+    <xs:attribute name="A03" type="AirportCodeType" use="optional"/>
+    <xs:attribute name="A04" type="AirportCodeType" use="optional"/>
+    <xs:attribute name="B30" type="BookingCodeType" use="optional"/>
+    <xs:attribute name="BJ0" type="BookingCodeType" use="optional"/>
+    <xs:attribute name="N00" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="N04" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="Q4S" type="xs:short" use="optional"/>
+    <xs:attribute name="Q4T" type="xs:short" use="optional"/>
+    <xs:attribute name="Q48" type="xs:short" use="optional"/>
+  </xs:complexType>
+  <xs:simpleType name="CATType">
+    <xs:list itemType="xs:short"/>
+  </xs:simpleType>
+  <xs:complexType name="SEGType">
+    <xs:annotation>
+      <xs:documentation>
+      SEGType - Travel Segment Detail Information
+      NET - Net Remit Info
+      SUR - Surcharge Information
+      A11 - Segement Departure City
+      C6I - Segment Departure Airport
+      A12 - Segement Arrival City
+      A02 - Segment Arrival Airport
+      P72 - Applicable Booking code
+      Q0Z - Itin Segment Number
+      S12 - Route Travel
+      D06 - Not Valid Before Date
+      D05 - Not Valid After Date
+      P2F - Fare Break Point
+      P2I  - Extra Mileage Allowance
+      PAW - Availability Break
+      P2N - Side Trip Indicator
+      S07 - Side Trip End
+      S08 - Side Trip End Component
+      S10 - Pure Surface Segment
+      S09 - Unchargeable Surface
+      N1L - Journey Type
+      SHR - Equipment Code
+      P2M - Stopover Segment
+      C67 - City Stopover Charge
+      C73 - Stopover Published Currency Code
+      C68 - Transfer Charge
+      C73 - Transfer Published Currency Code
+      Q0Y - Segment Passenger Number
+      N0D - Baggage Indicator
+      B20 - Baggage Value
+      P26 - Cat35 Fare Segment
+      PAX - Cat5 Requires Rebook
+      P3M - Transfer Segment
+      S37 - Fare Vendor
+      B09 - Fare Source Carrier
+      S89 - Fare Tariff
+      S90 - Fare Rule
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence minOccurs="0">
+      <xs:element name="SUR" type="SURType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="NET" type="NETType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="MIL" type="MILType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="A11" type="CityCodeType" use="optional"/>
+    <xs:attribute name="C6I" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="A12" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A02" type="AirportCodeType" use="optional"/>
+    <xs:attribute name="P72" type="BookingCodeType" use="optional"/>
+    <xs:attribute name="Q0Z" type="xs:short" use="optional"/>
+    <xs:attribute name="S12" type="GlobalDirectionType" use="optional"/>
+    <xs:attribute name="D06" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="D05" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="P2F" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P2I" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PAW" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P2N" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="S07" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="S08" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="S10" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="S09" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="N1L" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="SHR" type="xs:string" use="optional"/>
+    <xs:attribute name="P2M" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="C67" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C73" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C68" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C72" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="Q0Y" type="xs:short" use="optional"/>
+    <xs:attribute name="N0D" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="B20" type="xs:string" use="optional"/>
+    <xs:attribute name="P26" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="PAX" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="P3M" type="BoolTFType" use="optional" default="F"/>
+    <xs:attribute name="S37" type="xs:string" use="optional"/>
+    <xs:attribute name="B09" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="S89" type="xs:string" use="optional"/>
+    <xs:attribute name="S90" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="SURType">
+    <xs:annotation>
+      <xs:documentation>
+      SURType - Surcharge Information
+      N0F - Surcharge Type
+      C69 - Surcharge Amount
+      C46 - Surcharge Currency Code
+      C41 - Surcharge Published Currency Code
+      S03 - Surcharge Description
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="N0F" type="AlphaNumCharType" use="optional"/>
+    <xs:attribute name="C69" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="C46" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="C41" type="CurrencyCodeType" use="optional"/>
+    <xs:attribute name="S03" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="MILType">
+    <xs:annotation>
+      <xs:documentation>
+      MILType - Mileage Display
+      AP2 - Mileage Display Type
+      AP3 - Mileage Display City
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="AP2" type="xs:string" use="required"/>
+    <xs:attribute name="AP3" type="CityCodeType" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="ABLType">
+    <xs:annotation>
+      <xs:documentation>
+      ABL -  Abacus Billing Data
+      D16 - Contract Issue Date
+      S88 - Contract Number
+      S89 - Fare Tariff
+      S90 - Fare Rule
+      S83 - DB Source
+      B02 - Fare Source Carrier
+      A20 - Fare Source PCC
+      B50 - Fare Basis Ticket Designator
+      A11 - Fare Origin
+      A12 - Fare Destination
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="D16" type="DateYYYY-MM-DDType" use="optional"/>
+    <xs:attribute name="S88" type="xs:string" use="optional"/>
+    <xs:attribute name="S89" type="xs:string" use="optional"/>
+    <xs:attribute name="S90" type="xs:string" use="optional"/>
+    <xs:attribute name="S83" type="xs:string" use="optional"/>
+    <xs:attribute name="B02" type="AirlineCodeType" use="optional"/>
+    <xs:attribute name="A20" type="PseudoCityCodeType" use="optional"/>
+    <xs:attribute name="B50" type="FareBasisCodeType" use="optional"/>
+    <xs:attribute name="A11" type="CityCodeType" use="optional"/>
+    <xs:attribute name="A12" type="CityCodeType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="REXType">
+    <xs:annotation>
+      <xs:documentation>
+      REX- Reissue Information
+      CHG - Change Fee
+      N1X - Residual Indicator
+      N1Y - Type of Service Fee Tag
+      N1Z - Type of Reissue Transaction from byte 79
+      PXM - Reissue Result from tag 7
+      N20 - Form of Refund
+      PXY - Reissue Requires Electronic Tkt
+      PXZ - Reissue Does Not Allow Electric Tkt
+      PXH - Tax Refundable
+      TBD - Tax Breakdown
+      TBE - Tax Breakdown for exempt taxes
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CHG" type="CHGType" minOccurs="0" maxOccurs="24"/>
+      <xs:element name="TBD" type="TBDType" minOccurs="0"/>
+      <xs:element name="TBE" type="TBEType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="N1X" type="AnyCharType" use="optional"/>
+    <xs:attribute name="N1Y" type="AnyCharType" use="optional"/>
+    <xs:attribute name="N1Z" type="AnyCharType" use="optional"/>
+    <xs:attribute name="PXM" type="BoolTFType" use="optional"/>
+    <xs:attribute name="N20" type="AnyCharType" use="optional"/>
+    <xs:attribute name="PXY" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PXZ" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PXH" type="BoolTFType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="CHGType">
+    <xs:annotation>
+      <xs:documentation>
+      CHG - Change Fee
+      PXJ - Highest Change Fee Indicator
+      C76 - Change Fee Amount in Payment Currency
+      C77 - Change Fee Amount
+      C78 - Change Fee Currency
+      PXK - Change Fee Waived
+      PXL - Change Fee Not Applicable
+      NRA - Nonrefundable Fare Amount
+      CFE - Cancelation Fee Amount
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="PXJ" type="BoolTFType" use="optional"/>
+    <xs:attribute name="C76" type="MonetaryAmountType" use="required"/>
+    <xs:attribute name="C77" type="MonetaryAmountType" use="required"/>
+    <xs:attribute name="C78" type="CurrencyCodeType" use="required"/>
+    <xs:attribute name="PXK" type="BoolTFType" use="optional"/>
+    <xs:attribute name="PXL" type="BoolTFType" use="optional"/>
+    <xs:attribute name="NRA" type="MonetaryAmountType" use="optional"/>
+    <xs:attribute name="CFE" type="MonetaryAmountType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="UFLType">
+    <xs:annotation>
+      <xs:documentation>
+      UFL - Totally Unflown Itinerary Price Information
+      C66 - Total Amount with Taxes
+      C46 - Total Amount Currency
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="C66" type="MonetaryAmountType" use="required"/>
+    <xs:attribute name="C46" type="CurrencyCodeType" use="required"/>
+  </xs:complexType>
+</xs:schema>

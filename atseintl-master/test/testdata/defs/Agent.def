@@ -1,0 +1,21 @@
+name: Agent
+namespace: tse
+package: DataModel
+
+factoryAggregate:     agentLocation:          Loc*            agentLocation()
+
+section: Attributes
+  scalarWithCompare:  agentCity:              LocCode         agentCity()
+  scalarWithCompare:  tvlAgencyPCC:           PseudoCityCode  tvlAgencyPCC()
+  scalarWithCompare:  mainTvlAgencyPCC:       PseudoCityCode  mainTvlAgencyPCC()
+  scalarWithCompare:  tvlAgencyIATA:          std::string     tvlAgencyIATA()
+  scalarWithCompare:  homeAgencyIATA:         std::string     homeAgencyIATA()
+  scalar:             agentFunctions:         std::string     agentFunctions()
+  scalarWithCompare:  agentDuty:              std::string     agentDuty()
+  scalarWithCompare:  airlineDept:            std::string     airlineDept()
+  scalarWithCompare:  cxrCode:                std::string     cxrCode()
+  scalar:             currencyCodeAgent:      std::string     currencyCodeAgent()
+  scalar:             coHostID:               int16_t         coHostID()
+  scalar:             agentCommissionType:    std::string     agentCommissionType()
+  scalar:             agentCommissionAmount:  uint32_t        agentCommissionAmount()
+endsection

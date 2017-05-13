@@ -1,0 +1,41 @@
+<AirSeg>
+   <DepartureDate year=2004 month=6 day=23 hour=13 minute=0 second=0/>
+   <ArrivalDate   year=2004 month=6 day=23 hour=15 minute=0 second=0/>
+   <BookingDate   year=2004 month=6 day=22 hour=14 minute=30 second=0/>
+
+   <!-- For Class of Service, we can have ECONOMY_CLASS, FIRST_CLASS, BUSINESS_CLASS
+       ECONOMY_CLASS, or UNKNOWN_CLASS -->
+   <ClassOfService bookingCode="Y" numSeats=60 cabin="ECONOMY_CLASS"/>
+
+  <SegmentInfo 
+         pnrSegment=1
+         segmentOrder=1
+         stopOver="f"
+         forcedStopOver=""
+         forcedConx=""
+         geoTravelType="International"
+  />
+
+  <FlightInfo carrier="HP"
+              marketingFlightNumber=200
+              operatingFlightNumber=0 
+              equipmentType="767" />
+
+   <Origin file="/vobs/atseintl/test/testdata/data/LocPHX.xml"/>
+   <Destination file="/vobs/atseintl/test/testdata/data/LocONT.xml"/>
+
+   <!-- Booking code can be Y, U, S, I, J, W, L, C, F ... -->
+
+   <Misc 
+         validatedBookingCode=""
+         resStatus=""
+         fareBasisCode=""
+         bookingCode="Y"
+         furthestPoint="f"
+         considerOnlyCabin="ABC"
+         forcedFareBrk=""
+         forcedNoFareBrk=""
+         forcedSideTrip=""
+   />
+</AirSeg>
+

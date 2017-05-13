@@ -1,0 +1,19 @@
+<Currency>
+     <expireDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <effDate year=2010 month=4 day=1 hour=0 minute=0 second=0/>
+     <discDate year=1969 month=1 day=1 hour=1 minute=0 second=0/>
+     <createDate year=2010 month=3 day=26 hour=1 minute=39 second=44/>
+     <Attributes
+          cur="SGD"
+          domRoundingFactor=-1
+          roundingFactorNoDec=0
+          noDec=2
+          curNo=702
+          curName="DOLLAR"
+          nucRoundingProcessNo="15"
+          controllingEntityDesc="SINGAPORE"
+          taxOverrideRoundingUnitNoDec=1
+          taxOverrideRoundingUnit=0.1
+          taxOverrideRoundingRule=1
+     />
+</Currency>

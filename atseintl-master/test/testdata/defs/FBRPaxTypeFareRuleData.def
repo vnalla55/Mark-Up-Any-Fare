@@ -1,0 +1,24 @@
+name: FBRPaxTypeFareRuleData
+namespace: tse
+package: DataModel
+
+factoryAggregate: FareByRuleApp: FareByRuleApp* fbrApp()
+
+section: Attributes
+  scalar: baseFareBookingCodeTblItemNo: long baseFareBookingCodeTblItemNo()
+  scalar: isR8LocationSwapped:          bool isR8LocationSwapped()
+  scalar: isMinMaxFare:                 bool isMinMaxFare()
+  scalar: isBaseFareAvailBkcMatched:    bool isBaseFareAvailBkcMatched()
+endsection
+
+scalarAggregate: baseFareInfoBookingCodes: std::set<BookingCode> baseFareInfoBookingCodes()
+# base class
+factoryAggregate: FareByRuleCtrlInfo:       CategoryRuleInfo*     categoryRuleInfo() Input=FareByRuleCtrlInfo
+factoryAggregate: CategoryRuleItemInfo:     CategoryRuleItemInfo* categoryRuleItemInfo()
+factoryAggregate: FareByRuleItemInfo:       RuleItemInfo*         ruleItemInfo() Input=FareByRuleItemInfo
+factoryAggregate: PaxTypeFare:              PaxTypeFare*          baseFare()
+#factoryAggregate: CategoryRuleItemInfo std::vector<CategoryRuleItemInfo> categoryRuleItemInfoVec()
+
+section: BaseClassAttributes
+  scalar: isLocationSwapped: bool isLocationSwapped()
+endsection
