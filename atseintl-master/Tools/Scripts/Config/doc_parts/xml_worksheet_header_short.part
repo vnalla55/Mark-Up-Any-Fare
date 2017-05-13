@@ -1,0 +1,7 @@
+<Worksheet ss:Name="__NAME__">
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="__ROW_COUNT__" x:FullColumns="1"
+   x:FullRows="1">
+   <Column ss:AutoFitWidth="0" ss:Width="66"/>
+   <Column ss:AutoFitWidth="0" ss:Width="117"/>
+   <Column ss:AutoFitWidth="0" ss:Width="60.75"/>
+

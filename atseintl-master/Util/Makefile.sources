@@ -1,0 +1,6 @@
+UTIL_SOURCES := \
+    Base64.cpp \
+    CompressUtil.cpp \
+    StackUtil.cpp \
+    Time.cpp \
+    Vector.cpp

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Release Notes Publisher</title>
+
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+        }
+        button {
+            padding: 10pt;
+            padding-top: 5pt;
+            padding-bottom: 5pt;
+        }
+        #console {
+            width: 90%;
+            height: 400px;
+            background: black;
+            color: silver;
+            padding: 10px;
+            border: 1px silver solid;
+        }
+    </style>
+
+    <script src="/static/jquery.js"></script>
+
+</head>
+
+<body>
+<h1>Publishing a new delivery notice</h1>
+
+<textarea id="console" readonly="readonly"></textarea>
+
+<script type="text/javascript">
+
+    var jobID = '$jobID';
+
+    function scrollDown(lines) {
+        var console = document.getElementById('console');
+        var txt = document.createTextNode(lines);
+        console.appendChild(txt);
+        console.scrollTop = console.scrollHeight;
+    }
+
+    function refresh() {
+        $.ajax({
+            url: "status/" + jobID + "?key=$instanceKey",
+            cache: false // This is important for IE: it always caches Ajax requests!
+        }).done(function(data, textStatus, jqXHR) {
+            scrollDown(jqXHR.responseText);
+        }).always(function() {
+            setTimeout(refresh, 1000);
+        });
+    }
+
+    $(document).ready(function() {
+        setTimeout(refresh, 1000);
+    });
+</script>
+
+<div>
+    <a href="/form?$urlParams">&#8635; Publish another delivery notice</a>
+</div>
+
+</body>
+</html>

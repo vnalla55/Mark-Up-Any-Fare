@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
+    
+    <title>Release Notes Publisher</title>
+
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+        }
+        #releaseNote {
+            width: 70%;
+            height: 400px;
+        }
+        .button {
+            padding: 10pt;
+            padding-top: 5pt;
+            padding-bottom: 5pt;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Generated Release Note</h1>
+
+    <form method="post" action="worker">
+        <input type="hidden" name="key" value="$instanceKey">
+        #if($specialRelease)<input type="hidden" name="specialRelease" value="$specialRelease">#end
+        <input type="hidden" name="groupName" value="$groupName">
+        <input type="hidden" name="action" value="$action">
+        <input type="hidden" name="origRelease" value="#if($release)$release#end">
+        <input type="hidden" name="origGroup" value="#if($origGroup)$origGroup#end">
+        <input type="hidden" name="digest" value="#if($digest)$digest#end">
+
+        <textarea name="releaseNote" id="releaseNote" readonly="readonly">$releaseNote</textarea><br>
+
+        #if ($specialRelease)
+            Delivery for special baseline: $specialRelease
+            <input type="hidden" name="targetRelease" value="$specialRelease">
+            <br>
+        #else
+            Destination file: <select name="targetRelease">$targetReleaseOptions</select><br>
+            #if ($release)
+                <p>Current file is <em>$release</em></p>
+            #end
+        #end
+        <input type="submit" class="button" value="Publish">
+    <form>
+    <input type="button" class="button" value="Go back to edition" onclick="history.go(-1)">
+
+</body>
+
+</html>

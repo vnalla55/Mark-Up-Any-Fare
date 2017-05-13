@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Release Notes Publisher</title>
+
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+            padding: 20pt;
+        }
+        .button {
+            padding: 10pt;
+            padding-top: 5pt;
+            padding-bottom: 5pt;
+        }
+        pre {
+            font-family: Consolas, Courier New;
+            font-size: 9pt;
+            background: silver;
+            padding: 5pt;
+        }
+    </style>
+</head>
+<body>
+
+    You are about to remove the following entry from <strong>$release</strong>
+
+    <pre>$releaseNote</pre>
+
+    <form method="post" action="/worker">
+        <input type="hidden" name="key" value="$instanceKey">
+        <input type="hidden" name="action" value="$action">
+        #if($specialRelease)<input type="hidden" name="specialRelease" value="$specialRelease">#end
+        <input type="hidden" name="digest" value="#if($digest)$digest#end">
+        <input type="hidden" name="origRelease" value="#if($release)$release#end">
+        <input type="hidden" name="targetRelease" value="#if($release)$release#end">
+        <input type="submit" value="Remove" class="button">
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+
+# Author: Piotr Bartosik (piotr.bartosik@sabre.com)
+# Copyright Sabre 2013
+
+Import('env')
+
+s = env.msscout()
+s.env.add_isystem_paths('$XERCESC_CPPPATH_')
+s.mslibrary('Xform', 'XFORM_SOURCES')
+s.mslibrary('XformClientShoppingXML', 'XFORM_CLIENT_SHOPPING_XML_SOURCES')
+s.mslibrary('XformCacheMessage', 'XFORM_CACHE_MESSAGE_SOURCES')
+s.mslibrary('XformClientXML', 'XFORM_CLIENT_XML_SOURCES')
+s.mslibrary('XformTaxXML', 'XFORM_TAX_XML_SOURCES')
+s.mslibrary('XformBillingXML', 'XFORM_BILLING_XML_SOURCES')
+s.mslibrary('XformCommon', 'XFORM_COMMON_SOURCES')
+s.werror = False
+s.build()
+

@@ -1,0 +1,117 @@
+ <Worksheet ss:Name="rtg">
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="28" x:FullColumns="1"
+   x:FullRows="1">
+   <Column ss:AutoFitWidth="0" ss:Width="66"/>
+   <Column ss:AutoFitWidth="0" ss:Width="117"/>
+   <Column ss:AutoFitWidth="0" ss:Width="271.5"/>
+   <Row ss:AutoFitHeight="0" ss:Height="20.25">
+    <Cell ss:MergeAcross="3" ss:StyleID="s64"><Data ss:Type="String">System Owner Release Template</Data></Cell>
+   </Row>
+   <Row ss:Index="3">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Baseline:</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Enter Manually!</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Application:</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">RTG</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Signoff</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Yes</Data></Cell>
+   </Row>
+   <Row ss:Index="7">
+    <Cell ss:Index="3" ss:StyleID="s69"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.5">
+    <Cell ss:MergeAcross="1" ss:StyleID="s68"><Data ss:Type="String">Cores:</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">n/a (Java application)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.5">
+    <Cell ss:Index="2" ss:StyleID="s66"><Data ss:Type="String">If yes, explain:</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.5">
+    <Cell ss:MergeAcross="1" ss:StyleID="s68"><Data ss:Type="String">Restarts:</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">No</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.5">
+    <Cell ss:Index="2" ss:StyleID="s66"><Data ss:Type="String">If yes, explain:</Data></Cell>
+    <Cell ss:StyleID="s72"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.5">
+    <Cell ss:MergeAcross="1" ss:StyleID="s68"><Data ss:Type="String">Switch Procedures/Warmup:</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">No</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.5">
+    <Cell ss:MergeAcross="1" ss:StyleID="s68"><Data ss:Type="String">Deploy bin/etc/3rdParty:</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">No</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.5">
+    <Cell ss:MergeAcross="1" ss:StyleID="s68"><Data ss:Type="String">Configuration Changes Made:</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Yes</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.5">
+    <Cell ss:Index="2" ss:StyleID="s66"><Data ss:Type="String">If yes, explain:</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.5">
+    <Cell ss:MergeAcross="1" ss:StyleID="s68"><Data ss:Type="String">PROD staging area clean:</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">n/a</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.5">
+    <Cell ss:MergeAcross="1" ss:StyleID="s68"><Data ss:Type="String">DB Changes coordinated:</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">n/a</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.5" ss:StyleID="s74">
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.5" ss:StyleID="s74">
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.5" ss:StyleID="s74">
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.5" ss:StyleID="s74">
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.5" ss:StyleID="s74">
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.5" ss:StyleID="s74">
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.5" ss:StyleID="s74">
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.5" ss:StyleID="s74">
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.5" ss:StyleID="s74">
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.5" ss:StyleID="s74">
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.5" ss:StyleID="s74">
+    <Cell ss:StyleID="s75"><Data ss:Type="String"></Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>

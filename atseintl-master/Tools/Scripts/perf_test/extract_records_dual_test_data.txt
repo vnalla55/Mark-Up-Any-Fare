@@ -1,0 +1,21 @@
+junk 1
+junk 2
+=RECORD=
+--------
+line 3
+line 4
+=RECORD=
+line 6
+line 7
+line 8
+line 9
+=RECORD=
+--------
+line 3
+line 4
+line 5
+line 6
+line 7
+line 8
+line 9
+line 10

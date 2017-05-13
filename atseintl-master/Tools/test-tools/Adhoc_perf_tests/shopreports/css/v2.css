@@ -1,0 +1,12 @@
+tr.oddTableRow td {
+    background-color: #CCC999; color: black;
+}
+tr.evenTableRow td {
+    background-color: #B9BACE; color: black;
+}
+tr.tableHeading td {
+    background-color: #3d46C4; color: white; font-weight:bold; text-align:center;
+}
+tr.totalTableRow td {
+    background-color: #00FF84; color: black; font-weight:bold; 
+}

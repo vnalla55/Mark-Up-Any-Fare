@@ -1,0 +1,12 @@
+<AltPricingResponse>
+  <DTS Q0S="1">
+  </DTS>
+  <MSG S18=" " Q0K="000003" N06="X">
+  </MSG>
+  <MSG S18="PSGR TYPE  ADT" Q0K="000004" N06="X">
+  </MSG>
+  <MSG S18="   FARE BASIS BOOK CODE           FARE      TAX       TOTAL" Q0K="000005" N06="X">
+  </MSG>
+  <MSG S18="01 VBRGRU     V         BRL     770.00    19.62      789.62" Q0K="000006" N06="X">
+  </MSG>
+</AltPricingResponse>

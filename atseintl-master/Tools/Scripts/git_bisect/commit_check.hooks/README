@@ -1,0 +1,7 @@
+commit_check.sh hooks
+~-------------------~
+
+commit_check.sh calls whatever is pre/ and post/
+at the beginning or at the end of each commit check.
+
+If a hook gives nonzero exit code, git bisect stops.

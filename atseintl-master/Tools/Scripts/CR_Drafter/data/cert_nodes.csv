@@ -1,0 +1,13 @@
+hostname,Application,# Instances or              # Throttle
+piilc001,FD/TAX/RTG/PricingV2,16
+piilc002,FD/TAX/RTG/PricingV2,16
+pimlc302,ShopMIP,48
+pimlc303,ShopMIP,48
+pimlc304,ShopMIP,48
+piilc402,Historical,16
+piilc403,Historical,16
+pimlc001,ShopIS/ESVII,16
+pimlc003,ShopIS/ESVII,16
+pinlc116,Historical,16
+pimlc300,ShopHist,16
+pimlc301,ShopHist,16

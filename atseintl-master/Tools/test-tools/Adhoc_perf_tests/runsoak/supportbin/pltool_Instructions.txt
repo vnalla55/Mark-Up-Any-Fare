@@ -1,0 +1,207 @@
+ Instructions for the PLAB traffic tool written by Bill Heckel
+ Current as of Version 2.72 - June 18th, 2008
+ 
+Purpose:  This tool is a general purpose TCP/IP tool to send formatted packets to a port of the user's choice on one or more servers.
+Features:  This tool is capable of collecting these packets also known as requests from text files in several formats and adding headers and or footers to the request before sending them to the specified server.
+ The program uses a transactions per second (TPS) method for setting the transmission rate with possible limits to the number of open connections.
+ A self tuning method has been incorporated for certain types of request/response pairs where the TPS will be adjusted to hover at the throttling limit for the service.
+ A remote control telnet console has been incorporated into the tool featuring realtime control and monitoring.
+ In addition, a method of tuning out failing transactions in incorporated when you wish to repeat a small set of transactions many times.
+ The list of input formats supported and header types will continue to grow as the need arises.
+ 
+ Basic statistics and detailed logging are supported. It is written in straight 'C', runs on linux and uses very little processor time.  Multiple instances may be run on the same box.
+
+Intellisell provides the ability to search for itineraries. Two request schemas are provided / supported:
+    * OTA - an extension of the standard OpenTravel Alliance schema
+    * PSS - Sabre internal standard
+These two look pretty different but in the end provide the same basic function of searching for flights.  Both are sent as text in XML format
+to a tomcat instance running on an SSS ( Intellisell ) server.  
+
+A brief discussion on applicability of the tool to the test desired:
+The pltraffictool program is a traffic generator suitable for testing TCP/IP socket based connection systems that are stateless. Examples of such systems include the MIP and IS services, Intellisell and Pricing/FD. Stateful and interactive services such as green screen booking are not supported by this tool at this time, use loadrunner or other tools for those activities.
+Setup for the tool involves telling it which server(s) to send requests to, how many to send , where to find the requests, what sort of separator is used for the requests, how often to 'tick' new requests (1.5 TPS) and what validator to run if any on the responses.  In addition, there are many 'housekeeping' options affecting logging and operation.
+What the tool does is upon a tick occurring it spawns 1 thread per server it sends traffic to and opens a new socket. On that new socket, once fully open it sends the request with one send command. It then executes a recv command and waits for a response. Upon receipt of a response it closes the socket. Multi part responses are not fully supported at this time. After the response is received it is validated, the request and response are then logged and the statistics are updated.
+During operation a basic console can be enabled allowing remote control of the operating tool while it runs in the background ( recommended ).  This console provides realtime statistics and the ability to start, pause, stop or alter the traffic rate.   
+
+  
+ Operation:
+ A configuration file must be created to tell the program what options, setting and functions to use.  It will be much more efficient to copy an existing file for a starting point.
+ 
+ Config file settings:  See the default.cfg at the end of this document for reference
+ SystemCall is a function allowing the program to execute a shell command before beginning the run.  It can be used to gather the request file from production or to clear out logfiles or anything else. You may have more than 1 of this entry
+ 
+ RequestFile is the source of the requests
+
+ RequestChanger is the main commend for a series of 'request changer' functions.  See RequestChangerInstructions.txt
+ 
+ filemode sets the input file separator mode, there are several options:  BYLINES separates each line into a new request, ALTLINES separates alternating lines skipping the first, BREAK separates them in the manner of the SSS logs, TSEREQLOG processes the requests from the tserequest.log files, TSEPLAIN splits them by <Shoppingrequest> xml
+ 
+ skiplines allows you to ignore the first xx lines of the file
+ 
+ stride uses every nth request
+ 
+ quantity how many requests to read in ( up to this number ) the program supports up to 2,000,000 requests now
+ 
+ LoadMinRequestSize sets the minimum acceptable size for requests to load from the file
+ 
+ LoadMaxRequestSize sets the maximum acceptable size for requests to load from the file
+ 
+ CompressRequest sets the minimum size before compression is used.  0=off 1=everything is compressed, 8196 means bigger than 8k gets compressed...
+ 
+ StartDelay sets a delay after loading the request file for starting traffic ( seconds, 3600 = 1 hr )
+ 
+ overwritelog can be set to 1 to write over an existing logfile, otherwise it will back up the old files
+ 
+ LogFile  if this is set, write the logs, if it is not set ( commented out ) write to console
+ 
+ csvFile  If set, log the data in csv format as well
+ 
+ headermode	sets the type of header to wrap around the request:  NONE adds nothing ,RHTTP raw http adds a basic http wrapper, V2HTTP adds a atsev2 shopping http header, SHOPPING adds a MIP header ,PRICING adds a pricing header, OTASOAP wraps it in an OTA SOAP request then adds an http header
+ 
+ TPSdesired sets the initial rate, the program supports any tps up to 49.9 and as low as 0.01, the resolution is 10ms
+ 
+ MaxConcurrent if set, limit the number of concurrent transactions
+ 
+ MaxResponseSize limits the size of the logged data. 
+ 
+ MaxRequestSize limits the size of the logged request, it trims from the middle to preserve the JR for shopping
+  
+ limitrequests determines how many requests will be sent
+  
+ responsemode Selects which validator to run on responses, normally set by the headermode.  If used to override it must be after headermode in the config file
+ 
+//ramping feature these are typical values for MIPDIRECT
+
+ rampdelay 240		how long to wait in seconds before the first rate change
+ softstart  1.5		is how many TPS to add after the initial rampdelay seconds
+ rampinterval 120	how long to wait between subsequent changes
+ rampquantity 100	how many ramp events to do
+ rampsize 0.25		what should be added to the TPS at each change event + or -
+  
+ randomRequests set to 1 to randomly pick the requests, 0 to go in the order they are read in from the file ( may duplicate in random mode )
+ 
+ samerequests set to 1 to send the same request to each server in the list, 0 means each is different ( if there are enough )
+  
+ Interactive do we wait for console input or are we scripted, set to 1 to wait for keypress
+ 
+ serverport port MUST come before server list and must be invariant
+ server  name or IP address list such as plab036 plab037 plab038 10.61.19.171
+ 
+ consoleport selects the port to open the telnet control console on
+ 
+ findnextport allows you to run multiple traffic tools with the same config file.  Watch out for file issues ( don't log, it will fail! )
+ 
+ FinalCall is used to run a cleanup script or to post process the logs. only one command line is permitted 
+ 
+---- request changers, available from version 2.8 and forward ----
+In the config file, start the line with 'RequestChanger' then the changer name then parameters as shown in the examples
+below included.  These are new and may not be 100% foolproof but have so far been shown to work.
+
+The names of the functions are not case sensitive, the values and tags are
+
+//  Exchange one 'word' for another wherever it is found
+RequestChanger SWAP DFW NYC
+// Set an attribute to one of the list of supplied values, in the following case, set the pseudo to either L4NB or WOH3
+RequestChanger ATTRSETRAND PseudoCityCode L4NB WOH3  
+// Set an attribute to one of the list of supplied values, IF THE VALUE MATCHES, in the following case,
+//  set the Code to one of clg,mil,adt,foo,bar IF it is currently ADT
+RequestChanger ATTRSWAPRAND Code ADT CLG MIL ADT FOO BAR
+// in the tag 'NumTrips' set 'Number' to one of 19,69,100,200
+RequestChanger XMLSETRAND NumTrips Number 19 69 100 200
+RequestChanger XMLSWAP CompanyName Code EXPD TVLY 
+RequestChanger XMLSWAPRAND OriginLocation LocationCode JFK NYC NWR LGA JFK
+RequestChanger XMLSET CompressResponse Value false 
+// Add an XML value to the request, it helps to add something valid or the request gets thrown away
+RequestChanger XMLADD CabinPref Private true  //this is not a real value!
+
+// If these match, reject the request
+//RequestPruner MATCH 0709251510115542969
+//RequestPruner XMLMATCH OriginLocation LocationCode JFK
+
+
+// These are special, they actually make use of the date and calculate the earliest date found in each request ( that is in the tag given ) 
+//  and insures then enough days are added ( or subtracted ) so that the earliest date is within the range given
+// All dates are moved the same amount to insure that the flight plan makes some sense.
+
+RequestChanger XmlMakeDatesFuture DepartureDateTime 2 21
+RequestChanger SabreMakeDatesFuture 0 14
+
+
+------  Deprecated or broken features, may not work or may be erratic / future capability  -----
+
+ SkipOnFail if using the skip fails on repeated sends set to the threshold for skipping repeated failed requests
+
+ **Self tuning is deprecated for multi server use but may be reinstated if there is a need.  Use at own risk
+    selftunemode set to 1 to watch the TPS and throttling and raise or lower TPS to keep throttles to x per second
+    // the next group of settings only apply if selftune mode is on
+    selftunedelay how many seconds before we start the tuning loop
+    selftuneinterval how long is the tuning window ( seconds )
+    selftunelowthrottles  below this number of throttles per interval we speed up
+    selftunehighthrottles  above this number we slow down
+
+
+---------- RUNNING THE TOOL ------------
+
+I like to run it disconnected in the background so as to not need a constant console.  You can use screen or any other console virtualization tool or you can use a more primitive tool like nohup.
+
+For example, the following command run from the tool's root directory will start in the background, ignore the HUP signal upon closing your console and will dump the screen output to null (nowhere)
+
+nohup ./pltraffictool cfg/defaul.cfg > /dev/null &
+
+When running the tool in this fashion, setup the remote control port and use it to control and monitor the progress
+
+----- Console remote control instructions
+
+Connect using telnet for example: telnet plabptl020 6666
+
+These are the supported commands:
++-  increase or decrease the TPS by 10%
+a   toggles automatic status reports on 10 sec intervals
+c   displays the configuration report
+d   disconnects you from the console leaving the server running
+e 1234 sets the ending transaction number
+l   Reload the request file ( pauses traffic while working )
+L path/filename  Loads the specified request file
+p   pauses traffic and toggles it ( sets TPS to 0.01 or back )
+qy  Quits the server ASAP which also disconnects you
+r   resets statistics to start condition
+s   displays the status report
+t x.y sets the TPS 
+
+
+  --------------- uneditted default.cfg follows -----------------
+ // the default multiple MIP config file
+ // comments or disabled lines start with the double slashes
+ // system call gets run immediately after it is parsed
+ // Used to run a pre-test script or gather the entries to send
+
+ //SystemCall ssh sg618962@ttfhlp086 cat /apps/intellisell/int-2.1/logs/tomcat/PRIME/intellisellRQ.log > req/tmplfs.txt
+
+ RequestFile req/allmip.txt
+// skiplines 6000
+ filemode TSEPLAIN			// BYLINES,ALTLINES,BREAK,TSEREQLOG,TSEPLAIN,SHOPPINGREQ,PLTTPASS
+ quantity 3000				// read in up to xx requests from input file
+ LogFile  log/MIPlogfile.txt
+ csvfile  log/MIPlogfile.csv
+ headermode SHOPPING			// NONE,RHTTP,V2HTTP,SHOPPING,PRICING,OTASOAP
+ TPSdesired 1 			    // 0.5 tps default 0.25 min 49.9 maximum
+ StartDelay 0				// wait this many seconds before starting traffic
+ MaxConcurrent 900			// maximum number of concurrent transactions watch out with multiple servers active!
+ MaxResponseSize 12000		// set to a value to trim responses
+ MaxRequestSize 200			// set to a value to trim requests in log (50% front 50% tail)
+ limitrequests 15000 		// per server! for unlimited run set to 0 otherwise control number of requests sent
+ responsemode MIPDIRECT		// ALLPASS, SSSOTA, SSSXMLV2, (MIPDIRECT,ISDIRECT,PRICING)  Selects which validator to run on responses
+// Setting responsemode overrides defaults set by headermode if needed
+ rampdelay 60
+ softstart 16              // Initial TPS add after first rampdelay seconds occurs 
+ rampinterval 30
+ rampquantity 100
+ rampsize 0.50                                           
+ Interactive 0 				// do we wait for console input or are we scripted
+ consoleport 6000 			// where do we listen
+ findnextport 10			// if in use, look at the next xx ports to find an available one 
+ serverport 53601			// port MUST come first
+ samerequests 1				// send each server identical traffic
+ server plabpt07 plabpt08 plabpt09 plabpt10 // name or IP address list
+ // FinalCall is used to run a cleanup script or to post process the logs 
+//FinalCall sh sendemail.sh william.heckel@sabre-holdings.com 

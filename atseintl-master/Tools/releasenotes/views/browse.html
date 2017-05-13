@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Release Notes Publisher</title>
+
+    <style type="text/css">
+        @import url(/static/style.css);
+    </style>
+</head>
+<body>
+
+    #parse( "views/menu.include.html" )
+
+    #if ( $stage == "showfile" )
+
+        <h2>$release</h2>
+
+        #foreach ( $groupName in $notes.NotesByGroup.keySet() )
+            <h3>$groupName</h3>
+
+            #set( $alt = "" )
+
+            <table class="deliveries_table">
+
+                <thead>
+
+                    #foreach ( $title in $recordTools.getSummaryFieldTitles($recordType) )
+                        <td>$title</td>
+                    #end
+                  <!--  <td>Title</td>
+                    <td>Date</td>
+                    <td>Developer</td>-->
+                    <td></td>
+                </thead>
+
+                #foreach ( $note in $notes.NotesByGroup.get($groupName) )
+
+                    #if ( $alt == "")
+                        #set ($alt = "odd_row")
+                    #else
+                        #set ($alt = "")
+                    #end
+
+                    <tr class="$alt">
+
+                        #foreach ( $title in $recordTools.getSummaryFieldValues($note) )
+                            <td>$title</td>
+                        #end
+
+                        <!--<td width="60%">$note.Title</td>
+                        <td width="15%">$note.Date</td>
+                        <td width="20%">$note.Developer</td>-->
+                        <td width="5%"><a href="/remove/$release/$note.Digest?$urlParams">Remove</a></td>
+                        <td width="5%"><a href="/edit/$release/$note.Digest?$urlParams">Edit</a></td>
+                    </tr>
+                #end
+            </table>
+        #end
+
+    #elseif ( $stage == "listfiles" )
+         #foreach ( $release in $releases )
+
+            <a href="/browse/$release?$urlParams">$release</a><br>
+
+         #end
+
+    #elseif ( $stage == "listspecials" )
+
+        #foreach ( $release in $releases )
+
+            <a href="/form?$urlParamsWithoutSpecialRelease&specialRelease=$release">$notesUtils.assureNoReleasePrefix($release.toString())</a>
+            <br>
+
+        #end
+
+    #end
+</body>
+</html>

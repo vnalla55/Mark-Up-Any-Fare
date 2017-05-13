@@ -1,0 +1,500 @@
+<TaxResponse>
+  <Misc paxTypeCode="ADT" />
+  <FarePath file="/vobs/atseintl/test/testdata/data/FarePath.xml"/>
+
+  <!-- PFC -->
+  <PfcItem>
+    <Attributes
+      absorptionInd="t"
+      amount=123
+      currency="USD"
+      numDecimals=2
+      couponNumber=12345
+      airport="DFW"
+      carrier="UA"
+      legId=0
+      />
+  </PfcItem>
+  <PfcItem>
+    <Attributes
+      absorptionInd="t"
+      amount=0
+      currency="USD"
+      numDecimals=2
+      couponNumber=12345
+      airport="DFW"
+      carrier="AA"
+      legId=1
+      />
+  </PfcItem>
+  <PfcItem>
+    <Attributes
+      absorptionInd="t"
+      amount=500
+      currency="USD"
+      numDecimals=2
+      couponNumber=12345
+      airport="DFW"
+      carrier="LA"
+      legId=0
+      />
+  </PfcItem>
+
+  <TaxItem>
+    <TaxCodeReg file="/vobs/atseintl/test/testdata/data/TaxCodeReg_XP.xml"/>
+
+    <Currency
+      paymentCurrency="USD"
+      paymentCurrencyNoDec=2 />
+
+    <Tax amount=12.5
+      taxableFare=10.5
+      taxablePartialFare=5.6
+      milesLocal=100
+      milesThru=200
+      localBoard="DFW"
+      localOff="LAX"
+      thruBoard="NYC"
+      thruOff="BAL"
+      description="The description."
+      taxOnTaxInfo="The tax on tax info."
+      tax=7.0
+      min=0.0
+      max=0.0
+      seqNo=1
+      taxCode="XP"
+      specialProcessNo=35/>
+
+    <Misc mixedTax=T
+      legId=1 />
+  </TaxItem>
+
+  <TaxItem>
+    <TaxCodeReg file="/vobs/atseintl/test/testdata/data/TaxCodeReg_XP.xml"/>
+
+    <Currency
+      paymentCurrency="USD"
+      paymentCurrencyNoDec=2 />
+
+    <Tax amount=45.2
+      taxableFare=12.3
+      taxablePartialFare=47.2
+      milesLocal=200
+      milesThru=300
+      localBoard="DFW"
+      localOff="LAX"
+      thruBoard="NYC"
+      thruOff="BAL"
+      description="The description."
+      taxOnTaxInfo="The tax on tax info."
+      tax=7.0
+      min=0.0
+      max=0.0
+      seqNo=1
+      taxCode="XP"
+      specialProcessNo=35/>
+
+    <ReissueTax
+      amount=88.2
+      currency="DEN" />
+    <Misc mixedTax=T
+      legId=0 />
+  </TaxItem>
+
+  <TaxItem>
+    <TaxCodeReg>
+       <ExpireDate    year=9999 month=12 day=31 hour=23 minute=59 second=59/>
+       <EffectiveDate year=2004 month=8 day=13 hour=0 minute=0 second=0/>
+       <DiscountDate  year=9999 month=12 day=31 hour=0 minute=0 second=0/>
+       <FirstTvlDate  year=2004 month=8 day=13 hour=0 minute=0 second=0/>
+       <LastTvlDate   year=9999 month=12 day=31 hour=0 minute=0 second=0/>
+       <LockDate      year=2004 month=8 day=30 hour=17 minute=10 second=59/>
+
+       <Loc1 type="Z" loccode="00019" exclInd="N" appl="N"/>
+       <Loc2 type="Z" loccode="00911" exclInd="N" appl="N"/>
+
+       <Amounts tax=7.00
+                taxCurrency="EUR"
+                min=3.0
+                max=14.00
+                plusup=0.0
+                lowRange=0.0
+                highRange=0.0
+                rangeIncrement=0.0 />
+
+       <Misc
+             seqNo=2
+             taxType="W"
+             taxCode="CA2"
+             specialProcessNo=25
+             createDate=0
+             versionDate=0
+       />
+    </TaxCodeReg>
+
+    <Currency
+      paymentCurrency="EUR"
+      paymentCurrencyNoDec=2 />
+
+    <Tax amount=74.3
+      taxableFare=20.3
+      taxablePartialFare=18.3
+      localBoard="MUC"
+      localOff="DFW"
+      thruBoard="LHR"
+      thruOff="NYC"
+      description="Another tax."
+      taxOnTaxInfo="Another info."
+      tax=7.00
+      taxCurrency="EUR"
+      min=3.0
+      max=14.00
+      seqNo=2
+      taxType="W"
+      taxCode="CA2"
+      specialProcessNo=25 />
+
+    <Misc legId=0 />
+  </TaxItem>
+
+  <TaxItem>
+    <TaxCodeReg>
+       <ExpireDate    year=9999 month=12 day=31 hour=23 minute=59 second=59/>
+       <EffectiveDate year=2004 month=8 day=13 hour=0 minute=0 second=0/>
+       <DiscountDate  year=9999 month=12 day=31 hour=0 minute=0 second=0/>
+       <FirstTvlDate  year=2004 month=8 day=13 hour=0 minute=0 second=0/>
+       <LastTvlDate   year=9999 month=12 day=31 hour=0 minute=0 second=0/>
+       <LockDate      year=2004 month=8 day=30 hour=17 minute=10 second=59/>
+
+       <Loc1 type="Z" loccode="00019" exclInd="N" appl="N"/>
+       <Loc2 type="Z" loccode="00911" exclInd="N" appl="N"/>
+
+       <Amounts tax=8.0
+                taxCurrency="USD"
+                min=2.99
+                max=8.99
+                plusup=0.0
+                lowRange=0.0
+                highRange=0.0
+                rangeIncrement=0.0 />
+
+       <Misc
+             seqNo=2
+             taxType="P"
+             taxCode="CA2"
+             specialProcessNo=25
+             createDate=0
+             versionDate=0
+       />
+    </TaxCodeReg>
+
+    <Currency
+      paymentCurrency="USD"
+      paymentCurrencyNoDec=2 />
+
+    <Tax amount=84.2
+      taxableFare=12.3
+      taxablePartialFare=75.22
+      localBoard="MUC"
+      localOff="DFW"
+      thruBoard="LHR"
+      thruOff="NYC"
+      description="percentage tax"
+      taxOnTaxInfo="percentage tax info"
+      tax=8.0
+      taxCurrency="USD"
+      min=2.99
+      max=8.99
+      seqNo=2
+      taxType="P"
+      taxCode="CA2"
+      specialProcessNo=25/>
+
+    <Misc legId=1 />
+  </TaxItem>
+
+  <TaxItem>
+    <TaxCodeReg>
+       <ExpireDate    year=9999 month=12 day=31 hour=23 minute=59 second=59/>
+       <EffectiveDate year=2004 month=8 day=13 hour=0 minute=0 second=0/>
+       <DiscountDate  year=9999 month=12 day=31 hour=0 minute=0 second=0/>
+       <FirstTvlDate  year=2004 month=8 day=13 hour=0 minute=0 second=0/>
+       <LastTvlDate   year=9999 month=12 day=31 hour=0 minute=0 second=0/>
+       <LockDate      year=2004 month=8 day=30 hour=17 minute=10 second=59/>
+
+       <Loc1 type="Z" loccode="00019" exclInd="N" appl="N"/>
+       <Loc2 type="Z" loccode="00911" exclInd="N" appl="N"/>
+
+       <Amounts tax=8.0
+                taxCurrency="USD"
+                min=2.99
+                max=8.99
+                plusup=0.0
+                lowRange=0.0
+                highRange=0.0
+                rangeIncrement=0.0 />
+
+       <Misc
+             seqNo=2
+             taxType="P"
+             taxCode="KR"
+             specialProcessNo=25
+             multioccconvrndInd=Y
+             createDate=0
+             versionDate=0
+       />
+    </TaxCodeReg>
+
+    <Currency
+      paymentCurrency="USD"
+      paymentCurrencyNoDec=2 />
+
+    <Tax amount=12.34
+      taxableFare=56.78
+      taxablePartialFare=90.12
+      localBoard="MUC"
+      localOff="DFW"
+      thruBoard="LHR"
+      thruOff="NYC"
+      description="multioccc"
+      taxOnTaxInfo="multioccc"
+      tax=8.0
+      taxCurrency="USD"
+      min=2.99
+      max=8.99
+      seqNo=2
+      taxType="P"
+      taxCode="KR"
+      multioccconvrndInd=Y
+      specialProcessNo=25 />
+
+    <Misc
+      carrierCode="AA"
+      legId=1 />
+  </TaxItem>
+
+  <TaxItem>
+    <TaxCodeReg>
+       <ExpireDate    year=9999 month=12 day=31 hour=23 minute=59 second=59/>
+       <EffectiveDate year=2004 month=8 day=13 hour=0 minute=0 second=0/>
+       <DiscountDate  year=9999 month=12 day=31 hour=0 minute=0 second=0/>
+       <FirstTvlDate  year=2004 month=8 day=13 hour=0 minute=0 second=0/>
+       <LastTvlDate   year=9999 month=12 day=31 hour=0 minute=0 second=0/>
+       <LockDate      year=2004 month=8 day=30 hour=17 minute=10 second=59/>
+
+       <Loc1 type="Z" loccode="00019" exclInd="N" appl="N"/>
+       <Loc2 type="Z" loccode="00911" exclInd="N" appl="N"/>
+
+       <Amounts tax=8.0
+                taxCurrency="USD"
+                min=2.99
+                max=8.99
+                plusup=0.0
+                lowRange=0.0
+                highRange=0.0
+                rangeIncrement=0.0 />
+
+       <Misc
+             seqNo=2
+             taxType="P"
+             taxCode="KR"
+             specialProcessNo=25
+             multioccconvrndInd=Y
+             createDate=0
+             versionDate=0
+       />
+    </TaxCodeReg>
+
+    <Currency
+      paymentCurrency="USD"
+      paymentCurrencyNoDec=2 />
+
+    <Tax amount=23.45
+      taxableFare=67.89
+      taxablePartialFare=0.12
+      localBoard="MUC"
+      localOff="DFW"
+      thruBoard="LHR"
+      thruOff="NYC"
+      description="multioccc"
+      taxOnTaxInfo="multioccc"
+      tax=8.0
+      taxCurrency="USD"
+      min=2.99
+      max=8.99
+      seqNo=2
+      taxType="P"
+      taxCode="KR"
+      multioccconvrndInd=Y
+      specialProcessNo=25 />
+
+    <Misc
+      carrierCode="AA"
+      legId=1 />
+  </TaxItem>
+
+
+  <!-- two exempt items -->
+  <TaxItem>
+    <TaxCodeReg file="/vobs/atseintl/test/testdata/data/TaxCodeReg_AY.xml"/>
+
+    <Tax tax=5.0
+         min=0.0
+         max=0.0
+         seqNo=1
+         taxCode="AY"
+         specialProcessNo=16
+         />
+
+    <Misc failCode="\x3" legId=0 /> <!-- 3 is tax exempt -->
+  </TaxItem>
+
+  <TaxItem>
+    <TaxCodeReg>
+       <ExpireDate    year=9999 month=12 day=31 hour=23 minute=59 second=59/>
+       <EffectiveDate year=2004 month=8 day=13 hour=0 minute=0 second=0/>
+       <DiscountDate  year=9999 month=12 day=31 hour=0 minute=0 second=0/>
+       <FirstTvlDate  year=2004 month=8 day=13 hour=0 minute=0 second=0/>
+       <LastTvlDate   year=9999 month=12 day=31 hour=0 minute=0 second=0/>
+       <LockDate      year=2004 month=8 day=30 hour=17 minute=10 second=59/>
+
+       <Loc1 type="Z" loccode="00019" exclInd="N" appl="N"/>
+       <Loc2 type="Z" loccode="00911" exclInd="N" appl="N"/>
+
+       <Amounts tax=10.00
+                min=5.0
+                max=20.00
+                plusup=0.0
+                lowRange=0.0
+                highRange=0.0
+                rangeIncrement=0.0 />
+
+       <Misc
+             seqNo=2
+             taxCode="CA2"
+             specialProcessNo=25
+             createDate=0
+             versionDate=0
+       />
+     </TaxCodeReg>
+
+     <Tax tax=10.00
+       min=5.0
+       max=20.00
+       plusup=0.0
+       seqNo=2
+       taxCode="CA2"
+       specialProcessNo=25 />
+
+    <Misc failCode="\x3"
+          legId=0 />
+  </TaxItem>
+
+  <TaxRecord
+    taxAmount=100.50
+    taxNodec=2;
+    taxCurrCode="USD"
+    taxID="RA"
+    taxDescription="Tax applied."
+    taxNation="US"
+    taxType="f"
+    taxRollXTNotAllowedInd="t"
+    taxRolledXTInd="f"
+    multiOccConvRndInd="t"
+    legId="0"
+  />
+  <TaxRecord
+    taxAmount=0.0000001
+    taxNodec=2;
+    taxCurrCode="USD"
+    taxID="RB"
+    taxDescription="Tax applied."
+    taxNation="US"
+    taxType="f"
+    taxRollXTNotAllowedInd="t"
+    taxRolledXTInd="f"
+    multiOccConvRndInd="t"
+    legId="0"
+  />
+  <TaxRecord
+    taxAmount=18.50
+    taxNodec=2;
+    taxCurrCode="PLN"
+    taxID="RC"
+    taxDescription="Another tax applied."
+    taxNation="PL"
+    taxType="f"
+    taxRollXTNotAllowedInd="t"
+    taxRolledXTInd="f"
+    multiOccConvRndInd="t"
+    legId=0
+  />
+  <TaxRecord
+    taxAmount=9.99
+    taxNodec=2;
+    taxCurrCode="USD"
+    taxID="RD"
+    taxDescription="Exempted tax"
+    taxNation="US"
+    taxType="f"
+    taxRollXTNotAllowedInd="t"
+    taxRolledXTInd="f"
+    multiOccConvRndInd="t"
+    failCode="\x3"
+    legId=0
+  />
+  <TaxRecord
+    taxAmount=27.99
+    taxNodec=2;
+    taxCurrCode="USD"
+    taxID="XF"
+    taxDescription="XF tax"
+    taxNation="US"
+    taxType="f"
+    taxRollXTNotAllowedInd="t"
+    taxRolledXTInd="f"
+    multiOccConvRndInd="t"
+    legId=0
+  />
+  <TaxRecord
+    taxAmount=500
+    taxNodec=2;
+    taxCurrCode="USD"
+    taxID="XF"
+    taxDescription="XF tax with same value as some pfcitem"
+    taxNation="US"
+    taxType="f"
+    taxRollXTNotAllowedInd="t"
+    taxRolledXTInd="f"
+    multiOccConvRndInd="t"
+    legId=0
+  />
+  <TaxRecord
+    taxAmount=500
+    taxNodec=2;
+    taxCurrCode="USD"
+    taxID="KR"
+    taxDescription="KR tax with leg and carrier as some item"
+    taxNation="US"
+    taxType="f"
+    taxRollXTNotAllowedInd="t"
+    taxRolledXTInd="f"
+    multiOccConvRndInd="t"
+    carrierCode=AA
+    legId=1
+  />
+  <TaxRecord
+    taxAmount=300
+    taxNodec=2;
+    taxCurrCode="USD"
+    taxID="KR"
+    taxDescription="another KR tax with leg and carrier as some item"
+    taxNation="US"
+    taxType="f"
+    taxRollXTNotAllowedInd="t"
+    taxRolledXTInd="f"
+    multiOccConvRndInd="t"
+    carrierCode=AA
+    legId=1
+  />
+</TaxResponse>

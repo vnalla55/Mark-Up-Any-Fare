@@ -1,0 +1,31 @@
+README / USAGE
+~------------~
+
+1. It is strongly recommended to get familiar with "git help bisect".
+
+2. Copy this directory manually to be under build directory root or $HOME,
+   just to be not affected via git bisect itself.
+
+3. hammer_test_example.sh must be renamed into hammer_test.sh and
+   adjusted to test tseserver against your "bad" request example.
+
+4. You might want to adjust commit_check.cfg
+   to setup different host and port for tseserver.
+
+5. git bisect is recommended to be run from clean build directory,
+   although it is not a strict rule.
+
+6. Run git_bisect/commit_check.sh solely to make sure commit_check.cfg
+   is set up OK and HEAD commit will be reported as "bad".
+
+7. How to run it from build directory root
+
+    $ git bisect start <bad> <good>
+    $ git bisect run git_bisect/commit_check.sh
+
+
+LIMITATION
+
+For now git bisect has nothing to do with discrepancies, that are caused by
+ACMS changes. Thus, first make sure you are trying you locate an error or a discrepancy,
+which is caused by code change only.

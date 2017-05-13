@@ -1,0 +1,106 @@
+2005-09-30 14:36:15,824: 1503656304 INFO  atseintl.Metrics - 
+**********************************************************
+*                  TRANSACTION MEASUREMENTS              *
+**********************************************************
+
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+TSEMANAGERUTIL SERVICE                 3.56   0.01      1
+- TO FARE DISPLAY PROCESS              3.56   0.01      1
+- TO ITIN SERVICE                      0.00   0.00      1
+- -ITIN PROCESS                        0.00   0.00      1
+- - ITIN SET TRIP-CHARACTERISTICS      0.00   0.00      1
+- TO FARES C SERVICE                   2.29   0.01      1
+- -FCO SETUP FARE MARKET               0.00   0.00      1
+- - ALGORITHM THREAD TASK              0.00   0.00      1
+- -FCO PUB FARES                       2.27   0.00      1
+- - ALGORITHM THREAD TASK              2.27   0.00      1
+- - -FCO PAI PUB                       2.27   0.00      1
+- - -FCO PAI IND                       0.00   0.00      1
+- -FCO FBR FARES                       0.01   0.00      1
+- - ALGORITHM THREAD TASK              0.01   0.00      1
+- -FCO DISC FARES                      0.01   0.01      1
+- - ALGORITHM THREAD TASK              0.01   0.01      1
+- -FCO NEG FARES                       0.00   0.00      1
+- - ALGORITHM THREAD TASK              0.00   0.00      1
+- - -FCO NEGFARECNTRLR                 0.00   0.00      1
+- -FCO SELECT CURRENCY                 0.00   0.00      1
+- - ALGORITHM THREAD TASK              0.00   0.00      1
+- -FCO RELEASE FARES                   0.00   0.00      1
+- - ALGORITHM THREAD TASK              0.00   0.00      1
+- -FCO SORT FARES                      0.00   0.00      1
+- - ALGORITHM THREAD TASK              0.00   0.00      1
+- TO FARE SELECTOR SERVICE             0.00   0.00      1
+- TO FARES V SERVICE                   0.01   0.00      1
+- CHECK TRX ABORT                      0.00   0.00      6
+- TO TAX SERVICE                       0.00   0.00      1
+- -TAX PROCESS                         0.00   0.00      1
+- TO FARE DISPLAY SERVICE              1.26   0.00      1
+- - FARE DISPLAY SERVICE               1.26   0.00      1
+- TO REQRSP SERVICE                    0.00   0.00      1
+TSEMANAGERUTIL RSPXFORM                0.00   0.00      1
+
+
+
+LINE ITEMS
+
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+TSEMANAGERUTIL SERVICE                 3.56   0.01      1
+ TO FARE DISPLAY PROCESS               3.56   0.01      1
+ALGORITHM THREAD TASK                  2.29   0.01      8
+TO FARES C SERVICE                     2.29   0.01      1
+FCO PUB FARES                          2.27   0.00      1
+FCO PAI PUB                            2.27   0.00      1
+TO FARE DISPLAY SERVICE                1.26   0.00      1
+ FARE DISPLAY SERVICE                  1.26   0.00      1
+FCO FBR FARES                          0.01   0.00      1
+TO FARES V SERVICE                     0.01   0.00      1
+FCO DISC FARES                         0.01   0.01      1
+TSEMANAGERUTIL RSPXFORM                0.00   0.00      1
+TO TAX SERVICE                         0.00   0.00      1
+TO REQRSP SERVICE                      0.00   0.00      1
+TO ITIN SERVICE                        0.00   0.00      1
+CHECK TRX ABORT                        0.00   0.00      6
+TO FARE SELECTOR SERVICE               0.00   0.00      1
+TAX PROCESS                            0.00   0.00      1
+ITIN SET TRIP-CHARACTERISTICS          0.00   0.00      1
+ITIN PROCESS                           0.00   0.00      1
+FCO SORT FARES                         0.00   0.00      1
+FCO SETUP FARE MARKET                  0.00   0.00      1
+FCO SELECT CURRENCY                    0.00   0.00      1
+FCO RELEASE FARES                      0.00   0.00      1
+FCO NEG FARES                          0.00   0.00      1
+FCO PAI IND                            0.00   0.00      1
+FCO NEGFARECNTRLR                      0.00   0.00      1
+
+
+
+   TRAVEL SEGMENTS:          1
+      FARE MARKETS:          1
+         PAX TYPES:         77
+      PAXTYPEFARES:         34
+  VIRTUAL MEM SIZE:        613 MB
+
+TSELatencyData Latency Statistics: 
+   Elapsed Latency:       0.00s
+       CPU Latency:       0.00s
+
+
+2005-09-30 14:36:15,824: 1503656304 INFO  atseintl.Metrics - Start Time: '2005-11-30T10:24:44.129934'
+2005-09-30 14:36:15,824: 1503656304 INFO  atseintl.Metrics -   End Time: '2005-11-30T10:24:53.429934'
+2005-09-30 14:36:15,824: 1503656304 INFO  atseintl.Metrics -        PNR: ''
+2005-09-30 14:36:15,824: 1503656304 INFO  atseintl.Metrics -      Entry: ''
+2005-09-30 14:36:15,824: 1503656304 INFO  atseintl.Metrics -        PCC: 'AF11'
+2005-09-30 14:36:15,824: 1503656304 INFO  atseintl.Metrics -    TransID: ''
+2005-09-30 14:36:15,824: 1503656304 INFO  atseintl.Metrics -     LNIATA: 'RULEDSP1'
+2005-09-30 14:36:15,824: 1503656304 INFO  atseintl.Metrics - 
+
+==================== External call statistics ======================
+Service    | Ok | Er | Elapsed  | CPU      | ReqSize    | RspSize 
+       Trx |  1 |  0 |   3.5600 |   0.3700 |        351 |        970
+      ASv2 |  0 |  0 |   0.0000 |          |          0 |          0
+     DSSv2 |  0 |  0 |   0.0000 |          |          0 |          0
+   Baggage |  0 |  0 |   0.0000 |          |          0 |          0
+   Billing |  1 |  0 |   0.0400 |          |        204 |         18
+   Req/Rsp |  2 |  0 |   0.1200 |          |        381 |         36

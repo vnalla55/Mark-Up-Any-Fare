@@ -1,0 +1,138 @@
+XFORM_SOURCES := \
+    DynamicConfig.cpp \
+    Xform.cpp
+
+XFORM_CLIENT_XML_SOURCES := \
+    MileageModelMap.cpp \
+    CurrencyModelMap.cpp \
+    DecodeContentHandler.cpp \
+    DecodeResponseFormatter.cpp \
+    PricingDisplayModelMap.cpp \
+    PricingModelMap.cpp \
+    PricingDetailModelMap.cpp \
+    MileageContentHandler.cpp \
+    CurrencyContentHandler.cpp \
+    PricingDisplayContentHandler.cpp \
+    PricingContentHandler.cpp \
+    PricingDetailContentHandler.cpp \
+    SelectionContentHandler.cpp \
+    TicketingFeesRequestHandlerWPA.cpp \
+    TicketingFeesSchemaNamesWPA.cpp \
+    XformClientXML.cpp \
+    MileageResponseFormatter.cpp \
+    ResponseFormatter.cpp \
+    PricingResponseFormatter.cpp \
+    FareComponentDataFormatter.cpp \
+    PricingUnitSFRDataFormatter.cpp \
+    FarePathSFRDataFormatter.cpp \
+    AltPricingResponseFormatter.cpp \
+    NoPNRPricingResponseFormatter.cpp \
+    PricingDetailResponseFormatter.cpp \
+    CurrencyResponseFormatter.cpp \
+    FareDisplayResponseFormatter.cpp \
+    FareDisplayResponseXMLTags.cpp \
+    FareDisplayResponseRoutingXMLTags.cpp \
+    ERDRequestProcessor.cpp \
+    ERDSectionFormatter.cpp \
+    RequestXmlValidator.cpp \
+    XformUtil.cpp \
+    STLTicketingCxrDisplayRequestHandler.cpp \
+    STLTicketingCxrRequestHandler.cpp \
+    STLTicketingCxrResponseFormatter.cpp \
+    STLTicketingCxrDisplayResponseFormatter.cpp \
+    STLTicketingCxrSchemaNames.cpp \
+    FareDisplayModelMap.cpp \
+    FareDisplayContentHandler.cpp \
+    RebuildXMLUtil.cpp \
+    OCFeesPrice.cpp \
+    FareCalcModel.cpp \
+    AbstractTaxSummaryInfo.cpp \
+    TaxSplitData.cpp \
+    PfcTaxSplitData.cpp \
+    TaxSplitModel.cpp \
+    XMLFareCalcFormatter.cpp \
+    XMLTaxSplitFormatter.cpp \
+    TaxFormatter.cpp \
+    FrequentFlyerContentHandler.cpp \
+    FrequentFlyerResponseFormatter.cpp \
+    StructuredRulesResponseFormatter.cpp \
+    StructuredFareRulesCommon.cpp \
+    XMLConvertUtils.cpp \
+    ComparablePenaltyFee.cpp \
+    TaxInformationModel.cpp \
+    PreviousTaxInformationModel.cpp \
+    PreviousTaxInformationFormatter.cpp \
+    ReissueExchangeModel.cpp \
+    ReissueExchangeFormatter.cpp 
+
+XFORM_CLIENT_SHOPPING_XML_SOURCES := \
+    XformClientShoppingXML.cpp \
+    XMLShoppingHandler.cpp \
+    AvailabilityAdjuster.cpp \
+    ShoppingResponseNames.cpp \
+    ShoppingResponseQ4QGrouping.cpp \
+    ShoppingSchemaNames.cpp \
+    AwardPsgTypeChecker.cpp \
+    XMLShoppingResponse.cpp \
+    XMLShoppingSoloCarnivalResponse.cpp \
+    XMLShoppingResponseESV.cpp \
+    XMLRexShoppingResponse.cpp \
+    GenerateSIDForShortCutPricing.cpp \
+    XMLWriter.cpp \
+    BrandingResponseBuilder.cpp \
+    XMLBrandingResponse.cpp \
+    PreferredCabin.cpp \
+    XMLBaggageResponse.cpp
+
+XFORM_CACHE_MESSAGE_SOURCES := \
+    XformCacheMessageXML.cpp \
+    CacheMessageContentHandler.cpp \
+    CacheMessageXMLParser.cpp
+
+XFORM_TAX_XML_SOURCES := \
+    AtpcoTaxDisplayResponseFormatter.cpp \
+    PfcDisplayModelMap.cpp \
+    PfcDisplayResponseFormatter.cpp \
+    TaxDisplayModelMap.cpp \
+    TaxDisplayResponseFormatter.cpp \
+    TaxModelMap.cpp \
+    AncillaryPricingRequestHandler.cpp \
+    AncillaryPricingResponseFormatter.cpp \
+    AncillaryPricingResponseFormatterPostTkt.cpp \
+    AncillaryBaggageResponseFormatter.cpp \
+    XformTaxXML.cpp \
+    TaxContentHandler.cpp \
+    TaxResponseFormatter.cpp \
+    TaxOTAResponseFormatter.cpp \
+    TaxOTAModelMap.cpp \
+    TaxShoppingSchemaNames.cpp \
+    TaxShoppingRequestHandler.cpp \
+    TaxShoppingRequestHandlerOld.cpp \
+    TaxNewShoppingRequestHandler.cpp \
+    TaxShoppingResponseFormatter.cpp \
+    TaxInfoModelMap.cpp \
+    TaxInfoXmlBuilder.cpp \
+    TaxInfoResponseFormatter.cpp\
+    BaggageResponseFormatter.cpp \
+    BaggageRequestHandler.cpp \
+    TktFeesPricingResponseFormatter.cpp \
+    STLTktFeesPricingResponseFormatter.cpp \
+    STLTicketingFeesRequestHandler.cpp \
+    STLTicketingFeesSchemaNames.cpp \
+    AncillaryPricingResponseSumDataFiller.cpp 
+
+
+XFORM_BILLING_XML_SOURCES := \
+    XformBillingXML.cpp
+
+XFORM_COMMON_SOURCES := \
+    AncillarySchemaNames.cpp \
+    CommonRequestHandler.cpp \
+    DataModelMap.cpp \
+    CommonParserUtils.cpp \
+    PricingResponseXMLTags.cpp \
+    TicketingFeesSchemaNames.cpp \
+    TicketingFeesRequestHandler.cpp \
+    BrandsOptionsFilterForDisplay.cpp \
+    CommonFormattingUtils.cpp
+

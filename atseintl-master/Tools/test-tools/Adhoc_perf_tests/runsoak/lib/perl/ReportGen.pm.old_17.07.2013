@@ -1,0 +1,623 @@
+package ReportGen;
+
+use lib "/opt/atseintl/shopperftest/lib/perl";
+
+use FileHandle;
+use OracleInstrDBStats;
+use AppConsoleCommands;
+
+
+# Globals for image suffix names
+my $CHART_FILE_SUFFIX = ".png";
+my $DATA_FILE_SUFFIX = ".csv";
+
+my $ELAPSED_FILE = "elapsed";
+my $CPU_FILE = "cpu";
+my $VM_FILE = "vm";
+my $RM_FILE = "rss";
+my $DBCOUNT_FILE = "dbcount";
+my $DBTIME_FILE = "dbtime";
+my $ITINCOUNT_FILE = "itins";
+my $PORT = "5001";
+my %errDescriptions;
+
+#my $INSTR_DB_CONN_INFO = "DBI:mysql:ATSEHYB2:pimhi007";
+my $INSTR_DB_CONN_INFO = "DBI:mysql:ATSEHYB2:";
+my $INSTR_DB_USER = "sg522502";
+my $INSTR_DB_USER_PSWD = "password1";
+
+sub new
+{
+    my $package = shift;
+    return bless({}, $package);
+}
+
+sub genReportHTML
+{
+    my $self = shift;
+    my($testTitle, $testDate, $targetDir, $htmlFileName, 
+       $controlServerName, $controlReleaseName, $controlDb, $controlDataFile,
+       $testServerName, $testReleaseName, $testDb, $testDataFile,
+       $startDate, $endDate, $instrHost, $testType, $acPort) = @_;
+
+    if($endDate eq "") {
+        $endDate = `date +\"%F %T\"`;
+        chomp($endDate);
+    }
+    my $tempDir = "/tmp/." . time() . "." . rand(5000) . "/";
+    mkdir($tempDir);
+
+    $self->genChartDataFiles($tempDir, $controlServerName . "_",
+                             $controlReleaseName, $controlDataFile);
+    $self->genChartDataFiles($tempDir, $testServerName . "_",
+                             $testReleaseName, $testDataFile);
+    $self->genCharts($tempDir, $controlServerName, $testServerName);
+
+    my $absoluteHtmlFile = $tempDir . $htmlFileName;
+    $self->genHTML($absoluteHtmlFile, $testTitle, $testDate,
+                   $controlServerName, $controlReleaseName, $controlDb,
+                   $testServerName, $testReleaseName, $testDb,
+                   $startDate, $endDate, $instrHost, $testType, $acPort);
+
+    # move the html and chart images to target director
+    `mv -f $tempDir$htmlFileName $targetDir`;
+    `mv -f $tempDir*$CHART_FILE_SUFFIX $targetDir`;
+    # remove temporary directory
+    `rm -rf $tempDir`;
+}
+
+sub genChartDataFiles
+{
+    my $self = shift;
+    my($tempDir, $filePrefix, $dataHeader, $sourceDataFile) = @_;
+    my $avgCpuBuf = "Total Trx Count," . $dataHeader . "\n";
+    my $avgElapsedBuf = $avgCpuBuf;
+    my $avgDbCountBuf = $avgCpuBuf;
+    my $avgDbTimeBuf = $avgCpuBuf;
+    my $vmBuf = $avgCpuBuf;
+    my $rmBuf = $avgCpuBuf;
+    my $avgItinBuf = $avgCpuBuf;
+    my $totalTrxCount = 0;
+
+    open INPUT, "<$sourceDataFile" 
+        or die "could not open '$sourceDataFile' for reading";
+
+    #skip first line
+    my $linecount = 0;
+    while( my $line = <INPUT> )
+    {
+        if($linecount gt 0)
+        {
+            $line =~ s/\s+$//;
+            @tokens = split(/,/, $line);
+            $totalTrxCount  = @tokens[1];
+            $avgCpuBuf     .= $totalTrxCount . "," . @tokens[2]  . "\n";
+            $avgElapsedBuf .= $totalTrxCount . "," . @tokens[3]  . "\n";
+            $avgDbCountBuf .= $totalTrxCount . "," . @tokens[4]  . "\n";
+            $avgDbTimeBuf  .= $totalTrxCount . "," . @tokens[5]  . "\n";
+            $avgItinBuf    .= $totalTrxCount . "," . @tokens[6]  . "\n";
+            $vmBuf         .= $totalTrxCount . "," . @tokens[7]  . "\n";
+            $rmBuf         .= $totalTrxCount . "," . @tokens[8]  . "\n";
+        }
+        $linecount++;
+    }
+    close INPUT;
+
+    $self->writeToDataFile($totalTrxCount, $tempDir, $filePrefix, $CPU_FILE,       $avgCpuBuf);
+    $self->writeToDataFile($totalTrxCount, $tempDir, $filePrefix, $ELAPSED_FILE,   $avgElapsedBuf);
+    $self->writeToDataFile($totalTrxCount, $tempDir, $filePrefix, $DBCOUNT_FILE,   $avgDbCountBuf);
+    $self->writeToDataFile($totalTrxCount, $tempDir, $filePrefix, $DBTIME_FILE,    $avgDbTimeBuf);
+    $self->writeToDataFile($totalTrxCount, $tempDir, $filePrefix, $VM_FILE,        $vmBuf);
+    $self->writeToDataFile($totalTrxCount, $tempDir, $filePrefix, $RM_FILE,        $rmBuf);
+    $self->writeToDataFile($totalTrxCount, $tempDir, $filePrefix, $ITINCOUNT_FILE, $avgItinBuf);
+}
+
+sub writeToDataFile
+{
+    my $self = shift;
+    my($totalTrxCount, $tempDir, $filePrefix, $fileName, $data) = @_;
+    my $outputFile = $tempDir . $filePrefix . $fileName . $DATA_FILE_SUFFIX;
+    my $trxCount = 0;
+
+    open OUTPUT, ">$outputFile"
+        or die "could not open '$outputFile' for writing";
+    print OUTPUT $data;
+    close OUTPUT;
+
+    if( $totalTrxCount > 50000 )
+    {
+        open INPUT, "<$outputFile" 
+            or die "could not open '$outputFile' for reading";
+        my $mydata = <INPUT>;
+        my $addflag = 0;
+        while( my $line = <INPUT> )
+        {
+            if( $addflag eq 1 )
+            {
+                $mydata .= $line;
+            }
+            else
+            {
+                @tokens = split(/,/, $line);
+                $trxCount = @tokens[0] + 1 - 1;
+                if( $trxCount > 10000 )
+                {
+                    $mydata .= $line;
+                    $addflag = 1;
+                }
+            }
+        }
+        close INPUT;
+
+        `rm -f $outputFile`;
+        open OUTPUT, ">$outputFile"
+            or die "could not open '$outputFile' for writing";
+        print OUTPUT $mydata;
+        close OUTPUT;
+    }
+}
+
+sub genCharts
+{
+    my $self = shift;
+    my($tempDir, $controlServerName, $testServerName) = @_;
+    my $controlFilePrefix = $tempDir . $controlServerName . "_";
+    my $testFilePrefix = $tempDir . $testServerName . "_";
+
+    $self->genChart("Average CPU Time",
+                    "Transaction Count", "CPU Time (Seconds)",
+                    $tempDir . $CPU_FILE . $CHART_FILE_SUFFIX,
+                    $controlFilePrefix . $CPU_FILE . $DATA_FILE_SUFFIX,
+                    $testFilePrefix . $CPU_FILE . $DATA_FILE_SUFFIX);
+    $self->genChart("Average Elapsed Time",
+                    "Transaction Count", "Elapsed Time (Seconds)",
+                    $tempDir . $ELAPSED_FILE . $CHART_FILE_SUFFIX,
+                    $controlFilePrefix . $ELAPSED_FILE . $DATA_FILE_SUFFIX,
+                    $testFilePrefix . $ELAPSED_FILE . $DATA_FILE_SUFFIX);
+    $self->genChart("Average Database Queries",
+                    "Transaction Count", "Database Queries",
+                    $tempDir . $DBCOUNT_FILE . $CHART_FILE_SUFFIX,
+                    $controlFilePrefix . $DBCOUNT_FILE . $DATA_FILE_SUFFIX,
+                    $testFilePrefix . $DBCOUNT_FILE . $DATA_FILE_SUFFIX);
+    $self->genChart("Average Database Time",
+                    "Transaction Count", "Database Time (Seconds)",
+                    $tempDir . $DBTIME_FILE . $CHART_FILE_SUFFIX,
+                    $controlFilePrefix . $DBTIME_FILE . $DATA_FILE_SUFFIX,
+                    $testFilePrefix . $DBTIME_FILE . $DATA_FILE_SUFFIX);
+    $self->genChart("Virtual Memory",
+                    "Transaction Count", "Virtual Memory (GB)",
+                    $tempDir . $VM_FILE . $CHART_FILE_SUFFIX,
+                    $controlFilePrefix . $VM_FILE . $DATA_FILE_SUFFIX,
+                    $testFilePrefix . $VM_FILE . $DATA_FILE_SUFFIX);
+    $self->genChart("Resident Memory (RSS)",
+                    "Transaction Count", "Resident Memory (GB)",
+                    $tempDir . $RM_FILE . $CHART_FILE_SUFFIX,
+                    $controlFilePrefix . $RM_FILE . $DATA_FILE_SUFFIX,
+                    $testFilePrefix . $RM_FILE . $DATA_FILE_SUFFIX);
+    # Itin count is not correct in the app console data
+    #genChart("Average Itin Count",
+    #         "Transaction Count", "Number Of Itineraries",
+    #         $tempDir . $ITINCOUNT_FILE . $CHART_FILE_SUFFIX,
+    #         $controlFilePrefix . $ITINCOUNT_FILE . $DATA_FILE_SUFFIX,
+    #         $testFilePrefix . $ITINCOUNT_FILE . $DATA_FILE_SUFFIX);
+}
+
+sub genChart
+{
+    my $self = shift;
+    my($chartTitle, $xaxis, $yaxis, $imageFileName,
+       $controlDataFileName, $testDataFileName) = @_;
+    my $JAVA_LIB_DIR = "/opt/atseintl/shopperftest/lib/java";
+    my $CLASSPATH = "$JAVA_LIB_DIR/chartmaker.jar"
+        . ":$JAVA_LIB_DIR/jcommon-1.0.15.jar"
+        . ":$JAVA_LIB_DIR/iText-2.1.3.jar"
+        . ":$JAVA_LIB_DIR/jfreechart-1.0.12.jar";
+    my $JAVA_HOME = $ENV{JAVA_HOME};
+
+    `$JAVA_HOME/bin/java -Djava.awt.headless=true -cp $CLASSPATH com.sabre.cpt.ChartMaker '$chartTitle' '$xaxis' '$yaxis' '$imageFileName' '$controlDataFileName' '$testDataFileName'`;
+}
+
+sub genHTML
+{
+    my $self = shift;
+    my($absoluteHtmlFile, $testTitle, $testDate,
+       $controlServerName, $controlReleaseName, $controlDbName, 
+       $testServerName, $testReleaseName, $testDbName,
+       $startDate, $endDate, $instrHost, $testType, $acPort) = @_;
+
+    my $htmlFH = new FileHandle;
+    $htmlFH->open(">$absoluteHtmlFile")
+        or die "could not open '$absoluteHtmlFile' for writing";
+
+    print $htmlFH "<html>\n";
+    print $htmlFH "<head>";
+    print $htmlFH "<title>$testTitle - $testDate</title>\n";
+    if($testType eq "adhoc") {
+        print $htmlFH "<link rel=\"stylesheet\" href=\"../..//css/v2.css\" type=\"text/css\">\n";
+    }
+    else {
+        print $htmlFH "<link rel=\"stylesheet\" href=\"../../../css/v2.css\" type=\"text/css\">\n";
+    }
+    print $htmlFH "</head>\n";
+    print $htmlFH "<body>\n";
+    print $htmlFH "<br>\n";
+    print $htmlFH "<center>\n";
+    print $htmlFH "<h2>$testTitle - $testDate </h1>\n";
+    print $htmlFH "<br>\n";
+
+    print $htmlFH "<p><table border=\"1\" cellpadding=\"2\">\n";
+    print $htmlFH "<b><tr>\n";
+    print $htmlFH "<td align=\"center\"><b>Server</b></td>\n";
+    print $htmlFH "<td align=\"center\"><b>release</b></td>\n";
+    print $htmlFH "\n";
+    print $htmlFH "<td align=\"center\"><b>general database</b></td>\n";
+    print $htmlFH "</b>\n";
+    print $htmlFH "</tr>\n";
+    print $htmlFH "<tr>\n";
+    print $htmlFH "<td>$controlServerName</td>\n";
+    print $htmlFH "<td>$controlReleaseName</td>\n";
+    print $htmlFH "<td align=\"center\">$controlDbName</td>\n";
+    print $htmlFH "</tr>\n";
+    print $htmlFH "<tr>\n";
+    print $htmlFH "\n";
+    print $htmlFH "<td>$testServerName</td>\n";
+    print $htmlFH "<td>$testReleaseName</td>\n";
+    print $htmlFH "<td align=\"center\">$testDbName</td>\n";
+    print $htmlFH "</tr>\n";
+    print $htmlFH "</table>\n";
+    print $htmlFH "\n";
+    print $htmlFH "<br><hr><br>\n";
+
+    # adding html tags for images
+    print $htmlFH $self->getImageHTMLTag($CPU_FILE . $CHART_FILE_SUFFIX, "Average CPU Time") . "\n";
+    print $htmlFH "<br><br><hr><br>\n";
+
+    print $htmlFH $self->getImageHTMLTag($ELAPSED_FILE . $CHART_FILE_SUFFIX, "Average Elapsed Time") . "\n";
+    print $htmlFH "<br><br><hr><br>\n";
+
+    print $htmlFH $self->getImageHTMLTag($DBCOUNT_FILE . $CHART_FILE_SUFFIX, "Average Database Queries") . "\n";
+    print $htmlFH "<br><br><hr><br>\n";
+
+    print $htmlFH $self->getImageHTMLTag($DBTIME_FILE . $CHART_FILE_SUFFIX, "Average Database Time") . "\n";
+    print $htmlFH "<br><br><hr><br>\n";
+
+    print $htmlFH $self->getImageHTMLTag($VM_FILE . $CHART_FILE_SUFFIX, "Virtual Memory") . "\n";
+    print $htmlFH "<br><br><hr><br>\n";
+
+    print $htmlFH $self->getImageHTMLTag($RM_FILE . $CHART_FILE_SUFFIX, "Resident Memory (RSS)") . "\n";
+    print $htmlFH "<br><br><hr><br>\n";
+
+    #print $htmlFH getImageHTMLTag($ITINCOUNT_FILE . $CHART_FILE_SUFFIX, "Itin Count") . "\n";
+    #print $htmlFH "<br><br><hr><br>\n";
+    print $htmlFH "</center>\n";
+
+    $self->genTotalsAndAverages($htmlFH, $controlServerName, $testServerName,
+                                $acPort);
+    $self->genErrors($htmlFH, $controlServerName, $testServerName, $acPort);
+    $self->genBusinessFunctionStats($htmlFH, $controlServerName,
+                                    $testServerName, $startDate, $endDate,
+                                    $instrHost);
+
+    print $htmlFH "<br><br></body></html>\n";
+    $htmlFH->close();
+}
+
+sub getImageHTMLTag
+{
+    my $self = shift;
+    my($imageFileName, $description) = @_;
+    return "<img src=\"$imageFileName\" width=\"800\" height=\"400\" alt=\"description\">\n";
+}
+
+sub genTotalsAndAverages
+{
+    my $self = shift;
+    my($htmlFH, $controlServerName, $testServerName, $acPort) = @_;
+
+    my $acCommands = new AppConsoleCommands;
+    my ($trxCount_c, $cpu_c, $elapsed_c, $vmemory_c, $dbCount_c, $dbElapsed_c,
+        $dbHost_c, $itins_c, $responseSize_c, $errCount_c, $fcElapsed_c,
+        $fvElapsed_c, $poElapsed_c, $iaElapsed_c, $rmemory_c )
+        = $acCommands->getDetailedStats($controlServerName, $acPort);
+    my ($trxCount_t, $cpu_t, $elapsed_t, $vmemory_t, $dbCount_t, $dbElapsed_t,
+        $dbHost_t, $itins_t, $responseSize_t, $errCount_t, $fcElapsed_t,
+        $fvElapsed_t, $poElapsed_t, $iaElapsed_t, $rmemory_t )
+        = $acCommands->getDetailedStats($testServerName, $acPort);
+    if($trxCount_c le 0 or $errCount_c le 0 or $itins_c le 0 or $vmemory_c le 0
+       or $elapsed_c le 0 or $cpu_c le 0 or $dbCount_c le 0 or $dbElapsed_c le 0
+       or $fcElapsed_c le 0 or $fvElapsed_c le 0 or $poElapsed_c le 0
+       or $iaElapsed_c le 0 or $rmemory_c le 0 or $trxCount_t le 0)
+    {
+       return;
+    }
+    $trxCount_dp = sprintf("%.2f\%", (($trxCount_t - $trxCount_c)/$trxCount_c)*100);
+    $errCount_dp = "0.00%";
+    $errCount_dp = sprintf("%.2f\%", (($errCount_t - $errCount_c)/$errCount_c)*100);
+    $itins_dp = sprintf("%.2f\%", (($itins_t - $itins_c)/$itins_c)*100);
+    $vmemory_dp = sprintf("%.2f\%", (($vmemory_t - $vmemory_c)/$vmemory_c)*100);
+    $rmemory_dp = sprintf("%.2f\%", (($rmemory_t - $rmemory_c)/$rmemory_c)*100);
+    $gb = 1024 * 1024 * 1024;
+    $vmemory_cg = sprintf("%.2f", $vmemory_c/$gb);
+    $vmemory_tg = sprintf("%.2f", $vmemory_t/$gb);
+    $rmemory_cg = sprintf("%.2f", $rmemory_c/$gb);
+    $rmemory_tg = sprintf("%.2f", $rmemory_t/$gb);
+    $avgElapsed_c = $elapsed_c/$trxCount_c;
+    $avgElapsed_cd = sprintf("%.3f", $avgElapsed_c);
+    $avgElapsed_t = $elapsed_t/$trxCount_t;
+    $avgElapsed_td = sprintf("%.3f", $avgElapsed_t);
+    $avgElapsed_dp = sprintf("%.2f\%", (($avgElapsed_t - $avgElapsed_c)/$avgElapsed_c)*100);
+    $avgCpu_c = $cpu_c/$trxCount_c;
+    $avgCpu_cd = sprintf("%.3f", $avgCpu_c);
+    $avgCpu_t = $cpu_t/$trxCount_t;
+    $avgCpu_td = sprintf("%.3f", $avgCpu_t);
+    $avgCpu_dp = sprintf("%.2f\%", (($avgCpu_t - $avgCpu_c)/$avgCpu_c)*100);
+    $avgDbCount_c = $dbCount_c/$trxCount_c;
+    $avgDbCount_cd = sprintf("%.3f", $avgDbCount_c);
+    $avgDbCount_t = $dbCount_t/$trxCount_t;
+    $avgDbCount_td = sprintf("%.3f", $avgDbCount_t);
+    $avgDbCount_dp = sprintf("%.2f\%", (($avgDbCount_t - $avgDbCount_c)/$avgDbCount_c)*100);
+    $avgDbElapsed_c = $dbElapsed_c/$trxCount_c;
+    $avgDbElapsed_cd = sprintf("%.3f", $avgDbElapsed_c);
+    $avgDbElapsed_t = $dbElapsed_t/$trxCount_t;
+    $avgDbElapsed_td = sprintf("%.3f", $avgDbElapsed_t);
+    $avgDbElapsed_dp = sprintf("%.2f\%", (($avgDbElapsed_t - $avgDbElapsed_c)/$avgDbElapsed_c)*100);
+    $avgFCElapsed_c = $fcElapsed_c/$trxCount_c;
+    $avgFCElapsed_cd = sprintf("%.3f", $avgFCElapsed_c);
+    $avgFCElapsed_t = $fcElapsed_t/$trxCount_t;
+    $avgFCElapsed_td = sprintf("%.3f", $avgFCElapsed_t);
+    $avgFCElapsed_dp = sprintf("%.2f\%", (($avgFCElapsed_t - $avgFCElapsed_c)/$avgFCElapsed_c)*100);
+    $avgFVElapsed_c = $fvElapsed_c/$trxCount_c;
+    $avgFVElapsed_cd = sprintf("%.3f", $avgFVElapsed_c);
+    $avgFVElapsed_t = $fvElapsed_t/$trxCount_t;
+    $avgFVElapsed_td = sprintf("%.3f", $avgFVElapsed_t);
+    $avgFVElapsed_dp = sprintf("%.2f\%", (($avgFVElapsed_t - $avgFVElapsed_c)/$avgFVElapsed_c)*100);
+    $avgPOElapsed_c = $poElapsed_c/$trxCount_c;
+    $avgPOElapsed_cd = sprintf("%.3f", $avgPOElapsed_c);
+    $avgPOElapsed_t = $poElapsed_t/$trxCount_t;
+    $avgPOElapsed_td = sprintf("%.3f", $avgPOElapsed_t);
+    $avgPOElapsed_dp = sprintf("%.2f\%", (($avgPOElapsed_t - $avgPOElapsed_c)/$avgPOElapsed_c)*100);
+    $avgIAElapsed_c = $iaElapsed_c/$trxCount_c;
+    $avgIAElapsed_cd = sprintf("%.3f", $avgIAElapsed_c);
+    $avgIAElapsed_t = $iaElapsed_t/$trxCount_t;
+    $avgIAElapsed_td = sprintf("%.3f", $avgIAElapsed_t);
+    $avgIAElapsed_dp = sprintf("%.2f\%", (($avgIAElapsed_t - $avgIAElapsed_c)/$avgIAElapsed_c)*100);
+
+    my $date = `date +\"%F %T"`;
+    chomp($date);
+  
+    print $htmlFH "Data Retrieval Time : $date\n";
+    print $htmlFH "<p><table border=\"1\" cellpadding=\"2\">";
+    print $htmlFH "<tr><td>Metric Name</td><td>$controlServerName</td><td>$testServerName</td><td>Difference%</td></tr>\n";
+    print $htmlFH "<tr><td>Transaction Count</td><td>$trxCount_c</td><td>$trxCount_t</td><td>$trxCount_dp</td></tr>\n";
+    print $htmlFH "<tr><td>Error Count</td><td>$errCount_c</td><td>$errCount_t</td><td>$errCount_dp</td></tr>\n";
+    #print $htmlFH "<tr><td>Itineraries</td><td>$itins_c</td><td>$itins_t</td><td>$itins_dp</td></tr>\n";
+    print $htmlFH "<tr><td>Virtual Memory (GB)</td><td>$vmemory_cg</td><td>$vmemory_tg</td><td>$vmemory_dp</td></tr>\n";
+    print $htmlFH "<tr><td>Resident Memory (GB)</td><td>$rmemory_cg</td><td>$rmemory_tg</td><td>$rmemory_dp</td></tr>\n";
+    print $htmlFH "<tr><td>Average Elapsed Time</td><td>$avgElapsed_cd</td><td>$avgElapsed_td</td><td>$avgElapsed_dp</td></tr>\n";
+    print $htmlFH "<tr><td>Average CPU Time</td><td>$avgCpu_cd</td><td>$avgCpu_td</td><td>$avgCpu_dp</td></tr>\n";
+    print $htmlFH "<tr><td>Average Database Queries </td><td>$avgDbCount_cd</td><td>$avgDbCount_td</td><td>$avgDbCount_dp</td></tr>\n";
+    print $htmlFH "<tr><td>Average Database Time</td><td>$avgDbElapsed_cd</td><td>$avgDbElapsed_td</td><td>$avgDbElapsed_dp</td></tr>\n";
+    print $htmlFH "<tr><td>Average FCO Elapsed Time</td><td>$avgFCElapsed_cd</td><td>$avgFCElapsed_td</td><td>$avgFCElapsed_dp</td></tr>\n";
+    print $htmlFH "<tr><td>Average FVO Elapsed Time</td><td>$avgFVElapsed_cd</td><td>$avgFVElapsed_td</td><td>$avgFVElapsed_dp</td></tr>\n";
+    print $htmlFH "<tr><td>Average PO Elapsed Time</td><td>$avgPOElapsed_cd</td><td>$avgPOElapsed_td</td><td>$avgPOElapsed_dp</td></tr>\n";
+    print $htmlFH "<tr><td>Average IA Elapsed Time</td><td>$avgIAElapsed_cd</td><td>$avgIAElapsed_td</td><td>$avgIAElapsed_dp</td></tr>\n";
+    print $htmlFH "</table>\n";
+}
+
+sub genErrors
+{
+    my $self = shift;
+    my($htmlFH, $controlServerName, $testServerName, $acPort) = @_;
+
+    my $acCommands = new AppConsoleCommands;
+
+    my %errMap_c = $acCommands->getErrorCountsMap($controlServerName, $acPort);
+    my %errMap_t = $acCommands->getErrorCountsMap($testServerName, $acPort);
+
+    my @errCodes = $self->getUniqueSortedErrorCodes(keys(%errMap_c), keys(%errMap_t));
+
+    print $htmlFH "<h3>Errors</h3>\n";
+    print $htmlFH "<p><table border=\"1\" cellpadding=\"2\">\n";
+    print $htmlFH "<tr><td align=\"center\">Code</td>\n";
+    print $htmlFH "<td align=\"center\">$controlServerName</td>\n";
+    print $htmlFH "<td align=\"center\">$testServerName</td>\n";
+    print $htmlFH "<td align=\"center\">Name</td>\n";
+    
+    my $totalErrCount_c = 0;
+    my $totalErrCount_t = 0;
+    foreach $errCode (@errCodes)
+    {
+        print $htmlFH "<tr><td align=\"center\">$errCode</td>\n";
+        print $htmlFH "<td align=\"right\">$errMap_c{$errCode}</td>\n";
+        print $htmlFH "<td align=\"right\">$errMap_t{$errCode}</td>\n";
+        print $htmlFH "<td align=\"left\">$errDescriptions{$errCode}</td>\n";
+        print $htmlFH "</tr>\n";
+        $totalErrCount_c += $errMap_c{$errCode};
+        $totalErrCount_t += $errMap_t{$errCode};
+    }
+    print $htmlFH "<tr><td align=\"center\">Total</td>\n";
+    print $htmlFH "<td align=\"right\">$totalErrCount_c</td>\n";
+    print $htmlFH "<td align=\"right\">$totalErrCount_t</td>\n";
+    print $htmlFH "<td align=\"left\">          </td>\n";
+    print $htmlFH "</tr>\n";
+    print $htmlFH "</table>\n";
+}
+
+sub getUniqueSortedErrorCodes
+{
+    my $self = shift;
+    my(@errorCodes_c, @errorCodes_t) = @_;
+    my %seen = ();
+
+    foreach $errorCode_c (@errorCodes_c) {
+        $seen{$errorCode_c}++;
+    }
+    foreach $errorCode_t (@errorCodes_t) {
+        $seen{$errorCode_t}++;
+    }
+
+    my @uniq = keys %seen;
+    return sort { $a <=> $b } @uniq;
+}
+
+sub getUniqueSortedBusinessFunctions
+{
+    my $self = shift;
+    my(@bFunctions_c, @bFunctions_t) = @_;
+    my %seen = ();
+
+    foreach $bFunction_c (@bFunctions_c) {
+        $seen{$bFunction_c}++;
+    }
+    foreach $bFunction_t (@bFunctions_t) {
+        $seen{$bFunction_t}++;
+    }
+
+    my @uniq = keys %seen;
+    return sort({ lc($a) cmp lc($b) } @uniq);
+}
+
+sub genBusinessFunctionStats
+{
+    my $self = shift;
+    my($htmlFH, $controlServerName, $testServerName,
+       $startDate, $endDate, $instrHost) = @_;
+    
+    my $instrDBStats = new OracleInstrDBStats;
+    my $connInfo = $INSTR_DB_CONN_INFO . $instrHost;
+    my $dbh = $instrDBStats->initConnection($instrHost,
+        $INSTR_DB_USER, $INSTR_DB_USER_PSWD);
+    # don't generate Business Function Stats if there is a instrumentation db
+    # connectivity error
+    return if (not defined $dbh);
+
+    my @bfStats = $self->getBusinessFunctionStats($controlServerName,
+        $testServerName, $startDate, $endDate, $instrDBStats, $dbh);
+
+    print $htmlFH "<br>\n";
+    print $htmlFH "<h3>Statistics By Business Function</h3>\n";
+    print $htmlFH "<table cellspacing=\"0\" cellpadding=\"1\" width=\"100%\" bgcolor=\"#000000\" border=\"0\">\n";
+    print $htmlFH "<tbody>\n";
+    print $htmlFH "<tr>\n";
+    print $htmlFH "<td>\n";
+    print $htmlFH "<table id=listTable slcolor='#BEC5DE' hlcolor='#BEC5DE' cellspacing=\"1\" cellpadding=\"0\" width=\"100%\" bgcolor=\"gray\" border=\"0\">\n";
+    print $htmlFH "<THEAD>\n";
+    print $htmlFH "<tr class=\"tableHeading\">\n";
+    print $htmlFH "<td rowspan=2 sortable=true>Business    </td>\n";
+    print $htmlFH "<td colspan=2>Total Trx             </td>\n";
+    print $htmlFH "<td colspan=2>Trx Fail Rate         </td>\n";
+    print $htmlFH "<td colspan=2>Average Exist         </td>\n";
+    print $htmlFH "<td colspan=2>Average CPU           </td>\n";
+    print $htmlFH "<td colspan=2>Number Of Solutions   </td>\n";
+    print $htmlFH "</tr>\n";
+    print $htmlFH "<tr class=\"tableHeading\">\n";
+    print $htmlFH "<td>Control</td>\n";
+    print $htmlFH "<td>Test</td>\n";
+    print $htmlFH "<td>Control</td>\n";
+    print $htmlFH "<td>Test</td>\n";
+    print $htmlFH "<td>Control</td>\n";
+    print $htmlFH "<td>Test</td>\n";
+    print $htmlFH "<td>Control</td>\n";
+    print $htmlFH "<td>Test</td>\n";
+    print $htmlFH "<td>Control</td>\n";
+    print $htmlFH "<td>Test</td>\n";
+    print $htmlFH "</tr>\n";
+    print $htmlFH "</THEAD>\n";
+
+    #print "Business Function Stats :\n\n";
+    my $i = 0;
+    my $rowClass = "";
+    foreach $bfStat (@bfStats)
+    {
+        my @tokens = split(/,/, $bfStat);
+        $rowClass = "oddTableRow" if( ($i % 2) eq 1 );
+        $rowClass = "evenTableRow" if( ($i % 2) eq 0 );
+        $rowClass = "totalTableRow" if( $tokens[0] eq "TOTAL" );
+        print $htmlFH "<tr class='$rowClass'>\n";
+        print $htmlFH "<td>@tokens[0]</td>\n";
+        print $htmlFH "<td>@tokens[1]</td>\n";
+        print $htmlFH "<td>@tokens[2]</td>\n";
+        print $htmlFH "<td><font color=red>@tokens[3]</td>\n";
+        print $htmlFH "<td><font color=red>@tokens[4]</td>\n";
+        print $htmlFH "<td>@tokens[5]</td>\n";
+        print $htmlFH "<td>@tokens[6]</td>\n";
+        print $htmlFH "<td>@tokens[7]</td>\n";
+        print $htmlFH "<td>@tokens[8]</td>\n";
+        print $htmlFH "<td>@tokens[9]</td>\n";
+        print $htmlFH "<td>@tokens[10]</td>\n";
+        print $htmlFH "</tr>\n";
+        #print "$bfStat\n";
+        $i++;
+    }
+    print $htmlFH "</table>\n";
+    print $htmlFH "</td>\n";
+    print $htmlFH "</tr>\n";
+    print $htmlFH "</table>\n";
+}
+
+sub printStats
+{
+    my $self = shift;
+    my (%stats) = @_;
+    my @keys = keys(%stats);
+    foreach $key (@keys) {
+        print STDERR "$stats{$key}\n";
+    }
+}
+
+sub getBusinessFunctionStats
+{
+    my $self = shift;
+    my($controlServerName, $testServerName, $startDate, $endDate,
+       $instrDBStats, $dbh) = @_;
+    my @statsBuf = "";
+
+    #my $instrDBStats = new OracleInstrDBStats;
+    #my $connInfo = $INSTR_DB_CONN_INFO . $instrHost;
+    #my $dbh = $instrDBStats->initConnection($instrHost,
+    #    $INSTR_DB_USER, $INSTR_DB_USER_PSWD);
+
+    my %controlBFStats = $instrDBStats->getAvgStatsByBusinessFunction(
+        $dbh, $controlServerName, $startDate, $endDate);
+    #print "Control Stats:\n";
+    #$self->printStats(%controlBFStats);
+
+    my %testBFStats = $instrDBStats->getAvgStatsByBusinessFunction(
+        $dbh, $testServerName, $startDate, $endDate);
+    #print STDERR "Test Stats:\n";
+    #$self->printStats(%testBFStats);
+
+    my @businessFunctions = $self->getUniqueSortedBusinessFunctions(
+        keys(%controlBFStats), keys(%testBFStats));
+    my @outputBuf;
+    my $i=0;
+    foreach $bfunction (@businessFunctions)
+    {
+        my @tokens_c = split(/,/, $controlBFStats{$bfunction});
+        my @tokens_t = split(/,/, $testBFStats{$bfunction});
+        my $buf = "$bfunction,@tokens_c[1],@tokens_t[1],@tokens_c[3],@tokens_t[3],@tokens_c[4],@tokens_t[4],@tokens_c[5],@tokens_t[5],@tokens_c[6],@tokens_t[6]";
+        @outputBuf[$i++] = $buf;
+    }
+    return @outputBuf;
+}
+
+sub initErrorDescriptions
+{
+    my $self = shift;
+    my ($errDescriptionsFile) = @_;
+
+    open INPUT, "<$errDescriptionsFile" 
+        or die "could not open '$errDescriptionsFile' for reading";
+
+    while( my $line = <INPUT> )
+    {
+        $line =~ s/\s+$//;
+        @tokens = split(/,/, $line);
+        $errDescriptions{@tokens[0]} = @tokens[1];
+    }
+    close INPUT;
+}
+
+
+1;
+__END__

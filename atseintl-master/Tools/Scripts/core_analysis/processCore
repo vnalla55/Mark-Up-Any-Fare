@@ -1,0 +1,366 @@
+#!/usr/bin/expect --
+
+proc waitForPrompt {} {
+   expect {
+      timeout {
+         puts -nonewline stderr ".";
+         exp_continue;
+      }
+      "\(gdb\) $" {
+#         puts -nonewline stderr "Found prompt in \"$expect_out(buffer)\"... ";
+      }
+   }
+}
+
+proc retrieveBacktrace { threadno } {
+    global workdir;
+    set filename "$workdir/thread$threadno.bt"
+    set gotRequest 0
+    send "thread $threadno\r"
+    waitForPrompt;
+    send "set logging file $filename\r"
+    waitForPrompt
+    send "set logging on\r"
+    waitForPrompt
+    send "bt\r"
+    waitForPrompt
+    send "set logging off\r"
+    waitForPrompt
+    return $filename
+}
+
+proc checkForTrx { var } {
+    upvar 2 "repeated" repeated;
+    global address;
+    upvar 2 "filename" filename;
+    global reason;
+    set foundTrx 0;
+    send "print $var\r";
+    expect {
+        -re "No symbol \".*\" in current context.\r" {
+            waitForPrompt;
+            return "";
+        }
+        "Corrupted DWARF expression.\r" {
+            waitForPrompt;
+            return "";
+        }
+        -re "cannot resolve overloaded method `.*': no arguments supplied\r\n" {
+            waitForPrompt;
+            return "";
+        }
+        "Attempt to extract a component of a value that is not a structure pointer.\r\n" {
+            waitForPrompt;
+            return "";
+        }
+        -re "Variable .* is not available.\r" {
+            waitForPrompt;
+            return "";
+        }
+        "Cannot access memory at address" {
+            waitForPrompt;
+            return "unacc";
+        }
+        "_M_dataplus" {
+            set foundTrx 1;
+            waitForPrompt;
+        }
+        -re "@0x\[\[:xdigit:\]\]+: \(.*\)\r" {
+            set trx $expect_out(1,string)
+            set foundTrx 1;
+            if { "$trx" == "0x0" } { # variable is null 
+                set foundTrx 0;
+                set reason "Variable $var is a null pointer";
+            }
+            waitForPrompt;
+        }
+        -re "\\$\[0-9\]+ = \"" {
+            set foundTrx 1;
+            waitForPrompt;
+        }
+        "\n" {
+            exp_continue;
+        }
+        "\(gdb\) $" {
+            return "";
+        }
+    }
+    
+    if { $foundTrx } {
+        send "print $var._M_dataplus._M_p\r"
+        expect {
+            -re " = 0x\[\[:xdigit:\]\]+ \"\"" {
+                set foundTrx 0;
+                set reason "Variable $var empty";
+            }
+        }
+        waitForPrompt;
+    }
+
+    if { $foundTrx } {
+        send "set print elements 0\r"
+        waitForPrompt
+        send "set print repeats 0\r"
+        waitForPrompt
+        send "set logging file $filename\r"
+        waitForPrompt
+        send "set logging on\r"
+        waitForPrompt
+        send "printf \"%s\\n\", $var._M_dataplus._M_p\r"
+        waitForPrompt
+        set gotRequest 1
+        send "set logging off\r"
+        waitForPrompt
+        send "set print elements 1\r"
+        waitForPrompt
+        return $filename;
+    }
+    return "";
+}
+
+proc checkFrame {} {
+    set filename [ checkForTrx "trx._rawRequest" ];
+    if { "$filename" == "" || "$filename" == "unacc"} {
+        set filename [ checkForTrx "req"];
+    }
+   return $filename;
+}
+
+proc retrieveRequest { threadno } {
+    global workdir;
+    global reason;
+    set reason "Variables trx or req not found";
+    set filename "$workdir/thread$threadno.req";
+    set gotRequest 0;
+    send "thread $threadno\r";
+    waitForPrompt;
+    send "set print elements 1\r";
+    waitForPrompt;
+    global address;
+    set address "";
+    set lastMsg "";
+    set repeated 0;
+
+    set written "";
+    while { $written == "" } {
+        set written [ checkFrame ];
+        if { $written != "" && $written != "unacc" } {
+            break;
+        }
+        if { $threadno != "1" && $written == "unacc" } {
+            break;
+        }
+        send "up\r";
+        expect {
+           "Initial frame selected; you cannot go up.\r" {
+               waitForPrompt;
+               break;
+           }
+           "\(gdb\) $" {
+           }
+        }
+    }
+    
+    return $written;
+}
+
+proc ensureAccess { fileName } {
+   set exists [file exists $fileName];
+   if { $exists == 0 } {
+      puts stderr "The $fileName file doesn't exist.";
+      exit 1;
+   }
+
+   set readable [file readable $fileName];
+   if { $readable == 0 } {
+      puts stderr "The $fileName file is not readable.";
+      exit 1;
+   }
+
+   return 0;
+}
+
+proc tryLoading { core binary } {
+   puts -nonewline "Loading core $core into gdb using $binary..."
+   flush stdout
+   spawn -noecho gdb $binary $core
+   set loadErrors 0
+   set loadedLibs 0
+   global of;
+   log_user 0
+   expect {
+       "Reading symbols from*done." { incr loadedLibs; exp_continue; }
+       "#0 *" { exp_continue; }
+       "\(gdb\) $" {
+       }
+       "Loaded symbols for*" { puts -nonewline "."; flush stdout; exp_continue; }
+       "Using host * library*\." { exp_continue; }
+       "Error while *:\r\n" {
+           incr loadErrors;
+           exp_continue;
+       }
+       "warning: core file may not match specified executable file\." { exp_continue; }
+       timeout { exp_continue; }
+       eof {
+           puts "gdb aborted prematurely.";
+           puts $of "gdb aborted prematurely.";
+           exit 1;
+       }
+   }
+
+   puts " done.";
+
+   if { $loadErrors != 0 } {
+       puts "Some of the shared libraries are inaccessible, cannot continue analysis.";
+       puts $of "Some of the shared libraries are inaccessible, cannot continue analysis.";
+       exit 1;
+   }
+
+   if { $loadedLibs == 0 } {
+       send "q\r";
+       expect eof;
+       return 0;
+   }
+   return $spawn_id;
+}
+
+if { [llength $argv] != 3 } {
+   puts stderr "This script requires three arguments - the binary which dumped core,\nthe name of the core file to analyse, and the name of the working directory.";
+   exit 1;
+}
+
+set binary [lindex $argv 0];
+set core [lindex $argv 1];
+set workdir [lindex $argv 2];
+set outputFile "$workdir/core-report";
+set of [open $outputFile a];
+
+# The new method of finding the binary to load analyses the core file
+# itself. Unfortunately, the main place for the binary name in the core file
+# is only able to store 16 characters, and this is not enough to store the
+# full "tseserver.shoppinghist.1" string. So we analyse argv, which is also
+# (partially) saved in the core file. Since all we need is argv[0], there's
+# a good chance we'll succeed. This analysis is performed by analyseCore and
+# passed to us as the $binary variable.
+
+ensureAccess $core;
+ensureAccess $binary;
+
+set spawn_id [ tryLoading $core $binary ]
+if { $spawn_id == 0 } {
+   puts "Couldn't load the core using the $binary binary, bailing out.";
+   puts "The core dump is probably incomplete.";
+   puts $of "The core dump is incomplete, cannot extract any information from it.";
+   exit 3;
+}
+
+puts -nonewline "Setting up gdb..."
+flush stdout
+send "set language c++\r";
+waitForPrompt;
+send "set pagination off\r";
+waitForPrompt;
+send "set print elements 0\r";
+waitForPrompt;
+send "set print sevenbit-strings on\r";
+waitForPrompt;
+send "set logging redirect on\r";
+waitForPrompt;
+puts " done.";
+
+# Per request from Hitha, all the cores are to be treated as race cores.
+set isRace 1
+
+puts $of "\(gdb\) bt";
+close $of
+send "set logging overwrite off\r";
+waitForPrompt;
+send "set logging file $outputFile\r";
+waitForPrompt;
+send "set logging on\r";
+waitForPrompt;
+send "bt\r";
+expect {
+    "_atfork" { set isRace 1; exp_continue; }
+    "~DeleteList" { set isRace 1; exp_continue; }
+    "\(gdb\) $" { }
+    "\r\n" { exp_continue; }
+    timeout { exp_continue; }
+};
+send "set logging off\r";
+waitForPrompt;
+send "set logging overwrite on\r";
+waitForPrompt;
+set of [open $outputFile a];
+puts $of "\(gdb\) ";
+puts $of "";
+
+set reason ""
+
+if { $isRace } {
+    puts "Entering threads analysis."
+    puts $of "The threads running at the moment of the crash were:";
+    send "info threads\r"
+
+    set threadList(0) ""
+    set idle 0
+    set found 0
+
+    expect {
+        -re "\n\[ *\]+\(\[1-9\]\[0-9\]* process \[1-9\]\[0-9\]* .*\)\r" {
+            set newThread $expect_out(1,string);
+            if { [regexp -- "pthread_cond_wait" $newThread] } {
+                incr idle
+            } else {
+                set threadList($found) $newThread
+                incr found
+            }
+            exp_continue;
+        }
+        -re "\n\[ *\]+\(\[1-9\]\[0-9\]* Thread \[1-9\]\[0-9\]* .*\)\r" {
+            set newThread $expect_out(1,string);
+            if { [regexp -- "pthread_cond_wait" $newThread] } {
+                incr idle
+            } else {
+                set threadList($found) $newThread
+                incr found
+            }
+            exp_continue;
+        }
+        "\(gdb\) $" {
+            if { $found + $idle == 0 } {
+                puts "$expect_out(buffer) didn't match any thread patterns!";
+            }
+        }
+    };
+    for { set thread 0 } { $thread < $found } { incr thread } {
+        puts $of "  $threadList($thread)"
+    }
+    puts $of "\nplus $idle idle threads in pthread_cond_wait state.";
+
+    puts "Found [ expr $found + $idle ] threads, $idle of them idle.";
+
+    for { set thread 1 } { $thread <= [ expr $found + $idle]} { incr thread } {
+        set btFile [ retrieveBacktrace $thread ]
+        puts -nonewline "Backtrace for thread $thread saved in file $btFile,"
+        flush stdout
+        set gotRequest [ retrieveRequest $thread ]
+        if { $gotRequest == "" } {
+            puts " transaction not extracted: $reason.";
+        } else {
+            puts " transaction saved in file $gotRequest.";
+        }
+    }
+} else {
+    set gotRequest [ retrieveRequest 1 ]
+    puts $of ""
+    if { $gotRequest == "" } {
+        puts "The transaction could not be extracted from the core file: $reason.\n";
+    } else {
+        puts "The transaction has been extracted from the core and saved in file $gotRequest.\n";
+    }
+}
+
+send "q\r"
+expect eof;
+exit 0

@@ -1,0 +1,50 @@
+       BASE FARE                     TAXES             TOTAL
+ 1-   USD4071.00                    176.15XT      USD4247.15ADT
+    XT     28.20US       5.00YC       7.00XY       4.95XA  
+            2.50AY     110.40GB      13.60UB       4.50XF  
+         4071.00                    176.15           4247.15TTL
+ADT-01  Y 
+ DFW AA LON Q35.00 1998.00Y AA DFW Q35.00Q4.80 1997.99Y NUC
+ 4070.79END ROE1.00SITI XFDFW4.5
+WPDF
+PSGR TYPE ADT
+FARE  USD  4071.00
+TAX   USD    176.15XT
+TOTAL USD     4247.15
+DFW AA LON Q35.00 1998.00Y AA DFW Q35.00Q4.80 1997.99Y NUC
+ 4070.79END ROE1.00SITI XFDFW4.5
+
+XT 28.20US 5.00YC 7.00XY 4.95XA 2.50AY 110.40GB
+XT 13.60UB 4.50XF
+
+/////////////// TRAFFIC DOCUMENT ISSUED IN HDQ ///////////////
+PU -FARE BASIS-CUR  NUC AMT ELEMENT DESCRIPTION ----------- GI
+               USD    35.00 DFW-LON MISCELLANEOUS SURCHARGE
+01 Y           USD  1998.00 DFW-LON AA /HR  0M              AT
+               USD    35.00 LON-DFW MISCELLANEOUS SURCHARGE
+               USD     4.80 LON-DFW AIRPORT/TERMINAL SURCHARGE
+02 Y           USD  1997.99 DFW-LON AA /HR  0M              AT
+                    4071.00    -    TOTAL USD
+-TAX AMT/USD/-- CUR  CODES  DESCRIPTION------------------------
+       28.20        US/US2 US INTERNATIONAL TRANSPORTATION TAX
+          14.10:USD    14.10 *DFW* *AA*
+          14.10:USD    14.10 *LGW* *AA*
+        5.00        US/YC  US CUSTOMS USER FEE
+           5.00:USD     5.00 *LGW* *AA*
+        7.00        US/XY  US FEDERAL INSPECTION FEE
+           7.00:USD     7.00 *LGW* *AA*
+        4.95        US/XA  US APHIS USER FEE
+           4.95:USD     4.95 *LGW* *AA*
+        2.50        US/AY  US SECURITY FEE
+           2.50:USD     2.50           
+      110.40        GB/GB2 AIR PASSENGER DUTY APD
+          73.60:GBP    40.00 *LGW* *AA*
+          36.80:GBP    20.00 *LGW* *AA*
+       13.60        GB/UB6 INTERNATIONAL DPTRS IOM THROUGH LTN
+          13.60:GBP     7.40 *LGW* *AA*
+        4.50        US/XF  PASSENGER FACILITY CHARGE
+-IATA RATES OF EXCHANGE USED IN FARE CALCULATION --------------
+   1.00000000  USD-ROE  EFF 
+-PRICING UNIT TRIP TYPE ---------------------------------------
+  PU 01 - NORMAL  HALF ROUND TRIP
+  PU 02 - NORMAL  HALF ROUND TRIP

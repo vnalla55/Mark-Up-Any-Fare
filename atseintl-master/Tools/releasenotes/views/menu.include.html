@@ -1,0 +1,30 @@
+
+<div id="logo"><a href="mailto:Slawomir.Machowicz@sabre.com;Marcin.Wrochniak.ctr@sabre.com?subject=Delivery notice tool">Send a remark/bug report</a></div>
+
+<div id="header">
+
+    #if ($specialRelease && $specialRelease != "")
+        <div id="baseline_box">
+            File <em>$esc.xml($notesUtils.assureNoReleasePrefix($specialRelease))</em>
+            (<a href="/form?$urlParamsWithoutSpecialRelease">exit</a>)
+        </div>
+    #end
+    <ul>
+        <li #if ($menu_idx.name() == "NEW") id="selected" #end>
+            <a href="/form?$urlParams">#if($recordType)$recordTools.getNewRecordTabLabel($recordType)#{else}New delivery notice#{end}</a>
+        </li>
+        <li #if ($menu_idx.name() == "EDIT") id="selected" #end>
+            <a href="/browse/none?$urlParams">#if($recordType)$recordTools.getEditRecordTabLabel($recordType)#{else}Edit release files#{end}</a>
+        </li>
+        <li #if ($menu_idx.name() == "OTHER") id="selected" #end>
+            <a href="/browse/specials?$urlParams">Other baselines</a>
+        </li>
+        <li>
+            <a href="/form?specialRelease=config_emails">Subscriptions</a>
+        </li>
+    </ul>
+
+</div>
+
+<div id="header_sep">
+</div>

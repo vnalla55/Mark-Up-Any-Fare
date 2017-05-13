@@ -1,0 +1,85 @@
+#!/bin/tcsh
+
+set nonomatch
+
+@ numreqs = 50
+unset stamp
+while ( $# > 1 )
+    if ( "$1" == "-f" ) then
+        set stamp=`date -r "$2" +"%s"`
+        if ( -d $2 ) then
+            set dir=$2
+        else if ( -f $2 ) then
+            set dir=`dirname $2`
+        endif
+        shift
+        shift
+    else if ( "$1" == "-d" ) then
+        set stamp=`date -d "$2" +"%s"`
+        shift
+        shift
+    else if ( "$1" == "-e" ) then
+        set stamp="$2"
+        shift
+        shift
+    else if ( "$1" == "-n" ) then
+        @ numreqs = $2
+        shift
+        shift
+    else
+        echo Unknown option: $1
+        exit 1
+    endif
+end
+
+if ( $?stamp ) then
+    if ( $# != 1 && ! $?dir ) then
+        echo If specifying the stamp with either -d or -e, you have to pass the directory containing the log files.
+        exit 1
+    else if ( -d $1 ) then
+        set dir=$1
+    else if ( -f $1 ) then
+        set dir=`dirname $1`
+    else
+        echo Path \"$1\" is unreadable, aborting.
+        exit 1
+    endif
+else
+    if ( $# != 1 ) then
+        echo This script requires a single argument - the name of the core to search for crashes at.
+        exit 1
+    endif
+
+    if ( ! -r $1 ) then
+       echo File $1 is not readable.
+       exit 1
+    endif
+
+    set type=`file -biL $1 | sed 's/,/\n/' | head -n 1`
+
+    if ( "$type" != "application/x-coredump" ) then
+       echo $1 is not a core dump, but a file of type $type.
+       exit 1
+    endif
+
+    set corefile=$1
+    set dir=`dirname $corefile`
+    set stamp=`date -r $corefile +"%s"`
+endif
+
+set logs=( $dir/tserequest.log* )
+if ($#logs == 1) then
+    if ("$logs" == $dir/'tserequest.log*' ) then
+        echo No log files found in $dir, nothing to search.
+        exit 1
+    endif
+endif
+
+set revlogs=()
+foreach a ( $logs )
+    set revlogs=( $a $revlogs )
+end
+
+echo Searching for requests processed before `date -d "1970-01-01 UTC $stamp seconds" +"%Y-%m-%d %H:%M:%S"`. $#revlogs files to search.
+
+cat $revlogs | awk -v NUMREQS=$numreqs -v stamp=$stamp -f `dirname $0`/lastRequests.awk

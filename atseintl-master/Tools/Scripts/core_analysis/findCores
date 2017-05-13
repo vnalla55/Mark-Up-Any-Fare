@@ -1,0 +1,70 @@
+#!/bin/tcsh
+
+# This variable means: unset - just list, set to 0 - analyse everything, set to 1 - ask to analyse.
+unset autoanalyse
+if ("$1" == "--analyse") set autoanalyse=0
+if ("$1" == "--ask-to-analyse") set autoanalyse=1
+
+set knownCores=()
+if ( -r ~/.knownCores ) then
+  set knownCores=( `cat ~/.knownCores` )
+endif
+set newKnownCores=()
+
+if ( -x /opt/atseintl ) then
+   set cores=$HOME/.cores.$$
+   ( find /opt/atseintl/ -\( -type f -o -type l -\) -name "core.[0-9]*" -size +64k > $cores ) >& /dev/null
+   if ( ! -z $cores ) then
+      if ( $?autoanalyse ) then
+         set result=2
+         foreach core ( `cat $cores` )
+            if ( "$knownCores[*]" =~ *$core* ) then
+               echo Core file $core has been analysed already, skipping.
+               set newKnownCores=( $newKnownCores $core )
+               continue
+            endif
+            if ( ! -r $core ) then
+               echo Core file $core has been removed, skipping.
+               continue
+            endif
+            set newKnownCores=( $newKnownCores $core )
+            if ($autoanalyse) then
+                echo Asking the user about core file $core
+            	ls -l $core | xmessage -file - -buttons skip:0,analyse:1 -default analyse
+            	if ($? == 0) then 
+            	    echo Core file $core skipped:
+            	    ls -l $core
+            	    continue
+            	endif
+            endif
+            echo Analysing core file {$core}:
+            ls -l $core
+            analyseCore $core
+            if ($?) set result=3
+         end
+         rm -f ~/.knownCores
+         touch ~/.knownCores
+         foreach core ( $newKnownCores )
+            echo $core >> ~/.knownCores
+         end
+      else
+         echo `wc -l < $cores` core files found on `hostname -s`:
+         ls -l `cat $cores`
+         set result=1
+      endif
+   else
+      echo No core files found.
+      rm -f ~/.knownCores
+      set result=0
+   endif
+   rm -f $cores
+else if ( -d /opt/atseintl ) then
+   echo "/opt/atseintl directory is unreadable, are you sure `hostname -s` is an ATSEv2 server\?"
+   set result=4
+else
+   echo "No /opt/atseintl directory, are you sure `hostname -s` is an ATSEv2 server\?"
+   set result=4
+endif
+
+unset autoanalyse
+exit $result

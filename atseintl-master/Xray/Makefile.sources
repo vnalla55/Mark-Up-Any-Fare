@@ -1,0 +1,5 @@
+XRAY_SOURCES := \
+    AsyncJsonContainer.cpp \
+    JsonMessage.cpp \
+    XrayClient.cpp \
+    XrayUtil.cpp

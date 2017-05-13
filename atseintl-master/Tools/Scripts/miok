@@ -1,0 +1,9 @@
+#! /bin/sh
+echo ""
+echo "*** Files that haven't been added to the VOB:"
+echo ""
+cleartool ls -r -l -view /vobs/atseintl|grep '\(\(\.cpp\)\|\(\.h\)\)$'
+echo ""
+echo "*** Files that aren't checked in:"
+echo ""
+cleartool lsco -r -me /vobs/atseintl

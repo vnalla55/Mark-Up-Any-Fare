@@ -1,0 +1,6 @@
+CUSTOM_XML_PARSER_SOURCES := \
+    IAttributes.cpp \
+    IParser.cpp \
+    ISchemaBase.cpp \
+    IXMLSchema.cpp \
+    IXMLUtils.cpp

@@ -1,0 +1,268 @@
+2005-11-04 15:04:51,406: 1912600944 INFO  atseintl.Metrics - 
+**********************************************************
+*                  TRANSACTION MEASUREMENTS              *
+**********************************************************
+
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+TSEMANAGERUTIL SERVICE                 4.86   0.30      1
+-TO PROCESS PRICING                    4.86   0.00      1
+- TO ITIN SERVICE                      0.17   0.00      1
+- -ITIN PROCESS                        0.17   0.00      1
+- - ITIN SET RETRANSITS                0.00   0.00      1
+- - ITIN BUILD FMKT                    0.04   0.00      1
+- - -ITIN SET TVLBOUNDARY              0.00   0.00      3
+- - - ITIN SETBRDANDOFFPNTS            0.00   0.00      2
+- - - ITIN GETEXISTFAREMARKET          0.00   0.00      2
+- - ITIN SET TRIP-CHARACTERISTICS      0.00   0.00      1
+- - ITIN SET INTL-INDICATOR            0.00   0.00      1
+- - ITIN ATAE                          0.13   0.00      1
+- - ITIN SET CUR OVERRIDE              0.00   0.00      1
+- - ITIN SET SORT-TAX                  0.00   0.00      1
+- TO FARES C SERVICE                   4.48   0.00      1
+- -FCO PROCESS PRICINGTRX              4.48   0.00      1
+- - FCO SETUP FARE MARKET              0.19   0.00      1
+- - -ALGORITHM THREAD TASK             0.19   0.00      2
+- - FCO DOM CURRENCY                   0.00   0.00      1
+- - FCO ALL FM STEPS                   4.29   0.00      1
+- - FCO RELEASE FARES                  0.00   0.00      1
+- - -ALGORITHM THREAD TASK             0.00   0.00      2
+- - FCO CHECK FARES                    0.00   0.00      1
+- - -ALGORITHM THREAD TASK             0.00   0.00      2
+- - FCO SORT FARES                     0.00   0.00      1
+- - -ALGORITHM THREAD TASK             0.00   0.00      2
+- - FCO MARK FM                        0.00   0.00      1
+- - -ALGORITHM THREAD TASK             0.00   0.00      2
+- TO FARES V SERVICE                   0.21   0.00      1
+- -FVO PROCESS PRICINGTRX              0.21   0.00      1
+- - FVO ROUTING                        0.01   0.00      1
+- - FVO RULES                          0.19   0.00      1
+- - FVO BOOKING CODE                   0.01   0.00      1
+- - FVO MIXED CLASS                    0.00   0.00      1
+- - FVO PRINT PTFARES                  0.00   0.00      1
+- - -ALGORITHM THREAD TASK             0.00   0.00      2
+- - FVO FAIL FMS                       0.00   0.00      1
+TSEMANAGERUTIL RSPXFORM                0.00   0.00      1
+
+
+WORKER THREAD 1 (ID: 1168111984)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  4.29   0.02      1
+-FCO AFM                               4.29   0.02      1
+- FCO AFM DIAG451                      0.00   0.00      1
+- FCO AFM PUBFARES                     4.23   0.01      1
+- -FCO PAI PUB                         0.11   0.01      1
+- -FCO PAI ADDON                       4.09   0.00      1
+- - FCO AOFC PROCESS                   4.09   0.00      1
+- - -ADDON CONSTRUCTION TASK           0.00   0.00      4
+- - -FCO AOFC CREATEFARES              0.00   0.00      2
+- -FCO PAI IND                         0.03   0.00      1
+- FCO AFM FBR                          0.01   0.00      1
+- FCO AFM DISC                         0.05   0.00      1
+- FCO AFM NEG                          0.00   0.00      1
+- -FCO NEGFARECNTRLR                   0.00   0.00      1
+- FCO AFM CURR                         0.00   0.01      1
+
+
+WORKER THREAD 2 (ID: 1220540784)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  4.29   0.13      1
+-FCO AFM                               4.29   0.13      1
+- FCO AFM DIAG451                      0.00   0.00      1
+- FCO AFM PUBFARES                     4.23   0.12      1
+- -FCO PAI PUB                         0.11   0.02      1
+- -FCO PAI ADDON                       4.10   0.09      1
+- - FCO AOFC PROCESS                   4.10   0.09      1
+- - -ADDON CONSTRUCTION TASK           4.09   0.08      4
+- - - ADDON LOAD ATPCO ZONES           0.00   0.00      1
+- - - ATPCO ADDON ZONE VALIDATION      0.00   0.00     82
+- - - ADDON LOAD SITA ZONES            0.02   0.00      1
+- - - SITA ADDON ZONE VALIDATION       0.00   0.00     10
+- - -FCO AOFC CREATEFARES              0.00   0.00      2
+- -FCO PAI IND                         0.02   0.01      1
+- FCO AFM FBR                          0.01   0.00      1
+- FCO AFM DISC                         0.05   0.01      1
+- FCO AFM NEG                          0.00   0.00      1
+- -FCO NEGFARECNTRLR                   0.00   0.00      1
+- FCO AFM CURR                         0.00   0.00      1
+
+
+WORKER THREAD 3 (ID: 1304426864)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  0.01   0.00      1
+-FVO ROUTING RESTRICTION               0.00   0.00      7
+-FVO ROUTING MAP                       0.00   0.00      1
+- FVO MAP SPECIFIED                    0.00   0.00      1
+-FVO ROUTING MILEAGE                   0.00   0.00      1
+- FVO MILEAGE PSR                      0.00   0.00      1
+- FVO MILEAGE TPM                      0.00   0.00      1
+- FVO MILEAGE MPM                      0.00   0.00      1
+- FVO MILEAGE TPD                      0.00   0.00      1
+
+
+WORKER THREAD 4 (ID: 1314912624)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  0.01   0.01      1
+-FVO ROUTING RESTRICTION               0.00   0.00      7
+-FVO ROUTING MAP                       0.00   0.00      1
+- FVO MAP SPECIFIED                    0.00   0.00      1
+-FVO ROUTING MILEAGE                   0.00   0.00      1
+- FVO MILEAGE PSR                      0.00   0.00      1
+- FVO MILEAGE TPM                      0.00   0.00      1
+- FVO MILEAGE MPM                      0.00   0.00      1
+- FVO MILEAGE TPD                      0.00   0.00      1
+
+
+WORKER THREAD 5 (ID: 1325398384)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  0.19   0.01      1
+-GET GEO RULE ITEM 4                   0.00   0.00      4
+
+
+WORKER THREAD 6 (ID: 1335884144)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  0.19   0.05      1
+-GET GEO RULE ITEM 4                   0.00   0.00      4
+
+
+WORKER THREAD 7 (ID: 1346369904)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  0.01   0.00      1
+-FVO BOOKING CODE VALIDATION           0.01   0.00      1
+
+
+WORKER THREAD 8 (ID: 1356855664)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  0.01   0.00      1
+-FVO BOOKING CODE VALIDATION           0.01   0.00      1
+
+
+WORKER THREAD 9 (ID: 1367341424)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  0.00   0.00      1
+
+
+WORKER THREAD 10 (ID: 1377827184)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  0.00   0.00      1
+
+
+WORKER THREAD 11 (ID: 1388312944)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  0.00   0.00      1
+
+
+WORKER THREAD 12 (ID: 1398798704)
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  0.00   0.00      1
+
+
+
+LINE ITEMS
+
+CALL                                   TIME    CPU  CALLS
+---------------------------------------------------------
+ALGORITHM THREAD TASK                  9.19   0.22     24
+FCO AFM                                8.58   0.15      2
+FCO AFM PUBFARES                       8.46   0.13      2
+FCO PAI ADDON                          8.19   0.09      2
+FCO AOFC PROCESS                       8.19   0.09      2
+TSEMANAGERUTIL SERVICE                 4.86   0.30      1
+TO PROCESS PRICING                     4.86   0.00      1
+TO FARES C SERVICE                     4.48   0.00      1
+FCO PROCESS PRICINGTRX                 4.48   0.00      1
+FCO ALL FM STEPS                       4.29   0.00      1
+ADDON CONSTRUCTION TASK                4.09   0.08      8
+FCO PAI PUB                            0.22   0.03      2
+FVO PROCESS PRICINGTRX                 0.21   0.00      1
+TO FARES V SERVICE                     0.21   0.00      1
+FCO SETUP FARE MARKET                  0.19   0.00      1
+FVO RULES                              0.19   0.00      1
+ITIN PROCESS                           0.17   0.00      1
+TO ITIN SERVICE                        0.17   0.00      1
+ITIN ATAE                              0.13   0.00      1
+FCO AFM DISC                           0.10   0.01      2
+FCO PAI IND                            0.05   0.01      2
+ITIN BUILD FMKT                        0.04   0.00      1
+ADDON LOAD SITA ZONES                  0.02   0.00      1
+FVO BOOKING CODE VALIDATION            0.02   0.00      2
+FCO AFM FBR                            0.02   0.00      2
+FVO ROUTING                            0.01   0.00      1
+FVO BOOKING CODE                       0.01   0.00      1
+FVO ROUTING RESTRICTION                0.00   0.00     14
+GET GEO RULE ITEM 4                    0.00   0.00      8
+ITIN GETEXISTFAREMARKET                0.00   0.00      2
+ITIN SET CUR OVERRIDE                  0.00   0.00      1
+ITIN SET INTL-INDICATOR                0.00   0.00      1
+ITIN SET RETRANSITS                    0.00   0.00      1
+ITIN SET SORT-TAX                      0.00   0.00      1
+ITIN SET TRIP-CHARACTERISTICS          0.00   0.00      1
+ITIN SET TVLBOUNDARY                   0.00   0.00      3
+ITIN SETBRDANDOFFPNTS                  0.00   0.00      2
+SITA ADDON ZONE VALIDATION             0.00   0.00     10
+ADDON LOAD ATPCO ZONES                 0.00   0.00      1
+TSEMANAGERUTIL RSPXFORM                0.00   0.00      1
+FCO AFM NEG                            0.00   0.00      2
+FCO AOFC CREATEFARES                   0.00   0.00      4
+FCO AFM DIAG451                        0.00   0.00      2
+FCO CHECK FARES                        0.00   0.00      1
+FCO DOM CURRENCY                       0.00   0.00      1
+FCO MARK FM                            0.00   0.00      1
+FCO NEGFARECNTRLR                      0.00   0.00      2
+FCO AFM CURR                           0.00   0.01      2
+ATPCO ADDON ZONE VALIDATION            0.00   0.00     82
+FCO RELEASE FARES                      0.00   0.00      1
+FCO SORT FARES                         0.00   0.00      1
+FVO FAIL FMS                           0.00   0.00      1
+FVO MAP SPECIFIED                      0.00   0.00      2
+FVO MILEAGE MPM                        0.00   0.00      2
+FVO MILEAGE PSR                        0.00   0.00      2
+FVO MILEAGE TPD                        0.00   0.00      2
+FVO MILEAGE TPM                        0.00   0.00      2
+FVO MIXED CLASS                        0.00   0.00      1
+FVO PRINT PTFARES                      0.00   0.00      1
+FVO ROUTING MAP                        0.00   0.00      2
+FVO ROUTING MILEAGE                    0.00   0.00      2
+
+
+
+   TRAVEL SEGMENTS:          2
+      FARE MARKETS:          2
+         PAX TYPES:          1
+      PAXTYPEFARES:        164
+  VIRTUAL MEM SIZE:       1112 MB
+
+TSELatencyData Latency Statistics: 
+   Elapsed Latency:       0.01s
+       CPU Latency:       0.00s
+
+
+2005-11-04 15:04:51,406: 1912600944 INFO  atseintl.Metrics -     PNR: 'MZVTAG'
+2005-11-04 15:04:51,406: 1912600944 INFO  atseintl.Metrics -   Entry: 'WPBET-ITL$S3/8$Q/*499/FCBLWAP3M+B*'
+2005-11-04 15:04:51,406: 1912600944 INFO  atseintl.Metrics -     PCC: 'E1N0'
+2005-11-04 15:04:51,406: 1912600944 INFO  atseintl.Metrics - TransID: '191920347254021571'
+2005-11-04 15:04:51,406: 1912600944 INFO  atseintl.Metrics -  LNIATA: '546BF7'
+2005-11-04 15:04:51,406: 1912600944 INFO  atseintl.Metrics - 
+
+==================== External call statistics ======================
+Service    | Ok | Er | Elapsed  | CPU      | ReqSize    | RspSize 
+       Trx |  1 |  0 |   4.8576 |   0.3000 |       2037 |       1582
+      ASv2 |  1 |  0 |   0.0100 |          |        674 |        317
+     DSSv2 |  1 |  0 |   0.0100 |          |        320 |       1430
+   Baggage |  1 |  1 |   0.1099 |          |          0 |          0
+   Billing |  0 |  0 |   0.0000 |          |          0 |          0
+   Req/Rsp |  0 |  0 |   0.0000 |          |          0 |          0
+
+

@@ -1,0 +1,49 @@
+       BASE FARE                     TAXES             TOTAL
+ 1-   USD2910.00                    182.95XT      USD3092.95ADT
+    XT     28.20US       5.00YC       7.00XY       4.95XA  
+            2.50AY     110.40GB      21.90UB       3.00XF  
+         2910.00                    182.95           3092.95TTL
+ADT-01  Y 
+ NYC AA LON Q35.00 1420.00Y AA NYC Q35.00 1419.99Y NUC2909.99
+ END ROE1.00SITI XFJFK3
+WPDF
+PSGR TYPE ADT
+FARE  USD  2910.00
+TAX   USD    182.95XT
+TOTAL USD     3092.95
+NYC AA LON Q35.00 1420.00Y AA NYC Q35.00 1419.99Y NUC2909.99
+ END ROE1.00SITI XFJFK3
+
+XT 28.20US 5.00YC 7.00XY 4.95XA 2.50AY 110.40GB
+XT 21.90UB 3.00XF
+
+/////////////// TRAFFIC DOCUMENT ISSUED IN HDQ ///////////////
+PU -FARE BASIS-CUR  NUC AMT ELEMENT DESCRIPTION ----------- GI
+               USD    35.00 NYC-LON MISCELLANEOUS SURCHARGE
+01 Y           USD  1420.00 NYC-LON AA /HR  0M              AT
+               USD    35.00 LON-NYC MISCELLANEOUS SURCHARGE
+02 Y           USD  1419.99 NYC-LON AA /HR  0M              AT
+                    2910.00    -    TOTAL USD
+-TAX AMT/USD/-- CUR  CODES  DESCRIPTION------------------------
+       28.20        US/US2 US INTERNATIONAL TRANSPORTATION TAX
+          14.10:USD    14.10 *JFK* *AA*
+          14.10:USD    14.10 *LHR* *AA*
+        5.00        US/YC  US CUSTOMS USER FEE
+           5.00:USD     5.00 *LHR* *AA*
+        7.00        US/XY  US FEDERAL INSPECTION FEE
+           7.00:USD     7.00 *LHR* *AA*
+        4.95        US/XA  US APHIS USER FEE
+           4.95:USD     4.95 *LHR* *AA*
+        2.50        US/AY  US SECURITY FEE
+           2.50:USD     2.50           
+      110.40        GB/GB2 AIR PASSENGER DUTY APD
+          73.60:GBP    40.00 *LHR* *AA*
+          36.80:GBP    20.00 *LHR* *AA*
+       21.90        GB/UB6 INTERNATIONAL DPTRS IOM THROUGH LTN
+          21.90:GBP    11.90 *LHR* *AA*
+        3.00        US/XF  PASSENGER FACILITY CHARGE
+-IATA RATES OF EXCHANGE USED IN FARE CALCULATION --------------
+   1.00000000  USD-ROE  EFF 
+-PRICING UNIT TRIP TYPE ---------------------------------------
+  PU 01 - NORMAL  HALF ROUND TRIP
+  PU 02 - NORMAL  HALF ROUND TRIP

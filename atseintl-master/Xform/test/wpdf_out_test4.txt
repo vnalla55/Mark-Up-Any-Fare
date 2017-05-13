@@ -1,0 +1,58 @@
+FREE CHANGE PERM
+NON ENDORSABLE
+       BASE FARE      EQUIV AMT      TAXES             TOTAL
+ 1-   EUR1104.00     USD1395.00      91.70XT      USD1486.70ADT
+    XT      7.20EX      20.30IT       6.90VT       7.80HB  
+           27.60GB      21.90UB  
+         1104.00        1395.00      91.70           1486.70TTL
+ADT-01  Y YRTAZ 
+ CTA AZ ROM258.71Y AZ LON603.01YRTAZ AZ ROM AZ CTA ROMLON
+ 603.01YRTAZ NUC1464.73END ROE0.753717SOTO
+NON ENDORSABLE
+FREE CHANGE PERM
+WPDF
+PSGR TYPE ADT
+FARE  EUR  1104.00  EQUIV  USD    1395.00
+TAX   USD     91.70XT
+TOTAL USD     1486.70
+CTA AZ ROM258.71Y AZ LON603.01YRTAZ AZ ROM AZ CTA ROMLON
+ 603.01YRTAZ NUC1464.73END ROE0.753717SOTO
+
+XT 7.20EX 20.30IT 6.90VT 7.80HB 27.60GB 21.90UB
+RATE USED 1EUR-0.7900USD
+/////////////// TRAFFIC DOCUMENT ISSUED IN HDQ ///////////////
+PU -FARE BASIS-CUR  NUC AMT ELEMENT DESCRIPTION ----------- GI
+01 Y           EUR   258.71 CTA-ROM AZ /HR RTG              EH
+02 YRTAZ       EUR   603.01 ROM-LON AZ /HR RTG              EH
+03 YRTAZ       EUR   603.01 CTA-LON AZ /HR RTG ROMLON       EH
+                    1104.00    -    TOTAL EUR
+-TAX AMT/EUR/-- CUR  CODES  DESCRIPTION------------------------
+        7.20        IT/EX  SECURITY BAG CHARGE
+           2.60:EUR     2.05 *FCO* *AZ*
+           2.60:EUR     2.05 *FCO* *AZ*
+           2.00:EUR     1.58 *CTA* *AZ*
+       20.30        IT/ITA EMBARKATION TAX
+           5.90:EUR     4.60 *CTA* *AZ*
+           7.20:EUR     5.63 *FCO* *AZ*
+           7.20:EUR     5.63 *FCO* *AZ*
+        6.90        IT/VT  SECURITY CHARGE
+           2.30:EUR     1.81 *CTA* *AZ*
+           2.30:EUR     1.81 *FCO* *AZ*
+           2.30:EUR     1.81 *FCO* *AZ*
+        7.80        IT/HB  
+           2.60:EUR     2.00 *CTA* *AZ*
+           2.60:EUR     2.00 *FCO* *AZ*
+           2.60:EUR     2.00 *FCO* *AZ*
+       27.60        GB/GB1 AIR PASSENGER DUTY APD
+          18.40:GBP    10.00 *LHR* *AZ*
+           9.20:GBP     5.00 *LHR* *AZ*
+       21.90        GB/UB6 INTERNATIONAL DPTRS IOM THROUGH LTN
+          21.90:GBP    11.90 *LHR* *AZ*
+-IATA RATES OF EXCHANGE USED IN FARE CALCULATION --------------
+  0.750000000  EUR-ROE  EFF 
+-BSR USED IN TAX CALCULATION ----------------------------------
+ 1EUR:0.7900USD
+-PRICING UNIT TRIP TYPE ---------------------------------------
+  PU 01 - NORMAL  CIRCLE TRIP
+  PU 02 - NORMAL  CIRCLE TRIP
+  PU 03 - NORMAL  CIRCLE TRIP

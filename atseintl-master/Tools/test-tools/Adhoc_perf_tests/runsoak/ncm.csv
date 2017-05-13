@@ -1,0 +1,2314 @@
+#crc:27691388
+# -----------------------------------------------------
+# Node Configuration Overrides for ProdHybrid
+# -----------------------------------------------------
+
+# ============================================================================
+# SPECIAL DIRECTIVES SECTION
+#
+#    #regexp
+#    #shelltypes
+#    #initypes
+#    #include
+#    #exclude
+#    #appctl
+#
+# All other lines that begin with a pound sign (#) are considered comments.
+# ============================================================================
+
+#regexp off
+#shelltypes config.vars
+#initypes atse.ini atsewriter.ini config.ini nodeagent.ini proco.ini asapx.ini
+#v2cfgtypes config.ini tseserver.cfg
+
+# -----------------------------------------------------
+# Define the nodes that make up the PROD environment
+# -----------------------------------------------------
+
+#include hpchlp101-hpchlp106
+#include hpmhlp101-hpmhlp105
+
+#include icchlp001-icchlp012
+#include icmhlp001-icmhlp013
+
+#include pcchlp204-pcchlp206
+#include pcchlp214-pcchlp216
+#include pcmhlp201-pcmhlp203
+#include pcmhlp211-pcmhlp213
+#include piclp100-piclp158
+#include piclp340-piclp398
+#include piclp438-piclp740
+#include piclp750-piclp799
+#include piclp800-piclp999
+
+#exclude piclp130-piclp131
+#exclude piclp138-piclp139
+#exclude piclp158         
+#exclude piclp367         
+#exclude piclp438-piclp440
+#exclude piclp443-piclp478
+#exclude piclp481-piclp482
+#exclude piclp484-piclp487
+#exclude piclp490-piclp507
+#exclude piclp508-piclp509
+#exclude piclp510-piclp539
+#exclude piclp540-piclp545
+#exclude piclp546-piclp602
+#exclude piclp623-piclp639
+#exclude piclp688-piclp692
+#exclude piclp694-piclp740
+#exclude piclp813         
+
+#include pifhlp102-pifhlp328
+
+#include pimlp100-pimlp185
+#include pimlp400-pimlp460
+#include pimlp500-pimlp801
+#include pimlp854-pimlp999
+#include pithlp100-pithlp179
+
+#include ttfhlp527-ttfhlp529
+#include ttfhlp536          
+#include ttfhlp539-ttfhlp542
+#include ttfhlp600-ttfhlp629
+#include ttfhlp700-ttfhlp723
+
+
+#exclude pimlp400-pimlp410
+#exclude pimlp413-pimlp415
+#exclude pimlp420-pimlp429
+#exclude pimlp431-pimlp435
+#exclude pimlp438-pimlp439
+#exclude pimlp441-pimlp443 
+#exclude pimlp445-pimlp449
+#exclude pimlp450-pimlp454
+#exclude pimlp530-pimlp531
+#exclude pimlp537-pimlp539
+#exclude pimlp589-pimlp599
+#exclude pimlp626-pimlp627
+#exclude pimlp644-pimlp652
+#exclude pimlp658-pimlp662
+#exclude pimlp665-pimlp675
+#exclude pimlp918-pimlp923
+#exclude pimlp924         
+#exclude pimlp925         
+#exclude pimlp926-pimlp945
+#exclude pimlp955          
+#exclude pimlp957          
+#exclude pimlp996-pimlp998
+
+# ============================================================================
+# OVERRIDES SECTION
+# This section results in the creation of override files for the specified
+# files specified in the #initypes and #shelltypes directives.  The format of
+# the comma-separated columns is as follows:
+#
+# Node , Override type , Application(s) , Tag , Value
+#
+# An asterisk (*) in the Node column means ALL nodes.
+# An asterisk (*) in the Application column means ALL applications.
+#
+# NOTE:
+# For enhanced readability, which reduces mistakes, PLEASE maintain
+# alphabetical order as much as possible, and make columns line up
+# consistently.  Your collegues will appreciate you for it!
+# ============================================================================
+
+# ----------------------------------------------------------
+# Activate node/app combinations.  This section determines
+# which apps are ALLOWED to be activated on which nodes.
+#
+# As much as possible, please try to maintain a
+# ----------------------------------------------------------
+
+  *                 , app , common nodeagent datacollector , activate , Y
+  *                 , app , configtool                     , activate , Y
+  *                 , app , proco                          , activate , Y
+  *                 , app , serversim                      , activate , Y
+  piclp483 pimlp430 , app , appcon                         , activate , Y
+  piclp483          , app , utt                            , activate , Y
+  piclp483          , app , eyecongui eyeconcollector      , activate , Y
+  pimlp430          , app , csfmanager                     , activate , Y
+  pimlp500          , app , csfmanager                     , activate , Y
+  pimlp430          , app, acmsadm                         , activate, Y
+  pimlp430          , app, acmsgui                         , activate, Y
+  pimlp430          , app, acmsconsole                     , activate, Y
+
+# HPCH nodes
+
+  hpchlp101           , app , hob cachefeeder              , activate , Y
+  hpchlp102-hpchlp106 , app , charger                      , activate , Y
+  hpchlp102-hpchlp106 , app , tseshared tax                , activate , Y
+
+# HPMH nodes
+
+  hpmhlp101           , app , hob cachefeeder              , activate , Y
+  hpmhlp102-hpmhlp105 , app , charger                      , activate , Y
+  hpmhlp102-hpmhlp105 , app , tseshared tax                , activate , Y
+
+# PICL nodes - please maintain alphabetical order
+
+  piclp100-piclp108 , app , asv2                           , activate, Y
+  piclp109-piclp113 , app , tseshared shopping             , activate, Y
+  piclp114-piclp116 , app , asv2                           , activate, Y
+  piclp117-piclp118 , app , hph                            , activate, Y
+  piclp119-piclp120 , app , tseshared shopping             , activate, Y
+  piclp121-piclp129 , app , asv2                           , activate, Y
+  piclp132-piclp137 , app , tseshared shopping             , activate, Y
+  piclp140          , app , tseshared shopping             , activate, Y
+  piclp141-piclp142 , app , streamlfs                      , activate, Y
+  piclp143-piclp148 , app , tseshared shopping             , activate, Y
+  piclp149-piclp150 , app , dssv2                          , activate, Y
+  piclp151-piclp157 , app , tseshared shopping             , activate, Y
+  piclp483          , app, acmsadm                         , activate, Y
+  piclp483          , app, acmsgui                         , activate, Y
+  piclp483          , app, acmsconsole                     , activate, Y
+  piclp340-piclp357 , app , tseshared shopping             , activate, Y
+  piclp358-piclp366 , app , tseshared shopping             , activate, Y
+  piclp368          , app , tseshared shopping             , activate, Y
+  piclp369          , app , dssv2                          , activate, Y
+  piclp370-piclp394 , app , tseshared shopping             , activate, Y
+  piclp395          , app , dssv2                          , activate, Y
+  piclp396-piclp398 , app , tseshared shopping             , activate, Y
+  piclp441-piclp442 , app , dssv2                          , activate, Y
+  piclp479-piclp480 , app , qms                            , activate, Y
+  piclp479-piclp480 , app , lb2                            , activate, Y
+  piclp488-piclp489 , app , acs acs-hub                    , activate, Y
+  piclp603          , app , dssv2                          , activate, Y
+  piclp604-piclp615 , app , tseshared shopping             , activate, Y
+  piclp616          , app , dssv2                          , activate, Y
+  piclp617-piclp619 , app , tseshared shopping             , activate, Y
+  piclp620          , app,  dssv2                          , activate, Y
+  piclp621          , app , cacheanalyzer polling_manager  , activate, Y
+  piclp622          , app , tseshared shopping             , activate, Y
+  piclp640-piclp641 , app , tseshared shopping             , activate, Y
+  piclp657-piclp659 , app , tseshared pricingv2            , activate, Y
+  piclp666-piclp670 , app , tseshared shoppingis           , activate, Y
+  piclp671-piclp681 , app , tseshared pricingv2            , activate, Y
+  piclp687          , app , dssv2                          , activate, Y
+  piclp750-piclp787 , app , tseshared shopping             , activate, Y
+  piclp789-piclp806 , app , tseshared shopping             , activate, Y
+  piclp807-piclp808 , app , dssv2                          , activate, Y
+  piclp809-piclp812 , app , tseshared shopping             , activate, Y
+  piclp814-piclp816 , app , tseshared shopping             , activate, Y
+  piclp817-piclp821 , app , streamlfs                      , activate, Y
+  piclp822-piclp823 , app , tseshared shopping             , activate, Y
+  piclp824          , app , dssv2                          , activate, Y
+  piclp825-piclp835 , app , tseshared shopping             , activate, Y
+  piclp836-piclp839 , app , dssv2                          , activate, Y
+  piclp840-piclp869 , app , tseshared shopping             , activate, Y
+  piclp870-piclp871 , app , tseshared shoppinghist         , activate, Y
+  piclp872-piclp883 , app , tseshared shopping             , activate, Y
+  piclp884          , app , streamlfs                      , activate, Y
+  piclp885-piclp886 , app , tseshared shopping             , activate, Y
+  piclp887          , app , dssv2                          , activate, Y
+  piclp888          , app , tseshared shopping             , activate, Y
+  piclp889-piclp891 , app , dssv2                          , activate, Y
+  piclp892-piclp921 , app , tseshared shopping             , activate, Y
+  piclp922-piclp923 , app , tseshared shoppingesv          , activate, Y
+  piclp924-piclp938 , app , tseshared shopping             , activate, Y
+  piclp939          , app , dssv2                          , activate, Y
+  piclp940-piclp986 , app , tseshared shopping             , activate, Y
+  piclp987          , app , streamlfs                      , activate, Y
+  piclp988-piclp992 , app , tseshared shopping             , activate, Y
+  piclp993-piclp994 , app , streamlfs                      , activate, Y
+  piclp995-piclp999 , app , tseshared shopping             , activate, Y
+
+# PIFL nodes
+
+  pifhlp104-pifhlp108, app , tseshared shoppingis           , activate, Y
+  pifhlp109-pifhlp112, app , tseshared shopping             , activate, Y
+  pifhlp113-pifhlp114, app , tseshared shoppingis           , activate, Y
+  pifhlp115-pifhlp123, app , tseshared shopping             , activate, Y
+  pifhlp124          , app , tseshared shoppingis           , activate, Y
+  pifhlp125          , app , tseshared shopping             , activate, Y
+  pifhlp126-pifhlp128, app , tseshared historical           , activate, Y
+  pifhlp129-pifhlp132, app , tseshared shopping             , activate, Y
+  pifhlp133-pifhlp150, app , tseshared shoppingis           , activate, Y
+  pifhlp151-pifhlp158, app , tseshared shoppingis           , activate, Y
+  pifhlp159          , app , tseshared shopping             , activate, Y
+  pifhlp160-pifhlp179, app , tseshared shoppingis           , activate, Y
+  pifhlp185-pifhlp189, app , tseshared shoppingis           , activate, Y
+  pifhlp190-pifhlp191, app , tseshared shopping             , activate, Y
+  pifhlp192          , app , tseshared shoppingis           , activate, Y
+  pifhlp193-pifhlp195, app , tseshared shopping             , activate, Y
+  pifhlp196-pifhlp198, app , tseshared shoppingis           , activate, Y
+  pifhlp199          , app , tseshared shoppingis           , activate, Y
+  pifhlp201-pifhlp205, app , tseshared shopping             , activate, Y
+  pifhlp206-pifhlp207, app , tseshared pricingv2            , activate, Y
+  pifhlp208          , app , tseshared tax rtg faredisplay , activate, Y
+  pifhlp209-pifhlp221, app , tseshared shoppingis           , activate, Y
+  pifhlp222-pifhlp224, app , tseshared shopping             , activate, Y
+  pifhlp225-pifhlp237, app , tseshared shoppingis           , activate, Y
+  pifhlp238-pifhlp245, app , tseshared shoppingis           , activate, Y
+  pifhlp246-pifhlp252, app , tseshared shopping             , activate, Y
+  pifhlp253-pifhlp254, app , tseshared shoppingis           , activate, Y
+  pifhlp255          , app , tseshared pricingv2            , activate, Y
+  pifhlp256          , app , acmsnotifier                   , activate, Y
+  pifhlp256-pifhlp257, app , tseshared tax rtg faredisplay acmsapp  , activate, Y
+  pifhlp258          , app , tseshared pricingv2            , activate, Y
+  pifhlp259-pifhlp270, app , tseshared shoppingis           , activate, Y
+  pifhlp271-pifhlp272, app , tseshared shoppingis           , activate, Y
+  pifhlp273          , app , tseshared pricingv2            , activate, Y
+  pifhlp274-pifhlp281, app , tseshared shoppingis           , activate, Y
+  pifhlp282          , app , tseshared shoppingis           , activate, Y
+  pifhlp283-pifhlp290, app , tseshared shoppingis           , activate, Y
+  pifhlp291          , app , tseshared pricingv2            , activate, Y
+  pifhlp292-pifhlp294, app , tseshared shoppingis           , activate, Y
+  pifhlp295          , app , tseshared shopping             , activate, Y
+  pifhlp296-pifhlp298, app , tseshared shoppingis           , activate, Y
+  pifhlp299-pifhlp300, app , tseshared shopping             , activate, Y
+  pifhlp301-pifhlp302, app , tseshared shoppingis           , activate, Y
+  pifhlp303          , app , tseshared shopping             , activate, Y
+  pifhlp304-pifhlp324, app , tseshared shoppingis           , activate, Y
+  pifhlp326-pifhlp328, app , tseshared shopping             , activate, Y
+
+# PIML nodes
+
+  pimlp100          , app , streamlfs                      , activate, Y
+  pimlp101-pimlp105 , app , dssv2                          , activate, Y
+  pimlp106-pimlp123 , app , tseshared shopping             , activate, Y
+  pimlp124-pimlp125 , app , streamlfs                      , activate, Y
+  pimlp126-pimlp163 , app , tseshared shopping             , activate, Y
+  pimlp164-pimlp172 , app , streamlfs                      , activate, Y
+  pimlp173-pimlp185 , app , tseshared shopping             , activate, Y
+  pimlp411-pimlp412 , app , acs acs-hub                    , activate, Y
+  pimlp416-pimlp419 , app , branded ancillaries ancillary_services            , activate, Y
+  pimlp456-pimlp457 , app , qms                            , activate, Y
+  pimlp456-pimlp457 , app , lb2                            , activate, Y
+  pimlp500-pimlp510 , app , tseshared shopping             , activate, Y
+  pimlp511-pimlp524 , app , tseshared shopping             , activate, Y
+  pimlp525-pimlp529 , app , asv2                           , activate, Y
+  pimlp532-pimlp536 , app , tseshared shopping             , activate, Y  
+  pimlp540-pimlp554 , app , tseshared shopping             , activate, Y  
+  pimlp555-pimlp556 , app , tseshared shoppinghist         , activate, Y
+  pimlp557-pimlp587 , app , tseshared shopping             , activate, Y  
+  pimlp588          , app , dssv2                          , activate, Y
+  pimlp600-pimlp604 , app , asv2                           , activate, Y
+  pimlp605-pimlp625 , app , tseshared shopping             , activate, Y  
+  pimlp628-pimlp636 , app , tseshared shopping             , activate, Y  
+  pimlp637          , app , hph                            , activate, Y
+  pimlp638-pimlp643 , app , asv2                           , activate, Y
+  pimlp653-pimlp657 , app , tseshared shopping             , activate, Y
+  pimlp663-pimlp664 , app , tseshared shopping             , activate, Y
+  pimlp676-pimlp700 , app , tseshared shopping             , activate, Y
+  pimlp701-pimlp708 , app , tseshared shopping             , activate, Y
+  pimlp709-pimlp711 , app , asv2                           , activate, Y
+  pimlp712          , app , tseshared shopping             , activate, Y
+  pimlp713          , app , cacheanalyzer polling_manager  , activate, Y
+  pimlp714          , app , hph                            , activate, Y
+  pimlp715-pimlp716 , app , tseshared shopping             , activate, Y
+  pimlp717-pimlp720 , app , asv2                           , activate, Y
+  pimlp721-pimlp722 , app , dssv2                          , activate, Y
+  pimlp723-pimlp776 , app , tseshared shopping             , activate, Y
+  pimlp777-pimlp778 , app , streamlfs                      , activate, Y
+  pimlp779-pimlp798 , app , tseshared shopping             , activate, Y
+  pimlp801          , app , tseshared shopping             , activate, Y
+  pimlp854          , app , dssv2                          , activate, Y
+  pimlp855-pimlp865 , app , tseshared shopping             , activate, Y
+  pimlp866-pimlp867 , app , dssv2                          , activate, Y
+  pimlp868-pimlp900 , app , tseshared shopping             , activate, Y
+  pimlp901-pimlp903 , app , dssv2                          , activate, Y
+  pimlp904-pimlp954 , app , tseshared shopping             , activate, Y
+  pimlp956          , app , tseshared shopping             , activate, Y
+  pimlp958-pimlp959 , app , tseshared shopping             , activate, Y
+  pimlp960-pimlp961 , app , tseshared shoppingesv          , activate, Y
+  pimlp962-pimlp969 , app , tseshared shopping             , activate, Y
+  pimlp970          , app , dssv2                          , activate, Y
+  pimlp971-pimlp972 , app , tseshared shopping             , activate, Y
+  pimlp973-pimlp975 , app , dssv2                          , activate, Y
+  pimlp976-pimlp986 , app , tseshared shopping             , activate, Y
+  pimlp987          , app , tseshared shoppingesv          , activate, Y
+  pimlp988-pimlp999 , app , tseshared shopping             , activate, Y
+
+# PITL nodes
+
+  pithlp100-pithlp107 , app , tseshared shoppingis           , activate, Y
+  pithlp108           , app , tseshared shoppingis           , activate, Y
+  pithlp114           , app , tseshared pricingv2            , activate, Y
+  pithlp115           , app , tseshared shopping             , activate, Y
+  pithlp116-pithlp118 , app , tseshared historical           , activate, Y
+  pithlp120-pithlp122 , app , tseshared shopping             , activate, Y
+  pithlp123-pithlp124 , app , tseshared shoppingis           , activate, Y
+  pithlp125-pithlp126 , app , tseshared tax rtg faredisplay acmsapp  , activate, Y
+  pithlp126           , app , acmsnotifier                   , activate, Y
+  pithlp127           , app , tseshared tax rtg faredisplay  , activate, Y
+  pithlp128-pithlp129 , app , tseshared pricingv2            , activate, Y
+  pithlp130-pithlp131 , app , tseshared shopping             , activate, Y
+  pithlp132-pithlp139 , app , tseshared shoppingis           , activate, Y
+  pithlp140           , app , tseshared shopping             , activate, Y
+  pithlp141-pithlp144 , app , tseshared shoppingis           , activate, Y
+  pithlp145           , app , tseshared shopping             , activate, Y
+  pithlp146           , app , tseshared shoppingis           , activate, Y
+  pithlp147           , app , tseshared pricingv2            , activate, Y
+  pithlp148           , app , tseshared tax rtg faredisplay acmsapp  , activate, Y
+  pithlp149           , app , tseshared shoppingis           , activate, Y
+  pithlp150-pithlp151 , app , tseshared shopping             , activate, Y
+  pithlp152-pithlp158 , app , tseshared shoppingis           , activate, Y
+  pithlp159-pithlp160 , app , tseshared pricingv2            , activate, Y
+  pithlp161-pithlp165 , app , tseshared shoppingis           , activate, Y
+  pithlp166           , app , tseshared shopping             , activate, Y
+  pithlp167-pithlp174 , app , tseshared shoppingis           , activate, Y
+  pithlp175           , app , tseshared shopping             , activate, Y
+  pithlp177-pithlp179 , app , tseshared shoppingis           , activate, Y
+
+# SFW nodes
+
+  pithlp109-pithlp113 , app , sfw_server	             , activate, Y
+  pifhlp180-pifhlp184 , app , sfw_server	             , activate, Y
+
+# ISell nodes
+
+  icchlp001-icchlp012 , app, isell_cache_server                 , activate, Y
+  icchlp001-icchlp012 , app, isell_cache_server_cpp             , activate, Y
+  icchlp001-icchlp012 , app, isell_ucf_server                   , activate, Y
+
+  icmhlp001-icmhlp013 , app, isell_cache_server                 , activate, Y
+  icmhlp001-icmhlp013 , app, isell_cache_server_cpp             , activate, Y
+  icmhlp001-icmhlp013 , app, isell_ucf_server                   , activate, Y
+
+  ttfhlp527-ttfhlp529 , app, isell_cache_server                 , activate, Y
+  ttfhlp527-ttfhlp529 , app, isell_cache_server_cpp             , activate, Y
+  ttfhlp527-ttfhlp529 , app, isell_ucf_server                   , activate, Y
+  ttfhlp527-ttfhlp529 , app, isell                              , activate, Y
+
+  ttfhlp536           , app, isell_cache_server                 , activate, Y
+  ttfhlp536           , app, isell_cache_server_cpp             , activate, Y
+  ttfhlp536           , app, isell_ucf_server                   , activate, Y
+  ttfhlp536           , app, isell                              , activate, Y
+
+  ttfhlp539-ttfhlp542 , app, isell_cache_server                 , activate, Y
+  ttfhlp539-ttfhlp542 , app, isell_cache_server_cpp             , activate, Y
+  ttfhlp539-ttfhlp542 , app, isell_ucf_server                   , activate, Y
+  ttfhlp539-ttfhlp542 , app, isell                              , activate, Y
+
+  ttfhlp600-ttfhlp601 , app, isell_cache_server                 , activate, Y
+  ttfhlp600-ttfhlp601 , app, isell_cache_server_cpp             , activate, Y
+  ttfhlp600-ttfhlp601 , app, isell_ucf_server                   , activate, Y
+  ttfhlp600-ttfhlp601 , app, isell                              , activate, Y
+
+  ttfhlp602-ttfhlp613 , app, isell_cache_server                 , activate, Y
+  ttfhlp602-ttfhlp613 , app, isell_cache_server_cpp             , activate, Y
+  ttfhlp602-ttfhlp613 , app, isell_ucf_server                   , activate, Y
+
+  ttfhlp614-ttfhlp628 , app, isell_cache_server                 , activate, Y
+  ttfhlp614-ttfhlp628 , app, isell_cache_server_cpp             , activate, Y
+  ttfhlp614-ttfhlp628 , app, isell_ucf_server                   , activate, Y
+  ttfhlp614-ttfhlp628 , app, isell                              , activate, Y
+
+  ttfhlp700           , app, isell_cache_manager                , activate, Y
+  ttfhlp700           , app, isell_cache_server                 , activate, Y
+  ttfhlp700           , app, isell_cache_server_cpp             , activate, Y
+  ttfhlp700           , app, isell_ucf_server                   , activate, Y
+
+  ttfhlp701-ttfhlp715 , app, isell_cache_server                 , activate, Y
+  ttfhlp701-ttfhlp715 , app, isell_cache_server_cpp             , activate, Y
+  ttfhlp701-ttfhlp715 , app, isell_ucf_server                   , activate, Y
+  ttfhlp701-ttfhlp715 , app, isell                              , activate, Y
+ 
+  ttfhlp716-ttfhlp717 , app, isell_cache_server                 , activate, Y
+  ttfhlp716-ttfhlp717, app, isell_cache_server_cpp             , activate, Y
+  ttfhlp716-ttfhlp717 , app, isell_ucf_server                   , activate, Y
+  ttfhlp716-ttfhlp717 , app, isell                              , activate, Y
+
+  ttfhlp718-ttfhlp719 , app, isell_cache_server                 , activate, Y
+  ttfhlp718-ttfhlp719 , app, isell_cache_server_cpp             , activate, Y
+  ttfhlp718-ttfhlp719 , app, isell_ucf_server                   , activate, Y
+
+  ttfhlp720-ttfhlp721 , app, isell_cache_server                 , activate, Y
+  ttfhlp720-ttfhlp721 , app, isell_cache_server_cpp             , activate, Y
+  ttfhlp720-ttfhlp721 , app, isell_ucf_server                   , activate, Y
+  ttfhlp720-ttfhlp721 , app, isell                              , activate, Y
+
+  ttfhlp722           , app, isell                              , activate, Y
+
+### CCS
+### RI 1142553
+  piclp818 pimlp100   , app, sac-ccs                            , activate, Y
+
+* , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_QUERY , Y
+* , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_QUERY , Y
+* , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_FILES , "isell_server/IC/IntellisellServer.acms.cfg"
+* , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_APP , isell_server
+
+
+ttfhlp722           , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_500
+
+ttfhlp715           , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_expd
+ttfhlp716-ttfhlp717 , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_expd
+ttfhlp720-ttfhlp721 , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_expd
+
+ttfhlp527-ttfhlp529 , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp536           , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp539           , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp540-ttfhlp542 , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp600-ttfhlp601 , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp701-ttfhlp702 , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp706-ttfhlp712 , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+
+ttfhlp614-ttfhlp619 , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_v2_tn
+ttfhlp620-ttfhlp628 , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_v2_tn
+ttfhlp703-ttfhlp705 , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_v2_tn
+ttfhlp713-ttfhlp714 , config.vars , isell_server , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_v2_tn
+
+
+ttfhlp722           , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_500
+
+ttfhlp715           , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_expd
+ttfhlp716-ttfhlp717 , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_expd
+ttfhlp720-ttfhlp721 , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_expd
+
+
+ttfhlp527-ttfhlp529 , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp536           , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp539           , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp540-ttfhlp542 , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp600-ttfhlp601 , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp701-ttfhlp702 , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+ttfhlp706-ttfhlp712 , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_tvly
+
+ttfhlp614-ttfhlp619 , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_v2_tn
+ttfhlp620-ttfhlp628 , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_v2_tn
+ttfhlp703-ttfhlp705 , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_v2_tn
+ttfhlp713-ttfhlp714 , config.vars , isell , ADMIN_ISELL_SERVER_ACMS_DOMAIN_ENV , p_v2_tn
+
+###
+### ACMS Default Data Types - IDOP 2011.R6
+###
+* , config.vars , pricingv2           , ADMIN_PRICING_ACMS_TYPES              , "tseserver"
+* , config.vars , pricingv2           , ADMIN_PRICING_ACMS_FORMATS            , "INI"
+* , config.vars , pricingv2           , ADMIN_PRICING_ACMS_FILES              , "tseserver.acms.cfg"
+* , config.vars , faredisplay         , ADMIN_FAREDISPLAY_ACMS_TYPES          , "tseserver"
+* , config.vars , faredisplay         , ADMIN_FAREDISPLAY_ACMS_FORMATS        , "INI"
+* , config.vars , faredisplay         , ADMIN_FAREDISPLAY_ACMS_FILES          , "tseserver.acms.cfg"
+* , config.vars , tax                 , ADMIN_TAX_ACMS_TYPES                  , "tseserver"
+* , config.vars , tax                 , ADMIN_TAX_ACMS_FORMATS                , "INI"
+* , config.vars , tax                 , ADMIN_TAX_ACMS_FILES                  , "tseserver.acms.cfg"
+* , config.vars , historical          , ADMIN_HISTORICAL_ACMS_TYPES           , "tseserver"
+* , config.vars , historical          , ADMIN_HISTORICAL_ACMS_FORMATS         , "INI"
+* , config.vars , historical          , ADMIN_HISTORICAL_ACMS_FILES           , "tseserver.acms.cfg"
+* , config.vars , shopping            , ADMIN_SHOPPING_ACMS_TYPES             , "tseserver"
+* , config.vars , shopping            , ADMIN_SHOPPING_ACMS_FORMATS           , "INI"
+* , config.vars , shopping            , ADMIN_SHOPPING_ACMS_FILES             , "tseserver.acms.cfg"
+* , config.vars , shoppingis          , ADMIN_SHOPPINGIS_ACMS_TYPES           , "tseserver"
+* , config.vars , shoppingis          , ADMIN_SHOPPINGIS_ACMS_FORMATS         , "INI"
+* , config.vars , shoppingis          , ADMIN_SHOPPINGIS_ACMS_FILES           , "tseserver.acms.cfg"
+* , config.vars , shoppingesv         , ADMIN_SHOPPINGESV_ACMS_TYPES          , "tseserver"
+* , config.vars , shoppingesv         , ADMIN_SHOPPINGESV_ACMS_FORMATS        , "INI"
+* , config.vars , shoppingesv         , ADMIN_SHOPPINGESV_ACMS_FILES          , "tseserver.acms.cfg"
+* , config.vars , shoppinghist        , ADMIN_SHOPPINGHIST_ACMS_TYPES         , "tseserver"
+* , config.vars , shoppinghist        , ADMIN_SHOPPINGHIST_ACMS_FORMATS       , "INI"
+* , config.vars , shoppinghist        , ADMIN_SHOPPINGHIST_ACMS_FILES         , "tseserver.acms.cfg"
+
+### ENABLE THE FOLLLOWING THREE LINES AFTER CSF/NodeAgent 2011.R6 IS IN PLACE AND THE ISELL
+### SERVERS HAVE BEEN ROLLED IN TO THIS ENVIRONMENT:
+#* , config.vars , isell_server        , ADMIN_ISELL_SERVER_ACMS_TYPES         , "IntellisellServer"
+#* , config.vars , isell_server        , ADMIN_ISELL_SERVER_ACMS_FORMATS       , "INI"
+#* , config.vars , isell_server        , ADMIN_ISELL_SERVER_ACMS_FILES         , "IC/IntellisellServer.acms.cfg"
+
+#------------------------------------------------------------
+# CSF script locking mechanism is turned off globally; if
+# certain apps want to turn it on, do it AFTER this section.
+#------------------------------------------------------------
+* , config.vars , common , COMMON_ENABLE_SCRIPT_LOCKING, N
+
+
+#---------------------------------------------------------
+# DSSv2 BigIP Node Registration Overrides
+#---------------------------------------------------------
+
+  piclp149-piclp150 , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  piclp369          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  piclp395          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  piclp616          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.dpav.prod_pool_54201%d3pindislb01.sabre.com dss.pss.prod_pool_54201%d3pindislb01.sabre.com dss.Liberty.prod_pool_54201%d3pindislb01.sabre.com dss.dpav.prod_pool_54201%tcdislb03.sabre.com dss.pss.prod_pool_54201%tcdislb03.sabre.com dss.Liberty.prod_pool_54201%tcdislb03.sabre.com dss.dpav.prod_pool_54201%scdislb03.sabre.com dss.pss.prod_pool_54201%scdislb03.sabre.com dss.Liberty.prod_pool_54201%scdislb03.sabre.com"
+  piclp620          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.validate.prod_pool_54201%d3pindislb01.sabre.com dss.validate.prod_pool_54201%tcdislb03.sabre.com dss.validate.prod_pool_54201%scdislb03.sabre.com"
+  piclp807-piclp808 , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.esv.prod_pool_54201%d3pindislb01.sabre.com dss.esv.prod_pool_54201%tcdislb03.sabre.com dss.esv.prod_pool_54201%scdislb03.sabre.com"
+  piclp824          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.dpav.prod_pool_54201%d3pindislb01.sabre.com dss.pss.prod_pool_54201%d3pindislb01.sabre.com dss.Liberty.prod_pool_54201%d3pindislb01.sabre.com dss.dpav.prod_pool_54201%tcdislb03.sabre.com dss.pss.prod_pool_54201%tcdislb03.sabre.com dss.Liberty.prod_pool_54201%tcdislb03.sabre.com dss.dpav.prod_pool_54201%scdislb03.sabre.com dss.pss.prod_pool_54201%scdislb03.sabre.com dss.Liberty.prod_pool_54201%scdislb03.sabre.com"
+  piclp836-piclp837 , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  piclp838          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.dpav.prod_pool_54201%d3pindislb01.sabre.com dss.pss.prod_pool_54201%d3pindislb01.sabre.com dss.Liberty.prod_pool_54201%d3pindislb01.sabre.com dss.dpav.prod_pool_54201%tcdislb03.sabre.com dss.pss.prod_pool_54201%tcdislb03.sabre.com dss.Liberty.prod_pool_54201%tcdislb03.sabre.com dss.dpav.prod_pool_54201%scdislb03.sabre.com dss.pss.prod_pool_54201%scdislb03.sabre.com dss.Liberty.prod_pool_54201%scdislb03.sabre.com"
+  piclp839          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  piclp887          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.istf.prod_pool_54201%d3pindislb01.sabre.com dss.istf.prod_pool_54201%tcdislb03.sabre.com"
+  piclp889-piclp891 , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  piclp939          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  pimlp101-pimlp102 , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  pimlp103-pimlp104 , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.dpav.prod_pool_54201%d3pindislb01.sabre.com dss.pss.prod_pool_54201%d3pindislb01.sabre.com dss.Liberty.prod_pool_54201%d3pindislb01.sabre.com dss.dpav.prod_pool_54201%tcdislb03.sabre.com dss.pss.prod_pool_54201%tcdislb03.sabre.com dss.Liberty.prod_pool_54201%tcdislb03.sabre.com dss.dpav.prod_pool_54201%scdislb03.sabre.com dss.pss.prod_pool_54201%scdislb03.sabre.com dss.Liberty.prod_pool_54201%scdislb03.sabre.com"
+  pimlp105          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  pimlp588          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  pimlp721-pimlp722 , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  pimlp854          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  pimlp866-pimlp867 , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  pimlp901          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.v2.prod_pool_54201%d3pindislb01.sabre.com dss.v2.prod_pool_54201%scdislb03.sabre.com"
+  pimlp902          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.dpav.prod_pool_54201%d3pindislb01.sabre.com dss.pss.prod_pool_54201%d3pindislb01.sabre.com dss.Liberty.prod_pool_54201%d3pindislb01.sabre.com dss.dpav.prod_pool_54201%tcdislb03.sabre.com dss.pss.prod_pool_54201%tcdislb03.sabre.com dss.Liberty.prod_pool_54201%tcdislb03.sabre.com dss.dpav.prod_pool_54201%scdislb03.sabre.com dss.pss.prod_pool_54201%scdislb03.sabre.com dss.Liberty.prod_pool_54201%scdislb03.sabre.com"
+  pimlp903          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.istf.prod_pool_54201%d3pindislb01.sabre.com dss.istf.prod_pool_54201%tcdislb03.sabre.com"
+  pimlp970          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.validate.prod_pool_54201%d3pindislb01.sabre.com dss.validate.prod_pool_54201%tcdislb03.sabre.com dss.validate.prod_pool_54201%scdislb03.sabre.com"
+  pimlp973-pimlp974 , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.esv.prod_pool_54201%d3pindislb01.sabre.com dss.esv.prod_pool_54201%tcdislb03.sabre.com dss.esv.prod_pool_54201%scdislb03.sabre.com"
+  pimlp975          , config.vars , dssv2 , ADMIN_DSS_BIG_IP_POOL      , "dss.dpav.prod_pool_54201%d3pindislb01.sabre.com dss.pss.prod_pool_54201%d3pindislb01.sabre.com dss.Liberty.prod_pool_54201%d3pindislb01.sabre.com dss.dpav.prod_pool_54201%tcdislb03.sabre.com dss.pss.prod_pool_54201%tcdislb03.sabre.com dss.Liberty.prod_pool_54201%tcdislb03.sabre.com dss.dpav.prod_pool_54201%scdislb03.sabre.com dss.pss.prod_pool_54201%scdislb03.sabre.com dss.Liberty.prod_pool_54201%scdislb03.sabre.com"
+
+#--------------------------------------------------------------------------------------
+# The following config.vars overrides will specify AppConsole groups on all DSSv2 nodes
+#--------------------------------------------------------------------------------------
+
+  piclp149-piclp150 , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  piclp369          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  piclp395          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  piclp616          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-EA
+  piclp620          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-ATAERobot
+  piclp807-piclp808 , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-ESV
+  piclp824          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-EA
+  piclp836-piclp837 , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  piclp838          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-EA
+  piclp839          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  piclp887          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-TF
+  piclp889-piclp891 , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  piclp939          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  pimlp101-pimlp102 , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  pimlp103-pimlp104 , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-EA
+  pimlp105          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  pimlp588          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  pimlp721-pimlp722 , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  pimlp854          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  pimlp866-pimlp867 , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  pimlp901          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-V2
+  pimlp902          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-EA
+  pimlp903          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-TF
+  pimlp970          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-ATAERobot
+  pimlp973-pimlp974 , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-ESV
+  pimlp975          , config.vars , dssv2 , ADMIN_DSS_APPCONSOLE_GROUP, DSSv2-PROD-EA
+
+#----------------------------------------------------------------------------------------------------------------
+# The following config.ini overrides will enable passing of redemption class attributes to ASv2 on EA DSSv2 nodes
+#----------------------------------------------------------------------------------------------------------------
+
+  piclp616          , config.ini , dssv2, controlflags:useMHDAAA, true
+  piclp824          , config.ini , dssv2, controlflags:useMHDAAA, true
+  piclp838          , config.ini , dssv2, controlflags:useMHDAAA, true
+  pimlp103-pimlp104 , config.ini , dssv2, controlflags:useMHDAAA, true
+  pimlp902         ,  config.ini,  dssv2, controlflags:useMHDAAA, true
+  pimlp975         ,  config.ini,  dssv2, controlflags:useMHDAAA, true
+
+#-------------------------------------------------------------------------------------------------
+# The following config.ini overrides will set the concurrent thread limit on EA DSSv2  G6 nodes
+#--------------------------------------------------------------------------------------------------
+
+  piclp616         ,  config.ini,  dssv2, tcpip:maxServiceThreads, 360
+  piclp824         ,  config.ini,  dssv2, tcpip:maxServiceThreads, 360
+  piclp838         ,  config.ini,  dssv2, tcpip:maxServiceThreads, 360
+  pimlp103-pimlp104,  config.ini,  dssv2, tcpip:maxServiceThreads, 360
+  pimlp902         ,  config.ini,  dssv2, tcpip:maxServiceThreads, 360
+  pimlp975         ,  config.ini,  dssv2, tcpip:maxServiceThreads, 360
+
+#---------------------------------------------------------------------------------------------------------
+# The following config.ini override will set the concurrent thread limit on DSSv2 G6 servers - incld dss-esv
+#---------------------------------------------------------------------------------------------------------
+
+  piclp149-piclp150 , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  piclp369          , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  piclp395          , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  piclp807-piclp808 , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  piclp836-piclp837 , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  piclp839          , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  piclp887          , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  piclp889-piclp891 , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  piclp939          , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  pimlp101-pimlp102 , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  pimlp105          , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  pimlp588          , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  pimlp721-pimlp722 , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  pimlp854          , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  pimlp866-pimlp867 , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  pimlp901          , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  pimlp903          , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+  pimlp973 pimlp974 , config.ini , dssv2 , tcpip:maxServiceThreads, 300
+
+#-------------------------------------------------------------------------------------------------
+# The following config.ini overrides will set the concurrent thread limit on AVL-robot DSSv2 G6 nodes
+#--------------------------------------------------------------------------------------------------
+
+  piclp620         ,  config.ini,  dssv2, tcpip:maxServiceThreads, 360
+  pimlp970         ,  config.ini,  dssv2, tcpip:maxServiceThreads, 360
+
+#---------------------------------------------------------------------------------------------------
+# The following config.ini overrides will disable XML response message compression on EA DSSv2 nodes
+#---------------------------------------------------------------------------------------------------
+
+  piclp616         ,  config.ini,  dssv2, tcpip:sizeThreshold, 0
+  piclp824         ,  config.ini,  dssv2, tcpip:sizeThreshold, 0
+  piclp838         ,  config.ini,  dssv2, tcpip:sizeThreshold, 0
+  pimlp103-pimlp104,  config.ini,  dssv2, tcpip:sizeThreshold, 0
+  pimlp902         ,  config.ini,  dssv2, tcpip:sizeThreshold, 0
+  pimlp975         ,  config.ini,  dssv2, tcpip:sizeThreshold, 0
+
+#---------------------------------------------------------------------------------------------------
+# The following config.ini overrides will enable the CBAS interface on EA DSSv2 nodes
+#---------------------------------------------------------------------------------------------------
+
+  piclp616         ,  config.ini,  dssv2, cbas:ProdHybrid\serviceEnabled, true
+  piclp824         ,  config.ini,  dssv2, cbas:ProdHybrid\serviceEnabled, true
+  piclp838         ,  config.ini,  dssv2, cbas:ProdHybrid\serviceEnabled, true
+  pimlp103-pimlp104,  config.ini,  dssv2, cbas:ProdHybrid\serviceEnabled, true
+  pimlp902         ,  config.ini,  dssv2, cbas:ProdHybrid\serviceEnabled, true
+  pimlp975         ,  config.ini,  dssv2, cbas:ProdHybrid\serviceEnabled, true
+
+#---------------------------------------------------------------------------------------------------
+# The following config.ini override will update the CBAS URL/VIP on EA DSSv2 nodes
+#---------------------------------------------------------------------------------------------------
+
+  piclp616         ,  config.ini,  dssv2, cbas:ProdHybrid\URL, http://ancillaries.a.prod.sabre.com:80/AncillaryService/AncillaryService
+  piclp824         ,  config.ini,  dssv2, cbas:ProdHybrid\URL, http://ancillaries.a.prod.sabre.com:80/AncillaryService/AncillaryService
+  piclp838         ,  config.ini,  dssv2, cbas:ProdHybrid\URL, http://ancillaries.a.prod.sabre.com:80/AncillaryService/AncillaryService
+  pimlp103-pimlp104,  config.ini,  dssv2, cbas:ProdHybrid\URL, http://ancillaries.a.prod.sabre.com:80/AncillaryService/AncillaryService
+  pimlp902         ,  config.ini,  dssv2, cbas:ProdHybrid\URL, http://ancillaries.a.prod.sabre.com:80/AncillaryService/AncillaryService
+  pimlp975         ,  config.ini,  dssv2, cbas:ProdHybrid\URL, http://ancillaries.a.prod.sabre.com:80/AncillaryService/AncillaryService
+
+#------------------------------------------------------------------------------------------------
+# The following config.ini overrides will activate pool-specific service names on all DSSv2 nodes
+#------------------------------------------------------------------------------------------------
+
+  piclp807-piclp808 , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, ESVDSS
+  pimlp973-pimlp974 , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, ESVDSS
+  piclp149-piclp150 , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  piclp369          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  piclp395          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  piclp836-piclp837 , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  piclp889-piclp891 , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  piclp939          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  piclp616          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, EADSS
+  piclp824          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, EADSS
+  piclp838          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, EADSS
+  piclp839          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  pimlp101-pimlp102 , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  pimlp103-pimlp104 , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, EADSS
+  pimlp105          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  pimlp588          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  pimlp721-pimlp722 , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  pimlp854          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  pimlp866-pimlp867 , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  pimlp901          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, V2DSS
+  pimlp902          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, EADSS
+  piclp887          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, TFDSS
+  pimlp903          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, TFDSS
+  piclp620          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, AVCDSS
+  pimlp970          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, AVCDSS
+  pimlp975          , config.ini , dssv2, atsewriter:ProdHybrid\serviceName, EADSS
+
+#----------------------------------------------------------------------------------------
+# The following config.ini overrides will activate request logging on limited DSSv2 nodes
+#----------------------------------------------------------------------------------------
+
+  piclp369          , config.ini , dssv2, log:ProdHybrid\logRequestToFile, 1
+  piclp369          , config.ini , dssv2, log:ProdHybrid\maxReqLogFileSize, 250000000
+  piclp807          , config.ini , dssv2, log:ProdHybrid\logRequestToFile, 1
+  piclp807          , config.ini , dssv2, log:ProdHybrid\maxReqLogFileSize, 250000000
+  piclp887          , config.ini , dssv2, log:ProdHybrid\logRequestToFile, 1
+  piclp887          , config.ini , dssv2, log:ProdHybrid\maxReqLogFileSize, 250000000
+  pimlp101          , config.ini , dssv2, log:ProdHybrid\logRequestToFile, 1
+  pimlp101          , config.ini , dssv2, log:ProdHybrid\maxReqLogFileSize, 250000000
+  pimlp103          , config.ini , dssv2, log:ProdHybrid\logRequestToFile, 1
+  pimlp103          , config.ini , dssv2, log:ProdHybrid\maxReqLogFileSize, 250000000
+
+#----------------------------------------------------------------------------------------
+# The following config.ini overrides will activate request logging on comparison DSSv2 nodes
+#----------------------------------------------------------------------------------------
+  piclp808          , config.ini , dssv2, log:ProdHybrid\logRequestToFile, 1
+  piclp808          , config.ini , dssv2, log:ProdHybrid\maxReqLogFileSize, 250000000
+  piclp939          , config.ini , dssv2, log:ProdHybrid\logRequestToFile, 1
+  piclp939          , config.ini , dssv2, log:ProdHybrid\maxReqLogFileSize, 250000000
+  pimlp102          , config.ini , dssv2, log:ProdHybrid\logRequestToFile, 1
+  pimlp102          , config.ini , dssv2, log:ProdHybrid\maxReqLogFileSize, 250000000
+  pimlp104          , config.ini , dssv2, log:ProdHybrid\logRequestToFile, 1
+  pimlp104          , config.ini , dssv2, log:ProdHybrid\maxReqLogFileSize, 250000000
+  pimlp903          , config.ini , dssv2, log:ProdHybrid\logRequestToFile, 1
+  pimlp903          , config.ini , dssv2, log:ProdHybrid\maxReqLogFileSize, 250000000
+
+#--------------------------------------------------------------------------------------------
+# The following config.vars overrides will enable core file generation on limited DSSv2 nodes
+#--------------------------------------------------------------------------------------------
+
+  piclp369          , config.vars , dssv2, DSS_LIMITED_PROMOTION_NODE, Y 
+  piclp807          , config.vars , dssv2, DSS_LIMITED_PROMOTION_NODE, Y 
+  piclp887          , config.vars , dssv2, DSS_LIMITED_PROMOTION_NODE, Y 
+  pimlp101          , config.vars , dssv2, DSS_LIMITED_PROMOTION_NODE, Y 
+  pimlp103          , config.vars , dssv2, DSS_LIMITED_PROMOTION_NODE, Y 
+
+
+#--------------------------------------------------------------------------------------------
+# The following config.vars overrides will enable daily script running on limited DSSv2 nodes
+#--------------------------------------------------------------------------------------------
+  
+  piclp369          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp369          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp369          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  piclp807          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp807          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp807          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  piclp887          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp887          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp887          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  pimlp101          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  pimlp101          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  pimlp101          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  pimlp103          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  pimlp103          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  pimlp103          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+
+
+#--------------------------------------------------------------------------------------------
+# The following config.vars overrides will enable daily crontab script on remaining DSSv2 nodes
+#--------------------------------------------------------------------------------------------
+
+  piclp149-piclp150 , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp149-piclp150 , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp149-piclp150 , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  piclp395          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp395          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp395          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  piclp616          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp616          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp616          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  piclp620          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp620          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp620          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  piclp808          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp808          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp808          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  piclp889-piclp891 , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp889-piclp891 , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp889-piclp891 , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  pimlp102          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  pimlp102          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  pimlp102          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  pimlp588          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  pimlp588          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  pimlp588          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  pimlp721-pimlp722 , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  pimlp721-pimlp722 , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  pimlp721-pimlp722 , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  pimlp104-pimlp105 , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  pimlp104-pimlp105 , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  pimlp104-pimlp105 , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  piclp824          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp824          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp824          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  piclp836-piclp839 , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp836-piclp839 , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp836-piclp839 , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  piclp939          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  piclp939          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  piclp939          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  pimlp854          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  pimlp854          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  pimlp854          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  pimlp866-pimlp867 , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  pimlp866-pimlp867 , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  pimlp866-pimlp867 , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  pimlp901-pimlp903 , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  pimlp901-pimlp903 , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  pimlp901-pimlp903 , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  pimlp970          , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  pimlp970          , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  pimlp970          , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+  pimlp973-pimlp975 , config.vars, dssv2, ADMIN_DSS_CRONTAB_FREQ       , "15 0 . . ."
+  pimlp973-pimlp975 , config.vars, dssv2, ADMIN_DSS_CRONTAB_SCRIPT     , "dss.cron.daily.sh"
+  pimlp973-pimlp975 , config.vars, dssv2, ADMIN_DSS_CRONTAB_REDIRECTS  , " >> /opt/atse/dssv2/.cron.log 2>&1"
+
+#--------------------------------------------------------------------------------------------------------------
+# The following config.ini overrides will route DSSv2 connections from the Avail Robot Pool to the ASv2 S Group
+#--------------------------------------------------------------------------------------------------------------
+
+ piclp620 pimlp970           , config.ini, dssv2 , ataeconfig:ProdHybrid\port, 54101
+ piclp620 pimlp970           , config.ini, dssv2 , ataeconfig:ProdHybrid\host, asv2.robot.prod.ha.sabre.com
+ piclp616                    , config.ini, dssv2 , ataeconfig:ProdHybrid\host, asv2.ea.prod.ha.sabre.com
+ piclp616                    , config.ini, dssv2 , ataeconfig:ProdHybrid\port, 54103
+ piclp824                    , config.ini, dssv2 , ataeconfig:ProdHybrid\host, asv2.ea.prod.ha.sabre.com
+ piclp824                    , config.ini, dssv2 , ataeconfig:ProdHybrid\port, 54103
+ piclp838                    , config.ini, dssv2 , ataeconfig:ProdHybrid\host, asv2.ea.prod.ha.sabre.com
+ piclp838                    , config.ini, dssv2 , ataeconfig:ProdHybrid\port, 54103
+ pimlp103-pimlp104           , config.ini, dssv2 , ataeconfig:ProdHybrid\host, asv2.ea.prod.ha.sabre.com
+ pimlp103-pimlp104           , config.ini, dssv2 , ataeconfig:ProdHybrid\port, 54103
+ pimlp902                    , config.ini, dssv2 , ataeconfig:ProdHybrid\host, asv2.ea.prod.ha.sabre.com
+ pimlp902                    , config.ini, dssv2 , ataeconfig:ProdHybrid\port, 54103
+ pimlp975                    , config.ini, dssv2 , ataeconfig:ProdHybrid\host, asv2.ea.prod.ha.sabre.com
+ pimlp975                    , config.ini, dssv2 , ataeconfig:ProdHybrid\port, 54103
+
+
+#--------------------------------------------------------------------------------------------------------------
+*, config.vars , streamitp , ADMIN_STREAMITP_BIG_IP_POOL , "stream.itp.prod_pool_2257x%tcdislb03.sabre.com"
+*, config.vars , streamlfs , ADMIN_STREAMLFS_BIG_IP_POOL , "stream.lfs.prod_pool_223xx%tcdislb03.sabre.com"
+piclp821, config.vars , streamlfs , ADMIN_STREAMLFS_BIG_IP_POOL , "stream.lfs.prod_pool_223xx%tcdislb03.sabre.com stream.lfs.prod_pool_223xx%d2dislb07.sabre.com"
+
+#----------------------------------------------------------
+# Streaming lowfare pool
+#----------------------------------------------------------
+piclp987          , config.vars , streamlfs , ADMIN_STREAMLFS_BIG_IP_POOL , "shopping.costco.prod_pool_22371%tcdislb03.sabre.com stream.lfs.prod_pool_223xx%tcdislb03.sabre.com"
+
+#----------------------------------------------------------
+# RTG BigIP Pools
+#----------------------------------------------------------
+* , config.vars , rtg , COMMON_BIG_IP , "d3pindislb01.sabre.com"
+* , config.vars , rtg , ADMIN_RTG_BIG_IP_POOL,"rtg.a.prod_pool_53801%d3pindislb01.sabre.com rtg.a.prod_pool_53801%scdislb03.sabre.com"
+pifhlp256, config.vars , rtg , ADMIN_RTG_BIG_IP_POOL , "rtg.a.prod_pool_53801%d3pindislb01.sabre.com rtg.b.prod_pool_53801%d3pindislb01.sabre.com rtg.a.prod_pool_53801%scdislb03.sabre.com rtg.b.prod_pool_53801%scdislb03.sabre.com"
+
+#----------------------------------------------------------
+# BigIP for all ATSEv2 servers
+#----------------------------------------------------------
+*, config.vars, historical faredisplay pricingv2 tax shopping shoppingis shoppingesv shoppinghist, COMMON_BIG_IP, "d3pindislb01.sabre.com"
+
+
+#-------------------------------------------------------
+# ATSEv2 - Requested Historical email additions.
+#-------------------------------------------------------
+* , config.vars , historical, ADMIN_HISTORICAL_EMAIL_LIST , "Saranya.Luevit@sabre-holdings.com Andrew.Teel@sabre.com EDS-AMER-NSKCOVERAGE@eds.com ATSEv2SystemOwners@sabre.com Syed.Abdi@sabre-holdings.com Grzegorz.Cholewiak@sabre-holdings.com Mohammad.Hossan@sabre.com Sanjay.Murugesan@sabre-holdings.com Jayant.Noronha@sabre-holdings.com Dominik.Schaefer@sabre-holdings.com JamesT.Sinnamon.ctr@sabre.com Andrea.Yang@sabre-holdings.com Rafal.sontowski@sabre.com Kenny.kon@sabre.com"
+
+
+#-------------------------------------------------------
+# ATSEv2 - ShoppingIS BigIP pools:
+#-------------------------------------------------------
+*, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_A_POOL, "cmplx.shop.a.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_B_POOL, "cmplx.shop.b.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_C_POOL, "cmplx.shop.c.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_D_POOL, "cmplx.shop.d.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_E_POOL, "cmplx.shop.e.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_G_POOL, "cmplx.shop.g.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_H_POOL, "cmplx.shop.h.prod_pool_53601%tcdislb03.sabre.com"
+
+#-------------------------------------------------------
+# ATSEv2 - ShoppingMIP BigIP pools:
+#-------------------------------------------------------
+*, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_A_POOL, "shopping.a.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_B_POOL, "shopping.b.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_C_POOL, "shopping.c.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_D_POOL, "shopping.d.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_E_POOL, "shopping.e.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_G_POOL, "shopping.g.prod_pool_53601%tcdislb03.sabre.com"
+*, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_H_POOL, "shopping.h.prod_pool_53601%tcdislb03.sabre.com"
+
+### *** BEGIN AUTO-GENERATED LIMITED NODES INFO *** ###
+
+################################################
+# BIGIP INFO:
+################################################
+
+# Historical Pricing BigIP:
+*, config.vars, historical, ADMIN_HISTORICAL_BIG_IP_POOL, "hist.a.prod_pool_53701%d3dislb01.sabre.com hist.a.prod_pool_53701%scdislb03.sabre.com hist.Liberty.prod_pool_53701%d3dislb01.sabre.com hist.Liberty.prod_pool_53701%scdislb03.sabre.com"
+pifhlp126, config.vars, historical, ADMIN_HISTORICAL_BIG_IP_POOL, "hist.a.prod_pool_53701%d3dislb01.sabre.com hist.a.prod_pool_53701%scdislb03.sabre.com hist.Liberty.prod_pool_53701%d3dislb01.sabre.com hist.Liberty.prod_pool_53701%scdislb03.sabre.com hist.b.prod_pool_53701%d3dislb01.sabre.com hist.b.prod_pool_53701%scdislb03.sabre.com"
+
+# Tax BigIP:
+*, config.vars, tax, ADMIN_TAX_BIG_IP_POOL, "taxserv.a.prod_pool_53501%d3dislb01.sabre.com taxserv.a.prod_pool_53501%scdislb03.sabre.com"
+hpchlp102 pifhlp256, config.vars, tax, ADMIN_TAX_BIG_IP_POOL, "taxserv.a.prod_pool_53501%d3dislb01.sabre.com taxserv.a.prod_pool_53501%scdislb03.sabre.com taxserv.b.prod_pool_53501%d3dislb01.sabre.com taxserv.b.prod_pool_53501%scdislb03.sabre.com"
+
+# General ShoppingIS BigIP:
+pifhlp135 pifhlp136 pifhlp141 pifhlp142 pifhlp143 pifhlp148 pifhlp149 pifhlp150 pifhlp214 pifhlp216 pifhlp217 pifhlp229 pifhlp230 pifhlp231 pifhlp232 pifhlp233 pifhlp296 pifhlp297 pifhlp298 pifhlp304 pifhlp305 pifhlp313 pifhlp314 pifhlp318 pifhlp319 pifhlp324 pithlp100 pithlp101 pithlp102 pithlp142 pithlp146 pithlp149 pithlp168 pithlp170 pithlp171 pithlp172 pithlp177 pithlp178 pithlp179, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_POOL, "cmplx.shop.a.prod_pool_53601%tcdislb03.sabre.com cmplx.shop.a.prod_pool_53601%d2dislb07.sabre.com"
+pifhlp104 pifhlp215 pithlp123 pithlp167, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_POOL, "cmplx.shop.a.prod_pool_53601%tcdislb03.sabre.com cmplx.shop.a.prod_pool_53601%d2dislb07.sabre.com cmplx.shop.b.prod_pool_53601%tcdislb03.sabre.com cmplx.shop.b.prod_pool_53601%d2dislb07.sabre.com"
+
+# C-ShoppingIS BigIP:
+pifhlp113 pifhlp114 pifhlp124 pifhlp199 pifhlp253 pifhlp254 pifhlp270 pifhlp281 pithlp141 pithlp143 pithlp144, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_POOL, "cmplx.shop.c.prod_pool_53601%tcdislb03.sabre.com cmplx.shop.c.prod_pool_53601%d2dislb07.sabre.com"
+
+# D-ShoppingIS BigIP:
+pifhlp106 pifhlp107 pifhlp133 pifhlp134 pifhlp137 pifhlp138 pifhlp139 pifhlp140 pifhlp151 pifhlp152 pifhlp153 pifhlp154 pifhlp155 pifhlp156 pifhlp157 pifhlp158 pifhlp160 pifhlp161 pifhlp162 pifhlp164 pifhlp165 pifhlp166 pifhlp167 pifhlp168 pifhlp171 pifhlp173 pifhlp174 pifhlp175 pifhlp176 pifhlp178 pifhlp179 pifhlp185 pifhlp186 pifhlp187 pifhlp188 pifhlp189 pifhlp209 pifhlp210 pifhlp211 pifhlp212 pifhlp213 pifhlp218 pifhlp219 pifhlp220 pifhlp221 pifhlp225 pifhlp226 pifhlp227 pifhlp228 pifhlp234 pifhlp259 pifhlp260 pifhlp261 pifhlp262 pifhlp263 pifhlp264 pifhlp267 pifhlp274 pifhlp275 pifhlp276 pifhlp277 pifhlp278 pifhlp279 pifhlp280 pifhlp288 pifhlp289 pifhlp290 pifhlp315 pifhlp316 pifhlp317 pithlp103 pithlp104 pithlp105 pithlp106 pithlp107 pithlp124 pithlp136 pithlp137 pithlp138 pithlp139 pithlp156 pithlp157 pithlp158 pithlp161 pithlp162 pithlp169 pithlp173 pithlp174, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_POOL, "cmplx.shop.d.prod_pool_53601%tcdislb03.sabre.com cmplx.shop.d.prod_pool_53601%d2dislb07.sabre.com"
+
+# Pricing BigIP:
+*, config.vars, pricingv2, ADMIN_PRICING_BIG_IP_POOL, "pricing.a.prod_pool_53701%d3dislb01.sabre.com pricing.a.prod_pool_53701%scdislb03.sabre.com pricing.Liberty.prod_pool_53701%d3dislb01.sabre.com pricing.Liberty.prod_pool_53701%scdislb03.sabre.com"
+pifhlp207 pithlp114, config.vars, pricingv2, ADMIN_PRICING_BIG_IP_POOL, "pricing.a.prod_pool_53701%d3dislb01.sabre.com pricing.a.prod_pool_53701%scdislb03.sabre.com pricing.Liberty.prod_pool_53701%d3dislb01.sabre.com pricing.Liberty.prod_pool_53701%scdislb03.sabre.com pricing.b.prod_pool_53701%d3dislb01.sabre.com pricing.b.prod_pool_53701%scdislb03.sabre.com"
+
+# E-ShoppingIS BigIP:
+pifhlp192 pifhlp196 pifhlp197 pifhlp198 pifhlp235 pifhlp236 pifhlp237 pifhlp241 pifhlp242 pifhlp243 pifhlp271 pifhlp272 pifhlp282 pifhlp292 pifhlp293 pifhlp294 pifhlp301 pifhlp302 pifhlp312 pifhlp320 pifhlp321 pifhlp322, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_POOL, "cmplx.shop.e.prod_pool_53601%tcdislb03.sabre.com cmplx.shop.e.prod_pool_53601%d2dislb07.sabre.com"
+
+# General ShoppingMIP BigIP:
+piclp111 piclp112 piclp340 piclp341 piclp398 piclp612 piclp613 piclp618 piclp622 piclp640 piclp750 piclp751 piclp785-piclp787 piclp789 piclp800-piclp802 piclp809 piclp810 piclp812 piclp814-piclp816 piclp822 piclp823 piclp832-piclp835 piclp840 piclp898 piclp899 piclp908 piclp914-piclp921 piclp938 piclp957 piclp988-piclp991 piclp998 pifhlp201 pifhlp202 pifhlp203 pifhlp204 pifhlp295 pimlp113-pimlp115 pimlp119 pimlp120 pimlp122 pimlp123 pimlp126-pimlp140 pimlp500 pimlp501 pimlp508-pimlp510 pimlp513-pimlp516 pimlp519-pimlp524 pimlp540 pimlp542 pimlp550 pimlp558 pimlp559 pimlp561-pimlp565 pimlp568-pimlp570 pimlp632-pimlp635 pimlp689-pimlp691 pimlp699 pimlp700 pimlp704 pimlp715 pimlp716 pimlp768-pimlp770 pimlp887-pimlp892 pimlp906 pimlp907 pimlp909-pimlp917 pimlp946 pimlp959 pimlp964 pimlp967 pimlp968 pimlp971 pimlp972 pimlp990 pimlp991 pimlp993 pimlp994, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_POOL, "shopping.a.prod_pool_53601%tcdislb03.sabre.com shopping.a.prod_pool_53601%d2dislb07.sabre.com"
+piclp109 piclp368 piclp617 piclp783 piclp784 piclp811 piclp896 piclp897 piclp909 pifhlp205 pimlp173 pimlp502 pimlp503 pimlp771 pimlp908 pimlp992, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_POOL, "shopping.a.prod_pool_53601%tcdislb03.sabre.com shopping.a.prod_pool_53601%d2dislb07.sabre.com shopping.b.prod_pool_53601%tcdislb03.sabre.com shopping.b.prod_pool_53601%d2dislb07.sabre.com"
+
+# FareDisplay BigIP:
+*, config.vars, faredisplay, ADMIN_FAREDISPLAY_BIG_IP_POOL, "fd.a.prod_pool_53901%d3dislb01.sabre.com fd.a.prod_pool_53901%scdislb03.sabre.com fd.Liberty.prod_pool_53901%d3dislb01.sabre.com fd.Liberty.prod_pool_53901%scdislb03.sabre.com"
+pifhlp256, config.vars, faredisplay, ADMIN_FAREDISPLAY_BIG_IP_POOL, "fd.a.prod_pool_53901%d3dislb01.sabre.com fd.a.prod_pool_53901%scdislb03.sabre.com fd.Liberty.prod_pool_53901%d3dislb01.sabre.com fd.Liberty.prod_pool_53901%scdislb03.sabre.com fd.b.prod_pool_53901%d3dislb01.sabre.com fd.b.prod_pool_53901%scdislb03.sabre.com"
+
+# C-ShoppingMIP BigIP:
+pifhlp110 pifhlp111 pifhlp112 pifhlp115 pifhlp116 pifhlp117 pifhlp118 pifhlp119 pifhlp120 pifhlp121 pifhlp122 pifhlp123 pifhlp130 pifhlp131 pifhlp132 pifhlp190 pifhlp191 pithlp115 pithlp120 pithlp121 pithlp122 pithlp130 pithlp131 pithlp140 pithlp150 pithlp151 pithlp166, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_POOL, "shopping.c.prod_pool_53601%tcdislb03.sabre.com shopping.c.prod_pool_53601%d2dislb07.sabre.com"
+
+# D-ShoppingMIP BigIP:
+piclp151-piclp154 piclp342-piclp349 piclp354-piclp366 piclp374-piclp377 piclp384-piclp387 piclp389 piclp611 piclp619 piclp754-piclp763 piclp769-piclp782 piclp792-piclp798 piclp803-piclp806 piclp845-piclp868 piclp874-piclp883 piclp900-piclp904 piclp906 piclp907 piclp924-piclp933 piclp960 piclp972-piclp985 piclp992 pifhlp109 pifhlp125 pifhlp159 pifhlp222 pifhlp223 pifhlp224 pimlp106-pimlp110 pimlp141-pimlp163 pimlp180-pimlp185 pimlp504 pimlp505 pimlp532-pimlp535 pimlp543-pimlp545 pimlp551 pimlp552 pimlp567 pimlp701-pimlp703 pimlp706 pimlp707 pimlp712 pimlp724-pimlp735 pimlp740-pimlp746 pimlp756-pimlp766 pimlp779-pimlp782 pimlp797 pimlp855-pimlp865 pimlp883-pimlp885 pimlp897-pimlp900 pimlp949-pimlp954 pimlp958 pimlp962 pimlp963 pimlp965 pimlp969 pimlp976-pimlp981 pimlp984-pimlp986 pimlp999 pithlp175, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_POOL, "shopping.d.prod_pool_53601%tcdislb03.sabre.com shopping.d.prod_pool_53601%d2dislb07.sabre.com"
+
+# E-ShoppingMIP BigIP:
+piclp132-piclp137 piclp143-piclp148 piclp350-piclp353 piclp388 piclp396 piclp604-piclp610 piclp614 piclp615 piclp825-piclp831 piclp869 piclp872 piclp873 piclp885 piclp886 piclp910-piclp913 piclp934-piclp937 piclp940 piclp941 piclp956 piclp969-piclp971 piclp986 piclp997 piclp999 pifhlp246 pifhlp247 pifhlp248 pifhlp249 pifhlp250 pifhlp251 pifhlp252 pimlp117 pimlp176-pimlp179 pimlp512 pimlp549 pimlp554 pimlp571-pimlp587 pimlp607-pimlp614 pimlp619 pimlp625 pimlp628-pimlp631 pimlp664 pimlp676-pimlp682 pimlp694-pimlp698 pimlp708 pimlp737-pimlp739 pimlp751 pimlp767 pimlp966 pimlp988 pimlp989, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_POOL, "shopping.e.prod_pool_53601%tcdislb03.sabre.com shopping.e.prod_pool_53601%d2dislb07.sabre.com"
+
+# ShoppingESV BigIP:
+*, config.vars, shoppingesv, ADMIN_SHOPPINGESV_BIG_IP_POOL, "esv.shop.a.prod_pool_53603%d3dislb01.sabre.com esv.shop.a.prod_pool_53603%tcdislb03.sabre.com esv.shop.a.prod_pool_53603%d2dislb07.sabre.com"
+
+# Historical Shopping BigIP:
+*, config.vars, shoppinghist, ADMIN_SHOPPINGHIST_BIG_IP_POOL, "hist.shop.prod.sabre.com_pool_53611%d3dislb01.sabre.com hist.shop.a.prod_pool_53611%tcdislb03.sabre.com hist.shop.a.prod_pool_53611%d2dislb07.sabre.com"
+piclp871, config.vars, shoppinghist, ADMIN_SHOPPINGHIST_BIG_IP_POOL, "hist.shop.prod.sabre.com_pool_53611%d3dislb01.sabre.com hist.shop.a.prod_pool_53611%tcdislb03.sabre.com hist.shop.a.prod_pool_53611%d2dislb07.sabre.com hist.shop.b.prod.sabre.com_pool_53611%d3dislb01.sabre.com hist.shop.b.prod_pool_53611%tcdislb03.sabre.com hist.shop.b.prod_pool_53611%d2dislb07.sabre.com"
+
+# G-ShoppingMIP BigIP:
+piclp113 piclp119 piclp120 piclp155-piclp157 piclp370 piclp371 piclp378-piclp383 piclp397 piclp641 piclp752 piclp753 piclp841-piclp844 piclp888 piclp892-piclp895 piclp905 piclp942-piclp955 piclp961-piclp968 pimlp116 pimlp118 pimlp121 pimlp506 pimlp507 pimlp536 pimlp546-pimlp548 pimlp566 pimlp605 pimlp606 pimlp620 pimlp622-pimlp624 pimlp636 pimlp653-pimlp657 pimlp663 pimlp683-pimlp688 pimlp692 pimlp693 pimlp705 pimlp736 pimlp747-pimlp750 pimlp752-pimlp755 pimlp795 pimlp796 pimlp801 pimlp893-pimlp896 pimlp956 pimlp995 pithlp145, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_POOL, "shopping.g.prod_pool_53601%tcdislb03.sabre.com shopping.g.prod_pool_53601%d2dislb07.sabre.com"
+
+# G-ShoppingIS BigIP:
+pifhlp105 pifhlp108 pifhlp144 pifhlp145 pifhlp146 pifhlp147 pifhlp163 pifhlp169 pifhlp170 pifhlp172 pifhlp177 pifhlp238-pifhlp240 pifhlp244 pifhlp245 pifhlp265 pifhlp266 pifhlp268 pifhlp269 pifhlp283 pifhlp284 pifhlp285 pifhlp286 pifhlp287 pifhlp306 pifhlp307-pifhlp311 pifhlp323 pithlp108 pithlp132 pithlp133 pithlp134 pithlp135 pithlp152 pithlp153 pithlp154 pithlp155 pithlp163 pithlp164 pithlp165, config.vars, shoppingis, ADMIN_SHOPPINGIS_BIG_IP_POOL, "cmplx.shop.g.prod_pool_53601%tcdislb03.sabre.com cmplx.shop.g.prod_pool_53601%d2dislb07.sabre.com"
+
+# H-ShoppingMIP BigIP:
+piclp110 piclp140 piclp372 piclp373 piclp390-piclp394 piclp764-piclp768 piclp790 piclp791 piclp799 piclp958 piclp959 piclp995 piclp996 pifhlp129 pifhlp193 pifhlp194 pifhlp195 pifhlp299 pifhlp300 pifhlp303 pifhlp326 pifhlp327 pifhlp328 pimlp111 pimlp112 pimlp174 pimlp175 pimlp511 pimlp517 pimlp518 pimlp541 pimlp553 pimlp557 pimlp560 pimlp615-pimlp618 pimlp621 pimlp723 pimlp772-pimlp776 pimlp783-pimlp794 pimlp798 pimlp868-pimlp882 pimlp886 pimlp904 pimlp905 pimlp947 pimlp948 pimlp982 pimlp983, config.vars, shopping, ADMIN_SHOPPING_BIG_IP_POOL, "shopping.h.prod_pool_53601%tcdislb03.sabre.com shopping.h.prod_pool_53601%d2dislb07.sabre.com"
+
+
+################################################
+# Enable Cores on Limited Nodes:
+################################################
+# Historical Pricing pool:
+pifhlp126, config.vars, historical, ADMIN_ULIMIT_CORES, "unlimited"
+# Tax pool:
+hpchlp102 pifhlp256, config.vars, tax, ADMIN_ULIMIT_CORES, "unlimited"
+# General ShoppingIS pool:
+pifhlp104 pifhlp215 pithlp123 pithlp167, config.vars, shoppingis, ADMIN_ULIMIT_CORES, "unlimited"
+# C-ShoppingIS pool:
+pifhlp124, config.vars, shoppingis, ADMIN_ULIMIT_CORES, "unlimited"
+# D-ShoppingIS pool:
+pifhlp106 pifhlp164 pifhlp174 pifhlp188 pifhlp218 pifhlp219 pifhlp264 pifhlp267 pifhlp275, config.vars, shoppingis, ADMIN_ULIMIT_CORES, "unlimited"
+# Pricing pool:
+pifhlp207 pithlp114, config.vars, pricingv2, ADMIN_ULIMIT_CORES, "unlimited"
+# E-ShoppingIS pool:
+pifhlp196 pifhlp321, config.vars, shoppingis, ADMIN_ULIMIT_CORES, "unlimited"
+# General ShoppingMIP pool:
+piclp109 piclp368 piclp617 piclp783 piclp784 piclp811 piclp896 piclp897 piclp909 pifhlp205 pimlp173 pimlp502 pimlp503 pimlp771 pimlp908 pimlp992, config.vars, shopping, ADMIN_ULIMIT_CORES, "unlimited"
+# FareDisplay pool:
+pifhlp256, config.vars, faredisplay, ADMIN_ULIMIT_CORES, "unlimited"
+# C-ShoppingMIP pool:
+pifhlp110 pifhlp190 pithlp140, config.vars, shopping, ADMIN_ULIMIT_CORES, "unlimited"
+# D-ShoppingMIP pool:
+piclp151 piclp152 piclp342 piclp343 piclp354 piclp355 piclp754 piclp755 piclp769-piclp771 piclp804-piclp806 piclp924 piclp927 piclp979 pifhlp159 pimlp141 pimlp142 pimlp504 pimlp505 pimlp551 pimlp897-pimlp900, config.vars, shopping, ADMIN_ULIMIT_CORES, "unlimited"
+# E-ShoppingMIP pool:
+piclp132 piclp133 piclp825 piclp872 piclp873 piclp910 piclp911 pimlp554 pimlp586 pimlp587 pimlp751, config.vars, shopping, ADMIN_ULIMIT_CORES, "unlimited"
+# ShoppingESV pool:
+piclp923, config.vars, shoppingesv, ADMIN_ULIMIT_CORES, "unlimited"
+# Historical Shopping pool:
+piclp871, config.vars, shoppinghist, ADMIN_ULIMIT_CORES, "unlimited"
+# G-ShoppingMIP pool:
+piclp119 piclp120 piclp155 piclp378 piclp379 piclp841 piclp842 pimlp506 pimlp536 pimlp605 pimlp606, config.vars, shopping, ADMIN_ULIMIT_CORES, "unlimited"
+# G-ShoppingIS pool:
+pifhlp268 pifhlp306 pithlp164, config.vars, shoppingis, ADMIN_ULIMIT_CORES, "unlimited"
+# H-ShoppingMIP pool:
+piclp390 piclp392 piclp764 pifhlp193 pimlp111 pimlp518 pimlp772 pimlp773, config.vars, shopping, ADMIN_ULIMIT_CORES, "unlimited"
+
+### *** END AUTO-GENERATED LIMITED NODES INFO *** ###
+
+#----------------------------------------------------------
+# ATSEv2 PROD_GROUPs 
+#------------------------------------------------------------
+
+#ShoppingIS
+pifhlp104 pifhlp135-pifhlp136      , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, A
+pifhlp141-pifhlp143 pifhlp148-pifhlp150, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, A
+pifhlp214-pifhlp217 pifhlp229-pifhlp233, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, A
+pifhlp296-pifhlp298 pifhlp304-pifhlp305, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, A
+pifhlp313-pifhlp314 pifhlp318-pifhlp319, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, A
+pifhlp324                          , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, A
+pithlp100-pithlp102 pithlp123      , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, A
+pithlp142 pithlp146 pithlp149      , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, A
+pithlp167-pithlp168 pithlp170-pithlp172, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, A
+pithlp177-pithlp179                , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, A
+
+pifhlp113-pifhlp114                , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, C
+pifhlp124 pifhlp199 pifhlp253      , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, C
+pifhlp254 pifhlp270                , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, C
+pifhlp281 pithlp141 pithlp143-pithlp144, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, C
+
+pifhlp106 pifhlp107 pifhlp133-pifhlp134, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pifhlp137-pifhlp140                , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pifhlp151-pifhlp158 pifhlp160-pifhlp162, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pifhlp164-pifhlp168 pifhlp171          , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pifhlp173-pifhlp176 pifhlp178-pifhlp179, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pifhlp185-pifhlp189 pifhlp209-pifhlp213, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pifhlp218-pifhlp221 pifhlp225-pifhlp228, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pifhlp234 pifhlp259-pifhlp264 pifhlp267, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pifhlp274-pifhlp280                    , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pifhlp288-pifhlp290 pifhlp315-pifhlp317, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pithlp103-pithlp107 pithlp136-pithlp139, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pithlp124 pithlp156-pithlp158 pithlp161, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+pithlp162 pithlp169 pithlp173-pithlp174, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, D
+
+pifhlp192 pifhlp196-pifhlp198      , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, E
+pifhlp235-pifhlp237 pifhlp241-pifhlp243, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, E
+pifhlp271-pifhlp272 pifhlp282          , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, E
+pifhlp292-pifhlp294 pifhlp301-pifhlp302, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, E
+pifhlp312 pifhlp320-pifhlp322          , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, E
+
+pifhlp105 pifhlp108 pifhlp144-pifhlp147, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, G
+pifhlp163 pifhlp169 pifhlp170 pifhlp172, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, G
+pifhlp177 pifhlp238-pifhlp240      , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, G
+pifhlp244-pifhlp245 pifhlp265-pifhlp266, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, G
+pifhlp268-pifhlp269 pifhlp283-pifhlp287, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, G
+pifhlp306-pifhlp311 pifhlp323      , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, G
+pithlp108                          , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, G
+pithlp132-pithlp135 pithlp152-pithlp155, config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, G
+pithlp163-pithlp165                , config.vars, shoppingis, ADMIN_SHOPPINGIS_PROD_GROUP, G
+
+#ShoppingMIP
+piclp109 piclp111 piclp112 piclp340, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+piclp341 piclp368 piclp398 piclp612, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+piclp613 piclp617 piclp618 piclp622, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+piclp640 piclp750 piclp751         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+piclp783-piclp787 piclp789         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+piclp800-piclp802 piclp809-piclp812, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+piclp814-piclp816                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+piclp822-piclp823 piclp832-piclp835, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+piclp840                           , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+piclp896-piclp899 piclp908-piclp909, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+piclp914-piclp921 piclp938 piclp957, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+piclp988-piclp991 piclp998         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pifhlp201-pifhlp205 pifhlp295      , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp113-pimlp115 pimlp119-pimlp120, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp122-pimlp123 pimlp126-pimlp140, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp173                           , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp500-pimlp503 pimlp508-pimlp510, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp513-pimlp516 pimlp519-pimlp524, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp540 pimlp542 pimlp550 pimlp558, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp559 pimlp561-pimlp565         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp568-pimlp570                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp632-pimlp635                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp689-pimlp691 pimlp699         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp700 pimlp704 pimlp715-pimlp716, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp768-pimlp771                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp887-pimlp892 pimlp906-pimlp917, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp946 pimlp959 pimlp964 pimlp967, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp968 pimlp971 pimlp972         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+pimlp990-pimlp994                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, A
+
+pifhlp110-pifhlp112 pifhlp115-pifhlp123, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, C
+pifhlp130-pifhlp132                , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, C
+pifhlp190-pifhlp191                , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, C
+pithlp115 pithlp120-pithlp122      , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, C
+pithlp130-pithlp131 pithlp140      , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, C
+pithlp150-pithlp151 pithlp166      , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, C
+
+piclp151-piclp154 piclp342-piclp349, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+piclp354-piclp366 piclp374-piclp377, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+piclp384-piclp387 piclp389 piclp611, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+piclp619                           , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+piclp754-piclp763 piclp769-piclp782, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+piclp792-piclp798                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+piclp803-piclp806 piclp845-piclp868, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+piclp874-piclp883                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+piclp900-piclp904 piclp906-piclp907, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+piclp924-piclp933 piclp960         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+piclp972-piclp985 piclp992         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pifhlp109 pifhlp125 pifhlp159      , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pifhlp222-pifhlp224                , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp106-pimlp110 pimlp141-pimlp163, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp180-pimlp185 pimlp504-pimlp505, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp532-pimlp535 pimlp543-pimlp545, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp551-pimlp552 pimlp567         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp701-pimlp703                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp706-pimlp707 pimlp712         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp724-pimlp735 pimlp740-pimlp746, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp756-pimlp766 pimlp779-pimlp782, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp797                           , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp855-pimlp865 pimlp883-pimlp885, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp897-pimlp900                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp949-pimlp954 pimlp958         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp962 pimlp963 pimlp965 pimlp969, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp976-pimlp981 pimlp984-pimlp986, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pimlp999                           , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+pithlp175                          , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, D
+
+piclp132-piclp137 piclp143-piclp148, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+piclp350-piclp353 piclp388 piclp396, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+piclp604-piclp610 piclp614-piclp615, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+piclp825-piclp831 piclp869         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+piclp872 piclp873 piclp885 piclp886, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+piclp910-piclp913                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+piclp934-piclp937 piclp940-piclp941, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+piclp986 piclp956 piclp969-piclp971, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+piclp997 piclp999                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+pifhlp246-pifhlp252                , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+pimlp117 pimlp176-pimlp179 pimlp512, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+pimlp549                           , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+pimlp571-pimlp587                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+pimlp554 pimlp607-pimlp614 pimlp619, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+pimlp625 pimlp628-pimlp631         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+pimlp664 pimlp676-pimlp682         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+pimlp694-pimlp698 pimlp708         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+pimlp737-pimlp739 pimlp751         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+pimlp767 pimlp966 pimlp988 pimlp989, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, E
+
+piclp113 piclp119 piclp120         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+piclp155-piclp157                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+piclp370-piclp371 piclp378-piclp379, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+piclp380-piclp383 piclp397         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+piclp641 piclp752 piclp753         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+piclp841-piclp844 piclp888         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+piclp892-piclp895 piclp942-piclp955, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+piclp905 piclp961-piclp968         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp116 pimlp118                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp121 pimlp506-pimlp507 pimlp536, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp546-pimlp548 pimlp566         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp605-pimlp606 pimlp620         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp622-pimlp624 pimlp636 pimlp663, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp653-pimlp657 pimlp683-pimlp688, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp692-pimlp693 pimlp705 pimlp736, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp747-pimlp750 pimlp752-pimlp755, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp795-pimlp796 pimlp801         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp893-pimlp896                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp956                           , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+pimlp995 pithlp145                 , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, G
+
+piclp110 piclp140                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+piclp372-piclp373 piclp390-piclp394, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+piclp764-piclp768 piclp790-piclp791, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+piclp799                           , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+piclp958-piclp959 piclp995 piclp996, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pifhlp129 pifhlp193-pifhlp195      , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pifhlp299-pifhlp300 pifhlp326-pifhlp328, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pifhlp303 pifhlp326-pifhlp328      , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pimlp111-pimlp112 pimlp174-pimlp175, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pimlp511 pimlp517 pimlp518         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pimlp541 pimlp553 pimlp557 pimlp560, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pimlp615-pimlp618 pimlp621         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pimlp723 pimlp772-pimlp776         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pimlp783-pimlp794 pimlp798         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pimlp868-pimlp882 pimlp886 pimlp904, config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pimlp905 pimlp947 pimlp948         , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+pimlp982 pimlp983                  , config.vars, shopping, ADMIN_SHOPPING_PROD_GROUP, H
+
+# D-ShoppingIS200 group
+pifhlp106-pifhlp107,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp133-pifhlp134,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp137-pifhlp140,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp151-pifhlp158,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp160-pifhlp162,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp164-pifhlp168,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp171          ,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp173-pifhlp176,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp178-pifhlp179,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp185-pifhlp189,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp209-pifhlp213,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp218-pifhlp221,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp225-pifhlp228,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp234          ,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp259-pifhlp264,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp267          ,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp274-pifhlp280,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp288-pifhlp290,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pifhlp315-pifhlp317,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pithlp103-pithlp107,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pithlp124          ,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pithlp136-pithlp139,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pithlp156-pithlp158,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pithlp161-pithlp162,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pithlp169          ,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+pithlp173-pithlp174,config.vars , shoppingis , ADMIN_SHOPPINGIS_OVERRIDE_CFG,D
+
+# D-ShoppingMIP200 group
+piclp151-piclp154,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp342-piclp349,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp354-piclp366,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp374-piclp377,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp384-piclp387,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp389         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp611         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp619         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp754-piclp763,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp769-piclp782,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp792-piclp798,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp803-piclp806,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp845-piclp868,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp874-piclp883,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp900-piclp904,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp906-piclp907,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp924-piclp933,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp960         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp972-piclp985,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+piclp992         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp106-pimlp110,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp141-pimlp163,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp180-pimlp185,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp504-pimlp505,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp532-pimlp535,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp543-pimlp545,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp551-pimlp552,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp567         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp701-pimlp703,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp706-pimlp707,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp712         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp724-pimlp735,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp740-pimlp746,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp756-pimlp766,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp779-pimlp782,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp797         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp855-pimlp865,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp883-pimlp885,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp897-pimlp900,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp949-pimlp954,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp958         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp962-pimlp963,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp965         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp969         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp976-pimlp981,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp984-pimlp986,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pimlp999         ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pifhlp109          ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pifhlp125          ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pifhlp159          ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pifhlp222-pifhlp224,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+pithlp175          ,config.vars , shopping , ADMIN_SHOPPING_OVERRIDE_CFG,D
+
+#-----------------------------------------------------------
+# Bulk Charger specific
+#-----------------------------------------------------------
+
+# Different binary and AppConsole group for Tax
+hpchlp102-hpchlp106 hpmhlp102-hpmhlp105 , config.vars , tax , ADMIN_TAX_BINARY           , ../tseshared.${COMMON_BASELINE}/tseserverje
+hpchlp102-hpchlp106 hpmhlp102-hpmhlp105 , config.vars , tax , ADMIN_TAX_APPCONSOLE_GROUP , TaxService-Charger
+hpchlp102-hpchlp106 hpmhlp102-hpmhlp105 , config.vars , tax , ADMIN_TAX_BIG_IP_POOL      , "taxserv.bch.prod_pool_53501%scdislb03.sabre.com taxserv.bch.prod_pool_53501%d3dislb01.sabre.com"
+
+#----------------------------------------------------------
+# AFB server Big IP pool
+#----------------------------------------------------------
+
+  * , config.vars , afb , ADMIN_AFBA_BIG_IP_POOL , AfbaService_prod
+
+#----------------------------------------------------------
+# Move Availability options
+#----------------------------------------------------------
+
+  * , atse.ini , streamlfs , LFSControl\ActivateAvailBeforeFlightCombiner , YES
+
+#----------------------------------------------------------
+# MySQL Stats
+#----------------------------------------------------------
+
+# FROM FIRST NIGHT
+
+  piclp141 piclp142 , atse.ini , streamlfs           , displayMysqlStats\ByMinSummary          , 10
+  piclp141 piclp142 , atse.ini , streamlfs           , displayMysqlStats\ByMinVerbose          , 10
+  piclp141 piclp142 , atse.ini , streamlfs           , displayMysqlStats\ByTxnSummary          , F
+  piclp141 piclp142 , atse.ini , streamlfs           , displayMysqlStats\ByTxnVerbose          , F
+  piclp141 piclp142 , atse.ini , streamlfs           , displayMysqlStats\Enabled               , T
+  piclp141 piclp142 , atse.ini , streamlfs           , displayMysqlStats\ResetByMin            , 10
+  piclp141 piclp142 , atse.ini , streamlfs           , displayMysqlStats\ResetByTxn            , F
+  piclp141 piclp142 , atse.ini , streamlfs           , displayMysqlStats\ThresholdMilliseconds ,0
+  piclp987          , atse.ini , streamlfs           , displayMysqlStats\ByMinSummary          , 10
+  piclp987          , atse.ini , streamlfs           , displayMysqlStats\ByMinVerbose          , 10
+  piclp987          , atse.ini , streamlfs           , displayMysqlStats\ByTxnSummary          , F
+  piclp987          , atse.ini , streamlfs           , displayMysqlStats\ByTxnVerbose          , F
+  piclp987          , atse.ini , streamlfs           , displayMysqlStats\Enabled               , T
+  piclp987          , atse.ini , streamlfs           , displayMysqlStats\ResetByMin            , 10
+  piclp987          , atse.ini , streamlfs           , displayMysqlStats\ResetByTxn            , F
+  piclp987          , atse.ini , streamlfs           , displayMysqlStats\ThresholdMilliseconds ,0
+  pimlp164          , atse.ini , streamlfs           , displayMysqlStats\ByMinSummary          , 10
+  pimlp164          , atse.ini , streamlfs           , displayMysqlStats\ByMinVerbose          , 10
+  pimlp164          , atse.ini , streamlfs           , displayMysqlStats\ByTxnSummary          , F
+  pimlp164          , atse.ini , streamlfs           , displayMysqlStats\ByTxnVerbose          , F
+  pimlp164          , atse.ini , streamlfs           , displayMysqlStats\Enabled               , T
+  pimlp164          , atse.ini , streamlfs           , displayMysqlStats\ResetByMin            , 10
+  pimlp164          , atse.ini , streamlfs           , displayMysqlStats\ResetByTxn            , F
+  pimlp164          , atse.ini , streamlfs           , displayMysqlStats\ThresholdMilliseconds ,0
+# Added lines for CR 514617 051608 
+# Added lines for CR 514617 051608 
+  piclp817-piclp821 , atse.ini , streamlfs           , ProdHybrid\CodeChanges\AtaeTcpIpCommunication , Yes
+  piclp884          , atse.ini , streamlfs           , ProdHybrid\CodeChanges\AtaeTcpIpCommunication , Yes
+  piclp987          , atse.ini , streamlfs           , ProdHybrid\CodeChanges\AtaeTcpIpCommunication , Yes
+  piclp993-piclp994 , atse.ini , streamlfs           , ProdHybrid\CodeChanges\AtaeTcpIpCommunication , Yes
+  piclp141-piclp142 , atse.ini , streamlfs           , ProdHybrid\CodeChanges\AtaeTcpIpCommunication , Yes
+  pimlp100          , atse.ini , streamlfs           , ProdHybrid\CodeChanges\AtaeTcpIpCommunication , Yes
+  pimlp164-pimlp172 , atse.ini , streamlfs           , ProdHybrid\CodeChanges\AtaeTcpIpCommunication , Yes
+  pimlp777-pimlp778 , atse.ini , streamlfs           , ProdHybrid\CodeChanges\AtaeTcpIpCommunication , Yes
+
+  * , atse.ini , streamlfs streamitp , ProdHybrid\ATAEServerClient\HostIP, 10.211.6.148
+  * , atse.ini , streamlfs , ProdHybrid\ATAEServerClient\Port, 54102
+####COSTCO NODES streamitp&streamlfs
+  piclp987          , atse.ini , streamlfs , ProdHybrid\ATAEServerClient\Port, 54105
+
+#----------------------------------------------------------
+# Skip QMS for Lowfare
+#----------------------------------------------------------
+
+  piclp141-piclp142          , atse.ini , streamlfs , LowerBounds\skipQMSCall       , Yes
+  piclp817-piclp821          , atse.ini , streamlfs , LowerBounds\skipQMSCall       , Yes
+  piclp884                   , atse.ini , streamlfs , LowerBounds\skipQMSCall       , Yes
+  piclp994                   , atse.ini , streamlfs , LowerBounds\skipQMSCall       , Yes
+  pimlp100                   , atse.ini , streamlfs , LowerBounds\skipQMSCall       , Yes
+  pimlp124-pimlp125          , atse.ini , streamlfs , LowerBounds\skipQMSCall       , Yes
+  pimlp164-pimlp172          , atse.ini , streamlfs , LowerBounds\skipQMSCall       , Yes
+  pimlp777-pimlp778          , atse.ini , streamlfs , LowerBounds\skipQMSCall       , Yes
+
+# -------------------------------------------------------
+# Enable all streamlfs to read the LBoundsWorkQueue
+#----------------------------------------------------------
+
+  * , atse.ini , streamlfs , LowerBounds\lbtContractExpGraceMinutes , 30
+  * , atse.ini , streamlfs , LowerBounds\lbtContractReqGraceMinutes , 15
+  * , atse.ini , streamlfs , LowerBounds\lbtFareLoadExpGraceMinutes , 30
+  * , atse.ini , streamlfs , LowerBounds\lbtFareLoadReqGraceMinutes , 15
+
+#---------------------------------------------------------------
+# Streaming lowfare # of server instances now 20, used to be 35.
+# Changed piclp090 and 91 to 10 instances on 01/16/09
+# Reduced piclp092 and 093 from 20 to 14 instances on 1/23/09
+#---------------------------------------------------------------
+
+* , config.vars , streamitp , ADMIN_STREAMITP_INSTANCES , 7
+* , config.vars , streamlfs , ADMIN_STREAMLFS_INSTANCES , 30
+* , config.vars , streamlfs , ADMIN_SMAC_ADDITIONAL_ARGS , "-attach -SmacService=smac -SmacClientApp=STREAMLFS"
+
+#---------------------------------------------------------------
+# Set SMAC memory threshold
+#---------------------------------------------------------------
+
+  *                 , config.vars , streamitp , ADMIN_STREAMITP_MEM_THRESHOLD , 3000
+  *                 , config.vars , streamlfs , ADMIN_STREAMLFS_MEM_THRESHOLD , 2900
+
+#############################################################################################
+
+### Changes for CR 655871
+### Activation of the new heap allocator on all remaining nodes
+* , config.vars , streamlfs , ADMIN_STREAMLFS_MEM_THRESHOLD , 6200
+piclp987          , config.vars , streamlfs , ADMIN_STREAMLFS_MEM_THRESHOLD , 5500
+
+* , atse.ini , streamlfs , SMAC\NOTIFY_SLEEP_SECS , 300
+* , atse.ini , streamlfs , SMAC\MAX_FULL  , 0.90
+
+#Increase heap size up to 4.0 gigs
+* , atse.ini , streamlfs , SMAC\HEAP_SIZE, 0x100000000
+* , atse.ini , streamlfs streamitp , SMAC\UseNewHeapAllocator , Yes
+
+#######################END OF CR 655871 #################################
+
+#----------------------------------------------------------
+# QMS/LB2 settings
+#----------------------------------------------------------
+
+  *, atse.ini , streamlfs , ProdHybrid\QMS\RunCorbaInterface , N
+  *, atse.ini , streamlfs , ProdHybrid\QMS\UseCorbaInterface , N
+  *, atse.ini , streamlfs qms lb2, ProdHybrid\QMS\IPAddress\1 , piclp479:piclp479.sabre.com:28951
+  *, atse.ini , streamlfs qms lb2, ProdHybrid\QMS\IPAddress\2 , piclp480:piclp480.sabre.com:28951
+  *, atse.ini , streamlfs qms lb2, ProdHybrid\QMS\IPAddress\3 , pimlp456:pimlp456.sabre.com:28951
+  *, atse.ini , streamlfs qms lb2, ProdHybrid\QMS\IPAddress\4 , pimlp457:pimlp457.sabre.com:28951
+
+#--------------------------------------------------------------
+# Use ASv2 group C for Total flight streaming lowfare
+#--------------------------------------------------------------
+
+piclp141-piclp142, config.vars, streamlfs, ADMIN_STREAMLFS_AVAILABILITY, ASv2PrivateC
+piclp817-piclp821, config.vars, streamlfs, ADMIN_STREAMLFS_AVAILABILITY, ASv2PrivateC
+piclp884         , config.vars, streamlfs, ADMIN_STREAMLFS_AVAILABILITY, ASv2PrivateC
+piclp987         , config.vars, streamlfs, ADMIN_STREAMLFS_AVAILABILITY, ASv2PrivateC
+piclp993-piclp994, config.vars, streamlfs, ADMIN_STREAMLFS_AVAILABILITY, ASv2PrivateC
+pimlp100         , config.vars, streamlfs, ADMIN_STREAMLFS_AVAILABILITY, ASv2PrivateC
+pimlp124-pimlp125, config.vars, streamlfs, ADMIN_STREAMLFS_AVAILABILITY, ASv2PrivateC
+pimlp164-pimlp172, config.vars, streamlfs, ADMIN_STREAMLFS_AVAILABILITY, ASv2PrivateC
+pimlp777-pimlp778, config.vars, streamlfs, ADMIN_STREAMLFS_AVAILABILITY, ASv2PrivateC
+
+*, config.vars , streamlfs , ADMIN_STREAMLFS_EMAIL_LIST , "Piotr.Sulecki@sabre.com Krzysztof.Jelonek@sabre.com Jacek.Francuz@sabre.com Robert.Luberda@sabre.com"
+
+
+#--------------------------------------------------------------
+# Fix iControl issue with Big IP until SOAP is fixed
+#--------------------------------------------------------------
+
+  *                 , config.vars , streamitp streamlfs      , COMMON_BIG_IP_INTERFACE     , ""
+  piclp603                       , config.vars , dssv2 , COMMON_BIG_IP, "pinprlb01.sabre.com"
+  piclp624-piclp626              , config.vars , dssv2 , COMMON_BIG_IP, "pinprlb01.sabre.com"
+  piclp687                       , config.vars , dssv2 , COMMON_BIG_IP, "pinprlb01.sabre.com"
+  piclp441-piclp442              , config.vars , dssv2 , COMMON_BIG_IP, "pinprlb02.sabre.com"
+
+# -------------------------------------------------------------------
+# Setting for the Load metrics in Meridian for ASV2                  
+# -------------------------------------------------------------------
+piclp317-piclp325, config.vars, hlm, HLM_ACTIVE_METRICS, "CPU, QueueLength"
+
+
+# =====================================================================
+# =====================================================================
+
+
+# =====================================================================
+#                      LBT Server Section - Begin
+# =====================================================================
+
+piclp479-piclp480 pimlp456-pimlp457 , config.vars , lb2 , ADMIN_LBT_SERVICE_APP_LOG_FILE_QTY , 90
+
+# =====================================================================
+#                      LBT Server Section - End
+# =====================================================================
+
+
+
+ pifhlp256-pifhlp257, config.vars, acmsapp, ADMIN_ACMSAPP_BIG_IP_POOL, "acms.prod_pool_47030%d3pindislb01.sabre.com acms.prod_pool_47030%scdislb03.sabre.com"
+ pithlp125-pithlp126, config.vars, acmsapp, ADMIN_ACMSAPP_BIG_IP_POOL, "acms.prod_pool_47030%d3pindislb01.sabre.com acms.prod_pool_47030%scdislb03.sabre.com"
+
+
+#----------------------------------------------------------
+#  Pricing Orchestrator Applications
+#----------------------------------------------------------
+
+pimlp799 pimlp800 piclp788          , app, servicemix po , activate, Y
+pifhlp102 pifhlp103                 , app, servicemix po , activate, Y
+
+#-------------------------------------------------------
+#   Run multiple instances on PDC servers
+#------------------------------------------------------
+
+*                 , config.vars , po , ADMIN_PO_INSTANCES , 2
+piclp788 pimlp800 , config.vars , po , ADMIN_PO_INSTANCES , 4
+
+##################################
+#############    SMAC FIXES CR #629636
+* , atse.ini, streamlfs, SMAC\CACHE_AccompaniedTvl_TTL_SECS         , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_AccountCode_TTL_SECS            , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_AdvanceResTkt_TTL_SECS          , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_AgentDiscounts_TTL_SECS         , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_AVLMethod_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_BankersSellingRate_TTL_SECS     , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_BasicBookingRequest_TTL_SECS    , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Blackouts_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_BookingCodeException_TTL_SECS   , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_CarrierApplication_TTL_SECS     , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_CarrierRestrictions_TTL_SECS    , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_ChildrensDiscounts_TTL_SECS     , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_CircleTrip_TTL_SECS             , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_CombCatControl_TTL_SECS         , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_CorpId_TTL_SECS                 , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Currency_TTL_SECS               , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_DayTimeApplication_TTL_SECS     , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_DynConPath_TTL_SECS             , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Eligibility_TTL_SECS            , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_EndOnEnd_TTL_SECS               , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_EssAirSvc_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_FareByRuleApp_TTL_SECS          , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_FareByRule_TTL_SECS             , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_FareclassApp_TTL_SECS           , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_FareClassRestrictions_TTL_SECS  , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_FareCount_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_FareRestValidation_TTL_SECS     , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Fares_TTL_SECS                  , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_FareTariffCrossRef_TTL_SECS     , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_FareType_TTL_SECS               , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_FBRCatControl_TTL_SECS          , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_FlightApplication_TTL_SECS      , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_FootnoteCatControl_TTL_SECS     , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_GeneralRule_TTL_SECS            , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_GenericTaxCodes_TTL_SECS        , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_HostAndDCA_TTL_SECS             , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_LbtContractNtf_TTL_SECS         , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_LbtFareLoadDt_TTL_SECS          , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_LowerBounds_TTL_SECS            , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Maxstay_TTL_SECS                , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Minstay_TTL_SECS                , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_MiscFareTags_TTL_SECS           , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_MixedClassTable_TTL_SECS        , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_MultiAptCity_TTL_SECS           , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_MultiHost_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_NonCombCatControl_TTL_SECS      , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_NUC_TTL_SECS                    , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_OpenJawSetsRestrictions_TTL_SECS, 86400
+* , atse.ini, streamlfs, SMAC\CACHE_OpenJaws_TTL_SECS               , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_OtherDiscounts_TTL_SECS         , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_OwnerAirline_TTL_SECS           , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_OwnerMultiAirportCity_TTL_SECS  , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Penalties_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_PFCAbsorb_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_PFCCollectionMethod_TTL_SECS    , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_PFCEquipExmpt_TTL_SECS          , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_PFC_TTL_SECS                    , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_PsgTypeByGroup_TTL_SECS         , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_PsgTypeMatrix_TTL_SECS          , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_PsgType_TTL_SECS                , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_RegionalParticipation_TTL_SECS  , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_RestrictedAirport_TTL_SECS      , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_RoundTrip_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_RuleTariffCrossRef_TTL_SECS     , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_RuleTariffRestrictions_TTL_SECS , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_SalesRestrictions_TTL_SECS      , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_ScheduleSegment_TTL_SECS        , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_ScheduleSummary_TTL_SECS        , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Seasons_TTL_SECS                , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_StopOvers_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_SurchargeDescription_TTL_SECS   , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Surcharges_TTL_SECS             , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_SysConPath_TTL_SECS             , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_SystemAirline_TTL_SECS          , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table976_TTL_SECS               , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table980A_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table980AUser_TTL_SECS          , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table980C_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table980CUser_TTL_SECS          , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table980G_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table980GUser_TTL_SECS          , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table986_TTL_SECS               , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table989_TTL_SECS               , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table993_TTL_SECS               , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table994_TTL_SECS               , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table995_TTL_SECS               , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Table997_TTL_SECS               , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_TaxAkHiData_TTL_SECS            , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_TaxCodeData_TTL_SECS            , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_TaxCodeOrder_TTL_SECS           , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_TaxNation_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_TaxSegAbsorb_TTL_SECS           , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_TicketEndorse_TTL_SECS          , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_TourConductorDiscounts_TTL_SECS , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_TransfersA_TTL_SECS             , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_Transfers_TTL_SECS              , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_TravelRestrictions_TTL_SECS     , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_UsrConPath_TTL_SECS             , 86400
+* , atse.ini, streamlfs, SMAC\CACHE_VendorCrossRef_TTL_SECS         , 86400
+
+##################   END OF SMAC FIXES ###############
+
+#### fix for the memory nodemontior problem###############
+*, config.vars , streamlfs , ADMIN_FIRST_KILL_FLAG , 1234567890
+*, config.vars , streamitp , ADMIN_FIRST_KILL_FLAG , 1234567890
+
+###  Fix for US2 tax rounding issue: CR 640162
+* , atse.ini, streamlfs streamitp , CodeChanges\RoundUS2Down, No
+
+### RI 896843
+* , atse.ini , streamlfs streamitp , CodeChanges\SmacLoopsBalance, Yes
+
+### RI 906866
+pimlp168, atse.ini, streamlfs , SMAC\REPLACE_ON_FLUSH, false
+
+### RI 100-03-675919 - activate oracle on additional nodes
+* , atse.ini   , streamitp streamlfs, ATAE\DATABASE , oracle
+* , atse.ini   , streamitp streamlfs, ORACLE\ini, dbconn.ini
+* , config.vars   , streamitp streamlfs, export TNS_ADMIN, /opt/db/ini
+
+*, atse.ini   , lb2, ATAE\DATABASE , oracle
+*, atse.ini   , lb2, ORACLE\ini, dbconn.ini
+*, config.vars   , lb2, export TNS_ADMIN, /opt/db/ini
+### END OF RI 100-03-675919
+
+* , config.vars , asv2 , export LD_LIBRARY_PATH , ./lib/native
+
+* , config.vars , asv2 , ADMIN_S_BIG_IP_POOL  , "asv2.v2s.prod_pool_611xx%d3pindislb01.sabre.com asv2.v2s.prod_pool_611xx%scdislb03.sabre.com"
+* , config.vars , asv2 , ADMIN_P_BIG_IP_POOL  , "asv2.v2p.prod_pool_611xx%d3pindislb01.sabre.com asv2.v2p.prod_pool_611xx%scdislb03.sabre.com"
+* , config.vars , asv2 , ADMIN_T_BIG_IP_POOL  , "asv2.ea.prod_pool_611xx%d3pindislb01.sabre.com asv2.Liberty.prod_pool_611xx%d3pindislb01.sabre.com asv2.ea.prod_pool_611xx%scdislb03.sabre.com asv2.Liberty.prod_pool_611xx%scdislb03.sabre.com"
+* , config.vars , asv2 , ADMIN_E_BIG_IP_POOL  , "asv2.esv.prod_pool_611xx%d3pindislb01.sabre.com asv2.esv.prod_pool_611xx%scdislb03.sabre.com"
+* , config.vars , asv2 , ADMIN_F_BIG_IP_POOL  , "asv2.bff.prod_pool_611xx%d3pindislb01.sabre.com asv2.bff.prod_pool_611xx%scdislb03.sabre.com"
+* , config.vars , asv2 , ADMIN_A_BIG_IP_POOL  , "asv2.v1s.prod_pool_611xx%d3pindislb01.sabre.com"
+* , config.vars , asv2 , ADMIN_X_BIG_IP_POOL  , "asv2.robot.prod_pool_611xx%d3pindislb01.sabre.com asv2.robot.prod_pool_611xx%scdislb03.sabre.com"
+* , config.vars , asv2 , ADMIN_C_BIG_IP_POOL  , "asv2.slfs.prod_pool_611xx%d3pindislb01.sabre.com asv2.slfs.prod_pool_611xx%scdislb03.sabre.com"
+* , config.vars , asv2 , ADMIN_D_BIG_IP_POOL  , "asv2.charger.prod_pool_611xx%d3pindislb01.sabre.com asv2.charger.prod_pool_611xx%scdislb03.sabre.com"
+* , config.vars , asv2 , ADMIN_U_BIG_IP_POOL  , "asv2.ucl.prod_pool_620xx%d3pindislb01.sabre.com asv2.ucl.prod_pool_620xx%scdislb03.sabre.com"
+* , config.vars , asv2 , ADMIN_H_BIG_IP_POOL  , "asv2.dac.prod_pool_618xx%d3pindislb01.sabre.com asv2.dac.prod_pool_618xx%scdislb03.sabre.com"
+
+piclp117, config.vars , hph , CONFIGURATION_TYPES , PRIMARY-1
+piclp118, config.vars , hph , CONFIGURATION_TYPES , PRIMARY-2
+pimlp714, config.vars , hph , CONFIGURATION_TYPES , SECONDARY-1
+pimlp637, config.vars , hph , CONFIGURATION_TYPES , SECONDARY-2
+
+# ACMS activation begin
+*, config.vars, pricingv2,    ADMIN_PRICING_ACMS_QUERY,      Y
+*, config.vars, faredisplay,  ADMIN_FAREDISPLAY_ACMS_QUERY,  Y
+*, config.vars, tax,          ADMIN_TAX_ACMS_QUERY,          Y
+*, config.vars, historical,   ADMIN_HISTORICAL_ACMS_QUERY,   Y
+*, config.vars, shopping,     ADMIN_SHOPPING_ACMS_QUERY,     Y
+*, config.vars, shoppingis,   ADMIN_SHOPPINGIS_ACMS_QUERY,   Y
+*, config.vars, shoppingesv,  ADMIN_SHOPPINGESV_ACMS_QUERY,  Y
+*, config.vars, shoppinghist, ADMIN_SHOPPINGHIST_ACMS_QUERY, Y
+
+# D-pool ACMS override
+piclp151-piclp154 piclp342-piclp349 piclp354-piclp366 piclp374-piclp377 piclp384-piclp387 piclp389 piclp611 piclp619 piclp754-piclp763 piclp769-piclp782 piclp792-piclp798 piclp803-piclp806 piclp845-piclp868 piclp874-piclp883 piclp900-piclp904 piclp906-piclp907 piclp924-piclp933 piclp960 piclp972-piclp985 piclp992 pifhlp109 pifhlp125 pifhlp159 pifhlp222-pifhlp224 pimlp106-pimlp110 pimlp141-pimlp163 pimlp180-pimlp185 pimlp504-pimlp505 pimlp532-pimlp535 pimlp543-pimlp545 pimlp551-pimlp552 pimlp567 pimlp701-pimlp703 pimlp706-pimlp707 pimlp712 pimlp724-pimlp735 pimlp740-pimlp746 pimlp756-pimlp766 pimlp779-pimlp782 pimlp797 pimlp855-pimlp865 pimlp883-pimlp885 pimlp897-pimlp900 pimlp949-pimlp954 pimlp958 pimlp962 pimlp963 pimlp965 pimlp969 pimlp976-pimlp981 pimlp984-pimlp986 pimlp999 pithlp175 , config.vars , shopping , ADMIN_SHOPPING_ACMS_DOMAIN_APP , shopping_d
+pifhlp106-pifhlp107 pifhlp133-pifhlp134 pifhlp137-pifhlp140 pifhlp151-pifhlp158 pifhlp160-pifhlp162 pifhlp164-pifhlp168 pifhlp171 pifhlp173-pifhlp176 pifhlp178-pifhlp179 pifhlp185-pifhlp189 pifhlp209-pifhlp213 pifhlp218-pifhlp221 pifhlp225-pifhlp228 pifhlp234 pifhlp259-pifhlp264 pifhlp267 pifhlp274-pifhlp280 pifhlp288-pifhlp290 pifhlp315-pifhlp317 pithlp103-pithlp107 pithlp124 pithlp136-pithlp139 pithlp156-pithlp158 pithlp161-pithlp162 pithlp169 pithlp173-pithlp174 , config.vars , shoppingis , ADMIN_SHOPPINGIS_ACMS_DOMAIN_APP , shoppingis_d
+# ACMS activation end
+
+# -----------------------------------------------
+# -----------------------------------------------
+
+#----------------------------------------------------------
+# ATSEv2 Oracle Configuration
+#----------------------------------------------------------
+* , config.vars , faredisplay historical pricingv2 rtg shopping shoppingesv shoppinghist shoppingis tax , COMMON_MYSQL_INI , "DISABLE"
+*                 , tseserver.cfg , pricingv2   , DB_MAN:INI_FILE , dbaccess-exp.ini
+*                 , tseserver.cfg , faredisplay , DB_MAN:INI_FILE , dbaccess-exp.ini
+*                 , tseserver.cfg , tax         , DB_MAN:INI_FILE , dbaccess-exp.ini
+*                 , tseserver.cfg , shoppingesv , DB_MAN:INI_FILE , dbaccess-exp.ini
+*                 , tseserver.cfg , shoppinghist, DB_MAN:INI_FILE , dbaccess-exp.ini
+*                 , tseserver.cfg , shopping    , DB_MAN:INI_FILE , dbaccess-ora.ini
+*                 , tseserver.cfg , shoppingis  , DB_MAN:INI_FILE , dbaccess-ora.ini
+*                 , tseserver.cfg , historical  , DB_MAN:INI_FILE , dbaccess-ora.ini
+
+#------------------------------------------------------------
+# ATSEv2 Historical LDC enabled
+#------------------------------------------------------------
+* , tseserver.cfg , shopping shoppingis         , DISK_CACHE_OPTIONS:SHUTDOWN_DISKCACHE_BEFORE_ABORT , Y
+* , tseserver.cfg , tax            shoppinghist , DISK_CACHE_OPTIONS:STARTUP_ACTION                  , load
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_OPTIONS:SHUTDOWN_DISKCACHE_BEFORE_ABORT , Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:CABINHISTORICAL                   , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:COMBINABILITYRULEHISTORICAL       , N||||N
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:FAREBYRULEAPPHISTORICAL           , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:FAREBYRULECTRLHISTORICAL          , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:FAREBYRULEITEMHISTORICAL          , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:FARECALCCONFIGHISTORICAL          , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:FAREHISTORICAL                    , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:FARECLASSAPPHISTORICAL            , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:FAREDISPLAYINCLCDHISTORICAL       , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:FDSUPPRESSFAREHISTORICAL          , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:FLIGHTAPPRULEHISTORICAL           , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:FOOTNOTECTRLHISTORICAL            , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:GENERALFARERULEHISTORICAL         , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:GENERALRULEAPPHISTORICAL          , Y||||Y
+* , tseserver.cfg , tax            shoppinghist , DISK_CACHE_TYPES:MARKUPCONTROLHISTORICAL           , N||||Y
+* , tseserver.cfg ,     historical shoppinghist , DISK_CACHE_TYPES:MILEAGEHISTORICAL                 , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:MILEAGESURCHEXCEPTHISTORICAL      , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:NEGFARERESTHISTORICAL             , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:NEGFARESECURITYHISTORICAL         , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:PENALTYHISTORICAL                 , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:ROUTINGHISTORICAL                 , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:SALESRESTRICTIONHISTORICAL        , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:SEASONALAPPLHISTORICAL            , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:STOPOVERSHISTORICAL               , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:SURCHARGESHISTORICAL              , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:TICKETENDORSEMENTSHISTORICAL      , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:TRAVELRESTRICTIONHISTORICAL       , Y||||Y
+* , tseserver.cfg , tax historical shoppinghist , DISK_CACHE_TYPES:ZONEHISTORICAL                    , Y||||Y
+
+#{ ATSEv2 - AM Readiness
+* , tseserver.cfg , pricingv2 historical , TO_MAN:MIN_AVAILABLE_MEMORY , 4096
+* , tseserver.cfg , pricingv2 historical , DISK_CACHE_OPTIONS:STARTUP_ACTION , load
+* , tseserver.cfg , pricingv2            , DISK_CACHE_OPTIONS:SHUTDOWN_DISKCACHE_BEFORE_ABORT , Y
+#}
+
+#{ ATSEv2 - faredisplay G6 and G7
+*, tseserver.cfg , faredisplay , SERVER_SOCKET_ADP:NUM_LISTENERS , 1
+*, tseserver.cfg , faredisplay , FARESC_SVC:POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , FARESV_SVC:POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , FARE_CALC_SVC:POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , FARE_SELECTOR_SVC:POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , FREE_BAGGAGE:BAGGAGETASK_POOLINGTHRESHOLD , 24
+*, tseserver.cfg , faredisplay , PRICING_SVC:FAREPATHPQ_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , PRICING_SVC:INITFAREPATH_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , PRICING_SVC:ITIN_POOLINGTHRESHOLD , 48
+*, tseserver.cfg , faredisplay , PRICING_SVC:NETFAREMARKETS_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , PRICING_SVC:PRICINGPQ_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , PRICING_SVC:PRICINGUNITPQ_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , PRICING_SVC:PUPATHMATRIX_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , SHOPPING_SVC:SHOPPINGPQ_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , TAX_SVC:POOLINGTHRESHOLD , 30
+*, tseserver.cfg , faredisplay , TSE_SERVER:TRX_THRESHOLD , 48
+#}
+
+#{ ATSEv2 - tax G6 and G7
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , SERVER_SOCKET_ADP:NUM_LISTENERS , 1
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , FARESC_SVC:POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , FARESV_SVC:POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , FARE_CALC_SVC:POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , FARE_SELECTOR_SVC:POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , FREE_BAGGAGE:BAGGAGETASK_POOLINGTHRESHOLD , 24
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , PRICING_SVC:FAREPATHPQ_POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , PRICING_SVC:INITFAREPATH_POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , PRICING_SVC:ITIN_POOLINGTHRESHOLD , 48
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , PRICING_SVC:NETFAREMARKETS_POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , PRICING_SVC:PRICINGPQ_POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , PRICING_SVC:PRICINGUNITPQ_POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , PRICING_SVC:PUPATHMATRIX_POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , SHOPPING_SVC:SHOPPINGPQ_POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , TAX_SVC:POOLINGTHRESHOLD , 30
+pifhlp208 pifhlp256-pifhlp257 pithlp125-pithlp127 pithlp148 , tseserver.cfg , tax , TSE_SERVER:TRX_THRESHOLD , 48
+#}
+
+#{ ATSEv2 - pricingv2 G6 and G7
+*, tseserver.cfg , pricingv2 , SERVER_SOCKET_ADP:NUM_LISTENERS , 1
+*, tseserver.cfg , pricingv2 , FARESC_SVC:POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , FARESV_SVC:POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , FARE_CALC_SVC:POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , FARE_SELECTOR_SVC:POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , FREE_BAGGAGE:BAGGAGETASK_POOLINGTHRESHOLD , 24
+*, tseserver.cfg , pricingv2 , PRICING_SVC:FAREPATHPQ_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , PRICING_SVC:INITFAREPATH_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , PRICING_SVC:ITIN_POOLINGTHRESHOLD , 48
+*, tseserver.cfg , pricingv2 , PRICING_SVC:NETFAREMARKETS_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , PRICING_SVC:PRICINGPQ_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , PRICING_SVC:PRICINGUNITPQ_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , PRICING_SVC:PUPATHMATRIX_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , SHOPPING_SVC:SHOPPINGPQ_POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , TAX_SVC:POOLINGTHRESHOLD , 30
+*, tseserver.cfg , pricingv2 , TSE_SERVER:TRX_THRESHOLD , 48
+#}
+
+#{ ATSEv2 - Historical G7s
+pithlp116-pithlp118 pifhlp126-pifhlp128 , config.vars   , historical , COMMON_HARDWARE , "G7"
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , FARESC_SVC:POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , FARESV_SVC:POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , FARE_CALC_SVC:POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , FARE_SELECTOR_SVC:POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , FREE_BAGGAGE:BAGGAGETASK_POOLINGTHRESHOLD , 16
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , PRICING_SVC:FAREPATHPQ_POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , PRICING_SVC:INITFAREPATH_POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , PRICING_SVC:ITIN_POOLINGTHRESHOLD , 32
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , PRICING_SVC:NETFAREMARKETS_POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , PRICING_SVC:PRICINGPQ_POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , PRICING_SVC:PRICINGUNITPQ_POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , PRICING_SVC:PUPATHMATRIX_POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , REX_FARE_SELECTOR_SVC:POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , SHOPPING_SVC:SHOPPINGPQ_POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , TAX_SVC:POOLINGTHRESHOLD , 20
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , TO_SVC:POOLINGTHRESHOLD , 6
+pithlp116-pithlp118 pifhlp126-pifhlp128 , tseserver.cfg , historical , TSE_SERVER:TRX_THRESHOLD , 48
+#}
+
+#{ ATSEv2 - MARKUPCONTROL by PCC
+* , tseserver.cfg , faredisplay tax historical pricingv2 shopping shoppingesv shoppinghist shoppingis , FALLBACK_SECTION:FALLBACK_PRODMARKUP_DB_ISSUE , Y
+* , tseserver.cfg , faredisplay tax historical pricingv2 shopping shoppingesv shoppinghist shoppingis , FALLBACK_SECTION:FALLBACK_APM165_MARKUP_QUERY_TUNING , Y
+* , tseserver.cfg , faredisplay tax historical pricingv2 shopping shoppingesv shoppinghist shoppingis , DISK_CACHE_TYPES:MARKUPCONTROL, N||||Y
+* , tseserver.cfg ,                 historical                                shoppinghist            , DISK_CACHE_TYPES:MARKUPCONTROLHISTORICAL , N||||Y||65536
+#}
+
+#{ ATSEv2 - MUC
+* , tseserver.cfg , shopping shoppingis , CACHE_ADP:USE_ORDERNO      , N
+* , tseserver.cfg , shopping shoppingis , CACHE_ADP:PROCESSING_DELAY , 2400..1800
+#}
+
+#{ ATSEv2 - WALLET
+* , config.vars , faredisplay pricingv2 tax historical shopping shoppingis shoppingesv shoppinghist , TNS_ADMIN, /opt/db/ini/oracle-wallet/${LOGNAME}
+#}
+
+#{ ATSEv2 - Shopping Memory Limits
+* , tseserver.cfg , shopping shoppingis , TO_MAN:MIN_AVAILABLE_MEMORY , 4096
+* , tseserver.cfg , shopping shoppingis , TO_MAN:MAX_VIRTUAL_MEMORY , 0
+* , tseserver.cfg , shopping shoppingis , TO_MAN:MAX_VIRTUAL_MEMORY_VARIANCE , 0
+#}
+
+#{ ATSEv2 - atsev2.2013.05
+# see ACMS
+#}
+
+#{ Thread degradation fix
+pifhlp208 pifhlp291 piclp790 , tseserver.cfg , faredisplay pricingv2 shopping , FALLBACK_SECTION:FALLBACK_BOOSTTHREAD , N
+pifhlp208 pifhlp291 piclp790 , tseserver.cfg , faredisplay pricingv2 shopping , TO_MAN:MAX_TRANSACTIONS , 0
+pifhlp208 pifhlp291 piclp790 , tseserver.cfg , faredisplay pricingv2 shopping , TO_MAN:MAX_TRANSACTION_SHUTDOWN_RETRY_TIME , 500
+pifhlp208 pifhlp291 piclp790 , tseserver.cfg , faredisplay pricingv2 shopping , TO_MAN:MAX_TRANSACTION_VARIANCE , 0
+pifhlp208 pifhlp291 piclp790 , tseserver.cfg , faredisplay pricingv2 shopping , TO_MAN:MAX_TRANSACTION_WAIT , 10000
+#}
+
+# For V1  RI 748980
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\clockCheckInterval          , 3
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\solutionsClockLimit         , 12
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit       , 15
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit1Pax   , 15
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit2Pax   , 15
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit3Pax   , 15
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit4Pax   , 15
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\cpuCheckInterval            , 5
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit1Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit2Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit3Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit4Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\thruFaresCPUTimeLimitDefault          , 5
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\initialNextSolutionTime     , 3
+piclp141 piclp142 , atse.ini , streamlfs , TransactionData\nextSolutionTime            , 2
+
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\clockCheckInterval          , 3
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\solutionsClockLimit         , 12
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit       , 15
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit1Pax   , 15
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit2Pax   , 15
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit3Pax   , 15
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit4Pax   , 15
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\cpuCheckInterval            , 5
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit1Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit2Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit3Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit4Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\thruFaresCPUTimeLimitDefault          , 5
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\initialNextSolutionTime     , 3
+piclp817-piclp821 , atse.ini , streamlfs , TransactionData\nextSolutionTime            , 2
+piclp884          , atse.ini , streamlfs , TransactionData\clockCheckInterval          , 3
+piclp884          , atse.ini , streamlfs , TransactionData\solutionsClockLimit         , 12
+piclp884          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit       , 15
+piclp884          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit1Pax   , 15
+piclp884          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit2Pax   , 15
+piclp884          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit3Pax   , 15
+piclp884          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit4Pax   , 15
+piclp884          , atse.ini , streamlfs , TransactionData\cpuCheckInterval            , 5
+piclp884          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit1Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp884          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit2Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp884          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit3Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp884          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit4Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp884          , atse.ini , streamlfs , TransactionData\thruFaresCPUTimeLimitDefault          , 5
+piclp884          , atse.ini , streamlfs , TransactionData\initialNextSolutionTime     , 3
+piclp884          , atse.ini , streamlfs , TransactionData\nextSolutionTime            , 2
+piclp987          , atse.ini , streamlfs , TransactionData\clockCheckInterval          , 3
+piclp987          , atse.ini , streamlfs , TransactionData\solutionsClockLimit         , 12
+piclp987          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit       , 15
+piclp987          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit1Pax   , 15
+piclp987          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit2Pax   , 15
+piclp987          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit3Pax   , 15
+piclp987          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit4Pax   , 15
+piclp987          , atse.ini , streamlfs , TransactionData\cpuCheckInterval            , 5
+piclp987          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit1Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp987          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit2Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp987          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit3Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp987          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit4Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp987          , atse.ini , streamlfs , TransactionData\thruFaresCPUTimeLimitDefault          , 5
+piclp987          , atse.ini , streamlfs , TransactionData\initialNextSolutionTime     , 3
+piclp987          , atse.ini , streamlfs , TransactionData\nextSolutionTime            , 2
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\clockCheckInterval          , 3
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\solutionsClockLimit         , 12
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit       , 15
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit1Pax   , 15
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit2Pax   , 15
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit3Pax   , 15
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit4Pax   , 15
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\cpuCheckInterval            , 5
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit1Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit2Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit3Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit4Pax   , 2,18,3,16,4,14,6,12,8,10
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\thruFaresCPUTimeLimitDefault          , 5
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\initialNextSolutionTime     , 3
+piclp993-piclp994 , atse.ini , streamlfs , TransactionData\nextSolutionTime            , 2
+pimlp100          , atse.ini , streamlfs , TransactionData\clockCheckInterval          , 3
+pimlp100          , atse.ini , streamlfs , TransactionData\solutionsClockLimit         , 12
+pimlp100          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit       , 15
+pimlp100          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit1Pax   , 15
+pimlp100          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit2Pax   , 15
+pimlp100          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit3Pax   , 15
+pimlp100          , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit4Pax   , 15
+pimlp100          , atse.ini , streamlfs , TransactionData\cpuCheckInterval            , 5
+pimlp100          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit1Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp100          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit2Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp100          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit3Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp100          , atse.ini , streamlfs , TransactionData\solutionCountCPULimit4Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp100          , atse.ini , streamlfs , TransactionData\thruFaresCPUTimeLimitDefault          , 5
+pimlp100          , atse.ini , streamlfs , TransactionData\initialNextSolutionTime     , 3
+pimlp100          , atse.ini , streamlfs , TransactionData\nextSolutionTime            , 2
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\clockCheckInterval          , 3
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\solutionsClockLimit         , 12
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit       , 15
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit1Pax   , 15
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit2Pax   , 15
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit3Pax   , 15
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit4Pax   , 15
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\cpuCheckInterval            , 5
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit1Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit2Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit3Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit4Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\thruFaresCPUTimeLimitDefault          , 5
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\initialNextSolutionTime     , 3
+pimlp124-pimlp125 , atse.ini , streamlfs , TransactionData\nextSolutionTime            , 2
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\clockCheckInterval          , 3
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\solutionsClockLimit         , 12
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit       , 15
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit1Pax   , 15
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit2Pax   , 15
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit3Pax   , 15
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit4Pax   , 15
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\cpuCheckInterval            , 5
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit1Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit2Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit3Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit4Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\thruFaresCPUTimeLimitDefault          , 5
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\initialNextSolutionTime     , 3
+pimlp164-pimlp172 , atse.ini , streamlfs , TransactionData\nextSolutionTime            , 2
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\clockCheckInterval          , 3
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\solutionsClockLimit         , 12
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit       , 15
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit1Pax   , 15
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit2Pax   , 15
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit3Pax   , 15
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit4Pax   , 15
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\cpuCheckInterval            , 5
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit1Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit2Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit3Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\solutionCountCPULimit4Pax   , 2,18,3,16,4,14,6,12,8,10
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\thruFaresCPUTimeLimitDefault          , 5
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\initialNextSolutionTime     , 3
+pimlp777-pimlp778 , atse.ini , streamlfs , TransactionData\nextSolutionTime            , 2
+#Changes for Alternate Dates only
+* , atse.ini , streamlfs , TransactionData\transLimitsCarrierList              , F9,TZ=F9,AA=F9
+* , atse.ini , streamlfs , TransactionData\solutionsClockLimitF9               , 12
+* , atse.ini , streamlfs , TransactionData\noSolutionsClockLimitF9             , 15
+* , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit1PaxF9         , 15
+* , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit2PaxF9         , 15
+* , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit3PaxF9         , 15
+* , atse.ini , streamlfs , TransactionData\noSolutionsClockLimit4PaxF9         , 15
+* , atse.ini , streamlfs , TransactionData\solutionsCPULimitF9                 , 180
+* , atse.ini , streamlfs , TransactionData\noSolutionsCPULimitF9               , 180
+* , atse.ini , streamlfs , TransactionData\noSolutionsCPULimit1PaxF9           , 180
+* , atse.ini , streamlfs , TransactionData\noSolutionsCPULimit2PaxF9           , 180
+* , atse.ini , streamlfs , TransactionData\noSolutionsCPULimit3PaxF9           , 180
+* , atse.ini , streamlfs , TransactionData\noSolutionsCPULimit4PaxF9           , 180
+* , atse.ini , streamlfs , TransactionData\thruFaresCPUTimeLimitDefaultF9      , 5
+* , atse.ini , streamlfs , TransactionData\thruFaresMaximumSolutionsDefaultF9  , 3
+* , atse.ini , streamlfs , TransactionData\thruFaresMaximumSolutionsDatabaseF9 , 3
+* , atse.ini , streamlfs , TransactionData\initialNextSolutionTimeF9           , 3
+* , atse.ini , streamlfs , TransactionData\nextSolutionTimeF9                  , 2
+* , atse.ini , streamlfs , TransactionData\solutionCountCPULimit1PaxF9         , 2,40,3,35,4,30,6,25,8,20
+* , atse.ini , streamlfs , TransactionData\solutionCountCPULimit2PaxF9         , 2,40,3,35,4,30,6,25,8,20
+* , atse.ini , streamlfs , TransactionData\solutionCountCPULimit3PaxF9         , 2,40,3,35,4,30,6,25,8,20
+* , atse.ini , streamlfs , TransactionData\solutionCountCPULimit4PaxF9         , 2,40,3,35,4,30,6,25,8,20 
+
+
+###
+###  Begin RI # 760772
+###
+* , atse.ini   , streamlfs, displayDBStats\ByTxnSummary, T
+* , atse.ini   , streamlfs, displayDBStats\ByTxnVerbose, T
+* , atse.ini   , streamlfs, displayDBStats\Enabled, T
+* , atse.ini   , streamlfs, displayDBStats\ResetByTxn, T
+* , atse.ini   , streamlfs, displayDBStats\ThresholdMilliseconds, 50
+* , atse.ini   , streamlfs, SMAC\CACHE_FareclassApp_MAXSIZE, 60000
+* , atse.ini   , streamlfs, SMAC\CACHE_FareCount_MAXSIZE, 50000
+* , atse.ini   , streamlfs, SMAC\CACHE_Fares_MAXSIZE, 50000
+* , atse.ini   , streamlfs, SMAC\CACHE_LbtFareLoadDt_MAXSIZE, 30000
+* , atse.ini   , streamlfs, SMAC\CACHE_LowerBounds_MAXSIZE, 120000
+* , atse.ini   , streamlfs, SMAC\CACHE_MidPointCity_MAXSIZE, 20000
+* , atse.ini   , streamlfs, SMAC\CACHE_Mileage_MAXSIZE, 50000
+* , atse.ini   , streamlfs, SMAC\CACHE_Surcharges_MAXSIZE, 10000
+###
+###  End RI # 760772
+###
+
+#### RI 791426
+* , config.vars , streamlfs , ADMIN_STREAMLFS_MEM_THRESHOLD , 14500
+* , config.vars , streamitp , ADMIN_STREAMLFS_MEM_THRESHOLD , 11000
+
+* , atse.ini   , streamlfs, SMAC\HEAP_SIZE, 0x300000000
+### END OF RI 791426
+
+### RI 791426
+
+* , atse.ini, streamlfs, SMAC\CACHE_AccompaniedTvl_MAXSIZE, 10
+* , atse.ini, streamlfs, SMAC\CACHE_AdvanceResTkt_MAXSIZE, 5000
+* , atse.ini, streamlfs, SMAC\CACHE_AgentDiscounts_MAXSIZE, 100
+* , atse.ini, streamlfs, SMAC\CACHE_AvlCacheUsageProfile_MAXSIZE, 1
+* , atse.ini, streamlfs, SMAC\CACHE_AvlMethod_MAXSIZE, 1
+* , atse.ini, streamlfs, SMAC\CACHE_AVLOverride_MAXSIZE, 1
+* , atse.ini, streamlfs, SMAC\CACHE_AVSData_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_BankersSellingRate_MAXSIZE, 500
+* , atse.ini, streamlfs, SMAC\CACHE_Blackouts_MAXSIZE, 1500
+* , atse.ini, streamlfs, SMAC\CACHE_BookingCodeException_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_CarrierRestrictions_MAXSIZE, 30000
+* , atse.ini, streamlfs, SMAC\CACHE_ChildrensDiscounts_MAXSIZE, 20000
+* , atse.ini, streamlfs, SMAC\CACHE_CircleTrip_MAXSIZE, 500
+* , atse.ini, streamlfs, SMAC\CACHE_CombCatControl_MAXSIZE, 10000
+* , atse.ini, streamlfs, SMAC\CACHE_CorpCxr_MAXSIZE, 50000
+* , atse.ini, streamlfs, SMAC\CACHE_CorpId_MAXSIZE, 20000
+* , atse.ini, streamlfs, SMAC\CACHE_Currency_MAXSIZE, 500
+* , atse.ini, streamlfs, SMAC\CACHE_CustomerArcNo_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_CustomerPcc_MAXSIZE, 20000
+* , atse.ini, streamlfs, SMAC\CACHE_DayTimeApplication_MAXSIZE, 10000
+* , atse.ini, streamlfs, SMAC\CACHE_DSTAdjMin_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_DSTGrp_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_EndOnEnd_MAXSIZE, 10000
+* , atse.ini, streamlfs, SMAC\CACHE_EssAirSvc_MAXSIZE, 20000
+* , atse.ini, streamlfs, SMAC\CACHE_FareByRule_MAXSIZE, 20000
+* , atse.ini, streamlfs, SMAC\CACHE_FareByRuleApp_MAXSIZE, 100000
+* , atse.ini, streamlfs, SMAC\CACHE_FareclassApp_MAXSIZE, 150000
+* , atse.ini, streamlfs, SMAC\CACHE_FareClassRestrictions_MAXSIZE, 100
+* , atse.ini, streamlfs, SMAC\CACHE_FareCount_MAXSIZE, 500000
+* , atse.ini, streamlfs, SMAC\CACHE_FareRestValidation_MAXSIZE, 50000
+* , atse.ini, streamlfs, SMAC\CACHE_Fares_MAXSIZE, 150000
+* , atse.ini, streamlfs, SMAC\CACHE_FBRCatControl_MAXSIZE, 10000
+* , atse.ini, streamlfs, SMAC\CACHE_FootnoteCatControl_MAXSIZE, 10000
+* , atse.ini, streamlfs, SMAC\CACHE_GeoData_MAXSIZE, 20000
+* , atse.ini, streamlfs, SMAC\CACHE_HostAndDCA_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_LbtContractNotify_MAXSIZE, 20000
+* , atse.ini, streamlfs, SMAC\CACHE_LbtFareLoadDt_MAXSIZE, 100000
+* , atse.ini, streamlfs, SMAC\CACHE_LowerBounds_MAXSIZE, 750000
+* , atse.ini, streamlfs, SMAC\CACHE_MidPointCity_MAXSIZE, 500000
+* , atse.ini, streamlfs, SMAC\CACHE_Mileage_MAXSIZE, 200000
+* , atse.ini, streamlfs, SMAC\CACHE_MiscFareTags_MAXSIZE, 10000
+* , atse.ini, streamlfs, SMAC\CACHE_MultiAptCity_MAXSIZE, 500
+* , atse.ini, streamlfs, SMAC\CACHE_MultiTransCity_MAXSIZE, 5000
+* , atse.ini, streamlfs, SMAC\CACHE_MultiTransLoc_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_Nation_MAXSIZE, 100
+* , atse.ini, streamlfs, SMAC\CACHE_NonCombCatControl_MAXSIZE, 100000
+* , atse.ini, streamlfs, SMAC\CACHE_NUC_MAXSIZE, 100
+* , atse.ini, streamlfs, SMAC\CACHE_OpenJaws_MAXSIZE, 100
+* , atse.ini, streamlfs, SMAC\CACHE_Penalties_MAXSIZE, 10000
+* , atse.ini, streamlfs, SMAC\CACHE_PFC_MAXSIZE, 10000
+* , atse.ini, streamlfs, SMAC\CACHE_PFCAbsorb_MAXSIZE, 10000
+* , atse.ini, streamlfs, SMAC\CACHE_PsgType_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_RuleTariffCrossRef_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_RuleTariffRestrictions_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_SalesRestrictions_MAXSIZE, 10000
+* , atse.ini, streamlfs, SMAC\CACHE_SchedInfoTxt_MAXSIZE, 200
+* , atse.ini, streamlfs, SMAC\CACHE_Seasons_MAXSIZE, 20000
+* , atse.ini, streamlfs, SMAC\CACHE_StopOvers_MAXSIZE, 500
+* , atse.ini, streamlfs, SMAC\CACHE_SurchargeDescription_MAXSIZE, 10
+* , atse.ini, streamlfs, SMAC\CACHE_Surcharges_MAXSIZE, 2000
+* , atse.ini, streamlfs, SMAC\CACHE_SysConPath_MAXSIZE, 150000
+* , atse.ini, streamlfs, SMAC\CACHE_Table979_MAXSIZE, 10
+* , atse.ini, streamlfs, SMAC\CACHE_Table983_MAXSIZE, 50000
+* , atse.ini, streamlfs, SMAC\CACHE_Table989_MAXSIZE, 5000
+* , atse.ini, streamlfs, SMAC\CACHE_Table994_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_Table995_MAXSIZE, 500
+* , atse.ini, streamlfs, SMAC\CACHE_TableMarkupSecFilter_MAXSIZE, 5000
+* , atse.ini, streamlfs, SMAC\CACHE_TableNegFareMarkup_MAXSIZE, 10
+* , atse.ini, streamlfs, SMAC\CACHE_TariffInhibits_MAXSIZE, 500
+* , atse.ini, streamlfs, SMAC\CACHE_TaxAkHiData_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_TaxCodeData_MAXSIZE, 5000
+* , atse.ini, streamlfs, SMAC\CACHE_TaxCodeGenericVec_MAXSIZE, 100
+* , atse.ini, streamlfs, SMAC\CACHE_TaxCodeOrder_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_TaxNation_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_TaxSegAbsorb_MAXSIZE, 100
+* , atse.ini, streamlfs, SMAC\CACHE_TicketEndorse_MAXSIZE, 1000
+* , atse.ini, streamlfs, SMAC\CACHE_UsrConPath_MAXSIZE, 200000
+
+*, atse.ini , streamlfs , ATAEServerClient\CacheProxyHostIP, picli305
+
+###
+
+# ============================================================================
+# END OF FILE
+# ============================================================================ 	
+#
+# 2012.08.19.19.03.17: imported by hybfunc from /home/sg171423/ri/1024608/ncm.csv
+# 2012.08.20.20.00.19: imported by hybfunc from /home/sg171423/ri/1025472/ncm.csv
+# 2012.08.20.21.25.54: imported by hybfunc from /home/sg171423/ri/1025472A/ncm.csv
+# 2012.08.21.19.01.44: imported by hybfunc from /home/sg171423/ri/1025609/ncm.csv
+# 2012.08.21.20.19.24: imported by hybfunc from /home/sg171423/ri/1025609A/ncm.csv
+# 2012.08.22.03.03.00: imported by hybfunc from /home/sg171423/ri/1026158/ncm.csv
+# 2012.08.25.19.47.26: imported by hybfunc from /home/sg171423/ri/1027812/ncm.csv
+# 2012.08.26.21.57.16: imported by hybfunc from /home/sg171423/ri/1027811/ncm.csv
+# 2012.08.27.19.42.40: imported by hybfunc from /home/sg171423/ri/1028767/ncm.csv
+# 2012.08.27.20.59.46: imported by hybfunc from /home/sg171423/ri/1028767A/ncm.csv
+# 2012.08.27.23.40.02: imported by hybfunc from /home/sg171423/ri/1028896/ncm.csv
+# 2012.08.28.05.10.24: imported by hybfunc from /home/sg171423/ri/1028896A/ncm.csv
+# 2012.08.28.19.11.40: imported by hybfunc from /home/sg171423/ri/1029573/ncm.csv
+# 2012.08.28.20.33.03: imported by hybfunc from /home/sg171423/ri/1028767A/ncm.csv
+# 2012.08.30.20.42.41: imported by hybfunc from /tmp/sabre/ncm/1032132/ncm.csv
+# 2012.09.02.20.47.02: imported by hybfunc from /home/sg171423/ri/1030745/ncm.csv
+# 2012.09.03.22.03.58: imported by hybfunc from /home/sg171423/ri/1031551/ncm.csv
+# 2012.09.03.23.11.17: imported by hybfunc from /home/sg171423/ri/1031551A/ncm.csv
+# 2012.09.04.22.05.39: imported by hybfunc from /home/sg171423/ri/1031792/ncm.csv
+# 2012.09.04.23.10.03: imported by hybfunc from /home/sg171423/ri/1031792A/ncm.csv
+# 2012.09.05.23.29.14: imported by hybfunc from /home/hybfunc/ri/1033238/ncm.csv
+# 2012.09.06.01.44.17: imported by hybfunc from /home/hybfunc/ri/1033238/ncm.csv
+# 2012.09.06.19.16.21: imported by hybfunc from /home/sg171423/ri/1035878/ncm.csv
+# 2012.09.10.19.12.09: imported by hybfunc from /home/sg171423/ri/1032398/ncm.csv
+# 2012.09.11.20.00.25: imported by hybfunc from /home/sg171423/ri/1034056/ncm.csv
+# 2012.09.11.20.48.11: imported by hybfunc from /home/sg171423/ri/1034056A/ncm.csv
+# 2012.09.11.22.57.27: imported by hybfunc from /home/sg171423/ri/1034935/ncm.csv
+# 2012.09.12.00.13.12: imported by hybfunc from /home/sg171423/ri/1034935A/ncm.csv
+# 2012.09.12.19.03.27: imported by hybfunc from /home/sg171423/ri/1035184/ncm.csv
+# 2012.09.12.20.06.04: imported by hybfunc from /home/sg171423/ri/1035184A/ncm.csv
+# 2012.09.17.19.08.58: imported by hybfunc from /tmp/sabre/ncm/1032979/ncm.csv
+# 2012.09.19.19.52.07: imported by hybfunc from /home/sg171423/ri/1040546/ncm.csv
+# 2012.09.20.21.20.53: imported by hybfunc from /home/sg171423/ri/1041315/ncm.csv
+# 2012.09.21.19.05.48: imported by hybfunc from /home/sg171423/ri/1040927/ncm.csv
+# 2012.09.21.20.42.38: imported by hybfunc from /home/sg171423/ri/1040927A/ncm.csv
+# 2012.09.22.19.02.18: imported by hybfunc from /home/sg171423/ri/1042560/ncm.csv
+# 2012.09.22.20.26.39: imported by hybfunc from /home/sg171423/ri/1042560A/ncm.csv
+# 2012.09.26.00.41.41: imported by hybfunc from /home/hybfunc/ri/1033238/ncm.csv
+# 2012.09.26.02.36.18: imported by hybfunc from /home/hybfunc/ri/1033238/ncm.csv
+# 2012.09.26.18.02.41: imported by hybfunc from /tmp/sabre/ncm/1032983/ncm.csv
+# 2012.09.26.20.59.10: imported by hybfunc from /tmp/sabre/ncm/1036968/ncm.csv
+# 2012.09.26.23.01.04: imported by hybfunc from /tmp/sabre/ncm/1036968/ncm.csv
+# 2012.09.26.23.18.13: imported by hybfunc from /tmp/sabre/ncm/1036969/ncm.csv
+# 2012.09.27.19.06.55: imported by hybfunc from /home/sg171423/ri/1044184/ncm.csv
+# 2012.09.30.18.29.58: imported by hybfunc from /home/sg171423/ri/1044378/ncm.csv
+# 2012.10.01.21.48.23: imported by hybfunc from /home/sg171423/ri/1044637/ncm.csv
+# 2012.10.02.19.56.00: imported by hybfunc from /tmp/sabre/ncm/1042996/ncm.csv
+# 2012.10.02.21.32.42: imported by hybfunc from /home/sg171423/ri/1044629/ncm.csv
+# 2012.10.02.23.05.33: imported by hybfunc from /home/sg171423/ri/1044629A/ncm.csv
+# 2012.10.03.22.06.05: imported by hybfunc from /home/sg171423/ri/1045057/ncm.csv
+# 2012.10.04.01.10.59: imported by hybfunc from /home/hybfunc/ri/1033238/ncm.csv
+# 2012.10.04.23.00.58: imported by hybfunc from /tmp/sabre/ncm/1048297/ncm.csv
+# 2012.10.08.19.14.27: imported by hybfunc from /tmp/sabre/ncm/1046140/ncm.csv
+# 2012.10.08.22.10.03: imported by hybfunc from /tmp/sabre/ncm/1049708/ncm.csv
+# 2012.10.09.05.34.19: imported by hybfunc from /tmp/sabre/ncm/1027594/ncm.csv.bak
+# 2012.10.11.22.47.52: imported by hybfunc from /tmp/sabre/ncm/1046140/ncm.csv
+# 2012.10.11.23.24.00: imported by hybfunc from /tmp/sabre/ncm/1027594/ncm.csv
+# 2012.10.13.20.42.52: imported by hybfunc from /home/sg171423/ri/1051612/ncm.csv
+# 2012.10.13.22.02.25: imported by hybfunc from /home/sg171423/ri/1051648/ncm.csv
+# 2012.10.13.23.15.36: imported by hybfunc from /home/sg171423/ri/1051541/ncm.csv
+# 2012.10.14.19.09.31: imported by hybfunc from /home/sg171423/ri/1051844/ncm.csv
+# 2012.10.14.23.00.25: imported by hybfunc from /home/sg171423/ri/1051844A/ncm.csv
+# 2012.10.15.19.20.10: imported by hybfunc from /tmp/sabre/ncm/1054617/ncm.csv
+# 2012.10.18.11.29.35: imported by hybfunc from /home/sg171423/ri/fixesv/ncm.csv
+# 2012.10.18.20.03.08: imported by hybfunc from /tmp/sabre/ncm/1055821/ncm.csv
+# 2012.10.18.21.50.34: imported by hybfunc from /tmp/sabre/ncm/1027599/ncm.csv
+# 2012.10.21.04.55.52: imported by hybfunc from /home/sg171423/ri/1054814/ncm.csv
+# 2012.10.22.19.16.12: imported by hybfunc from /home/sg171423/ri/1055963/ncm.csv
+# 2012.10.22.21.53.23: imported by hybfunc from /home/sg171423/ri/1055963/ncm.csv.vsa
+# 2012.10.23.04.07.21: imported by hybfunc from /home/hybfunc/ri/100-03-1057433/ncm.csv
+# 2012.10.23.19.09.32: imported by hybfunc from /home/sg171423/ri/1056401/ncm.csv
+# 2012.10.23.20.18.20: imported by hybfunc from /home/sg171423/ri/1056401A/ncm.csv
+# 2012.10.24.20.55.34: imported by hybfunc from /tmp/sabre/ncm/1057590/ncm.csv
+# 2012.10.28.20.40.48: imported by hybfunc from /home/sg171423/ri/1058719/ncm.csv
+# 2012.10.29.01.02.38: imported by hybfunc from /home/sg171423/ri/1059645/ncm.csv
+# 2012.10.29.19.03.56: imported by hybfunc from /home/sg171423/ri/1059964/ncm.csv
+# 2012.10.29.20.38.44: imported by hybfunc from /home/sg171423/ri/1059964A/ncm.csv
+# 2012.10.29.21.03.51: imported by hybfunc from /home/sg171423/ri/1059777/ncm.csv
+# 2012.10.30.19.01.45: imported by hybfunc from /home/sg171423/ri/1059967/ncm.csv
+# 2012.10.30.19.41.14: imported by hybfunc from /home/sg053471/ri/1050059/ncm.csv
+# 2012.10.30.20.21.33: imported by hybfunc from /home/sg171423/ri/1059967A/ncm.csv
+# 2012.10.30.21.57.41: imported by hybfunc from /home/sg171423/ri/1061603/ncm.csv
+# 2012.11.01.23.06.12: imported by hybfunc from /tmp/sabre/ncm/1060153/ncm.csv
+# 2012.11.02.00.04.50: imported by hybfunc from /home/sg171423/ri/1061833/ncm.csv
+# 2012.11.04.23.57.58: imported by hybfunc from /home/sg171423/ri/1062642/ncm.csv
+# 2012.11.05.19.07.18: imported by hybfunc from /tmp/sabre/ncm/1060271/ncm.csv
+# 2012.11.05.21.54.14: imported by hybfunc from /home/sg171423/ri/1060850/ncm.csv
+# 2012.11.09.03.02.13: imported by hybfunc from /home/sg171423/ri/1062883/ncm.csv
+# 2012.11.10.13.02.59: imported by hybfunc from /home/sg171423/ri/1065642/ncm.csv
+# 2012.11.12.22.06.29: imported by hybfunc from /tmp/sabre/ncm/1068158/ncm.csv
+# 2012.11.13.19.08.28: imported by hybfunc from /home/sg171423/ri/1066356/ncm.csv
+# 2012.11.13.20.46.10: imported by hybfunc from /home/sg171423/ri/1066356A/ncm.csv
+# 2012.11.14.23.37.42: imported by hybfunc from /home/sg891161/ri/1063554/ncm.csv
+# 2012.11.15.02.35.37: imported by hybfunc from /home/sg171423/ri/1066461/ncm.csv
+# 2012.11.15.04.51.27: imported by hybfunc from /home/sg171423/ri/1066461A/ncm.csv
+# 2012.11.15.19.04.56: imported by hybfunc from /tmp/sabre/ncm/1069523/ncm.csv
+# 2012.11.19.21.19.46: imported by hybfunc from /home/sg171423/ri/1069433/ncm.csv
+# 2012.11.19.23.45.24: imported by hybfunc from /tmp/sabre/ncm/1070733/ncm.csv
+# 2012.11.26.19.23.15: imported by hybfunc from /home/sg171423/ri/1069991/ncm.csv
+# 2012.11.26.21.59.30: imported by hybfunc from /home/sg171423/ri/1069991A/ncm.csv
+# 2012.11.27.07.56.02: imported by hybfunc from /tmp/sabre/ncm/1070172/ncm.csv.bak
+# 2012.11.27.20.00.55: imported by hybfunc from /home/sg171423/ri/1069128/ncm.csv
+# 2012.11.30.01.12.22: imported by hybfunc from /home/sg891161/ri/ASv2/ncm.csv
+# 2012.11.30.19.54.54: imported by hybfunc from /home/sg171423/ri/1066282/ncm.csv
+# 2012.11.30.22.18.31: imported by hybfunc from /home/sg171423/ri/1066282A/ncm.csv
+# 2012.12.02.19.23.37: imported by hybfunc from /home/sg171423/ri/1074356/ncm.csv
+# 2012.12.03.19.03.01: imported by hybfunc from /tmp/sabre/ncm/1074224/ncm.csv
+# 2012.12.04.22.37.26: imported by hybfunc from /home/sg171423/ri/1071202/ncm.csv
+# 2012.12.05.19.03.02: imported by hybfunc from /tmp/sabre/ncm/1079122/ncm.csv
+# 2012.12.07.18.25.18: imported by hybfunc from /home/sg171423/ri/1077564/ncm.csv
+# 2012.12.08.00.13.23: imported by hybfunc from /home/sg171423/ri/1077755/ncm.csv
+# 2012.12.10.21.47.29: imported by hybfunc from /tmp/sabre/ncm/1081197/ncm.csv
+# 2012.12.12.19.55.02: imported by hybfunc from /tmp/sabre/ncm/1081303/ncm.csv
+# 2012.12.13.19.11.26: imported by hybfunc from /home/sg171423/ri/1079358/ncm.csv
+# 2012.12.13.21.07.32: imported by hybfunc from /home/sg891161/ri/Tax/ncm.csv
+# 2012.12.13.21.58.39: imported by hybfunc from /home/sg171423/ri/1079358A/ncm.csv
+# 2012.12.14.02.16.36: imported by hybfunc from /tmp/sabre/ncm/1078407/ncm.csv
+# 2012.12.14.02.40.16: imported by hybfunc from /tmp/sabre/ncm/1078407/ncm.csv
+# 2012.12.14.20.20.07: imported by hybfunc from /home/sg171423/ri/1077278/ncm.csv
+# 2012.12.16.18.55.49: imported by hybfunc from /home/sg171423/ri/1077856/ncm.csv
+# 2012.12.16.21.51.16: imported by hybfunc from /home/sg171423/ri/1077856A/ncm.csv
+# 2012.12.17.19.56.27: imported by hybfunc from /home/sg171423/ri/1078556/ncm.csv
+# 2012.12.18.02.25.15: imported by hybfunc from /tmp/RI1082803/ncm.csv
+# 2012.12.18.22.24.23: imported by hybfunc from /home/sg171423/ri/1080097/ncm.csv
+# 2012.12.19.01.06.00: imported by hybfunc from /home/sg171423/ri/1082005/ncm.csv
+# 2012.12.19.23.12.20: imported by hybfunc from /home/sg171423/ri/1080102/ncm.csv
+# 2012.12.19.23.38.12: imported by hybfunc from /home/sg171423/ri/1082347/ncm.csv
+# 2012.12.21.01.13.07: imported by hybfunc from /home/sg171423/ri/1082477/ncm.csv
+# 2013.01.02.21.31.04: imported by hybfunc from /home/sg171423/ri/1083366/ncm.csv
+# 2013.01.05.22.57.52: imported by hybfunc from /home/sg171423/ri/1086793/ncm.csv
+# 2013.01.06.00.01.23: imported by hybfunc from /home/sg171423/ri/1086793A/ncm.csv
+# 2013.01.09.00.00.44: imported by hybfunc from /tmp/sabre/ncm/atsev2.2013.00/ncm.csv
+# 2013.01.10.19.08.18: imported by hybfunc from /tmp/sabre/ncm/atsev2.2013.00/ncm.csv
+# 2013.01.11.20.20.55: imported by hybfunc from /home/sg171423/ri/1091161/ncm.csv
+# 2013.01.14.19.55.42: imported by hybfunc from /tmp/sabre/ncm/exp-disable/ncm.csv
+# 2013.01.15.19.12.41: imported by hybfunc from /tmp/sabre/ncm/exp-disable2/ncm.csv
+# 2013.01.16.19.07.39: imported by hybfunc from /tmp/sabre/ncm/1091042/ncm.csv
+# 2013.01.18.19.44.09: imported by hybfunc from /home/sg171423/ri/1090228/ncm.csv
+# 2013.01.18.20.49.18: imported by hybfunc from /home/sg171423/ri/1092632/ncm.csv
+# 2013.01.21.21.24.47: imported by hybfunc from /tmp/sabre/ncm/1093357/ncm.csv
+# 2013.01.22.19.04.23: imported by hybfunc from /tmp/sabre/ncm/1094295/ncm.csv
+# 2013.01.28.20.44.12: imported by hybfunc from /tmp/sabre/ncm/1093843/ncm.csv
+# 2013.01.29.01.45.06: imported by hybfunc from /tmp/sabre/ncm/1091733/ncm.csv
+# 2013.01.30.18.53.08: imported by hybfunc from /tmp/sabre/ncm/1091734/ncm.csv
+# 2013.01.31.00.36.23: imported by hybfunc from /tmp/sabre/ncm/1091736/ncm.csv
+# 2013.01.31.00.59.50: imported by hybfunc from /tmp/sabre/ncm/1091736/ncm.csv
+# 2013.01.31.02.32.20: imported by hybfunc from /tmp/sabre/ncm/1091736/ncm.csv
+# 2013.02.03.20.08.30: imported by hybfunc from /home/sg171423/ri/1098526/ncm.csv
+# 2013.02.03.22.14.08: imported by hybfunc from /home/sg171423/ri/1098526A/ncm.csv
+# 2013.02.04.19.37.18: imported by hybfunc from /home/sg171423/ri/1098793/ncm.csv
+# 2013.02.04.21.07.32: imported by hybfunc from /home/sg891729/ri/1098738/ncm.csv
+# 2013.02.04.21.47.26: imported by hybfunc from /home/sg171423/ri/1098793A/ncm.csv
+# 2013.02.06.19.11.09: imported by hybfunc from /home/sg171423/ri/1100203/ncm.csv
+# 2013.02.06.19.44.46: imported by hybfunc from /tmp/sabre/ncm/1100132/ncm.csv
+# 2013.02.06.23.40.50: imported by hybfunc from /tmp/sabre/ncm/1103117/ncm.csv
+# 2013.02.07.19.07.35: imported by hybfunc from /tmp/sabre/ncm/1100149/ncm.csv
+# 2013.02.09.13.06.24: imported by hybfunc from /home/sg171423/ri/1103077/ncm.csv
+# 2013.02.12.19.22.38: imported by hybfunc from /tmp/sabre/ncm/1103596/ncm.csv
+# 2013.02.13.19.42.45: imported by hybfunc from /home/sg171423/ri/1103738/ncm.csv
+# 2013.02.14.19.02.11: imported by hybfunc from /tmp/sabre/ncm/1105309/ncm.csv
+# 2013.02.16.19.54.45: imported by hybfunc from /home/sg171423/ri/1104965/ncm.csv
+# 2013.02.17.19.04.05: imported by hybfunc from /home/sg171423/ri/1105164/ncm.csv
+# 2013.02.17.21.10.17: imported by hybfunc from /home/sg171423/ri/1105164A/ncm.csv
+# 2013.02.26.19.28.58: imported by hybfunc from /tmp/sabre/ncm/atsev2-msr/ncm.csv
+# 2013.02.28.19.05.04: imported by hybfunc from /home/sg171423/ri/1108112/ncm.csv
+# 2013.02.28.23.40.18: imported by hybfunc from /home/sg171423/ri/1108112A/ncm.csv
+# 2013.03.01.09.47.00: imported by hybfunc from /home/sg171423/ri/1108112/ncm.csv
+# 2013.03.04.19.18.47: imported by hybfunc from /tmp/sabre/ncm/1106431/ncm.csv
+# 2013.03.04.21.59.38: imported by hybfunc from /tmp/sabre/ncm/1106431b/ncm.csv
+# 2013.03.05.01.07.33: imported by hybfunc from /tmp/sabre/ncm/1104450/ncm.csv
+# 2013.03.05.07.35.24: imported by hybfunc from /tmp/sabre/ncm/1106431c/ncm.csv
+# 2013.03.06.23.49.00: imported by hybfunc from /tmp/sabre/ncm/1104451/ncm.csv
+# 2013.03.07.03.16.01: imported by hybfunc from /tmp/sabre/ncm/1104453/ncm.csv
+# 2013.03.08.21.00.00: imported by hybfunc from /home/sg171423/ri/1114080/ncm.csv
+# 2013.03.10.20.22.06: imported by hybfunc from /home/sg171423/ri/1114795/ncm.csv
+# 2013.03.11.00.06.12: imported by hybfunc from /home/sg171423/ri/1114795A/ncm.csv
+# 2013.03.13.19.31.14: imported by hybfunc from /home/sg171423/ri/1117159/ncm.csv
+# 2013.03.13.20.24.44: imported by hybfunc from /home/sg171423/ri/1117615/ncm.csv
+# 2013.03.13.23.37.07: imported by hybfunc from /home/sg171423/ri/1117615/ncm.csv.backout
+# 2013.03.14.01.51.14: imported by hybfunc from /tmp/sabre/ncm/1117712/ncm.csv
+# 2013.03.14.02.39.37: imported by hybfunc from /home/sg171423/ri/1116591/ncm.csv
+# 2013.03.16.07.53.57: imported by hybfunc from /home/sg171423/ri/1115925/ncm.csv
+# 2013.03.17.07.56.02: imported by hybfunc from /home/sg171423/ri/1115926/ncm.csv
+# 2013.03.17.11.08.59: imported by hybfunc from /home/sg171423/ri/1115926A/ncm.csv
+# 2013.03.20.20.05.55: imported by hybfunc from /home/sg171423/ri/1120407/ncm.csv
+# 2013.03.20.20.21.18: imported by hybfunc from /tmp/sabre/ncm/1121538/ncm.csv
+# 2013.03.20.20.54.18: imported by hybfunc from /home/sg171423/ri/1120590/ncm.csv
+# 2013.03.20.21.57.45: imported by hybfunc from /home/sg171423/ri/1120407A/ncm.csv
+# 2013.03.21.21.06.05: imported by hybfunc from /tmp/sabre/ncm/1123237/ncm.csv
+# 2013.03.25.19.05.06: imported by hybfunc from /tmp/sabre/ncm/1117703/ncm.csv
+# 2013.03.26.00.21.52: imported by hybfunc from /tmp/sabre/ncm/1116741/ncm.csv
+# 2013.03.28.00.23.20: imported by hybfunc from /tmp/sabre/ncm/1116742/ncm.csv
+# 2013.03.28.02.16.48: imported by hybfunc from /tmp/sabre/ncm/1116743/ncm.csv
+# 2013.03.28.16.11.23: imported by hybfunc from /home/sg171423/ncm.csv
+# 2013.04.01.21.09.46: imported by hybfunc from /tmp/sabre/ncm/1126416/ncm.csv
+# 2013.04.02.18.58.52: imported by hybfunc from /home/sg171423/ri/1116567/ncm.csv
+# 2013.04.02.21.02.57: imported by hybfunc from /home/sg171423/ri/1116567/ncm.csv
+# 2013.04.03.19.33.27: imported by hybfunc from /home/sg171423/ri/1124664/ncm.csv
+# 2013.04.03.20.47.04: imported by hybfunc from /home/sg171423/ri/1124664A/ncm.csv
+# 2013.04.04.00.36.46: imported by hybfunc from /home/sg171423/ri/1124645/ncm.csv
+# 2013.04.04.23.40.58: imported by hybfunc from /tmp/sabre/ncm/1127867/ncm.csv
+# 2013.04.05.23.43.55: imported by hybfunc from /home/sg171423/ri/1127961/ncm.csv
+# 2013.04.07.19.09.19: imported by hybfunc from /home/sg171423/ri/1127989/ncm.csv
+# 2013.04.07.22.16.59: imported by hybfunc from /home/sg171423/ri/1127989A/ncm.csv
+# 2013.04.08.19.16.46: imported by hybfunc from /home/sg171423/ri/1128354/ncm.csv
+# 2013.04.08.20.52.02: imported by hybfunc from /home/sg171423/ri/1128354A/ncm.csv
+# 2013.04.10.19.19.21: imported by hybfunc from /home/sg171423/ri/1129202/ncm.csv
+# 2013.04.10.20.20.26: imported by hybfunc from /home/sg171423/ri/1129202A/ncm.csv
+# 2013.04.10.22.02.24: imported by hybfunc from /home/sg171423/ri/1129518/ncm.csv
+# 2013.04.11.00.12.23: imported by hybfunc from /home/sg171423/ri/1129518A/ncm.csv
+# 2013.04.11.02.57.03: imported by hybfunc from /home/sg171423/ri/1129518A/ncm.csv
+# 2013.04.11.05.25.10: imported by hybfunc from /home/sg171423/ri/1129518/ncm.csv
+# 2013.04.11.21.03.43: imported by hybfunc from /tmp/sabre/ncm/1130916/ncm.csv
+# 2013.04.14.06.09.42: imported by hybfunc from /home/sg171423/ri/1131079/ncm.csv
+# 2013.04.14.10.12.56: imported by hybfunc from /home/sg171423/ri/1131079A/ncm.csv
+# 2013.04.17.19.02.43: imported by hybfunc from /tmp/sabre/ncm/1133191/ncm.csv
+# 2013.04.17.20.35.56: imported by hybfunc from /home/sg171423/ri/1132837/ncm.csv
+# 2013.04.17.22.00.04: imported by hybfunc from /home/sg171423/ri/1132837A/ncm.csv
+# 2013.04.18.19.11.48: imported by hybfunc from /tmp/sabre/ncm/1133913/ncm.csv
+# 2013.04.22.19.16.32: imported by hybfunc from /tmp/sabre/ncm/1132040/ncm.csv
+# 2013.04.26.19.06.00: imported by hybfunc from /home/sg171423/ri/1136733/ncm.csv
+# 2013.04.27.19.01.56: imported by hybfunc from /home/sg171423/ri/1136848/ncm.csv
+# 2013.04.27.21.28.53: imported by hybfunc from /home/sg171423/ri/1136848A/ncm.csv
+# 2013.04.28.23.32.16: imported by hybfunc from /home/sg171423/ri/1137661/ncm.csv
+# 2013.05.01.00.52.04: imported by hybfunc from /home/sg171423/ri/1138680/ncm.csv
+# 2013.05.01.02.58.11: imported by hybfunc from /home/sg171423/ri/1138680A/ncm.csv
+# 2013.05.01.23.50.19: imported by hybfunc from /home/sg171423/ri/1138893/ncm.csv
+# 2013.05.02.01.47.10: imported by hybfunc from /home/sg171423/ri/1138893A/ncm.csv
+# 2013.05.04.18.41.52: imported by hybfunc from /home/sg171423/ri/1140163/ncm.csv
+# 2013.05.05.19.00.57: imported by hybfunc from /home/sg171423/ri/1140696/ncm.csv
+# 2013.05.05.21.19.55: imported by hybfunc from /home/sg171423/ri/1140696A/ncm.csv
+# 2013.05.06.22.27.57: imported by hybfunc from /home/sg171423/ri/1140047/ncm.csv
+# 2013.05.06.23.12.00: imported by hybfunc from /home/sg171423/ri/1140047/ncm.csv
+# 2013.05.07.05.56.31: imported by hybfunc from /home/sg171423/ri/1138230/ncm.csv.bak
+# 2013.05.08.19.22.59: imported by hybfunc from /home/sg171423/ri/1142136/ncm.csv
+# 2013.05.10.02.14.04: imported by hybfunc from /home/sg891852/ri/1142553/ncm.csv
+# 2013.05.11.09.14.07: imported by hybfunc from /home/sg171423/ri/1142142/ncm.csv
+# 2013.05.12.13.22.24: imported by hybfunc from /home/sg171423/ri/1143690/ncm.csv
+# 2013.05.12.15.18.49: imported by hybfunc from /home/sg171423/ri/1143690A/ncm.csv
+# 2013.05.12.17.16.01: imported by hybfunc from /home/sg206456/ncm.csv
+# 2013.05.16.19.06.52: imported by hybfunc from /home/sg171423/ri/1146528/ncm.csv
+# 2013.05.20.19.15.28: imported by hybfunc from /tmp/sabre/ncm/1145153/ncm.csv
+# 2013.05.21.00.45.16: imported by hybfunc from /tmp/sabre/ncm/1128712/ncm.csv
+# 2013.05.23.00.42.50: imported by hybfunc from /tmp/sabre/ncm/1128713/ncm.csv
+# 2013.05.29.21.09.16: imported by hybfunc from /home/sg171423/ri/1152591/ncm.csv
+# 2013.05.30.03.43.41: imported by hybfunc from /home/sg171423/ri/1153069/ncm.csv
+# 2013.05.31.19.22.45: imported by hybfunc from /home/sg171423/ri/1148001/ncm.csv
+# 2013.05.31.23.32.55: imported by hybfunc from /home/sg171423/ri/1148001/ncm.csv
+# 2013.06.02.21.02.36: imported by hybfunc from /home/sg171423/ri/1154899/ncm.csv
+# 2013.06.03.20.02.08: imported by hybfunc from /home/sg171423/ri/1155441/ncm.csv
+# 2013.06.05.01.04.10: imported by hybfunc from /home/sg171423/ri/1155438/ncm.csv
+# 2013.06.05.03.45.05: imported by hybfunc from /tmp/sabre/ncm/1128714/ncm.csv
+# 2013.06.05.21.12.43: imported by hybfunc from /home/sg171423/ri/1156452/ncm.csv
+# 2013.06.06.22.50.24: imported by hybfunc from /home/sg053471/ri/1149382/ncm.csv
+# 2013.06.07.19.33.52: imported by hybfunc from /home/sg171423/ri/1157402/ncm.csv
+# 2013.06.08.00.34.33: imported by hybfunc from /home/sg171423/ri/1157661/ncm.csv
+# 2013.06.09.22.08.11: imported by hybfunc from /home/sg171423/ri/1151440/ncm.csv
+# 2013.06.10.00.34.34: imported by hybfunc from /home/sg171423/ri/1151440A/ncm.csv

@@ -1,0 +1,20 @@
+** Pool **,** Production all nodes BigIps **,** Production limited nodes BigIps **,** Cert BigIps **
+FD ,d3pindislb01:fd.a.prod_pool_53901 d3pindislb01:fd.Liberty.prod_pool_53901 ,d3pindislb01:fd.b.prod_pool_53901,tcdislb11:fd.a.cert_pool_53901 tcdislb11:fd.Liberty.cert_pool_53901
+Historical,d3pindislb01:hist.a.prod_pool_53701 d3pindislb01:hist.Liberty.prod_pool_53701,d3pindislb01:hist.b.prod_pool_53701,tcdislb11:hist.a.cert_pool_53701 tcdislb11:hist.Liberty.cert_pool_53701
+PricingV2,d3pindislb01:pricing.a.prod_pool_53701 d3pindislb01:pricing.Liberty.prod_pool_53701,d3pindislb01:pricing.b.prod_pool_53701 ,tcdislb11:pricing.a.cert_pool_53701 tcdislb11:pricing.Liberty.cert_pool_53701
+TAX,d3pindislb01:taxserv.a.prod_pool_53501 ,d3pindislb01:taxserv.b.prod_pool_53501 ,tcdislb11:taxserv.a.cert_pool_53501
+ShopIS,d3pindislb01:cmplx.shop.a.prod_pool_53601,d3pindislb01:cmplx.shop.b.prod_pool_53601,tcdislb11:cmplx.shop.a.cert_pool_53601
+ShopMIP,d3pindislb01:shopping.a.prod_pool_53601,d3pindislb01:shopping.b.prod_pool_53601,tcdislb11:shopping.a.cert_pool_53601
+ShopIS200,d3pindislb01:cmplx.shop.c.prod_pool_53601,,
+ShopMIP200,d3pindislb01:shopping.c.prod_pool_53601,,
+ShopISTVCY,d3pindislb01:cmplx.shop.e.prod_pool_53601,,
+ShopMIPTVCY,d3pindislb01:shopping.e.prod_pool_53601,,
+ShopISLMC,d3pindislb01:cmplx.shop.d.prod_pool_53601,,
+ShopMIPLMC,d3pindislb01:shopping.d.prod_pool_53601,,
+ShopMIPIBFM,d3pindislb01:shopping.g.prod_pool_53601,,
+ShopISIBFM,d3pindislb01:cmplx.shop.g.prod_pool_53601,,
+ShopMIPGEOI,d3pindislb01:shopping.h.prod_pool_53601,,
+ShopISGEOI,d3pindislb01:cmplx.shop.h.prod_pool_53601,,
+ESVII,d3pindislb01:esv.shop.a.prod_pool_53603,,tcdislb11:esv.shop.cert_pool_53601
+ShopHist,d3pindislb01:hist.shop.prod.sabre.com_pool_53611,d3pindislb01:hist.shop.b.prod.sabre.com_pool_53611,tcdislb11:hist.shop.a.cert_pool_53611
+Historical-pinlc116,,,tcdislb11:pricing.d.cert_pool_53701 tcdislb11:pricing.b.cert_pool_53701 tcdislb11:fd.d.cert_pool_53901

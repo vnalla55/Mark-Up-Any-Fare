@@ -1,0 +1,8 @@
+s/\&/\&amp;/g
+s/>/\&gt;/g
+s/</\&lt;/g
+s/\"/\&quot;/g
+s/'/\&apos;/g
+s/^/<Row ss:AutoFitHeight=\"0\" ss:Height=\"13.5\" ss:StyleID=\"s73\"><Cell ss:StyleID=\"s74\"><Data ss:Type=\"String\">/g
+s/$/<\/Data><\/Cell><\/Row>/g
+

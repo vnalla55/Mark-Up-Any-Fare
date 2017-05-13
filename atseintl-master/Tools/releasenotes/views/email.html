@@ -1,0 +1,123 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Release Notes Publisher</title>
+
+    <!-- This document has to be parsed by MS Outlook. Sorry. -->
+
+    <style type="text/css">
+        td {
+            font-family: Consolas, Courier New, Lucida Grande, Helvetica, Arial, sans-serif;
+            font-size: 9pt;
+            color: #222222;
+        }
+        table.record_note {
+            margin-left: 5pt;
+            padding: 3pt;
+            width: 800px;
+            font-family: Consolas, Courier New, Lucida Grande, Helvetica, Arial, sans-serif;
+            font-size: 9pt;
+            color: #222222;
+            background: #F9F9F9;
+            /*border-left: 5px solid #DFDFDF;
+            border-right: 5px solid #DFDFDF;
+            border-bottom: 5px solid #DFDFDF;*/
+            /*margin-bottom: 40px;*/
+        }
+        .record_note td {
+            vertical-align: top;
+        }
+        .odd_row {
+            background: #DFDFDF;
+        }
+        .formtitle {
+            text-align: right;
+            font-weight: bold;
+            /*padding: 5pt;*/
+        }
+        .formcell {
+            /*padding: 5pt;*/
+        }
+    </style>
+</head>
+
+<body>
+
+    #foreach ( $groupName in $notesByGroup.keySet() )
+        <h3>$groupName</h3>
+
+            #foreach ( $releaseNote in $notesByGroup.get($groupName) )
+                <table class="record_note" cellspacing="0">
+                #set( $alt = "" )
+
+                #foreach ( $row in $record )
+
+                    #if ( $alt == "")
+                        #set ($alt = "odd_row")
+                    #else
+                        #set ($alt = "")
+                    #end
+
+                    <tr class="$alt">
+                        <td class="formtitle">
+                            <span class="field_name" id="project_name">$row.Title</span>:
+                        </td>
+                        <td class="formcell">
+
+                            #if ( $releaseNote )
+                            #set( $value = $recordTools.getRecordString($releaseNote, $row.FieldName) )
+                            #end
+
+                            #if ( $row.Type.name() == "ONE_LINE_TEXT" )
+                                #if($value)$esc.xml($value)#end
+                            #elseif ( $row.Type.name() == "DATE" )
+                                #if($value)$esc.xml($value)#end
+                            #elseif ( $row.Type.name() == "RICH_TEXT" )
+                                    #if($releaseNote)$notesUtils.unfilterTinyMCE($value)#end
+                            #elseif ( $row.Type.name() == "CHECKBOX_LIST" )
+
+                                #if ( $releaseNote )
+                                #set( $values = $recordTools.getCheckboxListValues($releaseNote, $row.FieldName) )
+                                #end
+
+                                <table class="boollist">
+
+                                    <tr>
+
+                                        #foreach ( $possibleVal in $row.PossibleValues )
+
+                                        <td>
+
+                                            #if ( $possibleVal.Checkable )
+                                            [#if ( $values.getData($possibleVal.Title).Checked )X#else&nbsp;#end]
+                                            #end
+
+                                            $possibleVal.Title#if ( $possibleVal.InputEnabled ): $values.getData($possibleVal.Title).Value
+                                            #end
+
+                                        </td>
+                                    </tr><tr>
+                                    #end
+
+                                </tr>
+
+                                </table>
+
+                            #end
+
+                        </td>
+                    </tr>
+                #end
+
+                <tr class="odd_row"><td colspan="2"></td></tr>
+
+                </table>
+                <br><br><br><br>
+            #end
+    #end
+
+</body>
+
+</html>

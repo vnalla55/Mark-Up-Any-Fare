@@ -1,0 +1,288 @@
+#!/bin/tcsh
+set bindir=`dirname $0`
+
+if ( "$HOSTNAME" =~ "atsedbld*" ) then
+   echo You\'re on a development blade!
+   exit 0
+endif
+
+unset recipient
+
+if ($# == 0) then
+   echo Required argument missing.
+   exit 1
+endif
+
+if ("$1" == "--recipient" || "$1" == "-r" ) then
+   shift
+   if ($# == 0) then
+      echo Recipient address not specified.
+      exit 1
+   endif
+   set recipient="$1"
+   shift
+endif
+
+if ($# != 1) then
+   echo Required argument missing.
+   exit 1
+endif
+
+if ( ! -r $1 ) then
+   echo File $1 is not readable.
+   exit 1
+endif
+
+set type=`file -biL $1 | sed 's/,/\n/' | head -n 1`
+
+if ( "$type" != "application/x-coredump" ) then
+   echo $1 is not a core dump, but a file of type $type.
+   exit 1
+endif
+
+set core=$1
+
+set date=`date -r $core +"%Y-%m-%d at %H:%M"`
+set base=`basename $core`
+set dir=`dirname $core`
+set binary=`strings -n 15 $core | head -n 20 | grep /tseserver | awk '{ print $1; }'`
+set env=`/opt/atseintl/common/systype.sh |& grep -v "o such file or d"`
+pushd $dir >& /dev/null
+set dir=`pwd`
+set split=`basename $dir | sed -e "s/\./ /" -e "s/\./ /"`
+popd >& /dev/null
+set app=`echo $split[1] | sed s/_/-/`
+set baseline=$split[3]
+set host=`hostname -s`
+set basename=${app}_${baseline}_`hostname -s`_`date -r $core +'%Y%m%d_%H%M'`
+
+set cc="ATSEv2SystemOwners; Alex, Hitha"
+set envdesc="Unknown environment \($env\):"
+unset skipManager
+switch ( $env )
+   case "Prod*":
+      set envdesc="Production"
+      breaksw
+   case "Test*":
+      set envdesc="Integration (unknown)"
+      if ( "$baseline" =~ *.[a-z][a-z] ) set envdesc="Daily complex (unknown)"
+      eval set `grep ATSEV2_INT_STAGE "$dir/config.vars.node" || echo "ATSEV2_INT_STAGE=Sandbox"`
+      switch ( $ATSEV2_INT_STAGE )
+         case "IntA":
+            set envdesc="Integration-A"
+            breaksw
+         case "IntB":
+            set envdesc="Integration-B"
+            breaksw
+         case "IntDaily":
+            set envdesc="Daily complex"
+            breaksw
+         case "Sandbox":
+            set envdesc="Sandbox"
+            breaksw
+      endsw
+      breaksw
+   case "Cert*":
+      set envdesc="CERT"
+      breaksw
+   case "Dev*":
+      set envdesc="Development"
+      breaksw
+   case "Plab*":
+      set envdesc="PLAB"
+      set cc="$cc; Tatara, Pawel; Popiolek, Pawel; Beck, David"
+      breaksw
+endsw
+echo Detected environment: $envdesc
+
+switch ( $app )
+   case "tax":
+      set to="Kubica, Jakub; Golebiewska, Karolina"
+      set cc="$cc; Slowiak, Marcin; Daigle, Earl"
+      breaksw
+   case "shoppinghist":
+      set to="Bartyna, Miroslaw; Przechrzta, Wojciech"
+      set cc="Chunpleng, Kitima"
+      set skipManager
+      breaksw
+   case "shopping*":
+      set to="Fu, Jeff; Balasubramanian, Srinivasan; Dontula, Mallikarjun"
+      breaksw
+   case "faredisplay":
+   case "rtg":
+   case "historical":
+   case "pricing*":
+   case "abacus*":
+      set to="Luevit, Saranya; Shekhar, Kul; Li, Simon; Daigle, Earl";
+      breaksw
+   default:
+      echo "Application $app unknown, don't know how to address the letter."
+      exit 1
+      breaksw
+endsw
+
+if ( "$to" !~ "Luevit, Saranya" && ! ${?skipManager} ) set cc="$cc; Luevit, Saranya"
+
+set workdir=/tmp/${base}.$$
+mkdir -p $workdir
+set mailfile=$workdir/core-report
+
+echo "To: $to" > $mailfile
+echo "Cc: $cc" >> $mailfile
+echo Subject: $envdesc $app core on $host from baseline $baseline >> $mailfile
+echo "">> $mailfile
+echo Team,>> $mailfile
+echo "">> $mailfile
+echo there is a core on $host, dumped on ${date} by ${app}, baseline ${baseline}. >> $mailfile
+echo "" >> $mailfile
+echo "The backtrace was:" >> $mailfile
+echo "" >> $mailfile
+
+echo -n Recovering requests from the log files...
+cd $workdir
+$bindir/lastRequests $core
+set nonomatch
+set logRequests=( log.*.req )
+if ( $#logRequests == 1 && "$logRequests" == "log.*.req" ) then
+   echo \ failed!
+   set logRequests=()
+   unset logReqFile
+else
+   set newname=${basename}_log_requests.zip
+   echo -n Packing the ${#logRequests} requests from log files into $newname...
+   zip -qmj $newname $logRequests
+   if ( $?CORE_ANALYSIS_REPOSITORY ) then
+      echo -n \ done, copying them to ${CORE_ANALYSIS_REPOSITORY}...
+      scp -q $newname ${CORE_ANALYSIS_REPOSITORY}
+   endif
+   echo \ done.
+   set logReqFile=$newname
+endif
+
+cd $dir
+$bindir/processCore $binary $base $workdir
+set result=$?
+if ( "$envdesc" == "Sandbox" ) then
+   echo This is a sandbox, the core file should remain intact.
+else if ( $result == 0 &&  -r $workdir/thread1.req && -w $core ) then
+   echo Core analysis finished, crashing request recovered, and the core is writable - truncating it to zero size.
+   true > $core
+else if ( $result == 3 && -w $core ) then
+   echo Core truncated, and the core is writable - truncating it to zero size.
+   true > $core
+endif
+
+echo This backtrace was recovered using ${binary}. >> $mailfile
+echo "" >> $mailfile
+
+pushd $workdir > /dev/null
+
+set requests=( thread*.req )
+if ( $#requests == 1 && "$requests" == "thread*.req") then
+   set requests=()
+   unset reqFile
+else
+   echo -n Removing duplicates...
+   unset prev
+   @ left = 0
+   @ dups = 0
+   set order=( `md5sum -b $requests | sort | cut -f2 -d' '` )
+   foreach curr ( $order )
+      if ( ! ${?prev} ) then
+         set prev=$curr
+         @ left ++
+         continue
+      endif
+      diff -q $prev $curr >& /dev/null
+      if ( $? == 0 ) then
+         rm -f $curr
+         ln -s $prev $curr
+         @ dups ++
+      else
+         set prev=$curr
+         @ left ++
+      endif
+   end
+   echo $left unique requests found, $dups duplicates removed.
+   unset prev left dups
+
+   set newname=${basename}_requests.zip
+   echo -n Packing the ${#requests} requests into $newname...
+   zip -qmy $newname $requests
+   if ( $?CORE_ANALYSIS_REPOSITORY ) then
+      echo -n \ done, copying them to ${CORE_ANALYSIS_REPOSITORY}...
+      scp -q $newname ${CORE_ANALYSIS_REPOSITORY}
+   endif
+   echo \ done.
+   set reqFile=$newname
+endif
+
+set backtraces=( thread*.bt )
+if ( $#backtraces == 1 &&  "$backtraces" == "thread*.bt" ) then
+   set backtraces=()
+   unset btFile
+else
+   set newname=${basename}_backtraces.zip
+   echo -n Packing the ${#backtraces} backtraces into $newname...
+   zip -qm $newname $backtraces
+   if ( $?CORE_ANALYSIS_REPOSITORY ) then
+      echo -n \ done, copying them to ${CORE_ANALYSIS_REPOSITORY}...
+      scp -q $newname ${CORE_ANALYSIS_REPOSITORY}
+   endif
+   echo \ done.
+   set btFile=$newname
+endif
+
+echo "" >> $mailfile
+set mailopt=""
+if ( $#requests || $#backtraces || $#logRequests ) then
+   echo Attached are archives containing: >> $mailfile
+   @ line = 1
+   if ( $#backtraces ) then
+      echo $line\) $btFile - $#backtraces backtraces>> $mailfile
+      @ line++
+      set mailopt="$mailopt -a $btFile"
+   endif
+   if ( $#requests ) then
+      echo $line\) $reqFile - $#requests requests recovered from the core file>> $mailfile
+      @ line++
+      set mailopt="$mailopt -a $reqFile"
+   endif
+   if ( $#logRequests ) then
+      echo $line\) $logReqFile - $#logRequests requests recovered from the log files>> $mailfile
+      @ line++
+      set mailopt="$mailopt -a $logReqFile"
+   endif
+else
+   echo No backtraces or requests could be recovered from the core file or the log files, nothing attached. >> $mailfile
+endif
+
+# remove extra CRs from the mail file, and email everything:
+dos2unix -q $mailfile
+set userid=`whoami`
+
+# the recipient name could have been given on the command line. If not,
+# let's check the CORE_ANALYSIS_RECIPIENT variable, and if that fails, let's
+# build the email address from /etc/passwd (or `ypcat passwd`, if NIS is
+# used).
+if (! $?recipient ) then
+   if ( $?CORE_ANALYSIS_RECIPIENT ) then
+      set recipient="$CORE_ANALYSIS_RECIPIENT"
+   endif
+endif
+
+if (! $?recipient ) then
+   set recipient=`grep $userid /etc/passwd | awk '-F[:, ]' '{ print $5 "." $6 "@sabre.com"; }'`
+endif
+
+if ( "$recipient" == "" ) then
+   set recipient=`ypcat passwd | grep $userid | awk '-F[:, ]' '{ print $5 "." $6 "@sabre.com"; }'`
+endif
+
+echo -n Mailing results to "$recipient" ...
+mutt -x -s "$envdesc crash report: $basename" $mailopt "$recipient" < $mailfile
+echo -n done, cleaning up...
+popd > /dev/null
+rm -rf $workdir
+echo done.
+exit $result

@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Sabre User</Author>
+  <LastAuthor>Sabre User</LastAuthor>
+  <Created>2008-02-20T21:36:25Z</Created>
+  <LastSaved>2010-06-15T15:24:12Z</LastSaved>
+  <Company>Sabre Inc.</Company>
+  <Version>12.00</Version>
+ </DocumentProperties>
+ <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <_AdHocReviewCycleID dt:dt="float">813849897</_AdHocReviewCycleID>
+  <_NewReviewCycle dt:dt="string"></_NewReviewCycle>
+  <_EmailSubject dt:dt="string">ATSEv2 System Owner templates for R6</_EmailSubject>
+  <_AuthorEmail dt:dt="string">Piotr.Sulecki@sabre-holdings.com</_AuthorEmail>
+  <_AuthorEmailDisplayName dt:dt="string">Sulecki, Piotr</_AuthorEmailDisplayName>
+  <_ReviewingToolsShownOnce dt:dt="string"></_ReviewingToolsShownOnce>
+ </CustomDocumentProperties>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11625</WindowHeight>
+  <WindowWidth>19245</WindowWidth>
+  <WindowTopX>-15</WindowTopX>
+  <WindowTopY>-15</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Arial"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="12" ss:Color="#FFFFFF"
+    ss:Bold="1"/>
+   <Interior ss:Color="#000000" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s64">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="16" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s66">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s71">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Color="#FF0000" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s72">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Color="#FF0000" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s73">
+   <Font ss:FontName="Arial" x:Family="Swiss"/>
+  </Style>
+  <Style ss:ID="s74">
+   <Font ss:FontName="Courier New" x:Family="Modern"/>
+  </Style>
+  <Style ss:ID="s75">
+   <Font ss:FontName="Courier New" x:Family="Modern" ss:Size="8"/>
+  </Style>
+  <Style ss:ID="s76">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+   <Font ss:FontName="Arial" x:Family="Swiss"/>
+  </Style>
+  <Style ss:ID="s77">
+   <Font ss:FontName="Courier New" x:Family="Modern"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s78">
+   <Font ss:FontName="Arial" x:Family="Swiss"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s79">
+   <Font ss:FontName="Courier New" x:Family="Modern"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s80">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+   <Font ss:FontName="Arial" x:Family="Swiss"/>
+  </Style>
+  <Style ss:ID="s81">
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="8"/>
+  </Style>
+  <Style ss:ID="s82">
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Bold="1"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s83">
+   <Font ss:FontName="Courier New" x:Family="Modern"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s84">
+   <Font ss:FontName="Arial" x:Family="Swiss"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s86">
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="14" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s88">
+   <Font ss:FontName="Courier New" x:Family="Modern" ss:Bold="1"/>
+  </Style>
+ </Styles>
+
